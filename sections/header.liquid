@@ -6,13 +6,30 @@
     </a>
 
     <nav class="site-header__nav">
-      <a href="/collections/all">Shop</a>
-      <a href="/pages/about">About</a>
+
+      <div class="site-header__item site-header__item--dropdown">
+        <a href="/collections/all" class="site-header__link">
+          Vêtements
+        </a>
+
+        <div class="site-header__dropdown">
+          <a href="/collections/collection-001">
+            Collection 001
+          </a>
+        </div>
+      </div>
+
+      <a href="/pages/club-privileges" class="site-header__link">
+        Club Privilèges
+      </a>
+
+      <a href="/pages/contact" class="site-header__link">
+        Contact
+      </a>
+
     </nav>
 
     <div class="site-header__actions">
-      <a href="{{ routes.account_url }}">Account</a>
-
       <a href="{{ routes.cart_url }}">
         Bag ({{ cart.item_count }})
       </a>
