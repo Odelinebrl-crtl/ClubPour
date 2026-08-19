@@ -20,20 +20,31 @@
             class="pour-product"
           >
 
-            <div class="pour-product__media">
+        <div class="pour-product__media">
 
-              {% if product.featured_image != blank %}
-                {{
-                  product.featured_image
-                  | image_url: width: 1200
-                  | image_tag:
-                    class: 'pour-product__image',
-                    loading: 'lazy',
-                    alt: product.title
-                }}
-              {% endif %}
+  {% if product.featured_image %}
+    {{
+      product.featured_image
+      | image_url: width: 1400
+      | image_tag:
+        class: 'pour-product__image pour-product__image--primary',
+        loading: 'lazy',
+        alt: product.title
+    }}
+  {% endif %}
 
-            </div>
+  {% if product.images.size > 1 %}
+    {{
+      product.images[1]
+      | image_url: width: 1400
+      | image_tag:
+        class: 'pour-product__image pour-product__image--secondary',
+        loading: 'lazy',
+        alt: product.title
+    }}
+  {% endif %}
+
+</div>
 
             <div class="pour-product__info">
 
