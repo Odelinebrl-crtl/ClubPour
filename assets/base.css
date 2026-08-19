@@ -779,6 +779,10 @@ a {
   text-decoration: none;
 }
 
+/* ================================
+   PRODUCT IMAGE + HOVER
+================================ */
+
 .pour-product__media {
   position: relative;
   width: 100%;
@@ -786,15 +790,55 @@ a {
   background: transparent;
 }
 
+/* Les deux images */
+
 .pour-product__image {
   display: block;
   width: 100%;
   height: auto;
 
-  object-fit: initial;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Image principale */
+
+.pour-product__image--primary {
+  position: relative;
+  z-index: 1;
+
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Deuxième image superposée */
+
+.pour-product__image--secondary {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
   object-position: center;
 
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: scale(1.025);
+}
+
+/* SURVOL */
+
+.pour-product:hover .pour-product__image--primary {
+  opacity: 0;
+  transform: scale(1.015);
+}
+
+.pour-product:hover .pour-product__image--secondary {
+  opacity: 1;
+  transform: scale(1);
 }
 /* léger zoom au survol */
 
