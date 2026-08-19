@@ -36,14 +36,15 @@ a {
   width: 100%;
   height: 78px;
 
-  background: transparent;
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.88);
+  color: #111111;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
   border: 0;
 
-  transition:
-    background-color 0.3s ease,
-    color 0.3s ease;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
 }
 .site-header__inner {
   position: relative;
@@ -57,13 +58,7 @@ a {
 
   padding: 0 48px;
 }
-.site-header.is-scrolled {
-  background: rgba(255, 255, 255, 0.96);
-  color: #111111;
 
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
 /* LEFT NAVIGATION */
 
 .site-header__nav--left {
