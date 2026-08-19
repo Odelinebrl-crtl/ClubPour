@@ -110,3 +110,140 @@ a {
     text-align: left;
   }
 }
+/* ================================
+   HERO POUR
+================================ */
+
+.pour-hero {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  min-height: 650px;
+  overflow: hidden;
+  background: #111;
+  color: var(--hero-text-color);
+}
+
+.pour-hero__media {
+  position: absolute;
+  inset: 0;
+}
+
+.pour-hero__image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.pour-hero__image--mobile {
+  display: none;
+}
+
+.pour-hero__placeholder,
+.pour-hero__placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pour-hero__placeholder svg {
+  object-fit: cover;
+}
+
+.pour-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, var(--hero-overlay));
+  pointer-events: none;
+}
+
+.pour-hero__content {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 40px;
+  color: var(--hero-text-color);
+}
+
+.pour-hero__content--bottom-center {
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  align-items: center;
+  text-align: center;
+}
+
+.pour-hero__content--bottom-left {
+  left: 0;
+  bottom: 0;
+  align-items: flex-start;
+}
+
+.pour-hero__content--center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  text-align: center;
+}
+
+.pour-hero__eyebrow {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.pour-hero__heading {
+  margin: 0;
+  font-size: clamp(70px, 13vw, 210px);
+  line-height: 0.8;
+  font-weight: 400;
+  letter-spacing: -0.07em;
+}
+
+.pour-hero__button {
+  display: inline-block;
+  margin-top: 10px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentColor;
+
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+
+  .pour-hero {
+    min-height: 600px;
+  }
+
+  .pour-hero__image--desktop {
+    display: block;
+  }
+
+  .pour-hero__image--mobile {
+    display: block;
+    position: absolute;
+    inset: 0;
+  }
+
+  .pour-hero__content {
+    width: 100%;
+    padding: 24px 20px;
+  }
+
+  .pour-hero__heading {
+    font-size: clamp(60px, 25vw, 110px);
+  }
+
+  .pour-hero__content--bottom-center {
+    bottom: 20px;
+  }
+}
