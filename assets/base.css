@@ -351,12 +351,10 @@ a {
   object-fit: cover;
 
   will-change: transform;
-
-  transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0) scale(1.08);
 
   transition: none;
 }
-
 .pour-hero__placeholder,
 .pour-hero__placeholder svg {
   width: 100%;
