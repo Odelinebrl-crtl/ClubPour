@@ -1,14 +1,9 @@
-<header class="site-header" data-site-header>
+<header class="site-header">
   <div class="site-header__inner">
 
-    <a href="{{ routes.root_url }}" class="site-header__logo">
-      POUR
-    </a>
-
-    <nav class="site-header__nav">
+    <nav class="site-header__nav site-header__nav--left">
 
       <div class="site-header__item site-header__item--dropdown">
-
         <a href="/collections/all" class="site-header__link">
           Vêtements
         </a>
@@ -18,7 +13,6 @@
             Collection 001
           </a>
         </div>
-
       </div>
 
       <a href="/pages/club-privileges" class="site-header__link">
@@ -31,8 +25,12 @@
 
     </nav>
 
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      POUR
+    </a>
+
     <div class="site-header__actions">
-      <a href="{{ routes.cart_url }}">
+      <a href="{{ routes.cart_url }}" class="site-header__cart">
         Bag ({{ cart.item_count }})
       </a>
     </div>
