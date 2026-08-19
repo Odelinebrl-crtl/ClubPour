@@ -1,47 +1,53 @@
 document.documentElement.classList.add('js');
 
-const hero = document.querySelector('.pour-hero');
-const heroImage = document.querySelector('.pour-hero__image');
+function initHeroParallax() {
+  const hero = document.querySelector('.pour-hero');
+  const heroImage = document.querySelector('.pour-hero__image');
 
-if (hero && heroImage) {
+  if (!hero || !heroImage) return;
+
   let ticking = false;
 
-  const updateHeroParallax = () => {
-    const rect = hero.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
+  function updateParallax() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
 
-    /*
-      L'effet fonctionne uniquement lorsque
-      le Hero est encore visible à l'écran.
-    */
-    if (rect.bottom > 0 && rect.top < viewportHeight) {
-      const progress = -rect.top / hero.offsetHeight;
-
+    if (scrollY <= heroHeight) {
       /*
-        Intensité du mouvement.
-        90 = mouvement visible mais élégant.
+        Plus la valeur 0.22 est élevée,
+        plus l'image bouge avec le scroll.
       */
-      const movement = progress * 90;
+      const translateY = scrollY * 0.22;
 
       heroImage.style.transform =
-        `translate3d(0, ${movement}px, 0)`;
+        `translate3d(0, ${translateY}px, 0) scale(1.08)`;
     }
 
     ticking = false;
-  };
+  }
 
-  const requestHeroUpdate = () => {
+  function onScroll() {
     if (!ticking) {
-      window.requestAnimationFrame(updateHeroParallax);
+      requestAnimationFrame(updateParallax);
       ticking = true;
     }
-  };
+  }
 
-  updateHeroParallax();
+  updateParallax();
 
-  window.addEventListener('scroll', requestHeroUpdate, {
+  window.addEventListener('scroll', onScroll, {
     passive: true
   });
-
-  window.addEventListener('resize', requestHeroUpdate);
 }
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroParallax);
+} else {
+  initHeroParallax();
+}
+
+/*
+  Shopify recharge parfois les sections sans
+  recharger toute la page dans l'éditeur.
+*/
+document.addEventListener('shopify:section:load', initHeroParallax);
