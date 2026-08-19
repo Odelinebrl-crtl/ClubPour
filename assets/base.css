@@ -818,7 +818,11 @@ a {
   padding-top: 12px;
 }
 
-.pour-product__title,
+.pour-products__title {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
 .pour-product__price {
   margin: 0;
 
