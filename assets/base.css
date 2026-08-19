@@ -606,3 +606,46 @@ a {
     text-align: left;
   }
 }
+/* =========================================
+   COLLECTION 001 — SOULIGNEMENT AU HOVER
+========================================= */
+
+/* Supprime toute ligne sur le conteneur du dropdown */
+.site-header__dropdown,
+.site-header__dropdown:hover {
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Le lien */
+.site-header__dropdown a {
+  position: relative;
+  display: inline-block;
+
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* Petit trait uniquement sous le texte */
+.site-header__dropdown a::after {
+  content: "" !important;
+  display: block !important;
+
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111 !important;
+
+  transition: width 0.2s ease;
+}
+
+/* Apparition du trait */
+.site-header__dropdown a:hover::after {
+  width: 100%;
+}
