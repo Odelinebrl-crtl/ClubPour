@@ -171,15 +171,16 @@ a {
 .site-header__dropdown {
   position: fixed;
 
-  top: 68px;
+  /* On le fait légèrement remonter pour fusionner avec le header */
+  top: 67px;
   left: 0;
 
   z-index: 999;
 
   width: 100%;
-
   padding: 22px 54px;
 
+  /* EXACTEMENT le même fond que le header */
   background: rgba(255, 255, 255, 0.82);
 
   backdrop-filter: blur(5px) saturate(120%);
@@ -187,9 +188,11 @@ a {
 
   color: #111111;
 
-  border: none;
-  outline: none;
-  box-shadow: none;
+  /* AUCUNE séparation */
+  border: 0 !important;
+  border-top: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 
   opacity: 0;
   visibility: hidden;
@@ -198,6 +201,15 @@ a {
   transition:
     opacity 0.14s ease,
     visibility 0.14s ease;
+}
+.site-header,
+.site-header__inner,
+.site-header__dropdown,
+.site-header__item,
+.site-header__item--dropdown {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
 }
 
 .site-header__dropdown::before,
