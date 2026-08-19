@@ -1,1 +1,29 @@
+<header class="site-header">
+  <div class="site-header__inner">
 
+    <a href="{{ routes.root_url }}" class="site-header__logo">
+      POUR
+    </a>
+
+    <nav class="site-header__nav">
+      <a href="/collections/all">Shop</a>
+      <a href="/pages/about">About</a>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="{{ routes.account_url }}">Account</a>
+
+      <a href="{{ routes.cart_url }}">
+        Bag ({{ cart.item_count }})
+      </a>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}
