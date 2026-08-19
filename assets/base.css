@@ -716,18 +716,14 @@ a {
 
 .site-header__link,
 .site-header__cart,
-.site-header__dropdown a {
+.site-header__dropdown a,
+.site-header__actions a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 1;
 
-  text-transform: none;
-}
-.site-header__actions a {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 300;
+  text-transform: uppercase;
 }
