@@ -1,0 +1,118 @@
+<section class="pour-products">
+  <div class="pour-products__inner">
+
+    {% if section.settings.heading != blank %}
+      <div class="pour-products__header">
+        <h2 class="pour-products__heading">
+          {{ section.settings.heading }}
+        </h2>
+      </div>
+    {% endif %}
+
+    <div class="pour-products__grid">
+
+      {% if section.settings.collection != blank %}
+
+        {% for product in section.settings.collection.products limit: section.settings.products_to_show %}
+
+          <a
+            href="{{ product.url }}"
+            class="pour-product"
+          >
+
+            <div class="pour-product__media">
+
+              {% if product.featured_image != blank %}
+                {{
+                  product.featured_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    class: 'pour-product__image',
+                    loading: 'lazy',
+                    alt: product.title
+                }}
+              {% endif %}
+
+            </div>
+
+            <div class="pour-product__info">
+
+              <h3 class="pour-product__title">
+                {{ product.title }}
+              </h3>
+
+              <div class="pour-product__price">
+                {{ product.price | money }}
+              </div>
+
+            </div>
+
+          </a>
+
+        {% endfor %}
+
+      {% else %}
+
+        {% for i in (1..4) %}
+
+          <div class="pour-product">
+
+            <div class="pour-product__media pour-product__placeholder">
+              {{ 'product-' | append: i | placeholder_svg_tag }}
+            </div>
+
+            <div class="pour-product__info">
+
+              <h3 class="pour-product__title">
+                Produit {{ i }}
+              </h3>
+
+              <div class="pour-product__price">
+                00,00 €
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      {% endif %}
+
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Produits POUR",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "COLLECTION 001"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Nombre de produits",
+      "min": 2,
+      "max": 8,
+      "step": 1,
+      "default": 4
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produits POUR"
+    }
+  ]
+}
+{% endschema %}
