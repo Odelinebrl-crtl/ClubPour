@@ -124,12 +124,21 @@ a {
 .site-header__actions {
   justify-self: end;
 
-  display: flex;
+  display: flex !important;
+  flex-direction: row;
   align-items: center;
 
-  gap: 38px;
+  gap: 24px !important;
 }
 
+.site-header__actions > a {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  margin: 0 !important;
+  padding: 0;
+  white-space: nowrap;
+}
 .site-header__link,
 .site-header__cart {
   position: relative;
