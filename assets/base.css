@@ -109,9 +109,9 @@ a {
   display: block;
 
   width: auto;
-  height: 50px;
+  height: 65px;
 
-  max-width: 190px;
+  max-width: 240px;
 
   object-fit: contain;
 }
