@@ -1,1 +1,27 @@
-
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Club POUR",
+    "theme_version": "1.0.0",
+    "theme_author": "POUR",
+    "theme_documentation_url": "https://help.shopify.com/",
+    "theme_support_url": "https://help.shopify.com/"
+  },
+  {
+    "name": "Identité de la marque",
+    "settings": [
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Couleur de fond",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#111111"
+      }
+    ]
+  }
+]
