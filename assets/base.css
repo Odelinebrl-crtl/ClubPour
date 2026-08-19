@@ -109,13 +109,12 @@ a {
   display: block;
 
   width: auto;
-  height: 38px;
+  height: 50px;
 
-  max-width: 150px;
+  max-width: 190px;
 
   object-fit: contain;
 }
-
 
 /* =========================================================
    HEADER — PARTIE DROITE
