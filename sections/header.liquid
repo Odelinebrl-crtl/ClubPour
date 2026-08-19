@@ -26,13 +26,30 @@
     </nav>
 
     <a href="{{ routes.root_url }}" class="site-header__logo">
-      POUR
+      {% if section.settings.logo != blank %}
+        {{
+          section.settings.logo
+          | image_url: width: 600
+          | image_tag:
+            class: 'site-header__logo-image',
+            loading: 'eager',
+            alt: shop.name
+        }}
+      {% else %}
+        POUR
+      {% endif %}
     </a>
 
     <div class="site-header__actions">
-      <a href="{{ routes.cart_url }}" class="site-header__cart">
-        Bag ({{ cart.item_count }})
+
+      <a href="{{ routes.account_url }}" class="site-header__link">
+        Compte
       </a>
+
+      <a href="{{ routes.cart_url }}" class="site-header__cart">
+        Panier{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+      </a>
+
     </div>
 
   </div>
@@ -41,6 +58,12 @@
 {% schema %}
 {
   "name": "Header",
-  "settings": []
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    }
+  ]
 }
 {% endschema %}
