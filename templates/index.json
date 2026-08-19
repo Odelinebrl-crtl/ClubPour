@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-home",
-      "settings": {}
-    },
     "hero_pour_8d7WER": {
       "type": "hero-pour",
       "name": "Hero POUR",
@@ -27,10 +23,14 @@
         "text_color": "#FFFFFF",
         "overlay": 15
       }
+    },
+    "main": {
+      "type": "main-home",
+      "settings": {}
     }
   },
   "order": [
-    "main",
-    "hero_pour_8d7WER"
+    "hero_pour_8d7WER",
+    "main"
   ]
 }
