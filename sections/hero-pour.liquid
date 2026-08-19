@@ -1,0 +1,149 @@
+<section
+  id="Hero-{{ section.id }}"
+  class="pour-hero"
+  style="
+    --hero-text-color: {{ section.settings.text_color }};
+    --hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
+  "
+>
+  <div class="pour-hero__media">
+
+    {% if section.settings.image_desktop != blank %}
+      {{
+        section.settings.image_desktop
+        | image_url: width: 2400
+        | image_tag:
+          class: 'pour-hero__image pour-hero__image--desktop',
+          loading: 'eager',
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw'
+      }}
+    {% else %}
+      <div class="pour-hero__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.image_mobile != blank %}
+      {{
+        section.settings.image_mobile
+        | image_url: width: 1200
+        | image_tag:
+          class: 'pour-hero__image pour-hero__image--mobile',
+          loading: 'eager',
+          widths: '500, 750, 1000, 1200',
+          sizes: '100vw'
+      }}
+    {% endif %}
+
+  </div>
+
+  <div class="pour-hero__overlay"></div>
+
+  <div class="pour-hero__content pour-hero__content--{{ section.settings.content_position }}">
+
+    {% if section.settings.eyebrow != blank %}
+      <p class="pour-hero__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1 class="pour-hero__heading">
+        {{ section.settings.heading }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.button_label != blank %}
+      <a
+        class="pour-hero__button"
+        href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
+      >
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero POUR",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Image desktop"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image mobile"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit texte",
+      "default": "DROP 01 — 2026"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "POUR"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "DISCOVER"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Position du contenu",
+      "options": [
+        {
+          "value": "bottom-left",
+          "label": "Bas gauche"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bas centre"
+        },
+        {
+          "value": "center",
+          "label": "Centre"
+        }
+      ],
+      "default": "bottom-center"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "label": "Assombrissement de l'image",
+      "default": 15
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero POUR"
+    }
+  ]
+}
+{% endschema %}
