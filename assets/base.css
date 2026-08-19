@@ -1,3 +1,7 @@
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -23,9 +27,10 @@ a {
   text-decoration: none;
 }
 
-/* ================================
+
+/* =========================================================
    HEADER — POUR
-================================ */
+========================================================= */
 
 .site-header {
   position: fixed;
@@ -36,16 +41,17 @@ a {
   width: 100%;
   height: 68px;
 
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.82);
 
   backdrop-filter: blur(5px) saturate(120%);
   -webkit-backdrop-filter: blur(5px) saturate(120%);
 
   color: #111111;
 
-  border: 0;
+  border: none;
   box-shadow: none;
 }
+
 .site-header__inner {
   position: relative;
 
@@ -56,20 +62,36 @@ a {
   width: 100%;
   height: 100%;
 
-  padding: 0 48px;
+  padding: 0 54px;
 }
 
-/* LEFT NAVIGATION */
+
+/* =========================================================
+   HEADER — NAVIGATION GAUCHE
+========================================================= */
 
 .site-header__nav--left {
   justify-self: start;
 
   display: flex;
   align-items: center;
+
   gap: 42px;
 }
 
-/* CENTER LOGO */
+.site-header__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 68px;
+}
+
+
+/* =========================================================
+   HEADER — LOGO CENTRE
+========================================================= */
 
 .site-header__logo {
   justify-self: center;
@@ -81,9 +103,14 @@ a {
   letter-spacing: -0.04em;
 
   color: #111111;
+
+  white-space: nowrap;
 }
 
-/* RIGHT */
+
+/* =========================================================
+   HEADER — PARTIE DROITE
+========================================================= */
 
 .site-header__actions {
   justify-self: end;
@@ -96,6 +123,8 @@ a {
 .site-header__cart {
   position: relative;
 
+  display: inline-block;
+
   font-size: 14px;
   font-weight: 400;
   line-height: 1;
@@ -105,74 +134,10 @@ a {
   white-space: nowrap;
 }
 
-/* ================================
-   DROPDOWN VÊTEMENTS
-================================ */
 
-.site-header__item {
-  position: relative;
-  height: 68px;
-
-  display: flex;
-  align-items: center;
-}
-
-.site-header__dropdown {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  width: 100%;
-
-  padding: 18px 54px;
-
-  background: rgba(255, 255, 255, 0.82);
-  color: #111111;
-
-  backdrop-filter: blur(18px) saturate(120%);
-  -webkit-backdrop-filter: blur(18px) saturate(120%);
-
-  border: none !important;
-  border-top: none !important;
-  border-bottom: none !important;
-  box-shadow: none !important;
-  outline: none !important;
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transform: translateY(-6px);
-
-  transition:
-    opacity 0.2s ease,
-    visibility 0.2s ease,
-    transform 0.2s ease;
-}
-.site-header,
-.site-header__inner,
-.site-header__dropdown {
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.site-header__dropdown a {
-  display: inline-block;
-
-  font-size: 14px;
-  font-weight: 400;
-  color: #111111;
-
-  white-space: nowrap;
-}
-
-.site-header__item--dropdown:hover .site-header__dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transform: translateY(0);
-}
-
-/* Subtle hover */
+/* =========================================================
+   HEADER — SOULIGNEMENT AU SURVOL
+========================================================= */
 
 .site-header__link::after,
 .site-header__cart::after,
@@ -180,15 +145,16 @@ a {
   content: "";
 
   position: absolute;
+
   left: 0;
   bottom: -5px;
 
   width: 0;
   height: 1px;
 
-  background: currentColor;
+  background: #111111;
 
-  transition: width 0.25s ease;
+  transition: width 0.22s ease;
 }
 
 .site-header__link:hover::after,
@@ -197,67 +163,143 @@ a {
   width: 100%;
 }
 
-/* ================================
-   MOBILE
-================================ */
 
-@media screen and (max-width: 768px) {
+/* =========================================================
+   SOUS-MENU — VÊTEMENTS
+========================================================= */
 
-  .site-header {
-    height: 64px;
-  }
+.site-header__dropdown {
+  position: fixed;
 
-  .site-header__inner {
-    grid-template-columns: 1fr auto 1fr;
-    padding: 0 18px;
-  }
+  top: 68px;
+  left: 0;
 
-  .site-header__nav--left {
-    display: none;
-  }
+  z-index: 999;
 
-  .site-header__logo {
-    grid-column: 2;
-    font-size: 24px;
-  }
+  width: 100%;
 
-  .site-header__actions {
-    grid-column: 3;
-    font-size: 12px;
-  }
+  padding: 22px 54px;
 
-  .site-header__cart {
-    font-size: 12px;
-  }
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(5px) saturate(120%);
+  -webkit-backdrop-filter: blur(5px) saturate(120%);
+
+  color: #111111;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.14s ease,
+    visibility 0.14s ease;
 }
 
-/* ================================
+.site-header__dropdown::before,
+.site-header__dropdown::after {
+  content: none;
+  display: none;
+}
+
+.site-header__dropdown a {
+  position: relative;
+
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  color: #111111;
+
+  white-space: nowrap;
+}
+
+.site-header__dropdown a:hover,
+.site-header__dropdown a:focus {
+  background: transparent;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  color: #111111;
+}
+
+
+/* Affichage du sous-menu */
+
+.site-header__item--dropdown:hover .site-header__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* Évite les flashs / fonds parasites */
+
+.site-header__item--dropdown,
+.site-header__item--dropdown:hover,
+.site-header__item--dropdown:hover .site-header__link,
+.site-header__dropdown,
+.site-header__dropdown:hover {
+  border: none;
+  box-shadow: none;
+}
+
+
+/* =========================================================
    HERO POUR
-================================ */
+========================================================= */
 
 .pour-hero {
   position: relative;
+
   width: 100%;
   height: 82vh;
+
   min-height: 600px;
   max-height: 900px;
+
   overflow: hidden;
+
   background: #111111;
+
   color: var(--hero-text-color);
 }
 
 .pour-hero__media,
 .pour-hero__media picture {
   position: absolute;
+
   inset: 0;
+
+  display: block;
+
   width: 100%;
   height: 100%;
 }
 
 .pour-hero__image {
+  display: block;
+
   width: 100%;
   height: 100%;
-  display: block;
+
   object-fit: cover;
 }
 
@@ -271,155 +313,261 @@ a {
   object-fit: cover;
 }
 
+
+/* =========================================================
+   HERO — OVERLAY
+========================================================= */
+
 .pour-hero__overlay {
   position: absolute;
+
   inset: 0;
+
   z-index: 1;
+
   background: rgba(0, 0, 0, var(--hero-overlay));
+
   pointer-events: none;
 }
 
+
+/* =========================================================
+   HERO — CONTENU
+========================================================= */
+
 .pour-hero__content {
   position: absolute;
+
   z-index: 2;
+
   display: flex;
   flex-direction: column;
+
   gap: 14px;
+
   padding: 40px;
+
   color: var(--hero-text-color);
 }
 
 .pour-hero__content--bottom-center {
   left: 50%;
   bottom: 35px;
+
   transform: translateX(-50%);
+
   align-items: center;
+
   text-align: center;
 }
 
 .pour-hero__content--bottom-left {
   left: 0;
   bottom: 0;
+
   align-items: flex-start;
+
+  text-align: left;
 }
 
 .pour-hero__content--center {
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
+
   align-items: center;
+
   text-align: center;
 }
+
+
+/* =========================================================
+   HERO — PETIT TEXTE
+========================================================= */
 
 .pour-hero__eyebrow {
   margin: 0;
+
   font-size: 11px;
+  font-weight: 400;
+
   line-height: 1;
+
   letter-spacing: 0.18em;
+
   text-transform: uppercase;
 }
+
+
+/* =========================================================
+   HERO — GRAND TITRE
+========================================================= */
 
 .pour-hero__heading {
   margin: 0;
+
   font-size: clamp(70px, 13vw, 210px);
-  line-height: 0.8;
   font-weight: 400;
+
+  line-height: 0.8;
+
   letter-spacing: -0.07em;
 }
 
+
+/* =========================================================
+   HERO — BOUTON
+========================================================= */
+
 .pour-hero__button {
   display: inline-block;
+
+  position: relative;
+
   margin-top: 10px;
   padding-bottom: 4px;
+
   border-bottom: 1px solid currentColor;
 
   font-size: 11px;
+  font-weight: 400;
+
   line-height: 1;
+
   letter-spacing: 0.15em;
+
   text-transform: uppercase;
 }
 
-/* ================================
+
+/* =========================================================
    HOME TEMPORAIRE
-================================ */
+========================================================= */
 
 .main-home {
   min-height: 70vh;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+
   padding: 80px 30px;
+
+  text-align: center;
 }
 
 .main-home h1 {
   margin: 0 0 12px;
+
   font-size: clamp(60px, 12vw, 180px);
   font-weight: 500;
+
   letter-spacing: -0.05em;
 }
 
 .main-home p {
   margin: 0;
+
   font-size: 14px;
-  text-transform: uppercase;
+
   letter-spacing: 0.16em;
+
+  text-transform: uppercase;
 }
 
-/* ================================
+
+/* =========================================================
    FOOTER
-================================ */
+========================================================= */
 
 .site-footer {
   padding: 50px 30px;
+
+  background: #ffffff;
+
   border-top: 1px solid #eaeaea;
 }
 
 .site-footer__inner {
   display: grid;
+
   grid-template-columns: 1fr auto 1fr;
+
   align-items: center;
+
   gap: 30px;
 }
 
 .site-footer__links {
   display: flex;
+
   gap: 24px;
 }
 
 .site-footer__legal {
-  text-align: right;
   font-size: 12px;
+
+  text-align: right;
 }
 
-/* ================================
+
+/* =========================================================
    MOBILE
-================================ */
+========================================================= */
 
 @media screen and (max-width: 768px) {
+
+  /* HEADER */
+
   .site-header {
-    padding: 18px 20px;
+    height: 64px;
   }
 
   .site-header__inner {
     grid-template-columns: 1fr auto;
+
+    padding: 0 18px;
   }
 
-  .site-header__nav {
+  .site-header__nav--left {
     display: none;
   }
 
   .site-header__logo {
-    font-size: 19px;
+    grid-column: 1;
+
+    justify-self: start;
+
+    font-size: 22px;
   }
+
+  .site-header__actions {
+    grid-column: 2;
+
+    justify-self: end;
+  }
+
+  .site-header__cart {
+    font-size: 12px;
+  }
+
+  .site-header__dropdown {
+    display: none;
+  }
+
+
+  /* HERO */
 
   .pour-hero {
     height: 78vh;
+
     min-height: 560px;
   }
 
   .pour-hero__content {
     width: 100%;
+
     padding: 24px 20px;
   }
 
@@ -430,6 +578,9 @@ a {
   .pour-hero__content--bottom-center {
     bottom: 20px;
   }
+
+
+  /* FOOTER */
 
   .site-footer__inner {
     grid-template-columns: 1fr;
