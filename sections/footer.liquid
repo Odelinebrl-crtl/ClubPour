@@ -1,1 +1,28 @@
+<footer class="site-footer">
+  <div class="site-footer__inner">
 
+    <div class="site-footer__brand">
+      <a href="{{ routes.root_url }}" class="site-footer__logo">
+        POUR
+      </a>
+    </div>
+
+    <div class="site-footer__links">
+      <a href="/collections/all">Shop</a>
+      <a href="/pages/about">About</a>
+      <a href="/pages/contact">Contact</a>
+    </div>
+
+    <div class="site-footer__legal">
+      <span>© {{ 'now' | date: '%Y' }} POUR</span>
+    </div>
+
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}
