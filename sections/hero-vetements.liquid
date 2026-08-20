@@ -1,65 +1,80 @@
-{% assign image_key = 'image_' | append: i %}
-{% assign title_key = 'title_' | append: i %}
-{% assign subtitle_key = 'subtitle_' | append: i %}
-{% assign link_key = 'link_' | append: i %}
-{% assign color_key = 'text_color_' | append: i %}
+<section
+  id="ClothingHero-{{ section.id }}"
+  class="clothing-hero"
+  data-clothing-hero
+  data-autoplay="{{ section.settings.autoplay }}"
+  data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
+>
 
-{% assign slide_image = section.settings[image_key] %}
-{% assign slide_title = section.settings[title_key] %}
-{% assign slide_subtitle = section.settings[subtitle_key] %}
-{% assign slide_link = section.settings[link_key] %}
-{% assign slide_color = section.settings[color_key] %}
+  <div class="clothing-hero__slides">
 
-{% if slide_image != blank %}
+    {% for i in (1..5) %}
 
-  <article
-    class="clothing-hero__slide{% if i == 1 %} is-active is-text-visible{% endif %}"
-    data-clothing-slide
-  >
+      {% assign image_key = 'image_' | append: i %}
+      {% assign title_key = 'title_' | append: i %}
+      {% assign subtitle_key = 'subtitle_' | append: i %}
+      {% assign link_key = 'link_' | append: i %}
+      {% assign color_key = 'text_color_' | append: i %}
 
-    <div class="clothing-hero__image-wrap">
+      {% assign slide_image = section.settings[image_key] %}
+      {% assign slide_title = section.settings[title_key] %}
+      {% assign slide_subtitle = section.settings[subtitle_key] %}
+      {% assign slide_link = section.settings[link_key] %}
+      {% assign slide_color = section.settings[color_key] %}
 
-      {{
-        slide_image
-        | image_url: width: 2600
-        | image_tag:
-          class: 'clothing-hero__image',
-          loading: 'eager'
-      }}
+      {% if slide_image != blank %}
 
-    </div>
-
-    <div
-      class="clothing-hero__content"
-      style="--slide-text-color: {{ slide_color | default: '#111111' }};"
-    >
-
-      {% if slide_title != blank %}
-        <h2 class="clothing-hero__heading">
-          {{ slide_title }}
-        </h2>
-      {% endif %}
-
-      {% if slide_subtitle != blank %}
-        <div class="clothing-hero__subtitle">
-          {{ slide_subtitle }}
-        </div>
-      {% endif %}
-
-      {% if slide_link != blank %}
-        <a
-          href="{{ slide_link }}"
-          class="clothing-hero__link"
+        <article
+          class="clothing-hero__slide{% if i == 1 %} is-active is-text-visible{% endif %}"
+          data-clothing-slide
         >
-          DÉCOUVRIR
-        </a>
+
+          <div class="clothing-hero__image-wrap">
+
+            {{
+              slide_image
+              | image_url: width: 2600
+              | image_tag:
+                class: 'clothing-hero__image',
+                loading: 'eager'
+            }}
+
+          </div>
+
+
+          <div
+            class="clothing-hero__content"
+            style="--slide-text-color: {{ slide_color | default: '#111111' }};"
+          >
+
+            {% if slide_title != blank %}
+              <h2 class="clothing-hero__heading">
+                {{ slide_title }}
+              </h2>
+            {% endif %}
+
+
+            {% if slide_subtitle != blank %}
+              <div class="clothing-hero__subtitle">
+                {{ slide_subtitle }}
+              </div>
+            {% endif %}
+
+
+            {% if slide_link != blank %}
+              <a
+                href="{{ slide_link }}"
+                class="clothing-hero__link"
+              >
+                DÉCOUVRIR
+              </a>
+            {% endif %}
+
+          </div>
+
+        </article>
+
       {% endif %}
-
-    </div>
-
-  </article>
-
-{% endif %}
 
     {% endfor %}
 
@@ -105,6 +120,7 @@
 {% schema %}
 {
   "name": "Hero Vêtements",
+
   "settings": [
 
     {
@@ -128,12 +144,12 @@
       "label": "Sous-titre 01",
       "default": "DÉCOUVREZ LA COLLECTION"
     },
-{
-  "type": "color",
-  "id": "text_color_1",
-  "label": "Couleur du texte 01",
-  "default": "#111111"
-},
+    {
+      "type": "color",
+      "id": "text_color_1",
+      "label": "Couleur du texte 01",
+      "default": "#111111"
+    },
     {
       "type": "url",
       "id": "link_1",
@@ -162,12 +178,12 @@
       "label": "Sous-titre 02",
       "default": "COLLECTION 001"
     },
-{
-  "type": "color",
-  "id": "text_color_2",
-  "label": "Couleur du texte 02",
-  "default": "#ffffff"
-},
+    {
+      "type": "color",
+      "id": "text_color_2",
+      "label": "Couleur du texte 02",
+      "default": "#FFFFFF"
+    },
     {
       "type": "url",
       "id": "link_2",
@@ -196,12 +212,12 @@
       "label": "Sous-titre 03",
       "default": "COLLECTION 001"
     },
-{
-  "type": "color",
-  "id": "text_color_3",
-  "label": "Couleur du texte 03",
-  "default": "#ffffff"
-},
+    {
+      "type": "color",
+      "id": "text_color_3",
+      "label": "Couleur du texte 03",
+      "default": "#FFFFFF"
+    },
     {
       "type": "url",
       "id": "link_3",
@@ -230,12 +246,12 @@
       "label": "Sous-titre 04",
       "default": "COLLECTION 001"
     },
-{
-  "type": "color",
-  "id": "text_color_4",
-  "label": "Couleur du texte 04",
-  "default": "#ffffff"
-},
+    {
+      "type": "color",
+      "id": "text_color_4",
+      "label": "Couleur du texte 04",
+      "default": "#FFFFFF"
+    },
     {
       "type": "url",
       "id": "link_4",
@@ -264,12 +280,12 @@
       "label": "Sous-titre 05",
       "default": "COLLECTION 001"
     },
-{
-  "type": "color",
-  "id": "text_color_5",
-  "label": "Couleur du texte 05",
-  "default": "#ffffff"
-},
+    {
+      "type": "color",
+      "id": "text_color_5",
+      "label": "Couleur du texte 05",
+      "default": "#FFFFFF"
+    },
     {
       "type": "url",
       "id": "link_5",
@@ -287,7 +303,7 @@
       "label": "Défilement automatique",
       "default": true
     },
-       {
+    {
       "type": "range",
       "id": "autoplay_speed",
       "label": "Temps entre les images",
@@ -295,10 +311,11 @@
       "max": 10,
       "step": 1,
       "unit": "s",
-      "default": 5
+      "default": 4
     }
 
   ],
+
   "presets": [
     {
       "name": "Hero Vêtements"
