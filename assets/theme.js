@@ -283,183 +283,110 @@ document.addEventListener(
 
 function initPourCommunitySlider() {
 
-  document
-    .querySelectorAll('[data-community-slider]')
-    .forEach((slider) => {
+  const sliders = document.querySelectorAll(
+    '[data-community-slider]'
+  );
 
-      if (slider.dataset.communityReady === 'true') return;
+  sliders.forEach((slider) => {
 
-      slider.dataset.communityReady = 'true';
+    if (slider.dataset.communityInitialized === 'true') {
+      return;
+    }
 
-      const slides = Array.from(
-        slider.querySelectorAll('.pour-community__slide')
-      );
-
-      const prev = slider.querySelector(
-        '[data-community-prev]'
-      );
-
-      const next = slider.querySelector(
-        '[data-community-next]'
-      );
-
-      if (!slides.length) return;
+    slider.dataset.communityInitialized = 'true';
 
 
-      let currentIndex = 0;
-      let animating = false;
+    const slides = Array.from(
+      slider.querySelectorAll('.pour-community__slide')
+    );
+
+    const previousButton = slider.querySelector(
+      '[data-community-prev]'
+    );
+
+    const nextButton = slider.querySelector(
+      '[data-community-next]'
+    );
 
 
-      /* ÉTAT INITIAL */
+    if (!slides.length) return;
 
-      slides.forEach((slide, index) => {
 
-        slide.classList.remove(
-          'is-active',
-          'is-transitioning',
-          'leave-left',
-          'leave-right',
-          'enter-left',
-          'enter-right',
-          'product-leaving',
-          'product-entering'
-        );
+    let currentIndex = 0;
 
-        if (index === 0) {
+
+    /* -------------------------
+       AFFICHAGE
+    ------------------------- */
+
+    function showSlide(index) {
+
+      slides.forEach((slide, slideIndex) => {
+
+        if (slideIndex === index) {
+
           slide.classList.add('is-active');
+
+        } else {
+
+          slide.classList.remove('is-active');
+
         }
 
       });
 
-
-      function changeSlide(direction) {
-
-        if (animating || slides.length < 2) return;
-
-        animating = true;
+    }
 
 
-        const oldSlide = slides[currentIndex];
+    /* PREMIER SLIDE */
 
-        const newIndex =
-          direction === 'next'
-            ? (currentIndex + 1) % slides.length
-            : (currentIndex - 1 + slides.length) % slides.length;
-
-        const newSlide = slides[newIndex];
+    showSlide(currentIndex);
 
 
-        /* =========================
-           PRÉPARE LE NOUVEAU
-        ========================= */
+    /* -------------------------
+       FLÈCHE DROITE
+    ------------------------- */
 
-        newSlide.classList.remove(
-          'is-active',
-          'is-transitioning',
-          'leave-left',
-          'leave-right',
-          'enter-left',
-          'enter-right',
-          'product-leaving',
-          'product-entering'
-        );
+    if (nextButton) {
 
+      nextButton.addEventListener('click', () => {
 
-        newSlide.classList.add(
-          'is-transitioning',
-          direction === 'next'
-            ? 'enter-right'
-            : 'enter-left',
-          'product-entering'
-        );
+        currentIndex =
+          (currentIndex + 1) % slides.length;
 
+        showSlide(currentIndex);
 
-        /*
-          Force le navigateur à enregistrer
-          l'état initial.
-        */
-
-        void newSlide.offsetWidth;
-
-
-        /* =========================
-           FAIT SORTIR L'ANCIEN
-        ========================= */
-
-        oldSlide.classList.add(
-          direction === 'next'
-            ? 'leave-left'
-            : 'leave-right',
-          'product-leaving'
-        );
-
-
-        /* =========================
-           FAIT ENTRER LE NOUVEAU
-        ========================= */
-
-        requestAnimationFrame(() => {
-
-          requestAnimationFrame(() => {
-
-            newSlide.classList.remove(
-              'enter-left',
-              'enter-right',
-              'product-entering'
-            );
-
-          });
-
-        });
-
-
-        /* =========================
-           FIN DE TRANSITION
-        ========================= */
-
-        window.setTimeout(() => {
-
-          oldSlide.classList.remove(
-            'is-active',
-            'leave-left',
-            'leave-right',
-            'product-leaving'
-          );
-
-
-          newSlide.classList.remove(
-            'is-transitioning'
-          );
-
-          newSlide.classList.add(
-            'is-active'
-          );
-
-
-          currentIndex = newIndex;
-
-          animating = false;
-
-        }, 580);
-
-      }
-
-
-      next?.addEventListener('click', () => {
-        changeSlide('next');
       });
 
+    }
 
-      prev?.addEventListener('click', () => {
-        changeSlide('prev');
+
+    /* -------------------------
+       FLÈCHE GAUCHE
+    ------------------------- */
+
+    if (previousButton) {
+
+      previousButton.addEventListener('click', () => {
+
+        currentIndex =
+          (currentIndex - 1 + slides.length)
+          % slides.length;
+
+        showSlide(currentIndex);
+
       });
 
-    });
+    }
+
+  });
 
 }
 
 
-/* CHARGEMENT */
+/* =========================================================
+   INITIALISATION
+========================================================= */
 
 if (document.readyState === 'loading') {
 
@@ -475,19 +402,34 @@ if (document.readyState === 'loading') {
 }
 
 
-/* ÉDITEUR SHOPIFY */
+/* =========================================================
+   ÉDITEUR SHOPIFY
+========================================================= */
 
 document.addEventListener(
   'shopify:section:load',
-  () => {
+  (event) => {
 
-    document
-      .querySelectorAll('[data-community-slider]')
-      .forEach((slider) => {
-        slider.dataset.communityReady = 'false';
-      });
+    const slider =
+      event.target.querySelector?.(
+        '[data-community-slider]'
+      ) ||
+      (
+        event.target.matches?.(
+          '[data-community-slider]'
+        )
+          ? event.target
+          : null
+      );
 
-    initPourCommunitySlider();
+
+    if (slider) {
+
+      slider.dataset.communityInitialized = 'false';
+
+      initPourCommunitySlider();
+
+    }
 
   }
 );
