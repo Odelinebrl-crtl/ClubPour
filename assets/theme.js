@@ -305,6 +305,7 @@ function initPourCommunitySlider() {
 
       if (!slides.length) return;
 
+
       let currentIndex = 0;
       let animating = false;
 
@@ -320,8 +321,8 @@ function initPourCommunitySlider() {
           'leave-right',
           'enter-left',
           'enter-right',
-          'is-product-leaving',
-          'is-product-entering'
+          'product-leaving',
+          'product-entering'
         );
 
         if (index === 0) {
@@ -337,6 +338,7 @@ function initPourCommunitySlider() {
 
         animating = true;
 
+
         const oldSlide = slides[currentIndex];
 
         const newIndex =
@@ -347,76 +349,83 @@ function initPourCommunitySlider() {
         const newSlide = slides[newIndex];
 
 
-        /* -------------------------
-           NOUVELLE SLIDE
-        ------------------------- */
+        /* =========================
+           PRÉPARE LE NOUVEAU
+        ========================= */
 
         newSlide.classList.remove(
+          'is-active',
+          'is-transitioning',
           'leave-left',
           'leave-right',
           'enter-left',
           'enter-right',
-          'is-product-leaving',
-          'is-product-entering'
+          'product-leaving',
+          'product-entering'
         );
+
 
         newSlide.classList.add(
           'is-transitioning',
           direction === 'next'
             ? 'enter-right'
             : 'enter-left',
-          'is-product-entering'
+          'product-entering'
         );
 
 
         /*
-          Force le navigateur à afficher
-          l'état de départ avant de lancer
-          la transition.
+          Force le navigateur à enregistrer
+          l'état initial.
         */
 
         void newSlide.offsetWidth;
 
 
-        /* -------------------------
-           ANCIENNE SLIDE
-        ------------------------- */
+        /* =========================
+           FAIT SORTIR L'ANCIEN
+        ========================= */
 
         oldSlide.classList.add(
           direction === 'next'
             ? 'leave-left'
             : 'leave-right',
-          'is-product-leaving'
+          'product-leaving'
         );
 
 
-        /* -------------------------
-           ENTRÉE NOUVELLE SLIDE
-        ------------------------- */
+        /* =========================
+           FAIT ENTRER LE NOUVEAU
+        ========================= */
 
         requestAnimationFrame(() => {
 
-          newSlide.classList.remove(
-            'enter-left',
-            'enter-right',
-            'is-product-entering'
-          );
+          requestAnimationFrame(() => {
+
+            newSlide.classList.remove(
+              'enter-left',
+              'enter-right',
+              'product-entering'
+            );
+
+          });
 
         });
 
 
-        /* -------------------------
-           FIN
-        ------------------------- */
+        /* =========================
+           FIN DE TRANSITION
+        ========================= */
 
-        setTimeout(() => {
+        window.setTimeout(() => {
 
           oldSlide.classList.remove(
             'is-active',
             'leave-left',
             'leave-right',
-            'is-product-leaving'
+            'product-leaving'
           );
+
 
           newSlide.classList.remove(
             'is-transitioning'
@@ -426,11 +435,12 @@ function initPourCommunitySlider() {
             'is-active'
           );
 
+
           currentIndex = newIndex;
 
           animating = false;
 
-        }, 560);
+        }, 580);
 
       }
 
@@ -465,7 +475,7 @@ if (document.readyState === 'loading') {
 }
 
 
-/* SHOPIFY EDITOR */
+/* ÉDITEUR SHOPIFY */
 
 document.addEventListener(
   'shopify:section:load',
