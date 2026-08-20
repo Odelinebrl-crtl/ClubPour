@@ -8,6 +8,10 @@
   "
 >
 
+  <!-- =====================================================
+       IMAGE
+  ====================================================== -->
+
   <div class="club-hero__media">
 
     {% if section.settings.image != blank %}
@@ -31,8 +35,16 @@
   </div>
 
 
+  <!-- =====================================================
+       OVERLAY
+  ====================================================== -->
+
   <div class="club-hero__overlay"></div>
 
+
+  <!-- =====================================================
+       CONTENU
+  ====================================================== -->
 
   <div class="club-hero__content">
 
@@ -50,54 +62,65 @@
     {% endif %}
 
 
-   <form
-  class="pour-hero__preorder"
-  method="post"
-  action="/contact#club-privileges"
->
+    <!-- ===================================================
+         FORMULAIRE
+    ==================================================== -->
 
-  <input
-    type="hidden"
-    name="form_type"
-    value="customer"
-  >
-
-  <input
-    type="hidden"
-    name="utf8"
-    value="✓"
-  >
-
-  <div class="pour-hero__email-wrap">
-
-    <input
-      type="email"
-      name="contact[email]"
-      class="pour-hero__email"
-      placeholder="VOTRE EMAIL"
-      required
-      autocomplete="email"
+    <form
+      class="club-hero__form"
+      method="post"
+      action="/contact#club-privileges"
+      accept-charset="UTF-8"
+      id="club-privileges-form-{{ section.id }}"
     >
 
-  </div>
+      <input
+        type="hidden"
+        name="form_type"
+        value="customer"
+      >
+
+      <input
+        type="hidden"
+        name="utf8"
+        value="✓"
+      >
 
 
-  <button
-    type="submit"
-    class="pour-hero__submit"
-  >
+      <div class="club-hero__email-wrap">
 
-    <span class="pour-hero__submit-text">
-      REJOIGNEZ LE CLUB
-    </span>
+        <input
+          type="email"
+          name="contact[email]"
+          class="club-hero__email"
+          placeholder="VOTRE EMAIL"
+          required
+          autocomplete="email"
+          aria-label="Votre email"
+        >
 
-    <span class="pour-hero__submit-arrow">
-      →
-    </span>
+      </div>
 
-  </button>
 
-</form>
+      <button
+        type="submit"
+        class="club-hero__submit"
+      >
+
+        <span class="club-hero__submit-text">
+          REJOIGNEZ LE CLUB
+        </span>
+
+        <span
+          class="club-hero__submit-arrow"
+          aria-hidden="true"
+        >
+          →
+        </span>
+
+      </button>
+
+    </form>
 
 
     {% if section.settings.launch_text != blank %}
@@ -138,7 +161,7 @@
 
 
 /* =========================================================
-   MEDIA
+   IMAGE
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__media,
@@ -155,10 +178,6 @@
 }
 
 
-/* =========================================================
-   IMAGE + PARALLAX
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__image {
   position: absolute;
 
@@ -169,6 +188,8 @@
 
   width: 100%;
   height: 114%;
+
+  max-width: none;
 
   object-fit: cover;
   object-position: center;
@@ -205,13 +226,12 @@
 
   z-index: 1;
 
-  background:
-    rgba(
-      0,
-      0,
-      0,
-      var(--club-overlay)
-    );
+  background: rgba(
+    0,
+    0,
+    0,
+    var(--club-overlay)
+  );
 
   pointer-events: none;
 }
@@ -235,31 +255,35 @@
 
   gap: 14px;
 
-  width: min(100%, 1000px);
+  width: min(100%, 1100px);
 
+  margin: 0;
   padding: 40px;
 
   text-align: center;
 
   color: var(--club-text-color);
 
-  transform: translateX(-50%);
+  /*
+    ÉTAT INITIAL :
+    totalement invisible et plus haut.
+  */
 
   opacity: 0;
   visibility: hidden;
 
-  translate: 0 -90px;
+  transform: translate3d(-50%, -90px, 0);
 
   transition:
     opacity 0.65s ease,
-    translate 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 
-  will-change: opacity, translate;
+  will-change: opacity, transform;
 }
 
 
 /* =========================================================
-   CONTENU VISIBLE
+   ANIMATION D'ENTRÉE
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}.is-content-visible
@@ -267,7 +291,7 @@
   opacity: 1;
   visibility: visible;
 
-  translate: 0 0;
+  transform: translate3d(-50%, 0, 0);
 }
 
 
@@ -277,6 +301,7 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__eyebrow {
   margin: 0;
+  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -299,6 +324,7 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
   margin: 0;
+  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -329,13 +355,90 @@
   margin-top: 18px;
   margin-bottom: 12px;
 
+  padding: 0;
+
   gap: 8px;
 }
 
 
+/* =========================================================
+   CHAMP EMAIL
+   MÊME LOGIQUE QUE LE HERO HOME
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  min-width: 0;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.22);
+
+  border-color: #ffffff;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  margin: 0;
+
+  padding: 0 16px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.06em;
+
+  color: #ffffff;
+
+  background: transparent;
+
+  border: 0;
+  border-radius: 0;
+
+  outline: 0;
+
+  box-shadow: none;
+
+  text-transform: uppercase;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email::placeholder {
+  color: rgba(255, 255, 255, 0.78);
+
+  opacity: 1;
+}
+
 
 /* =========================================================
-   BOUTON
+   BOUTON REJOIGNEZ LE CLUB
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
@@ -350,12 +453,15 @@
   min-width: 185px;
   height: 48px;
 
+  margin: 0;
   padding: 0 18px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
   font-weight: 400;
+
+  line-height: 1;
 
   letter-spacing: 0.06em;
 
@@ -364,6 +470,9 @@
   background: #ffffff;
 
   border: 1px solid #ffffff;
+  border-radius: 0;
+
+  box-shadow: none;
 
   cursor: pointer;
 
@@ -393,12 +502,32 @@
 }
 
 
+#ClubPrivilegesHero-{{ section.id }} .club-hero__submit-arrow {
+  transform: none;
+
+  transition: none;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__submit:hover
+.club-hero__submit-arrow {
+  transform: none;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__submit:active {
+  transform: none;
+}
+
+
 /* =========================================================
    PETIT TEXTE BAS
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
   margin: 0;
+  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -484,7 +613,7 @@
 
 
   /* =======================================================
-     ANIMATION D'ENTRÉE DU CONTENU
+     ANIMATION D'ENTRÉE
   ======================================================= */
 
   window.requestAnimationFrame(() => {
@@ -556,6 +685,7 @@
 
     if (ticking) return;
 
+
     ticking = true;
 
 
@@ -594,45 +724,55 @@
   "name": "Hero Club Privilèges",
 
   "settings": [
+
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
+
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
       "default": "CLUB POUR — ACCÈS MEMBRES"
     },
+
     {
       "type": "text",
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
     },
+
     {
       "type": "text",
       "id": "launch_text",
       "label": "Petit texte sous le formulaire",
       "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
+
     {
       "type": "color",
       "id": "text_color",
       "label": "Couleur du texte",
       "default": "#FFFFFF"
     },
+
     {
       "type": "range",
       "id": "overlay",
       "label": "Assombrissement de l'image",
+
       "min": 0,
       "max": 60,
       "step": 5,
+
       "unit": "%",
+
       "default": 10
     }
+
   ],
 
   "presets": [
@@ -642,91 +782,3 @@
   ]
 }
 {% endschema %}
-/* =========================================================
-   CLUB — FORCER LE RENDU DU CHAMP EMAIL
-   PRIORITÉ ABSOLUE
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }} .pour-hero__email-wrap,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
-  position: relative !important;
-
-  flex: 1 !important;
-
-  display: flex !important;
-  align-items: center !important;
-
-  height: 48px !important;
-
-  overflow: hidden !important;
-
-  /*
-    On force volontairement un fond visible.
-    Ce n'est plus dépendant du blur Safari.
-  */
-  background: rgba(195, 181, 169, 0.42) !important;
-
-  border: 1px solid rgba(255, 255, 255, 0.72) !important;
-
-  box-shadow:
-    inset 0 0 0 999px rgba(255, 255, 255, 0.04) !important;
-
-  backdrop-filter: none !important;
-  -webkit-backdrop-filter: none !important;
-
-  border-radius: 0 !important;
-}
-
-
-/* INPUT */
-
-#ClubPrivilegesHero-{{ section.id }} .pour-hero__email,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email {
-  position: relative !important;
-
-  z-index: 2 !important;
-
-  display: block !important;
-
-  width: 100% !important;
-  height: 100% !important;
-
-  margin: 0 !important;
-  padding: 0 16px !important;
-
-  background: transparent !important;
-
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-
-  color: #ffffff !important;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 400 !important;
-
-  letter-spacing: 0.06em !important;
-
-  text-transform: uppercase !important;
-}
-
-
-/* PLACEHOLDER */
-
-#ClubPrivilegesHero-{{ section.id }} .pour-hero__email::placeholder,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.82) !important;
-
-  opacity: 1 !important;
-}
-
-
-/* FOCUS */
-
-#ClubPrivilegesHero-{{ section.id }} .pour-hero__email-wrap:focus-within,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap:focus-within {
-  background: rgba(195, 181, 169, 0.52) !important;
-
-  border-color: #ffffff !important;
-}
