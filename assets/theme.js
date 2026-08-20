@@ -194,3 +194,74 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('shopify:section:load', initPourProductPage);
+/* =========================================================
+   VIDEO HERO POUR — PARALLAX
+========================================================= */
+
+function initPourVideoParallax() {
+  const sections = document.querySelectorAll('[data-video-parallax]');
+
+  if (!sections.length) return;
+
+  let ticking = false;
+
+  function updateVideoParallax() {
+    sections.forEach((section) => {
+      const video = section.querySelector('.pour-video-hero__video');
+
+      if (!video) return;
+
+      const rect = section.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      if (
+        rect.bottom < 0 ||
+        rect.top > viewportHeight
+      ) {
+        return;
+      }
+
+      const progress =
+        (viewportHeight - rect.top) /
+        (viewportHeight + rect.height);
+
+      const normalized = progress - 0.5;
+
+      const movement = normalized * 110;
+
+      video.style.transform =
+        `translate3d(0, ${movement}px, 0) scale(1.08)`;
+    });
+
+    ticking = false;
+  }
+
+  function requestVideoUpdate() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateVideoParallax);
+      ticking = true;
+    }
+  }
+
+  window.addEventListener('scroll', requestVideoUpdate, {
+    passive: true
+  });
+
+  window.addEventListener('resize', requestVideoUpdate);
+
+  updateVideoParallax();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener(
+    'DOMContentLoaded',
+    initPourVideoParallax
+  );
+} else {
+  initPourVideoParallax();
+}
+
+document.addEventListener(
+  'shopify:section:load',
+  initPourVideoParallax
+);
