@@ -1,8 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero-vetements",
-      "settings": {}
+      "settings": {
+        "image_1": "shopify://shop_images/ChatGPT_Image_4_mai_2026_a_02_10_10.png",
+        "title_1": "COLLECTION 001",
+        "subtitle_1": "DÉCOUVREZ LA COLLECTION",
+        "link_1": "",
+        "title_2": "CLUB POUR",
+        "subtitle_2": "COLLECTION 001",
+        "link_2": "",
+        "title_3": "CANDY DEL MAR",
+        "subtitle_3": "COLLECTION 001",
+        "link_3": "",
+        "title_4": "RIVIERA",
+        "subtitle_4": "COLLECTION 001",
+        "link_4": "",
+        "title_5": "CYPRÈS ITALIEN",
+        "subtitle_5": "COLLECTION 001",
+        "link_5": "",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
     }
   },
   "order": [
