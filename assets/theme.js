@@ -278,133 +278,158 @@ document.addEventListener(
   initPourVideoParallax
 );
 /* =========================================================
-   PORTÉ PAR VOUS — CAROUSEL ANIMÉ
+   PORTÉ PAR VOUS — CAROUSEL
 ========================================================= */
 
 function initPourCommunitySlider() {
-  const sliders = document.querySelectorAll(
-    '[data-community-slider]'
-  );
+  document.querySelectorAll('[data-community-slider]').forEach((slider) => {
 
-  if (!sliders.length) return;
-
-  sliders.forEach((slider) => {
-    if (slider.dataset.initialized === 'true') return;
-
-    slider.dataset.initialized = 'true';
+    if (slider.dataset.communityInitialized === 'true') return;
+    slider.dataset.communityInitialized = 'true';
 
     const slides = Array.from(
       slider.querySelectorAll('.pour-community__slide')
     );
 
-    const previous = slider.querySelector(
-      '[data-community-prev]'
-    );
+    const prevButton = slider.querySelector('[data-community-prev]');
+    const nextButton = slider.querySelector('[data-community-next]');
 
-    const next = slider.querySelector(
-      '[data-community-next]'
-    );
+    if (slides.length <= 1) return;
 
-    if (!slides.length) return;
+    let currentIndex = 0;
+    let isAnimating = false;
 
-    let current = 0;
-    let animating = false;
-
+    /* État initial */
     slides.forEach((slide, index) => {
-      slide.classList.toggle('is-active', index === 0);
-    });
-
-    const goToSlide = (newIndex, direction) => {
-      if (animating) return;
-      if (newIndex === current) return;
-
-      animating = true;
-
-      const oldSlide = slides[current];
-      const newSlide = slides[newIndex];
-
-      const leavingClass =
-        direction === 'next'
-          ? 'is-leaving-left'
-          : 'is-leaving-right';
-
-      const enteringClass =
-        direction === 'next'
-          ? 'is-entering-right'
-          : 'is-entering-left';
-
-      oldSlide.classList.add(leavingClass);
-
-      newSlide.classList.add(
+      slide.classList.remove(
         'is-active',
-        enteringClass
+        'is-entering-left',
+        'is-entering-right',
+        'is-leaving-left',
+        'is-leaving-right'
       );
 
+      if (index === 0) {
+        slide.classList.add('is-active');
+      }
+    });
+
+
+    function changeSlide(direction) {
+
+      if (isAnimating) return;
+
+      isAnimating = true;
+
+      const oldIndex = currentIndex;
+
+      const newIndex =
+        direction === 'next'
+          ? (currentIndex + 1) % slides.length
+          : (currentIndex - 1 + slides.length) % slides.length;
+
+      const oldSlide = slides[oldIndex];
+      const newSlide = slides[newIndex];
+
+
+      /* Nettoyage du nouveau slide */
+      newSlide.classList.remove(
+        'is-active',
+        'is-entering-left',
+        'is-entering-right',
+        'is-leaving-left',
+        'is-leaving-right'
+      );
+
+
+      /* Position de départ du nouveau slide */
+      newSlide.classList.add(
+        direction === 'next'
+          ? 'is-entering-right'
+          : 'is-entering-left'
+      );
+
+
+      /*
+       * On affiche le nouveau slide,
+       * mais il reste dans sa position d'entrée.
+       */
+      newSlide.classList.add('is-active');
+
+
+      /*
+       * Force le navigateur à enregistrer
+       * la position initiale avant animation.
+       */
+      void newSlide.offsetWidth;
+
+
+      /* Ancien slide sort */
+      oldSlide.classList.add(
+        direction === 'next'
+          ? 'is-leaving-left'
+          : 'is-leaving-right'
+      );
+
+
+      /* Nouveau slide entre */
       requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          newSlide.classList.remove(enteringClass);
-        });
+
+        newSlide.classList.remove(
+          'is-entering-left',
+          'is-entering-right'
+        );
+
       });
 
+
+      /* Fin animation */
       window.setTimeout(() => {
+
         oldSlide.classList.remove(
           'is-active',
           'is-leaving-left',
           'is-leaving-right'
         );
 
-        current = newIndex;
-        animating = false;
-      }, 650);
-    };
+        currentIndex = newIndex;
 
+        isAnimating = false;
 
-    if (next) {
-      next.addEventListener('click', () => {
-        const newIndex =
-          current === slides.length - 1
-            ? 0
-            : current + 1;
-
-        goToSlide(newIndex, 'next');
-      });
+      }, 700);
     }
 
 
-    if (previous) {
-      previous.addEventListener('click', () => {
-        const newIndex =
-          current === 0
-            ? slides.length - 1
-            : current - 1;
+    nextButton?.addEventListener('click', () => {
+      changeSlide('next');
+    });
 
-        goToSlide(newIndex, 'prev');
-      });
-    }
+
+    prevButton?.addEventListener('click', () => {
+      changeSlide('prev');
+    });
+
   });
 }
 
 
-/* INITIALISATION */
-
+/* Chargement normal */
 if (document.readyState === 'loading') {
+
   document.addEventListener(
     'DOMContentLoaded',
     initPourCommunitySlider
   );
+
 } else {
+
   initPourCommunitySlider();
+
 }
 
+
+/* Éditeur Shopify */
 document.addEventListener(
   'shopify:section:load',
-  () => {
-    document
-      .querySelectorAll('[data-community-slider]')
-      .forEach((slider) => {
-        slider.dataset.initialized = 'false';
-      });
-
-    initPourCommunitySlider();
-  }
+  initPourCommunitySlider
 );
