@@ -8,7 +8,6 @@
   "
 >
 
-  <!-- IMAGE -->
   <div class="club-hero__media">
 
     {% if section.settings.image != blank %}
@@ -32,12 +31,8 @@
   </div>
 
 
-  <!-- OVERLAY -->
-
   <div class="club-hero__overlay"></div>
 
-
-  <!-- CONTENU -->
 
   <div class="club-hero__content">
 
@@ -120,43 +115,36 @@
 {% schema %}
 {
   "name": "Hero Club Privilèges",
-
   "settings": [
-
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
-
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
       "default": "CLUB POUR — ACCÈS MEMBRES"
     },
-
     {
       "type": "text",
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
     },
-
     {
       "type": "text",
       "id": "launch_text",
       "label": "Petit texte sous le formulaire",
       "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
-
     {
       "type": "color",
       "id": "text_color",
       "label": "Couleur du texte",
       "default": "#FFFFFF"
     },
-
     {
       "type": "range",
       "id": "overlay",
@@ -167,9 +155,7 @@
       "unit": "%",
       "default": 10
     }
-
   ],
-
   "presets": [
     {
       "name": "Hero Club Privilèges"
