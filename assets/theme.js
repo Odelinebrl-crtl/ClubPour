@@ -497,112 +497,160 @@ document.addEventListener(
 
 function initClothingHero() {
 
-  document
-    .querySelectorAll('[data-clothing-hero]')
-    .forEach((hero) => {
+  const heroes = document.querySelectorAll(
+    '[data-clothing-hero]'
+  );
 
-      if (hero.dataset.initialized === 'true') return;
+  heroes.forEach((hero) => {
 
-      hero.dataset.initialized = 'true';
+    /* évite les doubles initialisations */
+    if (hero.dataset.sliderInitialized === 'true') {
+      return;
+    }
 
-
-      const slides = Array.from(
-        hero.querySelectorAll('[data-clothing-slide]')
-      );
-
-      const dots = Array.from(
-        hero.querySelectorAll('[data-clothing-dot]')
-      );
+    hero.dataset.sliderInitialized = 'true';
 
 
-      if (!slides.length) return;
+    const slides = Array.from(
+      hero.querySelectorAll('[data-clothing-slide]')
+    );
+
+    const dots = Array.from(
+      hero.querySelectorAll('[data-clothing-dot]')
+    );
 
 
-      let currentIndex = 0;
-      let interval = null;
+    if (slides.length <= 1) {
+      return;
+    }
 
 
-      const autoplay =
-        hero.dataset.autoplay === 'true';
+    let currentIndex = 0;
 
-      const speed =
-        parseInt(hero.dataset.speed, 10) || 5000;
+    let autoplayTimer = null;
 
 
-      function showSlide(index) {
+    /* 4 secondes */
 
-        currentIndex = index;
-
-
-        slides.forEach((slide, slideIndex) => {
-
-          slide.classList.toggle(
-            'is-active',
-            slideIndex === currentIndex
-          );
-
-        });
+    const autoplayDelay = 4000;
 
 
-        dots.forEach((dot, dotIndex) => {
+    /* =========================
+       AFFICHER UNE SLIDE
+    ========================== */
 
-          dot.classList.toggle(
-            'is-active',
-            dotIndex === currentIndex
-          );
+    function showSlide(index) {
 
-        });
+      if (index < 0) {
+        index = slides.length - 1;
+      }
 
+      if (index >= slides.length) {
+        index = 0;
       }
 
 
-      function nextSlide() {
-
-        const nextIndex =
-          (currentIndex + 1) % slides.length;
-
-        showSlide(nextIndex);
-
-      }
+      currentIndex = index;
 
 
-      function startAutoplay() {
+      slides.forEach((slide, slideIndex) => {
 
-        if (!autoplay || slides.length <= 1) return;
-
-        clearInterval(interval);
-
-        interval = setInterval(
-          nextSlide,
-          speed
+        slide.classList.toggle(
+          'is-active',
+          slideIndex === currentIndex
         );
-
-      }
-
-
-      dots.forEach((dot, index) => {
-
-        dot.addEventListener('click', () => {
-
-          showSlide(index);
-
-          startAutoplay();
-
-        });
 
       });
 
 
-      showSlide(0);
+      dots.forEach((dot, dotIndex) => {
 
-      startAutoplay();
+        dot.classList.toggle(
+          'is-active',
+          dotIndex === currentIndex
+        );
+
+      });
+
+    }
+
+
+    /* =========================
+       SLIDE SUIVANTE
+    ========================== */
+
+    function nextSlide() {
+
+      showSlide(
+        (currentIndex + 1) % slides.length
+      );
+
+    }
+
+
+    /* =========================
+       AUTOPLAY
+    ========================== */
+
+    function startAutoplay() {
+
+      stopAutoplay();
+
+      autoplayTimer = window.setInterval(
+        nextSlide,
+        autoplayDelay
+      );
+
+    }
+
+
+    function stopAutoplay() {
+
+      if (autoplayTimer) {
+
+        window.clearInterval(
+          autoplayTimer
+        );
+
+        autoplayTimer = null;
+
+      }
+
+    }
+
+
+    /* =========================
+       CLIC SUR 01 / 02 / 03...
+    ========================== */
+
+    dots.forEach((dot, index) => {
+
+      dot.addEventListener('click', () => {
+
+        showSlide(index);
+
+        /* on repart pour 4 sec après le clic */
+        startAutoplay();
+
+      });
 
     });
+
+
+    /* =========================
+       INITIALISATION
+    ========================== */
+
+    showSlide(0);
+
+    startAutoplay();
+
+  });
 
 }
 
 
-/* INITIALISATION */
+/* CHARGEMENT NORMAL */
 
 if (document.readyState === 'loading') {
 
@@ -618,17 +666,32 @@ if (document.readyState === 'loading') {
 }
 
 
+/* SHOPIFY THEME EDITOR */
+
 document.addEventListener(
   'shopify:section:load',
-  () => {
+  (event) => {
 
-    document
-      .querySelectorAll('[data-clothing-hero]')
-      .forEach((hero) => {
-        hero.dataset.initialized = 'false';
-      });
+    const hero =
+      event.target.querySelector?.(
+        '[data-clothing-hero]'
+      ) ||
+      (
+        event.target.matches?.(
+          '[data-clothing-hero]'
+        )
+          ? event.target
+          : null
+      );
 
-    initClothingHero();
+
+    if (hero) {
+
+      hero.dataset.sliderInitialized = 'false';
+
+      initClothingHero();
+
+    }
 
   }
 );
