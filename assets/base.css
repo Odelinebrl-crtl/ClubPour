@@ -1062,6 +1062,49 @@ a {
   }
 
 }
+
+/* =========================================================
+   COLLECTION — TITRES CENTRÉS
+========================================================= */
+
+.pour-products__header {
+  width: 100%;
+  text-align: center;
+
+  margin-bottom: 34px;
+}
+
+.pour-products__eyebrow {
+  margin: 0 0 10px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.pour-products__heading {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #111111;
+}
 /* =========================================================
    CITATION — CLUB POUR
 ========================================================= */
