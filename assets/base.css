@@ -2609,3 +2609,297 @@ transform: translateX(-15px);
 
   will-change: transform;
 }
+/* =========================================================
+   HERO VÊTEMENTS
+========================================================= */
+
+.clothing-hero {
+  position: relative;
+
+  width: 100%;
+  height: calc(100svh - 68px);
+
+  margin-top: 68px;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+}
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
+
+.clothing-hero__slides {
+  position: absolute;
+  inset: 0;
+}
+
+.clothing-hero__slide {
+  position: absolute;
+  inset: 0;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.65s ease,
+    visibility 0.65s ease;
+}
+
+.clothing-hero__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* IMAGE */
+
+.clothing-hero__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.clothing-hero__placeholder,
+.clothing-hero__placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   OVERLAY
+========================================================= */
+
+.clothing-hero__overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: #000000;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   TEXTE HAUT DROITE
+========================================================= */
+
+.clothing-hero__content {
+  position: absolute;
+
+  top: 70px;
+  right: 54px;
+
+  z-index: 2;
+
+  width: min(420px, 34vw);
+
+  color: #111111;
+}
+
+.clothing-hero__heading {
+  margin: 0 0 18px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: clamp(38px, 4vw, 66px);
+  font-weight: 400;
+
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+
+  text-transform: uppercase;
+}
+
+.clothing-hero__subtitle {
+  max-width: 330px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+
+/* LIEN */
+
+.clothing-hero__link {
+  position: relative;
+
+  display: inline-block;
+
+  margin-top: 10px;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  text-transform: uppercase;
+}
+
+.clothing-hero__link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 100%;
+  height: 1px;
+
+  background: currentColor;
+
+  transform: scaleX(1);
+  transform-origin: left;
+
+  transition: transform 0.25s ease;
+}
+
+.clothing-hero__link:hover::after {
+  transform: scaleX(0);
+}
+
+
+/* =========================================================
+   FIL D'ARIANE
+========================================================= */
+
+.clothing-hero__breadcrumb {
+  position: absolute;
+
+  top: 28px;
+  left: 54px;
+
+  z-index: 5;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.45);
+}
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+.clothing-hero__pagination {
+  position: absolute;
+
+  right: 54px;
+  bottom: 45px;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+
+  gap: 26px;
+}
+
+.clothing-hero__pagination-item {
+  position: relative;
+
+  padding: 0 0 6px;
+
+  border: 0;
+
+  background: transparent;
+  color: rgba(17, 17, 17, 0.55);
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+.clothing-hero__pagination-item::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111;
+
+  transition: width 0.3s ease;
+}
+
+.clothing-hero__pagination-item:hover,
+.clothing-hero__pagination-item.is-active {
+  color: #111111;
+}
+
+.clothing-hero__pagination-item.is-active::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .clothing-hero {
+    height: calc(100svh - 64px);
+
+    margin-top: 64px;
+  }
+
+  .clothing-hero__content {
+    top: auto;
+    right: 20px;
+    bottom: 110px;
+    left: 20px;
+
+    width: auto;
+  }
+
+  .clothing-hero__heading {
+    font-size: clamp(34px, 11vw, 54px);
+  }
+
+  .clothing-hero__breadcrumb {
+    top: 22px;
+    left: 20px;
+  }
+
+  .clothing-hero__pagination {
+    right: 20px;
+    bottom: 35px;
+
+    gap: 18px;
+  }
+
+}
