@@ -563,13 +563,11 @@ slides.forEach((slide) => {
 });
 
 
+/* =========================================================
+   ENTRÉE TEXTE — PREMIÈRE SLIDE
+========================================================= */
+
 const firstSlide = slides[0];
-
-
-/*
-  L'IMAGE 01 EST IMMÉDIATEMENT AFFICHÉE.
-  Elle ne bouge absolument pas.
-*/
 
 firstSlide.classList.add(
   'is-active'
@@ -577,20 +575,25 @@ firstSlide.classList.add(
 
 
 /*
-  Le texte attend légèrement avant d'entrer.
-
-  Ce délai est important :
-  sans lui, l'animation commence pratiquement
-  avant que la page soit visible.
+  On laisse d'abord le navigateur afficher
+  l'image seule, sans texte.
 */
 
-window.setTimeout(() => {
+window.requestAnimationFrame(() => {
 
-  firstSlide.classList.add(
-    'is-text-visible'
-  );
+  window.requestAnimationFrame(() => {
 
-}, 280);
+    window.setTimeout(() => {
+
+      firstSlide.classList.add(
+        'is-text-visible'
+      );
+
+    }, 120);
+
+  });
+
+});
 
 
 /* =========================================================
