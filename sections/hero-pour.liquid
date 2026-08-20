@@ -44,14 +44,17 @@
 
   <div class="pour-hero__content pour-hero__content--{{ section.settings.content_position }}">
 
-  {% if section.settings.eyebrow != blank %}
-    <p class="pour-hero__eyebrow">
-      {{ section.settings.eyebrow }}
-    </p>
-  {% endif %}
+ {% if section.settings.eyebrow != blank %}
+  <p class="pour-hero__eyebrow">
+    {{ section.settings.eyebrow }}
+  </p>
+{% endif %}
 
+<h1 class="pour-hero__heading">
+  POUR
+</h1>
 
-  <form
+<form
   class="pour-hero__preorder"
   method="post"
   action="/contact#pour-preorder"
