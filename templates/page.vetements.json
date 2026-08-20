@@ -1,1 +1,12 @@
 
+{
+  "sections": {
+    "main": {
+      "type": "hero-vetements",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
