@@ -47,8 +47,8 @@
           "type": "product_card",
           "settings": {
             "product": "riviera",
-            "image_primary": "shopify://shop_images/15.png",
-            "image_secondary": "shopify://shop_images/14_5fdf1dc8-a072-4359-970f-b7df61514da0.png"
+            "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
+            "image_secondary": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
           }
         },
         "product_card_zJAett": {
@@ -128,7 +128,7 @@
           "type": "look",
           "settings": {
             "product": "riviera",
-            "product_image": "shopify://shop_images/15.png",
+            "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
             "customer_image": "shopify://shop_images/3_6b1015c3-e832-4e03-b2d5-19334878df88.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
