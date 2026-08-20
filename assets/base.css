@@ -2041,7 +2041,7 @@ transform: translateX(-15px);
 .pour-community__carousel {
   position: relative;
 
-  width: min(100%, 760px);
+  width: min(100%, 620px);
 
   margin: 0 auto;
 }
@@ -2049,7 +2049,7 @@ transform: translateX(-15px);
 .pour-community__viewport {
   position: relative;
 
-  width: min(100%, 680px);
+  width: min(100%, 520px);
 
   margin: 0 auto;
 
@@ -2090,11 +2090,11 @@ transform: translateX(-15px);
 }
 
 .pour-community__arrow--prev {
-  left: -4px;
+  left: 0;
 }
 
 .pour-community__arrow--next {
-  right: -4px;
+  right: 0;
 }
 .pour-community__arrow:hover {
   background: #111111;
@@ -2106,14 +2106,6 @@ transform: translateX(-15px);
 /* =========================================================
    CARROUSEL
 ========================================================= */
-
-.pour-community__viewport {
-  position: relative;
-
-  width: 100%;
-
-  overflow: hidden !important;
-}
 
 .pour-community__track {
   display: flex !important;
