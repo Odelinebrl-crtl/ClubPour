@@ -2035,20 +2035,33 @@ transform: translateX(-15px);
 }
 
 /* =========================================================
-   FLÈCHES — AUTOUR DES IMAGES
+   CARROUSEL + FLÈCHES LATÉRALES
 ========================================================= */
 
-.pour-community__controls {
-  position: absolute;
-  inset: 0;
+.pour-community__carousel {
+  position: relative;
 
-  pointer-events: none;
+  width: min(100%, 1020px);
+
+  margin: 0 auto;
+}
+
+.pour-community__viewport {
+  position: relative;
+
+  width: min(100%, 900px);
+
+  margin: 0 auto;
+
+  overflow: hidden !important;
 }
 
 .pour-community__arrow {
   position: absolute;
 
   top: 50%;
+
+  z-index: 10;
 
   transform: translateY(-50%);
 
@@ -2070,19 +2083,17 @@ transform: translateX(-15px);
 
   cursor: pointer;
 
-  pointer-events: auto;
-
   transition:
     background 0.25s ease,
     color 0.25s ease,
     border-color 0.25s ease;
 }
 
-.pour-community__arrow:first-child {
+.pour-community__arrow--prev {
   left: 0;
 }
 
-.pour-community__arrow:last-child {
+.pour-community__arrow--next {
   right: 0;
 }
 
@@ -2092,7 +2103,6 @@ transform: translateX(-15px);
 
   border-color: #111111;
 }
-
 
 /* =========================================================
    CARROUSEL
@@ -2133,9 +2143,7 @@ transform: translateX(-15px);
 ========================================================= */
 
 .pour-community__layout {
-  width: min(100%, 900px);
-
-  margin: 0 auto;
+  width: 100%;
 
   display: grid !important;
 
@@ -2145,7 +2153,6 @@ transform: translateX(-15px);
 
   gap: 18px;
 }
-
 
 /* IMAGE PRODUIT */
 
@@ -2182,14 +2189,13 @@ transform: translateX(-15px);
   display: block;
 
   width: 100% !important;
-  height: auto !important;
+  height: 100% !important;
 
   aspect-ratio: 4 / 5;
 
   object-fit: cover;
   object-position: center;
 }
-
 
 /* =========================================================
    PASTILLE PRODUIT
