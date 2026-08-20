@@ -8,7 +8,9 @@
   "
 >
 
-  <!-- IMAGE -->
+  <!-- =====================================================
+       IMAGE
+  ====================================================== -->
 
   <div class="club-hero__media">
 
@@ -33,12 +35,16 @@
   </div>
 
 
-  <!-- OVERLAY -->
+  <!-- =====================================================
+       OVERLAY
+  ====================================================== -->
 
   <div class="club-hero__overlay"></div>
 
 
-  <!-- CONTENU -->
+  <!-- =====================================================
+       CONTENU
+  ====================================================== -->
 
   <div class="club-hero__content">
 
@@ -56,7 +62,9 @@
     {% endif %}
 
 
-    <!-- FORMULAIRE -->
+    <!-- ===================================================
+         FORMULAIRE
+    ==================================================== -->
 
     <form
       class="club-hero__form"
@@ -79,33 +87,24 @@
       >
 
 
+      <!-- CHAMP EMAIL -->
+
       <div class="club-hero__email-wrap">
 
-  {% if section.settings.image != blank %}
-    <div class="club-hero__email-glass" aria-hidden="true">
-      {{
-        section.settings.image
-        | image_url: width: 2800
-        | image_tag:
-          class: 'club-hero__email-glass-image',
-          loading: 'eager'
-      }}
-    </div>
-  {% endif %}
+        <input
+          type="email"
+          name="contact[email]"
+          class="club-hero__email"
+          placeholder="VOTRE EMAIL"
+          required
+          autocomplete="email"
+          aria-label="Votre email"
+        >
 
-  <div class="club-hero__email-tint"></div>
+      </div>
 
-  <input
-    type="email"
-    name="contact[email]"
-    class="club-hero__email"
-    placeholder="VOTRE EMAIL"
-    required
-    autocomplete="email"
-    aria-label="Votre email"
-  >
 
-</div>
+      <!-- BOUTON -->
 
       <button
         type="submit"
@@ -275,6 +274,10 @@
 }
 
 
+/* =========================================================
+   ANIMATION D'ENTRÉE
+========================================================= */
+
 #ClubPrivilegesHero-{{ section.id }}.is-content-visible
 .club-hero__content {
   opacity: 1;
@@ -347,7 +350,7 @@
 
 
 /* =========================================================
-   EMAIL — VERRE FLOUTÉ RÉEL
+   EMAIL — FOND BLANC TRANSLUCIDE + FLOU
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
@@ -361,74 +364,46 @@
   min-width: 0;
   height: 48px;
 
-  overflow: hidden;
+  /*
+    Le fond blanc reste volontairement léger.
+  */
+  background: rgba(255, 255, 255, 0.15);
 
-  background: transparent;
+  /*
+    C'est CETTE propriété qui floute
+    directement l'image située derrière le champ.
+  */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  border: 1px solid rgba(255, 255, 255, 0.68);
-}
-
-
-/* =========================================================
-   COPIE DE L'IMAGE DU HERO
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-glass {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 0;
+  border: 1px solid rgba(255, 255, 255, 0.65);
 
   overflow: hidden;
 
-  pointer-events: none;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-glass-image {
-  position: absolute;
+/* Focus */
 
-  display: block;
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.22);
 
-  max-width: none;
-
-  object-fit: cover;
-  object-position: center;
-
-filter: blur(5px);
-
-transform: scale(1.03);
-  transform-origin: center;
-
-  pointer-events: none;
+  border-color: #ffffff;
 }
 
 
-/* =========================================================
-   VOILE PAR-DESSUS LE FLOU
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-tint {
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   INPUT
-========================================================= */
+/* INPUT */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
   position: relative;
 
-  z-index: 2;
+  z-index: 1;
+
+  display: block;
 
   width: 100%;
   height: 100%;
@@ -441,6 +416,8 @@ transform: scale(1.03);
 
   font-size: 11px;
   font-weight: 400;
+
+  line-height: 1;
 
   letter-spacing: 0.06em;
 
@@ -461,7 +438,7 @@ transform: scale(1.03);
 
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.78);
 
   opacity: 1;
 }
@@ -472,6 +449,8 @@ transform: scale(1.03);
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
+  position: relative;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -490,6 +469,8 @@ transform: scale(1.03);
   font-size: 11px;
   font-weight: 400;
 
+  line-height: 1;
+
   letter-spacing: 0.06em;
 
   color: #111111;
@@ -498,6 +479,8 @@ transform: scale(1.03);
 
   border: 1px solid #ffffff;
   border-radius: 0;
+
+  box-shadow: none;
 
   cursor: pointer;
 
@@ -510,7 +493,8 @@ transform: scale(1.03);
 }
 
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__submit:hover {
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__submit:hover {
   background: #111111;
 
   color: #ffffff;
@@ -519,7 +503,18 @@ transform: scale(1.03);
 }
 
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__submit-arrow {
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__submit-text,
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__submit-arrow {
+  position: relative;
+
+  z-index: 1;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__submit-arrow {
   transform: none;
 
   transition: none;
@@ -562,7 +557,8 @@ transform: scale(1.03);
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__content {
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__content {
     bottom: 24px;
 
     width: 100%;
@@ -571,23 +567,35 @@ transform: scale(1.03);
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__heading {
     font-size: clamp(52px, 16vw, 82px);
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__form {
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__form {
     width: 100%;
     height: auto;
 
     flex-direction: column;
+
+    gap: 8px;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap,
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__email-wrap,
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__submit {
     width: 100%;
     height: 48px;
+  }
+
+
+  #ClubPrivilegesHero-{{ section.id }}
+  .club-hero__submit {
+    min-width: 0;
   }
 
 }
@@ -607,14 +615,11 @@ transform: scale(1.03);
 
   const image =
     hero.querySelector('.club-hero__image');
-const emailWrap =
-  hero.querySelector('.club-hero__email-wrap');
-
-const glassImage =
-  hero.querySelector('.club-hero__email-glass-image');
 
 
-  /* ENTRÉE TEXTE */
+  /* =======================================================
+     ANIMATION D'ENTRÉE DU TEXTE
+  ======================================================= */
 
   requestAnimationFrame(() => {
 
@@ -632,48 +637,10 @@ const glassImage =
 
   });
 
-/* =======================================================
-   ALIGNEMENT IMAGE FLOUTÉE DU CHAMP EMAIL
-======================================================= */
 
-function updateEmailGlass() {
-
-  if (
-    !emailWrap ||
-    !glassImage ||
-    !image
-  ) {
-    return;
-  }
-
-
-  const imageRect =
-    image.getBoundingClientRect();
-
-  const emailRect =
-    emailWrap.getBoundingClientRect();
-
-
-  /*
-    La copie reprend exactement
-    la taille et la position de l'image réelle.
-  */
-
-  glassImage.style.width =
-    `${imageRect.width}px`;
-
-  glassImage.style.height =
-    `${imageRect.height}px`;
-
-
-  glassImage.style.left =
-    `${imageRect.left - emailRect.left}px`;
-
-  glassImage.style.top =
-    `${imageRect.top - emailRect.top}px`;
-
-}
-  /* PARALLAX */
+  /* =======================================================
+     PARALLAX
+  ======================================================= */
 
   if (!image) return;
 
@@ -683,7 +650,8 @@ function updateEmailGlass() {
 
   function updateParallax() {
 
-    const scrollY = window.scrollY;
+    const scrollY =
+      window.scrollY;
 
 
     const heroTop =
@@ -711,7 +679,6 @@ function updateEmailGlass() {
 
     image.style.transform =
       `translate3d(0, ${translateY}px, 0) scale(1.08)`;
-updateEmailGlass();
 
 
     ticking = false;
@@ -722,6 +689,7 @@ updateEmailGlass();
   function requestParallax() {
 
     if (ticking) return;
+
 
     ticking = true;
 
@@ -747,7 +715,7 @@ updateEmailGlass();
     requestParallax
   );
 
-updateEmailGlass();
+
   updateParallax();
 
 })();
@@ -759,35 +727,41 @@ updateEmailGlass();
   "name": "Hero Club Privilèges",
 
   "settings": [
+
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
+
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
       "default": "CLUB POUR — ACCÈS MEMBRES"
     },
+
     {
       "type": "text",
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
     },
+
     {
       "type": "text",
       "id": "launch_text",
       "label": "Petit texte sous le formulaire",
       "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
+
     {
       "type": "color",
       "id": "text_color",
       "label": "Couleur du texte",
       "default": "#FFFFFF"
     },
+
     {
       "type": "range",
       "id": "overlay",
@@ -798,6 +772,7 @@ updateEmailGlass();
       "unit": "%",
       "default": 10
     }
+
   ],
 
   "presets": [
