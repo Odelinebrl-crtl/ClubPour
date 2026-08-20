@@ -2703,35 +2703,24 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   IMAGE + PARALLAX
+   IMAGE HERO — BASE PARALLAX
 ========================================================= */
 
 .clothing-hero__image {
   position: absolute;
 
-  top: -4%;
+  top: -6%;
   left: -4%;
 
   display: block;
 
   width: 108%;
-  height: 108%;
+  height: 112%;
 
   object-fit: cover;
   object-position: center;
 
-  /*
-    Le JS modifie uniquement translateY.
-    Le scale reste toujours présent.
-  */
-
- transform:
-  translate3d(
-    0,
-    var(--clothing-parallax, 0px),
-    0
-  )
-  scale(1.06);
+  transform: translate3d(0, 0, 0) scale(1.08);
 
   transform-origin: center center;
 
@@ -2781,12 +2770,12 @@ transform: translateX(-15px);
    TEXTE
 ========================================================= */
 
+/* =========================================================
+   TEXTE — ENTRÉE FORTE DU HAUT VERS LE BAS
+========================================================= */
+
 .clothing-hero__content {
   position: absolute;
-
-  /*
-    Plus bas que précédemment.
-  */
 
   top: 29%;
   right: 5.5%;
@@ -2799,36 +2788,34 @@ transform: translateX(-15px);
 
   text-align: left;
 
-
-  /*
-    ÉTAT CACHÉ :
-    légèrement au-dessus.
-  */
-
+  /* ÉTAT INITIAL */
   opacity: 0;
 
-  transform: translate3d(0, -30px, 0);
+  transform: translate3d(0, -65px, 0);
+
+  clip-path: inset(0 0 100% 0);
 
   transition:
-    opacity 0.42s ease,
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.55s ease,
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 
   will-change:
     opacity,
-    transform;
+    transform,
+    clip-path;
 }
 
 
-/*
-  L'image est maintenant complètement posée :
-  le texte descend vers sa position finale.
-*/
+/* TEXTE VISIBLE */
 
 .clothing-hero__slide.is-text-visible
 .clothing-hero__content {
   opacity: 1;
 
   transform: translate3d(0, 0, 0);
+
+  clip-path: inset(0 0 0 0);
 }
 
 
