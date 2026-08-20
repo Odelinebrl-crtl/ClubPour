@@ -642,3 +642,91 @@
   ]
 }
 {% endschema %}
+/* =========================================================
+   CLUB — FORCER LE RENDU DU CHAMP EMAIL
+   PRIORITÉ ABSOLUE
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }} .pour-hero__email-wrap,
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
+  position: relative !important;
+
+  flex: 1 !important;
+
+  display: flex !important;
+  align-items: center !important;
+
+  height: 48px !important;
+
+  overflow: hidden !important;
+
+  /*
+    On force volontairement un fond visible.
+    Ce n'est plus dépendant du blur Safari.
+  */
+  background: rgba(195, 181, 169, 0.42) !important;
+
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+
+  box-shadow:
+    inset 0 0 0 999px rgba(255, 255, 255, 0.04) !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  border-radius: 0 !important;
+}
+
+
+/* INPUT */
+
+#ClubPrivilegesHero-{{ section.id }} .pour-hero__email,
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email {
+  position: relative !important;
+
+  z-index: 2 !important;
+
+  display: block !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  margin: 0 !important;
+  padding: 0 16px !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+
+  color: #ffffff !important;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
+
+  letter-spacing: 0.06em !important;
+
+  text-transform: uppercase !important;
+}
+
+
+/* PLACEHOLDER */
+
+#ClubPrivilegesHero-{{ section.id }} .pour-hero__email::placeholder,
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email::placeholder {
+  color: rgba(255, 255, 255, 0.82) !important;
+
+  opacity: 1 !important;
+}
+
+
+/* FOCUS */
+
+#ClubPrivilegesHero-{{ section.id }} .pour-hero__email-wrap:focus-within,
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap:focus-within {
+  background: rgba(195, 181, 169, 0.52) !important;
+
+  border-color: #ffffff !important;
+}
