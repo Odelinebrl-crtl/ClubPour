@@ -1649,7 +1649,7 @@ a {
   width: 100%;
   max-width: 640px;
 
-  margin: 42px 0 0;
+  margin: 105px 0 0;
   padding: 0;
 }
 /* GRAND TITRE DETAILS */
@@ -1728,7 +1728,7 @@ a {
 
   max-width: 640px;
 
-  padding-top: 26px;
+  padding-top: 38px;
 
   font-size: 13px;
   line-height: 1.45;
@@ -1930,6 +1930,18 @@ a {
     grid-template-columns: 1fr;
 
     gap: 60px;
+  }
+
+}
+/* =========================================================
+   PRODUCT PAGE — ALIGNEMENTS FINAUX
+========================================================= */
+
+/* Galerie légèrement plus à gauche */
+@media screen and (min-width: 769px) {
+
+  .product-page-pour__gallery {
+    transform: translateX(-30px);
   }
 
 }
