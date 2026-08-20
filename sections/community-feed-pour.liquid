@@ -4,13 +4,21 @@
   data-community-slider
 >
 
-  <div class="pour-community__header">
-    {% if section.settings.heading != blank %}
-      <h2 class="pour-community__heading">
-        {{ section.settings.heading }}
-      </h2>
-    {% endif %}
-  </div>
+ <div class="pour-community__header">
+
+  {% if section.settings.subtitle != blank %}
+    <p class="pour-community__eyebrow">
+      {{ section.settings.subtitle }}
+    </p>
+  {% endif %}
+
+  {% if section.settings.heading != blank %}
+    <h2 class="pour-community__heading">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
+
+</div>
 
 
   <div class="pour-community__carousel">
@@ -196,12 +204,20 @@
 {
   "name": "Porté par vous",
   "settings": [
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Titre",
-      "default": "PORTÉ PAR VOUS"
-    }
+   "settings": [
+  {
+    "type": "text",
+    "id": "subtitle",
+    "label": "Petit titre",
+    "default": "COMMUNITY"
+  },
+  {
+    "type": "text",
+    "id": "heading",
+    "label": "Titre",
+    "default": "PORTÉ PAR VOUS"
+  }
+],
   ],
   "blocks": [
     {
