@@ -239,10 +239,10 @@ function initPourVideoParallax() {
 
       const normalized = progress - 0.5;
 
-      const movement = normalized * 110;
+   const movement = normalized * 80;
 
-      video.style.transform =
-        `translate3d(0, ${movement}px, 0) scale(1.08)`;
+    video.style.transform =
+  `translate3d(0, ${movement}px, 0)`;
     });
 
     ticking = false;
