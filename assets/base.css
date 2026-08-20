@@ -1988,163 +1988,113 @@ transform: translateX(-15px);
   font-weight: 500;
 }
 /* =========================================================
-   PORTÉ PAR VOUS — COMMUNITY FEED
+   PORTÉ PAR VOUS — STYLE ÉDITORIAL
 ========================================================= */
 
 .pour-community {
-  position: relative;
   width: 100%;
-
-  padding: 70px 54px 85px;
-
-  overflow: hidden;
-
-  background: #ffffff;
-  color: #111111;
+  padding: 80px 54px 110px;
+  background: #f7f7f7;
+  color: #111;
 }
 
-
-/* =========================================================
-   TITRE
-========================================================= */
-
 .pour-community__header {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-bottom: 42px;
+  text-align: center;
+  margin-bottom: 52px;
 }
 
 .pour-community__heading {
   margin: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 20px;
+  font-size: 28px;
   font-weight: 400;
 
-  line-height: 1;
-  letter-spacing: 0.02em;
-
-  text-align: center;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
-
-/* =========================================================
-   CARROUSEL GLOBAL
-========================================================= */
-
 .pour-community__carousel {
   position: relative;
-
-  width: 860px;
-  max-width: 100%;
-
+  width: min(100%, 1120px);
   margin: 0 auto;
 }
 
-
-/* =========================================================
-   VIEWPORT
-========================================================= */
-
 .pour-community__viewport {
-  position: relative;
-
-  width: 734px;
-  max-width: calc(100% - 120px);
-
-  margin: 0 auto;
-
+  width: 100%;
   overflow: hidden;
 }
 
-
-/* =========================================================
-   TRACK
-========================================================= */
-
 .pour-community__track {
   display: flex;
-  flex-direction: row;
-
   width: 100%;
 
   transition:
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: transform;
 }
-
-
-/* =========================================================
-   SLIDE
-========================================================= */
 
 .pour-community__slide {
   flex: 0 0 100%;
-
   width: 100%;
-  min-width: 100%;
-
-  margin: 0;
 }
-
-
-/* =========================================================
-   LES DEUX IMAGES
-========================================================= */
 
 .pour-community__layout {
-  width: 734px;
-  max-width: 100%;
-
   display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 80px;
 
-  grid-template-columns: repeat(2, 360px);
-
-  align-items: start;
-
-  gap: 14px;
+  align-items: center;
 }
 
 
-/* =========================================================
-   COLONNE PRODUIT
-========================================================= */
+/* PHOTO COMMUNAUTÉ — GAUCHE */
+
+.pour-community__ugc {
+  grid-column: 1;
+  width: 100%;
+}
+
+.pour-community__ugc-image {
+  display: block;
+
+  width: 100%;
+  height: 620px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.pour-community__customer {
+  margin-top: 12px;
+
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+
+/* PRODUIT — DROITE */
 
 .pour-community__product {
-  width: 360px;
-  min-width: 0;
+  grid-column: 2;
+  width: 100%;
+
+  text-align: center;
 }
 
 .pour-community__product-link {
   display: block;
-
   width: 100%;
-
-  color: inherit;
-  text-decoration: none;
 }
-
-
-/* =========================================================
-   IMAGE PRODUIT
-========================================================= */
 
 .pour-community__product-media {
   position: relative;
 
-  width: 360px;
-  height: 450px;
+  width: 100%;
+  height: 420px;
 
   overflow: hidden;
 
-  background: #f3f2ef;
+  background: transparent;
 }
 
 .pour-community__product-image {
@@ -2153,121 +2103,12 @@ transform: translateX(-15px);
   width: 100%;
   height: 100%;
 
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
 }
 
 
-/* =========================================================
-   PHOTO COMMUNAUTÉ
-========================================================= */
-
-.pour-community__ugc {
-  position: relative;
-
-  width: 360px;
-  min-width: 0;
-}
-
-.pour-community__ugc-image {
-  display: block;
-
-  width: 360px;
-  height: 450px;
-
-  object-fit: cover;
-  object-position: center;
-}
-
-.pour-community__ugc-placeholder {
-  width: 360px;
-  height: 450px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #f3f2ef;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 11px;
-  font-weight: 400;
-
-  letter-spacing: 0.02em;
-
-  text-transform: uppercase;
-}
-
-
-/* =========================================================
-   FLÈCHES
-========================================================= */
-
-.pour-community__arrow {
-  position: absolute;
-
-  top: 225px;
-
-  z-index: 20;
-
-  transform: translateY(-50%);
-
-  width: 38px;
-  height: 38px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border: 1px solid #d7d7d7;
-
-  background: #ffffff;
-  color: #111111;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 16px;
-  font-weight: 400;
-
-  line-height: 1;
-
-  cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
-}
-
-
-/* FLÈCHE GAUCHE */
-
-.pour-community__arrow--prev {
-  left: 18px;
-}
-
-
-/* FLÈCHE DROITE */
-
-.pour-community__arrow--next {
-  right: 18px;
-}
-
-
-.pour-community__arrow:hover {
-  background: #111111;
-  color: #ffffff;
-
-  border-color: #111111;
-}
-
-
-/* =========================================================
-   PASTILLE PRODUIT
-========================================================= */
+/* PASTILLE */
 
 .pour-community__hotspot {
   position: absolute;
@@ -2275,173 +2116,128 @@ transform: translateX(-15px);
   left: var(--hotspot-x);
   top: var(--hotspot-y);
 
-  z-index: 4;
-
   transform: translate(-50%, -50%);
 
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pour-community__hotspot-core {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  background: #111;
+}
+
+
+/* INFOS PRODUIT */
+
+.pour-community__product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding-top: 18px;
+}
+
+.pour-community__product-title {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pour-community__product-price {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+
+/* FLÈCHES TRÈS LATÉRALES */
+
+.pour-community__arrow {
+  position: absolute;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 20;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+  border: 0;
+
+  background: #fff;
+  color: #111;
+
+  font-size: 20px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
 
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.5);
-
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-
-  pointer-events: none;
+  cursor: pointer;
 }
 
-.pour-community__hotspot-core {
-  display: block;
+.pour-community__arrow--prev {
+  left: -90px;
+}
 
-  width: 8px;
-  height: 8px;
-
-  border-radius: 50%;
-
-  background: #111111;
+.pour-community__arrow--next {
+  right: -90px;
 }
 
 
-/* =========================================================
-   NOM PRODUIT + PRIX
-========================================================= */
-
-.pour-community__product-info {
-  width: 100%;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding-top: 12px;
-
-  color: #111111;
-  text-decoration: none;
-}
-
-.pour-community__product-title,
-.pour-community__product-price {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 12px;
-  font-weight: 400;
-
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-
-  text-transform: uppercase;
-}
-
-.pour-community__product-price {
-  flex-shrink: 0;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   NOM / INSTAGRAM CLIENT
-========================================================= */
-
-.pour-community__customer {
-  padding-top: 12px;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 12px;
-  font-weight: 400;
-
-  line-height: 1.25;
-  letter-spacing: 0.01em;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
+/* MOBILE */
 
 @media screen and (max-width: 768px) {
 
   .pour-community {
-    padding: 55px 16px 70px;
+    padding: 60px 16px 80px;
   }
-
-
-  .pour-community__header {
-    margin-bottom: 30px;
-  }
-
 
   .pour-community__heading {
-    font-size: 17px;
+    font-size: 20px;
   }
-
-
-  .pour-community__carousel {
-    width: 100%;
-  }
-
-
-  .pour-community__viewport {
-    width: calc(100% - 50px);
-    max-width: none;
-  }
-
 
   .pour-community__layout {
-    width: 100%;
-
     grid-template-columns: 1fr;
-
-    gap: 24px;
+    gap: 36px;
   }
 
-
-  .pour-community__product,
-  .pour-community__ugc {
-    width: 100%;
+  .pour-community__ugc,
+  .pour-community__product {
+    grid-column: 1;
   }
 
-
-  .pour-community__product-media,
-  .pour-community__ugc-image,
-  .pour-community__ugc-placeholder {
-    width: 100%;
+  .pour-community__ugc-image {
     height: auto;
-
     aspect-ratio: 4 / 5;
   }
 
-
-  .pour-community__arrow {
-    top: 40vw;
-
-    width: 34px;
-    height: 34px;
-
-    font-size: 14px;
+  .pour-community__product-media {
+    height: 380px;
   }
-
 
   .pour-community__arrow--prev {
-    left: 0;
+    left: 4px;
   }
-
 
   .pour-community__arrow--next {
-    right: 0;
+    right: 4px;
   }
-
 }
