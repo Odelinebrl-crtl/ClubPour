@@ -1992,24 +1992,31 @@ transform: translateX(-15px);
 ========================================================= */
 
 .pour-community {
+  position: relative;
+
   width: 100%;
-  overflow: hidden;
 
   padding: 90px 54px 120px;
+
+  overflow: hidden;
 
   background: #ffffff;
   color: #111111;
 }
 
 
-/* HEADER */
+/* =========================================================
+   HEADER DE LA SECTION
+========================================================= */
 
 .pour-community__header {
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  margin-bottom: 45px;
+  margin-bottom: 42px;
 }
 
 .pour-community__heading {
@@ -2020,13 +2027,17 @@ transform: translateX(-15px);
   font-size: 20px;
   font-weight: 400;
 
+  line-height: 1;
+
   letter-spacing: 0.02em;
 
   text-transform: uppercase;
 }
 
 
-/* FLÈCHES */
+/* =========================================================
+   FLÈCHES
+========================================================= */
 
 .pour-community__controls {
   display: flex;
@@ -2036,12 +2047,12 @@ transform: translateX(-15px);
 }
 
 .pour-community__arrow {
+  width: 42px;
+  height: 42px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 42px;
-  height: 42px;
 
   padding: 0;
 
@@ -2050,6 +2061,7 @@ transform: translateX(-15px);
   background: transparent;
   color: #111111;
 
+  font-family: inherit;
   font-size: 17px;
 
   cursor: pointer;
@@ -2061,55 +2073,69 @@ transform: translateX(-15px);
 }
 
 .pour-community__arrow:hover {
-  background: #111111;
   color: #ffffff;
+  background: #111111;
 
   border-color: #111111;
 }
 
 
-/* CARROUSEL */
+/* =========================================================
+   CARROUSEL
+========================================================= */
 
 .pour-community__viewport {
+  position: relative;
+
   width: 100%;
 
-  overflow: hidden;
+  overflow: hidden !important;
 }
 
 .pour-community__track {
-  display: flex;
+  display: flex !important;
+  flex-direction: row !important;
 
   width: 100%;
 
   transition:
-    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: transform;
 }
 
 .pour-community__slide {
-  flex: 0 0 100%;
+  flex: 0 0 100% !important;
 
   width: 100%;
+  min-width: 100%;
+
+  margin: 0;
 }
 
 
-/* DEUX IMAGES */
+/* =========================================================
+   CONTENU D'UNE SLIDE
+========================================================= */
 
 .pour-community__layout {
-  display: grid;
+  width: 100%;
+
+  display: grid !important;
 
   grid-template-columns:
-    minmax(0, 0.78fr)
-    minmax(0, 1.22fr);
-
-  gap: 18px;
+    minmax(0, 0.72fr)
+    minmax(0, 1.28fr);
 
   align-items: start;
+
+  gap: 18px;
 }
 
 
-/* PRODUIT */
+/* =========================================================
+   IMAGE PRODUIT — GAUCHE
+========================================================= */
 
 .pour-community__product {
   min-width: 0;
@@ -2117,6 +2143,8 @@ transform: translateX(-15px);
 
 .pour-community__product-link {
   display: block;
+
+  width: 100%;
 }
 
 .pour-community__product-media {
@@ -2124,19 +2152,24 @@ transform: translateX(-15px);
 
   width: 100%;
 
+  aspect-ratio: 4 / 5;
+
   overflow: hidden;
 
-  background: #f4f3f0;
+  background: #f3f2ef;
 }
 
 .pour-community__product-image {
   display: block;
 
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover;
+  object-position: center;
 
   transition:
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pour-community__product-link:hover
@@ -2145,7 +2178,9 @@ transform: translateX(-15px);
 }
 
 
-/* PASTILLE */
+/* =========================================================
+   PASTILLE PRODUIT
+========================================================= */
 
 .pour-community__hotspot {
   position: absolute;
@@ -2153,21 +2188,27 @@ transform: translateX(-15px);
   left: var(--hotspot-x);
   top: var(--hotspot-y);
 
+  z-index: 4;
+
   transform: translate(-50%, -50%);
+
+  width: 32px;
+  height: 32px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 30px;
-  height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
 
   border-radius: 50%;
 
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.5);
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 
   pointer-events: none;
 }
@@ -2184,17 +2225,22 @@ transform: translateX(-15px);
 }
 
 
-/* INFOS PRODUIT */
+/* =========================================================
+   NOM + PRIX
+========================================================= */
 
 .pour-community__product-info {
-  display: flex;
+  width: 100%;
 
-  justify-content: space-between;
+  display: flex;
   align-items: flex-start;
+  justify-content: space-between;
 
   gap: 20px;
 
   padding-top: 12px;
+
+  color: #111111;
 }
 
 .pour-community__product-title,
@@ -2216,39 +2262,49 @@ transform: translateX(-15px);
 }
 
 
-/* PHOTO CLIENT */
+/* =========================================================
+   PHOTO CLIENT — DROITE
+========================================================= */
 
 .pour-community__ugc {
   position: relative;
 
   min-width: 0;
+
+  width: 100%;
 }
 
 .pour-community__ugc-image {
   display: block;
 
-  width: 100%;
-  height: auto;
+  width: 100% !important;
+  height: auto !important;
+
+  max-height: 760px;
+
+  object-fit: cover;
+  object-position: center;
 }
 
 .pour-community__ugc-placeholder {
-  display: flex;
+  width: 100%;
 
+  aspect-ratio: 4 / 5;
+
+  display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 100%;
-  aspect-ratio: 4 / 5;
-
-  background: #f4f3f0;
+  background: #f3f2ef;
 
   font-size: 11px;
-
   letter-spacing: 0.06em;
+
+  text-transform: uppercase;
 }
 
 .pour-community__customer {
-  margin-top: 12px;
+  margin-top: 10px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -2283,9 +2339,17 @@ transform: translateX(-15px);
   }
 
   .pour-community__layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
 
     gap: 28px;
+  }
+
+  .pour-community__product-media {
+    aspect-ratio: 4 / 5;
+  }
+
+  .pour-community__ugc-image {
+    max-height: none;
   }
 
 }
