@@ -1,0 +1,180 @@
+<section
+  id="VetementsGrid-{{ section.id }}"
+  class="vetements-grid"
+>
+
+  <div class="vetements-grid__inner">
+
+    <!-- =========================
+         TITRES
+    ========================== -->
+
+    <div class="vetements-grid__header">
+
+      {% if section.settings.eyebrow != blank %}
+        <p class="vetements-grid__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h2 class="vetements-grid__heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+
+    </div>
+
+
+    <!-- =========================
+         PRODUITS
+    ========================== -->
+
+    <div class="vetements-grid__products">
+
+      {% for block in section.blocks %}
+
+        {% assign featured_product = block.settings.product %}
+
+        {% if featured_product != blank %}
+
+          <a
+            href="{{ featured_product.url }}"
+            class="vetements-card"
+            {{ block.shopify_attributes }}
+          >
+
+            <!-- IMAGE -->
+
+            <div class="vetements-card__media">
+
+              {% if block.settings.image_primary != blank %}
+
+                {{
+                  block.settings.image_primary
+                  | image_url: width: 1400
+                  | image_tag:
+                    class: 'vetements-card__image vetements-card__image--primary',
+                    loading: 'lazy',
+                    alt: featured_product.title
+                }}
+
+              {% elsif featured_product.featured_image != blank %}
+
+                {{
+                  featured_product.featured_image
+                  | image_url: width: 1400
+                  | image_tag:
+                    class: 'vetements-card__image vetements-card__image--primary',
+                    loading: 'lazy',
+                    alt: featured_product.title
+                }}
+
+              {% endif %}
+
+
+              {% if block.settings.image_hover != blank %}
+
+                {{
+                  block.settings.image_hover
+                  | image_url: width: 1400
+                  | image_tag:
+                    class: 'vetements-card__image vetements-card__image--hover',
+                    loading: 'lazy',
+                    alt: featured_product.title
+                }}
+
+              {% endif %}
+
+            </div>
+
+
+            <!-- INFOS -->
+
+            <div class="vetements-card__info">
+
+              <h3 class="vetements-card__title">
+                {{ featured_product.title }}
+              </h3>
+
+              <div class="vetements-card__price">
+                {{ featured_product.price | money }}
+              </div>
+
+            </div>
+
+          </a>
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Grille Vêtements",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "PORSCHE AUTOMOBILE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "COLLECTION 001"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Produit",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produit Shopify"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_primary",
+          "label": "Image principale personnalisée"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_hover",
+          "label": "Image au survol personnalisée"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Grille Vêtements",
+      "blocks": [
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        },
+        {
+          "type": "product"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
