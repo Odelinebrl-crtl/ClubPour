@@ -1251,16 +1251,16 @@ a {
   width: 100%;
 
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.8fr);
+  grid-template-columns: minmax(0, 1.08fr) minmax(520px, 0.92fr);
 
   align-items: start;
 
-  gap: clamp(70px, 8vw, 150px);
+  gap: clamp(55px, 6vw, 100px);
 
   padding:
-    145px
+    120px
     clamp(40px, 5vw, 80px)
-    110px;
+    90px;
 }
 
 
@@ -1389,9 +1389,9 @@ a {
 
 .product-page-pour__info-inner {
   width: 100%;
-  max-width: 520px;
+  max-width: 640px;
 
-  padding-top: 85px;
+  padding-top: 70px;
 }
 
 
@@ -1647,19 +1647,19 @@ a {
 
 .product-page-pour__details {
   width: 100%;
-  max-width: 520px;
+  max-width: 640px;
 
-  margin: 70px 0 0;
+  margin: 42px 0 0;
   padding: 0;
 }
 /* GRAND TITRE DETAILS */
 
 .product-page-pour__details-title {
-  max-width: 520px;
+  max-width: 640px;
 
-  margin: 0 0 45px;
+  margin: 0 0 34px;
 
-  font-size: clamp(26px, 2.3vw, 38px);
+  font-size: clamp(28px, 2.3vw, 40px);
   font-weight: 400;
 
   line-height: 1.05;
