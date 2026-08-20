@@ -4,7 +4,10 @@
     <nav class="site-header__nav site-header__nav--left">
 
       <div class="site-header__item site-header__item--dropdown">
-       <a href="/pages/vetements?view=vetements" class="site-header__link">
+       <a
+  href="{{ pages['vetements'].url }}"
+  class="site-header__link"
+>
   VÊTEMENTS
 </a>
 
@@ -15,7 +18,10 @@
         </div>
       </div>
 
-     <a href="/pages/club-privileges?view=club-privieges" class="site-header__link">
+    <a
+  href="{{ pages['club-privileges'].url }}"
+  class="site-header__link"
+>
   CLUB PRIVILÈGES
 </a>
 
