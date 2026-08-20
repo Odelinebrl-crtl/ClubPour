@@ -1941,7 +1941,7 @@ a {
 @media screen and (min-width: 769px) {
 
   .product-page-pour__gallery {
-    transform: translateX(-30px);
+    transform: translateX(-20px);
   }
 
 }
