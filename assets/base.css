@@ -1182,7 +1182,7 @@ a {
 
 
 /* =========================================================
-   ANIMATION CITATION — SCROLL REVEAL
+   CITATION — ANIMATION MARQUÉE AU SCROLL
 ========================================================= */
 
 .pour-quote__eyebrow,
@@ -1190,26 +1190,25 @@ a {
 .pour-quote__signature {
   opacity: 0;
 
-  transform: translateY(55px);
+  transform: translateY(120px);
 
   will-change: opacity, transform;
 
   transition:
-    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Apparition */
+/* DESCENTE : APPARITION */
 
 .pour-quote.is-visible .pour-quote__eyebrow,
 .pour-quote.is-visible .pour-quote__text,
 .pour-quote.is-visible .pour-quote__signature {
   opacity: 1;
-
   transform: translateY(0);
 }
 
-/* Apparition légèrement décalée des éléments */
+/* Décalage entre les éléments */
 
 .pour-quote.is-visible .pour-quote__eyebrow {
   transition-delay: 0s;
@@ -1220,13 +1219,17 @@ a {
 }
 
 .pour-quote.is-visible .pour-quote__signature {
-  transition-delay: 0.22s;
+  transition-delay: 0.24s;
 }
 
-/* Quand la section ressort de l'écran */
+/* REMONTÉE : DISPARITION */
 
-.pour-quote:not(.is-visible) .pour-quote__eyebrow,
-.pour-quote:not(.is-visible) .pour-quote__text,
-.pour-quote:not(.is-visible) .pour-quote__signature {
+.pour-quote.is-hidden-up .pour-quote__eyebrow,
+.pour-quote.is-hidden-up .pour-quote__text,
+.pour-quote.is-hidden-up .pour-quote__signature {
+  opacity: 0;
+
+  transform: translateY(120px);
+
   transition-delay: 0s;
 }
