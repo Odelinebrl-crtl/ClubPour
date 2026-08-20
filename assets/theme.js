@@ -493,7 +493,7 @@ document.addEventListener(
 );
 /* =========================================================
    HERO VÊTEMENTS
-   SLIDER DIRECTIONNEL + TEXTE + PARALLAX
+   SLIDER + TEXTE + PARALLAX
 ========================================================= */
 
 function initClothingHero() {
@@ -501,11 +501,6 @@ function initClothingHero() {
   document
     .querySelectorAll('[data-clothing-hero]')
     .forEach((hero) => {
-
-
-      /*
-        Évite les doubles listeners.
-      */
 
       if (hero.dataset.clothingReady === 'true') {
         return;
@@ -515,23 +510,15 @@ function initClothingHero() {
 
 
       const slides = Array.from(
-        hero.querySelectorAll(
-          '[data-clothing-slide]'
-        )
+        hero.querySelectorAll('[data-clothing-slide]')
       );
-
 
       const dots = Array.from(
-        hero.querySelectorAll(
-          '[data-clothing-dot]'
-        )
+        hero.querySelectorAll('[data-clothing-dot]')
       );
 
-
       const images = Array.from(
-        hero.querySelectorAll(
-          '.clothing-hero__image'
-        )
+        hero.querySelectorAll('.clothing-hero__image')
       );
 
 
@@ -552,147 +539,102 @@ function initClothingHero() {
       const autoplayEnabled =
         hero.dataset.autoplay !== 'false';
 
-
       const autoplayDelay =
         Number(hero.dataset.speed) || 4000;
-
-
-      /*
-        Doit correspondre au 0.82s du CSS.
-      */
 
       const slideDuration = 820;
 
 
-      /* =====================================================
-         ÉTAT INITIAL
-      ===================================================== */
+/* =========================================================
+   ÉTAT INITIAL
+   IMAGE 01 IMMÉDIATEMENT VISIBLE
+========================================================= */
 
-     slides.forEach(
-  (slide) => {
+      slides.forEach((slide) => {
 
-    slide.classList.remove(
-      'is-active',
-      'is-entering',
-      'is-from-right',
-      'is-from-left',
-      'is-moving',
-      'is-text-visible'
-    );
+        slide.classList.remove(
+          'is-active',
+          'is-entering',
+          'is-from-right',
+          'is-from-left',
+          'is-moving',
+          'is-text-visible'
+        );
 
-  }
-);
-
-
-/* =====================================================
-   ANIMATION D'ENTRÉE — PREMIÈRE SLIDE
-===================================================== */
-
-const firstSlide = slides[0];
-
-firstSlide.classList.add(
-  'is-entering',
-  'is-from-right'
-);
+      });
 
 
-/*
-  Force le navigateur à enregistrer
-  la position à droite.
-*/
-
-void firstSlide.offsetWidth;
+      const firstSlide = slides[0];
 
 
-/*
-  Active le mouvement.
-*/
+      /*
+        IMPORTANT :
+        l'image 01 est affichée immédiatement.
+        AUCUNE animation horizontale au chargement.
+      */
 
-firstSlide.classList.add(
-  'is-moving'
-);
-
-
-window.requestAnimationFrame(() => {
-
-  window.requestAnimationFrame(() => {
-
-    firstSlide.classList.remove(
-      'is-from-right'
-    );
-
-  });
-
-});
-
-
-/*
-  Une fois l'image en place :
-  elle devient la vraie slide active.
-*/
-
-window.setTimeout(() => {
-
-  firstSlide.classList.remove(
-    'is-entering',
-    'is-moving'
-  );
-
-  firstSlide.classList.add(
-    'is-active'
-  );
-
-
-  /*
-    Puis le texte apparaît.
-  */
-
-  window.setTimeout(() => {
-
-    firstSlide.classList.add(
-      'is-text-visible'
-    );
-
-  }, 100);
-
-}, slideDuration);
-
-
-      dots.forEach(
-        (dot, index) => {
-
-          dot.classList.toggle(
-            'is-active',
-            index === 0
-          );
-
-        }
+      firstSlide.classList.add(
+        'is-active'
       );
 
 
-      /* =====================================================
-         PAGINATION — MISE À JOUR IMMÉDIATE
-      ===================================================== */
+      /*
+        Le texte, lui, reste momentanément
+        dans son état caché CSS :
+
+        opacity: 0
+        translateY(-30px)
+      */
+
+
+      window.requestAnimationFrame(() => {
+
+        window.requestAnimationFrame(() => {
+
+          firstSlide.classList.add(
+            'is-text-visible'
+          );
+
+        });
+
+      });
+
+
+/* =========================================================
+   PAGINATION INITIALE
+========================================================= */
+
+      dots.forEach((dot, index) => {
+
+        dot.classList.toggle(
+          'is-active',
+          index === 0
+        );
+
+      });
+
+
+/* =========================================================
+   PAGINATION — IMMÉDIATE
+========================================================= */
 
       function updatePagination(index) {
 
-        dots.forEach(
-          (dot, dotIndex) => {
+        dots.forEach((dot, dotIndex) => {
 
-            dot.classList.toggle(
-              'is-active',
-              dotIndex === index
-            );
+          dot.classList.toggle(
+            'is-active',
+            dotIndex === index
+          );
 
-          }
-        );
+        });
 
       }
 
 
-      /* =====================================================
-         AUTOPLAY
-      ===================================================== */
+/* =========================================================
+   AUTOPLAY
+========================================================= */
 
       function stopAutoplay() {
 
@@ -700,11 +642,9 @@ window.setTimeout(() => {
           return;
         }
 
-
         window.clearInterval(
           autoplayTimer
         );
-
 
         autoplayTimer = null;
 
@@ -725,34 +665,31 @@ window.setTimeout(() => {
 
 
         autoplayTimer =
-          window.setInterval(
-            () => {
+          window.setInterval(() => {
 
-              if (isAnimating) {
-                return;
-              }
-
-
-              const nextIndex =
-                (currentIndex + 1) %
-                slides.length;
+            if (isAnimating) {
+              return;
+            }
 
 
-              goToSlide(
-                nextIndex,
-                'next'
-              );
+            const nextIndex =
+              (currentIndex + 1) %
+              slides.length;
 
-            },
-            autoplayDelay
-          );
+
+            goToSlide(
+              nextIndex,
+              'next'
+            );
+
+          }, autoplayDelay);
 
       }
 
 
-      /* =====================================================
-         CHANGEMENT DE SLIDE
-      ===================================================== */
+/* =========================================================
+   CHANGEMENT DE SLIDE
+========================================================= */
 
       function goToSlide(
         newIndex,
@@ -773,16 +710,13 @@ window.setTimeout(() => {
         const oldSlide =
           slides[currentIndex];
 
-
         const newSlide =
           slides[newIndex];
 
 
         /*
-          IMPORTANT :
-
-          La pagination change immédiatement,
-          dès le clic / début de transition.
+          Le numéro sélectionné devient actif
+          IMMÉDIATEMENT.
         */
 
         updatePagination(
@@ -791,7 +725,7 @@ window.setTimeout(() => {
 
 
         /*
-          Le texte actuel disparaît.
+          Le texte de l'ancienne image disparaît.
         */
 
         oldSlide.classList.remove(
@@ -800,7 +734,7 @@ window.setTimeout(() => {
 
 
         /*
-          Remise à zéro du nouveau.
+          Nettoyage du prochain slide.
         */
 
         newSlide.classList.remove(
@@ -814,7 +748,11 @@ window.setTimeout(() => {
 
 
         /*
-          Position initiale de la "page".
+          PAGE SUIVANTE :
+          arrive depuis la droite.
+
+          PAGE PRÉCÉDENTE :
+          arrive depuis la gauche.
         */
 
         newSlide.classList.add(
@@ -826,15 +764,15 @@ window.setTimeout(() => {
 
 
         /*
-          Force le navigateur
-          à enregistrer la position.
+          Force le navigateur à enregistrer
+          la position de départ.
         */
 
         void newSlide.offsetWidth;
 
 
         /*
-          Active la transition.
+          Active la transition horizontale.
         */
 
         newSlide.classList.add(
@@ -843,200 +781,242 @@ window.setTimeout(() => {
 
 
         /*
-          Frame suivante :
-          on retire le translateX.
-          Le CSS anime alors vers 0.
+          Puis on retire le décalage :
+          la nouvelle image glisse vers sa place.
         */
 
-        window.requestAnimationFrame(
-          () => {
+        window.requestAnimationFrame(() => {
 
-            window.requestAnimationFrame(
-              () => {
-
-                newSlide.classList.remove(
-                  'is-from-right',
-                  'is-from-left'
-                );
-
-              }
-            );
-
-          }
-        );
-
-
-        /* ===================================================
-           IMAGE TERMINÉE
-        =================================================== */
-
-        window.setTimeout(
-          () => {
-
-            oldSlide.classList.remove(
-              'is-active'
-            );
-
+          window.requestAnimationFrame(() => {
 
             newSlide.classList.remove(
-              'is-entering',
-              'is-moving'
+              'is-from-right',
+              'is-from-left'
             );
 
+          });
+
+        });
+
+
+/* =========================================================
+   FIN DE TRANSITION IMAGE
+========================================================= */
+
+        window.setTimeout(() => {
+
+          oldSlide.classList.remove(
+            'is-active'
+          );
+
+
+          newSlide.classList.remove(
+            'is-entering',
+            'is-moving'
+          );
+
+
+          newSlide.classList.add(
+            'is-active'
+          );
+
+
+          currentIndex =
+            newIndex;
+
+
+          /*
+            Une fois seulement que l'image
+            est complètement installée,
+            le texte apparaît du haut vers le bas.
+          */
+
+          window.setTimeout(() => {
 
             newSlide.classList.add(
-              'is-active'
+              'is-text-visible'
             );
 
+            isAnimating = false;
 
-            currentIndex =
-              newIndex;
-
-
-            /*
-              Le texte apparaît APRÈS l'image.
-            */
-
-            window.setTimeout(
-              () => {
-
-                newSlide.classList.add(
-                  'is-text-visible'
-                );
+          }, 100);
 
 
-                isAnimating = false;
-
-              },
-              90
-            );
-
-          },
-          slideDuration
-        );
+        }, slideDuration);
 
       }
 
 
-      /* =====================================================
-         CLIC SUR LES NUMÉROS
-      ===================================================== */
+/* =========================================================
+   CLIC SUR 01 / 02 / 03...
+========================================================= */
 
-      dots.forEach(
-        (dot, index) => {
+      dots.forEach((dot, index) => {
 
-          dot.addEventListener(
-            'click',
-            () => {
+        dot.addEventListener(
+          'click',
+          () => {
 
-              if (
-                index === currentIndex ||
-                isAnimating
-              ) {
-                return;
-              }
-
-
-              /*
-                Numéro suivant :
-                droite → gauche.
-
-                Numéro précédent :
-                gauche → droite.
-              */
-
-              const direction =
-                index > currentIndex
-                  ? 'next'
-                  : 'prev';
-
-
-              /*
-                Pagination immédiatement.
-              */
-
-              updatePagination(
-                index
-              );
-
-
-              goToSlide(
-                index,
-                direction
-              );
-
-
-              /*
-                Nouveau cycle de 4 secondes
-                après le clic manuel.
-              */
-
-              startAutoplay();
-
+            if (
+              index === currentIndex ||
+              isAnimating
+            ) {
+              return;
             }
+
+
+            const direction =
+              index > currentIndex
+                ? 'next'
+                : 'prev';
+
+
+            /*
+              Mise à jour visuelle immédiate.
+            */
+
+            updatePagination(
+              index
+            );
+
+
+            goToSlide(
+              index,
+              direction
+            );
+
+
+            /*
+              Après un clic manuel,
+              on repart sur un cycle complet.
+            */
+
+            startAutoplay();
+
+          }
+        );
+
+      });
+
+
+/* =========================================================
+   PARALLAX
+========================================================= */
+
+      function updateParallax() {
+
+        const rect =
+          hero.getBoundingClientRect();
+
+
+        /*
+          Hero hors écran :
+          inutile de continuer.
+        */
+
+        if (
+          rect.bottom <= 0 ||
+          rect.top >= window.innerHeight
+        ) {
+          parallaxTicking = false;
+
+          return;
+        }
+
+
+        /*
+          On mesure la distance réellement
+          parcourue dans le Hero.
+
+          C'est plus fiable que window.scrollY
+          puisque ton Hero commence sous le header.
+        */
+
+        const scrolledInsideHero =
+          Math.max(
+            0,
+            -rect.top
           );
 
+
+        /*
+          Même intensité que ton Hero Home.
+        */
+
+        const translateY =
+          scrolledInsideHero * 0.22;
+
+
+        /*
+          Toutes les images bougent ensemble.
+          Donc lorsqu'une nouvelle slide arrive,
+          elle est déjà au bon niveau de parallax.
+        */
+
+        images.forEach((image) => {
+
+          image.style.setProperty(
+            '--clothing-parallax',
+            `${translateY}px`
+          );
+
+        });
+
+
+        parallaxTicking = false;
+
+      }
+
+
+      function requestParallaxUpdate() {
+
+        if (parallaxTicking) {
+          return;
+        }
+
+
+        parallaxTicking = true;
+
+
+        window.requestAnimationFrame(() => {
+
+          updateParallax();
+
+        });
+
+      }
+
+
+      /*
+        C'ÉTAIT CE QUI MANQUAIT
+        DANS TON CODE ACTUEL.
+      */
+
+      window.addEventListener(
+        'scroll',
+        requestParallaxUpdate,
+        {
+          passive: true
         }
       );
 
 
-      /* =====================================================
-         PARALLAX
-         Même philosophie que ton Hero Home
-      ===================================================== */
-
-      function updateParallax() {
-
-  const rect = hero.getBoundingClientRect();
-
-  /*
-    On ne calcule que si le Hero
-    est encore visible à l'écran.
-  */
-
-  if (
-    rect.bottom <= 0 ||
-    rect.top >= window.innerHeight
-  ) {
-    parallaxTicking = false;
-    return;
-  }
+      window.addEventListener(
+        'resize',
+        requestParallaxUpdate
+      );
 
 
-  /*
-    Distance réellement parcourue
-    depuis le début du Hero.
-  */
+      /*
+        Position initiale.
+      */
 
-  const scrolledInsideHero =
-    Math.max(0, -rect.top);
+      updateParallax();
 
 
-  /*
-    Même intensité que ton Hero Home.
-  */
-
-  const translateY =
-    scrolledInsideHero * 0.22;
-
-
-  images.forEach((image) => {
-
-    image.style.setProperty(
-      '--clothing-parallax',
-      `${translateY}px`
-    );
-
-  });
-
-
-  parallaxTicking = false;
-}
-
-
-      /* =====================================================
-         START
-      ===================================================== */
+/* =========================================================
+   START
+========================================================= */
 
       startAutoplay();
 
@@ -1078,14 +1058,12 @@ document.addEventListener(
       .querySelectorAll(
         '[data-clothing-hero]'
       )
-      .forEach(
-        (hero) => {
+      .forEach((hero) => {
 
-          hero.dataset.clothingReady =
-            'false';
+        hero.dataset.clothingReady =
+          'false';
 
-        }
-      );
+      });
 
 
     initClothingHero();
