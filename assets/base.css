@@ -1987,3 +1987,305 @@ transform: translateX(-15px);
   color: #111;
   font-weight: 500;
 }
+/* =========================================================
+   PORTÉ PAR VOUS — COMMUNITY FEED
+========================================================= */
+
+.pour-community {
+  width: 100%;
+  overflow: hidden;
+
+  padding: 90px 54px 120px;
+
+  background: #ffffff;
+  color: #111111;
+}
+
+
+/* HEADER */
+
+.pour-community__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 45px;
+}
+
+.pour-community__heading {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+}
+
+
+/* FLÈCHES */
+
+.pour-community__controls {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+.pour-community__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 1px solid #d7d7d7;
+
+  background: transparent;
+  color: #111111;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.pour-community__arrow:hover {
+  background: #111111;
+  color: #ffffff;
+
+  border-color: #111111;
+}
+
+
+/* CARROUSEL */
+
+.pour-community__viewport {
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.pour-community__track {
+  display: flex;
+
+  width: 100%;
+
+  transition:
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform;
+}
+
+.pour-community__slide {
+  flex: 0 0 100%;
+
+  width: 100%;
+}
+
+
+/* DEUX IMAGES */
+
+.pour-community__layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 0.78fr)
+    minmax(0, 1.22fr);
+
+  gap: 18px;
+
+  align-items: start;
+}
+
+
+/* PRODUIT */
+
+.pour-community__product {
+  min-width: 0;
+}
+
+.pour-community__product-link {
+  display: block;
+}
+
+.pour-community__product-media {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+
+  background: #f4f3f0;
+}
+
+.pour-community__product-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  transition:
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pour-community__product-link:hover
+.pour-community__product-image {
+  transform: scale(1.018);
+}
+
+
+/* PASTILLE */
+
+.pour-community__hotspot {
+  position: absolute;
+
+  left: var(--hotspot-x);
+  top: var(--hotspot-y);
+
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  pointer-events: none;
+}
+
+.pour-community__hotspot-core {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #111111;
+}
+
+
+/* INFOS PRODUIT */
+
+.pour-community__product-info {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 20px;
+
+  padding-top: 12px;
+}
+
+.pour-community__product-title,
+.pour-community__product-price {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.25;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+.pour-community__product-price {
+  white-space: nowrap;
+}
+
+
+/* PHOTO CLIENT */
+
+.pour-community__ugc {
+  position: relative;
+
+  min-width: 0;
+}
+
+.pour-community__ugc-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.pour-community__ugc-placeholder {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  aspect-ratio: 4 / 5;
+
+  background: #f4f3f0;
+
+  font-size: 11px;
+
+  letter-spacing: 0.06em;
+}
+
+.pour-community__customer {
+  margin-top: 12px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .pour-community {
+    padding: 60px 16px 80px;
+  }
+
+  .pour-community__header {
+    margin-bottom: 28px;
+  }
+
+  .pour-community__heading {
+    font-size: 17px;
+  }
+
+  .pour-community__arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .pour-community__layout {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+}
