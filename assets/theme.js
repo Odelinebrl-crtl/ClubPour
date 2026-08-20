@@ -491,3 +491,144 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   HERO VÊTEMENTS — SLIDER
+========================================================= */
+
+function initClothingHero() {
+
+  document
+    .querySelectorAll('[data-clothing-hero]')
+    .forEach((hero) => {
+
+      if (hero.dataset.initialized === 'true') return;
+
+      hero.dataset.initialized = 'true';
+
+
+      const slides = Array.from(
+        hero.querySelectorAll('[data-clothing-slide]')
+      );
+
+      const dots = Array.from(
+        hero.querySelectorAll('[data-clothing-dot]')
+      );
+
+
+      if (!slides.length) return;
+
+
+      let currentIndex = 0;
+      let interval = null;
+
+
+      const autoplay =
+        hero.dataset.autoplay === 'true';
+
+      const speed =
+        parseInt(hero.dataset.speed, 10) || 5000;
+
+
+      function showSlide(index) {
+
+        currentIndex = index;
+
+
+        slides.forEach((slide, slideIndex) => {
+
+          slide.classList.toggle(
+            'is-active',
+            slideIndex === currentIndex
+          );
+
+        });
+
+
+        dots.forEach((dot, dotIndex) => {
+
+          dot.classList.toggle(
+            'is-active',
+            dotIndex === currentIndex
+          );
+
+        });
+
+      }
+
+
+      function nextSlide() {
+
+        const nextIndex =
+          (currentIndex + 1) % slides.length;
+
+        showSlide(nextIndex);
+
+      }
+
+
+      function startAutoplay() {
+
+        if (!autoplay || slides.length <= 1) return;
+
+        clearInterval(interval);
+
+        interval = setInterval(
+          nextSlide,
+          speed
+        );
+
+      }
+
+
+      dots.forEach((dot, index) => {
+
+        dot.addEventListener('click', () => {
+
+          showSlide(index);
+
+          startAutoplay();
+
+        });
+
+      });
+
+
+      showSlide(0);
+
+      startAutoplay();
+
+    });
+
+}
+
+
+/* INITIALISATION */
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    initClothingHero
+  );
+
+} else {
+
+  initClothingHero();
+
+}
+
+
+document.addEventListener(
+  'shopify:section:load',
+  () => {
+
+    document
+      .querySelectorAll('[data-clothing-hero]')
+      .forEach((hero) => {
+        hero.dataset.initialized = 'false';
+      });
+
+    initClothingHero();
+
+  }
+);
