@@ -780,15 +780,7 @@ a {
 }
 
 /* ================================
-   PRODUCT IMAGE + HOVER
-================================ */
-
-/* ================================
-   PRODUCT IMAGE + HOVER
-================================ */
-
-/* ================================
-   PRODUCT IMAGE — HOVER FLUIDE
+   PRODUCT IMAGE — HOVER SIMPLE
 ================================ */
 
 .pour-product__media {
@@ -798,31 +790,26 @@ a {
   background: transparent;
 }
 
-.pour-product__image--primary,
-.pour-product__image--secondary {
-  display: block;
-  width: 100%;
-  height: auto;
+/* IMAGE PRINCIPALE */
 
-  transition:
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-/* Image principale */
 .pour-product__image--primary {
   position: relative;
   z-index: 1;
 
-  transform: scale(1);
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
-/* Image secondaire */
+/* DEUXIÈME IMAGE */
+
 .pour-product__image--secondary {
   position: absolute !important;
-  top: 0;
-  left: 0;
+  inset: 0;
 
   z-index: 2;
+
+  display: block;
 
   width: 100% !important;
   height: 100% !important;
@@ -830,21 +817,17 @@ a {
   object-fit: cover;
   object-position: center;
 
-  clip-path: inset(100% 0 0 0);
+  opacity: 0;
 
   pointer-events: none;
 
-  transform: scale(1.015);
-
-  transition:
-    clip-path 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 0.35s ease;
 }
 
-/* Hover */
+/* HOVER */
+
 .pour-product:hover .pour-product__image--secondary {
-  clip-path: inset(0 0 0 0);
-  transform: scale(1);
+  opacity: 1;
 }
 /* léger zoom au survol */
 
