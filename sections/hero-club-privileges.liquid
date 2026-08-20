@@ -416,7 +416,99 @@
   opacity: 0.85;
 }
 
+/* =========================================================
+   CLUB — CHAMP EMAIL GLASS / BLUR
+========================================================= */
 
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
+  position: relative;
+
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+
+  background: transparent;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+}
+
+
+/* VRAIE COUCHE DE VERRE */
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 0;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(18px) saturate(110%);
+  -webkit-backdrop-filter: blur(18px) saturate(110%);
+
+  pointer-events: none;
+}
+
+
+/* INPUT AU-DESSUS DU VERRE */
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email {
+  position: relative;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0 16px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+
+  color: #ffffff;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+
+  box-shadow: none !important;
+
+  text-transform: uppercase;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email::placeholder {
+  color: rgba(255, 255, 255, 0.78);
+
+  opacity: 1;
+}
+
+
+/* AU CLIC DANS LE CHAMP */
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within::before {
+  background: rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(22px) saturate(115%);
+  -webkit-backdrop-filter: blur(22px) saturate(115%);
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within {
+  border-color: #ffffff;
+}
 /* =========================================================
    MOBILE
 ========================================================= */
