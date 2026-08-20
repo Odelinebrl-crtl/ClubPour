@@ -70,23 +70,31 @@ function initPourQuoteReveal() {
       const rect = quote.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-     const inView =
-  rect.top < viewportHeight * 0.88 &&
-  rect.bottom > viewportHeight * 0.05;
+      /* DESCENTE :
+         apparition seulement quand le haut de la section
+         arrive à environ 58% de l'écran
+      */
+      if (
+        scrollingDown &&
+        rect.top < viewportHeight * 0.58 &&
+        rect.bottom > viewportHeight * 0.25
+      ) {
+        quote.classList.add('is-visible');
+        quote.classList.remove('is-hidden-up');
+      }
 
-     if (scrollingDown && inView) {
-  quote.classList.add('is-visible');
-  quote.classList.remove('is-hidden-up');
-}
-
-/* 
-  En remontant, on ne masque la citation
-  que lorsqu'elle est presque sortie par le haut.
-*/
-if (!scrollingDown && rect.bottom < viewportHeight * 0.25) {
-  quote.classList.remove('is-visible');
-  quote.classList.add('is-hidden-up');
-}
+      /* REMONTÉE :
+         disparition seulement quand le haut de la section
+         remonte vers environ 28% de l'écran
+      */
+      if (
+        !scrollingDown &&
+        rect.top > viewportHeight * 0.28 &&
+        rect.top < viewportHeight * 0.65
+      ) {
+        quote.classList.remove('is-visible');
+        quote.classList.add('is-hidden-up');
+      }
     });
 
     lastScrollY = currentScrollY;
