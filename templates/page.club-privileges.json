@@ -9,10 +9,6 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {}
-    },
     "hero_club_privileges_tWQjQY": {
       "type": "hero-club-privileges",
       "name": "Hero Club Privilèges",
@@ -28,7 +24,6 @@
     }
   },
   "order": [
-    "main",
     "hero_club_privileges_tWQjQY"
   ]
 }
