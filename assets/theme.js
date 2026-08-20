@@ -83,7 +83,7 @@ function initPourQuoteReveal() {
   En remontant, on ne masque la citation
   que lorsqu'elle est presque sortie par le haut.
 */
-if (!scrollingDown && rect.bottom < viewportHeight * 0.35) {
+if (!scrollingDown && rect.bottom < viewportHeight * 0.20) {
   quote.classList.remove('is-visible');
   quote.classList.add('is-hidden-up');
 }
