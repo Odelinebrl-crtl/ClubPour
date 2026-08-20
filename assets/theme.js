@@ -492,7 +492,8 @@ document.addEventListener(
   }
 );
 /* =========================================================
-   HERO VÊTEMENTS — SLIDER ÉDITORIAL DIRECTIONNEL
+   HERO VÊTEMENTS
+   SLIDER DIRECTIONNEL + TEXTE + PARALLAX
 ========================================================= */
 
 function initClothingHero() {
@@ -500,6 +501,11 @@ function initClothingHero() {
   document
     .querySelectorAll('[data-clothing-hero]')
     .forEach((hero) => {
+
+
+      /*
+        Évite les doubles listeners.
+      */
 
       if (hero.dataset.clothingReady === 'true') {
         return;
@@ -509,66 +515,115 @@ function initClothingHero() {
 
 
       const slides = Array.from(
-        hero.querySelectorAll('[data-clothing-slide]')
+        hero.querySelectorAll(
+          '[data-clothing-slide]'
+        )
       );
+
 
       const dots = Array.from(
-        hero.querySelectorAll('[data-clothing-dot]')
+        hero.querySelectorAll(
+          '[data-clothing-dot]'
+        )
       );
 
 
-      if (!slides.length) return;
+      const images = Array.from(
+        hero.querySelectorAll(
+          '.clothing-hero__image'
+        )
+      );
+
+
+      if (!slides.length) {
+        return;
+      }
 
 
       let currentIndex = 0;
+
       let isAnimating = false;
+
       let autoplayTimer = null;
+
+      let parallaxTicking = false;
 
 
       const autoplayEnabled =
         hero.dataset.autoplay !== 'false';
 
+
       const autoplayDelay =
         Number(hero.dataset.speed) || 4000;
 
-      const slideDuration = 900;
+
+      /*
+        Doit correspondre au 0.82s du CSS.
+      */
+
+      const slideDuration = 820;
 
 
       /* =====================================================
          ÉTAT INITIAL
       ===================================================== */
 
-      slides.forEach((slide, index) => {
+      slides.forEach(
+        (slide, index) => {
 
-        slide.classList.remove(
-          'is-active',
-          'is-entering',
-          'is-from-right',
-          'is-from-left',
-          'is-moving',
-          'is-text-visible'
-        );
-
-        if (index === 0) {
-
-          slide.classList.add(
+          slide.classList.remove(
             'is-active',
+            'is-entering',
+            'is-from-right',
+            'is-from-left',
+            'is-moving',
             'is-text-visible'
           );
 
+
+          if (index === 0) {
+
+            slide.classList.add(
+              'is-active',
+              'is-text-visible'
+            );
+
+          }
+
         }
+      );
 
-      });
+
+      dots.forEach(
+        (dot, index) => {
+
+          dot.classList.toggle(
+            'is-active',
+            index === 0
+          );
+
+        }
+      );
 
 
-      dots.forEach((dot, index) => {
+      /* =====================================================
+         PAGINATION — MISE À JOUR IMMÉDIATE
+      ===================================================== */
 
-        dot.classList.toggle(
-          'is-active',
-          index === 0
+      function updatePagination(index) {
+
+        dots.forEach(
+          (dot, dotIndex) => {
+
+            dot.classList.toggle(
+              'is-active',
+              dotIndex === index
+            );
+
+          }
         );
 
-      });
+      }
 
 
       /* =====================================================
@@ -577,9 +632,15 @@ function initClothingHero() {
 
       function stopAutoplay() {
 
-        if (!autoplayTimer) return;
+        if (!autoplayTimer) {
+          return;
+        }
 
-        window.clearInterval(autoplayTimer);
+
+        window.clearInterval(
+          autoplayTimer
+        );
+
 
         autoplayTimer = null;
 
@@ -590,6 +651,7 @@ function initClothingHero() {
 
         stopAutoplay();
 
+
         if (
           !autoplayEnabled ||
           slides.length < 2
@@ -598,17 +660,28 @@ function initClothingHero() {
         }
 
 
-        autoplayTimer = window.setInterval(() => {
+        autoplayTimer =
+          window.setInterval(
+            () => {
 
-          const nextIndex =
-            (currentIndex + 1) % slides.length;
+              if (isAnimating) {
+                return;
+              }
 
-          goToSlide(
-            nextIndex,
-            'next'
+
+              const nextIndex =
+                (currentIndex + 1) %
+                slides.length;
+
+
+              goToSlide(
+                nextIndex,
+                'next'
+              );
+
+            },
+            autoplayDelay
           );
-
-        }, autoplayDelay);
 
       }
 
@@ -617,7 +690,10 @@ function initClothingHero() {
          CHANGEMENT DE SLIDE
       ===================================================== */
 
-      function goToSlide(newIndex, direction) {
+      function goToSlide(
+        newIndex,
+        direction
+      ) {
 
         if (
           isAnimating ||
@@ -633,22 +709,35 @@ function initClothingHero() {
         const oldSlide =
           slides[currentIndex];
 
+
         const newSlide =
           slides[newIndex];
 
 
-        /* ===============================================
-           MASQUE LE TEXTE ACTUEL
-        =============================================== */
+        /*
+          IMPORTANT :
+
+          La pagination change immédiatement,
+          dès le clic / début de transition.
+        */
+
+        updatePagination(
+          newIndex
+        );
+
+
+        /*
+          Le texte actuel disparaît.
+        */
 
         oldSlide.classList.remove(
           'is-text-visible'
         );
 
 
-        /* ===============================================
-           NETTOIE LA NOUVELLE SLIDE
-        =============================================== */
+        /*
+          Remise à zéro du nouveau.
+        */
 
         newSlide.classList.remove(
           'is-active',
@@ -660,15 +749,9 @@ function initClothingHero() {
         );
 
 
-        /* ===============================================
-           POSITION DE DÉPART
-
-           NEXT :
-           la nouvelle image arrive de droite.
-
-           PREV :
-           elle revient depuis la gauche.
-        =============================================== */
+        /*
+          Position initiale de la "page".
+        */
 
         newSlide.classList.add(
           'is-entering',
@@ -679,16 +762,16 @@ function initClothingHero() {
 
 
         /*
-          Force le navigateur à enregistrer
-          cette position avant la transition.
+          Force le navigateur
+          à enregistrer la position.
         */
 
         void newSlide.offsetWidth;
 
 
-        /* ===============================================
-           ACTIVE LA TRANSITION
-        =============================================== */
+        /*
+          Active la transition.
+        */
 
         newSlide.classList.add(
           'is-moving'
@@ -696,145 +779,239 @@ function initClothingHero() {
 
 
         /*
-          Deux frames permettent au navigateur
-          de bien distinguer l'état de départ
-          de l'état final.
+          Frame suivante :
+          on retire le translateX.
+          Le CSS anime alors vers 0.
         */
 
-        window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(
+          () => {
 
-          window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(
+              () => {
+
+                newSlide.classList.remove(
+                  'is-from-right',
+                  'is-from-left'
+                );
+
+              }
+            );
+
+          }
+        );
+
+
+        /* ===================================================
+           IMAGE TERMINÉE
+        =================================================== */
+
+        window.setTimeout(
+          () => {
+
+            oldSlide.classList.remove(
+              'is-active'
+            );
+
 
             newSlide.classList.remove(
-              'is-from-right',
-              'is-from-left'
+              'is-entering',
+              'is-moving'
             );
 
-          });
-
-        });
-
-
-        /* ===============================================
-           FIN DE LA TRANSITION IMAGE
-        =============================================== */
-
-        window.setTimeout(() => {
-
-          /*
-            On retire l'ancienne seulement lorsque
-            la nouvelle la recouvre complètement.
-          */
-
-          oldSlide.classList.remove(
-            'is-active'
-          );
-
-
-          newSlide.classList.remove(
-            'is-entering',
-            'is-moving'
-          );
-
-
-          newSlide.classList.add(
-            'is-active'
-          );
-
-
-          currentIndex = newIndex;
-
-
-          /* =============================================
-             PAGINATION
-          ============================================= */
-
-          dots.forEach((dot, dotIndex) => {
-
-            dot.classList.toggle(
-              'is-active',
-              dotIndex === currentIndex
-            );
-
-          });
-
-
-          /* =============================================
-             TEXTE
-
-             Il apparaît seulement APRÈS
-             l'installation complète de l'image.
-          ============================================= */
-
-          window.setTimeout(() => {
 
             newSlide.classList.add(
-              'is-text-visible'
+              'is-active'
             );
 
-            isAnimating = false;
 
-          }, 120);
+            currentIndex =
+              newIndex;
 
 
-        }, slideDuration);
+            /*
+              Le texte apparaît APRÈS l'image.
+            */
+
+            window.setTimeout(
+              () => {
+
+                newSlide.classList.add(
+                  'is-text-visible'
+                );
+
+
+                isAnimating = false;
+
+              },
+              90
+            );
+
+          },
+          slideDuration
+        );
 
       }
 
 
       /* =====================================================
-         CLIC SUR 01 / 02 / 03 / ...
+         CLIC SUR LES NUMÉROS
       ===================================================== */
 
-      dots.forEach((dot, index) => {
+      dots.forEach(
+        (dot, index) => {
 
-        dot.addEventListener(
-          'click',
-          () => {
+          dot.addEventListener(
+            'click',
+            () => {
 
-            if (
-              index === currentIndex ||
-              isAnimating
-            ) {
-              return;
+              if (
+                index === currentIndex ||
+                isAnimating
+              ) {
+                return;
+              }
+
+
+              /*
+                Numéro suivant :
+                droite → gauche.
+
+                Numéro précédent :
+                gauche → droite.
+              */
+
+              const direction =
+                index > currentIndex
+                  ? 'next'
+                  : 'prev';
+
+
+              /*
+                Pagination immédiatement.
+              */
+
+              updatePagination(
+                index
+              );
+
+
+              goToSlide(
+                index,
+                direction
+              );
+
+
+              /*
+                Nouveau cycle de 4 secondes
+                après le clic manuel.
+              */
+
+              startAutoplay();
+
             }
+          );
 
-
-            /*
-              Si le numéro est après l'actuel :
-              arrivée depuis la droite.
-
-              Si le numéro est avant :
-              arrivée depuis la gauche.
-            */
-
-            const direction =
-              index > currentIndex
-                ? 'next'
-                : 'prev';
-
-
-            goToSlide(
-              index,
-              direction
-            );
-
-
-            /*
-              Après une interaction manuelle,
-              on repart sur un cycle complet.
-            */
-
-            startAutoplay();
-
-          }
-        );
-
-      });
+        }
+      );
 
 
       /* =====================================================
-         LANCEMENT
+         PARALLAX
+         Même philosophie que ton Hero Home
+      ===================================================== */
+
+      function updateParallax() {
+
+        /*
+          Comme le Hero est au début de la page,
+          on reprend directement le scrollY.
+        */
+
+        const scrollY =
+          window.scrollY;
+
+
+        const heroHeight =
+          hero.offsetHeight;
+
+
+        /*
+          Seulement tant que le Hero
+          est encore concerné.
+        */
+
+        if (
+          scrollY <=
+          heroHeight
+        ) {
+
+          const translateY =
+            scrollY * 0.22;
+
+
+          /*
+            On déplace TOUTES les images.
+
+            Ainsi la slide suivante est déjà
+            au bon niveau au moment où
+            elle entre à l'écran.
+          */
+
+          images.forEach(
+            (image) => {
+
+              image.style.setProperty(
+                '--clothing-parallax',
+                `${translateY}px`
+              );
+
+            }
+          );
+
+        }
+
+
+        parallaxTicking =
+          false;
+
+      }
+
+
+      function onScroll() {
+
+        if (
+          parallaxTicking
+        ) {
+          return;
+        }
+
+
+        parallaxTicking =
+          true;
+
+
+        window.requestAnimationFrame(
+          updateParallax
+        );
+
+      }
+
+
+      window.addEventListener(
+        'scroll',
+        onScroll,
+        {
+          passive: true
+        }
+      );
+
+
+      updateParallax();
+
+
+      /* =====================================================
+         START
       ===================================================== */
 
       startAutoplay();
@@ -845,10 +1022,13 @@ function initClothingHero() {
 
 
 /* =========================================================
-   CHARGEMENT NORMAL
+   CHARGEMENT
 ========================================================= */
 
-if (document.readyState === 'loading') {
+if (
+  document.readyState ===
+  'loading'
+) {
 
   document.addEventListener(
     'DOMContentLoaded',
@@ -863,7 +1043,7 @@ if (document.readyState === 'loading') {
 
 
 /* =========================================================
-   SHOPIFY THEME EDITOR
+   SHOPIFY EDITOR
 ========================================================= */
 
 document.addEventListener(
@@ -874,12 +1054,14 @@ document.addEventListener(
       .querySelectorAll(
         '[data-clothing-hero]'
       )
-      .forEach((hero) => {
+      .forEach(
+        (hero) => {
 
-        hero.dataset.clothingReady =
-          'false';
+          hero.dataset.clothingReady =
+            'false';
 
-      });
+        }
+      );
 
 
     initClothingHero();
