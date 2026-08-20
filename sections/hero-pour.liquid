@@ -44,28 +44,53 @@
 
   <div class="pour-hero__content pour-hero__content--{{ section.settings.content_position }}">
 
-    {% if section.settings.eyebrow != blank %}
-      <p class="pour-hero__eyebrow">
-        {{ section.settings.eyebrow }}
-      </p>
-    {% endif %}
+  {% if section.settings.eyebrow != blank %}
+    <p class="pour-hero__eyebrow">
+      {{ section.settings.eyebrow }}
+    </p>
+  {% endif %}
 
-    {% if section.settings.heading != blank %}
-      <h1 class="pour-hero__heading">
-        {{ section.settings.heading }}
-      </h1>
-    {% endif %}
+  {% if section.settings.heading != blank %}
+    <h1 class="pour-hero__heading pour-hero__heading--preorder">
+      {{ section.settings.heading }}
+    </h1>
+  {% endif %}
 
-    {% if section.settings.button_label != blank %}
-      <a
-        class="pour-hero__button"
-        href="{{ section.settings.button_link | default: routes.all_products_collection_url }}"
-      >
-        {{ section.settings.button_label }}
-      </a>
-    {% endif %}
+  <form
+    class="pour-hero__preorder"
+    method="post"
+    action="/contact#pour-preorder"
+    accept-charset="UTF-8"
+    id="pour-preorder"
+  >
+    <input type="hidden" name="form_type" value="customer">
+    <input type="hidden" name="utf8" value="✓">
 
-  </div>
+    <input
+      class="pour-hero__email"
+      type="email"
+      name="contact[email]"
+      placeholder="VOTRE EMAIL"
+      required
+      autocomplete="email"
+      aria-label="Votre email"
+    >
+
+    <button
+      class="pour-hero__submit"
+      type="submit"
+    >
+      {{ section.settings.button_label }}
+    </button>
+  </form>
+
+  {% if section.settings.launch_text != blank %}
+    <p class="pour-hero__launch">
+      {{ section.settings.launch_text }}
+    </p>
+  {% endif %}
+
+</div>
 </section>
 
 {% schema %}
