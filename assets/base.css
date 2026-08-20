@@ -2703,19 +2703,19 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   IMAGE HERO — BASE PARALLAX
+   HERO VÊTEMENTS — IMAGE + PARALLAX
 ========================================================= */
 
 .clothing-hero__image {
   position: absolute;
 
-  top: -6%;
+  top: -8%;
   left: -4%;
 
   display: block;
 
   width: 108%;
-  height: 112%;
+  height: 116%;
 
   object-fit: cover;
   object-position: center;
@@ -2771,7 +2771,7 @@ transform: translateX(-15px);
 ========================================================= */
 
 /* =========================================================
-   TEXTE — ENTRÉE FORTE DU HAUT VERS LE BAS
+   HERO VÊTEMENTS — ANIMATION TEXTE
 ========================================================= */
 
 .clothing-hero__content {
@@ -2788,34 +2788,36 @@ transform: translateX(-15px);
 
   text-align: left;
 
-  /* ÉTAT INITIAL */
+  /*
+    État initial :
+    le bloc est réellement plus haut
+    et complètement invisible.
+  */
+
   opacity: 0;
 
-  transform: translate3d(0, -65px, 0);
+  transform: translate3d(0, -90px, 0);
 
-  clip-path: inset(0 0 100% 0);
+  /*
+    Pas de clip-path, pas de rebond,
+    juste une vraie descente propre.
+  */
 
   transition:
-    opacity 0.55s ease,
-    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
-    clip-path 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity 0.7s ease,
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
 
-  will-change:
-    opacity,
-    transform,
-    clip-path;
+  will-change: opacity, transform;
 }
 
 
-/* TEXTE VISIBLE */
+/* ÉTAT VISIBLE */
 
 .clothing-hero__slide.is-text-visible
 .clothing-hero__content {
   opacity: 1;
 
   transform: translate3d(0, 0, 0);
-
-  clip-path: inset(0 0 0 0);
 }
 
 
