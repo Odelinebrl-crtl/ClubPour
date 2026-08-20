@@ -2250,11 +2250,11 @@ transform: translateX(-15px);
 }
 
 .pour-community__arrow--prev {
-  left: -90px;
+  left: 20px;
 }
 
 .pour-community__arrow--next {
-  right: -90px;
+  right: 20px;
 }
 
 
