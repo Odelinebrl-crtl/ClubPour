@@ -3,168 +3,181 @@
   class="pour-community"
   data-community-slider
 >
- <div class="pour-community__header">
 
-  <h2 class="pour-community__heading">
-    {{ section.settings.heading }}
-  </h2>
-
-</div>
+  <div class="pour-community__header">
+    {% if section.settings.heading != blank %}
+      <h2 class="pour-community__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+  </div>
 
 
   <div class="pour-community__carousel">
 
-  <button
-    type="button"
-    class="pour-community__arrow pour-community__arrow--prev"
-    data-community-prev
-    aria-label="Photo précédente"
-  >
-    ←
-  </button>
-
-  <div class="pour-community__viewport">
-
-    <!-- TON TRACK ET TES SLIDES RESTENT ICI -->
-
-  </div>
-
-  <button
-    type="button"
-    class="pour-community__arrow pour-community__arrow--next"
-    data-community-next
-    aria-label="Photo suivante"
-  >
-    →
-  </button>
-
-</div>
-
-    <div
-      class="pour-community__track"
-      data-community-track
+    <!-- FLÈCHE GAUCHE -->
+    <button
+      type="button"
+      class="pour-community__arrow pour-community__arrow--prev"
+      data-community-prev
+      aria-label="Précédent"
     >
-
-      {% for block in section.blocks %}
-
-        {% assign featured_product = block.settings.product %}
-
-        <article
-          class="pour-community__slide"
-          {{ block.shopify_attributes }}
-        >
-
-          <div class="pour-community__layout">
-
-            <!-- PRODUIT -->
-            <div class="pour-community__product">
-
-              {% if featured_product != blank %}
-
-                <a
-                  href="{{ featured_product.url }}"
-                  class="pour-community__product-link"
-                >
-
-                  <div class="pour-community__product-media">
-
-                    {% if block.settings.product_image != blank %}
-
-                      {{
-                        block.settings.product_image
-                        | image_url: width: 1400
-                        | image_tag:
-                          class: 'pour-community__product-image',
-                          loading: 'lazy'
-                      }}
-
-                    {% elsif featured_product.featured_image != blank %}
-
-                      {{
-                        featured_product.featured_image
-                        | image_url: width: 1400
-                        | image_tag:
-                          class: 'pour-community__product-image',
-                          loading: 'lazy',
-                          alt: featured_product.title
-                      }}
-
-                    {% endif %}
+      ←
+    </button>
 
 
-                    <!-- PASTILLE -->
-                    <span
-                      class="pour-community__hotspot"
-                      style="
-                        --hotspot-x: {{ block.settings.hotspot_x }}%;
-                        --hotspot-y: {{ block.settings.hotspot_y }}%;
-                      "
-                    >
-                      <span class="pour-community__hotspot-core"></span>
+    <!-- CARROUSEL -->
+    <div class="pour-community__viewport">
+
+      <div
+        class="pour-community__track"
+        data-community-track
+      >
+
+        {% for block in section.blocks %}
+
+          {% assign featured_product = block.settings.product %}
+
+          <article
+            class="pour-community__slide"
+            {{ block.shopify_attributes }}
+          >
+
+            <div class="pour-community__layout">
+
+
+              <!-- =========================
+                   PRODUIT
+              ========================== -->
+
+              <div class="pour-community__product">
+
+                {% if featured_product != blank %}
+
+                  <a
+                    href="{{ featured_product.url }}"
+                    class="pour-community__product-link"
+                  >
+
+                    <div class="pour-community__product-media">
+
+                      {% if block.settings.product_image != blank %}
+
+                        {{
+                          block.settings.product_image
+                          | image_url: width: 1000
+                          | image_tag:
+                            class: 'pour-community__product-image',
+                            loading: 'lazy'
+                        }}
+
+                      {% elsif featured_product.featured_image != blank %}
+
+                        {{
+                          featured_product.featured_image
+                          | image_url: width: 1000
+                          | image_tag:
+                            class: 'pour-community__product-image',
+                            loading: 'lazy',
+                            alt: featured_product.title
+                        }}
+
+                      {% endif %}
+
+
+                      <!-- PASTILLE -->
+
+                      <span
+                        class="pour-community__hotspot"
+                        style="
+                          --hotspot-x: {{ block.settings.hotspot_x }}%;
+                          --hotspot-y: {{ block.settings.hotspot_y }}%;
+                        "
+                      >
+                        <span class="pour-community__hotspot-core"></span>
+                      </span>
+
+                    </div>
+
+                  </a>
+
+
+                  <!-- NOM + PRIX -->
+
+                  <a
+                    href="{{ featured_product.url }}"
+                    class="pour-community__product-info"
+                  >
+
+                    <span class="pour-community__product-title">
+                      {{ featured_product.title }}
                     </span>
 
+                    <span class="pour-community__product-price">
+                      {{ featured_product.price | money }}
+                    </span>
+
+                  </a>
+
+                {% endif %}
+
+              </div>
+
+
+              <!-- =========================
+                   PHOTO COMMUNAUTÉ
+              ========================== -->
+
+              <div class="pour-community__ugc">
+
+                {% if block.settings.customer_image != blank %}
+
+                  {{
+                    block.settings.customer_image
+                    | image_url: width: 1000
+                    | image_tag:
+                      class: 'pour-community__ugc-image',
+                      loading: 'lazy'
+                  }}
+
+                {% else %}
+
+                  <div class="pour-community__ugc-placeholder">
+                    PHOTO CLIENT
                   </div>
 
-                </a>
+                {% endif %}
 
 
-                <a
-                  href="{{ featured_product.url }}"
-                  class="pour-community__product-info"
-                >
+                {% if block.settings.customer_name != blank %}
+                  <div class="pour-community__customer">
+                    {{ block.settings.customer_name }}
+                  </div>
+                {% endif %}
 
-                  <span class="pour-community__product-title">
-                    {{ featured_product.title }}
-                  </span>
+              </div>
 
-                  <span class="pour-community__product-price">
-                    {{ featured_product.price | money }}
-                  </span>
-
-                </a>
-
-              {% endif %}
 
             </div>
 
+          </article>
 
-            <!-- PHOTO CLIENT -->
-            <div class="pour-community__ugc">
+        {% endfor %}
 
-              {% if block.settings.customer_image != blank %}
-
-                {{
-                  block.settings.customer_image
-                  | image_url: width: 1800
-                  | image_tag:
-                    class: 'pour-community__ugc-image',
-                    loading: 'lazy'
-                }}
-
-              {% else %}
-
-                <div class="pour-community__ugc-placeholder">
-                  PHOTO CLIENT
-                </div>
-
-              {% endif %}
-
-
-              {% if block.settings.customer_name != blank %}
-                <div class="pour-community__customer">
-                  {{ block.settings.customer_name }}
-                </div>
-              {% endif %}
-
-            </div>
-
-          </div>
-
-        </article>
-
-      {% endfor %}
+      </div>
 
     </div>
+
+
+    <!-- FLÈCHE DROITE -->
+    <button
+      type="button"
+      class="pour-community__arrow pour-community__arrow--next"
+      data-community-next
+      aria-label="Suivant"
+    >
+      →
+    </button>
 
   </div>
 
