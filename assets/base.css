@@ -2498,6 +2498,29 @@ transform: translateX(-15px);
 
 }
 /* =========================================================
+   PORTÉ PAR VOUS — PETIT TITRE
+========================================================= */
+
+.pour-community__eyebrow {
+  width: 100%;
+
+  margin: 0 0 10px;
+  padding: 0;
+
+  text-align: center;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.5);
+}
+/* =========================================================
    VIDEO PLEIN ÉCRAN — POUR
 ========================================================= */
 
