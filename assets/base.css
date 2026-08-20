@@ -2498,27 +2498,44 @@ transform: translateX(-15px);
 
 }
 /* =========================================================
-   PORTÉ PAR VOUS — PETIT TITRE
+   PORTÉ PAR VOUS — HEADER
 ========================================================= */
 
+.pour-community__header {
+  width: 100% !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+
+  margin-bottom: 52px !important;
+}
+
 .pour-community__eyebrow {
-  width: 100%;
+  display: block !important;
 
-  margin: 0 0 10px;
-  padding: 0;
+  margin: 0 0 10px !important;
+  padding: 0 !important;
 
-  text-align: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px !important;
+  font-weight: 300 !important;
+  line-height: 1 !important;
 
-  font-size: 9px;
-  font-weight: 300;
-  line-height: 1;
+  letter-spacing: 0.22em !important;
+  text-transform: uppercase !important;
 
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  color: rgba(17, 17, 17, 0.5) !important;
+}
 
-  color: rgba(17, 17, 17, 0.5);
+.pour-community__heading {
+  margin: 0 !important;
+
+  text-align: center !important;
 }
 /* =========================================================
    VIDEO PLEIN ÉCRAN — POUR
