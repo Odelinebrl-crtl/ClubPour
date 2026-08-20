@@ -278,7 +278,7 @@ document.addEventListener(
   initPourVideoParallax
 );
 /* =========================================================
-   PORTÉ PAR VOUS — CAROUSEL CROSSFADE
+   PORTÉ PAR VOUS — CAROUSEL ANIMÉ
 ========================================================= */
 
 function initPourCommunitySlider() {
@@ -312,10 +312,9 @@ function initPourCommunitySlider() {
 
     slides.forEach((slide, index) => {
       slide.classList.toggle('is-active', index === 0);
-      slide.classList.remove('is-leaving');
     });
 
-    const goToSlide = (newIndex) => {
+    const goToSlide = (newIndex, direction) => {
       if (animating) return;
       if (newIndex === current) return;
 
@@ -324,19 +323,41 @@ function initPourCommunitySlider() {
       const oldSlide = slides[current];
       const newSlide = slides[newIndex];
 
-      oldSlide.classList.add('is-leaving');
-      newSlide.classList.add('is-active');
+      const leavingClass =
+        direction === 'next'
+          ? 'is-leaving-left'
+          : 'is-leaving-right';
+
+      const enteringClass =
+        direction === 'next'
+          ? 'is-entering-right'
+          : 'is-entering-left';
+
+      oldSlide.classList.add(leavingClass);
+
+      newSlide.classList.add(
+        'is-active',
+        enteringClass
+      );
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          newSlide.classList.remove(enteringClass);
+        });
+      });
 
       window.setTimeout(() => {
         oldSlide.classList.remove(
           'is-active',
-          'is-leaving'
+          'is-leaving-left',
+          'is-leaving-right'
         );
 
         current = newIndex;
         animating = false;
-      }, 550);
+      }, 650);
     };
+
 
     if (next) {
       next.addEventListener('click', () => {
@@ -345,9 +366,10 @@ function initPourCommunitySlider() {
             ? 0
             : current + 1;
 
-        goToSlide(newIndex);
+        goToSlide(newIndex, 'next');
       });
     }
+
 
     if (previous) {
       previous.addEventListener('click', () => {
@@ -356,7 +378,7 @@ function initPourCommunitySlider() {
             ? slides.length - 1
             : current - 1;
 
-        goToSlide(newIndex);
+        goToSlide(newIndex, 'prev');
       });
     }
   });
@@ -374,20 +396,14 @@ if (document.readyState === 'loading') {
   initPourCommunitySlider();
 }
 
-
-/* SHOPIFY EDITOR */
-
 document.addEventListener(
   'shopify:section:load',
-  (event) => {
-    const section = event.target;
-
-    if (
-      section &&
-      section.matches?.('[data-community-slider]')
-    ) {
-      section.dataset.initialized = 'false';
-    }
+  () => {
+    document
+      .querySelectorAll('[data-community-slider]')
+      .forEach((slider) => {
+        slider.dataset.initialized = 'false';
+      });
 
     initPourCommunitySlider();
   }
