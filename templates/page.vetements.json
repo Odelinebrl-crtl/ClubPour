@@ -32,9 +32,86 @@
         "autoplay": true,
         "autoplay_speed": 5
       }
+    },
+    "vetements_grid_Aa73e7": {
+      "type": "vetements-grid",
+      "blocks": {
+        "product_XRT6it": {
+          "type": "product",
+          "settings": {
+            "product": "cypres-italien",
+            "image_primary": "shopify://shop_images/7.png",
+            "image_hover": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
+          }
+        },
+        "product_zhD6np": {
+          "type": "product",
+          "settings": {
+            "product": "drop-001-candy-del-mar",
+            "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
+            "image_hover": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
+          }
+        },
+        "product_mA93kj": {
+          "type": "product",
+          "settings": {
+            "product": "club-pour-test",
+            "image_primary": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
+            "image_hover": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
+          }
+        },
+        "product_3pTwxb": {
+          "type": "product",
+          "settings": {
+            "product": "riviera",
+            "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
+            "image_hover": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
+          }
+        },
+        "product_bmzijL": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_CwqYrC": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_ctQr3W": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        },
+        "product_NzcP69": {
+          "type": "product",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_XRT6it",
+        "product_zhD6np",
+        "product_mA93kj",
+        "product_3pTwxb",
+        "product_bmzijL",
+        "product_CwqYrC",
+        "product_ctQr3W",
+        "product_NzcP69"
+      ],
+      "name": "Grille Vêtements",
+      "settings": {
+        "eyebrow": "PORSCHE AUTOMOBILE",
+        "heading": "COLLECTION 001"
+      }
     }
   },
   "order": [
-    "hero"
+    "hero",
+    "vetements_grid_Aa73e7"
   ]
 }
