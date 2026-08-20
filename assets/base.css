@@ -2908,3 +2908,260 @@ transform: translateX(-15px);
   }
 
 }
+/* =========================================================
+   PAGE VÊTEMENTS — GRILLE PRODUITS
+========================================================= */
+
+.vetements-grid {
+  position: relative;
+
+  width: 100%;
+
+  padding: 105px 48px 115px;
+
+  background: #ffffff;
+  color: #111111;
+}
+
+.vetements-grid__inner {
+  width: 100%;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.vetements-grid__header {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-bottom: 75px;
+
+  text-align: center;
+}
+
+.vetements-grid__eyebrow {
+  margin: 0 0 10px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.42);
+}
+
+.vetements-grid__heading {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 25px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   GRILLE
+========================================================= */
+
+.vetements-grid__products {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 42px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   CARTE
+========================================================= */
+
+.vetements-card {
+  display: block;
+
+  min-width: 0;
+
+  color: #111111;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.vetements-card__media {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 0.82 / 1;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+.vetements-card__image {
+  position: absolute;
+
+  inset: 0;
+
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* IMAGE PRINCIPALE */
+
+.vetements-card__image--primary {
+  z-index: 1;
+
+  opacity: 1;
+}
+
+
+/* IMAGE HOVER */
+
+.vetements-card__image--hover {
+  z-index: 2;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+
+/*
+  Changement volontairement instantané :
+  on ne voit jamais l'image du dessous pendant le hover.
+*/
+
+.vetements-card:hover
+.vetements-card__image--primary {
+  opacity: 0;
+}
+
+.vetements-card:hover
+.vetements-card__image--hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   NOM + PRIX
+========================================================= */
+
+.vetements-card__info {
+  width: 100%;
+
+  padding-top: 26px;
+
+  text-align: center;
+}
+
+.vetements-card__title {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  letter-spacing: 0;
+
+  text-transform: uppercase;
+}
+
+.vetements-card__price {
+  margin-top: 7px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  color: #8a8a8a;
+}
+
+
+/* =========================================================
+   TABLETTE
+========================================================= */
+
+@media screen and (max-width: 1024px) {
+
+  .vetements-grid__products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 60px 20px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .vetements-grid {
+    padding: 70px 16px 80px;
+  }
+
+  .vetements-grid__header {
+    margin-bottom: 45px;
+  }
+
+  .vetements-grid__heading {
+    font-size: 21px;
+  }
+
+  .vetements-grid__products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 45px 8px;
+  }
+
+  .vetements-card__info {
+    padding-top: 16px;
+  }
+
+  .vetements-card__title,
+  .vetements-card__price {
+    font-size: 10px;
+  }
+
+}
