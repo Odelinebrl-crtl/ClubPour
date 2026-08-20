@@ -48,12 +48,54 @@
       "settings": {
         "video": "shopify://files/videos/Design sans titre.mp4"
       }
+    },
+    "community_feed_pour_4VTp68": {
+      "type": "community-feed-pour",
+      "blocks": {
+        "look_wmjxDy": {
+          "type": "look",
+          "settings": {
+            "product": "",
+            "customer_name": "@clubpour",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        },
+        "look_a6WGCf": {
+          "type": "look",
+          "settings": {
+            "product": "",
+            "customer_name": "@clubpour",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        },
+        "look_HrrkXy": {
+          "type": "look",
+          "settings": {
+            "product": "",
+            "customer_name": "@clubpour",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        }
+      },
+      "block_order": [
+        "look_wmjxDy",
+        "look_a6WGCf",
+        "look_HrrkXy"
+      ],
+      "name": "Porté par vous",
+      "settings": {
+        "heading": "PORTÉ PAR VOUS"
+      }
     }
   },
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
     "quote_pour_FCLgBx",
-    "video_hero_pour_khqU9c"
+    "video_hero_pour_khqU9c",
+    "community_feed_pour_4VTp68"
   ]
 }
