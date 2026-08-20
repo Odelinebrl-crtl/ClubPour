@@ -9,12 +9,38 @@
  */
 {
   "sections": {
+    "hero_vetements_ChXLUV": {
+      "type": "hero-vetements",
+      "name": "Hero Vêtements",
+      "settings": {
+        "image_1": "shopify://shop_images/ChatGPT_Image_4_mai_2026_a_02_10_10.png",
+        "title_1": "COLLECTION 001",
+        "subtitle_1": "DÉCOUVREZ LA COLLECTION",
+        "link_1": "",
+        "image_2": "shopify://shop_images/Design_sans_titre-8.png",
+        "title_2": "CLUB POUR",
+        "subtitle_2": "COLLECTION 001",
+        "link_2": "",
+        "title_3": "CANDY DEL MAR",
+        "subtitle_3": "COLLECTION 001",
+        "link_3": "",
+        "title_4": "RIVIERA",
+        "subtitle_4": "COLLECTION 001",
+        "link_4": "",
+        "title_5": "CYPRÈS ITALIEN",
+        "subtitle_5": "COLLECTION 001",
+        "link_5": "",
+        "autoplay": true,
+        "autoplay_speed": 5
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {}
     }
   },
   "order": [
+    "hero_vetements_ChXLUV",
     "main"
   ]
 }
