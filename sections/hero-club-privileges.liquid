@@ -50,56 +50,54 @@
     {% endif %}
 
 
-    <form
-      class="club-hero__form"
-      method="post"
-      action="/contact#club-privileges"
-    >
-
-      <input
-        type="hidden"
-        name="form_type"
-        value="customer"
-      >
-
-      <input
-        type="hidden"
-        name="utf8"
-        value="✓"
-      >
-
-
-     <div class="club-hero__email-wrap">
+   <form
+  class="pour-hero__preorder"
+  method="post"
+  action="/contact#club-privileges"
+>
 
   <input
-    type="email"
-    name="contact[email]"
-    class="club-hero__email"
-    placeholder="VOTRE EMAIL"
-    required
-    autocomplete="email"
+    type="hidden"
+    name="form_type"
+    value="customer"
   >
 
-</div>
+  <input
+    type="hidden"
+    name="utf8"
+    value="✓"
+  >
 
-</div>
+  <div class="pour-hero__email-wrap">
 
-      <button
-        type="submit"
-        class="club-hero__submit"
-      >
+    <input
+      type="email"
+      name="contact[email]"
+      class="pour-hero__email"
+      placeholder="VOTRE EMAIL"
+      required
+      autocomplete="email"
+    >
 
-        <span class="club-hero__submit-text">
-          REJOIGNEZ LE CLUB
-        </span>
+  </div>
 
-        <span class="club-hero__submit-arrow">
-          →
-        </span>
 
-      </button>
+  <button
+    type="submit"
+    class="pour-hero__submit"
+  >
 
-    </form>
+    <span class="pour-hero__submit-text">
+      REJOIGNEZ LE CLUB
+    </span>
+
+    <span class="pour-hero__submit-arrow">
+      →
+    </span>
+
+  </button>
+
+</form>
 
 
     {% if section.settings.launch_text != blank %}
