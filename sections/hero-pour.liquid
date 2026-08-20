@@ -50,9 +50,11 @@
   </p>
 {% endif %}
 
-<h1 class="pour-hero__heading">
-  POUR COMMENCER
-</h1>
+{% if section.settings.hero_title != blank %}
+  <h1 class="pour-hero__heading">
+    {{ section.settings.hero_title }}
+  </h1>
+{% endif %}
 
 <form
   class="pour-hero__preorder"
@@ -118,6 +120,12 @@
   "id": "eyebrow",
   "label": "Petit texte",
   "default": "POUR COMMENCER — COLLECTION 001"
+},
+{
+  "type": "text",
+  "id": "hero_title",
+  "label": "Grand titre",
+  "default": "POUR"
 },
 {
   "type": "text",
