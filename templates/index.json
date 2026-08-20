@@ -52,6 +52,16 @@
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
+        "look_bUp43d": {
+          "type": "look",
+          "settings": {
+            "product": "drop-001-candy-del-mar",
+            "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
+            "customer_name": "@clubpour",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        },
         "look_wmjxDy": {
           "type": "look",
           "settings": {
@@ -81,6 +91,7 @@
         }
       },
       "block_order": [
+        "look_bUp43d",
         "look_wmjxDy",
         "look_a6WGCf",
         "look_HrrkXy"
