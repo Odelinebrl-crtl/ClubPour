@@ -1993,9 +1993,11 @@ transform: translateX(-15px);
 
 .pour-community {
   width: 100%;
-  padding: 80px 54px 110px;
+
+  padding: 100px 54px 110px;
+
   background: #f7f7f7;
-  color: #111;
+  color: #111111;
 }
 
 .pour-community__header {
@@ -2007,10 +2009,13 @@ transform: translateX(-15px);
   margin: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 28px;
+
+  font-size: 24px;
   font-weight: 400;
 
   letter-spacing: 0.14em;
+  line-height: 1;
+
   text-transform: uppercase;
 }
 
@@ -2040,7 +2045,9 @@ transform: translateX(-15px);
 
 .pour-community__layout {
   display: grid;
+
   grid-template-columns: 1.15fr 0.85fr;
+
   gap: 80px;
 
   align-items: center;
@@ -2051,6 +2058,8 @@ transform: translateX(-15px);
 
 .pour-community__ugc {
   grid-column: 1;
+  grid-row: 1;
+
   width: 100%;
 }
 
@@ -2076,7 +2085,11 @@ transform: translateX(-15px);
 
 .pour-community__product {
   grid-column: 2;
+  grid-row: 1;
+
   width: 100%;
+
+  align-self: center;
 
   text-align: center;
 }
