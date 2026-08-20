@@ -104,22 +104,29 @@
 
                   <!-- NOM + PRIX -->
 
-                  <a
-                    href="{{ featured_product.url }}"
-                    class="pour-community__product-info"
-                  >
+               <a
+  href="{{ featured_product.url }}"
+  class="pour-community__product-info"
+>
 
-                    <span class="pour-community__product-title">
-                      {{ featured_product.title }}
-                    </span>
+  <span class="pour-community__product-title">
+    {{ featured_product.title }}
+  </span>
 
-                    <span class="pour-community__product-price">
-                      {{ featured_product.price | money }}
-                    </span>
+  <span class="pour-community__product-price">
+    {{ featured_product.price | money }}
+  </span>
 
-                  </a>
+</a>
 
-                {% endif %}
+<a
+  href="{{ featured_product.url }}"
+  class="pour-community__product-button"
+>
+  VOIR LE PRODUIT
+</a>
+
+{% endif %}
 
               </div>
 
