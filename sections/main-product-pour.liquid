@@ -1,0 +1,285 @@
+<section class="product-page-pour" data-product-page>
+
+  <div class="product-page-pour__top">
+
+    <!-- GALERIE -->
+    <div class="product-page-pour__gallery">
+
+      {% if product.images.size > 0 %}
+
+        <div class="product-page-pour__main-media">
+          <img
+            src="{{ product.featured_image | image_url: width: 1800 }}"
+            alt="{{ product.featured_image.alt | escape }}"
+            class="product-page-pour__main-image"
+            data-main-product-image
+            width="{{ product.featured_image.width }}"
+            height="{{ product.featured_image.height }}"
+          >
+        </div>
+
+        {% if product.images.size > 1 %}
+          <div class="product-page-pour__thumbs">
+
+            {% for image in product.images %}
+              <button
+                type="button"
+                class="product-page-pour__thumb{% if forloop.first %} is-active{% endif %}"
+                data-product-thumb
+                data-image="{{ image | image_url: width: 1800 }}"
+                aria-label="Voir l'image {{ forloop.index }}"
+              >
+                <img
+                  src="{{ image | image_url: width: 400 }}"
+                  alt="{{ image.alt | escape }}"
+                  loading="lazy"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                >
+              </button>
+            {% endfor %}
+
+          </div>
+        {% endif %}
+
+      {% endif %}
+
+    </div>
+
+    <!-- INFOS PRODUIT -->
+    <div class="product-page-pour__info">
+
+      <div class="product-page-pour__info-inner">
+
+        <h1 class="product-page-pour__title">
+          {{ product.title }}
+        </h1>
+
+        {% if product.metafields.custom.subtitle != blank %}
+          <p class="product-page-pour__subtitle">
+            {{ product.metafields.custom.subtitle }}
+          </p>
+        {% endif %}
+
+        <div class="product-page-pour__price">
+          {{ product.selected_or_first_available_variant.price | money }}
+        </div>
+
+        {% form 'product', product, class: 'product-page-pour__form' %}
+
+          <input
+            type="hidden"
+            name="id"
+            value="{{ product.selected_or_first_available_variant.id }}"
+            data-product-variant-id
+          >
+
+          {% unless product.has_only_default_variant %}
+
+            {% for option in product.options_with_values %}
+              <div class="product-page-pour__option">
+
+                <p class="product-page-pour__option-label">
+                  {{ option.name }}
+                </p>
+
+                <div class="product-page-pour__option-values">
+
+                  {% for value in option.values %}
+                    <label class="product-page-pour__option-value">
+
+                      <input
+                        type="radio"
+                        name="options[{{ option.name | escape }}]"
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                      >
+
+                      <span>
+                        {{ value }}
+                      </span>
+
+                    </label>
+                  {% endfor %}
+
+                </div>
+
+              </div>
+            {% endfor %}
+
+          {% endunless %}
+
+          <div class="product-page-pour__buy-row">
+
+            <div class="product-page-pour__quantity">
+
+              <button type="button" data-qty-minus>
+                −
+              </button>
+
+              <input
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                data-qty-input
+              >
+
+              <button type="button" data-qty-plus>
+                +
+              </button>
+
+            </div>
+
+            <button
+              type="submit"
+              class="product-page-pour__add"
+              {% unless product.selected_or_first_available_variant.available %}
+                disabled
+              {% endunless %}
+            >
+              {% if product.selected_or_first_available_variant.available %}
+                AJOUTER AU PANIER
+              {% else %}
+                ÉPUISÉ
+              {% endif %}
+            </button>
+
+          </div>
+
+        {% endform %}
+
+        {% if product.description != blank %}
+          <div class="product-page-pour__description">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- DETAILS -->
+  <div class="product-page-pour__details">
+
+    <div class="product-page-pour__details-title">
+      CONÇU POUR ÊTRE PORTÉ, REPORTÉ, VÉCU.
+    </div>
+
+    <div class="product-page-pour__tabs">
+
+      <button
+        class="product-page-pour__tab is-active"
+        data-product-tab="composition"
+      >
+        COMPOSITION
+      </button>
+
+      <button
+        class="product-page-pour__tab"
+        data-product-tab="entretien"
+      >
+        ENTRETIEN
+      </button>
+
+    </div>
+
+    <div class="product-page-pour__tab-content is-active" data-product-panel="composition">
+      {% if section.settings.composition != blank %}
+        {{ section.settings.composition }}
+      {% else %}
+        100 % coton biologique. Coupe premium. Matière épaisse et confortable.
+      {% endif %}
+    </div>
+
+    <div class="product-page-pour__tab-content" data-product-panel="entretien">
+      {% if section.settings.care != blank %}
+        {{ section.settings.care }}
+      {% else %}
+        Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux.
+      {% endif %}
+    </div>
+
+  </div>
+
+
+  <!-- AUTRES PRODUITS -->
+  {% assign recommendations = collections.all.products %}
+
+  <div class="product-page-pour__related">
+
+    <div class="product-page-pour__related-heading">
+      <span>•</span>
+      VOIR AUSSI
+    </div>
+
+    <div class="product-page-pour__related-grid">
+
+      {% assign shown = 0 %}
+
+      {% for related_product in recommendations %}
+
+        {% if related_product.id != product.id and shown < 3 %}
+
+          <a
+            href="{{ related_product.url }}"
+            class="product-page-pour__related-card"
+          >
+
+            {% if related_product.featured_image %}
+              <div class="product-page-pour__related-media">
+                {{
+                  related_product.featured_image
+                  | image_url: width: 900
+                  | image_tag:
+                    loading: 'lazy',
+                    alt: related_product.title
+                }}
+              </div>
+            {% endif %}
+
+            <div class="product-page-pour__related-title">
+              {{ related_product.title }}
+            </div>
+
+            <div class="product-page-pour__related-price">
+              {{ related_product.price | money }}
+            </div>
+
+          </a>
+
+          {% assign shown = shown | plus: 1 %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Produit POUR",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "composition",
+      "label": "Texte composition",
+      "default": "100 % coton biologique. Coupe premium. Matière épaisse et confortable."
+    },
+    {
+      "type": "textarea",
+      "id": "care",
+      "label": "Texte entretien",
+      "default": "Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux."
+    }
+  ]
+}
+{% endschema %}
