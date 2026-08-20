@@ -33,10 +33,6 @@
         "products_to_show": 4
       }
     },
-    "main": {
-      "type": "main-home",
-      "settings": {}
-    },
     "quote_pour_FCLgBx": {
       "type": "quote-pour",
       "name": "Citation POUR",
@@ -50,7 +46,6 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
-    "main",
     "quote_pour_FCLgBx"
   ]
 }
