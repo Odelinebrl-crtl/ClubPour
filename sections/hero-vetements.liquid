@@ -90,7 +90,7 @@
         <button
           type="button"
           class="clothing-hero__pagination-item{% if i == 1 %} is-active{% endif %}"
-          data-clothing-dot="{{ i | minus: 1 }}"
+          data-clothing-dot
           aria-label="Afficher le visuel {{ i }}"
         >
           0{{ i }}
@@ -260,7 +260,7 @@
       "label": "Défilement automatique",
       "default": true
     },
-    {
+       {
       "type": "range",
       "id": "autoplay_speed",
       "label": "Temps entre les images",
@@ -271,7 +271,7 @@
       "default": 5
     }
 
-    ],
+  ],
   "presets": [
     {
       "name": "Hero Vêtements"
