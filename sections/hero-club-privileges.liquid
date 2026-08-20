@@ -350,7 +350,7 @@
 
 
 /* =========================================================
-   EMAIL — VOILE BLANC FLOUTÉ
+   EMAIL — BLANC RÉELLEMENT FLOU / DIFFUS
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
@@ -366,17 +366,14 @@
 
   overflow: hidden;
 
-  background: transparent;
+  background: rgba(255, 255, 255, 0.06);
 
-  /* La bordure reste nette */
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.70);
 }
 
 
 /* =========================================================
-   VOILE BLANC FLOUTÉ
-   C'EST LE BLANC QUI EST FLOUTÉ,
-   PAS L'IMAGE DERRIÈRE
+   MATIÈRE BLANCHE FLOUTÉE
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}
@@ -386,27 +383,51 @@
   position: absolute;
 
   /*
-    On déborde volontairement pour que le blur
-    remplisse bien tout le rectangle.
+    On agrandit énormément la couche
+    pour que le blur ne soit jamais coupé.
   */
-  inset: -14px;
+  inset: -40px;
 
   z-index: 0;
 
-  background: rgba(255, 255, 255, 0.32);
+  /*
+    Plusieurs masses blanches semi-transparentes.
+    C'est ELLES qu'on va flouter.
+  */
 
-  filter: blur(14px);
-  -webkit-filter: blur(14px);
+  background:
+    radial-gradient(
+      circle at 18% 45%,
+      rgba(255,255,255,0.55) 0%,
+      rgba(255,255,255,0.30) 18%,
+      rgba(255,255,255,0) 45%
+    ),
 
-  opacity: 0.9;
+    radial-gradient(
+      circle at 55% 20%,
+      rgba(255,255,255,0.35) 0%,
+      rgba(255,255,255,0.16) 22%,
+      rgba(255,255,255,0) 50%
+    ),
+
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(255,255,255,0.45) 0%,
+      rgba(255,255,255,0.20) 20%,
+      rgba(255,255,255,0) 48%
+    );
+
+  filter: blur(22px);
+  -webkit-filter: blur(22px);
+
+  transform: scale(1.15);
 
   pointer-events: none;
 }
 
 
 /* =========================================================
-   PETIT VOILE SUPPLÉMENTAIRE
-   POUR RETROUVER LE CÔTÉ LAITEUX
+   VOILE BLANC TRÈS LÉGER PAR-DESSUS
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}
@@ -418,14 +439,14 @@
 
   z-index: 1;
 
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
 
   pointer-events: none;
 }
 
 
 /* =========================================================
-   INPUT
+   TEXTE EMAIL
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
@@ -433,12 +454,9 @@
 
   z-index: 2;
 
-  display: block;
-
   width: 100%;
   height: 100%;
 
-  margin: 0;
   padding: 0 16px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -446,13 +464,11 @@
   font-size: 11px;
   font-weight: 400;
 
-  line-height: 1;
-
   letter-spacing: 0.06em;
 
   color: #ffffff;
 
-  background: transparent;
+  background: transparent !important;
 
   border: 0;
   outline: 0;
@@ -465,27 +481,9 @@
 
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255,255,255,0.85);
 
   opacity: 1;
-}
-
-
-/* =========================================================
-   FOCUS
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within::before {
-  background: rgba(255, 255, 255, 0.40);
-
-  filter: blur(16px);
-  -webkit-filter: blur(16px);
-}
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within {
-  border-color: #ffffff;
 }
 
 /* =========================================================
