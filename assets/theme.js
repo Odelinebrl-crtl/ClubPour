@@ -52,7 +52,7 @@ if (document.readyState === 'loading') {
 */
 document.addEventListener('shopify:section:load', initHeroParallax);
 /* =========================================================
-   CITATION POUR — SCROLL REVEAL
+   CITATION POUR — SCROLL DIRECTION REVEAL
 ========================================================= */
 
 function initPourQuoteReveal() {
@@ -60,33 +60,39 @@ function initPourQuoteReveal() {
 
   if (!quotes.length) return;
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
+  let lastScrollY = window.scrollY;
 
-        if (entry.isIntersecting) {
+  function updateQuoteAnimation() {
+    const currentScrollY = window.scrollY;
+    const scrollingDown = currentScrollY > lastScrollY;
 
-          requestAnimationFrame(() => {
-            entry.target.classList.add('is-visible');
-          });
+    quotes.forEach((quote) => {
+      const rect = quote.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
 
+      const inView =
+        rect.top < viewportHeight * 0.78 &&
+        rect.bottom > viewportHeight * 0.18;
+
+      if (inView) {
+        if (scrollingDown) {
+          quote.classList.add('is-visible');
+          quote.classList.remove('is-hidden-up');
         } else {
-
-          entry.target.classList.remove('is-visible');
-
+          quote.classList.remove('is-visible');
+          quote.classList.add('is-hidden-up');
         }
+      }
+    });
 
-      });
-    },
-    {
-      threshold: 0.25,
-      rootMargin: "0px 0px -8% 0px"
-    }
-  );
+    lastScrollY = currentScrollY;
+  }
 
-  quotes.forEach((quote) => {
-    observer.observe(quote);
+  window.addEventListener('scroll', updateQuoteAnimation, {
+    passive: true
   });
+
+  updateQuoteAnimation();
 }
 
 if (document.readyState === 'loading') {
