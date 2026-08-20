@@ -2767,11 +2767,7 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   TEXTE
-========================================================= */
-
-/* =========================================================
-   HERO VÊTEMENTS — ANIMATION TEXTE
+   HERO VÊTEMENTS — ENTRÉE TEXTE PROPRE
 ========================================================= */
 
 .clothing-hero__content {
@@ -2788,24 +2784,16 @@ transform: translateX(-15px);
 
   text-align: left;
 
-  /*
-    État initial :
-    le bloc est réellement plus haut
-    et complètement invisible.
-  */
-
+  /* ÉTAT INITIAL : totalement caché */
   opacity: 0;
 
   transform: translate3d(0, -90px, 0);
 
-  /*
-    Pas de clip-path, pas de rebond,
-    juste une vraie descente propre.
-  */
+  visibility: hidden;
 
   transition:
-    opacity 0.7s ease,
-    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.65s ease,
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 
   will-change: opacity, transform;
 }
@@ -2818,6 +2806,8 @@ transform: translateX(-15px);
   opacity: 1;
 
   transform: translate3d(0, 0, 0);
+
+  visibility: visible;
 }
 
 
