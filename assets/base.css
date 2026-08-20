@@ -1646,25 +1646,23 @@ a {
 ========================================================= */
 
 .product-page-pour__details {
-  width: min(720px, calc(50% - 70px));
+  width: 100%;
+  max-width: 520px;
 
-  margin-left: auto;
-  margin-right: clamp(40px, 5vw, 80px);
-
-  padding: 0 0 110px;
+  margin: 70px 0 0;
+  padding: 0;
 }
 /* GRAND TITRE DETAILS */
 
 .product-page-pour__details-title {
-  max-width: 650px;
+  max-width: 520px;
 
- margin: 0 0 55px;
+  margin: 0 0 45px;
 
-  font-size: clamp(28px, 2.7vw, 45px);
+  font-size: clamp(26px, 2.3vw, 38px);
   font-weight: 400;
 
   line-height: 1.05;
-
   letter-spacing: -0.03em;
 
   text-transform: uppercase;
