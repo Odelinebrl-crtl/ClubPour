@@ -1076,3 +1076,195 @@ a {
   }
 
 }
+/* =========================================================
+   CITATION — CLUB POUR
+========================================================= */
+
+.pour-quote {
+  position: relative;
+
+  width: 100%;
+  min-height: 92vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 110px 54px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+  color: #111111;
+}
+
+.pour-quote__inner {
+  width: 100%;
+  max-width: 1400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* PETIT TITRE */
+
+.pour-quote__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0 0 150px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 17px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.pour-quote__dot {
+  display: block;
+
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+
+/* GRANDE CITATION */
+
+.pour-quote__text {
+  max-width: 1250px;
+
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: clamp(34px, 4vw, 68px);
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.035em;
+
+  text-transform: uppercase;
+}
+
+
+/* SIGNATURE */
+
+.pour-quote__signature {
+  margin: 40px 0 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ANIMATION CITATION
+========================================================= */
+
+.pour-quote__eyebrow,
+.pour-quote__text,
+.pour-quote__signature {
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* Apparition */
+
+.pour-quote.is-visible .pour-quote__eyebrow,
+.pour-quote.is-visible .pour-quote__text,
+.pour-quote.is-visible .pour-quote__signature {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* Légers décalages pour un effet plus élégant */
+
+.pour-quote.is-visible .pour-quote__eyebrow {
+  transition-delay: 0s;
+}
+
+.pour-quote.is-visible .pour-quote__text {
+  transition-delay: 0.08s;
+}
+
+.pour-quote.is-visible .pour-quote__signature {
+  transition-delay: 0.16s;
+}
+
+
+/* Quand on remonte */
+
+.pour-quote.is-hiding .pour-quote__eyebrow,
+.pour-quote.is-hiding .pour-quote__text,
+.pour-quote.is-hiding .pour-quote__signature {
+  opacity: 0;
+
+  transform: translateY(35px);
+
+  transition-delay: 0s;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .pour-quote {
+    min-height: 80vh;
+
+    padding: 80px 20px;
+  }
+
+  .pour-quote__eyebrow {
+    margin-bottom: 90px;
+
+    font-size: 13px;
+  }
+
+  .pour-quote__text {
+    font-size: clamp(27px, 8vw, 42px);
+
+    line-height: 1.1;
+  }
+
+  .pour-quote__signature {
+    margin-top: 28px;
+
+    font-size: 10px;
+  }
+
+}
