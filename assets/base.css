@@ -2610,18 +2610,13 @@ transform: translateX(-15px);
   will-change: transform;
 }
 /* =========================================================
-   HERO VÊTEMENTS — GRAND FORMAT + PARALLAX
+   HERO VÊTEMENTS — GRAND FORMAT + SLIDER DIRECTIONNEL
 ========================================================= */
 
 .clothing-hero {
   position: relative;
 
   width: 100%;
-
-  /*
-    Le hero commence juste sous le header,
-    mais fait désormais une vraie hauteur plein écran.
-  */
   height: 100svh;
 
   margin: 0;
@@ -2642,25 +2637,14 @@ transform: translateX(-15px);
 
   width: 100%;
   height: 100%;
-}
-
-
-/* =========================================================
-   HERO VÊTEMENTS — SLIDES DIRECTIONNELLES
-========================================================= */
-
-.clothing-hero__slides {
-  position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
 
   overflow: hidden;
 }
 
 
-/* Toutes les slides sont superposées */
+/* =========================================================
+   SLIDES
+========================================================= */
 
 .clothing-hero__slide {
   position: absolute;
@@ -2675,10 +2659,12 @@ transform: translateX(-15px);
   pointer-events: none;
 
   overflow: hidden;
+
+  transform: translate3d(0, 0, 0);
 }
 
 
-/* Slide affichée */
+/* Slide actuellement visible */
 
 .clothing-hero__slide.is-active {
   z-index: 2;
@@ -2688,12 +2674,13 @@ transform: translateX(-15px);
 }
 
 
-/* Slide qui arrive */
+/* Nouvelle slide en train d'arriver */
 
 .clothing-hero__slide.is-entering {
   z-index: 3;
 
   visibility: visible;
+  pointer-events: none;
 }
 
 
@@ -2718,39 +2705,27 @@ transform: translateX(-15px);
   will-change: transform;
 
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 
 /* =========================================================
-   TRANSITION IMAGE — PAGE QUI GLISSE
+   TRANSITION IMAGE
+   AVANCE = ARRIVE DE DROITE
+   RETOUR = ARRIVE DE GAUCHE
 ========================================================= */
 
-/* nouvelle slide préparée à droite */
-
-.clothing-hero__slide.enter-from-right {
-  transform: translateX(100%);
+.clothing-hero__slide.is-from-right {
+  transform: translate3d(100%, 0, 0);
 }
 
-
-/* nouvelle slide préparée à gauche */
-
-.clothing-hero__slide.enter-from-left {
-  transform: translateX(-100%);
+.clothing-hero__slide.is-from-left {
+  transform: translate3d(-100%, 0, 0);
 }
 
-
-/* transition vers sa position finale */
-
-.clothing-hero__slide.is-sliding {
+.clothing-hero__slide.is-moving {
   transition:
-    transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
-}
-
-
-/* état final */
-
-.clothing-hero__slide.is-entering.is-sliding {
-  transform: translateX(0);
+    transform 0.9s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 
@@ -2761,58 +2736,55 @@ transform: translateX(-15px);
 .clothing-hero__content {
   position: absolute;
 
-  /*
-    On le descend franchement par rapport
-    à ton placement actuel.
-  */
-  top: 23%;
-  right: 54px;
+  top: 27%;
+  right: 5.5%;
 
   z-index: 10;
 
-  width: min(390px, 31vw);
+  width: min(390px, 30vw);
 
   color: var(--slide-text-color, #111111);
 
   text-align: left;
 
-  /*
-    Le texte est caché pendant le changement d'image.
-  */
   opacity: 0;
 
-  transform: translateY(-28px);
+  transform: translate3d(0, -24px, 0);
 
   transition:
-    opacity 0.5s ease,
+    opacity 0.42s ease,
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: opacity, transform;
 }
 
 
 /*
-  Le texte n'apparaît QUE lorsque
-  JS ajoute text-visible.
+  Le texte apparaît uniquement
+  une fois la slide installée.
 */
 
-.clothing-hero__slide.text-visible
+.clothing-hero__slide.is-text-visible
 .clothing-hero__content {
   opacity: 1;
 
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
 }
 
 
-/* TITRE */
+/* =========================================================
+   TITRE
+========================================================= */
 
 .clothing-hero__heading {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: clamp(42px, 4vw, 68px);
+  font-size: clamp(42px, 3.8vw, 66px);
   font-weight: 400;
 
-  line-height: 0.92;
+  line-height: 0.94;
   letter-spacing: -0.045em;
 
   color: inherit;
@@ -2821,7 +2793,9 @@ transform: translateX(-15px);
 }
 
 
-/* SOUS-TITRE */
+/* =========================================================
+   SOUS-TITRE
+========================================================= */
 
 .clothing-hero__subtitle {
   margin: 0;
@@ -2841,7 +2815,9 @@ transform: translateX(-15px);
 }
 
 
-/* LIEN */
+/* =========================================================
+   LIEN
+========================================================= */
 
 .clothing-hero__link {
   position: relative;
@@ -2850,12 +2826,31 @@ transform: translateX(-15px);
 
   margin-top: 14px;
 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1;
 
   color: inherit;
 
   text-transform: uppercase;
   text-decoration: none;
+}
+
+.clothing-hero__link::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: -4px;
+
+  height: 1px;
+
+  background: currentColor;
 }
 
 
@@ -2869,7 +2864,7 @@ transform: translateX(-15px);
   top: 28px;
   left: 54px;
 
-  z-index: 10;
+  z-index: 20;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -2894,16 +2889,20 @@ transform: translateX(-15px);
   right: 54px;
   bottom: 38px;
 
-  z-index: 20;
+  z-index: 30;
 
   display: flex;
   align-items: center;
 
   gap: 24px;
+
+  pointer-events: auto;
 }
 
 .clothing-hero__pagination-item {
   position: relative;
+
+  z-index: 31;
 
   padding: 0 0 5px;
 
@@ -2921,6 +2920,8 @@ transform: translateX(-15px);
   line-height: 1;
 
   cursor: pointer;
+
+  pointer-events: auto;
 }
 
 .clothing-hero__pagination-item.is-active {
@@ -2938,7 +2939,7 @@ transform: translateX(-15px);
   width: 100%;
   height: 1px;
 
-  background: #111111;
+  background: currentColor;
 }
 
 
@@ -2949,16 +2950,15 @@ transform: translateX(-15px);
 @media screen and (max-width: 768px) {
 
   .clothing-hero {
-    height: 620px;
-
-    margin-top: 64px;
+    height: 100svh;
+    margin: 0;
   }
 
   .clothing-hero__content {
     top: auto;
 
     right: 20px;
-    bottom: 100px;
+    bottom: 105px;
     left: 20px;
 
     width: auto;
@@ -2966,6 +2966,10 @@ transform: translateX(-15px);
 
   .clothing-hero__heading {
     font-size: 38px;
+  }
+
+  .clothing-hero__subtitle {
+    font-size: 11px;
   }
 
   .clothing-hero__breadcrumb {
@@ -2978,6 +2982,10 @@ transform: translateX(-15px);
     bottom: 30px;
 
     gap: 16px;
+  }
+
+  .clothing-hero__pagination-item {
+    font-size: 12px;
   }
 
 }
