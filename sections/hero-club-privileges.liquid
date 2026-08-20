@@ -1,10 +1,15 @@
 <section
   id="ClubPrivilegesHero-{{ section.id }}"
-  class="club-privileges-hero"
-  data-club-privileges-hero
+  class="club-hero"
+  data-club-hero
+  style="
+    --club-text-color: {{ section.settings.text_color }};
+    --club-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
+  "
 >
 
-  <div class="club-privileges-hero__media">
+  <!-- IMAGE -->
+  <div class="club-hero__media">
 
     {% if section.settings.image != blank %}
 
@@ -12,14 +17,14 @@
         section.settings.image
         | image_url: width: 2800
         | image_tag:
-          class: 'club-privileges-hero__image',
+          class: 'club-hero__image',
           loading: 'eager'
       }}
 
     {% else %}
 
-      <div class="club-privileges-hero__placeholder">
-        AJOUTEZ UNE IMAGE
+      <div class="club-hero__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
       </div>
 
     {% endif %}
@@ -27,41 +32,84 @@
   </div>
 
 
-  <div class="club-privileges-hero__breadcrumb">
-    ACCUEIL / CLUB PRIVILÈGES
-  </div>
+  <!-- OVERLAY -->
+
+  <div class="club-hero__overlay"></div>
 
 
-  <div
-    class="club-privileges-hero__content"
-    style="--club-text-color: {{ section.settings.text_color }};"
-  >
+  <!-- CONTENU -->
+
+  <div class="club-hero__content">
 
     {% if section.settings.eyebrow != blank %}
-      <p class="club-privileges-hero__eyebrow">
+      <p class="club-hero__eyebrow">
         {{ section.settings.eyebrow }}
       </p>
     {% endif %}
 
+
     {% if section.settings.heading != blank %}
-      <h1 class="club-privileges-hero__heading">
+      <h1 class="club-hero__heading">
         {{ section.settings.heading }}
       </h1>
     {% endif %}
 
-    {% if section.settings.subtitle != blank %}
-      <div class="club-privileges-hero__subtitle">
-        {{ section.settings.subtitle }}
-      </div>
-    {% endif %}
 
-    {% if section.settings.link_label != blank and section.settings.link != blank %}
-      <a
-        href="{{ section.settings.link }}"
-        class="club-privileges-hero__link"
+    <form
+      class="club-hero__form"
+      method="post"
+      action="/contact#club-privileges"
+    >
+
+      <input
+        type="hidden"
+        name="form_type"
+        value="customer"
       >
-        {{ section.settings.link_label }}
-      </a>
+
+      <input
+        type="hidden"
+        name="utf8"
+        value="✓"
+      >
+
+
+      <div class="club-hero__email-wrap">
+
+        <input
+          type="email"
+          name="contact[email]"
+          class="club-hero__email"
+          placeholder="VOTRE EMAIL"
+          required
+          autocomplete="email"
+        >
+
+      </div>
+
+
+      <button
+        type="submit"
+        class="club-hero__submit"
+      >
+
+        <span class="club-hero__submit-text">
+          REJOIGNEZ LE CLUB
+        </span>
+
+        <span class="club-hero__submit-arrow">
+          →
+        </span>
+
+      </button>
+
+    </form>
+
+
+    {% if section.settings.launch_text != blank %}
+      <p class="club-hero__launch">
+        {{ section.settings.launch_text }}
+      </p>
     {% endif %}
 
   </div>
@@ -74,46 +122,52 @@
   "name": "Hero Club Privilèges",
 
   "settings": [
+
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
+
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
-      "default": "CLUB POUR"
+      "default": "CLUB POUR — ACCÈS MEMBRES"
     },
+
     {
       "type": "text",
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
     },
+
     {
-      "type": "textarea",
-      "id": "subtitle",
-      "label": "Sous-titre",
-      "default": "ACCÉDEZ À L’UNIVERS POUR AUTREMENT."
+      "type": "text",
+      "id": "launch_text",
+      "label": "Petit texte sous le formulaire",
+      "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
+
     {
       "type": "color",
       "id": "text_color",
       "label": "Couleur du texte",
       "default": "#FFFFFF"
     },
+
     {
-      "type": "text",
-      "id": "link_label",
-      "label": "Texte du lien",
-      "default": "DÉCOUVRIR LE CLUB"
-    },
-    {
-      "type": "url",
-      "id": "link",
-      "label": "Lien"
+      "type": "range",
+      "id": "overlay",
+      "label": "Assombrissement de l'image",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "default": 10
     }
+
   ],
 
   "presets": [
