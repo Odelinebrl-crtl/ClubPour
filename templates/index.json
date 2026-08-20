@@ -26,12 +26,50 @@
     },
     "product_grid_RhwVm9": {
       "type": "product-grid",
+      "blocks": {
+        "product_card_NHQ6tT": {
+          "type": "product_card",
+          "settings": {
+            "product": "cypres-italien",
+            "image_primary": "shopify://shop_images/5_7eab23e1-24fc-454a-9a7b-341c0416a46c.png",
+            "image_secondary": "shopify://shop_images/6.png"
+          }
+        },
+        "product_card_kwbHz7": {
+          "type": "product_card",
+          "settings": {
+            "product": "club-pour-test",
+            "image_primary": "shopify://shop_images/8_548f7238-0cab-445c-ac5d-175bc182648e.png",
+            "image_secondary": "shopify://shop_images/10.png"
+          }
+        },
+        "product_card_CgHeQ3": {
+          "type": "product_card",
+          "settings": {
+            "product": "riviera",
+            "image_primary": "shopify://shop_images/11.png",
+            "image_secondary": "shopify://shop_images/14_a14f694d-4ea9-45be-b3ab-924aac958d22.png"
+          }
+        },
+        "product_card_zJAett": {
+          "type": "product_card",
+          "settings": {
+            "product": "drop-001-candy-del-mar",
+            "image_primary": "shopify://shop_images/POUR_-_DROP_1_SVG.png",
+            "image_secondary": "shopify://shop_images/2_596d8fa9-8872-4570-8b1b-94b182193e4b.png"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_NHQ6tT",
+        "product_card_kwbHz7",
+        "product_card_CgHeQ3",
+        "product_card_zJAett"
+      ],
       "name": "Produits POUR",
       "settings": {
         "subtitle": "PORSCHE AUTOMOBILE",
-        "heading": "COLLECTION 001",
-        "collection": "drop-ss1-2026",
-        "products_to_show": 4
+        "heading": "COLLECTION 001"
       }
     },
     "quote_pour_FCLgBx": {
