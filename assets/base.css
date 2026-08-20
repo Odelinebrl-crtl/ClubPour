@@ -1993,10 +1993,9 @@ transform: translateX(-15px);
 
 .pour-community {
   position: relative;
-
   width: 100%;
 
-  padding: 90px 54px 120px;
+  padding: 70px 54px 85px;
 
   overflow: hidden;
 
@@ -2006,15 +2005,17 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   HEADER DE LA SECTION
+   PORTÉ PAR VOUS — HEADER CENTRÉ
 ========================================================= */
 
 .pour-community__header {
+  position: relative;
+
   width: 100%;
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
   margin-bottom: 42px;
 }
@@ -2028,25 +2029,29 @@ transform: translateX(-15px);
   font-weight: 400;
 
   line-height: 1;
-
   letter-spacing: 0.02em;
 
   text-transform: uppercase;
 }
 
-
 /* =========================================================
-   FLÈCHES
+   FLÈCHES — AUTOUR DES IMAGES
 ========================================================= */
 
 .pour-community__controls {
-  display: flex;
-  align-items: center;
+  position: absolute;
+  inset: 0;
 
-  gap: 8px;
+  pointer-events: none;
 }
 
 .pour-community__arrow {
+  position: absolute;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
   width: 42px;
   height: 42px;
 
@@ -2058,13 +2063,14 @@ transform: translateX(-15px);
 
   border: 1px solid #d7d7d7;
 
-  background: transparent;
+  background: #ffffff;
   color: #111111;
 
-  font-family: inherit;
   font-size: 17px;
 
   cursor: pointer;
+
+  pointer-events: auto;
 
   transition:
     background 0.25s ease,
@@ -2072,9 +2078,17 @@ transform: translateX(-15px);
     border-color 0.25s ease;
 }
 
+.pour-community__arrow:first-child {
+  left: 0;
+}
+
+.pour-community__arrow:last-child {
+  right: 0;
+}
+
 .pour-community__arrow:hover {
-  color: #ffffff;
   background: #111111;
+  color: #ffffff;
 
   border-color: #111111;
 }
@@ -2115,17 +2129,17 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   CONTENU D'UNE SLIDE
+   DUO D'IMAGES COMPACT
 ========================================================= */
 
 .pour-community__layout {
-  width: 100%;
+  width: min(100%, 900px);
+
+  margin: 0 auto;
 
   display: grid !important;
 
-  grid-template-columns:
-    minmax(0, 0.72fr)
-    minmax(0, 1.28fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
   align-items: start;
 
@@ -2133,19 +2147,7 @@ transform: translateX(-15px);
 }
 
 
-/* =========================================================
-   IMAGE PRODUIT — GAUCHE
-========================================================= */
-
-.pour-community__product {
-  min-width: 0;
-}
-
-.pour-community__product-link {
-  display: block;
-
-  width: 100%;
-}
+/* IMAGE PRODUIT */
 
 .pour-community__product-media {
   position: relative;
@@ -2167,14 +2169,25 @@ transform: translateX(-15px);
 
   object-fit: cover;
   object-position: center;
-
-  transition:
-    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.pour-community__product-link:hover
-.pour-community__product-image {
-  transform: scale(1.018);
+
+/* PHOTO CLIENT — MÊME TAILLE EXACTE */
+
+.pour-community__ugc {
+  width: 100%;
+}
+
+.pour-community__ugc-image {
+  display: block;
+
+  width: 100% !important;
+  height: auto !important;
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+  object-position: center;
 }
 
 
@@ -2262,57 +2275,6 @@ transform: translateX(-15px);
 }
 
 
-/* =========================================================
-   PHOTO CLIENT — DROITE
-========================================================= */
-
-.pour-community__ugc {
-  position: relative;
-
-  min-width: 0;
-
-  width: 100%;
-}
-
-.pour-community__ugc-image {
-  display: block;
-
-  width: 100% !important;
-  height: auto !important;
-
-  max-height: 760px;
-
-  object-fit: cover;
-  object-position: center;
-}
-
-.pour-community__ugc-placeholder {
-  width: 100%;
-
-  aspect-ratio: 4 / 5;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: #f3f2ef;
-
-  font-size: 11px;
-  letter-spacing: 0.06em;
-
-  text-transform: uppercase;
-}
-
-.pour-community__customer {
-  margin-top: 10px;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-  font-size: 11px;
-  font-weight: 400;
-
-  letter-spacing: 0.02em;
-}
 
 
 /* =========================================================
