@@ -1,0 +1,125 @@
+<section
+  id="ClubPrivilegesHero-{{ section.id }}"
+  class="club-privileges-hero"
+  data-club-privileges-hero
+>
+
+  <div class="club-privileges-hero__media">
+
+    {% if section.settings.image != blank %}
+
+      {{
+        section.settings.image
+        | image_url: width: 2800
+        | image_tag:
+          class: 'club-privileges-hero__image',
+          loading: 'eager'
+      }}
+
+    {% else %}
+
+      <div class="club-privileges-hero__placeholder">
+        AJOUTEZ UNE IMAGE
+      </div>
+
+    {% endif %}
+
+  </div>
+
+
+  <div class="club-privileges-hero__breadcrumb">
+    ACCUEIL / CLUB PRIVILÈGES
+  </div>
+
+
+  <div
+    class="club-privileges-hero__content"
+    style="--club-text-color: {{ section.settings.text_color }};"
+  >
+
+    {% if section.settings.eyebrow != blank %}
+      <p class="club-privileges-hero__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h1 class="club-privileges-hero__heading">
+        {{ section.settings.heading }}
+      </h1>
+    {% endif %}
+
+    {% if section.settings.subtitle != blank %}
+      <div class="club-privileges-hero__subtitle">
+        {{ section.settings.subtitle }}
+      </div>
+    {% endif %}
+
+    {% if section.settings.link_label != blank and section.settings.link != blank %}
+      <a
+        href="{{ section.settings.link }}"
+        class="club-privileges-hero__link"
+      >
+        {{ section.settings.link_label }}
+      </a>
+    {% endif %}
+
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Hero Club Privilèges",
+
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "CLUB POUR"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "CLUB PRIVILÈGES"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "ACCÉDEZ À L’UNIVERS POUR AUTREMENT."
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Texte du lien",
+      "default": "DÉCOUVRIR LE CLUB"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Lien"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Hero Club Privilèges"
+    }
+  ]
+}
+{% endschema %}
