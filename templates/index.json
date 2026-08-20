@@ -31,32 +31,32 @@
           "type": "product_card",
           "settings": {
             "product": "cypres-italien",
-            "image_primary": "shopify://shop_images/5_7eab23e1-24fc-454a-9a7b-341c0416a46c.png",
-            "image_secondary": "shopify://shop_images/6.png"
+            "image_primary": "shopify://shop_images/7.png",
+            "image_secondary": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
           }
         },
         "product_card_kwbHz7": {
           "type": "product_card",
           "settings": {
             "product": "club-pour-test",
-            "image_primary": "shopify://shop_images/8_548f7238-0cab-445c-ac5d-175bc182648e.png",
-            "image_secondary": "shopify://shop_images/10.png"
+            "image_primary": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
+            "image_secondary": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
           }
         },
         "product_card_CgHeQ3": {
           "type": "product_card",
           "settings": {
             "product": "riviera",
-            "image_primary": "shopify://shop_images/11.png",
-            "image_secondary": "shopify://shop_images/14_a14f694d-4ea9-45be-b3ab-924aac958d22.png"
+            "image_primary": "shopify://shop_images/15.png",
+            "image_secondary": "shopify://shop_images/14_5fdf1dc8-a072-4359-970f-b7df61514da0.png"
           }
         },
         "product_card_zJAett": {
           "type": "product_card",
           "settings": {
             "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/POUR_-_DROP_1_SVG.png",
-            "image_secondary": "shopify://shop_images/2_596d8fa9-8872-4570-8b1b-94b182193e4b.png"
+            "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
+            "image_secondary": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
           }
         }
       },
