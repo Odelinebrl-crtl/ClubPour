@@ -1994,9 +1994,9 @@ transform: translateX(-15px);
 .pour-community {
   width: 100%;
 
-  margin-top: 100px;
+  margin-top: 0;
 
-  padding: 90px 54px 110px;
+  padding: 110px 54px 110px;
 
   background: #f7f7f7;
   color: #111111;
