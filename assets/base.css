@@ -2036,16 +2036,51 @@ transform: translateX(-15px);
 }
 
 .pour-community__track {
-  display: flex;
+  position: relative;
   width: 100%;
-
-  transition:
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pour-community__slide {
-  flex: 0 0 100%;
+  position: absolute;
+  inset: 0;
+
   width: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.55s ease,
+    visibility 0.55s ease;
+}
+
+.pour-community__slide.is-active {
+  position: relative;
+
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.pour-community__ugc-image,
+.pour-community__product-image,
+.pour-community__product-info,
+.pour-community__product-button {
+  opacity: 1;
+
+  transition:
+    opacity 0.55s ease;
+}
+
+.pour-community__slide.is-leaving
+.pour-community__ugc-image,
+.pour-community__slide.is-leaving
+.pour-community__product-image,
+.pour-community__slide.is-leaving
+.pour-community__product-info,
+.pour-community__slide.is-leaving
+.pour-community__product-button {
+  opacity: 0;
 }
 
 .pour-community__layout {
