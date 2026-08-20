@@ -19,6 +19,8 @@
       {% assign slide_title = section.settings[title_key] %}
       {% assign slide_subtitle = section.settings[subtitle_key] %}
       {% assign slide_link = section.settings[link_key] %}
+{% assign color_key = 'text_color_' | append: i %}
+{% assign slide_color = section.settings[color_key] %}
 
       {% if slide_image != blank %}
 
@@ -35,7 +37,10 @@
               loading: 'eager'
           }}
 
-          <div class="clothing-hero__content">
+          <div
+  class="clothing-hero__content"
+  style="--slide-text-color: {{ slide_color }};"
+>
 
             {% if slide_title != blank %}
               <h2 class="clothing-hero__heading">
@@ -131,6 +136,12 @@
       "label": "Sous-titre 01",
       "default": "DÉCOUVREZ LA COLLECTION"
     },
+{
+  "type": "color",
+  "id": "text_color_1",
+  "label": "Couleur du texte 01",
+  "default": "#111111"
+},
     {
       "type": "url",
       "id": "link_1",
@@ -159,6 +170,12 @@
       "label": "Sous-titre 02",
       "default": "COLLECTION 001"
     },
+{
+  "type": "color",
+  "id": "text_color_2",
+  "label": "Couleur du texte 02",
+  "default": "#ffffff"
+},
     {
       "type": "url",
       "id": "link_2",
@@ -187,6 +204,12 @@
       "label": "Sous-titre 03",
       "default": "COLLECTION 001"
     },
+{
+  "type": "color",
+  "id": "text_color_3",
+  "label": "Couleur du texte 03",
+  "default": "#ffffff"
+},
     {
       "type": "url",
       "id": "link_3",
@@ -215,6 +238,12 @@
       "label": "Sous-titre 04",
       "default": "COLLECTION 001"
     },
+{
+  "type": "color",
+  "id": "text_color_4",
+  "label": "Couleur du texte 04",
+  "default": "#ffffff"
+},
     {
       "type": "url",
       "id": "link_4",
@@ -243,6 +272,12 @@
       "label": "Sous-titre 05",
       "default": "COLLECTION 001"
     },
+{
+  "type": "color",
+  "id": "text_color_5",
+  "label": "Couleur du texte 05",
+  "default": "#ffffff"
+},
     {
       "type": "url",
       "id": "link_5",
