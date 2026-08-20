@@ -2725,13 +2725,13 @@ transform: translateX(-15px);
     Le scale reste toujours présent.
   */
 
-  transform:
-    translate3d(
-      0,
-      var(--clothing-parallax, 0px),
-      0
-    )
-    scale(1.06);
+ transform:
+  translate3d(
+    0,
+    var(--clothing-parallax, 0px),
+    0
+  )
+  scale(1.06);
 
   transform-origin: center center;
 
