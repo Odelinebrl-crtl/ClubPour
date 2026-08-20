@@ -41,11 +41,19 @@
         "quote": "UNE CITATION CLUB POUR À DÉFINIR.",
         "signature": "Club Pour"
       }
+    },
+    "video_hero_pour_khqU9c": {
+      "type": "video-hero-pour",
+      "name": "Vidéo plein écran POUR",
+      "settings": {
+        "video": "shopify://files/videos/Design sans titre.mp4"
+      }
     }
   },
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
-    "quote_pour_FCLgBx"
+    "quote_pour_FCLgBx",
+    "video_hero_pour_khqU9c"
   ]
 }
