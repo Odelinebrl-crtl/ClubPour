@@ -48,90 +48,100 @@
 
   <div class="club-hero__content">
 
-    {% if section.settings.eyebrow != blank %}
-      <p class="club-hero__eyebrow">
-        {{ section.settings.eyebrow }}
-      </p>
-    {% endif %}
+    <div class="club-hero__content-inner">
+
+      {% if section.settings.eyebrow != blank %}
+
+        <p class="club-hero__eyebrow club-hero__reveal club-hero__reveal--1">
+          {{ section.settings.eyebrow }}
+        </p>
+
+      {% endif %}
 
 
-    {% if section.settings.heading != blank %}
-      <h1 class="club-hero__heading">
-        {{ section.settings.heading }}
-      </h1>
-    {% endif %}
+      {% if section.settings.heading != blank %}
+
+        <h1 class="club-hero__heading club-hero__reveal club-hero__reveal--2">
+          {{ section.settings.heading }}
+        </h1>
+
+      {% endif %}
 
 
-    <!-- ===================================================
-         FORMULAIRE
-    ==================================================== -->
+      <!-- =================================================
+           FORMULAIRE
+      ================================================== -->
 
-    <form
-      class="club-hero__form"
-      method="post"
-      action="/contact#club-privileges"
-      accept-charset="UTF-8"
-      id="club-privileges-form-{{ section.id }}"
-    >
-
-      <input
-        type="hidden"
-        name="form_type"
-        value="customer"
+      <form
+        class="club-hero__form club-hero__reveal club-hero__reveal--3"
+        method="post"
+        action="/contact#club-privileges"
+        accept-charset="UTF-8"
+        id="club-privileges-form-{{ section.id }}"
       >
-
-      <input
-        type="hidden"
-        name="utf8"
-        value="✓"
-      >
-
-
-      <!-- CHAMP EMAIL -->
-
-      <div class="club-hero__email-wrap">
 
         <input
-          type="email"
-          name="contact[email]"
-          class="club-hero__email"
-          placeholder="VOTRE EMAIL"
-          required
-          autocomplete="email"
-          aria-label="Votre email"
+          type="hidden"
+          name="form_type"
+          value="customer"
         >
 
-      </div>
-
-
-      <!-- BOUTON -->
-
-      <button
-        type="submit"
-        class="club-hero__submit"
-      >
-
-        <span class="club-hero__submit-text">
-          REJOIGNEZ LE CLUB
-        </span>
-
-        <span
-          class="club-hero__submit-arrow"
-          aria-hidden="true"
+        <input
+          type="hidden"
+          name="utf8"
+          value="✓"
         >
-          →
-        </span>
-
-      </button>
-
-    </form>
 
 
-    {% if section.settings.launch_text != blank %}
-      <p class="club-hero__launch">
-        {{ section.settings.launch_text }}
-      </p>
-    {% endif %}
+        <!-- EMAIL -->
+
+        <div class="club-hero__email-wrap">
+
+          <input
+            class="club-hero__email"
+            type="email"
+            name="contact[email]"
+            placeholder="VOTRE EMAIL"
+            required
+            autocomplete="email"
+            aria-label="Votre email"
+          >
+
+        </div>
+
+
+        <!-- BOUTON -->
+
+        <button
+          class="club-hero__submit"
+          type="submit"
+        >
+
+          <span class="club-hero__submit-text">
+            {{ section.settings.button_label }}
+          </span>
+
+          <span
+            class="club-hero__submit-arrow"
+            aria-hidden="true"
+          >
+            →
+          </span>
+
+        </button>
+
+      </form>
+
+
+      {% if section.settings.launch_text != blank %}
+
+        <p class="club-hero__launch club-hero__reveal club-hero__reveal--4">
+          {{ section.settings.launch_text }}
+        </p>
+
+      {% endif %}
+
+    </div>
 
   </div>
 
@@ -148,8 +158,6 @@
   position: relative;
 
   width: 100%;
-  max-width: none;
-
   height: calc(100svh + 40px);
   min-height: calc(100svh + 40px);
 
@@ -171,6 +179,8 @@
 #ClubPrivilegesHero-{{ section.id }} .club-hero__media {
   position: absolute;
   inset: 0;
+
+  z-index: 0;
 
   width: 100%;
   height: 100%;
@@ -197,12 +207,9 @@
 
   transform: translate3d(0, 0, 0) scale(1.08);
 
-  transform-origin: center center;
+  transform-origin: center;
 
   will-change: transform;
-
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
 
@@ -235,55 +242,49 @@
 
 
 /* =========================================================
-   CONTENU
+   CONTENEUR DU CONTENU
+
+   IMPORTANT :
+   aucun transform ici.
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__content {
   position: absolute;
 
-  left: 50%;
+  left: 0;
+  right: 0;
   bottom: 35px;
 
   z-index: 2;
 
+  width: 100%;
+
+  padding: 0 40px;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CONTENU INTÉRIEUR
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__content-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
 
+  width: min(100%, 1150px);
+
+  margin: 0 auto;
+
   gap: 14px;
-
-  width: min(100%, 1100px);
-
-  margin: 0;
-  padding: 40px;
 
   text-align: center;
 
   color: var(--club-text-color);
 
-  opacity: 0;
-  visibility: hidden;
-
-  transform: translate3d(-50%, -90px, 0);
-
-  transition:
-    opacity 0.65s ease,
-    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: opacity, transform;
-}
-
-
-/* =========================================================
-   ANIMATION D'ENTRÉE
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }}.is-content-visible
-.club-hero__content {
-  opacity: 1;
-  visibility: visible;
-
-  transform: translate3d(-50%, 0, 0);
+  pointer-events: auto;
 }
 
 
@@ -294,7 +295,11 @@
 #ClubPrivilegesHero-{{ section.id }} .club-hero__eyebrow {
   margin: 0;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
   font-size: 11px;
   font-weight: 400;
@@ -316,7 +321,11 @@
 #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
   margin: 0;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
   font-size: clamp(50px, 8vw, 130px);
   font-weight: 400;
@@ -350,116 +359,53 @@
 
 
 /* =========================================================
-   EMAIL — BLANC RÉELLEMENT FLOU / DIFFUS
+   CHAMP EMAIL
+
+   COPIE EXACTE DE LA HOME.
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
-  position: relative;
-
   flex: 1;
 
   display: flex;
   align-items: center;
 
   min-width: 0;
-  height: 48px;
 
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
 
-  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  border: 1px solid rgba(255, 255, 255, 0.70);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
-
-/* =========================================================
-   MATIÈRE BLANCHE FLOUTÉE
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap::before {
-  content: "";
+.club-hero__email-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.22);
 
-  position: absolute;
-
-  /*
-    On agrandit énormément la couche
-    pour que le blur ne soit jamais coupé.
-  */
-  inset: -40px;
-
-  z-index: 0;
-
-  /*
-    Plusieurs masses blanches semi-transparentes.
-    C'est ELLES qu'on va flouter.
-  */
-
-  background:
-    radial-gradient(
-      circle at 18% 45%,
-      rgba(255,255,255,0.55) 0%,
-      rgba(255,255,255,0.30) 18%,
-      rgba(255,255,255,0) 45%
-    ),
-
-    radial-gradient(
-      circle at 55% 20%,
-      rgba(255,255,255,0.35) 0%,
-      rgba(255,255,255,0.16) 22%,
-      rgba(255,255,255,0) 50%
-    ),
-
-    radial-gradient(
-      circle at 85% 65%,
-      rgba(255,255,255,0.45) 0%,
-      rgba(255,255,255,0.20) 20%,
-      rgba(255,255,255,0) 48%
-    );
-
-  filter: blur(22px);
-  -webkit-filter: blur(22px);
-
-  transform: scale(1.15);
-
-  pointer-events: none;
+  border-color: #ffffff;
 }
 
 
-/* =========================================================
-   VOILE BLANC TRÈS LÉGER PAR-DESSUS
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap::after {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  background: rgba(255, 255, 255, 0.08);
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   TEXTE EMAIL
-========================================================= */
+/* INPUT */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
-  position: relative;
-
-  z-index: 2;
-
   width: 100%;
   height: 100%;
 
   padding: 0 16px;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
   font-size: 11px;
   font-weight: 400;
@@ -468,12 +414,10 @@
 
   color: #ffffff;
 
-  background: transparent !important;
+  background: transparent;
 
   border: 0;
   outline: 0;
-
-  box-shadow: none;
 
   text-transform: uppercase;
 }
@@ -481,10 +425,11 @@
 
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__email::placeholder {
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.78);
 
   opacity: 1;
 }
+
 
 /* =========================================================
    BOUTON
@@ -502,16 +447,16 @@
   min-width: 185px;
   height: 48px;
 
-  margin: 0;
-
   padding: 0 18px;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
   font-size: 11px;
   font-weight: 400;
-
-  line-height: 1;
 
   letter-spacing: 0.06em;
 
@@ -521,8 +466,6 @@
 
   border: 1px solid #ffffff;
   border-radius: 0;
-
-  box-shadow: none;
 
   cursor: pointer;
 
@@ -558,8 +501,6 @@
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__submit-arrow {
   transform: none;
-
-  transition: none;
 }
 
 
@@ -570,7 +511,11 @@
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
   margin: 0;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
   font-size: 10px;
   font-weight: 400;
@@ -584,6 +529,58 @@
   color: inherit;
 
   opacity: 0.85;
+}
+
+
+/* =========================================================
+   ANIMATION D'ENTRÉE
+
+   On anime les éléments individuellement.
+   Le parent du champ email N'EST PAS transformé.
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }} .club-hero__reveal {
+  opacity: 0;
+
+  transform: translateY(-55px);
+
+  transition:
+    opacity 0.65s ease,
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: opacity, transform;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}.is-content-visible
+.club-hero__reveal {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__reveal--1 {
+  transition-delay: 0s;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__reveal--2 {
+  transition-delay: 0.06s;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__reveal--3 {
+  transition-delay: 0.12s;
+}
+
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__reveal--4 {
+  transition-delay: 0.18s;
 }
 
 
@@ -603,9 +600,7 @@
   .club-hero__content {
     bottom: 24px;
 
-    width: 100%;
-
-    padding: 24px 16px;
+    padding: 0 16px;
   }
 
 
@@ -648,32 +643,35 @@
 <script>
 (() => {
 
-  const hero = document.getElementById(
-    'ClubPrivilegesHero-{{ section.id }}'
-  );
+  const hero =
+    document.getElementById(
+      'ClubPrivilegesHero-{{ section.id }}'
+    );
 
   if (!hero) return;
 
 
   const image =
-    hero.querySelector('.club-hero__image');
+    hero.querySelector(
+      '.club-hero__image'
+    );
 
 
   /* =======================================================
-     ANIMATION D'ENTRÉE DU TEXTE
+     ENTRÉE
   ======================================================= */
 
-  requestAnimationFrame(() => {
+  window.requestAnimationFrame(() => {
 
-    requestAnimationFrame(() => {
+    window.requestAnimationFrame(() => {
 
-      setTimeout(() => {
+      window.setTimeout(() => {
 
         hero.classList.add(
           'is-content-visible'
         );
 
-      }, 120);
+      }, 80);
 
     });
 
@@ -736,7 +734,7 @@
     ticking = true;
 
 
-    requestAnimationFrame(
+    window.requestAnimationFrame(
       updateParallax
     );
 
@@ -780,7 +778,7 @@
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
-      "default": "CLUB POUR — ACCÈS MEMBRES"
+      "default": "CLUB POUR"
     },
 
     {
@@ -788,6 +786,13 @@
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
+    },
+
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "REJOIGNEZ LE CLUB"
     },
 
     {
@@ -808,10 +813,13 @@
       "type": "range",
       "id": "overlay",
       "label": "Assombrissement de l'image",
+
       "min": 0,
       "max": 60,
       "step": 5,
+
       "unit": "%",
+
       "default": 10
     }
 
