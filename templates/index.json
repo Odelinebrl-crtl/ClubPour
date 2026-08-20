@@ -55,7 +55,8 @@
         "look_bUp43d": {
           "type": "look",
           "settings": {
-            "product": "drop-001-candy-del-mar",
+            "product": "",
+            "product_image": "shopify://shop_images/Design_sans_titre_f8faa62e-70b2-44f8-9741-0525c4b40997.png",
             "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
