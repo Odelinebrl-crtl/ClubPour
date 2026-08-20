@@ -1673,8 +1673,7 @@ a {
 
 .product-page-pour__tabs {
   display: flex;
-
-  gap: 70px;
+  gap: 44px;
 
   border-bottom: 1px solid #e5e5e5;
 }
@@ -1727,15 +1726,13 @@ a {
 .product-page-pour__tab-content {
   display: none;
 
-  max-width: 620px;
+  max-width: 640px;
 
-  padding-top: 45px;
+  padding-top: 26px;
 
   font-size: 13px;
-
   line-height: 1.45;
 }
-
 .product-page-pour__tab-content.is-active {
   display: block;
 }
