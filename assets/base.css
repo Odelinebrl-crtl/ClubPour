@@ -2047,6 +2047,10 @@ transform: translateX(-15px);
   box-sizing: border-box;
 }
 
+/* =========================================================
+   CARROUSEL — STRUCTURE
+========================================================= */
+
 .pour-community__viewport {
   position: relative;
 
@@ -2068,23 +2072,137 @@ transform: translateX(-15px);
 
 .pour-community__slide {
   position: absolute;
-  inset: 0;
+
+  top: 0;
+  left: 0;
 
   width: 100%;
 
   opacity: 0;
-  visibility: hidden;
 
   pointer-events: none;
+
+  z-index: 1;
 }
+
+
+/* SLIDE ACTIF */
 
 .pour-community__slide.is-active {
   position: relative;
 
   opacity: 1;
-  visibility: visible;
 
   pointer-events: auto;
+
+  z-index: 2;
+}
+
+
+/* Pendant une transition,
+   les deux slides doivent se superposer */
+
+.pour-community__slide.is-active.is-leaving-left,
+.pour-community__slide.is-active.is-leaving-right {
+  position: absolute;
+
+  z-index: 3;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   ANIMATION PHOTO COMMUNAUTÉ
+========================================================= */
+
+.pour-community__ugc {
+  opacity: 1;
+
+  transform: translateX(0);
+
+  transition:
+    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 550ms ease;
+}
+
+
+/* SORTIE VERS GAUCHE */
+
+.pour-community__slide.is-leaving-left
+.pour-community__ugc {
+  transform: translateX(-45px);
+
+  opacity: 0;
+}
+
+
+/* SORTIE VERS DROITE */
+
+.pour-community__slide.is-leaving-right
+.pour-community__ugc {
+  transform: translateX(45px);
+
+  opacity: 0;
+}
+
+
+/* NOUVELLE PHOTO ARRIVE DE DROITE */
+
+.pour-community__slide.is-entering-right
+.pour-community__ugc {
+  transform: translateX(45px);
+
+  opacity: 0;
+}
+
+
+/* NOUVELLE PHOTO ARRIVE DE GAUCHE */
+
+.pour-community__slide.is-entering-left
+.pour-community__ugc {
+  transform: translateX(-45px);
+
+  opacity: 0;
+}
+
+
+/* =========================================================
+   ANIMATION PRODUIT
+========================================================= */
+
+.pour-community__product {
+  opacity: 1;
+
+  transform: translateY(0);
+
+  transition:
+    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 500ms ease;
+}
+
+
+/* PRODUIT QUI DISPARAÎT */
+
+.pour-community__slide.is-leaving-left
+.pour-community__product,
+.pour-community__slide.is-leaving-right
+.pour-community__product {
+  opacity: 0;
+
+  transform: translateY(20px);
+}
+
+
+/* NOUVEAU PRODUIT COMMENCE PLUS BAS */
+
+.pour-community__slide.is-entering-left
+.pour-community__product,
+.pour-community__slide.is-entering-right
+.pour-community__product {
+  opacity: 0;
+
+  transform: translateY(30px);
 }
 
 
