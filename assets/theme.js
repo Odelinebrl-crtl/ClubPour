@@ -900,118 +900,90 @@ function initClothingHero() {
 
 
 /* =========================================================
-   PARALLAX
+   PARALLAX — MÊME MÉCANIQUE QUE HERO HOME
 ========================================================= */
 
-      function updateParallax() {
+function updateParallax() {
 
-        const rect =
-          hero.getBoundingClientRect();
+  const scrollY = window.scrollY;
 
-
-        /*
-          Hero hors écran :
-          inutile de continuer.
-        */
-
-        if (
-          rect.bottom <= 0 ||
-          rect.top >= window.innerHeight
-        ) {
-          parallaxTicking = false;
-
-          return;
-        }
+  const heroHeight = hero.offsetHeight;
 
 
-        /*
-          On mesure la distance réellement
-          parcourue dans le Hero.
+  /*
+    Tant que l'on se trouve dans la zone du Hero.
+  */
 
-          C'est plus fiable que window.scrollY
-          puisque ton Hero commence sous le header.
-        */
+  if (scrollY <= heroHeight) {
 
-        const scrolledInsideHero =
-          Math.max(
-            0,
-            -rect.top
-          );
+    /*
+      Même coefficient que le Hero Home.
+    */
 
-
-        /*
-          Même intensité que ton Hero Home.
-        */
-
-        const translateY =
-          scrolledInsideHero * 0.22;
+    const translateY =
+      scrollY * 0.22;
 
 
-        /*
-          Toutes les images bougent ensemble.
-          Donc lorsqu'une nouvelle slide arrive,
-          elle est déjà au bon niveau de parallax.
-        */
+    /*
+      On applique le mouvement directement
+      au transform, comme sur ton Hero principal.
+    */
 
-        images.forEach((image) => {
+    images.forEach((image) => {
 
-          image.style.setProperty(
-            '--clothing-parallax',
-            `${translateY}px`
-          );
+      image.style.transform =
+        `translate3d(0, ${translateY}px, 0) scale(1.08)`;
 
-        });
+    });
 
-
-        parallaxTicking = false;
-
-      }
+  }
 
 
-      function requestParallaxUpdate() {
-
-        if (parallaxTicking) {
-          return;
-        }
+  parallaxTicking = false;
+}
 
 
-        parallaxTicking = true;
+function requestParallaxUpdate() {
+
+  if (parallaxTicking) {
+    return;
+  }
 
 
-        window.requestAnimationFrame(() => {
-
-          updateParallax();
-
-        });
-
-      }
+  parallaxTicking = true;
 
 
-      /*
-        C'ÉTAIT CE QUI MANQUAIT
-        DANS TON CODE ACTUEL.
-      */
+  window.requestAnimationFrame(() => {
 
-      window.addEventListener(
-        'scroll',
-        requestParallaxUpdate,
-        {
-          passive: true
-        }
-      );
+    updateParallax();
+
+  });
+
+}
 
 
-      window.addEventListener(
-        'resize',
-        requestParallaxUpdate
-      );
+/* ÉCOUTE DU SCROLL */
+
+window.addEventListener(
+  'scroll',
+  requestParallaxUpdate,
+  {
+    passive: true
+  }
+);
 
 
-      /*
-        Position initiale.
-      */
+/* REDIMENSIONNEMENT */
 
-      updateParallax();
+window.addEventListener(
+  'resize',
+  requestParallaxUpdate
+);
+
+
+/* POSITION INITIALE */
+
+updateParallax();
 
 
 /* =========================================================
