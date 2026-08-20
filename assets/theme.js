@@ -695,3 +695,107 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   HERO VÊTEMENTS — PARALLAX AU SCROLL
+========================================================= */
+
+function initClothingHeroParallax() {
+
+  const heroes = document.querySelectorAll(
+    '[data-clothing-hero]'
+  );
+
+  if (!heroes.length) return;
+
+
+  const updateParallax = () => {
+
+    heroes.forEach((hero) => {
+
+      const rect = hero.getBoundingClientRect();
+
+      /*
+       * On ne calcule que lorsque le hero
+       * est proche de la zone visible.
+       */
+      if (
+        rect.bottom < 0 ||
+        rect.top > window.innerHeight
+      ) {
+        return;
+      }
+
+
+      /*
+       * Progression du hero dans le viewport.
+       * Mouvement volontairement léger.
+       */
+
+      const progress =
+        (window.innerHeight - rect.top) /
+        (window.innerHeight + rect.height);
+
+      const offset =
+        (progress - 0.5) * 70;
+
+
+      hero.style.setProperty(
+        '--clothing-parallax-y',
+        `${offset}px`
+      );
+
+    });
+
+  };
+
+
+  let ticking = false;
+
+
+  const onScroll = () => {
+
+    if (ticking) return;
+
+    ticking = true;
+
+    window.requestAnimationFrame(() => {
+
+      updateParallax();
+
+      ticking = false;
+
+    });
+
+  };
+
+
+  updateParallax();
+
+  window.addEventListener(
+    'scroll',
+    onScroll,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'resize',
+    updateParallax
+  );
+
+}
+
+
+/* lancement */
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    initClothingHeroParallax
+  );
+
+} else {
+
+  initClothingHeroParallax();
+
+}
