@@ -229,17 +229,31 @@
             class="product-page-pour__related-card"
           >
 
-            {% if related_product.featured_image %}
-              <div class="product-page-pour__related-media">
-                {{
-                  related_product.featured_image
-                  | image_url: width: 900
-                  | image_tag:
-                    loading: 'lazy',
-                    alt: related_product.title
-                }}
-              </div>
-            {% endif %}
+           {% if related_product.featured_image %}
+  <div class="product-page-pour__related-media">
+
+    {{
+      related_product.featured_image
+      | image_url: width: 1000
+      | image_tag:
+        class: 'product-page-pour__related-image product-page-pour__related-image--primary',
+        loading: 'lazy',
+        alt: related_product.title
+    }}
+
+    {% if related_product.images.size > 1 %}
+      {{
+        related_product.images[1]
+        | image_url: width: 1000
+        | image_tag:
+          class: 'product-page-pour__related-image product-page-pour__related-image--secondary',
+          loading: 'lazy',
+          alt: related_product.title
+      }}
+    {% endif %}
+
+  </div>
+{% endif %}
 
             <div class="product-page-pour__related-title">
               {{ related_product.title }}
