@@ -568,30 +568,94 @@ function initClothingHero() {
          ÉTAT INITIAL
       ===================================================== */
 
-      slides.forEach(
-        (slide, index) => {
+     slides.forEach(
+  (slide) => {
 
-          slide.classList.remove(
-            'is-active',
-            'is-entering',
-            'is-from-right',
-            'is-from-left',
-            'is-moving',
-            'is-text-visible'
-          );
+    slide.classList.remove(
+      'is-active',
+      'is-entering',
+      'is-from-right',
+      'is-from-left',
+      'is-moving',
+      'is-text-visible'
+    );
+
+  }
+);
 
 
-          if (index === 0) {
+/* =====================================================
+   ANIMATION D'ENTRÉE — PREMIÈRE SLIDE
+===================================================== */
 
-            slide.classList.add(
-              'is-active',
-              'is-text-visible'
-            );
+const firstSlide = slides[0];
 
-          }
+firstSlide.classList.add(
+  'is-entering',
+  'is-from-right'
+);
 
-        }
-      );
+
+/*
+  Force le navigateur à enregistrer
+  la position à droite.
+*/
+
+void firstSlide.offsetWidth;
+
+
+/*
+  Active le mouvement.
+*/
+
+firstSlide.classList.add(
+  'is-moving'
+);
+
+
+window.requestAnimationFrame(() => {
+
+  window.requestAnimationFrame(() => {
+
+    firstSlide.classList.remove(
+      'is-from-right'
+    );
+
+  });
+
+});
+
+
+/*
+  Une fois l'image en place :
+  elle devient la vraie slide active.
+*/
+
+window.setTimeout(() => {
+
+  firstSlide.classList.remove(
+    'is-entering',
+    'is-moving'
+  );
+
+  firstSlide.classList.add(
+    'is-active'
+  );
+
+
+  /*
+    Puis le texte apparaît.
+  */
+
+  window.setTimeout(() => {
+
+    firstSlide.classList.add(
+      'is-text-visible'
+    );
+
+  }, 100);
+
+}, slideDuration);
 
 
       dots.forEach(
@@ -923,91 +987,51 @@ function initClothingHero() {
 
       function updateParallax() {
 
-        /*
-          Comme le Hero est au début de la page,
-          on reprend directement le scrollY.
-        */
+  const rect = hero.getBoundingClientRect();
 
-        const scrollY =
-          window.scrollY;
+  /*
+    On ne calcule que si le Hero
+    est encore visible à l'écran.
+  */
 
-
-        const heroHeight =
-          hero.offsetHeight;
-
-
-        /*
-          Seulement tant que le Hero
-          est encore concerné.
-        */
-
-        if (
-          scrollY <=
-          heroHeight
-        ) {
-
-          const translateY =
-            scrollY * 0.22;
+  if (
+    rect.bottom <= 0 ||
+    rect.top >= window.innerHeight
+  ) {
+    parallaxTicking = false;
+    return;
+  }
 
 
-          /*
-            On déplace TOUTES les images.
+  /*
+    Distance réellement parcourue
+    depuis le début du Hero.
+  */
 
-            Ainsi la slide suivante est déjà
-            au bon niveau au moment où
-            elle entre à l'écran.
-          */
-
-          images.forEach(
-            (image) => {
-
-              image.style.setProperty(
-                '--clothing-parallax',
-                `${translateY}px`
-              );
-
-            }
-          );
-
-        }
+  const scrolledInsideHero =
+    Math.max(0, -rect.top);
 
 
-        parallaxTicking =
-          false;
+  /*
+    Même intensité que ton Hero Home.
+  */
 
-      }
-
-
-      function onScroll() {
-
-        if (
-          parallaxTicking
-        ) {
-          return;
-        }
+  const translateY =
+    scrolledInsideHero * 0.22;
 
 
-        parallaxTicking =
-          true;
+  images.forEach((image) => {
+
+    image.style.setProperty(
+      '--clothing-parallax',
+      `${translateY}px`
+    );
+
+  });
 
 
-        window.requestAnimationFrame(
-          updateParallax
-        );
-
-      }
-
-
-      window.addEventListener(
-        'scroll',
-        onScroll,
-        {
-          passive: true
-        }
-      );
-
-
-      updateParallax();
+  parallaxTicking = false;
+}
 
 
       /* =====================================================
