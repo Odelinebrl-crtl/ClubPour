@@ -441,10 +441,9 @@ a {
 
 .pour-hero__eyebrow {
   margin: 0;
-  font-size: 9px;
-  font-weight: 400;
+  font-size: 11px;
   line-height: 1;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -455,7 +454,7 @@ a {
 .pour-hero__heading {
   margin: 0;
 
-  font-size: clamp(70px, 13vw, 210px);
+  font-size: clamp(50px, 8vw, 130px);
   font-weight: 400;
 
   line-height: 0.8;
