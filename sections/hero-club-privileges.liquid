@@ -350,7 +350,7 @@
 
 
 /* =========================================================
-   EMAIL — FOND BLANC TRANSLUCIDE + FLOU
+   EMAIL — VOILE BLANC FLOUTÉ
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
@@ -364,44 +364,74 @@
   min-width: 0;
   height: 48px;
 
-  /*
-    Le fond blanc reste volontairement léger.
-  */
-  background: rgba(255, 255, 255, 0.15);
-
-  /*
-    C'est CETTE propriété qui floute
-    directement l'image située derrière le champ.
-  */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(255, 255, 255, 0.65);
-
   overflow: hidden;
 
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
+  background: transparent;
+
+  /* La bordure reste nette */
+  border: 1px solid rgba(255, 255, 255, 0.72);
 }
 
 
-/* Focus */
+/* =========================================================
+   VOILE BLANC FLOUTÉ
+   C'EST LE BLANC QUI EST FLOUTÉ,
+   PAS L'IMAGE DERRIÈRE
+========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within {
-  background: rgba(255, 255, 255, 0.22);
+.club-hero__email-wrap::before {
+  content: "";
 
-  border-color: #ffffff;
+  position: absolute;
+
+  /*
+    On déborde volontairement pour que le blur
+    remplisse bien tout le rectangle.
+  */
+  inset: -14px;
+
+  z-index: 0;
+
+  background: rgba(255, 255, 255, 0.32);
+
+  filter: blur(14px);
+  -webkit-filter: blur(14px);
+
+  opacity: 0.9;
+
+  pointer-events: none;
 }
 
 
-/* INPUT */
+/* =========================================================
+   PETIT VOILE SUPPLÉMENTAIRE
+   POUR RETROUVER LE CÔTÉ LAITEUX
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: rgba(255, 255, 255, 0.07);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
   position: relative;
 
-  z-index: 1;
+  z-index: 2;
 
   display: block;
 
@@ -409,7 +439,6 @@
   height: 100%;
 
   margin: 0;
-
   padding: 0 16px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -426,8 +455,6 @@
   background: transparent;
 
   border: 0;
-  border-radius: 0;
-
   outline: 0;
 
   box-shadow: none;
@@ -438,11 +465,28 @@
 
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.88);
 
   opacity: 1;
 }
 
+
+/* =========================================================
+   FOCUS
+========================================================= */
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within::before {
+  background: rgba(255, 255, 255, 0.40);
+
+  filter: blur(16px);
+  -webkit-filter: blur(16px);
+}
+
+#ClubPrivilegesHero-{{ section.id }}
+.club-hero__email-wrap:focus-within {
+  border-color: #ffffff;
+}
 
 /* =========================================================
    BOUTON
