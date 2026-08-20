@@ -1958,7 +1958,8 @@ a {
   75px
   clamp(40px, 5vw, 80px)
   0;
-
+transform: translateX(-15px);
+   
   font-size: 10px;
   font-weight: 400;
   line-height: 1;
