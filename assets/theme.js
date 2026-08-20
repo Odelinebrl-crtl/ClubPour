@@ -547,57 +547,50 @@ function initClothingHero() {
 
 /* =========================================================
    ÉTAT INITIAL
-   IMAGE 01 IMMÉDIATEMENT VISIBLE
 ========================================================= */
 
-      slides.forEach((slide) => {
+slides.forEach((slide) => {
 
-        slide.classList.remove(
-          'is-active',
-          'is-entering',
-          'is-from-right',
-          'is-from-left',
-          'is-moving',
-          'is-text-visible'
-        );
+  slide.classList.remove(
+    'is-active',
+    'is-entering',
+    'is-from-right',
+    'is-from-left',
+    'is-moving',
+    'is-text-visible'
+  );
 
-      });
-
-
-      const firstSlide = slides[0];
+});
 
 
-      /*
-        IMPORTANT :
-        l'image 01 est affichée immédiatement.
-        AUCUNE animation horizontale au chargement.
-      */
-
-      firstSlide.classList.add(
-        'is-active'
-      );
+const firstSlide = slides[0];
 
 
-      /*
-        Le texte, lui, reste momentanément
-        dans son état caché CSS :
+/*
+  L'IMAGE 01 EST IMMÉDIATEMENT AFFICHÉE.
+  Elle ne bouge absolument pas.
+*/
 
-        opacity: 0
-        translateY(-30px)
-      */
+firstSlide.classList.add(
+  'is-active'
+);
 
 
-      window.requestAnimationFrame(() => {
+/*
+  Le texte attend légèrement avant d'entrer.
 
-        window.requestAnimationFrame(() => {
+  Ce délai est important :
+  sans lui, l'animation commence pratiquement
+  avant que la page soit visible.
+*/
 
-          firstSlide.classList.add(
-            'is-text-visible'
-          );
+window.setTimeout(() => {
 
-        });
+  firstSlide.classList.add(
+    'is-text-visible'
+  );
 
-      });
+}, 280);
 
 
 /* =========================================================
@@ -900,50 +893,57 @@ function initClothingHero() {
 
 
 /* =========================================================
-   PARALLAX — MÊME MÉCANIQUE QUE HERO HOME
+   HERO VÊTEMENTS — PARALLAX
+   IDENTIQUE AU HERO DE LA HOME
 ========================================================= */
 
-function updateParallax() {
+function updateClothingParallax() {
 
   const scrollY = window.scrollY;
 
-  const heroHeight = hero.offsetHeight;
+  const heroTop =
+    hero.getBoundingClientRect().top + scrollY;
+
+  const heroHeight =
+    hero.offsetHeight;
 
 
   /*
-    Tant que l'on se trouve dans la zone du Hero.
+    Distance réellement parcourue
+    à l'intérieur du Hero.
   */
 
-  if (scrollY <= heroHeight) {
+  const localScroll =
+    Math.max(
+      0,
+      Math.min(
+        scrollY - heroTop,
+        heroHeight
+      )
+    );
 
-    /*
-      Même coefficient que le Hero Home.
-    */
 
-    const translateY =
-      scrollY * 0.22;
+  /*
+    Même coefficient que le Hero Home.
+  */
+
+  const translateY =
+    localScroll * 0.22;
 
 
-    /*
-      On applique le mouvement directement
-      au transform, comme sur ton Hero principal.
-    */
+  images.forEach((image) => {
 
-    images.forEach((image) => {
+    image.style.transform =
+      `translate3d(0, ${translateY}px, 0) scale(1.08)`;
 
-      image.style.transform =
-        `translate3d(0, ${translateY}px, 0) scale(1.08)`;
-
-    });
-
-  }
+  });
 
 
   parallaxTicking = false;
 }
 
 
-function requestParallaxUpdate() {
+function requestClothingParallax() {
 
   if (parallaxTicking) {
     return;
@@ -955,35 +955,33 @@ function requestParallaxUpdate() {
 
   window.requestAnimationFrame(() => {
 
-    updateParallax();
+    updateClothingParallax();
 
   });
 
 }
 
 
-/* ÉCOUTE DU SCROLL */
+/* LE LISTENER QUI FAIT RÉELLEMENT BOUGER L'IMAGE */
 
 window.addEventListener(
   'scroll',
-  requestParallaxUpdate,
+  requestClothingParallax,
   {
     passive: true
   }
 );
 
 
-/* REDIMENSIONNEMENT */
-
 window.addEventListener(
   'resize',
-  requestParallaxUpdate
+  requestClothingParallax
 );
 
 
-/* POSITION INITIALE */
+/* Position initiale */
 
-updateParallax();
+updateClothingParallax();
 
 
 /* =========================================================
