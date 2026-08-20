@@ -492,7 +492,7 @@ document.addEventListener(
   }
 );
 /* =========================================================
-   HERO VÊTEMENTS — SLIDER DIRECTIONNEL
+   HERO VÊTEMENTS — SLIDER ÉDITORIAL DIRECTIONNEL
 ========================================================= */
 
 function initClothingHero() {
@@ -501,11 +501,11 @@ function initClothingHero() {
     .querySelectorAll('[data-clothing-hero]')
     .forEach((hero) => {
 
-      if (hero.dataset.sliderInitialized === 'true') {
+      if (hero.dataset.clothingReady === 'true') {
         return;
       }
 
-      hero.dataset.sliderInitialized = 'true';
+      hero.dataset.clothingReady = 'true';
 
 
       const slides = Array.from(
@@ -521,39 +521,39 @@ function initClothingHero() {
 
 
       let currentIndex = 0;
-      let animating = false;
+      let isAnimating = false;
       let autoplayTimer = null;
 
 
       const autoplayEnabled =
         hero.dataset.autoplay !== 'false';
 
-
       const autoplayDelay =
         Number(hero.dataset.speed) || 4000;
 
+      const slideDuration = 900;
 
-      /* ===============================================
+
+      /* =====================================================
          ÉTAT INITIAL
-      =============================================== */
+      ===================================================== */
 
       slides.forEach((slide, index) => {
 
         slide.classList.remove(
           'is-active',
           'is-entering',
-          'is-sliding',
-          'enter-from-right',
-          'enter-from-left',
-          'text-visible'
+          'is-from-right',
+          'is-from-left',
+          'is-moving',
+          'is-text-visible'
         );
-
 
         if (index === 0) {
 
           slide.classList.add(
             'is-active',
-            'text-visible'
+            'is-text-visible'
           );
 
         }
@@ -571,15 +571,15 @@ function initClothingHero() {
       });
 
 
-      /* ===============================================
+      /* =====================================================
          AUTOPLAY
-      =============================================== */
+      ===================================================== */
 
       function stopAutoplay() {
 
         if (!autoplayTimer) return;
 
-        clearInterval(autoplayTimer);
+        window.clearInterval(autoplayTimer);
 
         autoplayTimer = null;
 
@@ -598,12 +598,12 @@ function initClothingHero() {
         }
 
 
-        autoplayTimer = setInterval(() => {
+        autoplayTimer = window.setInterval(() => {
 
           const nextIndex =
             (currentIndex + 1) % slides.length;
 
-          changeSlide(
+          goToSlide(
             nextIndex,
             'next'
           );
@@ -613,21 +613,21 @@ function initClothingHero() {
       }
 
 
-      /* ===============================================
+      /* =====================================================
          CHANGEMENT DE SLIDE
-      =============================================== */
+      ===================================================== */
 
-      function changeSlide(newIndex, direction) {
+      function goToSlide(newIndex, direction) {
 
         if (
-          animating ||
+          isAnimating ||
           newIndex === currentIndex
         ) {
           return;
         }
 
 
-        animating = true;
+        isAnimating = true;
 
 
         const oldSlide =
@@ -637,67 +637,94 @@ function initClothingHero() {
           slides[newIndex];
 
 
-        /*
-          Cache immédiatement le texte actuel.
-        */
+        /* ===============================================
+           MASQUE LE TEXTE ACTUEL
+        =============================================== */
 
         oldSlide.classList.remove(
-          'text-visible'
+          'is-text-visible'
         );
 
 
-        /*
-          Nettoyage de la nouvelle slide.
-        */
+        /* ===============================================
+           NETTOIE LA NOUVELLE SLIDE
+        =============================================== */
 
         newSlide.classList.remove(
           'is-active',
           'is-entering',
-          'is-sliding',
-          'enter-from-right',
-          'enter-from-left',
-          'text-visible'
+          'is-from-right',
+          'is-from-left',
+          'is-moving',
+          'is-text-visible'
         );
 
 
-        /*
-          Elle arrive :
-          NEXT  = depuis la droite
-          PREV  = depuis la gauche
-        */
+        /* ===============================================
+           POSITION DE DÉPART
+
+           NEXT :
+           la nouvelle image arrive de droite.
+
+           PREV :
+           elle revient depuis la gauche.
+        =============================================== */
 
         newSlide.classList.add(
           'is-entering',
           direction === 'next'
-            ? 'enter-from-right'
-            : 'enter-from-left'
+            ? 'is-from-right'
+            : 'is-from-left'
         );
 
 
         /*
-          Force le navigateur à prendre
-          en compte la position initiale.
+          Force le navigateur à enregistrer
+          cette position avant la transition.
         */
 
         void newSlide.offsetWidth;
 
 
-        /*
-          Lance le glissement.
-        */
+        /* ===============================================
+           ACTIVE LA TRANSITION
+        =============================================== */
 
         newSlide.classList.add(
-          'is-sliding'
+          'is-moving'
         );
 
 
         /*
-          Au terme du slide :
-          - ancienne image disparaît
-          - nouvelle devient active
+          Deux frames permettent au navigateur
+          de bien distinguer l'état de départ
+          de l'état final.
         */
 
+        window.requestAnimationFrame(() => {
+
+          window.requestAnimationFrame(() => {
+
+            newSlide.classList.remove(
+              'is-from-right',
+              'is-from-left'
+            );
+
+          });
+
+        });
+
+
+        /* ===============================================
+           FIN DE LA TRANSITION IMAGE
+        =============================================== */
+
         window.setTimeout(() => {
+
+          /*
+            On retire l'ancienne seulement lorsque
+            la nouvelle la recouvre complètement.
+          */
 
           oldSlide.classList.remove(
             'is-active'
@@ -706,9 +733,7 @@ function initClothingHero() {
 
           newSlide.classList.remove(
             'is-entering',
-            'is-sliding',
-            'enter-from-right',
-            'enter-from-left'
+            'is-moving'
           );
 
 
@@ -720,48 +745,46 @@ function initClothingHero() {
           currentIndex = newIndex;
 
 
-          /*
-            Pagination
-          */
+          /* =============================================
+             PAGINATION
+          ============================================= */
 
-          dots.forEach(
-            (dot, dotIndex) => {
+          dots.forEach((dot, dotIndex) => {
 
-              dot.classList.toggle(
-                'is-active',
-                dotIndex === currentIndex
-              );
+            dot.classList.toggle(
+              'is-active',
+              dotIndex === currentIndex
+            );
 
-            }
-          );
+          });
 
 
-          /*
-            IMAGE TERMINÉE.
+          /* =============================================
+             TEXTE
 
-            Petite attente avant de faire
-            apparaître le texte.
-          */
+             Il apparaît seulement APRÈS
+             l'installation complète de l'image.
+          ============================================= */
 
           window.setTimeout(() => {
 
             newSlide.classList.add(
-              'text-visible'
+              'is-text-visible'
             );
 
-            animating = false;
+            isAnimating = false;
 
           }, 120);
 
 
-        }, 850);
+        }, slideDuration);
 
       }
 
 
-      /* ===============================================
-         CLIC PAGINATION
-      =============================================== */
+      /* =====================================================
+         CLIC SUR 01 / 02 / 03 / ...
+      ===================================================== */
 
       dots.forEach((dot, index) => {
 
@@ -771,11 +794,19 @@ function initClothingHero() {
 
             if (
               index === currentIndex ||
-              animating
+              isAnimating
             ) {
               return;
             }
 
+
+            /*
+              Si le numéro est après l'actuel :
+              arrivée depuis la droite.
+
+              Si le numéro est avant :
+              arrivée depuis la gauche.
+            */
 
             const direction =
               index > currentIndex
@@ -783,11 +814,16 @@ function initClothingHero() {
                 : 'prev';
 
 
-            changeSlide(
+            goToSlide(
               index,
               direction
             );
 
+
+            /*
+              Après une interaction manuelle,
+              on repart sur un cycle complet.
+            */
 
             startAutoplay();
 
@@ -797,9 +833,9 @@ function initClothingHero() {
       });
 
 
-      /* ===============================================
+      /* =====================================================
          LANCEMENT
-      =============================================== */
+      ===================================================== */
 
       startAutoplay();
 
@@ -808,7 +844,9 @@ function initClothingHero() {
 }
 
 
-/* CHARGEMENT */
+/* =========================================================
+   CHARGEMENT NORMAL
+========================================================= */
 
 if (document.readyState === 'loading') {
 
@@ -824,7 +862,9 @@ if (document.readyState === 'loading') {
 }
 
 
-/* SHOPIFY EDITOR */
+/* =========================================================
+   SHOPIFY THEME EDITOR
+========================================================= */
 
 document.addEventListener(
   'shopify:section:load',
@@ -836,7 +876,7 @@ document.addEventListener(
       )
       .forEach((hero) => {
 
-        hero.dataset.sliderInitialized =
+        hero.dataset.clothingReady =
           'false';
 
       });
