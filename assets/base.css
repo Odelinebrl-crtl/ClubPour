@@ -2646,8 +2646,21 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   SLIDES
+   HERO VÊTEMENTS — SLIDES DIRECTIONNELLES
 ========================================================= */
+
+.clothing-hero__slides {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+
+/* Toutes les slides sont superposées */
 
 .clothing-hero__slide {
   position: absolute;
@@ -2656,24 +2669,36 @@ transform: translateX(-15px);
   width: 100%;
   height: 100%;
 
-  opacity: 0;
+  z-index: 0;
+
   visibility: hidden;
   pointer-events: none;
 
-  transition:
-    opacity 0.7s ease,
-    visibility 0.7s ease;
+  overflow: hidden;
 }
 
+
+/* Slide affichée */
+
 .clothing-hero__slide.is-active {
-  opacity: 1;
+  z-index: 2;
+
   visibility: visible;
   pointer-events: auto;
 }
 
 
+/* Slide qui arrive */
+
+.clothing-hero__slide.is-entering {
+  z-index: 3;
+
+  visibility: visible;
+}
+
+
 /* =========================================================
-   IMAGE — MÊME LOGIQUE QUE HERO HOME
+   IMAGE
 ========================================================= */
 
 .clothing-hero__image {
@@ -2688,101 +2713,149 @@ transform: translateX(-15px);
   object-fit: cover;
   object-position: center;
 
-  /*
-    Zoom initial identique au Hero home.
-    Le JS ajoutera le translateY au scroll.
-  */
   transform: translate3d(0, 0, 0) scale(1.08);
 
   will-change: transform;
 
   backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 }
 
+
 /* =========================================================
-   TEXTE — HAUT DROITE
+   TRANSITION IMAGE — PAGE QUI GLISSE
+========================================================= */
+
+/* nouvelle slide préparée à droite */
+
+.clothing-hero__slide.enter-from-right {
+  transform: translateX(100%);
+}
+
+
+/* nouvelle slide préparée à gauche */
+
+.clothing-hero__slide.enter-from-left {
+  transform: translateX(-100%);
+}
+
+
+/* transition vers sa position finale */
+
+.clothing-hero__slide.is-sliding {
+  transition:
+    transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+
+/* état final */
+
+.clothing-hero__slide.is-entering.is-sliding {
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   TEXTE — PLUS BAS À DROITE
 ========================================================= */
 
 .clothing-hero__content {
   position: absolute;
 
-  top: 70px;
-  right: 55px;
+  /*
+    On le descend franchement par rapport
+    à ton placement actuel.
+  */
+  top: 23%;
+  right: 54px;
 
-  z-index: 5;
+  z-index: 10;
 
-  width: min(420px, 32vw);
+  width: min(390px, 31vw);
+
+  color: var(--slide-text-color, #111111);
 
   text-align: left;
 
-  color: #111111;
+  /*
+    Le texte est caché pendant le changement d'image.
+  */
+  opacity: 0;
+
+  transform: translateY(-28px);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+
+/*
+  Le texte n'apparaît QUE lorsque
+  JS ajoute text-visible.
+*/
+
+.clothing-hero__slide.text-visible
+.clothing-hero__content {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+
+/* TITRE */
+
 .clothing-hero__heading {
-  margin: 0 0 16px;
+  margin: 0 0 18px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: clamp(38px, 3.7vw, 62px);
+  font-size: clamp(42px, 4vw, 68px);
   font-weight: 400;
 
-  line-height: 0.95;
-  letter-spacing: -0.035em;
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+
+  color: inherit;
 
   text-transform: uppercase;
 }
 
-.clothing-hero__subtitle {
-  max-width: 340px;
 
+/* SOUS-TITRE */
+
+.clothing-hero__subtitle {
   margin: 0;
+
+  max-width: 350px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 13px;
   font-weight: 400;
 
-  line-height: 1.25;
+  line-height: 1.2;
+
+  color: inherit;
 
   text-transform: uppercase;
 }
 
 
-/* =========================================================
-   LIEN DÉCOUVRIR
-========================================================= */
+/* LIEN */
 
 .clothing-hero__link {
   position: relative;
 
   display: inline-block;
 
-  margin-top: 12px;
-
-  color: #111111;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-top: 14px;
 
   font-size: 12px;
-  font-weight: 400;
+
+  color: inherit;
 
   text-transform: uppercase;
   text-decoration: none;
-}
-
-.clothing-hero__link::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: -4px;
-
-  height: 1px;
-
-  background: currentColor;
 }
 
 
