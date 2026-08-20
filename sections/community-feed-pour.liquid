@@ -84,19 +84,6 @@
 
                       {% endif %}
 
-
-                      <!-- PASTILLE -->
-
-                      <span
-                        class="pour-community__hotspot"
-                        style="
-                          --hotspot-x: {{ block.settings.hotspot_x }}%;
-                          --hotspot-y: {{ block.settings.hotspot_y }}%;
-                        "
-                      >
-                        <span class="pour-community__hotspot-core"></span>
-                      </span>
-
                     </div>
 
                   </a>
@@ -135,25 +122,39 @@
                    PHOTO COMMUNAUTÉ
               ========================== -->
 
-              <div class="pour-community__ugc">
+             <div class="pour-community__ugc">
 
-                {% if block.settings.customer_image != blank %}
+  <div class="pour-community__ugc-media">
 
-                  {{
-                    block.settings.customer_image
-                    | image_url: width: 1000
-                    | image_tag:
-                      class: 'pour-community__ugc-image',
-                      loading: 'lazy'
-                  }}
+    {% if block.settings.customer_image != blank %}
 
-                {% else %}
+      {{
+        block.settings.customer_image
+        | image_url: width: 1400
+        | image_tag:
+          class: 'pour-community__ugc-image',
+          loading: 'lazy'
+      }}
 
-                  <div class="pour-community__ugc-placeholder">
-                    PHOTO CLIENT
-                  </div>
+      <span
+        class="pour-community__hotspot"
+        style="
+          --hotspot-x: {{ block.settings.hotspot_x }}%;
+          --hotspot-y: {{ block.settings.hotspot_y }}%;
+        "
+      >
+        <span class="pour-community__hotspot-core"></span>
+      </span>
 
-                {% endif %}
+    {% else %}
+
+      <div class="pour-community__ugc-placeholder">
+        PHOTO CLIENT
+      </div>
+
+    {% endif %}
+
+  </div>
 
 
                 {% if block.settings.customer_name != blank %}
