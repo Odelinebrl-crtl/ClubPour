@@ -1,0 +1,59 @@
+<section
+  id="Quote-{{ section.id }}"
+  class="pour-quote"
+  data-pour-quote
+>
+  <div class="pour-quote__inner">
+
+    {% if section.settings.eyebrow != blank %}
+      <p class="pour-quote__eyebrow">
+        <span class="pour-quote__dot"></span>
+        {{ section.settings.eyebrow }}
+      </p>
+    {% endif %}
+
+    {% if section.settings.quote != blank %}
+      <blockquote class="pour-quote__text">
+        {{ section.settings.quote }}
+      </blockquote>
+    {% endif %}
+
+    {% if section.settings.signature != blank %}
+      <p class="pour-quote__signature">
+        — {{ section.settings.signature }}
+      </p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Citation POUR",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "NOTRE PHILOSOPHIE"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Citation",
+      "default": "UNE CITATION CLUB POUR À DÉFINIR."
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature",
+      "default": "Club Pour"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Citation POUR"
+    }
+  ]
+}
+{% endschema %}
