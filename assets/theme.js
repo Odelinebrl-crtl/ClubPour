@@ -102,3 +102,95 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('shopify:section:load', initPourQuoteReveal);
+/* =========================================================
+   PRODUCT PAGE — GALLERY + TABS + QUANTITY
+========================================================= */
+
+function initPourProductPage() {
+  const page = document.querySelector('[data-product-page]');
+
+  if (!page) return;
+
+  /* Gallery */
+
+  const mainImage = page.querySelector('[data-main-product-image]');
+  const thumbs = page.querySelectorAll('[data-product-thumb]');
+
+  thumbs.forEach((thumb) => {
+    thumb.addEventListener('click', () => {
+      if (!mainImage) return;
+
+      const nextImage = thumb.dataset.image;
+
+      if (!nextImage || mainImage.src === nextImage) return;
+
+      mainImage.classList.add('is-changing');
+
+      setTimeout(() => {
+        mainImage.src = nextImage;
+
+        mainImage.onload = () => {
+          requestAnimationFrame(() => {
+            mainImage.classList.remove('is-changing');
+          });
+        };
+      }, 180);
+
+      thumbs.forEach((item) => {
+        item.classList.remove('is-active');
+      });
+
+      thumb.classList.add('is-active');
+    });
+  });
+
+  /* Tabs */
+
+  const tabs = page.querySelectorAll('[data-product-tab]');
+  const panels = page.querySelectorAll('[data-product-panel]');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.productTab;
+
+      tabs.forEach((item) => {
+        item.classList.toggle('is-active', item === tab);
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle(
+          'is-active',
+          panel.dataset.productPanel === target
+        );
+      });
+    });
+  });
+
+  /* Quantity */
+
+  const minus = page.querySelector('[data-qty-minus]');
+  const plus = page.querySelector('[data-qty-plus]');
+  const quantity = page.querySelector('[data-qty-input]');
+
+  if (minus && plus && quantity) {
+    minus.addEventListener('click', () => {
+      quantity.value = Math.max(
+        1,
+        Number(quantity.value || 1) - 1
+      );
+    });
+
+    plus.addEventListener('click', () => {
+      quantity.value =
+        Number(quantity.value || 1) + 1;
+    });
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initPourProductPage);
+} else {
+  initPourProductPage();
+}
+
+document.addEventListener('shopify:section:load', initPourProductPage);
