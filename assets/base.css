@@ -1994,12 +1994,13 @@ transform: translateX(-15px);
 .pour-community {
   width: 100%;
 
-  padding: 100px 54px 110px;
+  margin-top: 100px;
+
+  padding: 90px 54px 110px;
 
   background: #f7f7f7;
   color: #111111;
 }
-
 .pour-community__header {
   text-align: center;
   margin-bottom: 52px;
@@ -2021,10 +2022,14 @@ transform: translateX(-15px);
 
 .pour-community__carousel {
   position: relative;
-  width: min(100%, 1120px);
-  margin: 0 auto;
-}
 
+  width: min(100%, 1320px);
+
+  margin: 0 auto;
+  padding: 0 90px;
+
+  box-sizing: border-box;
+}
 .pour-community__viewport {
   width: 100%;
   overflow: hidden;
@@ -2044,11 +2049,13 @@ transform: translateX(-15px);
 }
 
 .pour-community__layout {
+  width: 100%;
+
   display: grid;
 
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
 
-  gap: 80px;
+  gap: 90px;
 
   align-items: center;
 }
