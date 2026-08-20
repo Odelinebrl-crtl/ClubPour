@@ -55,8 +55,7 @@
         "look_bUp43d": {
           "type": "look",
           "settings": {
-            "product": "",
-            "product_image": "shopify://shop_images/Design_sans_titre_f8faa62e-70b2-44f8-9741-0525c4b40997.png",
+            "product": "drop-001-candy-del-mar",
             "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
@@ -66,7 +65,8 @@
         "look_wmjxDy": {
           "type": "look",
           "settings": {
-            "product": "",
+            "product": "club-pour-test",
+            "customer_image": "shopify://shop_images/8_40511343-70e7-482a-8c96-7e2e1293a3ab.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
