@@ -696,96 +696,88 @@ document.addEventListener(
   }
 );
 /* =========================================================
-   HERO VÊTEMENTS — PARALLAX AU SCROLL
+   HERO VÊTEMENTS — PARALLAX
+   MÊME EFFET QUE HERO HOME
 ========================================================= */
 
 function initClothingHeroParallax() {
 
-  const heroes = document.querySelectorAll(
+  const hero = document.querySelector(
     '[data-clothing-hero]'
   );
 
-  if (!heroes.length) return;
+  if (!hero) return;
 
+  const images = hero.querySelectorAll(
+    '.clothing-hero__image'
+  );
 
-  const updateParallax = () => {
-
-    heroes.forEach((hero) => {
-
-      const rect = hero.getBoundingClientRect();
-
-      /*
-       * On ne calcule que lorsque le hero
-       * est proche de la zone visible.
-       */
-      if (
-        rect.bottom < 0 ||
-        rect.top > window.innerHeight
-      ) {
-        return;
-      }
-
-
-      /*
-       * Progression du hero dans le viewport.
-       * Mouvement volontairement léger.
-       */
-
-      const progress =
-        (window.innerHeight - rect.top) /
-        (window.innerHeight + rect.height);
-
-      const offset =
-        (progress - 0.5) * 70;
-
-
-      hero.style.setProperty(
-        '--clothing-parallax-y',
-        `${offset}px`
-      );
-
-    });
-
-  };
+  if (!images.length) return;
 
 
   let ticking = false;
 
 
-  const onScroll = () => {
+  function updateClothingParallax() {
 
-    if (ticking) return;
-
-    ticking = true;
-
-    window.requestAnimationFrame(() => {
-
-      updateParallax();
-
-      ticking = false;
-
-    });
-
-  };
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
 
 
-  updateParallax();
+    /*
+      Tant que l'on est dans la zone du Hero,
+      l'image descend légèrement avec le scroll.
+    */
+
+    if (scrollY <= heroHeight) {
+
+      const translateY = scrollY * 0.22;
+
+
+      images.forEach((image) => {
+
+        image.style.transform =
+          `translate3d(0, ${translateY}px, 0) scale(1.08)`;
+
+      });
+
+    }
+
+
+    ticking = false;
+  }
+
+
+  function onClothingScroll() {
+
+    if (!ticking) {
+
+      requestAnimationFrame(
+        updateClothingParallax
+      );
+
+      ticking = true;
+
+    }
+
+  }
+
+
+  updateClothingParallax();
+
 
   window.addEventListener(
     'scroll',
-    onScroll,
-    { passive: true }
-  );
-
-  window.addEventListener(
-    'resize',
-    updateParallax
+    onClothingScroll,
+    {
+      passive: true
+    }
   );
 
 }
 
 
-/* lancement */
+/* CHARGEMENT */
 
 if (document.readyState === 'loading') {
 
@@ -799,3 +791,11 @@ if (document.readyState === 'loading') {
   initClothingHeroParallax();
 
 }
+
+
+/* ÉDITEUR SHOPIFY */
+
+document.addEventListener(
+  'shopify:section:load',
+  initClothingHeroParallax
+);
