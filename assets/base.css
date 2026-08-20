@@ -554,8 +554,6 @@ a {
 
   padding: 0 18px;
 
-  overflow: hidden;
-
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
@@ -573,29 +571,13 @@ a {
   text-transform: uppercase;
 
   transition:
-    color 0.35s ease,
-    transform 0.2s ease;
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 
-/* Fond noir animé */
-
-.pour-hero__submit::before {
-  content: "";
-
-  position: absolute;
-  inset: 0;
-
-  background: #111111;
-
-  transform: translateY(101%);
-
-  transition:
-    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-/* Texte + flèche au-dessus de l'animation */
+/* Texte + flèche */
 
 .pour-hero__submit-text,
 .pour-hero__submit-arrow {
@@ -604,32 +586,36 @@ a {
 }
 
 
-/* Flèche */
-
-.pour-hero__submit-arrow {
-  transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-
-/* Survol */
+/* =========================================================
+   SURVOL
+========================================================= */
 
 .pour-hero__submit:hover {
+  background: #111111;
   color: #ffffff;
+
+  border-color: #111111;
 }
 
-.pour-hero__submit:hover::before {
-  transform: translateY(0);
+
+/* La flèche reste parfaitement fixe */
+
+.pour-hero__submit-arrow {
+  transform: none;
+
+  transition: none;
 }
 
 .pour-hero__submit:hover .pour-hero__submit-arrow {
-  transform: translateX(4px);
+  transform: none;
 }
+
+
+/* Aucun mouvement au clic */
 
 .pour-hero__submit:active {
-  transform: scale(0.98);
+  transform: none;
 }
-
 
 /* =========================================================
    HERO — DATE LANCEMENT
