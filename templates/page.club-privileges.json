@@ -12,9 +12,23 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "hero_club_privileges_tWQjQY": {
+      "type": "hero-club-privileges",
+      "name": "Hero Club Privilèges",
+      "settings": {
+        "image": "shopify://shop_images/Design_sans_titre-13.png",
+        "eyebrow": "CLUB POUR",
+        "heading": "CLUB PRIVILÈGES",
+        "subtitle": "ACCÉDEZ À L’UNIVERS POUR AUTREMENT.",
+        "text_color": "#FFFFFF",
+        "link_label": "DÉCOUVRIR LE CLUB",
+        "link": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "hero_club_privileges_tWQjQY"
   ]
 }
