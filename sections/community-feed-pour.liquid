@@ -1,0 +1,249 @@
+<section
+  id="CommunityFeed-{{ section.id }}"
+  class="pour-community"
+  data-community-slider
+>
+  <div class="pour-community__header">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="pour-community__heading">
+        {{ section.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="pour-community__controls">
+
+      <button
+        type="button"
+        class="pour-community__arrow"
+        data-community-prev
+        aria-label="Précédent"
+      >
+        ←
+      </button>
+
+      <button
+        type="button"
+        class="pour-community__arrow"
+        data-community-next
+        aria-label="Suivant"
+      >
+        →
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <div class="pour-community__viewport">
+
+    <div
+      class="pour-community__track"
+      data-community-track
+    >
+
+      {% for block in section.blocks %}
+
+        {% assign featured_product = block.settings.product %}
+
+        <article
+          class="pour-community__slide"
+          {{ block.shopify_attributes }}
+        >
+
+          <div class="pour-community__layout">
+
+            <!-- PRODUIT -->
+            <div class="pour-community__product">
+
+              {% if featured_product != blank %}
+
+                <a
+                  href="{{ featured_product.url }}"
+                  class="pour-community__product-link"
+                >
+
+                  <div class="pour-community__product-media">
+
+                    {% if block.settings.product_image != blank %}
+
+                      {{
+                        block.settings.product_image
+                        | image_url: width: 1400
+                        | image_tag:
+                          class: 'pour-community__product-image',
+                          loading: 'lazy'
+                      }}
+
+                    {% elsif featured_product.featured_image != blank %}
+
+                      {{
+                        featured_product.featured_image
+                        | image_url: width: 1400
+                        | image_tag:
+                          class: 'pour-community__product-image',
+                          loading: 'lazy',
+                          alt: featured_product.title
+                      }}
+
+                    {% endif %}
+
+
+                    <!-- PASTILLE -->
+                    <span
+                      class="pour-community__hotspot"
+                      style="
+                        --hotspot-x: {{ block.settings.hotspot_x }}%;
+                        --hotspot-y: {{ block.settings.hotspot_y }}%;
+                      "
+                    >
+                      <span class="pour-community__hotspot-core"></span>
+                    </span>
+
+                  </div>
+
+                </a>
+
+
+                <a
+                  href="{{ featured_product.url }}"
+                  class="pour-community__product-info"
+                >
+
+                  <span class="pour-community__product-title">
+                    {{ featured_product.title }}
+                  </span>
+
+                  <span class="pour-community__product-price">
+                    {{ featured_product.price | money }}
+                  </span>
+
+                </a>
+
+              {% endif %}
+
+            </div>
+
+
+            <!-- PHOTO CLIENT -->
+            <div class="pour-community__ugc">
+
+              {% if block.settings.customer_image != blank %}
+
+                {{
+                  block.settings.customer_image
+                  | image_url: width: 1800
+                  | image_tag:
+                    class: 'pour-community__ugc-image',
+                    loading: 'lazy'
+                }}
+
+              {% else %}
+
+                <div class="pour-community__ugc-placeholder">
+                  PHOTO CLIENT
+                </div>
+
+              {% endif %}
+
+
+              {% if block.settings.customer_name != blank %}
+                <div class="pour-community__customer">
+                  {{ block.settings.customer_name }}
+                </div>
+              {% endif %}
+
+            </div>
+
+          </div>
+
+        </article>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+
+</section>
+
+
+{% schema %}
+{
+  "name": "Porté par vous",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "PORTÉ PAR VOUS"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "look",
+      "name": "Photo communauté",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produit"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Image produit personnalisée"
+        },
+        {
+          "type": "image_picker",
+          "id": "customer_image",
+          "label": "Photo portée par le client"
+        },
+        {
+          "type": "text",
+          "id": "customer_name",
+          "label": "Nom / Instagram",
+          "default": "@clubpour"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_x",
+          "label": "Position pastille horizontale",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_y",
+          "label": "Position pastille verticale",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "default": 50
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Porté par vous",
+      "blocks": [
+        {
+          "type": "look"
+        },
+        {
+          "type": "look"
+        },
+        {
+          "type": "look"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
