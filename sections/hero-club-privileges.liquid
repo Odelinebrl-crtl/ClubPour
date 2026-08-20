@@ -8,9 +8,7 @@
   "
 >
 
-  <!-- =====================================================
-       IMAGE
-  ====================================================== -->
+  <!-- IMAGE -->
 
   <div class="club-hero__media">
 
@@ -33,29 +31,14 @@
     {% endif %}
 
   </div>
-<section
-  id="ClubPrivilegesHero-{{ section.id }}"
-  class="club-hero"
-  data-club-hero
-  style="
-    --club-text-color: {{ section.settings.text_color }};
-    --club-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
-    {% if section.settings.image != blank %}
-      --club-bg-image: url('{{ section.settings.image | image_url: width: 2800 }}');
-    {% endif %}
-  "
->
 
-  <!-- =====================================================
-       OVERLAY
-  ====================================================== -->
+
+  <!-- OVERLAY -->
 
   <div class="club-hero__overlay"></div>
 
 
-  <!-- =====================================================
-       CONTENU
-  ====================================================== -->
+  <!-- CONTENU -->
 
   <div class="club-hero__content">
 
@@ -73,9 +56,7 @@
     {% endif %}
 
 
-    <!-- ===================================================
-         FORMULAIRE
-    ==================================================== -->
+    <!-- FORMULAIRE -->
 
     <form
       class="club-hero__form"
@@ -100,22 +81,17 @@
 
       <div class="club-hero__email-wrap">
 
-  <span
-    class="club-hero__email-glass"
-    aria-hidden="true"
-  ></span>
+        <input
+          type="email"
+          name="contact[email]"
+          class="club-hero__email"
+          placeholder="VOTRE EMAIL"
+          required
+          autocomplete="email"
+          aria-label="Votre email"
+        >
 
-  <input
-    type="email"
-    name="contact[email]"
-    class="club-hero__email"
-    placeholder="VOTRE EMAIL"
-    required
-    autocomplete="email"
-    aria-label="Votre email"
-  >
-
-</div>
+      </div>
 
 
       <button
@@ -180,12 +156,9 @@
    IMAGE
 ========================================================= */
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__media,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__media picture {
+#ClubPrivilegesHero-{{ section.id }} .club-hero__media {
   position: absolute;
   inset: 0;
-
-  display: block;
 
   width: 100%;
   height: 100%;
@@ -220,10 +193,6 @@
   -webkit-backface-visibility: hidden;
 }
 
-
-/* =========================================================
-   PLACEHOLDER
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__placeholder,
 #ClubPrivilegesHero-{{ section.id }} .club-hero__placeholder svg {
@@ -280,11 +249,6 @@
 
   color: var(--club-text-color);
 
-  /*
-    ÉTAT INITIAL :
-    totalement invisible et plus haut.
-  */
-
   opacity: 0;
   visibility: hidden;
 
@@ -297,10 +261,6 @@
   will-change: opacity, transform;
 }
 
-
-/* =========================================================
-   ANIMATION D'ENTRÉE
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }}.is-content-visible
 .club-hero__content {
@@ -317,7 +277,6 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__eyebrow {
   margin: 0;
-  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -340,7 +299,6 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
   margin: 0;
-  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -371,19 +329,15 @@
   margin-top: 18px;
   margin-bottom: 12px;
 
-  padding: 0;
-
   gap: 8px;
 }
 
 
 /* =========================================================
-   CHAMP EMAIL — VERRE RÉEL SIMULÉ
+   EMAIL — IDENTIQUE À LA HOME
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
-  position: relative;
-
   flex: 1;
 
   display: flex;
@@ -391,90 +345,39 @@
 
   min-width: 0;
 
-  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
 
-  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 
-  border: 1px solid rgba(255, 255, 255, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
-
-/* =========================================================
-   IMAGE FLOUTÉE DERRIÈRE LE CHAMP
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }} .club-hero__email-glass {
-  position: absolute;
-
-  inset: -20px;
-
-  z-index: 0;
-
-  background-image: var(--club-bg-image);
-
-  background-repeat: no-repeat;
-
-  /*
-    Même image que le Hero,
-    volontairement très grande pour obtenir
-    l'effet de matière derrière le champ.
-  */
-
-  background-size: 100vw calc(100svh + 40px);
-
-  background-position: center bottom;
-
-  filter: blur(14px);
-
-  transform: scale(1.08);
-
-  opacity: 0.78;
-
-  pointer-events: none;
-}
-
-
-/*
-  Léger voile blanc par-dessus
-  pour retrouver le rendu de la Home.
-*/
 
 #ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap::after {
-  content: "";
+.club-hero__email-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.22);
 
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  background: rgba(255, 255, 255, 0.14);
-
-  pointer-events: none;
+  border-color: #ffffff;
 }
 
 
-/* =========================================================
-   INPUT
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
-  position: relative;
-
-  z-index: 2;
-
   width: 100%;
   height: 100%;
 
   margin: 0;
+
   padding: 0 16px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
   font-weight: 400;
-
-  line-height: 1;
 
   letter-spacing: 0.06em;
 
@@ -495,35 +398,17 @@
 
 #ClubPrivilegesHero-{{ section.id }}
 .club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.78);
 
   opacity: 1;
 }
 
 
 /* =========================================================
-   FOCUS
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within {
-  border-color: #ffffff;
-}
-
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within::after {
-  background: rgba(255, 255, 255, 0.20);
-}
-
-
-/* =========================================================
-   BOUTON REJOIGNEZ LE CLUB
+   BOUTON
 ========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
-  position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -534,14 +419,13 @@
   height: 48px;
 
   margin: 0;
+
   padding: 0 18px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
   font-weight: 400;
-
-  line-height: 1;
 
   letter-spacing: 0.06em;
 
@@ -551,8 +435,6 @@
 
   border: 1px solid #ffffff;
   border-radius: 0;
-
-  box-shadow: none;
 
   cursor: pointer;
 
@@ -574,30 +456,10 @@
 }
 
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__submit-text,
-#ClubPrivilegesHero-{{ section.id }} .club-hero__submit-arrow {
-  position: relative;
-
-  z-index: 1;
-}
-
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit-arrow {
   transform: none;
 
   transition: none;
-}
-
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__submit:hover
-.club-hero__submit-arrow {
-  transform: none;
-}
-
-
-#ClubPrivilegesHero-{{ section.id }} .club-hero__submit:active {
-  transform: none;
 }
 
 
@@ -607,7 +469,6 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
   margin: 0;
-  padding: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -657,8 +518,6 @@
     height: auto;
 
     flex-direction: column;
-
-    gap: 8px;
   }
 
 
@@ -666,11 +525,6 @@
   #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
     width: 100%;
     height: 48px;
-  }
-
-
-  #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
-    min-width: 0;
   }
 
 }
@@ -692,15 +546,13 @@
     hero.querySelector('.club-hero__image');
 
 
-  /* =======================================================
-     ANIMATION D'ENTRÉE
-  ======================================================= */
+  /* ENTRÉE TEXTE */
 
-  window.requestAnimationFrame(() => {
+  requestAnimationFrame(() => {
 
-    window.requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
 
-      window.setTimeout(() => {
+      setTimeout(() => {
 
         hero.classList.add(
           'is-content-visible'
@@ -713,9 +565,7 @@
   });
 
 
-  /* =======================================================
-     PARALLAX
-  ======================================================= */
+  /* PARALLAX */
 
   if (!image) return;
 
@@ -725,13 +575,12 @@
 
   function updateParallax() {
 
-    const scrollY =
-      window.scrollY;
+    const scrollY = window.scrollY;
 
 
     const heroTop =
-      hero.getBoundingClientRect().top
-      + scrollY;
+      hero.getBoundingClientRect().top +
+      scrollY;
 
 
     const heroHeight =
@@ -765,15 +614,12 @@
 
     if (ticking) return;
 
-
     ticking = true;
 
 
-    window.requestAnimationFrame(() => {
-
-      updateParallax();
-
-    });
+    requestAnimationFrame(
+      updateParallax
+    );
 
   }
 
@@ -804,55 +650,45 @@
   "name": "Hero Club Privilèges",
 
   "settings": [
-
     {
       "type": "image_picker",
       "id": "image",
       "label": "Image"
     },
-
     {
       "type": "text",
       "id": "eyebrow",
       "label": "Petit titre",
       "default": "CLUB POUR — ACCÈS MEMBRES"
     },
-
     {
       "type": "text",
       "id": "heading",
       "label": "Titre",
       "default": "CLUB PRIVILÈGES"
     },
-
     {
       "type": "text",
       "id": "launch_text",
       "label": "Petit texte sous le formulaire",
       "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
-
     {
       "type": "color",
       "id": "text_color",
       "label": "Couleur du texte",
       "default": "#FFFFFF"
     },
-
     {
       "type": "range",
       "id": "overlay",
       "label": "Assombrissement de l'image",
-
       "min": 0,
       "max": 60,
       "step": 5,
-
       "unit": "%",
-
       "default": 10
     }
-
   ],
 
   "presets": [
