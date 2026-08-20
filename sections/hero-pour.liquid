@@ -52,15 +52,16 @@
 
 
   <form
-    class="pour-hero__preorder"
-    method="post"
-    action="/contact#pour-preorder"
-    accept-charset="UTF-8"
-    id="pour-preorder"
-  >
-    <input type="hidden" name="form_type" value="customer">
-    <input type="hidden" name="utf8" value="✓">
+  class="pour-hero__preorder"
+  method="post"
+  action="/contact#pour-preorder"
+  accept-charset="UTF-8"
+  id="pour-preorder"
+>
+  <input type="hidden" name="form_type" value="customer">
+  <input type="hidden" name="utf8" value="✓">
 
+  <div class="pour-hero__email-wrap">
     <input
       class="pour-hero__email"
       type="email"
@@ -70,14 +71,21 @@
       autocomplete="email"
       aria-label="Votre email"
     >
+  </div>
 
-    <button
-      class="pour-hero__submit"
-      type="submit"
-    >
-      {{ section.settings.button_label }}
-    </button>
-  </form>
+  <button
+    class="pour-hero__submit"
+    type="submit"
+  >
+    <span class="pour-hero__submit-text">
+      PRÉCOMMANDEZ
+    </span>
+
+    <span class="pour-hero__submit-arrow" aria-hidden="true">
+      →
+    </span>
+  </button>
+</form>
 
   {% if section.settings.launch_text != blank %}
     <p class="pour-hero__launch">
