@@ -1,0 +1,44 @@
+<section
+  id="VideoHero-{{ section.id }}"
+  class="pour-video-hero"
+  data-video-parallax
+>
+  <div class="pour-video-hero__media">
+
+    {% if section.settings.video != blank %}
+      {{
+        section.settings.video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'pour-video-hero__video'
+      }}
+    {% else %}
+      <div class="pour-video-hero__placeholder">
+        AJOUTEZ UNE VIDÉO
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Vidéo plein écran POUR",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Vidéo"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Vidéo plein écran POUR"
+    }
+  ]
+}
+{% endschema %}
