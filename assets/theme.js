@@ -278,7 +278,7 @@ document.addEventListener(
   initPourVideoParallax
 );
 /* =========================================================
-   PORTÉ PAR VOUS — CAROUSEL
+   PORTÉ PAR VOUS — CAROUSEL CROSSFADE
 ========================================================= */
 
 function initPourCommunitySlider() {
@@ -293,12 +293,8 @@ function initPourCommunitySlider() {
 
     slider.dataset.initialized = 'true';
 
-    const track = slider.querySelector(
-      '[data-community-track]'
-    );
-
-    const slides = slider.querySelectorAll(
-      '.pour-community__slide'
+    const slides = Array.from(
+      slider.querySelectorAll('.pour-community__slide')
     );
 
     const previous = slider.querySelector(
@@ -309,37 +305,65 @@ function initPourCommunitySlider() {
       '[data-community-next]'
     );
 
-    if (!track || slides.length === 0) return;
+    if (!slides.length) return;
 
-    let currentIndex = 0;
+    let current = 0;
+    let animating = false;
 
-    const updateSlider = () => {
-      track.style.transform =
-        `translate3d(-${currentIndex * 100}%, 0, 0)`;
+    slides.forEach((slide, index) => {
+      slide.classList.toggle('is-active', index === 0);
+      slide.classList.remove('is-leaving');
+    });
+
+    const goToSlide = (newIndex) => {
+      if (animating) return;
+      if (newIndex === current) return;
+
+      animating = true;
+
+      const oldSlide = slides[current];
+      const newSlide = slides[newIndex];
+
+      oldSlide.classList.add('is-leaving');
+      newSlide.classList.add('is-active');
+
+      window.setTimeout(() => {
+        oldSlide.classList.remove(
+          'is-active',
+          'is-leaving'
+        );
+
+        current = newIndex;
+        animating = false;
+      }, 550);
     };
 
     if (next) {
       next.addEventListener('click', () => {
-        currentIndex =
-          (currentIndex + 1) % slides.length;
+        const newIndex =
+          current === slides.length - 1
+            ? 0
+            : current + 1;
 
-        updateSlider();
+        goToSlide(newIndex);
       });
     }
 
     if (previous) {
       previous.addEventListener('click', () => {
-        currentIndex =
-          (currentIndex - 1 + slides.length) %
-          slides.length;
+        const newIndex =
+          current === 0
+            ? slides.length - 1
+            : current - 1;
 
-        updateSlider();
+        goToSlide(newIndex);
       });
     }
-
-    updateSlider();
   });
 }
+
+
+/* INITIALISATION */
 
 if (document.readyState === 'loading') {
   document.addEventListener(
@@ -350,7 +374,21 @@ if (document.readyState === 'loading') {
   initPourCommunitySlider();
 }
 
+
+/* SHOPIFY EDITOR */
+
 document.addEventListener(
   'shopify:section:load',
-  initPourCommunitySlider
+  (event) => {
+    const section = event.target;
+
+    if (
+      section &&
+      section.matches?.('[data-community-slider]')
+    ) {
+      section.dataset.initialized = 'false';
+    }
+
+    initPourCommunitySlider();
+  }
 );
