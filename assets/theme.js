@@ -1043,3 +1043,167 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   HERO CLUB PRIVILÈGES — TEXTE + PARALLAX
+========================================================= */
+
+function initClubPrivilegesHero() {
+
+  document
+    .querySelectorAll('[data-club-privileges-hero]')
+    .forEach((hero) => {
+
+      if (hero.dataset.clubReady === 'true') {
+        return;
+      }
+
+      hero.dataset.clubReady = 'true';
+
+
+      const image =
+        hero.querySelector(
+          '.club-privileges-hero__image'
+        );
+
+
+      /* =========================
+         ANIMATION TEXTE
+      ========================== */
+
+      window.requestAnimationFrame(() => {
+
+        window.requestAnimationFrame(() => {
+
+          window.setTimeout(() => {
+
+            hero.classList.add(
+              'is-text-visible'
+            );
+
+          }, 120);
+
+        });
+
+      });
+
+
+      /* =========================
+         PARALLAX
+      ========================== */
+
+      if (!image) return;
+
+
+      let ticking = false;
+
+
+      function updateParallax() {
+
+        const scrollY =
+          window.scrollY;
+
+
+        const heroTop =
+          hero.getBoundingClientRect().top
+          + scrollY;
+
+
+        const heroHeight =
+          hero.offsetHeight;
+
+
+        const localScroll =
+          Math.max(
+            0,
+            Math.min(
+              scrollY - heroTop,
+              heroHeight
+            )
+          );
+
+
+        const translateY =
+          localScroll * 0.22;
+
+
+        image.style.transform =
+          `translate3d(0, ${translateY}px, 0) scale(1.08)`;
+
+
+        ticking = false;
+
+      }
+
+
+      function requestUpdate() {
+
+        if (ticking) return;
+
+        ticking = true;
+
+
+        window.requestAnimationFrame(
+          updateParallax
+        );
+
+      }
+
+
+      window.addEventListener(
+        'scroll',
+        requestUpdate,
+        {
+          passive: true
+        }
+      );
+
+
+      window.addEventListener(
+        'resize',
+        requestUpdate
+      );
+
+
+      updateParallax();
+
+    });
+
+}
+
+
+/* CHARGEMENT */
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    initClubPrivilegesHero
+  );
+
+} else {
+
+  initClubPrivilegesHero();
+
+}
+
+
+document.addEventListener(
+  'shopify:section:load',
+  () => {
+
+    document
+      .querySelectorAll(
+        '[data-club-privileges-hero]'
+      )
+      .forEach((hero) => {
+
+        hero.dataset.clubReady =
+          'false';
+
+      });
+
+
+    initClubPrivilegesHero();
+
+  }
+);
