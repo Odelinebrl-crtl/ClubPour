@@ -36,11 +36,21 @@
     "main": {
       "type": "main-home",
       "settings": {}
+    },
+    "quote_pour_FCLgBx": {
+      "type": "quote-pour",
+      "name": "Citation POUR",
+      "settings": {
+        "eyebrow": "NOTRE PHILOSOPHIE",
+        "quote": "UNE CITATION CLUB POUR À DÉFINIR.",
+        "signature": "Club Pour"
+      }
     }
   },
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
-    "main"
+    "main",
+    "quote_pour_FCLgBx"
   ]
 }
