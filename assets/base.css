@@ -2005,12 +2005,10 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   PORTÉ PAR VOUS — HEADER CENTRÉ
+   TITRE
 ========================================================= */
 
 .pour-community__header {
-  position: relative;
-
   width: 100%;
 
   display: flex;
@@ -2031,42 +2029,192 @@ transform: translateX(-15px);
   line-height: 1;
   letter-spacing: 0.02em;
 
+  text-align: center;
   text-transform: uppercase;
 }
 
+
 /* =========================================================
-   CARROUSEL + FLÈCHES LATÉRALES
+   CARROUSEL GLOBAL
 ========================================================= */
 
 .pour-community__carousel {
   position: relative;
 
-  width: min(100%, 620px);
+  width: 860px;
+  max-width: 100%;
 
   margin: 0 auto;
 }
+
+
+/* =========================================================
+   VIEWPORT
+========================================================= */
 
 .pour-community__viewport {
   position: relative;
 
-  width: min(100%, 520px);
+  width: 734px;
+  max-width: calc(100% - 120px);
 
   margin: 0 auto;
 
-  overflow: hidden !important;
+  overflow: hidden;
 }
+
+
+/* =========================================================
+   TRACK
+========================================================= */
+
+.pour-community__track {
+  display: flex;
+  flex-direction: row;
+
+  width: 100%;
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+  will-change: transform;
+}
+
+
+/* =========================================================
+   SLIDE
+========================================================= */
+
+.pour-community__slide {
+  flex: 0 0 100%;
+
+  width: 100%;
+  min-width: 100%;
+
+  margin: 0;
+}
+
+
+/* =========================================================
+   LES DEUX IMAGES
+========================================================= */
+
+.pour-community__layout {
+  width: 734px;
+  max-width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(2, 360px);
+
+  align-items: start;
+
+  gap: 14px;
+}
+
+
+/* =========================================================
+   COLONNE PRODUIT
+========================================================= */
+
+.pour-community__product {
+  width: 360px;
+  min-width: 0;
+}
+
+.pour-community__product-link {
+  display: block;
+
+  width: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   IMAGE PRODUIT
+========================================================= */
+
+.pour-community__product-media {
+  position: relative;
+
+  width: 360px;
+  height: 450px;
+
+  overflow: hidden;
+
+  background: #f3f2ef;
+}
+
+.pour-community__product-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================================
+   PHOTO COMMUNAUTÉ
+========================================================= */
+
+.pour-community__ugc {
+  position: relative;
+
+  width: 360px;
+  min-width: 0;
+}
+
+.pour-community__ugc-image {
+  display: block;
+
+  width: 360px;
+  height: 450px;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.pour-community__ugc-placeholder {
+  width: 360px;
+  height: 450px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f3f2ef;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.02em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FLÈCHES
+========================================================= */
 
 .pour-community__arrow {
   position: absolute;
 
-  top: 50%;
+  top: 225px;
 
-  z-index: 10;
+  z-index: 20;
 
   transform: translateY(-50%);
 
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
 
   display: flex;
   align-items: center;
@@ -2079,7 +2227,12 @@ transform: translateX(-15px);
   background: #ffffff;
   color: #111111;
 
-  font-size: 15px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  line-height: 1;
 
   cursor: pointer;
 
@@ -2089,13 +2242,21 @@ transform: translateX(-15px);
     border-color 0.25s ease;
 }
 
+
+/* FLÈCHE GAUCHE */
+
 .pour-community__arrow--prev {
-  left: 0;
+  left: 18px;
 }
 
+
+/* FLÈCHE DROITE */
+
 .pour-community__arrow--next {
-  right: 0;
+  right: 18px;
 }
+
+
 .pour-community__arrow:hover {
   background: #111111;
   color: #ffffff;
@@ -2103,90 +2264,6 @@ transform: translateX(-15px);
   border-color: #111111;
 }
 
-/* =========================================================
-   CARROUSEL
-========================================================= */
-
-.pour-community__track {
-  display: flex !important;
-  flex-direction: row !important;
-
-  width: 100%;
-
-  transition:
-    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: transform;
-}
-
-.pour-community__slide {
-  flex: 0 0 100% !important;
-
-  width: 100%;
-  min-width: 100%;
-
-  margin: 0;
-}
-
-
-/* =========================================================
-   DUO D'IMAGES COMPACT
-========================================================= */
-
-.pour-community__layout {
-  width: 100%;
-
-  display: grid !important;
-
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-
-  align-items: start;
-
-  gap: 14px;
-}
-
-/* IMAGE PRODUIT */
-
-.pour-community__product-media {
-  position: relative;
-
-  width: 100%;
-
-  aspect-ratio: 4 / 5;
-
-  overflow: hidden;
-
-  background: #f3f2ef;
-}
-
-.pour-community__product-image {
-  display: block;
-
-  width: 100% !important;
-  height: 100% !important;
-
-  object-fit: cover;
-  object-position: center;
-}
-
-
-/* PHOTO CLIENT — MÊME TAILLE EXACTE */
-
-.pour-community__ugc {
-  width: 100%;
-}
-
-.pour-community__ugc-image {
-  display: block;
-
-  width: 100% !important;
-  height: 100% !important;
-
-  aspect-ratio: 4 / 5;
-
-  object-fit: cover;
-  object-position: center;
-}
 
 /* =========================================================
    PASTILLE PRODUIT
@@ -2236,7 +2313,7 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   NOM + PRIX
+   NOM PRODUIT + PRIX
 ========================================================= */
 
 .pour-community__product-info {
@@ -2251,6 +2328,7 @@ transform: translateX(-15px);
   padding-top: 12px;
 
   color: #111111;
+  text-decoration: none;
 }
 
 .pour-community__product-title,
@@ -2261,17 +2339,33 @@ transform: translateX(-15px);
   font-weight: 400;
 
   line-height: 1.25;
-
   letter-spacing: 0.01em;
 
   text-transform: uppercase;
 }
 
 .pour-community__product-price {
+  flex-shrink: 0;
+
   white-space: nowrap;
 }
 
 
+/* =========================================================
+   NOM / INSTAGRAM CLIENT
+========================================================= */
+
+.pour-community__customer {
+  padding-top: 12px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+}
 
 
 /* =========================================================
@@ -2281,34 +2375,73 @@ transform: translateX(-15px);
 @media screen and (max-width: 768px) {
 
   .pour-community {
-    padding: 60px 16px 80px;
+    padding: 55px 16px 70px;
   }
 
+
   .pour-community__header {
-    margin-bottom: 28px;
+    margin-bottom: 30px;
   }
+
 
   .pour-community__heading {
     font-size: 17px;
   }
 
-  .pour-community__arrow {
-    width: 38px;
-    height: 38px;
+
+  .pour-community__carousel {
+    width: 100%;
   }
+
+
+  .pour-community__viewport {
+    width: calc(100% - 50px);
+    max-width: none;
+  }
+
 
   .pour-community__layout {
-    grid-template-columns: 1fr !important;
+    width: 100%;
 
-    gap: 28px;
+    grid-template-columns: 1fr;
+
+    gap: 24px;
   }
 
-  .pour-community__product-media {
+
+  .pour-community__product,
+  .pour-community__ugc {
+    width: 100%;
+  }
+
+
+  .pour-community__product-media,
+  .pour-community__ugc-image,
+  .pour-community__ugc-placeholder {
+    width: 100%;
+    height: auto;
+
     aspect-ratio: 4 / 5;
   }
 
-  .pour-community__ugc-image {
-    max-height: none;
+
+  .pour-community__arrow {
+    top: 40vw;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 14px;
+  }
+
+
+  .pour-community__arrow--prev {
+    left: 0;
+  }
+
+
+  .pour-community__arrow--next {
+    right: 0;
   }
 
 }
