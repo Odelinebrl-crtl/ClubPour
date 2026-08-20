@@ -3,40 +3,42 @@
   class="pour-community"
   data-community-slider
 >
-  <div class="pour-community__header">
+ <div class="pour-community__header">
 
-    {% if section.settings.heading != blank %}
-      <h2 class="pour-community__heading">
-        {{ section.settings.heading }}
-      </h2>
-    {% endif %}
+  <h2 class="pour-community__heading">
+    {{ section.settings.heading }}
+  </h2>
 
-    <div class="pour-community__controls">
+</div>
 
-      <button
-        type="button"
-        class="pour-community__arrow"
-        data-community-prev
-        aria-label="Précédent"
-      >
-        ←
-      </button>
 
-      <button
-        type="button"
-        class="pour-community__arrow"
-        data-community-next
-        aria-label="Suivant"
-      >
-        →
-      </button>
+  <div class="pour-community__carousel">
 
-    </div>
+  <button
+    type="button"
+    class="pour-community__arrow pour-community__arrow--prev"
+    data-community-prev
+    aria-label="Photo précédente"
+  >
+    ←
+  </button>
+
+  <div class="pour-community__viewport">
+
+    <!-- TON TRACK ET TES SLIDES RESTENT ICI -->
 
   </div>
 
+  <button
+    type="button"
+    class="pour-community__arrow pour-community__arrow--next"
+    data-community-next
+    aria-label="Photo suivante"
+  >
+    →
+  </button>
 
-  <div class="pour-community__viewport">
+</div>
 
     <div
       class="pour-community__track"
