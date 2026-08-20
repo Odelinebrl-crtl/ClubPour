@@ -2000,9 +2000,20 @@ transform: translateX(-15px);
 
   background: #f7f7f7;
   color: #111111;
+
+  overflow: hidden;
 }
+
+
+/* =========================================================
+   TITRE
+========================================================= */
+
 .pour-community__header {
+  width: 100%;
+
   text-align: center;
+
   margin-bottom: 52px;
 }
 
@@ -2014,11 +2025,16 @@ transform: translateX(-15px);
   font-size: 24px;
   font-weight: 400;
 
-  letter-spacing: 0.14em;
   line-height: 1;
+  letter-spacing: 0.14em;
 
   text-transform: uppercase;
 }
+
+
+/* =========================================================
+   CARROUSEL
+========================================================= */
 
 .pour-community__carousel {
   position: relative;
@@ -2030,15 +2046,25 @@ transform: translateX(-15px);
 
   box-sizing: border-box;
 }
+
 .pour-community__viewport {
+  position: relative;
+
   width: 100%;
+
   overflow: hidden;
 }
 
 .pour-community__track {
   position: relative;
+
   width: 100%;
 }
+
+
+/* =========================================================
+   SLIDES
+========================================================= */
 
 .pour-community__slide {
   position: absolute;
@@ -2048,11 +2074,8 @@ transform: translateX(-15px);
 
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
 
-  transition:
-    opacity 0.55s ease,
-    visibility 0.55s ease;
+  pointer-events: none;
 }
 
 .pour-community__slide.is-active {
@@ -2060,35 +2083,23 @@ transform: translateX(-15px);
 
   opacity: 1;
   visibility: visible;
+
   pointer-events: auto;
 }
-.pour-community__ugc-image,
-.pour-community__product-image,
-.pour-community__product-info,
-.pour-community__product-button {
-  opacity: 1;
 
-  transition:
-    opacity 0.55s ease;
-}
 
-.pour-community__slide.is-leaving
-.pour-community__ugc-image,
-.pour-community__slide.is-leaving
-.pour-community__product-image,
-.pour-community__slide.is-leaving
-.pour-community__product-info,
-.pour-community__slide.is-leaving
-.pour-community__product-button {
-  opacity: 0;
-}
+/* =========================================================
+   STRUCTURE PHOTO + PRODUIT
+========================================================= */
 
 .pour-community__layout {
   width: 100%;
 
   display: grid;
 
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 0.85fr);
 
   gap: 90px;
 
@@ -2096,16 +2107,23 @@ transform: translateX(-15px);
 }
 
 
-/* PHOTO COMMUNAUTÉ — GAUCHE */
+/* =========================================================
+   PHOTO COMMUNAUTÉ — GAUCHE
+========================================================= */
 
 .pour-community__ugc {
   grid-column: 1;
   grid-row: 1;
 
   width: 100%;
-}
 
-/* CONTENEUR PHOTO COMMUNAUTÉ */
+  opacity: 1;
+  transform: translateX(0);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
 .pour-community__ugc-media {
   position: relative;
@@ -2114,10 +2132,9 @@ transform: translateX(-15px);
   height: 620px;
 
   overflow: hidden;
+
+  background: #eeeeee;
 }
-
-
-/* IMAGE COMMUNAUTÉ */
 
 .pour-community__ugc-image {
   display: block;
@@ -2132,12 +2149,66 @@ transform: translateX(-15px);
 .pour-community__customer {
   margin-top: 12px;
 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   font-size: 11px;
+  font-weight: 400;
+
   letter-spacing: 0.04em;
 }
 
 
-/* PRODUIT — DROITE */
+/* =========================================================
+   PHOTO — SORTIE VERS LA GAUCHE
+========================================================= */
+
+.pour-community__slide.is-leaving-left
+.pour-community__ugc {
+  opacity: 0.18;
+
+  transform: translateX(-34px);
+}
+
+
+/* =========================================================
+   PHOTO — SORTIE VERS LA DROITE
+========================================================= */
+
+.pour-community__slide.is-leaving-right
+.pour-community__ugc {
+  opacity: 0.18;
+
+  transform: translateX(34px);
+}
+
+
+/* =========================================================
+   PHOTO — ENTRÉE DEPUIS LA DROITE
+========================================================= */
+
+.pour-community__slide.is-entering-right
+.pour-community__ugc {
+  opacity: 0;
+
+  transform: translateX(34px);
+}
+
+
+/* =========================================================
+   PHOTO — ENTRÉE DEPUIS LA GAUCHE
+========================================================= */
+
+.pour-community__slide.is-entering-left
+.pour-community__ugc {
+  opacity: 0;
+
+  transform: translateX(-34px);
+}
+
+
+/* =========================================================
+   PRODUIT — DROITE
+========================================================= */
 
 .pour-community__product {
   grid-column: 2;
@@ -2148,10 +2219,18 @@ transform: translateX(-15px);
   align-self: center;
 
   text-align: center;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  transition:
+    opacity 0.45s ease,
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pour-community__product-link {
   display: block;
+
   width: 100%;
 }
 
@@ -2177,7 +2256,37 @@ transform: translateX(-15px);
 }
 
 
-/* PASTILLE */
+/* =========================================================
+   PRODUIT — SORTIE
+========================================================= */
+
+.pour-community__slide.is-leaving-left
+.pour-community__product,
+.pour-community__slide.is-leaving-right
+.pour-community__product {
+  opacity: 0;
+
+  transform: translateY(18px);
+}
+
+
+/* =========================================================
+   PRODUIT — ENTRÉE PAR LE BAS
+========================================================= */
+
+.pour-community__slide.is-entering-left
+.pour-community__product,
+.pour-community__slide.is-entering-right
+.pour-community__product {
+  opacity: 0;
+
+  transform: translateY(24px);
+}
+
+
+/* =========================================================
+   PASTILLE SUR PHOTO COMMUNAUTÉ
+========================================================= */
 
 .pour-community__hotspot {
   position: absolute;
@@ -2215,43 +2324,68 @@ transform: translateX(-15px);
   height: 8px;
 
   border-radius: 50%;
-  background: #111;
+
+  background: #111111;
 }
 
 
-/* INFOS PRODUIT */
+/* =========================================================
+   INFOS PRODUIT
+========================================================= */
 
 .pour-community__product-info {
   display: flex;
+
   flex-direction: column;
+
   align-items: center;
 
   gap: 8px;
 
   padding-top: 18px;
+
+  color: #111111;
 }
 
 .pour-community__product-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   font-size: 12px;
+  font-weight: 400;
+
   letter-spacing: 0.12em;
+
   text-transform: uppercase;
 }
 
 .pour-community__product-price {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
   font-size: 12px;
+  font-weight: 400;
+
   letter-spacing: 0.08em;
 }
+
+
 /* =========================================================
    BOUTON VOIR LE PRODUIT
 ========================================================= */
 
 .pour-community__product-button {
+  position: relative;
+
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
-  margin-top: 22px;
-  padding: 14px 28px;
+  min-width: 165px;
+  height: 44px;
+
+  margin: 22px auto 0;
+
+  padding: 0 24px;
 
   border: 1px solid #111111;
 
@@ -2270,43 +2404,65 @@ transform: translateX(-15px);
   text-decoration: none;
 
   transition:
-    background 0.25s ease,
-    color 0.25s ease;
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 .pour-community__product-button:hover {
   background: transparent;
+
   color: #111111;
 }
 
-/* FLÈCHES TRÈS LATÉRALES */
+
+/* =========================================================
+   FLÈCHES
+========================================================= */
 
 .pour-community__arrow {
   position: absolute;
 
   top: 50%;
-  transform: translateY(-50%);
 
   z-index: 20;
+
+  transform: translateY(-50%);
 
   width: 52px;
   height: 52px;
 
-  border-radius: 50%;
-  border: 0;
-
-  background: #fff;
-  color: #111;
-
-  font-size: 20px;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
 
-  box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 20px;
+
+  box-shadow:
+    0 4px 18px rgba(0, 0, 0, 0.08);
 
   cursor: pointer;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.pour-community__arrow:hover {
+  background: #111111;
+
+  color: #ffffff;
 }
 
 .pour-community__arrow--prev {
@@ -2318,7 +2474,9 @@ transform: translateX(-15px);
 }
 
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media screen and (max-width: 768px) {
 
@@ -2326,80 +2484,73 @@ transform: translateX(-15px);
     padding: 60px 16px 80px;
   }
 
+
+  .pour-community__header {
+    margin-bottom: 32px;
+  }
+
+
   .pour-community__heading {
     font-size: 20px;
   }
 
+
+  .pour-community__carousel {
+    width: 100%;
+
+    padding: 0 42px;
+  }
+
+
   .pour-community__layout {
     grid-template-columns: 1fr;
+
     gap: 36px;
   }
+
 
   .pour-community__ugc,
   .pour-community__product {
     grid-column: 1;
+
+    grid-row: auto;
   }
 
-  .pour-community__ugc-image {
+
+  .pour-community__ugc-media {
     height: auto;
+
     aspect-ratio: 4 / 5;
   }
 
-  .pour-community__product-media {
-    height: 380px;
+
+  .pour-community__ugc-image {
+    width: 100%;
+    height: 100%;
   }
+
+
+  .pour-community__product-media {
+    height: 360px;
+  }
+
+
+  .pour-community__arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 15px;
+  }
+
 
   .pour-community__arrow--prev {
-    left: 4px;
+    left: 0;
   }
+
 
   .pour-community__arrow--next {
-    right: 4px;
+    right: 0;
   }
-}
-/* =========================================================
-   PORTÉ PAR VOUS — BOUTON PRODUIT
-========================================================= */
-
-.pour-community__product-button {
-  position: relative;
-
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-
-  min-width: 165px;
-  height: 44px;
-
-  margin: 22px auto 0;
-  padding: 0 24px;
-
-  border: 1px solid #111111 !important;
-
-  background: #111111 !important;
-  color: #ffffff !important;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 400;
-
-  line-height: 1;
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-  text-decoration: none !important;
-
-  overflow: hidden;
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.pour-community__product-button:hover {
-  background: transparent !important;
-  color: #111111 !important;
 
 }
 /* =========================================================
