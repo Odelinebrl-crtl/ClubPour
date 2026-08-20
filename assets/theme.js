@@ -492,165 +492,323 @@ document.addEventListener(
   }
 );
 /* =========================================================
-   HERO VÊTEMENTS — SLIDER
+   HERO VÊTEMENTS — SLIDER DIRECTIONNEL
 ========================================================= */
 
 function initClothingHero() {
 
-  const heroes = document.querySelectorAll(
-    '[data-clothing-hero]'
-  );
+  document
+    .querySelectorAll('[data-clothing-hero]')
+    .forEach((hero) => {
 
-  heroes.forEach((hero) => {
-
-    /* évite les doubles initialisations */
-    if (hero.dataset.sliderInitialized === 'true') {
-      return;
-    }
-
-    hero.dataset.sliderInitialized = 'true';
-
-
-    const slides = Array.from(
-      hero.querySelectorAll('[data-clothing-slide]')
-    );
-
-    const dots = Array.from(
-      hero.querySelectorAll('[data-clothing-dot]')
-    );
-
-
-    if (slides.length <= 1) {
-      return;
-    }
-
-
-    let currentIndex = 0;
-
-    let autoplayTimer = null;
-
-
-    /* 4 secondes */
-
-    const autoplayDelay = 4000;
-
-
-    /* =========================
-       AFFICHER UNE SLIDE
-    ========================== */
-
-    function showSlide(index) {
-
-      if (index < 0) {
-        index = slides.length - 1;
+      if (hero.dataset.sliderInitialized === 'true') {
+        return;
       }
 
-      if (index >= slides.length) {
-        index = 0;
-      }
+      hero.dataset.sliderInitialized = 'true';
 
 
-      currentIndex = index;
+      const slides = Array.from(
+        hero.querySelectorAll('[data-clothing-slide]')
+      );
+
+      const dots = Array.from(
+        hero.querySelectorAll('[data-clothing-dot]')
+      );
 
 
-      slides.forEach((slide, slideIndex) => {
+      if (!slides.length) return;
 
-        slide.classList.toggle(
+
+      let currentIndex = 0;
+      let animating = false;
+      let autoplayTimer = null;
+
+
+      const autoplayEnabled =
+        hero.dataset.autoplay !== 'false';
+
+
+      const autoplayDelay =
+        Number(hero.dataset.speed) || 4000;
+
+
+      /* ===============================================
+         ÉTAT INITIAL
+      =============================================== */
+
+      slides.forEach((slide, index) => {
+
+        slide.classList.remove(
           'is-active',
-          slideIndex === currentIndex
+          'is-entering',
+          'is-sliding',
+          'enter-from-right',
+          'enter-from-left',
+          'text-visible'
         );
+
+
+        if (index === 0) {
+
+          slide.classList.add(
+            'is-active',
+            'text-visible'
+          );
+
+        }
 
       });
 
 
-      dots.forEach((dot, dotIndex) => {
+      dots.forEach((dot, index) => {
 
         dot.classList.toggle(
           'is-active',
-          dotIndex === currentIndex
+          index === 0
         );
 
       });
 
-    }
 
+      /* ===============================================
+         AUTOPLAY
+      =============================================== */
 
-    /* =========================
-       SLIDE SUIVANTE
-    ========================== */
+      function stopAutoplay() {
 
-    function nextSlide() {
+        if (!autoplayTimer) return;
 
-      showSlide(
-        (currentIndex + 1) % slides.length
-      );
-
-    }
-
-
-    /* =========================
-       AUTOPLAY
-    ========================== */
-
-    function startAutoplay() {
-
-      stopAutoplay();
-
-      autoplayTimer = window.setInterval(
-        nextSlide,
-        autoplayDelay
-      );
-
-    }
-
-
-    function stopAutoplay() {
-
-      if (autoplayTimer) {
-
-        window.clearInterval(
-          autoplayTimer
-        );
+        clearInterval(autoplayTimer);
 
         autoplayTimer = null;
 
       }
 
-    }
+
+      function startAutoplay() {
+
+        stopAutoplay();
+
+        if (
+          !autoplayEnabled ||
+          slides.length < 2
+        ) {
+          return;
+        }
 
 
-    /* =========================
-       CLIC SUR 01 / 02 / 03...
-    ========================== */
+        autoplayTimer = setInterval(() => {
 
-    dots.forEach((dot, index) => {
+          const nextIndex =
+            (currentIndex + 1) % slides.length;
 
-      dot.addEventListener('click', () => {
+          changeSlide(
+            nextIndex,
+            'next'
+          );
 
-        showSlide(index);
+        }, autoplayDelay);
 
-        /* on repart pour 4 sec après le clic */
-        startAutoplay();
+      }
+
+
+      /* ===============================================
+         CHANGEMENT DE SLIDE
+      =============================================== */
+
+      function changeSlide(newIndex, direction) {
+
+        if (
+          animating ||
+          newIndex === currentIndex
+        ) {
+          return;
+        }
+
+
+        animating = true;
+
+
+        const oldSlide =
+          slides[currentIndex];
+
+        const newSlide =
+          slides[newIndex];
+
+
+        /*
+          Cache immédiatement le texte actuel.
+        */
+
+        oldSlide.classList.remove(
+          'text-visible'
+        );
+
+
+        /*
+          Nettoyage de la nouvelle slide.
+        */
+
+        newSlide.classList.remove(
+          'is-active',
+          'is-entering',
+          'is-sliding',
+          'enter-from-right',
+          'enter-from-left',
+          'text-visible'
+        );
+
+
+        /*
+          Elle arrive :
+          NEXT  = depuis la droite
+          PREV  = depuis la gauche
+        */
+
+        newSlide.classList.add(
+          'is-entering',
+          direction === 'next'
+            ? 'enter-from-right'
+            : 'enter-from-left'
+        );
+
+
+        /*
+          Force le navigateur à prendre
+          en compte la position initiale.
+        */
+
+        void newSlide.offsetWidth;
+
+
+        /*
+          Lance le glissement.
+        */
+
+        newSlide.classList.add(
+          'is-sliding'
+        );
+
+
+        /*
+          Au terme du slide :
+          - ancienne image disparaît
+          - nouvelle devient active
+        */
+
+        window.setTimeout(() => {
+
+          oldSlide.classList.remove(
+            'is-active'
+          );
+
+
+          newSlide.classList.remove(
+            'is-entering',
+            'is-sliding',
+            'enter-from-right',
+            'enter-from-left'
+          );
+
+
+          newSlide.classList.add(
+            'is-active'
+          );
+
+
+          currentIndex = newIndex;
+
+
+          /*
+            Pagination
+          */
+
+          dots.forEach(
+            (dot, dotIndex) => {
+
+              dot.classList.toggle(
+                'is-active',
+                dotIndex === currentIndex
+              );
+
+            }
+          );
+
+
+          /*
+            IMAGE TERMINÉE.
+
+            Petite attente avant de faire
+            apparaître le texte.
+          */
+
+          window.setTimeout(() => {
+
+            newSlide.classList.add(
+              'text-visible'
+            );
+
+            animating = false;
+
+          }, 120);
+
+
+        }, 850);
+
+      }
+
+
+      /* ===============================================
+         CLIC PAGINATION
+      =============================================== */
+
+      dots.forEach((dot, index) => {
+
+        dot.addEventListener(
+          'click',
+          () => {
+
+            if (
+              index === currentIndex ||
+              animating
+            ) {
+              return;
+            }
+
+
+            const direction =
+              index > currentIndex
+                ? 'next'
+                : 'prev';
+
+
+            changeSlide(
+              index,
+              direction
+            );
+
+
+            startAutoplay();
+
+          }
+        );
 
       });
 
+
+      /* ===============================================
+         LANCEMENT
+      =============================================== */
+
+      startAutoplay();
+
     });
-
-
-    /* =========================
-       INITIALISATION
-    ========================== */
-
-    showSlide(0);
-
-    startAutoplay();
-
-  });
 
 }
 
 
-/* CHARGEMENT NORMAL */
+/* CHARGEMENT */
 
 if (document.readyState === 'loading') {
 
@@ -666,136 +824,25 @@ if (document.readyState === 'loading') {
 }
 
 
-/* SHOPIFY THEME EDITOR */
+/* SHOPIFY EDITOR */
 
 document.addEventListener(
   'shopify:section:load',
-  (event) => {
+  () => {
 
-    const hero =
-      event.target.querySelector?.(
+    document
+      .querySelectorAll(
         '[data-clothing-hero]'
-      ) ||
-      (
-        event.target.matches?.(
-          '[data-clothing-hero]'
-        )
-          ? event.target
-          : null
-      );
+      )
+      .forEach((hero) => {
 
-
-    if (hero) {
-
-      hero.dataset.sliderInitialized = 'false';
-
-      initClothingHero();
-
-    }
-
-  }
-);
-/* =========================================================
-   HERO VÊTEMENTS — PARALLAX
-   MÊME EFFET QUE HERO HOME
-========================================================= */
-
-function initClothingHeroParallax() {
-
-  const hero = document.querySelector(
-    '[data-clothing-hero]'
-  );
-
-  if (!hero) return;
-
-  const images = hero.querySelectorAll(
-    '.clothing-hero__image'
-  );
-
-  if (!images.length) return;
-
-
-  let ticking = false;
-
-
-  function updateClothingParallax() {
-
-    const scrollY = window.scrollY;
-    const heroHeight = hero.offsetHeight;
-
-
-    /*
-      Tant que l'on est dans la zone du Hero,
-      l'image descend légèrement avec le scroll.
-    */
-
-    if (scrollY <= heroHeight) {
-
-      const translateY = scrollY * 0.22;
-
-
-      images.forEach((image) => {
-
-        image.style.transform =
-          `translate3d(0, ${translateY}px, 0) scale(1.08)`;
+        hero.dataset.sliderInitialized =
+          'false';
 
       });
 
-    }
 
-
-    ticking = false;
-  }
-
-
-  function onClothingScroll() {
-
-    if (!ticking) {
-
-      requestAnimationFrame(
-        updateClothingParallax
-      );
-
-      ticking = true;
-
-    }
+    initClothingHero();
 
   }
-
-
-  updateClothingParallax();
-
-
-  window.addEventListener(
-    'scroll',
-    onClothingScroll,
-    {
-      passive: true
-    }
-  );
-
-}
-
-
-/* CHARGEMENT */
-
-if (document.readyState === 'loading') {
-
-  document.addEventListener(
-    'DOMContentLoaded',
-    initClothingHeroParallax
-  );
-
-} else {
-
-  initClothingHeroParallax();
-
-}
-
-
-/* ÉDITEUR SHOPIFY */
-
-document.addEventListener(
-  'shopify:section:load',
-  initClothingHeroParallax
 );
