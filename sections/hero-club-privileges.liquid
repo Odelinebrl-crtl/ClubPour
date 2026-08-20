@@ -1,3 +1,12 @@
+{% comment %}
+  ============================================================
+  CLUB POUR — PAGE CLUB PRIVILÈGES
+  Hero + Manifeste + Privilèges + Exclusive + Stats
+  + Editorial + Fonctionnement + CTA final
+  ============================================================
+{% endcomment %}
+
+
 <section
   id="ClubPrivilegesHero-{{ section.id }}"
   class="club-hero"
@@ -7,10 +16,6 @@
     --club-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
   "
 >
-
-  <!-- =====================================================
-       IMAGE
-  ====================================================== -->
 
   <div class="club-hero__media">
 
@@ -34,112 +39,449 @@
 
   </div>
 
-
-  <!-- =====================================================
-       OVERLAY
-  ====================================================== -->
-
   <div class="club-hero__overlay"></div>
-
-
-  <!-- =====================================================
-       CONTENU
-  ====================================================== -->
 
   <div class="club-hero__content">
 
-    <div class="club-hero__content-inner">
+    {% if section.settings.eyebrow != blank %}
+      <p class="club-hero__eyebrow">
+        {{ section.settings.eyebrow }}
+      </p>
+    {% endif %}
 
-      {% if section.settings.eyebrow != blank %}
+    {% if section.settings.heading != blank %}
+      <h1 class="club-hero__heading">
+        {{ section.settings.heading }}
+      </h1>
+    {% endif %}
 
-        <p class="club-hero__eyebrow club-hero__reveal club-hero__reveal--1">
-          {{ section.settings.eyebrow }}
-        </p>
+    <form
+      class="club-hero__form"
+      method="post"
+      action="/contact#club-privileges"
+      accept-charset="UTF-8"
+    >
 
-      {% endif %}
+      <input type="hidden" name="form_type" value="customer">
+      <input type="hidden" name="utf8" value="✓">
 
+      <div class="club-hero__email-wrap">
 
-      {% if section.settings.heading != blank %}
+        <input
+          type="email"
+          name="contact[email]"
+          class="club-hero__email"
+          placeholder="VOTRE EMAIL"
+          required
+          autocomplete="email"
+          aria-label="Votre email"
+        >
 
-        <h1 class="club-hero__heading club-hero__reveal club-hero__reveal--2">
-          {{ section.settings.heading }}
-        </h1>
+      </div>
 
-      {% endif %}
-
-
-      <!-- =================================================
-           FORMULAIRE
-      ================================================== -->
-
-      <form
-        class="club-hero__form club-hero__reveal club-hero__reveal--3"
-        method="post"
-        action="/contact#club-privileges"
-        accept-charset="UTF-8"
-        id="club-privileges-form-{{ section.id }}"
+      <button
+        type="submit"
+        class="club-hero__submit"
       >
 
-        <input
-          type="hidden"
-          name="form_type"
-          value="customer"
-        >
+        <span class="club-hero__submit-text">
+          REJOIGNEZ LE CLUB
+        </span>
 
-        <input
-          type="hidden"
-          name="utf8"
-          value="✓"
-        >
+        <span class="club-hero__submit-arrow">
+          →
+        </span>
 
+      </button>
 
-        <!-- EMAIL -->
+    </form>
 
-        <div class="club-hero__email-wrap">
+    {% if section.settings.launch_text != blank %}
+      <p class="club-hero__launch">
+        {{ section.settings.launch_text }}
+      </p>
+    {% endif %}
 
-          <input
-            class="club-hero__email"
-            type="email"
-            name="contact[email]"
-            placeholder="VOTRE EMAIL"
-            required
-            autocomplete="email"
-            aria-label="Votre email"
-          >
+  </div>
 
-        </div>
+</section>
 
 
-        <!-- BOUTON -->
 
-        <button
-          class="club-hero__submit"
-          type="submit"
-        >
+{% comment %}
+  ============================================================
+  MANIFESTE
+  ============================================================
+{% endcomment %}
 
-          <span class="club-hero__submit-text">
-            {{ section.settings.button_label }}
-          </span>
+<section class="club-manifesto">
 
-          <span
-            class="club-hero__submit-arrow"
-            aria-hidden="true"
-          >
-            →
-          </span>
+  <p class="club-section-label">
+    CLUB POUR
+  </p>
 
-        </button>
+  <h2 class="club-manifesto__title">
+    PLUS QU’UN ACCÈS.<br>
+    UNE LONGUEUR D’AVANCE.
+  </h2>
 
-      </form>
+  <p class="club-manifesto__text">
+    Le Club POUR vous ouvre les portes de notre univers avant tout le monde.
+    Collections en avant-première, séries exclusives et privilèges réservés
+    à nos membres.
+  </p>
+
+</section>
 
 
-      {% if section.settings.launch_text != blank %}
 
-        <p class="club-hero__launch club-hero__reveal club-hero__reveal--4">
-          {{ section.settings.launch_text }}
-        </p>
+{% comment %}
+  ============================================================
+  PRIVILÈGES
+  ============================================================
+{% endcomment %}
 
-      {% endif %}
+<section class="club-benefits">
+
+  <div class="club-benefits__header">
+
+    <p class="club-section-label">
+      VOS PRIVILÈGES
+    </p>
+
+    <p class="club-benefits__count">
+      04
+    </p>
+
+  </div>
+
+
+  <div class="club-benefit">
+
+    <span class="club-benefit__number">
+      01
+    </span>
+
+    <h3 class="club-benefit__title">
+      AVANT-PREMIÈRE
+    </h3>
+
+    <p class="club-benefit__description">
+      Découvrez et commandez nos nouveaux drops avant leur lancement officiel.
+    </p>
+
+    <span class="club-benefit__arrow">
+      →
+    </span>
+
+  </div>
+
+
+  <div class="club-benefit">
+
+    <span class="club-benefit__number">
+      02
+    </span>
+
+    <h3 class="club-benefit__title">
+      CLUB EXCLUSIVES
+    </h3>
+
+    <p class="club-benefit__description">
+      Accédez à des séries limitées uniquement disponibles pour les membres du Club.
+    </p>
+
+    <span class="club-benefit__arrow">
+      →
+    </span>
+
+  </div>
+
+
+  <div class="club-benefit">
+
+    <span class="club-benefit__number">
+      03
+    </span>
+
+    <h3 class="club-benefit__title">
+      PRIVATE SALES
+    </h3>
+
+    <p class="club-benefit__description">
+      Profitez de ventes privées et d'offres qui ne seront jamais proposées publiquement.
+    </p>
+
+    <span class="club-benefit__arrow">
+      →
+    </span>
+
+  </div>
+
+
+  <div class="club-benefit">
+
+    <span class="club-benefit__number">
+      04
+    </span>
+
+    <h3 class="club-benefit__title">
+      PRIORITY ACCESS
+    </h3>
+
+    <p class="club-benefit__description">
+      Soyez prioritaire sur certaines pièces, restocks et quantités limitées.
+    </p>
+
+    <span class="club-benefit__arrow">
+      →
+    </span>
+
+  </div>
+
+</section>
+
+
+
+{% comment %}
+  ============================================================
+  CLUB EXCLUSIVE — 50/50
+  ============================================================
+{% endcomment %}
+
+<section class="club-exclusive">
+
+  <div class="club-exclusive__image">
+
+    {% if section.settings.exclusive_image != blank %}
+
+      {{
+        section.settings.exclusive_image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'club-exclusive__img',
+          loading: 'lazy'
+      }}
+
+    {% else %}
+
+      <div class="club-exclusive__placeholder">
+        {{ 'lifestyle-2' | placeholder_svg_tag }}
+      </div>
+
+    {% endif %}
+
+  </div>
+
+
+  <div class="club-exclusive__content">
+
+    <p class="club-exclusive__eyebrow">
+      CLUB EXCLUSIVE — 001
+    </p>
+
+    <h2 class="club-exclusive__title">
+      CERTAINES PIÈCES<br>
+      NE SERONT JAMAIS<br>
+      MISES EN VENTE.
+    </h2>
+
+    <p class="club-exclusive__text">
+      Des séries produites en quantités limitées, imaginées exclusivement
+      pour les membres du Club POUR.
+    </p>
+
+    <a href="#club-final" class="club-exclusive__link">
+      MEMBERS ONLY
+      <span>→</span>
+    </a>
+
+  </div>
+
+</section>
+
+
+
+{% comment %}
+  ============================================================
+  STATS
+  ============================================================
+{% endcomment %}
+
+<section class="club-stats">
+
+  <div class="club-stat">
+
+    <p class="club-stat__big">
+      48H
+    </p>
+
+    <p class="club-stat__small">
+      D’ACCÈS EN<br>
+      AVANT-PREMIÈRE
+    </p>
+
+  </div>
+
+
+  <div class="club-stat">
+
+    <p class="club-stat__big">
+      LIMITED
+    </p>
+
+    <p class="club-stat__small">
+      SÉRIES RÉSERVÉES<br>
+      AU CLUB
+    </p>
+
+  </div>
+
+
+  <div class="club-stat">
+
+    <p class="club-stat__big">
+      PRIVATE
+    </p>
+
+    <p class="club-stat__small">
+      OFFRES &<br>
+      VENTES PRIVÉES
+    </p>
+
+  </div>
+
+</section>
+
+
+
+{% comment %}
+  ============================================================
+  EDITORIAL IMAGE
+  ============================================================
+{% endcomment %}
+
+<section class="club-editorial">
+
+  <div class="club-editorial__media">
+
+    {% if section.settings.editorial_image != blank %}
+
+      {{
+        section.settings.editorial_image
+        | image_url: width: 2800
+        | image_tag:
+          class: 'club-editorial__image',
+          loading: 'lazy'
+      }}
+
+    {% else %}
+
+      <div class="club-editorial__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      </div>
+
+    {% endif %}
+
+  </div>
+
+  <div class="club-editorial__overlay"></div>
+
+  <div class="club-editorial__content">
+
+    <p class="club-editorial__eyebrow">
+      CLUB POUR
+    </p>
+
+    <h2 class="club-editorial__title">
+      BEFORE<br>
+      EVERYONE<br>
+      ELSE.
+    </h2>
+
+    <p class="club-editorial__text">
+      LES MEMBRES DU CLUB PASSENT EN PREMIER.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+{% comment %}
+  ============================================================
+  COMMENT ÇA MARCHE
+  ============================================================
+{% endcomment %}
+
+<section class="club-how">
+
+  <div class="club-how__header">
+
+    <p class="club-section-label">
+      LE CLUB
+    </p>
+
+    <h2 class="club-how__heading">
+      COMMENT ÇA MARCHE ?
+    </h2>
+
+  </div>
+
+
+  <div class="club-how__grid">
+
+    <div class="club-how__item">
+
+      <span class="club-how__number">
+        01
+      </span>
+
+      <h3>
+        REJOIGNEZ<br>
+        LE CLUB
+      </h3>
+
+      <p>
+        Inscrivez-vous simplement avec votre adresse email.
+      </p>
+
+    </div>
+
+
+    <div class="club-how__item">
+
+      <span class="club-how__number">
+        02
+      </span>
+
+      <h3>
+        RECEVEZ<br>
+        VOTRE ACCÈS
+      </h3>
+
+      <p>
+        Nous vous prévenons dès qu’un nouvel accès privé est disponible.
+      </p>
+
+    </div>
+
+
+    <div class="club-how__item">
+
+      <span class="club-how__number">
+        03
+      </span>
+
+      <h3>
+        ACCÉDEZ AUX<br>
+        PRIVILÈGES
+      </h3>
+
+      <p>
+        Avant-premières, exclusivités, ventes privées et accès prioritaires.
+      </p>
 
     </div>
 
@@ -148,39 +490,117 @@
 </section>
 
 
-{% style %}
 
-/* =========================================================
-   HERO CLUB PRIVILÈGES
-========================================================= */
+{% comment %}
+  ============================================================
+  CTA FINAL
+  ============================================================
+{% endcomment %}
+
+<section
+  class="club-final"
+  id="club-final"
+>
+
+  <p class="club-final__eyebrow">
+    CLUB POUR
+  </p>
+
+  <h2 class="club-final__title">
+    PRENEZ UNE<br>
+    LONGUEUR D’AVANCE.
+  </h2>
+
+
+  <form
+    class="club-final__form"
+    method="post"
+    action="/contact#club-final"
+    accept-charset="UTF-8"
+  >
+
+    <input type="hidden" name="form_type" value="customer">
+    <input type="hidden" name="utf8" value="✓">
+
+    <div class="club-final__email-wrap">
+
+      <input
+        type="email"
+        name="contact[email]"
+        class="club-final__email"
+        placeholder="VOTRE EMAIL"
+        required
+        autocomplete="email"
+      >
+
+    </div>
+
+
+    <button
+      type="submit"
+      class="club-final__submit"
+    >
+
+      REJOIGNEZ LE CLUB
+
+      <span>
+        →
+      </span>
+
+    </button>
+
+  </form>
+
+
+  <p class="club-final__small">
+    ACCÈS GRATUIT — RÉSERVÉ AUX MEMBRES INSCRITS
+  </p>
+
+</section>
+
+
+
+<style>
+
+/* ============================================================
+   BASE PAGE CLUB
+============================================================ */
+
+#shopify-section-{{ section.id }} {
+  margin: 0;
+  padding: 0;
+}
+
+#shopify-section-{{ section.id }} * {
+  box-sizing: border-box;
+}
+
+
+/* ============================================================
+   HERO
+============================================================ */
 
 #ClubPrivilegesHero-{{ section.id }} {
   position: relative;
 
   width: 100%;
-height: 100svh;
-min-height: 100svh;
+  height: 100svh;
+  min-height: 100svh;
 
   margin: 0;
   padding: 0;
 
   overflow: hidden;
 
-  background: #111111;
+  background: #111;
 
   color: var(--club-text-color);
 }
 
 
-/* =========================================================
-   IMAGE
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__media {
   position: absolute;
   inset: 0;
-
-  z-index: 0;
 
   width: 100%;
   height: 100%;
@@ -195,21 +615,15 @@ min-height: 100svh;
   top: -7%;
   left: 0;
 
-  display: block;
-
   width: 100%;
   height: 114%;
 
-  max-width: none;
+  display: block;
 
   object-fit: cover;
   object-position: center;
 
-  transform: translate3d(0, 0, 0) scale(1.08);
-
-  transform-origin: center;
-
-  will-change: transform;
+  transform: translate3d(0,0,0) scale(1.08);
 }
 
 
@@ -220,129 +634,75 @@ min-height: 100svh;
 }
 
 
-/* =========================================================
-   OVERLAY
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__overlay {
   position: absolute;
   inset: 0;
 
   z-index: 1;
 
-  background: rgba(
-    0,
-    0,
-    0,
-    var(--club-overlay)
-  );
+  background: rgba(0,0,0,var(--club-overlay));
 
   pointer-events: none;
 }
 
-
-/* =========================================================
-   CONTENEUR DU CONTENU
-
-   IMPORTANT :
-   aucun transform ici.
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__content {
   position: absolute;
 
-  left: 0;
-  right: 0;
+  left: 50%;
   bottom: 35px;
 
   z-index: 2;
 
-  width: 100%;
-
-  padding: 0 40px;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   CONTENU INTÉRIEUR
-========================================================= */
-
-#ClubPrivilegesHero-{{ section.id }} .club-hero__content-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  width: min(100%, 1150px);
-
-  margin: 0 auto;
-
   gap: 14px;
+
+  width: min(100%, 1100px);
+
+  padding: 40px;
 
   text-align: center;
 
   color: var(--club-text-color);
 
-  pointer-events: auto;
+  transform: translateX(-50%);
 }
 
-
-/* =========================================================
-   PETIT TITRE
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__eyebrow {
   margin: 0;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
   font-weight: 400;
 
   line-height: 1;
 
-  letter-spacing: 0.18em;
+  letter-spacing: .18em;
 
   text-transform: uppercase;
-
-  color: inherit;
 }
 
-
-/* =========================================================
-   GRAND TITRE
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
   margin: 0;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: clamp(50px, 8vw, 130px);
   font-weight: 400;
 
-  line-height: 0.8;
+  line-height: .8;
 
-  letter-spacing: -0.07em;
+  letter-spacing: -.07em;
 
   text-transform: uppercase;
-
-  color: inherit;
 }
 
-
-/* =========================================================
-   FORMULAIRE
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__form {
   display: flex;
@@ -358,42 +718,20 @@ min-height: 100svh;
 }
 
 
-/* =========================================================
-   CHAMP EMAIL
-
-   COPIE EXACTE DE LA HOME.
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap {
   flex: 1;
 
   display: flex;
   align-items: center;
 
-  min-width: 0;
+  background: rgba(255,255,255,.15);
 
-  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255,255,255,.65);
 
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-
-  border: 1px solid rgba(255, 255, 255, 0.65);
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
 }
 
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email-wrap:focus-within {
-  background: rgba(255, 255, 255, 0.22);
-
-  border-color: #ffffff;
-}
-
-
-/* INPUT */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email {
   width: 100%;
@@ -401,192 +739,710 @@ min-height: 100svh;
 
   padding: 0 16px;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  font-size: 11px;
-  font-weight: 400;
-
-  letter-spacing: 0.06em;
-
-  color: #ffffff;
+  border: 0;
+  outline: 0;
 
   background: transparent;
 
-  border: 0;
-  outline: 0;
+  color: #fff;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .06em;
 
   text-transform: uppercase;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__email::placeholder {
-  color: rgba(255, 255, 255, 0.78);
-
+#ClubPrivilegesHero-{{ section.id }} .club-hero__email::placeholder {
+  color: rgba(255,255,255,.78);
   opacity: 1;
 }
 
 
-/* =========================================================
-   BOUTON
-========================================================= */
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
-  position: relative;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
   gap: 12px;
 
-  min-width: 185px;
+  min-width: 200px;
   height: 48px;
 
   padding: 0 18px;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  border: 1px solid #fff;
+
+  background: #fff;
+
+  color: #111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
-  font-weight: 400;
 
-  letter-spacing: 0.06em;
-
-  color: #111111;
-
-  background: #ffffff;
-
-  border: 1px solid #ffffff;
-  border-radius: 0;
-
-  cursor: pointer;
+  letter-spacing: .06em;
 
   text-transform: uppercase;
 
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border-color 0.3s ease;
+  cursor: pointer;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__submit:hover {
-  background: #111111;
+#ClubPrivilegesHero-{{ section.id }} .club-hero__submit:hover {
+  background: #111;
+  border-color: #111;
 
-  color: #ffffff;
-
-  border-color: #111111;
+  color: #fff;
 }
 
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__submit-text,
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__submit-arrow {
-  position: relative;
-
-  z-index: 1;
-}
-
-
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__submit-arrow {
-  transform: none;
-}
-
-
-/* =========================================================
-   PETIT TEXTE BAS
-========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
   margin: 0;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 10px;
-  font-weight: 400;
 
-  line-height: 1.2;
-
-  letter-spacing: 0.06em;
+  letter-spacing: .06em;
 
   text-transform: uppercase;
 
-  color: inherit;
-
-  opacity: 0.85;
+  opacity: .85;
 }
 
 
-/* =========================================================
-   ANIMATION D'ENTRÉE
 
-   On anime les éléments individuellement.
-   Le parent du champ email N'EST PAS transformé.
-========================================================= */
+/* ============================================================
+   COMMUN
+============================================================ */
 
-#ClubPrivilegesHero-{{ section.id }} .club-hero__reveal {
-  opacity: 0;
+.club-section-label {
+  margin: 0;
 
-  transform: translateY(-55px);
+  font-size: 10px;
+
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+}
+
+
+
+/* ============================================================
+   MANIFESTE
+============================================================ */
+
+.club-manifesto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 80vh;
+
+  padding: 120px 40px;
+
+  background: #fff;
+
+  color: #111;
+
+  text-align: center;
+}
+
+
+.club-manifesto__title {
+  max-width: 1200px;
+
+  margin: 45px 0 35px;
+
+  font-size: clamp(48px, 7vw, 115px);
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.06em;
+}
+
+
+.club-manifesto__text {
+  max-width: 570px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+
+/* ============================================================
+   PRIVILÈGES
+============================================================ */
+
+.club-benefits {
+  padding: 0 32px 120px;
+
+  background: #fff;
+
+  color: #111;
+}
+
+
+.club-benefits__header {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 25px 0;
+
+  border-top: 1px solid #111;
+}
+
+
+.club-benefits__count {
+  margin: 0;
+
+  font-size: 10px;
+}
+
+
+.club-benefit {
+  display: grid;
+
+  grid-template-columns:
+    80px
+    minmax(300px, 1.1fr)
+    minmax(300px, .8fr)
+    40px;
+
+  align-items: center;
+
+  min-height: 145px;
+
+  border-top: 1px solid rgba(17,17,17,.25);
 
   transition:
-    opacity 0.65s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-
-  will-change: opacity, transform;
+    background .3s ease,
+    color .3s ease;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}.is-content-visible
-.club-hero__reveal {
-  opacity: 1;
-
-  transform: translateY(0);
+.club-benefit:last-child {
+  border-bottom: 1px solid rgba(17,17,17,.25);
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__reveal--1 {
-  transition-delay: 0s;
+.club-benefit:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+
+  background: #111;
+
+  color: #fff;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__reveal--2 {
-  transition-delay: 0.06s;
+.club-benefit__number {
+  font-size: 10px;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__reveal--3 {
-  transition-delay: 0.12s;
+.club-benefit__title {
+  margin: 0;
+
+  font-size: clamp(28px, 3vw, 52px);
+  font-weight: 400;
+
+  letter-spacing: -.04em;
 }
 
 
-#ClubPrivilegesHero-{{ section.id }}
-.club-hero__reveal--4 {
-  transition-delay: 0.18s;
+.club-benefit__description {
+  max-width: 420px;
+
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
 }
 
 
-/* =========================================================
+.club-benefit__arrow {
+  text-align: right;
+
+  font-size: 20px;
+}
+
+
+
+/* ============================================================
+   CLUB EXCLUSIVE
+============================================================ */
+
+.club-exclusive {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  min-height: 90vh;
+
+  background: #111;
+
+  color: #fff;
+}
+
+
+.club-exclusive__image {
+  min-height: 90vh;
+
+  overflow: hidden;
+}
+
+
+.club-exclusive__img,
+.club-exclusive__placeholder,
+.club-exclusive__placeholder svg {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+.club-exclusive__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 70px;
+}
+
+
+.club-exclusive__eyebrow {
+  margin: 0 0 55px;
+
+  font-size: 10px;
+
+  letter-spacing: .18em;
+}
+
+
+.club-exclusive__title {
+  margin: 0;
+
+  font-size: clamp(44px, 5vw, 90px);
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.06em;
+}
+
+
+.club-exclusive__text {
+  max-width: 480px;
+
+  margin: 50px 0;
+
+  font-size: 13px;
+
+  line-height: 1.7;
+}
+
+
+.club-exclusive__link {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  width: fit-content;
+
+  padding-bottom: 8px;
+
+  border-bottom: 1px solid #fff;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
+
+  text-decoration: none;
+}
+
+
+
+/* ============================================================
+   STATS
+============================================================ */
+
+.club-stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  background: #fff;
+
+  color: #111;
+}
+
+
+.club-stat {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-height: 430px;
+
+  padding: 35px;
+
+  border-right: 1px solid rgba(17,17,17,.25);
+}
+
+
+.club-stat:last-child {
+  border-right: 0;
+}
+
+
+.club-stat__big {
+  margin: 0;
+
+  font-size: clamp(55px, 6vw, 110px);
+  font-weight: 400;
+
+  line-height: .85;
+
+  letter-spacing: -.07em;
+}
+
+
+.club-stat__small {
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+
+  letter-spacing: .08em;
+}
+
+
+
+/* ============================================================
+   EDITORIAL
+============================================================ */
+
+.club-editorial {
+  position: relative;
+
+  height: 85vh;
+  min-height: 700px;
+
+  overflow: hidden;
+
+  background: #111;
+
+  color: #fff;
+}
+
+
+.club-editorial__media,
+.club-editorial__image,
+.club-editorial__placeholder,
+.club-editorial__placeholder svg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+
+.club-editorial__image {
+  object-fit: cover;
+}
+
+
+.club-editorial__overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 1;
+
+  background: rgba(0,0,0,.22);
+}
+
+
+.club-editorial__content {
+  position: absolute;
+
+  left: 35px;
+  bottom: 35px;
+
+  z-index: 2;
+}
+
+
+.club-editorial__eyebrow {
+  margin: 0 0 20px;
+
+  font-size: 10px;
+
+  letter-spacing: .18em;
+}
+
+
+.club-editorial__title {
+  margin: 0;
+
+  font-size: clamp(75px, 10vw, 170px);
+  font-weight: 400;
+
+  line-height: .72;
+
+  letter-spacing: -.07em;
+}
+
+
+.club-editorial__text {
+  margin: 35px 0 0;
+
+  font-size: 10px;
+
+  letter-spacing: .12em;
+}
+
+
+
+/* ============================================================
+   HOW
+============================================================ */
+
+.club-how {
+  padding: 120px 32px;
+
+  background: #fff;
+
+  color: #111;
+}
+
+
+.club-how__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  padding-bottom: 50px;
+}
+
+
+.club-how__heading {
+  margin: 0;
+
+  font-size: clamp(45px, 6vw, 95px);
+  font-weight: 400;
+
+  letter-spacing: -.06em;
+}
+
+
+.club-how__grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid #111;
+}
+
+
+.club-how__item {
+  min-height: 420px;
+
+  padding: 30px;
+
+  border-right: 1px solid rgba(17,17,17,.25);
+}
+
+
+.club-how__item:last-child {
+  border-right: 0;
+}
+
+
+.club-how__number {
+  display: block;
+
+  margin-bottom: 110px;
+
+  font-size: 10px;
+}
+
+
+.club-how__item h3 {
+  margin: 0 0 30px;
+
+  font-size: clamp(28px, 3vw, 48px);
+  font-weight: 400;
+
+  line-height: .95;
+
+  letter-spacing: -.04em;
+}
+
+
+.club-how__item p {
+  max-width: 330px;
+
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+}
+
+
+
+/* ============================================================
+   CTA FINAL
+============================================================ */
+
+.club-final {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 90vh;
+
+  padding: 100px 30px;
+
+  background: #111;
+
+  color: #fff;
+
+  text-align: center;
+}
+
+
+.club-final__eyebrow {
+  margin: 0 0 40px;
+
+  font-size: 10px;
+
+  letter-spacing: .18em;
+}
+
+
+.club-final__title {
+  margin: 0;
+
+  font-size: clamp(60px, 9vw, 150px);
+  font-weight: 400;
+
+  line-height: .8;
+
+  letter-spacing: -.07em;
+}
+
+
+.club-final__form {
+  display: flex;
+
+  width: min(100%, 600px);
+  height: 50px;
+
+  margin-top: 65px;
+
+  gap: 8px;
+}
+
+
+.club-final__email-wrap {
+  flex: 1;
+
+  border: 1px solid rgba(255,255,255,.6);
+
+  background: rgba(255,255,255,.12);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+
+.club-final__email {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 16px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  letter-spacing: .06em;
+
+  text-transform: uppercase;
+}
+
+
+.club-final__email::placeholder {
+  color: rgba(255,255,255,.75);
+}
+
+
+.club-final__submit {
+  min-width: 200px;
+
+  border: 1px solid #fff;
+
+  background: #fff;
+
+  color: #111;
+
+  font-size: 11px;
+
+  letter-spacing: .06em;
+
+  cursor: pointer;
+}
+
+
+.club-final__submit span {
+  margin-left: 15px;
+}
+
+
+.club-final__small {
+  margin: 20px 0 0;
+
+  font-size: 9px;
+
+  letter-spacing: .1em;
+
+  opacity: .7;
+}
+
+
+
+/* ============================================================
    MOBILE
-========================================================= */
+============================================================ */
 
 @media screen and (max-width: 768px) {
 
@@ -596,231 +1452,259 @@ min-height: 100svh;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__content {
-    bottom: 24px;
+  #ClubPrivilegesHero-{{ section.id }} .club-hero__content {
+    bottom: 20px;
 
-    padding: 0 16px;
+    width: 100%;
+
+    padding: 20px 16px;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__heading {
-    font-size: clamp(52px, 16vw, 82px);
+  #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
+    font-size: clamp(48px, 15vw, 80px);
+
+    line-height: .85;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__form {
+  #ClubPrivilegesHero-{{ section.id }} .club-hero__form {
     width: 100%;
     height: auto;
 
     flex-direction: column;
-
-    gap: 8px;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__email-wrap,
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__submit {
+  #ClubPrivilegesHero-{{ section.id }} .club-hero__email-wrap,
+  #ClubPrivilegesHero-{{ section.id }} .club-hero__submit {
     width: 100%;
     height: 48px;
   }
 
 
-  #ClubPrivilegesHero-{{ section.id }}
-  .club-hero__submit {
-    min-width: 0;
+  .club-manifesto {
+    min-height: auto;
+
+    padding: 100px 20px;
+  }
+
+
+  .club-manifesto__title {
+    margin: 35px 0 25px;
+  }
+
+
+  .club-benefits {
+    padding: 0 18px 80px;
+  }
+
+
+  .club-benefit {
+    grid-template-columns: 35px 1fr;
+
+    gap: 15px;
+
+    padding: 30px 0;
+  }
+
+
+  .club-benefit__description {
+    grid-column: 2;
+  }
+
+
+  .club-benefit__arrow {
+    display: none;
+  }
+
+
+  .club-benefit:hover {
+    padding-left: 0;
+    padding-right: 0;
+
+    background: transparent;
+
+    color: #111;
+  }
+
+
+  .club-exclusive {
+    grid-template-columns: 1fr;
+  }
+
+
+  .club-exclusive__image {
+    min-height: 65vh;
+  }
+
+
+  .club-exclusive__content {
+    padding: 70px 20px;
+  }
+
+
+  .club-stats {
+    grid-template-columns: 1fr;
+  }
+
+
+  .club-stat {
+    min-height: 280px;
+
+    border-right: 0;
+    border-bottom: 1px solid rgba(17,17,17,.25);
+  }
+
+
+  .club-editorial {
+    height: 80vh;
+    min-height: 600px;
+  }
+
+
+  .club-editorial__content {
+    left: 20px;
+    bottom: 25px;
+  }
+
+
+  .club-editorial__title {
+    font-size: clamp(65px, 20vw, 110px);
+  }
+
+
+  .club-how {
+    padding: 90px 18px;
+  }
+
+
+  .club-how__header {
+    display: block;
+  }
+
+
+  .club-how__heading {
+    margin-top: 25px;
+  }
+
+
+  .club-how__grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  .club-how__item {
+    min-height: auto;
+
+    padding: 30px 0 60px;
+
+    border-right: 0;
+    border-bottom: 1px solid rgba(17,17,17,.25);
+  }
+
+
+  .club-how__number {
+    margin-bottom: 70px;
+  }
+
+
+  .club-final {
+    min-height: 80vh;
+
+    padding: 90px 18px;
+  }
+
+
+  .club-final__form {
+    height: auto;
+
+    flex-direction: column;
+  }
+
+
+  .club-final__email-wrap,
+  .club-final__submit {
+    width: 100%;
+    height: 50px;
   }
 
 }
 
-{% endstyle %}
+</style>
 
-
-<script>
-(() => {
-
-  const hero =
-    document.getElementById(
-      'ClubPrivilegesHero-{{ section.id }}'
-    );
-
-  if (!hero) return;
-
-
-  const image =
-    hero.querySelector(
-      '.club-hero__image'
-    );
-
-
-  /* =======================================================
-     ENTRÉE
-  ======================================================= */
-
-  window.requestAnimationFrame(() => {
-
-    window.requestAnimationFrame(() => {
-
-      window.setTimeout(() => {
-
-        hero.classList.add(
-          'is-content-visible'
-        );
-
-      }, 80);
-
-    });
-
-  });
-
-
-  /* =======================================================
-     PARALLAX
-  ======================================================= */
-
-  if (!image) return;
-
-
-  let ticking = false;
-
-
-  function updateParallax() {
-
-    const scrollY =
-      window.scrollY;
-
-
-    const heroTop =
-      hero.getBoundingClientRect().top +
-      scrollY;
-
-
-    const heroHeight =
-      hero.offsetHeight;
-
-
-    const localScroll =
-      Math.max(
-        0,
-        Math.min(
-          scrollY - heroTop,
-          heroHeight
-        )
-      );
-
-
-    const translateY =
-      localScroll * 0.22;
-
-
-    image.style.transform =
-      `translate3d(0, ${translateY}px, 0) scale(1.08)`;
-
-
-    ticking = false;
-
-  }
-
-
-  function requestParallax() {
-
-    if (ticking) return;
-
-
-    ticking = true;
-
-
-    window.requestAnimationFrame(
-      updateParallax
-    );
-
-  }
-
-
-  window.addEventListener(
-    'scroll',
-    requestParallax,
-    {
-      passive: true
-    }
-  );
-
-
-  window.addEventListener(
-    'resize',
-    requestParallax
-  );
-
-
-  updateParallax();
-
-})();
-</script>
 
 
 {% schema %}
 {
   "name": "Hero Club Privilèges",
-
   "settings": [
 
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Image"
+      "label": "Image du Hero"
     },
 
     {
       "type": "text",
       "id": "eyebrow",
-      "label": "Petit titre",
+      "label": "Petit titre Hero",
       "default": "CLUB POUR"
     },
 
     {
       "type": "text",
       "id": "heading",
-      "label": "Titre",
+      "label": "Titre Hero",
       "default": "CLUB PRIVILÈGES"
     },
 
     {
       "type": "text",
-      "id": "button_label",
-      "label": "Texte du bouton",
-      "default": "REJOIGNEZ LE CLUB"
-    },
-
-    {
-      "type": "text",
       "id": "launch_text",
-      "label": "Petit texte sous le formulaire",
+      "label": "Texte sous le formulaire",
       "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
 
     {
       "type": "color",
       "id": "text_color",
-      "label": "Couleur du texte",
+      "label": "Couleur du texte Hero",
       "default": "#FFFFFF"
     },
 
     {
       "type": "range",
       "id": "overlay",
-      "label": "Assombrissement de l'image",
-
+      "label": "Assombrissement du Hero",
       "min": 0,
       "max": 60,
       "step": 5,
-
       "unit": "%",
-
       "default": 10
+    },
+
+    {
+      "type": "header",
+      "content": "Section Club Exclusive"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "exclusive_image",
+      "label": "Image Club Exclusive"
+    },
+
+    {
+      "type": "header",
+      "content": "Section éditoriale"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "editorial_image",
+      "label": "Grande image éditoriale"
     }
 
   ],
