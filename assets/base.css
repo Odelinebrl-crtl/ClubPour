@@ -3332,7 +3332,10 @@ transform: translateX(-15px);
   position: relative;
 
   width: 100%;
-  height: 100svh;
+
+  /* Plus élégant qu'un plein écran complet */
+  height: 82svh;
+  min-height: 650px;
 
   margin: 0;
 
@@ -3342,7 +3345,9 @@ transform: translateX(-15px);
 }
 
 
-/* IMAGE */
+/* =========================================================
+   IMAGE
+========================================================= */
 
 .club-privileges-hero__media {
   position: absolute;
@@ -3379,7 +3384,9 @@ transform: translateX(-15px);
 }
 
 
-/* FIL D'ARIANE */
+/* =========================================================
+   FIL D'ARIANE
+========================================================= */
 
 .club-privileges-hero__breadcrumb {
   position: absolute;
@@ -3389,35 +3396,51 @@ transform: translateX(-15px);
 
   z-index: 20;
 
+  margin: 0;
+
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 9px;
   font-weight: 400;
 
-  letter-spacing: 0.02em;
+  line-height: 1;
+
+  letter-spacing: 0.03em;
+
   text-transform: uppercase;
 
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.58);
 }
 
 
-/* CONTENU */
+/* =========================================================
+   CONTENU
+========================================================= */
 
 .club-privileges-hero__content {
   position: absolute;
 
-  top: 29%;
+  /*
+    Position volontairement plus basse,
+    proche de l'esthétique du Hero Vêtements.
+  */
+
+  top: 31%;
   right: 5.5%;
 
   z-index: 20;
 
-  width: min(420px, 31vw);
+  width: min(420px, 30vw);
 
   color: var(--club-text-color, #ffffff);
 
   text-align: left;
 
+
+  /* ÉTAT INITIAL DU TEXTE */
+
   opacity: 0;
+
   visibility: hidden;
 
   transform: translate3d(0, -90px, 0);
@@ -3426,46 +3449,60 @@ transform: translateX(-15px);
     opacity 0.65s ease,
     transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
 
-  will-change: opacity, transform;
+  will-change:
+    opacity,
+    transform;
 }
+
+
+/* TEXTE VISIBLE */
 
 .club-privileges-hero.is-text-visible
 .club-privileges-hero__content {
   opacity: 1;
+
   visibility: visible;
 
   transform: translate3d(0, 0, 0);
 }
 
 
-/* PETIT TITRE */
+/* =========================================================
+   PETIT TITRE
+========================================================= */
 
 .club-privileges-hero__eyebrow {
   margin: 0 0 12px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: 9px;
-  font-weight: 300;
+  font-size: 10px;
+  font-weight: 400;
 
-  letter-spacing: 0.22em;
+  line-height: 1;
+
+  letter-spacing: 0.14em;
+
   text-transform: uppercase;
 
   color: inherit;
 }
 
 
-/* TITRE */
+/* =========================================================
+   TITRE
+========================================================= */
 
 .club-privileges-hero__heading {
   margin: 0 0 18px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: clamp(42px, 4vw, 68px);
+  font-size: clamp(46px, 4vw, 68px);
   font-weight: 400;
 
-  line-height: 0.94;
+  line-height: 0.93;
+
   letter-spacing: -0.045em;
 
   text-transform: uppercase;
@@ -3474,10 +3511,15 @@ transform: translateX(-15px);
 }
 
 
-/* SOUS-TITRE */
+/* =========================================================
+   SOUS-TITRE
+========================================================= */
 
 .club-privileges-hero__subtitle {
+  width: 100%;
   max-width: 360px;
+
+  margin: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -3486,25 +3528,33 @@ transform: translateX(-15px);
 
   line-height: 1.25;
 
+  letter-spacing: 0;
+
   text-transform: uppercase;
 
   color: inherit;
 }
 
 
-/* LIEN */
+/* =========================================================
+   LIEN
+========================================================= */
 
 .club-privileges-hero__link {
   position: relative;
 
   display: inline-block;
 
-  margin-top: 16px;
+  margin-top: 18px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: 0.03em;
 
   color: inherit;
 
@@ -3512,49 +3562,69 @@ transform: translateX(-15px);
   text-transform: uppercase;
 }
 
+
 .club-privileges-hero__link::after {
   content: "";
 
   position: absolute;
 
   left: 0;
-  right: 0;
-  bottom: -4px;
+  bottom: -5px;
 
+  width: 100%;
   height: 1px;
 
   background: currentColor;
+
+  transform-origin: right center;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 
-/* MOBILE */
+.club-privileges-hero__link:hover::after {
+  transform: scaleX(0);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media screen and (max-width: 768px) {
 
   .club-privileges-hero {
-    height: 100svh;
+    height: 78svh;
+    min-height: 600px;
   }
+
 
   .club-privileges-hero__breadcrumb {
     top: 20px;
     left: 20px;
   }
 
+
   .club-privileges-hero__content {
     top: auto;
 
     right: 20px;
-    bottom: 90px;
+    bottom: 70px;
     left: 20px;
 
     width: auto;
   }
 
+
   .club-privileges-hero__heading {
     font-size: 38px;
   }
 
+
   .club-privileges-hero__subtitle {
+    max-width: 300px;
+
     font-size: 11px;
   }
 
