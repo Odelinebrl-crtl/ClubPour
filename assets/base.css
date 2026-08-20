@@ -1,13 +1,2625 @@
 /* =========================================================
-   HERO VÊTEMENTS — TAILLE + PARALLAX
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background: #ffffff;
+  color: #111111;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   HEADER — POUR
+========================================================= */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+
+  width: 100%;
+  height: 68px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(5px) saturate(120%);
+  -webkit-backdrop-filter: blur(5px) saturate(120%);
+
+  color: #111111;
+
+  border: none;
+  box-shadow: none;
+}
+
+.site-header__inner {
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0 54px;
+}
+
+
+/* =========================================================
+   HEADER — NAVIGATION GAUCHE
+========================================================= */
+
+.site-header__nav--left {
+  justify-self: start;
+
+  display: flex;
+  align-items: center;
+
+  gap: 36px;
+}
+
+.site-header__item {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 68px;
+}
+
+
+/* =========================================================
+   HEADER — LOGO CENTRE
+========================================================= */
+
+.site-header__logo {
+  justify-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  line-height: 0;
+
+  color: #111111;
+}
+
+.site-header__logo-image {
+  display: block;
+
+  width: auto;
+  height: 65px;
+
+  max-width: 240px;
+
+  object-fit: contain;
+}
+
+/* =========================================================
+   HEADER — PARTIE DROITE
+========================================================= */
+
+.site-header__actions {
+  justify-self: end;
+
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+
+  gap: 24px !important;
+}
+
+.site-header__actions > a {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  margin: 0 !important;
+  padding: 0;
+  white-space: nowrap;
+}
+.site-header__link,
+.site-header__cart {
+  position: relative;
+
+  display: inline-block;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+
+  color: #111111;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   HEADER — SOULIGNEMENT AU SURVOL
+========================================================= */
+
+.site-header__link::after,
+.site-header__cart::after,
+.site-header__dropdown a::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -5px;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111;
+
+  transition: width 0.22s ease;
+}
+
+.site-header__link:hover::after,
+.site-header__cart:hover::after,
+.site-header__dropdown a:hover::after {
+  width: 100%;
+}
+
+
+/* =========================================================
+   SOUS-MENU — VÊTEMENTS
+========================================================= */
+
+.site-header__dropdown {
+  position: fixed;
+
+  top: 68px;
+  left: 0;
+  z-index: 999;
+
+  width: 100%;
+ padding: 14px 54px;
+
+  /* Même teinte que le header */
+  background: rgba(255, 255, 255, 0.82);
+
+  /*
+    IMPORTANT :
+    on ne recrée PAS un deuxième backdrop-filter ici,
+    sinon Safari crée une coupure blanche entre les deux.
+  */
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+
+  color: #111111;
+
+  margin: 0;
+
+  border: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+
+  outline: 0 !important;
+  box-shadow: none !important;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity 0.14s ease,
+    visibility 0.14s ease;
+}
+.site-header__item--dropdown:hover .site-header__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.site-header,
+.site-header__inner,
+.site-header__dropdown,
+.site-header__item,
+.site-header__item--dropdown {
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: 0 !important;
+}
+
+.site-header__dropdown::before,
+.site-header__dropdown::after {
+  content: none;
+  display: none;
+}
+
+.site-header__dropdown a {
+  position: relative;
+
+  display: inline-block;
+
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  color: #111111;
+
+  white-space: nowrap;
+}
+
+.site-header__dropdown a:hover,
+.site-header__dropdown a:focus {
+  background: transparent;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  color: #111111;
+}
+
+
+/* Affichage du sous-menu */
+
+.site-header__item--dropdown:hover .site-header__dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* Évite les flashs / fonds parasites */
+
+.site-header__item--dropdown,
+.site-header__item--dropdown:hover,
+.site-header__item--dropdown:hover .site-header__link,
+.site-header__dropdown,
+.site-header__dropdown:hover {
+  border: none;
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   HERO POUR
+========================================================= */
+
+.pour-hero {
+  position: relative;
+
+  width: 100%;
+  height: 100svh;
+
+  min-height: 100svh;
+  max-height: none;
+
+  overflow: hidden;
+
+  background: #111111;
+
+  color: var(--hero-text-color);
+}
+
+.pour-hero__media,
+.pour-hero__media picture {
+  position: absolute;
+  inset: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.pour-hero__image {
+  position: absolute;
+
+  top: -7%;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 114%;
+
+  object-fit: cover;
+
+  will-change: transform;
+  transform: translate3d(0, 0, 0) scale(1.08);
+
+  transition: none;
+}
+.pour-hero__placeholder,
+.pour-hero__placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+.pour-hero__placeholder svg {
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   HERO — OVERLAY
+========================================================= */
+
+.pour-hero__overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  background: rgba(0, 0, 0, var(--hero-overlay));
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO — CONTENU
+========================================================= */
+
+.pour-hero__content {
+  position: absolute;
+
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 40px;
+
+  color: var(--hero-text-color);
+}
+
+.pour-hero__content--bottom-center {
+  left: 50%;
+  bottom: 35px;
+
+  transform: translateX(-50%);
+
+  align-items: center;
+
+  text-align: center;
+}
+
+.pour-hero__content--bottom-left {
+  left: 0;
+  bottom: 0;
+
+  align-items: flex-start;
+
+  text-align: left;
+}
+
+.pour-hero__content--center {
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   HERO — PETIT TEXTE
+========================================================= */
+
+.pour-hero__eyebrow {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   HERO — GRAND TITRE
+========================================================= */
+
+.pour-hero__heading {
+  margin: 0;
+
+  font-size: clamp(50px, 8vw, 130px);
+  font-weight: 400;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.07em;
+}
+
+
+/* =========================================================
+   HERO — FORMULAIRE PRÉCOMMANDE
+========================================================= */
+
+.pour-hero__preorder {
+  display: flex;
+  align-items: stretch;
+
+  width: min(100%, 520px);
+  height: 48px;
+
+  margin-top: 18px;
+  margin-bottom: 12px;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   HERO — CHAMP EMAIL
+========================================================= */
+
+.pour-hero__email-wrap {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.pour-hero__email-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.22);
+  border-color: #ffffff;
+}
+
+.pour-hero__email {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 16px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+
+  color: #ffffff;
+  background: transparent;
+
+  border: 0;
+  outline: 0;
+
+  text-transform: uppercase;
+}
+
+.pour-hero__email::placeholder {
+  color: rgba(255, 255, 255, 0.78);
+  opacity: 1;
+}
+
+
+/* =========================================================
+   HERO — BOUTON PRÉCOMMANDE
+========================================================= */
+
+.pour-hero__submit {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  min-width: 165px;
+  height: 48px;
+
+  padding: 0 18px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+
+  color: #111111;
+  background: #ffffff;
+
+  border: 1px solid #ffffff;
+
+  cursor: pointer;
+
+  text-transform: uppercase;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+
+/* Texte + flèche */
+
+.pour-hero__submit-text,
+.pour-hero__submit-arrow {
+  position: relative;
+  z-index: 1;
+}
+
+
+/* =========================================================
+   SURVOL
+========================================================= */
+
+.pour-hero__submit:hover {
+  background: #111111;
+  color: #ffffff;
+
+  border-color: #111111;
+}
+
+
+/* La flèche reste parfaitement fixe */
+
+.pour-hero__submit-arrow {
+  transform: none;
+
+  transition: none;
+}
+
+.pour-hero__submit:hover .pour-hero__submit-arrow {
+  transform: none;
+}
+
+
+/* Aucun mouvement au clic */
+
+.pour-hero__submit:active {
+  transform: none;
+}
+
+/* =========================================================
+   HERO — DATE LANCEMENT
+========================================================= */
+
+.pour-hero__launch {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+
+  opacity: 0.85;
+}
+
+/* =========================================================
+   HOME TEMPORAIRE
+========================================================= */
+
+.main-home {
+  min-height: 70vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 80px 30px;
+
+  text-align: center;
+}
+
+.main-home h1 {
+  margin: 0 0 12px;
+
+  font-size: clamp(60px, 12vw, 180px);
+  font-weight: 500;
+
+  letter-spacing: -0.05em;
+}
+
+.main-home p {
+  margin: 0;
+
+  font-size: 14px;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer {
+  padding: 50px 30px;
+
+  background: #ffffff;
+
+  border-top: 1px solid #eaeaea;
+}
+
+.site-footer__inner {
+  display: grid;
+
+  grid-template-columns: 1fr auto 1fr;
+
+  align-items: center;
+
+  gap: 30px;
+}
+
+.site-footer__links {
+  display: flex;
+
+  gap: 24px;
+}
+
+.site-footer__legal {
+  font-size: 12px;
+
+  text-align: right;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  /* HEADER */
+
+  .site-header {
+    height: 64px;
+  }
+
+  .site-header__inner {
+    grid-template-columns: 1fr auto;
+
+    padding: 0 18px;
+  }
+
+  .site-header__nav--left {
+    display: none;
+  }
+
+  .site-header__logo {
+    grid-column: 1;
+
+    justify-self: start;
+
+    font-size: 22px;
+  }
+
+  .site-header__actions {
+    grid-column: 2;
+
+    justify-self: end;
+  }
+
+  .site-header__cart {
+    font-size: 12px;
+  }
+
+  .site-header__dropdown {
+    display: none;
+  }
+
+
+  /* HERO */
+
+  .pour-hero {
+    height: 78vh;
+
+    min-height: 560px;
+  }
+
+  .pour-hero__content {
+    width: 100%;
+
+    padding: 24px 20px;
+  }
+
+  .pour-hero__heading {
+    font-size: clamp(60px, 25vw, 110px);
+  }
+
+  .pour-hero__content--bottom-center {
+    bottom: 20px;
+  }
+
+
+  /* FOOTER */
+
+  .site-footer__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .site-footer__links {
+    justify-content: flex-start;
+  }
+
+  .site-footer__legal {
+    text-align: left;
+  }
+}
+/* =========================================
+   COLLECTION 001 — SOULIGNEMENT AU HOVER
+========================================= */
+
+/* Supprime toute ligne sur le conteneur du dropdown */
+.site-header__dropdown,
+.site-header__dropdown:hover {
+  border: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+/* Le lien */
+.site-header__dropdown a {
+  position: relative;
+  display: inline-block;
+
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+
+/* Petit trait uniquement sous le texte */
+.site-header__dropdown a::after {
+  content: "" !important;
+  display: block !important;
+
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111 !important;
+
+  transition: width 0.2s ease;
+}
+
+/* Apparition du trait */
+.site-header__dropdown a:hover::after {
+  width: 100%;
+}
+/* LOGO HEADER — TAILLE FORCÉE */
+
+.site-header__logo {
+  height: 68px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+}
+
+.site-header__logo img,
+.site-header__logo-image {
+  display: block !important;
+
+  width: 60px !important;
+  height: auto !important;
+
+  max-width: none !important;
+  max-height: none !important;
+
+  object-fit: contain;
+}
+/* TYPOGRAPHIE HEADER */
+
+.site-header__link,
+.site-header__cart,
+.site-header__dropdown a,
+.site-header__actions a {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+/* ================================
+   PRODUCT GRID — POUR
+================================ */
+
+.pour-products {
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+
+  padding: 70px 48px 90px;
+}
+
+.pour-products__inner {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.pour-products__header {
+  margin-bottom: 28px;
+}
+
+.pour-products__heading {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+/* PRODUITS */
+
+.pour-products__grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  gap: 16px;
+}
+
+/* IMAGE */
+
+.pour-product {
+  display: block;
+
+  min-width: 0;
+
+  color: #111111;
+  text-decoration: none;
+}
+
+/* ================================
+   PRODUCT IMAGE — HOVER PROPRE
+================================ */
+
+.pour-product__media {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
+}
+
+
+/* ================================
+   PRODUCT IMAGE — SWITCH INSTANTANÉ
+================================ */
+
+.pour-product__image--primary {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+  width: 100%;
+  height: auto;
+
+  opacity: 1;
+
+  /* AUCUNE TRANSITION */
+  transition: none !important;
+}
+
+
+/* IMAGE AU SURVOL */
+
+.pour-product__image--secondary {
+  position: absolute !important;
+  inset: 0;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: contain;
+  object-position: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  /* AUCUNE TRANSITION */
+  transition: none !important;
+}
+
+
+/* ================================
+   HOVER — CHANGEMENT IMMÉDIAT
+================================ */
+
+.pour-product:hover .pour-product__image--primary {
+  opacity: 0 !important;
+}
+
+.pour-product:hover .pour-product__image--secondary {
+  opacity: 1 !important;
+}
+
+/* ================================
+   INFOS PRODUIT — CENTRÉES
+================================ */
+
+.pour-product__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  gap: 6px;
+
+  padding-top: 14px;
+
+  text-align: center;
+}
+
+
+/* NOM DU T-SHIRT */
+
+.pour-product__title {
+  margin: 0;
+
+  width: 100%;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+
+  letter-spacing: 0.01em;
+
+  text-align: center;
+
+  text-transform: uppercase;
+}
+
+
+/* PRIX */
+
+.pour-product__price {
+  margin: 0;
+
+  width: 100%;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.3;
+
+  letter-spacing: 0.01em;
+
+  text-align: center;
+
+  white-space: nowrap;
+   color: #777777;
+}
+
+/* PLACEHOLDER */
+
+.pour-product__placeholder svg {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media screen and (max-width: 768px) {
+
+  .pour-products {
+    padding: 45px 16px 65px;
+  }
+
+  .pour-products__header {
+    margin-bottom: 20px;
+  }
+
+  .pour-products__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 28px 8px;
+  }
+
+  .pour-product__info {
+    display: block;
+
+    padding-top: 9px;
+  }
+
+  .pour-product__title,
+  .pour-product__price {
+    font-size: 11px;
+  }
+
+  .pour-product__price {
+    margin-top: 4px;
+  }
+
+}
+
+/* =========================================================
+   COLLECTION — HEADER PARFAITEMENT CENTRÉ
+========================================================= */
+
+.pour-products__header {
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 auto 34px !important;
+  padding: 0 !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  text-align: center !important;
+}
+
+.pour-products__eyebrow {
+  width: 100%;
+
+  margin: 0 0 10px !important;
+  padding: 0;
+
+  text-align: center !important;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.5);
+}
+
+.pour-products__heading {
+  width: 100%;
+
+  margin: 0 !important;
+  padding: 0;
+
+  text-align: center !important;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+
+  color: #111111;
+}
+/* =========================================================
+   CITATION — CLUB POUR
+========================================================= */
+
+.pour-quote {
+  position: relative;
+
+  width: 100%;
+  min-height: 70vh;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  padding: 90px 54px 110px;
+
+  overflow: hidden;
+
+  background: #ffffff;
+  color: #111111;
+}
+
+.pour-quote__inner {
+  width: 100%;
+  max-width: 1400px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+}
+
+
+/* PETIT TITRE */
+
+.pour-quote__eyebrow {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin: 0 0 110px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 17px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+  line-height: 1;
+
+  text-transform: uppercase;
+}
+
+.pour-quote__dot {
+  display: block;
+
+  width: 6px;
+  height: 6px;
+
+  flex: 0 0 6px;
+
+  border-radius: 50%;
+
+  background: currentColor;
+}
+
+
+/* GRANDE CITATION */
+
+.pour-quote__text {
+  max-width: 1250px;
+
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: clamp(34px, 4vw, 68px);
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.035em;
+
+  text-transform: uppercase;
+}
+
+
+/* SIGNATURE */
+
+.pour-quote__signature {
+  margin: 40px 0 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  letter-spacing: 0.06em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ANIMATION CITATION — SCROLL REVEAL
+========================================================= */
+
+.pour-quote__eyebrow,
+.pour-quote__text,
+.pour-quote__signature {
+  opacity: 0;
+
+  transform: translateY(55px);
+
+  will-change: opacity, transform;
+
+  transition:
+    opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Apparition */
+
+.pour-quote.is-visible .pour-quote__eyebrow,
+.pour-quote.is-visible .pour-quote__text,
+.pour-quote.is-visible .pour-quote__signature {
+  opacity: 1;
+
+  transform: translateY(0);
+}
+
+/* Apparition légèrement décalée des éléments */
+
+.pour-quote.is-visible .pour-quote__eyebrow {
+  transition-delay: 0s;
+}
+
+.pour-quote.is-visible .pour-quote__text {
+  transition-delay: 0.12s;
+}
+
+.pour-quote.is-visible .pour-quote__signature {
+  transition-delay: 0.22s;
+}
+
+/* Quand la section ressort de l'écran */
+
+.pour-quote:not(.is-visible) .pour-quote__eyebrow,
+.pour-quote:not(.is-visible) .pour-quote__text,
+.pour-quote:not(.is-visible) .pour-quote__signature {
+  transition-delay: 0s;
+}
+/* =========================================================
+   PRODUCT PAGE — POUR
+========================================================= */
+
+.product-page-pour {
+  width: 100%;
+  background: #ffffff;
+  color: #111111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/* =========================================================
+   PARTIE HAUTE — IMAGE + INFORMATIONS
+========================================================= */
+
+.product-page-pour__top {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(520px, 0.92fr);
+
+  align-items: start;
+
+  gap: clamp(55px, 6vw, 100px);
+
+  padding:
+    55px
+    clamp(40px, 5vw, 80px)
+    90px;
+}
+
+
+/* =========================================================
+   GALERIE GAUCHE
+========================================================= */
+
+.product-page-pour__gallery {
+  width: 100%;
+  min-width: 0;
+}
+
+
+/* GRANDE IMAGE */
+
+.product-page-pour__main-media {
+  position: relative;
+
+  width: 100%;
+  max-width: 680px;
+
+  margin: 0 auto;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #f5f4f1;
+}
+
+.product-page-pour__main-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 1;
+  transform: scale(1);
+
+  transition:
+    opacity 0.32s ease,
+    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* TRANSITION CHANGEMENT IMAGE */
+
+.product-page-pour__main-image.is-changing {
+  opacity: 0;
+  transform: scale(0.985);
+}
+
+
+/* =========================================================
+   MINIATURES PRODUIT — FORMAT COMPACT
+========================================================= */
+
+.product-page-pour__thumbs {
+  width: 100%;
+  max-width: 680px;
+
+  margin: 12px auto 0;
+
+  display: grid;
+  grid-template-columns: repeat(4, 110px);
+
+  gap: 10px;
+
+  justify-content: start;
+}
+
+.product-page-pour__thumb {
+  width: 110px;
+  height: 135px;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border: 1px solid transparent;
+
+  background: #f5f4f1;
+
+  cursor: pointer;
+
+  opacity: 0.55;
+
+  transition:
+    opacity 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.product-page-pour__thumb:hover,
+.product-page-pour__thumb.is-active {
+  opacity: 1;
+}
+
+.product-page-pour__thumb.is-active {
+  border-color: #111111;
+}
+
+.product-page-pour__thumb img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* =========================================================
+   INFORMATIONS DROITE
+========================================================= */
+
+.product-page-pour__info {
+  width: 100%;
+
+  display: flex;
+  justify-content: flex-start;
+}
+
+.product-page-pour__info-inner {
+  width: 100%;
+  max-width: 640px;
+
+  padding-top: 70px;
+}
+
+
+/* TITRE */
+
+.product-page-pour__title {
+  margin: 0 0 24px;
+
+  font-size: clamp(25px, 2vw, 36px);
+  font-weight: 400;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.025em;
+
+  text-transform: uppercase;
+}
+
+
+/* SOUS-TITRE */
+
+.product-page-pour__subtitle {
+  margin: 0 0 28px;
+
+  max-width: 430px;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.25;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+
+/* PRIX */
+
+.product-page-pour__price {
+  margin: 0 0 42px;
+
+  font-size: 25px;
+  font-weight: 400;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   OPTIONS / TAILLES
+========================================================= */
+
+.product-page-pour__option {
+  margin-bottom: 34px;
+}
+
+.product-page-pour__option-label {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+}
+
+.product-page-pour__option-values {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+}
+
+.product-page-pour__option-value {
+  position: relative;
+}
+
+.product-page-pour__option-value input {
+  position: absolute;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+.product-page-pour__option-value span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 48px;
+  height: 40px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d7d7d7;
+
+  background: transparent;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.product-page-pour__option-value:hover span {
+  border-color: #111111;
+}
+
+.product-page-pour__option-value input:checked + span {
+  color: #ffffff;
+
+  background: #111111;
+
+  border-color: #111111;
+}
+
+
+/* =========================================================
+   QUANTITÉ + AJOUT PANIER
+========================================================= */
+
+.product-page-pour__buy-row {
+  display: flex;
+  align-items: stretch;
+
+  gap: 10px;
+
+  margin-top: 10px;
+}
+
+.product-page-pour__quantity {
+  display: grid;
+
+  grid-template-columns: 44px 44px 44px;
+
+  height: 48px;
+
+  border: 1px solid #cfcfcf;
+}
+
+.product-page-pour__quantity button,
+.product-page-pour__quantity input {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 46px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+  color: #111111;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  text-align: center;
+}
+
+.product-page-pour__quantity button {
+  cursor: pointer;
+}
+
+.product-page-pour__quantity input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.product-page-pour__quantity input::-webkit-inner-spin-button,
+.product-page-pour__quantity input::-webkit-outer-spin-button {
+  appearance: none;
+
+  margin: 0;
+}
+
+
+/* BOUTON */
+
+.product-page-pour__add {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 220px;
+  height: 48px;
+
+  padding: 0 28px;
+
+  overflow: hidden;
+
+  border: 1px solid #111111;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.product-page-pour__add:hover {
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.product-page-pour__description {
+  max-width: 500px;
+
+  margin-top: 58px;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.4;
+}
+
+.product-page-pour__description p {
+  margin: 0 0 12px;
+}
+
+
+/* =========================================================
+   COMPOSITION / ENTRETIEN
+========================================================= */
+
+.product-page-pour__details {
+  width: 100%;
+  max-width: 640px;
+
+  margin: 105px 0 0;
+  padding: 0;
+}
+/* GRAND TITRE DETAILS */
+
+.product-page-pour__details-title {
+  max-width: 640px;
+
+  margin: 0 0 34px;
+
+  font-size: clamp(28px, 2.3vw, 40px);
+  font-weight: 400;
+
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+
+  text-transform: uppercase;
+}
+
+
+/* ONGLETS */
+
+.product-page-pour__tabs {
+  display: flex;
+  gap: 44px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.product-page-pour__tab {
+  position: relative;
+
+  padding: 0 0 14px;
+
+  border: 0;
+
+  background: transparent;
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+.product-page-pour__tab::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -1px;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111;
+
+  transition: width 0.3s ease;
+}
+
+.product-page-pour__tab.is-active::after {
+  width: 100%;
+}
+
+
+/* CONTENU ONGLETS */
+
+.product-page-pour__tab-content {
+  display: none;
+
+  max-width: 640px;
+
+  padding-top: 38px;
+
+  font-size: 13px;
+  line-height: 1.45;
+}
+.product-page-pour__tab-content.is-active {
+  display: block;
+}
+
+
+/* =========================================================
+   VOIR AUSSI
+========================================================= */
+
+.product-page-pour__related {
+  width: 100%;
+
+  padding:
+    90px
+    clamp(40px, 5vw, 80px)
+    130px;
+
+  border-top: 1px solid #f0f0f0;
+}
+
+.product-page-pour__related-heading {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 90px;
+
+  font-size: 22px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+
+/* 3 AUTRES PRODUITS */
+
+.product-page-pour__related-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  gap: clamp(40px, 8vw, 130px);
+}
+
+.product-page-pour__related-card {
+  display: block;
+
+  color: #111111;
+}
+
+.product-page-pour__related-media {
+  position: relative;
+
+  width: 100%;
+  overflow: hidden;
+
+  background: #f5f4f1;
+}
+
+.product-page-pour__related-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.product-page-pour__related-image--primary {
+  position: relative;
+  z-index: 1;
+}
+
+.product-page-pour__related-image--secondary {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition: opacity 0.3s ease;
+}
+
+.product-page-pour__related-card:hover
+.product-page-pour__related-image--secondary {
+  opacity: 1;
+}
+
+.product-page-pour__related-title {
+  margin-top: 14px;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  letter-spacing: 0.01em;
+
+  text-transform: uppercase;
+}
+
+.product-page-pour__related-price {
+  margin-top: 6px;
+
+  font-size: 12px;
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__top {
+    display: block;
+
+    padding: 90px 16px 60px;
+  }
+
+  .product-page-pour__main-media {
+    max-width: none;
+  }
+
+  .product-page-pour__thumbs {
+    max-width: none;
+
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product-page-pour__info-inner {
+    max-width: none;
+
+    padding-top: 45px;
+  }
+
+  .product-page-pour__title {
+    font-size: 25px;
+  }
+
+  .product-page-pour__price {
+    font-size: 22px;
+  }
+
+  .product-page-pour__buy-row {
+    flex-direction: column;
+  }
+
+  .product-page-pour__quantity {
+    width: 132px;
+  }
+
+  .product-page-pour__add {
+    width: 100%;
+  }
+
+  .product-page-pour__details {
+    width: auto;
+
+    margin: 0;
+
+    padding: 50px 16px 90px;
+  }
+
+  .product-page-pour__details-title {
+    margin-bottom: 60px;
+  }
+
+  .product-page-pour__tabs {
+    gap: 34px;
+  }
+
+  .product-page-pour__related {
+    padding: 60px 16px 90px;
+  }
+
+  .product-page-pour__related-heading {
+    margin-bottom: 55px;
+
+    font-size: 18px;
+  }
+
+  .product-page-pour__related-grid {
+    grid-template-columns: 1fr;
+
+    gap: 60px;
+  }
+
+}
+/* =========================================================
+   PRODUCT PAGE — ALIGNEMENTS FINAUX
+========================================================= */
+
+/* Galerie légèrement plus à gauche */
+@media screen and (min-width: 769px) {
+
+  .product-page-pour__gallery {
+    transform: translateX(-15px);
+  }
+
+}
+/* =========================================================
+   PRODUCT PAGE — FIL D'ARIANE
+========================================================= */
+
+.product-page-pour__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+ padding:
+  75px
+  clamp(40px, 5vw, 80px)
+  0;
+transform: translateX(-15px);
+   
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1;
+
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.product-page-pour__breadcrumb-link {
+  color: #aaa;
+  text-decoration: none;
+
+  transition: color 0.25s ease;
+}
+
+.product-page-pour__breadcrumb-link:hover {
+  color: #111;
+}
+
+.product-page-pour__breadcrumb-separator {
+  color: #aaa;
+}
+
+.product-page-pour__breadcrumb-current {
+  color: #111;
+  font-weight: 500;
+}
+/* =========================================================
+   PORTÉ PAR VOUS — STYLE ÉDITORIAL
+========================================================= */
+
+.pour-community {
+  width: 100%;
+  margin: 0;
+
+  padding: 110px 54px;
+
+  background: #f7f7f7;
+  color: #111111;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TITRE
+========================================================= */
+
+.pour-community__header {
+  width: 100%;
+
+  margin-bottom: 52px;
+
+  text-align: center;
+}
+
+.pour-community__heading {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 24px;
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: 0.14em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CARROUSEL
+========================================================= */
+
+.pour-community__carousel {
+  position: relative;
+
+  width: min(100%, 1320px);
+
+  margin: 0 auto;
+
+  padding: 0 90px;
+
+  box-sizing: border-box;
+}
+
+.pour-community__viewport {
+  position: relative;
+
+  width: 100%;
+
+  overflow: hidden;
+}
+
+.pour-community__track {
+  display: grid;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   SLIDES — SIMPLE FONDU
+========================================================= */
+
+.pour-community__slide {
+  grid-area: 1 / 1;
+
+  width: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.45s ease,
+    visibility 0.45s ease;
+}
+
+.pour-community__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   STRUCTURE
+========================================================= */
+
+.pour-community__layout {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(0, 0.85fr);
+
+  gap: 90px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   PHOTO COMMUNAUTÉ — GAUCHE
+========================================================= */
+
+.pour-community__ugc {
+  grid-column: 1;
+  grid-row: 1;
+
+  width: 100%;
+}
+
+.pour-community__ugc-media {
+  position: relative;
+
+  width: 100%;
+  height: 620px;
+
+  overflow: hidden;
+
+  background: #eeeeee;
+}
+
+.pour-community__ugc-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.pour-community__customer {
+  margin-top: 12px;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   PASTILLE — PHOTO COMMUNAUTÉ
+========================================================= */
+
+.pour-community__hotspot {
+  position: absolute;
+
+  left: var(--hotspot-x);
+  top: var(--hotspot-y);
+
+  z-index: 10;
+
+  transform: translate(-50%, -50%);
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.88);
+
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  pointer-events: none;
+}
+
+.pour-community__hotspot-core {
+  display: block;
+
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #111111;
+}
+
+
+/* =========================================================
+   PRODUIT — DROITE
+========================================================= */
+
+.pour-community__product {
+  grid-column: 2;
+  grid-row: 1;
+
+  width: 100%;
+
+  align-self: center;
+
+  text-align: center;
+}
+
+.pour-community__product-link {
+  display: block;
+
+  width: 100%;
+
+  text-decoration: none;
+}
+
+.pour-community__product-media {
+  position: relative;
+
+  width: 100%;
+  height: 420px;
+
+  overflow: hidden;
+
+  background: transparent;
+}
+
+.pour-community__product-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   NOM + PRIX
+========================================================= */
+
+.pour-community__product-info {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+
+  gap: 8px;
+
+  padding-top: 18px;
+
+  color: #111111;
+
+  text-decoration: none;
+}
+
+.pour-community__product-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+.pour-community__product-price {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  letter-spacing: 0.08em;
+   color: #777777;
+}
+
+
+/* =========================================================
+   BOUTON VOIR LE PRODUIT
+========================================================= */
+
+.pour-community__product-button {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 165px;
+  height: 44px;
+
+  margin: 22px auto 0;
+  padding: 0 24px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1;
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.pour-community__product-button:hover {
+  background: transparent;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   FLÈCHES — FIXES
+========================================================= */
+
+.pour-community__arrow {
+  position: absolute;
+
+  top: 50%;
+
+  z-index: 50;
+
+  transform: translateY(-50%);
+
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 20px;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+
+  cursor: pointer;
+
+  opacity: 1;
+  visibility: visible;
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.pour-community__arrow:hover {
+  background: #111111;
+
+  color: #ffffff;
+}
+
+.pour-community__arrow--prev {
+  left: 20px;
+}
+
+.pour-community__arrow--next {
+  right: 20px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .pour-community {
+    padding: 60px 16px 80px;
+  }
+
+  .pour-community__header {
+    margin-bottom: 32px;
+  }
+
+  .pour-community__heading {
+    font-size: 20px;
+  }
+
+  .pour-community__carousel {
+    width: 100%;
+
+    padding: 0 42px;
+  }
+
+  .pour-community__layout {
+    grid-template-columns: 1fr;
+
+    gap: 36px;
+  }
+
+  .pour-community__ugc,
+  .pour-community__product {
+    grid-column: 1;
+
+    grid-row: auto;
+  }
+
+  .pour-community__ugc-media {
+    height: auto;
+
+    aspect-ratio: 4 / 5;
+  }
+
+  .pour-community__ugc-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .pour-community__product-media {
+    height: 360px;
+  }
+
+  .pour-community__arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 15px;
+  }
+
+  .pour-community__arrow--prev {
+    left: 0;
+  }
+
+  .pour-community__arrow--next {
+    right: 0;
+  }
+
+}
+/* =========================================================
+   PORTÉ PAR VOUS — PETIT TITRE
+========================================================= */
+
+.pour-community__eyebrow {
+  width: 100%;
+
+  margin: 0 0 10px;
+  padding: 0;
+
+  text-align: center;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 9px;
+  font-weight: 300;
+  line-height: 1;
+
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+
+  color: rgba(17, 17, 17, 0.5);
+}
+/* =========================================================
+   VIDEO PLEIN ÉCRAN — POUR
+========================================================= */
+
+.pour-video-hero {
+  position: relative;
+
+  width: 100%;
+  max-width: 100vw;
+
+  height: 100svh;
+  min-height: 100svh;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+
+  background: #111111;
+}
+
+.pour-video-hero__media {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+}
+
+.pour-video-hero__video {
+  position: absolute;
+
+  top: -10%;
+  left: 0;
+
+  display: block;
+
+  width: 100%;
+  height: 120%;
+
+  max-width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  transform: translate3d(0, 0, 0);
+
+  transform-origin: center center;
+
+  will-change: transform;
+}
+/* =========================================================
+   HERO VÊTEMENTS
 ========================================================= */
 
 .clothing-hero {
   position: relative;
 
   width: 100%;
-  height: calc(100svh - 40px);
+  height: calc(100svh - 68px);
 
+  /* PAS DE DEUXIÈME ESPACE SOUS LE HEADER */
   margin-top: 0;
 
   overflow: hidden;
@@ -16,7 +2628,9 @@
 }
 
 
-/* CONTENEUR DES SLIDES */
+/* =========================================================
+   SLIDES
+========================================================= */
 
 .clothing-hero__slides {
   position: absolute;
@@ -25,9 +2639,6 @@
   width: 100%;
   height: 100%;
 }
-
-
-/* SLIDE */
 
 .clothing-hero__slide {
   position: absolute;
@@ -52,25 +2663,16 @@
 }
 
 
-/* IMAGE — LÉGÈREMENT PLUS GRANDE POUR LE PARALLAX */
+/* IMAGE */
 
 .clothing-hero__image {
-  position: absolute;
-
-  top: -5%;
-  left: 0;
+  display: block;
 
   width: 100%;
-  height: 110%;
-
-  display: block;
+  height: 100%;
 
   object-fit: cover;
   object-position: center;
-
-  transform: translate3d(0, var(--clothing-parallax-y, 0px), 0);
-
-  will-change: transform;
 }
 
 
