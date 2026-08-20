@@ -67,17 +67,19 @@
           "type": "look",
           "settings": {
             "product": "club-pour-test",
-            "product_image": "shopify://shop_images/Design_sans_titre_f8faa62e-70b2-44f8-9741-0525c4b40997.png",
-            "customer_image": "shopify://shop_images/8_40511343-70e7-482a-8c96-7e2e1293a3ab.png",
+            "product_image": "shopify://shop_images/8_548f7238-0cab-445c-ac5d-175bc182648e.png",
+            "customer_image": "shopify://shop_images/8_75301823-3afb-4899-a5f4-0820ec3b71b3.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
           }
         },
-        "look_a6WGCf": {
+        "look_aJzNbw": {
           "type": "look",
           "settings": {
-            "product": "",
+            "product": "cypres-italien",
+            "product_image": "shopify://shop_images/5_7eab23e1-24fc-454a-9a7b-341c0416a46c.png",
+            "customer_image": "shopify://shop_images/2_113637b5-c7b9-480c-a5d2-59ef8c1ab045.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
@@ -86,7 +88,9 @@
         "look_HrrkXy": {
           "type": "look",
           "settings": {
-            "product": "",
+            "product": "riviera",
+            "product_image": "shopify://shop_images/11.png",
+            "customer_image": "shopify://shop_images/3_6b1015c3-e832-4e03-b2d5-19334878df88.png",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
@@ -96,7 +100,7 @@
       "block_order": [
         "look_bUp43d",
         "look_wmjxDy",
-        "look_a6WGCf",
+        "look_aJzNbw",
         "look_HrrkXy"
       ],
       "name": "Porté par vous",

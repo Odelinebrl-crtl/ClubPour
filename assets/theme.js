@@ -283,110 +283,183 @@ document.addEventListener(
 
 function initPourCommunitySlider() {
 
-  const sliders = document.querySelectorAll(
-    '[data-community-slider]'
-  );
+  document
+    .querySelectorAll('[data-community-slider]')
+    .forEach((slider) => {
 
-  sliders.forEach((slider) => {
+      if (slider.dataset.communityReady === 'true') return;
 
-    if (slider.dataset.communityInitialized === 'true') {
-      return;
-    }
+      slider.dataset.communityReady = 'true';
 
-    slider.dataset.communityInitialized = 'true';
+      const slides = Array.from(
+        slider.querySelectorAll('.pour-community__slide')
+      );
 
+      const prev = slider.querySelector(
+        '[data-community-prev]'
+      );
 
-    const slides = Array.from(
-      slider.querySelectorAll('.pour-community__slide')
-    );
+      const next = slider.querySelector(
+        '[data-community-next]'
+      );
 
-    const previousButton = slider.querySelector(
-      '[data-community-prev]'
-    );
-
-    const nextButton = slider.querySelector(
-      '[data-community-next]'
-    );
+      if (!slides.length) return;
 
 
-    if (!slides.length) return;
+      let currentIndex = 0;
+      let animating = false;
 
 
-    let currentIndex = 0;
+      /* ÉTAT INITIAL */
 
+      slides.forEach((slide, index) => {
 
-    /* -------------------------
-       AFFICHAGE
-    ------------------------- */
+        slide.classList.remove(
+          'is-active',
+          'is-transitioning',
+          'leave-left',
+          'leave-right',
+          'enter-left',
+          'enter-right',
+          'product-leaving',
+          'product-entering'
+        );
 
-    function showSlide(index) {
-
-      slides.forEach((slide, slideIndex) => {
-
-        if (slideIndex === index) {
-
+        if (index === 0) {
           slide.classList.add('is-active');
-
-        } else {
-
-          slide.classList.remove('is-active');
-
         }
 
       });
 
-    }
+
+      function changeSlide(direction) {
+
+        if (animating || slides.length < 2) return;
+
+        animating = true;
 
 
-    /* PREMIER SLIDE */
+        const oldSlide = slides[currentIndex];
 
-    showSlide(currentIndex);
+        const newIndex =
+          direction === 'next'
+            ? (currentIndex + 1) % slides.length
+            : (currentIndex - 1 + slides.length) % slides.length;
+
+        const newSlide = slides[newIndex];
 
 
-    /* -------------------------
-       FLÈCHE DROITE
-    ------------------------- */
+        /* =========================
+           PRÉPARE LE NOUVEAU
+        ========================= */
 
-    if (nextButton) {
+        newSlide.classList.remove(
+          'is-active',
+          'is-transitioning',
+          'leave-left',
+          'leave-right',
+          'enter-left',
+          'enter-right',
+          'product-leaving',
+          'product-entering'
+        );
 
-      nextButton.addEventListener('click', () => {
 
-        currentIndex =
-          (currentIndex + 1) % slides.length;
+        newSlide.classList.add(
+          'is-transitioning',
+          direction === 'next'
+            ? 'enter-right'
+            : 'enter-left',
+          'product-entering'
+        );
 
-        showSlide(currentIndex);
 
+        /*
+          Force le navigateur à enregistrer
+          l'état initial.
+        */
+
+        void newSlide.offsetWidth;
+
+
+        /* =========================
+           FAIT SORTIR L'ANCIEN
+        ========================= */
+
+        oldSlide.classList.add(
+          direction === 'next'
+            ? 'leave-left'
+            : 'leave-right',
+          'product-leaving'
+        );
+
+
+        /* =========================
+           FAIT ENTRER LE NOUVEAU
+        ========================= */
+
+        requestAnimationFrame(() => {
+
+          requestAnimationFrame(() => {
+
+            newSlide.classList.remove(
+              'enter-left',
+              'enter-right',
+              'product-entering'
+            );
+
+          });
+
+        });
+
+
+        /* =========================
+           FIN DE TRANSITION
+        ========================= */
+
+        window.setTimeout(() => {
+
+          oldSlide.classList.remove(
+            'is-active',
+            'leave-left',
+            'leave-right',
+            'product-leaving'
+          );
+
+
+          newSlide.classList.remove(
+            'is-transitioning'
+          );
+
+          newSlide.classList.add(
+            'is-active'
+          );
+
+
+          currentIndex = newIndex;
+
+          animating = false;
+
+        }, 580);
+
+      }
+
+
+      next?.addEventListener('click', () => {
+        changeSlide('next');
       });
 
-    }
 
-
-    /* -------------------------
-       FLÈCHE GAUCHE
-    ------------------------- */
-
-    if (previousButton) {
-
-      previousButton.addEventListener('click', () => {
-
-        currentIndex =
-          (currentIndex - 1 + slides.length)
-          % slides.length;
-
-        showSlide(currentIndex);
-
+      prev?.addEventListener('click', () => {
+        changeSlide('prev');
       });
 
-    }
-
-  });
+    });
 
 }
 
 
-/* =========================================================
-   INITIALISATION
-========================================================= */
+/* CHARGEMENT */
 
 if (document.readyState === 'loading') {
 
@@ -402,34 +475,19 @@ if (document.readyState === 'loading') {
 }
 
 
-/* =========================================================
-   ÉDITEUR SHOPIFY
-========================================================= */
+/* ÉDITEUR SHOPIFY */
 
 document.addEventListener(
   'shopify:section:load',
-  (event) => {
+  () => {
 
-    const slider =
-      event.target.querySelector?.(
-        '[data-community-slider]'
-      ) ||
-      (
-        event.target.matches?.(
-          '[data-community-slider]'
-        )
-          ? event.target
-          : null
-      );
+    document
+      .querySelectorAll('[data-community-slider]')
+      .forEach((slider) => {
+        slider.dataset.communityReady = 'false';
+      });
 
-
-    if (slider) {
-
-      slider.dataset.communityInitialized = 'false';
-
-      initPourCommunitySlider();
-
-    }
+    initPourCommunitySlider();
 
   }
 );
