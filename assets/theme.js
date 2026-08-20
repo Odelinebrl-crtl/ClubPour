@@ -60,39 +60,24 @@ function initPourQuoteReveal() {
 
   if (!quotes.length) return;
 
-  let lastScrollY = window.scrollY;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        } else {
+          entry.target.classList.remove('is-visible');
+        }
+      });
+    },
+    {
+      threshold: 0.35
+    }
+  );
 
-  const updateQuotes = () => {
-    const currentScrollY = window.scrollY;
-    const scrollingDown = currentScrollY > lastScrollY;
-
-    quotes.forEach((quote) => {
-      const rect = quote.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-
-      const isInRevealZone =
-        rect.top < viewportHeight * 0.78 &&
-        rect.bottom > viewportHeight * 0.15;
-
-      if (scrollingDown && isInRevealZone) {
-        quote.classList.remove('is-hiding');
-        quote.classList.add('is-visible');
-      }
-
-      if (!scrollingDown && isInRevealZone) {
-        quote.classList.remove('is-visible');
-        quote.classList.add('is-hiding');
-      }
-    });
-
-    lastScrollY = currentScrollY;
-  };
-
-  window.addEventListener('scroll', updateQuotes, {
-    passive: true
+  quotes.forEach((quote) => {
+    observer.observe(quote);
   });
-
-  updateQuotes();
 }
 
 if (document.readyState === 'loading') {
