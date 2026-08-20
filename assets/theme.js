@@ -63,15 +63,24 @@ function initPourQuoteReveal() {
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
+
         if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
+
+          requestAnimationFrame(() => {
+            entry.target.classList.add('is-visible');
+          });
+
         } else {
+
           entry.target.classList.remove('is-visible');
+
         }
+
       });
     },
     {
-      threshold: 0.35
+      threshold: 0.25,
+      rootMargin: "0px 0px -8% 0px"
     }
   );
 
