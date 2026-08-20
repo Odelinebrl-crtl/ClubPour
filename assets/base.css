@@ -1993,10 +1993,8 @@ transform: translateX(-15px);
 
 .pour-community {
   width: 100%;
-
-  margin-top: 0;
-
-  padding: 110px 54px 110px;
+  margin: 0;
+  padding: 110px 54px;
 
   background: #f7f7f7;
   color: #111111;
@@ -2011,17 +2009,15 @@ transform: translateX(-15px);
 
 .pour-community__header {
   width: 100%;
+  margin-bottom: 52px;
 
   text-align: center;
-
-  margin-bottom: 52px;
 }
 
 .pour-community__heading {
   margin: 0;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 24px;
   font-weight: 400;
 
@@ -2043,13 +2039,7 @@ transform: translateX(-15px);
 
   margin: 0 auto;
   padding: 0 90px;
-
-  box-sizing: border-box;
 }
-
-/* =========================================================
-   CARROUSEL — STRUCTURE
-========================================================= */
 
 .pour-community__viewport {
   position: relative;
@@ -2059,155 +2049,48 @@ transform: translateX(-15px);
   overflow: hidden;
 }
 
+
+/*
+  Toutes les slides occupent exactement la même case.
+  Elles sont donc superposées et jamais les unes sous les autres.
+*/
+
 .pour-community__track {
-  position: relative;
+  display: grid;
 
   width: 100%;
 }
 
-
-/* =========================================================
-   SLIDES
-========================================================= */
-
 .pour-community__slide {
-  position: absolute;
-
-  top: 0;
-  left: 0;
+  grid-area: 1 / 1;
 
   width: 100%;
 
-  opacity: 0;
+  visibility: hidden;
 
   pointer-events: none;
 
   z-index: 1;
 }
 
-
-/* SLIDE ACTIF */
+.pour-community__slide.is-active,
+.pour-community__slide.is-transitioning {
+  visibility: visible;
+}
 
 .pour-community__slide.is-active {
-  position: relative;
-
-  opacity: 1;
-
   pointer-events: auto;
 
   z-index: 2;
 }
 
-
-/* Pendant une transition,
-   les deux slides doivent se superposer */
-
-.pour-community__slide.is-active.is-leaving-left,
-.pour-community__slide.is-active.is-leaving-right {
-  position: absolute;
-
+.pour-community__slide.is-transitioning {
   z-index: 3;
-
-  pointer-events: none;
 }
 
 
 /* =========================================================
-   ANIMATION PHOTO COMMUNAUTÉ
-========================================================= */
-
-.pour-community__ugc {
-  opacity: 1;
-
-  transform: translateX(0);
-
-  transition:
-    transform 700ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 550ms ease;
-}
-
-
-/* SORTIE VERS GAUCHE */
-
-.pour-community__slide.is-leaving-left
-.pour-community__ugc {
-  transform: translateX(-45px);
-
-  opacity: 0;
-}
-
-
-/* SORTIE VERS DROITE */
-
-.pour-community__slide.is-leaving-right
-.pour-community__ugc {
-  transform: translateX(45px);
-
-  opacity: 0;
-}
-
-
-/* NOUVELLE PHOTO ARRIVE DE DROITE */
-
-.pour-community__slide.is-entering-right
-.pour-community__ugc {
-  transform: translateX(45px);
-
-  opacity: 0;
-}
-
-
-/* NOUVELLE PHOTO ARRIVE DE GAUCHE */
-
-.pour-community__slide.is-entering-left
-.pour-community__ugc {
-  transform: translateX(-45px);
-
-  opacity: 0;
-}
-
-
-/* =========================================================
-   ANIMATION PRODUIT
-========================================================= */
-
-.pour-community__product {
-  opacity: 1;
-
-  transform: translateY(0);
-
-  transition:
-    transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 500ms ease;
-}
-
-
-/* PRODUIT QUI DISPARAÎT */
-
-.pour-community__slide.is-leaving-left
-.pour-community__product,
-.pour-community__slide.is-leaving-right
-.pour-community__product {
-  opacity: 0;
-
-  transform: translateY(20px);
-}
-
-
-/* NOUVEAU PRODUIT COMMENCE PLUS BAS */
-
-.pour-community__slide.is-entering-left
-.pour-community__product,
-.pour-community__slide.is-entering-right
-.pour-community__product {
-  opacity: 0;
-
-  transform: translateY(30px);
-}
-
-
-/* =========================================================
-   STRUCTURE PHOTO + PRODUIT
+   STRUCTURE
 ========================================================= */
 
 .pour-community__layout {
@@ -2236,11 +2119,12 @@ transform: translateX(-15px);
   width: 100%;
 
   opacity: 1;
+
   transform: translateX(0);
 
   transition:
-    opacity 0.5s ease,
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 500ms ease,
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pour-community__ugc-media {
@@ -2268,7 +2152,6 @@ transform: translateX(-15px);
   margin-top: 12px;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 11px;
   font-weight: 400;
 
@@ -2277,50 +2160,46 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   PHOTO — SORTIE VERS LA GAUCHE
+   ANIMATION PHOTO COMMUNAUTÉ
 ========================================================= */
 
-.pour-community__slide.is-leaving-left
-.pour-community__ugc {
-  opacity: 0.18;
+/* ancienne photo → gauche */
 
-  transform: translateX(-34px);
-}
-
-
-/* =========================================================
-   PHOTO — SORTIE VERS LA DROITE
-========================================================= */
-
-.pour-community__slide.is-leaving-right
-.pour-community__ugc {
-  opacity: 0.18;
-
-  transform: translateX(34px);
-}
-
-
-/* =========================================================
-   PHOTO — ENTRÉE DEPUIS LA DROITE
-========================================================= */
-
-.pour-community__slide.is-entering-right
+.pour-community__slide.leave-left
 .pour-community__ugc {
   opacity: 0;
 
-  transform: translateX(34px);
+  transform: translateX(-24px);
 }
 
 
-/* =========================================================
-   PHOTO — ENTRÉE DEPUIS LA GAUCHE
-========================================================= */
+/* ancienne photo → droite */
 
-.pour-community__slide.is-entering-left
+.pour-community__slide.leave-right
 .pour-community__ugc {
   opacity: 0;
 
-  transform: translateX(-34px);
+  transform: translateX(24px);
+}
+
+
+/* nouvelle photo démarre légèrement à droite */
+
+.pour-community__slide.enter-right
+.pour-community__ugc {
+  opacity: 0;
+
+  transform: translateX(24px);
+}
+
+
+/* nouvelle photo démarre légèrement à gauche */
+
+.pour-community__slide.enter-left
+.pour-community__ugc {
+  opacity: 0;
+
+  transform: translateX(-24px);
 }
 
 
@@ -2339,11 +2218,12 @@ transform: translateX(-15px);
   text-align: center;
 
   opacity: 1;
+
   transform: translateY(0);
 
   transition:
-    opacity 0.45s ease,
-    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 480ms ease,
+    transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .pour-community__product-link {
@@ -2375,35 +2255,37 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   PRODUIT — SORTIE
+   ANIMATION PRODUIT
 ========================================================= */
 
-.pour-community__slide.is-leaving-left
-.pour-community__product,
-.pour-community__slide.is-leaving-right
+/*
+  L'ancien produit fait uniquement un fondu.
+  Il ne descend PAS.
+*/
+
+.pour-community__slide.product-leaving
 .pour-community__product {
   opacity: 0;
 
-  transform: translateY(18px);
+  transform: translateY(0);
+}
+
+
+/*
+  Le nouveau produit démarre transparent
+  et 16px plus bas.
+*/
+
+.pour-community__slide.product-entering
+.pour-community__product {
+  opacity: 0;
+
+  transform: translateY(16px);
 }
 
 
 /* =========================================================
-   PRODUIT — ENTRÉE PAR LE BAS
-========================================================= */
-
-.pour-community__slide.is-entering-left
-.pour-community__product,
-.pour-community__slide.is-entering-right
-.pour-community__product {
-  opacity: 0;
-
-  transform: translateY(24px);
-}
-
-
-/* =========================================================
-   PASTILLE SUR PHOTO COMMUNAUTÉ
+   PASTILLE
 ========================================================= */
 
 .pour-community__hotspot {
@@ -2423,11 +2305,10 @@ transform: translateX(-15px);
   align-items: center;
   justify-content: center;
 
+  border: 1px solid rgba(255, 255, 255, 0.75);
   border-radius: 50%;
 
   background: rgba(255, 255, 255, 0.88);
-
-  border: 1px solid rgba(255, 255, 255, 0.75);
 
   box-shadow: 0 2px 14px rgba(0, 0, 0, 0.12);
 
@@ -2448,14 +2329,13 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   INFOS PRODUIT
+   NOM + PRIX
 ========================================================= */
 
 .pour-community__product-info {
   display: flex;
 
   flex-direction: column;
-
   align-items: center;
 
   gap: 8px;
@@ -2487,12 +2367,10 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   BOUTON VOIR LE PRODUIT
+   BOUTON
 ========================================================= */
 
 .pour-community__product-button {
-  position: relative;
-
   display: inline-flex;
 
   align-items: center;
@@ -2502,7 +2380,6 @@ transform: translateX(-15px);
   height: 44px;
 
   margin: 22px auto 0;
-
   padding: 0 24px;
 
   border: 1px solid #111111;
@@ -2534,7 +2411,7 @@ transform: translateX(-15px);
 
 
 /* =========================================================
-   FLÈCHES
+   FLÈCHES — TOUJOURS FIXES
 ========================================================= */
 
 .pour-community__arrow {
@@ -2542,7 +2419,7 @@ transform: translateX(-15px);
 
   top: 50%;
 
-  z-index: 20;
+  z-index: 50;
 
   transform: translateY(-50%);
 
@@ -2550,27 +2427,25 @@ transform: translateX(-15px);
   height: 52px;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
 
   padding: 0;
 
   border: 0;
-
   border-radius: 50%;
 
   background: #ffffff;
   color: #111111;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 20px;
 
-  box-shadow:
-    0 4px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 
   cursor: pointer;
+
+  opacity: 1;
+  visibility: visible;
 
   transition:
     background 0.25s ease,
@@ -2602,30 +2477,23 @@ transform: translateX(-15px);
     padding: 60px 16px 80px;
   }
 
-
   .pour-community__header {
     margin-bottom: 32px;
   }
-
 
   .pour-community__heading {
     font-size: 20px;
   }
 
-
   .pour-community__carousel {
-    width: 100%;
-
     padding: 0 42px;
   }
-
 
   .pour-community__layout {
     grid-template-columns: 1fr;
 
     gap: 36px;
   }
-
 
   .pour-community__ugc,
   .pour-community__product {
@@ -2634,24 +2502,15 @@ transform: translateX(-15px);
     grid-row: auto;
   }
 
-
   .pour-community__ugc-media {
     height: auto;
 
     aspect-ratio: 4 / 5;
   }
 
-
-  .pour-community__ugc-image {
-    width: 100%;
-    height: 100%;
-  }
-
-
   .pour-community__product-media {
     height: 360px;
   }
-
 
   .pour-community__arrow {
     width: 36px;
@@ -2660,11 +2519,9 @@ transform: translateX(-15px);
     font-size: 15px;
   }
 
-
   .pour-community__arrow--prev {
     left: 0;
   }
-
 
   .pour-community__arrow--next {
     right: 0;
