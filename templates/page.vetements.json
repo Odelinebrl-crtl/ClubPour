@@ -104,6 +104,20 @@
             "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
             "image_hover": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
           }
+        },
+        "product_jJiLf3": {
+          "type": "product",
+          "settings": {
+            "product": "chaussettes",
+            "image_primary": "shopify://shop_images/32.png"
+          }
+        },
+        "product_BA3G3y": {
+          "type": "product",
+          "settings": {
+            "product": "chaussettes",
+            "image_primary": "shopify://shop_images/33.png"
+          }
         }
       },
       "block_order": [
@@ -114,7 +128,9 @@
         "product_CwqYrC",
         "product_NzcP69",
         "product_mA93kj",
-        "product_bmzijL"
+        "product_bmzijL",
+        "product_jJiLf3",
+        "product_BA3G3y"
       ],
       "name": "Grille Vêtements",
       "settings": {
