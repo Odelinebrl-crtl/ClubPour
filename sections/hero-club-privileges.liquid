@@ -1,11 +1,13 @@
 {% comment %}
   ============================================================
   CLUB POUR — PAGE CLUB PRIVILÈGES
-  Hero + Manifeste + Privilèges + Exclusive + Stats
-  + Editorial + Fonctionnement + CTA final
   ============================================================
 {% endcomment %}
 
+
+<!-- =========================================================
+     HERO — CONSERVÉ
+========================================================= -->
 
 <section
   id="ClubPrivilegesHero-{{ section.id }}"
@@ -39,7 +41,9 @@
 
   </div>
 
+
   <div class="club-hero__overlay"></div>
+
 
   <div class="club-hero__content">
 
@@ -49,11 +53,13 @@
       </p>
     {% endif %}
 
+
     {% if section.settings.heading != blank %}
       <h1 class="club-hero__heading">
         {{ section.settings.heading }}
       </h1>
     {% endif %}
+
 
     <form
       class="club-hero__form"
@@ -64,6 +70,7 @@
 
       <input type="hidden" name="form_type" value="customer">
       <input type="hidden" name="utf8" value="✓">
+
 
       <div class="club-hero__email-wrap">
 
@@ -79,22 +86,24 @@
 
       </div>
 
+
       <button
         type="submit"
         class="club-hero__submit"
       >
 
-        <span class="club-hero__submit-text">
+        <span>
           REJOIGNEZ LE CLUB
         </span>
 
-        <span class="club-hero__submit-arrow">
+        <span aria-hidden="true">
           →
         </span>
 
       </button>
 
     </form>
+
 
     {% if section.settings.launch_text != blank %}
       <p class="club-hero__launch">
@@ -108,134 +117,42 @@
 
 
 
-{% comment %}
-  ============================================================
-  MANIFESTE
-  ============================================================
-{% endcomment %}
+<!-- =========================================================
+     01 — MANIFESTE
+========================================================= -->
 
-<section class="club-manifesto">
+<section
+  class="club-manifesto club-scroll-section"
+  data-club-reveal
+>
 
-  <p class="club-section-label">
-    CLUB POUR
-  </p>
+  <div class="club-manifesto__inner">
 
-  <h2 class="club-manifesto__title">
-    PLUS QU’UN ACCÈS.<br>
-    UNE LONGUEUR D’AVANCE.
-  </h2>
-
-  <p class="club-manifesto__text">
-    Le Club POUR vous ouvre les portes de notre univers avant tout le monde.
-    Collections en avant-première, séries exclusives et privilèges réservés
-    à nos membres.
-  </p>
-
-</section>
-
-
-
-{% comment %}
-  ============================================================
-  PRIVILÈGES
-  ============================================================
-{% endcomment %}
-
-<section class="club-benefits">
-
-  <div class="club-benefits__header">
-
-    <p class="club-section-label">
-      VOS PRIVILÈGES
+    <p
+      class="club-kicker club-reveal-item"
+      data-reveal-delay="0"
+    >
+      CLUB POUR
     </p>
 
-    <p class="club-benefits__count">
-      04
+
+    <h2
+      class="club-manifesto__title club-reveal-item"
+      data-reveal-delay="80"
+    >
+      PLUS QU’UN ACCÈS.<br>
+      UNE LONGUEUR D’AVANCE.
+    </h2>
+
+
+    <p
+      class="club-manifesto__text club-reveal-item"
+      data-reveal-delay="160"
+    >
+      Le Club POUR vous ouvre les portes de notre univers avant tout le monde.
+      Collections en avant-première, séries exclusives et privilèges
+      réservés à nos membres.
     </p>
-
-  </div>
-
-
-  <div class="club-benefit">
-
-    <span class="club-benefit__number">
-      01
-    </span>
-
-    <h3 class="club-benefit__title">
-      AVANT-PREMIÈRE
-    </h3>
-
-    <p class="club-benefit__description">
-      Découvrez et commandez nos nouveaux drops avant leur lancement officiel.
-    </p>
-
-    <span class="club-benefit__arrow">
-      →
-    </span>
-
-  </div>
-
-
-  <div class="club-benefit">
-
-    <span class="club-benefit__number">
-      02
-    </span>
-
-    <h3 class="club-benefit__title">
-      CLUB EXCLUSIVES
-    </h3>
-
-    <p class="club-benefit__description">
-      Accédez à des séries limitées uniquement disponibles pour les membres du Club.
-    </p>
-
-    <span class="club-benefit__arrow">
-      →
-    </span>
-
-  </div>
-
-
-  <div class="club-benefit">
-
-    <span class="club-benefit__number">
-      03
-    </span>
-
-    <h3 class="club-benefit__title">
-      PRIVATE SALES
-    </h3>
-
-    <p class="club-benefit__description">
-      Profitez de ventes privées et d'offres qui ne seront jamais proposées publiquement.
-    </p>
-
-    <span class="club-benefit__arrow">
-      →
-    </span>
-
-  </div>
-
-
-  <div class="club-benefit">
-
-    <span class="club-benefit__number">
-      04
-    </span>
-
-    <h3 class="club-benefit__title">
-      PRIORITY ACCESS
-    </h3>
-
-    <p class="club-benefit__description">
-      Soyez prioritaire sur certaines pièces, restocks et quantités limitées.
-    </p>
-
-    <span class="club-benefit__arrow">
-      →
-    </span>
 
   </div>
 
@@ -243,23 +160,192 @@
 
 
 
-{% comment %}
-  ============================================================
-  CLUB EXCLUSIVE — 50/50
-  ============================================================
-{% endcomment %}
+<!-- =========================================================
+     02 — PRIVILÈGES
+========================================================= -->
 
-<section class="club-exclusive">
+<section
+  class="club-benefits club-scroll-section"
+  data-club-reveal
+>
 
-  <div class="club-exclusive__image">
+  <div class="club-benefits__intro">
 
-    {% if section.settings.exclusive_image != blank %}
+    <p class="club-kicker club-reveal-item">
+      CLUB PRIVILÈGES
+    </p>
+
+    <h2
+      class="club-benefits__heading club-reveal-item"
+      data-reveal-delay="80"
+    >
+      POUR CEUX QUI<br>
+      VEULENT PASSER<br>
+      EN PREMIER.
+    </h2>
+
+  </div>
+
+
+  <div class="club-benefits__grid">
+
+
+    <!-- 01 -->
+
+    <article
+      class="club-benefit-card club-reveal-item"
+      data-reveal-delay="0"
+    >
+
+      <div class="club-benefit-card__top">
+        <span>01</span>
+        <span>EARLY ACCESS</span>
+      </div>
+
+      <div class="club-benefit-card__bottom">
+
+        <h3>
+          AVANT-<br>
+          PREMIÈRE
+        </h3>
+
+        <p>
+          Découvrez et commandez nos nouveaux drops avant leur lancement
+          officiel.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- 02 -->
+
+    <article
+      class="club-benefit-card club-reveal-item"
+      data-reveal-delay="70"
+    >
+
+      <div class="club-benefit-card__top">
+        <span>02</span>
+        <span>MEMBERS ONLY</span>
+      </div>
+
+      <div class="club-benefit-card__bottom">
+
+        <h3>
+          CLUB<br>
+          EXCLUSIVES
+        </h3>
+
+        <p>
+          Des séries limitées imaginées uniquement pour les membres du
+          Club POUR.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- 03 -->
+
+    <article
+      class="club-benefit-card club-reveal-item"
+      data-reveal-delay="140"
+    >
+
+      <div class="club-benefit-card__top">
+        <span>03</span>
+        <span>PRIVATE SALES</span>
+      </div>
+
+      <div class="club-benefit-card__bottom">
+
+        <h3>
+          VENTES<br>
+          PRIVÉES
+        </h3>
+
+        <p>
+          Accédez à des offres et périodes de soldes exclusivement
+          réservées au Club.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- 04 -->
+
+    <article
+      class="club-benefit-card club-reveal-item"
+      data-reveal-delay="210"
+    >
+
+      <div class="club-benefit-card__top">
+        <span>04</span>
+        <span>PRIORITY</span>
+      </div>
+
+      <div class="club-benefit-card__bottom">
+
+        <h3>
+          ACCÈS<br>
+          PRIORITAIRE
+        </h3>
+
+        <p>
+          Soyez prioritaire sur certaines pièces, restocks et quantités
+          limitées.
+        </p>
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     03 — CLUB EXCLUSIVE / VIDÉO
+========================================================= -->
+
+<section
+  class="club-exclusive club-scroll-section"
+  data-club-reveal
+>
+
+  <div
+    class="club-exclusive__media club-reveal-item"
+    data-reveal-delay="0"
+  >
+
+    {% if section.settings.exclusive_video != blank %}
+
+      {{
+        section.settings.exclusive_video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'club-exclusive__video'
+      }}
+
+    {% elsif section.settings.exclusive_image != blank %}
 
       {{
         section.settings.exclusive_image
         | image_url: width: 1800
         | image_tag:
-          class: 'club-exclusive__img',
+          class: 'club-exclusive__fallback',
           loading: 'lazy'
       }}
 
@@ -276,77 +362,38 @@
 
   <div class="club-exclusive__content">
 
-    <p class="club-exclusive__eyebrow">
+    <p
+      class="club-kicker club-reveal-item"
+      data-reveal-delay="70"
+    >
       CLUB EXCLUSIVE — 001
     </p>
 
-    <h2 class="club-exclusive__title">
+
+    <h2
+      class="club-exclusive__title club-reveal-item"
+      data-reveal-delay="140"
+    >
       CERTAINES PIÈCES<br>
       NE SERONT JAMAIS<br>
       MISES EN VENTE.
     </h2>
 
-    <p class="club-exclusive__text">
+
+    <p
+      class="club-exclusive__text club-reveal-item"
+      data-reveal-delay="210"
+    >
       Des séries produites en quantités limitées, imaginées exclusivement
       pour les membres du Club POUR.
     </p>
 
-    <a href="#club-final" class="club-exclusive__link">
+
+    <p
+      class="club-exclusive__signature club-reveal-item"
+      data-reveal-delay="280"
+    >
       MEMBERS ONLY
-      <span>→</span>
-    </a>
-
-  </div>
-
-</section>
-
-
-
-{% comment %}
-  ============================================================
-  STATS
-  ============================================================
-{% endcomment %}
-
-<section class="club-stats">
-
-  <div class="club-stat">
-
-    <p class="club-stat__big">
-      48H
-    </p>
-
-    <p class="club-stat__small">
-      D’ACCÈS EN<br>
-      AVANT-PREMIÈRE
-    </p>
-
-  </div>
-
-
-  <div class="club-stat">
-
-    <p class="club-stat__big">
-      LIMITED
-    </p>
-
-    <p class="club-stat__small">
-      SÉRIES RÉSERVÉES<br>
-      AU CLUB
-    </p>
-
-  </div>
-
-
-  <div class="club-stat">
-
-    <p class="club-stat__big">
-      PRIVATE
-    </p>
-
-    <p class="club-stat__small">
-      OFFRES &<br>
-      VENTES PRIVÉES
     </p>
 
   </div>
@@ -355,13 +402,113 @@
 
 
 
-{% comment %}
-  ============================================================
-  EDITORIAL IMAGE
-  ============================================================
-{% endcomment %}
+<!-- =========================================================
+     04 — STATS
+========================================================= -->
 
-<section class="club-editorial">
+<section
+  class="club-stats club-scroll-section"
+  data-club-reveal
+>
+
+  <div class="club-stats__header">
+
+    <p class="club-kicker club-reveal-item">
+      THE CLUB
+    </p>
+
+    <p
+      class="club-stats__intro club-reveal-item"
+      data-reveal-delay="80"
+    >
+      L'AVANTAGE D'ÊTRE<br>
+      TOUJOURS UN TEMPS D'AVANCE.
+    </p>
+
+  </div>
+
+
+  <div class="club-stats__grid">
+
+
+    <article
+      class="club-stat club-reveal-item"
+      data-reveal-delay="0"
+    >
+
+      <p class="club-stat__value">
+        48H
+      </p>
+
+      <div>
+        <span>01</span>
+
+        <p>
+          D’ACCÈS EN<br>
+          AVANT-PREMIÈRE
+        </p>
+      </div>
+
+    </article>
+
+
+    <article
+      class="club-stat club-reveal-item"
+      data-reveal-delay="100"
+    >
+
+      <p class="club-stat__value club-stat__value--word">
+        LIMITED
+      </p>
+
+      <div>
+        <span>02</span>
+
+        <p>
+          SÉRIES RÉSERVÉES<br>
+          AU CLUB
+        </p>
+      </div>
+
+    </article>
+
+
+    <article
+      class="club-stat club-reveal-item"
+      data-reveal-delay="200"
+    >
+
+      <p class="club-stat__value club-stat__value--word">
+        PRIVATE
+      </p>
+
+      <div>
+        <span>03</span>
+
+        <p>
+          OFFRES &<br>
+          VENTES PRIVÉES
+        </p>
+      </div>
+
+    </article>
+
+
+  </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     05 — BEFORE EVERYONE ELSE / PARALLAX
+========================================================= -->
+
+<section
+  class="club-editorial club-scroll-section"
+  data-club-reveal
+  data-club-parallax
+>
 
   <div class="club-editorial__media">
 
@@ -369,7 +516,7 @@
 
       {{
         section.settings.editorial_image
-        | image_url: width: 2800
+        | image_url: width: 3000
         | image_tag:
           class: 'club-editorial__image',
           loading: 'lazy'
@@ -385,21 +532,31 @@
 
   </div>
 
+
   <div class="club-editorial__overlay"></div>
+
 
   <div class="club-editorial__content">
 
-    <p class="club-editorial__eyebrow">
+    <p class="club-editorial__eyebrow club-reveal-item">
       CLUB POUR
     </p>
 
-    <h2 class="club-editorial__title">
+
+    <h2
+      class="club-editorial__title club-reveal-item"
+      data-reveal-delay="100"
+    >
       BEFORE<br>
       EVERYONE<br>
       ELSE.
     </h2>
 
-    <p class="club-editorial__text">
+
+    <p
+      class="club-editorial__text club-reveal-item"
+      data-reveal-delay="200"
+    >
       LES MEMBRES DU CLUB PASSENT EN PREMIER.
     </p>
 
@@ -409,81 +566,122 @@
 
 
 
-{% comment %}
-  ============================================================
-  COMMENT ÇA MARCHE
-  ============================================================
-{% endcomment %}
+<!-- =========================================================
+     06 — COMMENT ÇA MARCHE
+========================================================= -->
 
-<section class="club-how">
+<section
+  class="club-how club-scroll-section"
+  data-club-reveal
+>
 
-  <div class="club-how__header">
+  <div class="club-how__intro">
 
-    <p class="club-section-label">
+    <p class="club-kicker club-reveal-item">
       LE CLUB
     </p>
 
-    <h2 class="club-how__heading">
-      COMMENT ÇA MARCHE ?
+
+    <h2
+      class="club-how__heading club-reveal-item"
+      data-reveal-delay="80"
+    >
+      COMMENT<br>
+      ÇA MARCHE ?
     </h2>
 
   </div>
 
 
-  <div class="club-how__grid">
+  <div class="club-how__cards">
 
-    <div class="club-how__item">
 
-      <span class="club-how__number">
+    <article
+      class="club-how-card club-reveal-item"
+      data-reveal-delay="0"
+    >
+
+      <div class="club-how-card__number">
         01
-      </span>
+      </div>
 
-      <h3>
-        REJOIGNEZ<br>
-        LE CLUB
-      </h3>
+      <div class="club-how-card__content">
 
-      <p>
-        Inscrivez-vous simplement avec votre adresse email.
-      </p>
+        <p class="club-how-card__eyebrow">
+          JOIN
+        </p>
 
-    </div>
+        <h3>
+          REJOIGNEZ<br>
+          LE CLUB
+        </h3>
+
+        <p>
+          Inscrivez-vous simplement avec votre adresse email.
+        </p>
+
+      </div>
+
+    </article>
 
 
-    <div class="club-how__item">
+    <article
+      class="club-how-card club-reveal-item"
+      data-reveal-delay="100"
+    >
 
-      <span class="club-how__number">
+      <div class="club-how-card__number">
         02
-      </span>
+      </div>
 
-      <h3>
-        RECEVEZ<br>
-        VOTRE ACCÈS
-      </h3>
+      <div class="club-how-card__content">
 
-      <p>
-        Nous vous prévenons dès qu’un nouvel accès privé est disponible.
-      </p>
+        <p class="club-how-card__eyebrow">
+          DISCOVER
+        </p>
 
-    </div>
+        <h3>
+          RECEVEZ<br>
+          VOTRE ACCÈS
+        </h3>
+
+        <p>
+          Nous vous prévenons dès qu’un nouvel accès privé est disponible.
+        </p>
+
+      </div>
+
+    </article>
 
 
-    <div class="club-how__item">
+    <article
+      class="club-how-card club-reveal-item"
+      data-reveal-delay="200"
+    >
 
-      <span class="club-how__number">
+      <div class="club-how-card__number">
         03
-      </span>
+      </div>
 
-      <h3>
-        ACCÉDEZ AUX<br>
-        PRIVILÈGES
-      </h3>
+      <div class="club-how-card__content">
 
-      <p>
-        Avant-premières, exclusivités, ventes privées et accès prioritaires.
-      </p>
+        <p class="club-how-card__eyebrow">
+          ENJOY
+        </p>
 
-    </div>
+        <h3>
+          PROFITEZ DES<br>
+          PRIVILÈGES
+        </h3>
+
+        <p>
+          Avant-premières, exclusivités, ventes privées et accès prioritaires.
+        </p>
+
+      </div>
+
+    </article>
+
 
   </div>
 
@@ -491,29 +689,33 @@
 
 
 
-{% comment %}
-  ============================================================
-  CTA FINAL
-  ============================================================
-{% endcomment %}
+<!-- =========================================================
+     07 — CTA FINAL
+========================================================= -->
 
 <section
-  class="club-final"
+  class="club-final club-scroll-section"
   id="club-final"
+  data-club-reveal
 >
 
-  <p class="club-final__eyebrow">
+  <p class="club-final__eyebrow club-reveal-item">
     CLUB POUR
   </p>
 
-  <h2 class="club-final__title">
+
+  <h2
+    class="club-final__title club-reveal-item"
+    data-reveal-delay="80"
+  >
     PRENEZ UNE<br>
     LONGUEUR D’AVANCE.
   </h2>
 
 
   <form
-    class="club-final__form"
+    class="club-final__form club-reveal-item"
+    data-reveal-delay="160"
     method="post"
     action="/contact#club-final"
     accept-charset="UTF-8"
@@ -521,6 +723,7 @@
 
     <input type="hidden" name="form_type" value="customer">
     <input type="hidden" name="utf8" value="✓">
+
 
     <div class="club-final__email-wrap">
 
@@ -541,9 +744,11 @@
       class="club-final__submit"
     >
 
-      REJOIGNEZ LE CLUB
-
       <span>
+        REJOIGNEZ LE CLUB
+      </span>
+
+      <span aria-hidden="true">
         →
       </span>
 
@@ -552,7 +757,10 @@
   </form>
 
 
-  <p class="club-final__small">
+  <p
+    class="club-final__small club-reveal-item"
+    data-reveal-delay="220"
+  >
     ACCÈS GRATUIT — RÉSERVÉ AUX MEMBRES INSCRITS
   </p>
 
@@ -562,23 +770,53 @@
 
 <style>
 
-/* ============================================================
-   BASE PAGE CLUB
-============================================================ */
+/* =========================================================
+   VARIABLES / BASE
+========================================================= */
 
 #shopify-section-{{ section.id }} {
+  --club-cream: #FAF9F6;
+  --club-white: #FFFFFF;
+  --club-black: #111111;
+  --club-grey: #777777;
+  --club-border: rgba(17, 17, 17, 0.13);
+
   margin: 0;
   padding: 0;
 }
+
 
 #shopify-section-{{ section.id }} * {
   box-sizing: border-box;
 }
 
 
-/* ============================================================
-   HERO
-============================================================ */
+#shopify-section-{{ section.id }} .club-scroll-section {
+  background: var(--club-cream);
+  color: var(--club-black);
+}
+
+
+.club-kicker {
+  margin: 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .19em;
+
+  text-transform: uppercase;
+}
+
+
+
+/* =========================================================
+   HERO — ON CONSERVE LE DESIGN
+========================================================= */
 
 #ClubPrivilegesHero-{{ section.id }} {
   position: relative;
@@ -615,15 +853,17 @@
   top: -7%;
   left: 0;
 
+  display: block;
+
   width: 100%;
   height: 114%;
-
-  display: block;
 
   object-fit: cover;
   object-position: center;
 
   transform: translate3d(0,0,0) scale(1.08);
+
+  will-change: transform;
 }
 
 
@@ -660,7 +900,7 @@
 
   gap: 14px;
 
-  width: min(100%, 1100px);
+  width: min(100%,1100px);
 
   padding: 40px;
 
@@ -678,9 +918,6 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
-  font-weight: 400;
-
-  line-height: 1;
 
   letter-spacing: .18em;
 
@@ -693,7 +930,7 @@
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-  font-size: clamp(50px, 8vw, 130px);
+  font-size: clamp(50px,8vw,130px);
   font-weight: 400;
 
   line-height: .8;
@@ -708,7 +945,7 @@
   display: flex;
   align-items: stretch;
 
-  width: min(100%, 520px);
+  width: min(100%,520px);
   height: 48px;
 
   margin-top: 18px;
@@ -746,8 +983,6 @@
 
   color: #fff;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 11px;
 
   letter-spacing: .06em;
@@ -758,6 +993,7 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__email::placeholder {
   color: rgba(255,255,255,.78);
+
   opacity: 1;
 }
 
@@ -780,8 +1016,6 @@
 
   color: #111;
 
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 11px;
 
   letter-spacing: .06em;
@@ -794,6 +1028,7 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit:hover {
   background: #111;
+
   border-color: #111;
 
   color: #fff;
@@ -802,8 +1037,6 @@
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
   margin: 0;
-
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 10px;
 
@@ -816,196 +1049,230 @@
 
 
 
-/* ============================================================
-   COMMUN
-============================================================ */
+/* =========================================================
+   ANIMATIONS SCROLL RÉPÉTÉES
+========================================================= */
 
-.club-section-label {
-  margin: 0;
+.club-reveal-item {
+  opacity: 0;
 
-  font-size: 10px;
+  transform: translate3d(0, 55px, 0);
 
-  letter-spacing: .18em;
+  transition:
+    opacity .75s ease,
+    transform 1s cubic-bezier(.22,1,.36,1);
 
-  text-transform: uppercase;
+  will-change: opacity, transform;
+}
+
+
+.club-reveal-item.is-from-above {
+  transform: translate3d(0,-55px,0);
+}
+
+
+.club-reveal-item.is-from-below {
+  transform: translate3d(0,55px,0);
+}
+
+
+.club-reveal-item.is-visible {
+  opacity: 1;
+
+  transform: translate3d(0,0,0);
 }
 
 
 
-/* ============================================================
+/* =========================================================
    MANIFESTE
-============================================================ */
+========================================================= */
 
 .club-manifesto {
+  min-height: 82vh;
+
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  min-height: 80vh;
+  padding: 130px 40px;
+}
 
-  padding: 120px 40px;
 
-  background: #fff;
-
-  color: #111;
+.club-manifesto__inner {
+  width: min(100%,1300px);
 
   text-align: center;
 }
 
 
 .club-manifesto__title {
-  max-width: 1200px;
+  margin: 48px 0 40px;
 
-  margin: 45px 0 35px;
-
-  font-size: clamp(48px, 7vw, 115px);
+  font-size: clamp(55px,7vw,120px);
   font-weight: 400;
 
-  line-height: .9;
+  line-height: .89;
 
-  letter-spacing: -.06em;
+  letter-spacing: -.065em;
 }
 
 
 .club-manifesto__text {
-  max-width: 570px;
+  width: min(100%,600px);
 
-  margin: 0;
+  margin: 0 auto;
 
   font-size: 14px;
 
-  line-height: 1.7;
+  line-height: 1.75;
+
+  color: #525252;
 }
 
 
 
-/* ============================================================
-   PRIVILÈGES
-============================================================ */
+/* =========================================================
+   PRIVILÈGES — NOUVEAU DESIGN
+========================================================= */
 
 .club-benefits {
-  padding: 0 32px 120px;
-
-  background: #fff;
-
-  color: #111;
+  padding: 130px 32px 150px;
 }
 
 
-.club-benefits__header {
+.club-benefits__intro {
+  display: grid;
+
+  grid-template-columns: 1fr 2fr;
+
+  align-items: end;
+
+  margin-bottom: 90px;
+}
+
+
+.club-benefits__heading {
+  margin: 0;
+
+  font-size: clamp(55px,6vw,105px);
+  font-weight: 400;
+
+  line-height: .86;
+
+  letter-spacing: -.065em;
+}
+
+
+.club-benefits__grid {
+  display: grid;
+
+  grid-template-columns: repeat(2,1fr);
+
+  gap: 18px;
+}
+
+
+.club-benefit-card {
+  min-height: 470px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 30px;
+
+  background: rgba(255,255,255,.48);
+
+  border: 1px solid var(--club-border);
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    background .35s ease;
+}
+
+
+.club-benefit-card:hover {
+  transform: translateY(-8px);
+
+  background: rgba(255,255,255,.76);
+}
+
+
+.club-benefit-card__top {
   display: flex;
   justify-content: space-between;
 
-  padding: 25px 0;
+  font-size: 9px;
 
-  border-top: 1px solid #111;
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  color: #6f6f6f;
 }
 
 
-.club-benefits__count {
-  margin: 0;
+.club-benefit-card__bottom h3 {
+  margin: 0 0 30px;
 
-  font-size: 10px;
-}
-
-
-.club-benefit {
-  display: grid;
-
-  grid-template-columns:
-    80px
-    minmax(300px, 1.1fr)
-    minmax(300px, .8fr)
-    40px;
-
-  align-items: center;
-
-  min-height: 145px;
-
-  border-top: 1px solid rgba(17,17,17,.25);
-
-  transition:
-    background .3s ease,
-    color .3s ease;
-}
-
-
-.club-benefit:last-child {
-  border-bottom: 1px solid rgba(17,17,17,.25);
-}
-
-
-.club-benefit:hover {
-  padding-left: 20px;
-  padding-right: 20px;
-
-  background: #111;
-
-  color: #fff;
-}
-
-
-.club-benefit__number {
-  font-size: 10px;
-}
-
-
-.club-benefit__title {
-  margin: 0;
-
-  font-size: clamp(28px, 3vw, 52px);
+  font-size: clamp(42px,4.2vw,76px);
   font-weight: 400;
 
-  letter-spacing: -.04em;
+  line-height: .88;
+
+  letter-spacing: -.055em;
 }
 
 
-.club-benefit__description {
-  max-width: 420px;
+.club-benefit-card__bottom p {
+  width: min(100%,370px);
 
   margin: 0;
 
   font-size: 12px;
 
-  line-height: 1.6;
-}
+  line-height: 1.65;
 
-
-.club-benefit__arrow {
-  text-align: right;
-
-  font-size: 20px;
+  color: #5f5f5f;
 }
 
 
 
-/* ============================================================
-   CLUB EXCLUSIVE
-============================================================ */
+/* =========================================================
+   CLUB EXCLUSIVE — VIDÉO
+========================================================= */
 
 .club-exclusive {
   display: grid;
 
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.05fr .95fr;
 
-  min-height: 90vh;
+  min-height: 95vh;
 
-  background: #FAF9F6;
-
-  color: #111111;
+  background: var(--club-cream);
 }
 
-.club-exclusive__image {
-  min-height: 90vh;
+
+.club-exclusive__media {
+  position: relative;
+
+  min-height: 95vh;
 
   overflow: hidden;
+
+  background: #e9e7e2;
 }
 
 
-.club-exclusive__img,
+.club-exclusive__video,
+.club-exclusive__fallback,
 .club-exclusive__placeholder,
 .club-exclusive__placeholder svg {
+  position: absolute;
+
+  inset: 0;
+
   width: 100%;
   height: 100%;
 
@@ -1020,130 +1287,159 @@
   flex-direction: column;
   justify-content: center;
 
-  padding: 70px;
-}
-
-
-.club-exclusive__eyebrow {
-  margin: 0 0 55px;
-
-  font-size: 10px;
-
-  letter-spacing: .18em;
+  padding: 8vw 5vw;
 }
 
 
 .club-exclusive__title {
-  margin: 0;
+  margin: 50px 0 45px;
 
-  font-size: clamp(44px, 5vw, 90px);
+  font-size: clamp(48px,5.2vw,90px);
   font-weight: 400;
 
-  line-height: .9;
+  line-height: .88;
 
-  letter-spacing: -.06em;
+  letter-spacing: -.065em;
 }
 
 
 .club-exclusive__text {
-  max-width: 480px;
+  width: min(100%,460px);
 
-  margin: 50px 0;
+  margin: 0;
 
   font-size: 13px;
 
-  line-height: 1.7;
+  line-height: 1.75;
+
+  color: #5e5e5e;
 }
 
 
-.club-exclusive__link {
-  display: inline-flex;
-  align-items: center;
+.club-exclusive__signature {
+  margin: 70px 0 0;
 
-  gap: 20px;
+  font-size: 10px;
 
-  width: fit-content;
+  letter-spacing: .18em;
 
-  padding-bottom: 8px;
-
-  border-bottom: 1px solid #111111;
-
-  color: #111111;
-
-  font-size: 11px;
-
-  letter-spacing: .08em;
-
-  text-decoration: none;
+  text-transform: uppercase;
 }
 
 
 
-/* ============================================================
-   STATS
-============================================================ */
+/* =========================================================
+   STATS — PLUS DE GROS TRAITS NOIRS
+========================================================= */
 
 .club-stats {
+  padding: 135px 32px 150px;
+}
+
+
+.club-stats__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+
+  margin-bottom: 70px;
+}
+
+
+.club-stats__intro {
+  margin: 0;
+
+  text-align: right;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+}
+
+
+.club-stats__grid {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
 
-  background: #fff;
-
-  color: #111;
+  gap: 18px;
 }
 
 
 .club-stat {
+  min-height: 390px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  min-height: 430px;
+  padding: 28px;
 
-  padding: 35px;
+  background: rgba(255,255,255,.5);
 
-  border-right: 1px solid rgba(17,17,17,.25);
+  border: 1px solid var(--club-border);
 }
 
 
-.club-stat:last-child {
-  border-right: 0;
-}
-
-
-.club-stat__big {
+.club-stat__value {
   margin: 0;
 
-  font-size: clamp(55px, 6vw, 110px);
+  font-size: clamp(70px,7vw,125px);
   font-weight: 400;
 
-  line-height: .85;
+  line-height: .8;
 
-  letter-spacing: -.07em;
+  letter-spacing: -.075em;
 }
 
 
-.club-stat__small {
+.club-stat__value--word {
+  font-size: clamp(48px,5vw,88px);
+}
+
+
+.club-stat > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+
+.club-stat span {
+  font-size: 9px;
+
+  color: #777;
+}
+
+
+.club-stat > div p {
   margin: 0;
 
-  font-size: 11px;
+  font-size: 10px;
 
-  line-height: 1.4;
+  line-height: 1.5;
 
   letter-spacing: .08em;
+
+  text-align: right;
+
+  text-transform: uppercase;
 }
 
 
 
-/* ============================================================
-   EDITORIAL
-============================================================ */
+/* =========================================================
+   EDITORIAL + PARALLAX
+========================================================= */
 
 .club-editorial {
   position: relative;
 
-  height: 85vh;
+  height: 90vh;
   min-height: 700px;
 
   overflow: hidden;
@@ -1154,31 +1450,52 @@
 }
 
 
-.club-editorial__media,
-.club-editorial__image,
-.club-editorial__placeholder,
-.club-editorial__placeholder svg {
+.club-editorial__media {
   position: absolute;
 
   inset: 0;
 
   width: 100%;
   height: 100%;
+
+  overflow: hidden;
 }
 
 
 .club-editorial__image {
+  position: absolute;
+
+  top: -10%;
+  left: 0;
+
+  width: 100%;
+  height: 120%;
+
+  max-width: none;
+
   object-fit: cover;
+
+  transform: translate3d(0,0,0) scale(1.04);
+
+  will-change: transform;
+}
+
+
+.club-editorial__placeholder,
+.club-editorial__placeholder svg {
+  width: 100%;
+  height: 100%;
 }
 
 
 .club-editorial__overlay {
   position: absolute;
+
   inset: 0;
 
   z-index: 1;
 
-  background: rgba(0,0,0,.22);
+  background: rgba(0,0,0,.20);
 }
 
 
@@ -1186,14 +1503,14 @@
   position: absolute;
 
   left: 35px;
-  bottom: 35px;
+  bottom: 38px;
 
   z-index: 2;
 }
 
 
 .club-editorial__eyebrow {
-  margin: 0 0 20px;
+  margin: 0 0 30px;
 
   font-size: 10px;
 
@@ -1204,17 +1521,17 @@
 .club-editorial__title {
   margin: 0;
 
-  font-size: clamp(75px, 10vw, 170px);
+  font-size: clamp(78px,10vw,175px);
   font-weight: 400;
 
   line-height: .72;
 
-  letter-spacing: -.07em;
+  letter-spacing: -.075em;
 }
 
 
 .club-editorial__text {
-  margin: 35px 0 0;
+  margin: 40px 0 0;
 
   font-size: 10px;
 
@@ -1223,117 +1540,128 @@
 
 
 
-/* ============================================================
-   HOW
-============================================================ */
+/* =========================================================
+   COMMENT ÇA MARCHE — NOUVEAU DESIGN
+========================================================= */
 
 .club-how {
-  padding: 120px 32px;
-
-  background: #fff;
-
-  color: #111;
+  padding: 140px 32px 160px;
 }
 
 
-.club-how__header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+.club-how__intro {
+  display: grid;
 
-  padding-bottom: 50px;
+  grid-template-columns: 1fr 2fr;
+
+  align-items: end;
+
+  margin-bottom: 90px;
 }
 
 
 .club-how__heading {
   margin: 0;
 
-  font-size: clamp(45px, 6vw, 95px);
+  font-size: clamp(60px,7vw,120px);
   font-weight: 400;
 
-  letter-spacing: -.06em;
+  line-height: .82;
+
+  letter-spacing: -.07em;
 }
 
 
-.club-how__grid {
+.club-how__cards {
   display: grid;
 
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3,1fr);
 
-  border-top: 1px solid #111;
+  gap: 18px;
 }
 
 
-.club-how__item {
-  min-height: 420px;
+.club-how-card {
+  min-height: 510px;
 
-  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  border-right: 1px solid rgba(17,17,17,.25);
+  padding: 28px;
+
+  background: rgba(255,255,255,.5);
+
+  border: 1px solid var(--club-border);
 }
 
 
-.club-how__item:last-child {
-  border-right: 0;
-}
-
-
-.club-how__number {
-  display: block;
-
-  margin-bottom: 110px;
-
+.club-how-card__number {
   font-size: 10px;
+
+  color: #777;
 }
 
 
-.club-how__item h3 {
-  margin: 0 0 30px;
+.club-how-card__eyebrow {
+  margin: 0 0 25px;
 
-  font-size: clamp(28px, 3vw, 48px);
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  color: #777;
+}
+
+
+.club-how-card__content h3 {
+  margin: 0 0 32px;
+
+  font-size: clamp(34px,3.3vw,58px);
   font-weight: 400;
 
-  line-height: .95;
+  line-height: .9;
 
-  letter-spacing: -.04em;
+  letter-spacing: -.05em;
 }
 
 
-.club-how__item p {
-  max-width: 330px;
+.club-how-card__content > p:last-child {
+  width: min(100%,330px);
 
   margin: 0;
 
   font-size: 12px;
 
-  line-height: 1.6;
+  line-height: 1.65;
+
+  color: #5e5e5e;
 }
 
 
 
-/* ============================================================
+/* =========================================================
    CTA FINAL
-============================================================ */
+========================================================= */
 
 .club-final {
+  min-height: 92vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  min-height: 90vh;
-
-  padding: 100px 30px;
-
-  background: #FAF9F6;
-
-  color: #111111;
+  padding: 110px 30px;
 
   text-align: center;
 }
 
+
 .club-final__eyebrow {
-  margin: 0 0 40px;
+  margin: 0 0 42px;
 
   font-size: 10px;
 
@@ -1344,36 +1672,37 @@
 .club-final__title {
   margin: 0;
 
-  font-size: clamp(60px, 9vw, 150px);
+  font-size: clamp(62px,9vw,150px);
   font-weight: 400;
 
   line-height: .8;
 
-  letter-spacing: -.07em;
+  letter-spacing: -.075em;
 }
 
 
 .club-final__form {
   display: flex;
 
-  width: min(100%, 600px);
-  height: 50px;
+  width: min(100%,610px);
+  height: 54px;
 
-  margin-top: 65px;
+  margin-top: 70px;
 
   gap: 8px;
 }
 
 
+/* CHAMP BIEN VISIBLE SUR LE BEIGE */
+
 .club-final__email-wrap {
   flex: 1;
 
-  border: 1px solid rgba(255,255,255,.6);
+  display: flex;
 
-  background: rgba(255,255,255,.12);
+  background: rgba(255,255,255,.55);
 
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(17,17,17,.55);
 }
 
 
@@ -1381,14 +1710,16 @@
   width: 100%;
   height: 100%;
 
-  padding: 0 16px;
+  padding: 0 17px;
 
   border: 0;
   outline: 0;
 
   background: transparent;
 
-  color: #fff;
+  color: #111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
 
@@ -1399,47 +1730,71 @@
 
 
 .club-final__email::placeholder {
-  color: rgba(255,255,255,.75);
+  color: rgba(17,17,17,.62);
+
+  opacity: 1;
 }
 
 
+/* BOUTON NOIR DE BASE */
+
 .club-final__submit {
-  min-width: 200px;
+  min-width: 205px;
 
-  border: 1px solid #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-  background: #fff;
+  gap: 18px;
 
-  color: #111;
+  padding: 0 20px;
+
+  border: 1px solid #111;
+
+  background: #111;
+
+  color: #fff;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
 
   letter-spacing: .06em;
 
+  text-transform: uppercase;
+
   cursor: pointer;
+
+  transition:
+    background .3s ease,
+    color .3s ease;
 }
 
 
-.club-final__submit span {
-  margin-left: 15px;
+/* HOVER BLANC */
+
+.club-final__submit:hover {
+  background: #fff;
+
+  color: #111;
 }
 
 
 .club-final__small {
-  margin: 20px 0 0;
+  margin: 23px 0 0;
 
   font-size: 9px;
 
   letter-spacing: .1em;
 
-  opacity: .7;
+  color: #666;
 }
 
 
 
-/* ============================================================
+/* =========================================================
    MOBILE
-============================================================ */
+========================================================= */
 
 @media screen and (max-width: 768px) {
 
@@ -1459,9 +1814,7 @@
 
 
   #ClubPrivilegesHero-{{ section.id }} .club-hero__heading {
-    font-size: clamp(48px, 15vw, 80px);
-
-    line-height: .85;
+    font-size: clamp(48px,15vw,80px);
   }
 
 
@@ -1483,46 +1836,43 @@
   .club-manifesto {
     min-height: auto;
 
-    padding: 100px 20px;
+    padding: 110px 20px;
   }
 
 
   .club-manifesto__title {
-    margin: 35px 0 25px;
+    margin: 35px 0 28px;
+
+    font-size: clamp(48px,14vw,75px);
   }
 
 
   .club-benefits {
-    padding: 0 18px 80px;
+    padding: 100px 16px;
   }
 
 
-  .club-benefit {
-    grid-template-columns: 35px 1fr;
+  .club-benefits__intro,
+  .club-how__intro {
+    display: block;
 
-    gap: 15px;
-
-    padding: 30px 0;
+    margin-bottom: 55px;
   }
 
 
-  .club-benefit__description {
-    grid-column: 2;
+  .club-benefits__heading,
+  .club-how__heading {
+    margin-top: 30px;
   }
 
 
-  .club-benefit__arrow {
-    display: none;
+  .club-benefits__grid {
+    grid-template-columns: 1fr;
   }
 
 
-  .club-benefit:hover {
-    padding-left: 0;
-    padding-right: 0;
-
-    background: transparent;
-
-    color: #111;
+  .club-benefit-card {
+    min-height: 390px;
   }
 
 
@@ -1531,85 +1881,81 @@
   }
 
 
-  .club-exclusive__image {
-    min-height: 65vh;
+  .club-exclusive__media {
+    min-height: 68vh;
   }
 
 
   .club-exclusive__content {
-    padding: 70px 20px;
+    padding: 90px 20px;
   }
 
 
   .club-stats {
+    padding: 100px 16px;
+  }
+
+
+  .club-stats__header {
+    display: block;
+  }
+
+
+  .club-stats__intro {
+    margin-top: 30px;
+
+    text-align: left;
+  }
+
+
+  .club-stats__grid {
     grid-template-columns: 1fr;
   }
 
 
   .club-stat {
-    min-height: 280px;
-
-    border-right: 0;
-    border-bottom: 1px solid rgba(17,17,17,.25);
+    min-height: 320px;
   }
 
 
   .club-editorial {
-    height: 80vh;
-    min-height: 600px;
+    height: 82vh;
+    min-height: 620px;
   }
 
 
   .club-editorial__content {
     left: 20px;
-    bottom: 25px;
+    right: 20px;
+
+    bottom: 28px;
   }
 
 
   .club-editorial__title {
-    font-size: clamp(65px, 20vw, 110px);
+    font-size: clamp(68px,20vw,115px);
   }
 
 
   .club-how {
-    padding: 90px 18px;
+    padding: 110px 16px;
   }
 
 
-  .club-how__header {
-    display: block;
-  }
-
-
-  .club-how__heading {
-    margin-top: 25px;
-  }
-
-
-  .club-how__grid {
+  .club-how__cards {
     grid-template-columns: 1fr;
   }
 
 
-  .club-how__item {
-    min-height: auto;
-
-    padding: 30px 0 60px;
-
-    border-right: 0;
-    border-bottom: 1px solid rgba(17,17,17,.25);
-  }
-
-
-  .club-how__number {
-    margin-bottom: 70px;
+  .club-how-card {
+    min-height: 390px;
   }
 
 
   .club-final {
-    min-height: 80vh;
+    min-height: 82vh;
 
-    padding: 90px 18px;
+    padding: 100px 16px;
   }
 
 
@@ -1623,7 +1969,7 @@
   .club-final__email-wrap,
   .club-final__submit {
     width: 100%;
-    height: 50px;
+    height: 52px;
   }
 
 }
@@ -1632,10 +1978,259 @@
 
 
 
+<script>
+(() => {
+
+  /* =======================================================
+     SCROLL REVEAL
+     SE REJOUE EN DESCENDANT ET EN REMONTANT
+  ======================================================= */
+
+  const sections = document.querySelectorAll(
+    '#shopify-section-{{ section.id }} [data-club-reveal]'
+  );
+
+
+  if (!sections.length) return;
+
+
+  let lastScrollY = window.scrollY;
+  let scrollDirection = 'down';
+
+
+  function detectScrollDirection() {
+
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY + 2) {
+      scrollDirection = 'down';
+    }
+
+    if (currentY < lastScrollY - 2) {
+      scrollDirection = 'up';
+    }
+
+    lastScrollY = currentY;
+
+  }
+
+
+  window.addEventListener(
+    'scroll',
+    detectScrollDirection,
+    {
+      passive: true
+    }
+  );
+
+
+  const observer = new IntersectionObserver(
+
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        const items =
+          entry.target.querySelectorAll(
+            '.club-reveal-item'
+          );
+
+
+        if (entry.isIntersecting) {
+
+          items.forEach((item) => {
+
+            item.classList.remove(
+              'is-from-above',
+              'is-from-below'
+            );
+
+
+            if (scrollDirection === 'down') {
+
+              item.classList.add(
+                'is-from-below'
+              );
+
+            } else {
+
+              item.classList.add(
+                'is-from-above'
+              );
+
+            }
+
+
+            const delay =
+              Number(
+                item.dataset.revealDelay || 0
+              );
+
+
+            item.style.transitionDelay =
+              `${delay}ms`;
+
+
+            requestAnimationFrame(() => {
+
+              requestAnimationFrame(() => {
+
+                item.classList.add(
+                  'is-visible'
+                );
+
+              });
+
+            });
+
+          });
+
+        } else {
+
+          items.forEach((item) => {
+
+            item.classList.remove(
+              'is-visible'
+            );
+
+            item.style.transitionDelay =
+              '0ms';
+
+          });
+
+        }
+
+      });
+
+    },
+
+    {
+      threshold: 0.16,
+
+      rootMargin:
+        '-5% 0px -8% 0px'
+    }
+
+  );
+
+
+  sections.forEach((section) => {
+
+    observer.observe(section);
+
+  });
+
+
+
+  /* =======================================================
+     PARALLAX — BEFORE EVERYONE ELSE
+  ======================================================= */
+
+  const parallaxSections =
+    document.querySelectorAll(
+      '#shopify-section-{{ section.id }} [data-club-parallax]'
+    );
+
+
+  let parallaxTicking = false;
+
+
+  function updateParallax() {
+
+    parallaxSections.forEach((section) => {
+
+      const image =
+        section.querySelector(
+          '.club-editorial__image'
+        );
+
+
+      if (!image) return;
+
+
+      const rect =
+        section.getBoundingClientRect();
+
+
+      const viewport =
+        window.innerHeight;
+
+
+      if (
+        rect.bottom < 0 ||
+        rect.top > viewport
+      ) {
+        return;
+      }
+
+
+      const progress =
+        (viewport - rect.top) /
+        (viewport + rect.height);
+
+
+      const movement =
+        (progress - 0.5) * 95;
+
+
+      image.style.transform =
+        `translate3d(0, ${movement}px, 0) scale(1.04)`;
+
+    });
+
+
+    parallaxTicking = false;
+
+  }
+
+
+  function requestParallax() {
+
+    if (parallaxTicking) return;
+
+
+    parallaxTicking = true;
+
+
+    requestAnimationFrame(
+      updateParallax
+    );
+
+  }
+
+
+  window.addEventListener(
+    'scroll',
+    requestParallax,
+    {
+      passive: true
+    }
+  );
+
+
+  window.addEventListener(
+    'resize',
+    requestParallax
+  );
+
+
+  updateParallax();
+
+})();
+</script>
+
+
+
 {% schema %}
 {
   "name": "Hero Club Privilèges",
+
   "settings": [
+
+    {
+      "type": "header",
+      "content": "Hero"
+    },
 
     {
       "type": "image_picker",
@@ -1675,33 +2270,44 @@
       "type": "range",
       "id": "overlay",
       "label": "Assombrissement du Hero",
+
       "min": 0,
       "max": 60,
       "step": 5,
+
       "unit": "%",
+
       "default": 10
     },
 
+
     {
       "type": "header",
-      "content": "Section Club Exclusive"
+      "content": "Club Exclusive"
+    },
+
+    {
+      "type": "video",
+      "id": "exclusive_video",
+      "label": "Vidéo Club Exclusive"
     },
 
     {
       "type": "image_picker",
       "id": "exclusive_image",
-      "label": "Image Club Exclusive"
+      "label": "Image de secours"
     },
+
 
     {
       "type": "header",
-      "content": "Section éditoriale"
+      "content": "Before Everyone Else"
     },
 
     {
       "type": "image_picker",
       "id": "editorial_image",
-      "label": "Grande image éditoriale"
+      "label": "Image éditoriale"
     }
 
   ],
