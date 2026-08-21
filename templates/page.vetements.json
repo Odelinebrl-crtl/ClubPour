@@ -76,25 +76,33 @@
         "product_bmzijL": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "monaco-94",
+            "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
+            "image_hover": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
           }
         },
         "product_CwqYrC": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "t-shirt-japalenos",
+            "image_primary": "shopify://shop_images/20.png",
+            "image_hover": "shopify://shop_images/19.png"
           }
         },
         "product_ctQr3W": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "t-shirt-orange",
+            "image_primary": "shopify://shop_images/2_7875d19f-297c-49a0-b345-60c60834d1b8.png",
+            "image_hover": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
           }
         },
         "product_NzcP69": {
           "type": "product",
           "settings": {
-            "product": ""
+            "product": "t-shirt-pegasus",
+            "image_primary": "shopify://shop_images/12.png",
+            "image_hover": "shopify://shop_images/11_e14a1878-ee5f-40a2-8a8c-8fddc911633f.png"
           }
         }
       },
