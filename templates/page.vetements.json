@@ -57,36 +57,12 @@
             "image_hover": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
           }
         },
-        "product_mA93kj": {
-          "type": "product",
-          "settings": {
-            "product": "club-pour-test",
-            "image_primary": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
-            "image_hover": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
-          }
-        },
         "product_3pTwxb": {
           "type": "product",
           "settings": {
             "product": "riviera",
             "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
             "image_hover": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
-          }
-        },
-        "product_bmzijL": {
-          "type": "product",
-          "settings": {
-            "product": "monaco-94",
-            "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
-            "image_hover": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
-          }
-        },
-        "product_CwqYrC": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-japalenos",
-            "image_primary": "shopify://shop_images/20.png",
-            "image_hover": "shopify://shop_images/19.png"
           }
         },
         "product_ctQr3W": {
@@ -97,6 +73,14 @@
             "image_hover": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
           }
         },
+        "product_CwqYrC": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-japalenos",
+            "image_primary": "shopify://shop_images/20.png",
+            "image_hover": "shopify://shop_images/19.png"
+          }
+        },
         "product_NzcP69": {
           "type": "product",
           "settings": {
@@ -104,17 +88,33 @@
             "image_primary": "shopify://shop_images/12.png",
             "image_hover": "shopify://shop_images/11_e14a1878-ee5f-40a2-8a8c-8fddc911633f.png"
           }
+        },
+        "product_mA93kj": {
+          "type": "product",
+          "settings": {
+            "product": "club-pour-test",
+            "image_primary": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
+            "image_hover": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
+          }
+        },
+        "product_bmzijL": {
+          "type": "product",
+          "settings": {
+            "product": "monaco-94",
+            "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
+            "image_hover": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
+          }
         }
       },
       "block_order": [
         "product_XRT6it",
         "product_zhD6np",
-        "product_mA93kj",
         "product_3pTwxb",
-        "product_bmzijL",
-        "product_CwqYrC",
         "product_ctQr3W",
-        "product_NzcP69"
+        "product_CwqYrC",
+        "product_NzcP69",
+        "product_mA93kj",
+        "product_bmzijL"
       ],
       "name": "Grille Vêtements",
       "settings": {
