@@ -16,10 +16,11 @@
         "image": "shopify://shop_images/Design_sans_titre-13.png",
         "eyebrow": "CLUB POUR",
         "heading": "CLUB PRIVILÈGES",
-        "subtitle": "ACCÉDEZ À L’UNIVERS POUR AUTREMENT.",
-        "text_color": "#FFFFFF",
-        "link_label": "DÉCOUVRIR LE CLUB",
-        "link": ""
+        "launch_text": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR",
+        "text_color": "#ffffff",
+        "overlay": 10,
+        "exclusive_image": "shopify://shop_images/valdemaras-januska-igaoYBHBDws-unsplash.jpg",
+        "editorial_image": "shopify://shop_images/josh-rinard-H9mp1P1VUj4-unsplash.jpg"
       }
     }
   },
