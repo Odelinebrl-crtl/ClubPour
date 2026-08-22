@@ -1644,88 +1644,89 @@ body.cart-drawer-open {
                 : '';
 
 
-            return `
+           return `
 
-              <div class="cart-drawer__item">
+  <div
+    class="cart-drawer__item"
+    data-cart-item
+    data-key="${escapeHTML(item.key)}"
+  >
 
-
-                <a
-                  href="${escapeHTML(item.url)}"
-                  class="cart-drawer__media"
-                >
-                  ${imageHTML}
-                </a>
-
-
-                <div class="cart-drawer__content">
-
-
-                  <a
-                    href="${escapeHTML(item.url)}"
-                    class="cart-drawer__item-title"
-                  >
-                    ${escapeHTML(item.product_title)}
-                  </a>
+    <a
+      href="${escapeHTML(item.url)}"
+      class="cart-drawer__media"
+    >
+      ${imageHTML}
+    </a>
 
 
-                  <p class="cart-drawer__item-price">
-                    ${money(item.final_line_price)}
-                  </p>
+    <div class="cart-drawer__content">
+
+      <a
+        href="${escapeHTML(item.url)}"
+        class="cart-drawer__item-title"
+      >
+        ${escapeHTML(item.product_title)}
+      </a>
 
 
-                  ${variantHTML}
+      <p class="cart-drawer__item-price">
+        ${money(item.final_line_price)}
+      </p>
 
 
-                  <div class="cart-drawer__actions">
+      ${variantHTML}
 
 
-                    <div class="cart-drawer__quantity">
+      <div class="cart-drawer__actions">
 
-                      <button
-                        type="button"
-                        data-cart-change
-                        data-line="${index + 1}"
-                        data-quantity="${Math.max(0, item.quantity - 1)}"
-                        aria-label="Réduire la quantité"
-                      >
-                        −
-                      </button>
+        <div class="cart-drawer__quantity">
 
-
-                      <span>
-                        ${item.quantity}
-                      </span>
+          <button
+            type="button"
+            data-cart-change
+            data-key="${escapeHTML(item.key)}"
+            data-quantity="${Math.max(0, item.quantity - 1)}"
+            aria-label="Réduire la quantité"
+          >
+            −
+          </button>
 
 
-                      <button
-                        type="button"
-                        data-cart-change
-                        data-line="${index + 1}"
-                        data-quantity="${item.quantity + 1}"
-                        aria-label="Augmenter la quantité"
-                      >
-                        +
-                      </button>
-
-                    </div>
+          <span data-cart-quantity>
+            ${item.quantity}
+          </span>
 
 
-                    <button
-                      type="button"
-                      class="cart-drawer__remove"
-                      data-cart-change
-                      data-line="${index + 1}"
-                      data-quantity="0"
-                    >
-                      SUPPRIMER
-                    </button>
+          <button
+            type="button"
+            data-cart-change
+            data-key="${escapeHTML(item.key)}"
+            data-quantity="${item.quantity + 1}"
+            aria-label="Augmenter la quantité"
+          >
+            +
+          </button>
 
-                  </div>
+        </div>
 
-                </div>
 
-              </div>
-            `;
+        <button
+          type="button"
+          class="cart-drawer__remove"
+          data-cart-change
+          data-key="${escapeHTML(item.key)}"
+          data-quantity="0"
+        >
+          SUPPRIMER
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+`;
 
           }
         )
@@ -1767,9 +1768,9 @@ body.cart-drawer-open {
             SOUS-TOTAL
           </span>
 
-          <span>
-            ${money(cart.total_price)}
-          </span>
+          <span data-cart-total>
+  ${money(cart.total_price)}
+</span>
 
         </div>
 
