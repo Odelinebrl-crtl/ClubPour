@@ -2866,7 +2866,13 @@ transform: translateX(-15px);
 
   background: #f3f3f3;
 }
+/* =========================================================
+   COLLECTION 001 — HERO SOUS LE HEADER
+========================================================= */
 
+.clothing-hero--below-header {
+  margin-top: 68px;
+}
 
 /* =========================================================
    STACK DES SLIDES
