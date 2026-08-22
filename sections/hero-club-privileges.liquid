@@ -1012,8 +1012,7 @@
 
   border: 1px solid #fff;
 
-  background: #fff;
-
+  background-color: #fff;
   color: #111;
 
   font-size: 11px;
@@ -1023,14 +1022,16 @@
   text-transform: uppercase;
 
   cursor: pointer;
+
+  transition:
+    background-color .55s cubic-bezier(.22, 1, .36, 1),
+    color .45s cubic-bezier(.22, 1, .36, 1),
+    border-color .55s cubic-bezier(.22, 1, .36, 1);
 }
 
-
 #ClubPrivilegesHero-{{ section.id }} .club-hero__submit:hover {
-  background: #111;
-
+  background-color: #111;
   border-color: #111;
-
   color: #fff;
 }
 
