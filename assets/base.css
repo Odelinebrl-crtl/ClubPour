@@ -901,14 +901,135 @@ a {
   line-height: 1;
   text-transform: uppercase;
 }
-/* PRODUITS */
+/* =========================================================
+   PRODUCT CAROUSEL — POUR
+========================================================= */
+
+.pour-products__carousel {
+  position: relative;
+
+  width: 100%;
+}
+
+
+/* TRACK HORIZONTAL */
 
 .pour-products__grid {
-  display: grid;
+  display: flex;
 
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
 
-  gap: 16px;
+  gap: 18px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+
+  overscroll-behavior-x: contain;
+}
+
+
+.pour-products__grid::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* 5 PRODUITS VISIBLES */
+
+.pour-product {
+  flex:
+    0 0
+    calc(
+      (100% - (18px * 4)) / 5
+    );
+
+  min-width: 0;
+
+  scroll-snap-align: start;
+
+  color: #111111;
+
+  text-decoration: none;
+}
+/* =========================================================
+   FLÈCHES CARROUSEL
+========================================================= */
+
+.pour-products__arrow {
+  position: absolute;
+
+  top: 44%;
+
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 0;
+
+  border: 1px solid rgba(17, 17, 17, 0.12);
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  color: #111111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 22px;
+  font-weight: 300;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 3px 12px
+    rgba(0, 0, 0, 0.08);
+
+  transform: translateY(-50%);
+
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.pour-products__arrow--prev {
+  left: -22px;
+}
+
+
+.pour-products__arrow--next {
+  right: -22px;
+}
+
+
+.pour-products__arrow:hover {
+  background: #111111;
+
+  color: #ffffff;
+}
+
+
+.pour-products__arrow:disabled {
+  opacity: 0.25;
+
+  cursor: default;
+
+  pointer-events: none;
 }
 
 /* IMAGE */
