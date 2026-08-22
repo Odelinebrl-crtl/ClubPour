@@ -51,6 +51,8 @@ if (document.readyState === 'loading') {
   recharger toute la page dans l'éditeur.
 */
 document.addEventListener('shopify:section:load', initHeroParallax);
+
+
 /* =========================================================
    CITATION POUR — SCROLL DIRECTION REVEAL
 ========================================================= */
@@ -70,10 +72,7 @@ function initPourQuoteReveal() {
       const rect = quote.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      /* DESCENTE :
-         apparition seulement quand le haut de la section
-         arrive à environ 58% de l'écran
-      */
+      /* DESCENTE */
       if (
         scrollingDown &&
         rect.top < viewportHeight * 0.82 &&
@@ -83,10 +82,7 @@ function initPourQuoteReveal() {
         quote.classList.remove('is-hidden-up');
       }
 
-      /* REMONTÉE :
-         disparition seulement quand le haut de la section
-         remonte vers environ 28% de l'écran
-      */
+      /* REMONTÉE */
       if (
         !scrollingDown &&
         rect.top > viewportHeight * 0.28 &&
@@ -114,6 +110,8 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('shopify:section:load', initPourQuoteReveal);
+
+
 /* =========================================================
    PRODUCT PAGE — GALLERY + TABS + QUANTITY
 ========================================================= */
@@ -206,6 +204,8 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('shopify:section:load', initPourProductPage);
+
+
 /* =========================================================
    VIDEO HERO POUR — PARALLAX
 ========================================================= */
@@ -239,10 +239,10 @@ function initPourVideoParallax() {
 
       const normalized = progress - 0.5;
 
-   const movement = normalized * 80;
+      const movement = normalized * 80;
 
-    video.style.transform =
-  `translate3d(0, ${movement}px, 0)`;
+      video.style.transform =
+        `translate3d(0, ${movement}px, 0)`;
     });
 
     ticking = false;
@@ -277,6 +277,8 @@ document.addEventListener(
   'shopify:section:load',
   initPourVideoParallax
 );
+
+
 /* =========================================================
    PORTÉ PAR VOUS — CAROUSEL SIMPLE
 ========================================================= */
@@ -305,10 +307,8 @@ function initPourCommunitySlider() {
 
       if (!slides.length) return;
 
-
       let currentIndex = 0;
       let animating = false;
-
 
       /* ÉTAT INITIAL */
 
@@ -331,13 +331,11 @@ function initPourCommunitySlider() {
 
       });
 
-
       function changeSlide(direction) {
 
         if (animating || slides.length < 2) return;
 
         animating = true;
-
 
         const oldSlide = slides[currentIndex];
 
@@ -348,10 +346,7 @@ function initPourCommunitySlider() {
 
         const newSlide = slides[newIndex];
 
-
-        /* =========================
-           PRÉPARE LE NOUVEAU
-        ========================= */
+        /* PRÉPARE LE NOUVEAU */
 
         newSlide.classList.remove(
           'is-active',
@@ -364,7 +359,6 @@ function initPourCommunitySlider() {
           'product-entering'
         );
 
-
         newSlide.classList.add(
           'is-transitioning',
           direction === 'next'
@@ -373,18 +367,9 @@ function initPourCommunitySlider() {
           'product-entering'
         );
 
-
-        /*
-          Force le navigateur à enregistrer
-          l'état initial.
-        */
-
         void newSlide.offsetWidth;
 
-
-        /* =========================
-           FAIT SORTIR L'ANCIEN
-        ========================= */
+        /* FAIT SORTIR L'ANCIEN */
 
         oldSlide.classList.add(
           direction === 'next'
@@ -393,10 +378,7 @@ function initPourCommunitySlider() {
           'product-leaving'
         );
 
-
-        /* =========================
-           FAIT ENTRER LE NOUVEAU
-        ========================= */
+        /* FAIT ENTRER LE NOUVEAU */
 
         requestAnimationFrame(() => {
 
@@ -412,10 +394,7 @@ function initPourCommunitySlider() {
 
         });
 
-
-        /* =========================
-           FIN DE TRANSITION
-        ========================= */
+        /* FIN DE TRANSITION */
 
         window.setTimeout(() => {
 
@@ -426,7 +405,6 @@ function initPourCommunitySlider() {
             'product-leaving'
           );
 
-
           newSlide.classList.remove(
             'is-transitioning'
           );
@@ -434,7 +412,6 @@ function initPourCommunitySlider() {
           newSlide.classList.add(
             'is-active'
           );
-
 
           currentIndex = newIndex;
 
@@ -444,11 +421,9 @@ function initPourCommunitySlider() {
 
       }
 
-
       next?.addEventListener('click', () => {
         changeSlide('next');
       });
-
 
       prev?.addEventListener('click', () => {
         changeSlide('prev');
@@ -508,7 +483,6 @@ function initClothingHero() {
 
       hero.dataset.clothingReady = 'true';
 
-
       const slides = Array.from(
         hero.querySelectorAll('[data-clothing-slide]')
       );
@@ -521,11 +495,9 @@ function initClothingHero() {
         hero.querySelectorAll('.clothing-hero__image')
       );
 
-
       if (!slides.length) {
         return;
       }
-
 
       let currentIndex = 0;
 
@@ -534,7 +506,6 @@ function initClothingHero() {
       let autoplayTimer = null;
 
       let parallaxTicking = false;
-
 
       const autoplayEnabled =
         hero.dataset.autoplay !== 'false';
@@ -545,60 +516,55 @@ function initClothingHero() {
       const slideDuration = 820;
 
 
-/* =========================================================
-   ÉTAT INITIAL
-========================================================= */
+      /* =====================================================
+         ÉTAT INITIAL
+      ===================================================== */
 
-slides.forEach((slide) => {
+      slides.forEach((slide) => {
 
-  slide.classList.remove(
-    'is-active',
-    'is-entering',
-    'is-from-right',
-    'is-from-left',
-    'is-moving',
-    'is-text-visible'
-  );
+        slide.classList.remove(
+          'is-active',
+          'is-entering',
+          'is-from-right',
+          'is-from-left',
+          'is-moving',
+          'is-text-visible'
+        );
 
-});
-
-
-/* =========================================================
-   ENTRÉE TEXTE — PREMIÈRE SLIDE
-========================================================= */
-
-const firstSlide = slides[0];
-
-firstSlide.classList.add(
-  'is-active'
-);
+      });
 
 
-/*
-  On laisse d'abord le navigateur afficher
-  l'image seule, sans texte.
-*/
+      /* =====================================================
+         ENTRÉE TEXTE — PREMIÈRE SLIDE
+      ===================================================== */
 
-window.requestAnimationFrame(() => {
-
-  window.requestAnimationFrame(() => {
-
-    window.setTimeout(() => {
+      const firstSlide = slides[0];
 
       firstSlide.classList.add(
-        'is-text-visible'
+        'is-active'
       );
 
-    }, 120);
 
-  });
+      window.requestAnimationFrame(() => {
 
-});
+        window.requestAnimationFrame(() => {
+
+          window.setTimeout(() => {
+
+            firstSlide.classList.add(
+              'is-text-visible'
+            );
+
+          }, 120);
+
+        });
+
+      });
 
 
-/* =========================================================
-   PAGINATION INITIALE
-========================================================= */
+      /* =====================================================
+         PAGINATION INITIALE
+      ===================================================== */
 
       dots.forEach((dot, index) => {
 
@@ -610,9 +576,9 @@ window.requestAnimationFrame(() => {
       });
 
 
-/* =========================================================
-   PAGINATION — IMMÉDIATE
-========================================================= */
+      /* =====================================================
+         PAGINATION — IMMÉDIATE
+      ===================================================== */
 
       function updatePagination(index) {
 
@@ -628,9 +594,9 @@ window.requestAnimationFrame(() => {
       }
 
 
-/* =========================================================
-   AUTOPLAY
-========================================================= */
+      /* =====================================================
+         AUTOPLAY
+      ===================================================== */
 
       function stopAutoplay() {
 
@@ -651,14 +617,12 @@ window.requestAnimationFrame(() => {
 
         stopAutoplay();
 
-
         if (
           !autoplayEnabled ||
           slides.length < 2
         ) {
           return;
         }
-
 
         autoplayTimer =
           window.setInterval(() => {
@@ -667,11 +631,9 @@ window.requestAnimationFrame(() => {
               return;
             }
 
-
             const nextIndex =
               (currentIndex + 1) %
               slides.length;
-
 
             goToSlide(
               nextIndex,
@@ -683,9 +645,9 @@ window.requestAnimationFrame(() => {
       }
 
 
-/* =========================================================
-   CHANGEMENT DE SLIDE
-========================================================= */
+      /* =====================================================
+         CHANGEMENT DE SLIDE
+      ===================================================== */
 
       function goToSlide(
         newIndex,
@@ -699,9 +661,7 @@ window.requestAnimationFrame(() => {
           return;
         }
 
-
         isAnimating = true;
-
 
         const oldSlide =
           slides[currentIndex];
@@ -709,29 +669,13 @@ window.requestAnimationFrame(() => {
         const newSlide =
           slides[newIndex];
 
-
-        /*
-          Le numéro sélectionné devient actif
-          IMMÉDIATEMENT.
-        */
-
         updatePagination(
           newIndex
         );
 
-
-        /*
-          Le texte de l'ancienne image disparaît.
-        */
-
         oldSlide.classList.remove(
           'is-text-visible'
         );
-
-
-        /*
-          Nettoyage du prochain slide.
-        */
 
         newSlide.classList.remove(
           'is-active',
@@ -742,15 +686,6 @@ window.requestAnimationFrame(() => {
           'is-text-visible'
         );
 
-
-        /*
-          PAGE SUIVANTE :
-          arrive depuis la droite.
-
-          PAGE PRÉCÉDENTE :
-          arrive depuis la gauche.
-        */
-
         newSlide.classList.add(
           'is-entering',
           direction === 'next'
@@ -758,28 +693,11 @@ window.requestAnimationFrame(() => {
             : 'is-from-left'
         );
 
-
-        /*
-          Force le navigateur à enregistrer
-          la position de départ.
-        */
-
         void newSlide.offsetWidth;
-
-
-        /*
-          Active la transition horizontale.
-        */
 
         newSlide.classList.add(
           'is-moving'
         );
-
-
-        /*
-          Puis on retire le décalage :
-          la nouvelle image glisse vers sa place.
-        */
 
         window.requestAnimationFrame(() => {
 
@@ -795,9 +713,9 @@ window.requestAnimationFrame(() => {
         });
 
 
-/* =========================================================
-   FIN DE TRANSITION IMAGE
-========================================================= */
+        /* =================================================
+           FIN DE TRANSITION IMAGE
+        ================================================= */
 
         window.setTimeout(() => {
 
@@ -805,27 +723,17 @@ window.requestAnimationFrame(() => {
             'is-active'
           );
 
-
           newSlide.classList.remove(
             'is-entering',
             'is-moving'
           );
 
-
           newSlide.classList.add(
             'is-active'
           );
 
-
           currentIndex =
             newIndex;
-
-
-          /*
-            Une fois seulement que l'image
-            est complètement installée,
-            le texte apparaît du haut vers le bas.
-          */
 
           window.setTimeout(() => {
 
@@ -837,15 +745,14 @@ window.requestAnimationFrame(() => {
 
           }, 100);
 
-
         }, slideDuration);
 
       }
 
 
-/* =========================================================
-   CLIC SUR 01 / 02 / 03...
-========================================================= */
+      /* =====================================================
+         CLIC SUR 01 / 02 / 03...
+      ===================================================== */
 
       dots.forEach((dot, index) => {
 
@@ -860,32 +767,19 @@ window.requestAnimationFrame(() => {
               return;
             }
 
-
             const direction =
               index > currentIndex
                 ? 'next'
                 : 'prev';
 
-
-            /*
-              Mise à jour visuelle immédiate.
-            */
-
             updatePagination(
               index
             );
-
 
             goToSlide(
               index,
               direction
             );
-
-
-            /*
-              Après un clic manuel,
-              on repart sur un cycle complet.
-            */
 
             startAutoplay();
 
@@ -895,101 +789,81 @@ window.requestAnimationFrame(() => {
       });
 
 
-/* =========================================================
-   HERO VÊTEMENTS — PARALLAX
-   IDENTIQUE AU HERO DE LA HOME
-========================================================= */
+      /* =====================================================
+         HERO VÊTEMENTS — PARALLAX
+      ===================================================== */
 
-function updateClothingParallax() {
+      function updateClothingParallax() {
 
-  const scrollY = window.scrollY;
+        const scrollY = window.scrollY;
 
-  const heroTop =
-    hero.getBoundingClientRect().top + scrollY;
+        const heroTop =
+          hero.getBoundingClientRect().top + scrollY;
 
-  const heroHeight =
-    hero.offsetHeight;
+        const heroHeight =
+          hero.offsetHeight;
 
+        const localScroll =
+          Math.max(
+            0,
+            Math.min(
+              scrollY - heroTop,
+              heroHeight
+            )
+          );
 
-  /*
-    Distance réellement parcourue
-    à l'intérieur du Hero.
-  */
+        const translateY =
+          localScroll * 0.22;
 
-  const localScroll =
-    Math.max(
-      0,
-      Math.min(
-        scrollY - heroTop,
-        heroHeight
-      )
-    );
+        images.forEach((image) => {
 
+          image.style.transform =
+            `translate3d(0, ${translateY}px, 0) scale(1.08)`;
 
-  /*
-    Même coefficient que le Hero Home.
-  */
+        });
 
-  const translateY =
-    localScroll * 0.22;
+        parallaxTicking = false;
+      }
 
 
-  images.forEach((image) => {
+      function requestClothingParallax() {
 
-    image.style.transform =
-      `translate3d(0, ${translateY}px, 0) scale(1.08)`;
+        if (parallaxTicking) {
+          return;
+        }
 
-  });
+        parallaxTicking = true;
 
+        window.requestAnimationFrame(() => {
 
-  parallaxTicking = false;
-}
+          updateClothingParallax();
 
+        });
 
-function requestClothingParallax() {
-
-  if (parallaxTicking) {
-    return;
-  }
+      }
 
 
-  parallaxTicking = true;
+      window.addEventListener(
+        'scroll',
+        requestClothingParallax,
+        {
+          passive: true
+        }
+      );
 
 
-  window.requestAnimationFrame(() => {
-
-    updateClothingParallax();
-
-  });
-
-}
+      window.addEventListener(
+        'resize',
+        requestClothingParallax
+      );
 
 
-/* LE LISTENER QUI FAIT RÉELLEMENT BOUGER L'IMAGE */
-
-window.addEventListener(
-  'scroll',
-  requestClothingParallax,
-  {
-    passive: true
-  }
-);
+      updateClothingParallax();
 
 
-window.addEventListener(
-  'resize',
-  requestClothingParallax
-);
-
-
-/* Position initiale */
-
-updateClothingParallax();
-
-
-/* =========================================================
-   START
-========================================================= */
+      /* =====================================================
+         START
+      ===================================================== */
 
       startAutoplay();
 
@@ -1038,7 +912,6 @@ document.addEventListener(
 
       });
 
-
     initClothingHero();
 
   }
@@ -1060,7 +933,6 @@ function initPourProductsCarousel() {
 
       carousel.dataset.carouselReady = 'true';
 
-
       const track =
         carousel.querySelector('[data-pour-products-track]');
 
@@ -1069,7 +941,6 @@ function initPourProductsCarousel() {
 
       const next =
         carousel.querySelector('[data-pour-products-next]');
-
 
       if (!track) {
         return;
@@ -1089,18 +960,14 @@ function initPourProductsCarousel() {
           return 0;
         }
 
-
         const trackStyle =
           window.getComputedStyle(track);
-
 
         const gap =
           parseFloat(trackStyle.gap) || 0;
 
-
         const productWidth =
           firstProduct.getBoundingClientRect().width;
-
 
         return productWidth + gap;
 
@@ -1153,14 +1020,12 @@ function initPourProductsCarousel() {
           track.scrollWidth -
           track.clientWidth;
 
-
         if (prev) {
 
           prev.disabled =
             track.scrollLeft <= 2;
 
         }
-
 
         if (next) {
 
@@ -1236,576 +1101,7 @@ document.addEventListener(
 
       });
 
-
     initPourProductsCarousel();
 
   }
 );
-/* =========================================================
-   POUR — AJAX ADD TO CART + OUVERTURE CART DRAWER
-========================================================= */
-
-(function () {
-
-  function getShopRoot() {
-    if (
-      window.Shopify &&
-      window.Shopify.routes &&
-      window.Shopify.routes.root
-    ) {
-      return window.Shopify.routes.root;
-    }
-
-    return '/';
-  }
-
-
-  function formatMoney(cents) {
-    return new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(cents / 100);
-  }
-
-
-  function openPourCartDrawer() {
-
-    const drawer =
-      document.querySelector('[data-cart-drawer]');
-
-    const overlay =
-      document.querySelector('[data-cart-drawer-overlay]');
-
-    if (!drawer || !overlay) return;
-
-    drawer.classList.add('is-active');
-    overlay.classList.add('is-active');
-
-    drawer.setAttribute(
-      'aria-hidden',
-      'false'
-    );
-const scrollbarWidth =
-  window.innerWidth -
-  document.documentElement.clientWidth;
-
-document.body.style.setProperty(
-  '--scrollbar-width',
-  scrollbarWidth + 'px'
-);
-    document.body.classList.add(
-      'cart-drawer-open'
-    );
-  }
-
-
-  async function refreshPourCartDrawer() {
-
-    const root = getShopRoot();
-
-    const response =
-      await fetch(root + 'cart.js', {
-        headers: {
-          Accept: 'application/json'
-        }
-      });
-
-    if (!response.ok) {
-      throw new Error(
-        'Impossible de récupérer le panier.'
-      );
-    }
-
-    const cart = await response.json();
-
-
-    /* ===============================================
-       COMPTEUR HEADER
-    =============================================== */
-
-    document
-      .querySelectorAll('[data-cart-drawer-open]')
-      .forEach((button) => {
-
-        button.textContent =
-          cart.item_count > 0
-            ? `PANIER (${cart.item_count})`
-            : 'PANIER';
-
-      });
-
-
-    const drawer =
-      document.querySelector('[data-cart-drawer]');
-
-    if (!drawer) return;
-
-
-    /* ===============================================
-       PANIER VIDE
-    =============================================== */
-
-    if (cart.item_count === 0) {
-
-      drawer.innerHTML = `
-        <div class="cart-drawer__header">
-
-          <p class="cart-drawer__title">
-            PANIER
-          </p>
-
-          <button
-            type="button"
-            class="cart-drawer__close"
-            data-cart-drawer-close
-            aria-label="Fermer le panier"
-          >
-            ×
-          </button>
-
-        </div>
-
-        <div class="cart-drawer__empty">
-
-          <p>
-            VOTRE PANIER EST VIDE.
-          </p>
-
-          <a href="/pages/boutique?view=vetements">
-            DÉCOUVRIR LA COLLECTION
-          </a>
-
-        </div>
-      `;
-
-      return;
-    }
-
-
-    /* ===============================================
-       PRODUITS
-    =============================================== */
-
-    const itemsHTML =
-      cart.items
-        .map((item, index) => {
-
-          const variant =
-            item.variant_title &&
-            item.variant_title !== 'Default Title'
-              ? `
-                <div class="cart-drawer__variants">
-                  <p>${item.variant_title}</p>
-                </div>
-              `
-              : '';
-
-          const image =
-            item.image
-              ? `
-                <img
-                  src="${item.image}"
-                  class="cart-drawer__image"
-                  alt="${item.product_title}"
-                  loading="lazy"
-                >
-              `
-              : '';
-
-          return `
-            <div class="cart-drawer__item">
-
-              <a
-                href="${item.url}"
-                class="cart-drawer__media"
-              >
-                ${image}
-              </a>
-
-
-              <div class="cart-drawer__content">
-
-                <a
-                  href="${item.url}"
-                  class="cart-drawer__item-title"
-                >
-                  ${item.product_title}
-                </a>
-
-
-                <p class="cart-drawer__item-price">
-                  ${formatMoney(item.final_line_price)}
-                </p>
-
-
-                ${variant}
-
-
-                <div class="cart-drawer__actions">
-
-                  <div class="cart-drawer__quantity">
-
-                    <button
-                      type="button"
-                      data-cart-change
-                      data-line="${index + 1}"
-                      data-quantity="${item.quantity - 1}"
-                      aria-label="Réduire la quantité"
-                    >
-                      −
-                    </button>
-
-                    <span>
-                      ${item.quantity}
-                    </span>
-
-                    <button
-                      type="button"
-                      data-cart-change
-                      data-line="${index + 1}"
-                      data-quantity="${item.quantity + 1}"
-                      aria-label="Augmenter la quantité"
-                    >
-                      +
-                    </button>
-
-                  </div>
-
-
-                  <button
-                    type="button"
-                    class="cart-drawer__remove"
-                    data-cart-change
-                    data-line="${index + 1}"
-                    data-quantity="0"
-                  >
-                    SUPPRIMER
-                  </button>
-
-                </div>
-
-              </div>
-
-            </div>
-          `;
-
-        })
-        .join('');
-
-
-    drawer.innerHTML = `
-
-      <div class="cart-drawer__header">
-
-        <p class="cart-drawer__title">
-          PANIER
-        </p>
-
-        <button
-          type="button"
-          class="cart-drawer__close"
-          data-cart-drawer-close
-          aria-label="Fermer le panier"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-      <div class="cart-drawer__items">
-        ${itemsHTML}
-      </div>
-
-
-      <div class="cart-drawer__footer">
-
-        <div class="cart-drawer__total">
-
-          <span>
-            SOUS-TOTAL
-          </span>
-
-          <span>
-            ${formatMoney(cart.total_price)}
-          </span>
-
-        </div>
-
-
-        <p class="cart-drawer__shipping">
-          Livraison et taxes calculées à l’étape suivante.
-        </p>
-
-
-        <form
-          action="${root}cart"
-          method="post"
-        >
-
-          <button
-            type="submit"
-            name="checkout"
-            class="cart-drawer__checkout"
-          >
-
-            <span>
-              PASSER AU PAIEMENT
-            </span>
-
-            <span aria-hidden="true">
-              →
-            </span>
-
-          </button>
-
-        </form>
-
-
-        <a
-          href="${root}cart"
-          class="cart-drawer__view-cart"
-        >
-          VOIR LE PANIER
-        </a>
-
-      </div>
-    `;
-  }
-
-
-  /* =====================================================
-     AJOUT AU PANIER
-  ====================================================== */
-
-  document.addEventListener(
-    'submit',
-    async function (event) {
-
-      const form =
-        event.target.closest(
-          'form[action*="/cart/add"]'
-        );
-
-      if (!form) return;
-
-      event.preventDefault();
-
-
-      const submitButton =
-        form.querySelector(
-          '[type="submit"]'
-        );
-
-
-      if (submitButton) {
-        submitButton.disabled = true;
-      }
-
-
-      try {
-
-        const root = getShopRoot();
-
-        const formData =
-          new FormData(form);
-
-
-        const response =
-          await fetch(
-            root + 'cart/add.js',
-            {
-              method: 'POST',
-
-              headers: {
-                Accept: 'application/json'
-              },
-
-              body: formData
-            }
-          );
-
-
-        if (!response.ok) {
-
-          const error =
-            await response.json();
-
-          throw new Error(
-            error.description ||
-            'Impossible d’ajouter ce produit.'
-          );
-
-        }
-
-
-        /* Met à jour le drawer */
-
-        await refreshPourCartDrawer();
-
-
-        /* Puis l'ouvre */
-
-        openPourCartDrawer();
-
-
-      } catch (error) {
-
-        console.error(
-          'POUR — Add to cart:',
-          error
-        );
-
-        alert(
-          error.message ||
-          'Une erreur est survenue.'
-        );
-
-      } finally {
-
-        if (submitButton) {
-          submitButton.disabled = false;
-        }
-
-      }
-
-    }
-  );
-
-
-  /* =====================================================
-     MODIFICATION QUANTITÉ DANS LE DRAWER
-  ====================================================== */
-
-  document.addEventListener(
-    'click',
-    async function (event) {
-
-      const button =
-        event.target.closest(
-          '[data-cart-change]'
-        );
-
-      if (!button) return;
-
-
-      event.preventDefault();
-
-
-      const line =
-        Number(
-          button.dataset.line
-        );
-
-      const quantity =
-        Math.max(
-          0,
-          Number(
-            button.dataset.quantity
-          )
-        );
-
-
-      try {
-
-        const root = getShopRoot();
-
-
-        await fetch(
-          root + 'cart/change.js',
-          {
-            method: 'POST',
-
-            headers: {
-              'Content-Type':
-                'application/json',
-
-              Accept:
-                'application/json'
-            },
-
-            body:
-              JSON.stringify({
-                line: line,
-                quantity: quantity
-              })
-          }
-        );
-
-
-        await refreshPourCartDrawer();
-
-
-      } catch (error) {
-
-        console.error(
-          'POUR — Update cart:',
-          error
-        );
-
-      }
-
-    }
-  );
-
-
-  /* =====================================================
-     FERMETURE APRÈS RAFRAÎCHISSEMENT DU DRAWER
-  ====================================================== */
-
-  document.addEventListener(
-    'click',
-    function (event) {
-
-      const close =
-        event.target.closest(
-          '[data-cart-drawer-close]'
-        );
-
-      if (!close) return;
-
-
-      const drawer =
-        document.querySelector(
-          '[data-cart-drawer]'
-        );
-
-      const overlay =
-        document.querySelector(
-          '[data-cart-drawer-overlay]'
-        );
-
-
-      if (drawer) {
-
-        drawer
-          .classList
-          .remove('is-active');
-
-        drawer.setAttribute(
-          'aria-hidden',
-          'true'
-        );
-
-      }
-
-
-      if (overlay) {
-
-        overlay
-          .classList
-          .remove('is-active');
-
-      }
-
-
-      document.body
-        .classList
-        .remove(
-          'cart-drawer-open'
-        );
-
-    }
-  );
-
-})();
