@@ -9,18 +9,18 @@
     <nav class="site-header__nav site-header__nav--left">
 
 
-      <!-- =========================
+      <!-- =================================================
            BOUTIQUE + MEGA MENU
-      ========================== -->
+      ================================================== -->
 
       <div class="site-header__item site-header__item--dropdown">
 
-       <a
-  href="/pages/boutique?view=vetements"
-  class="site-header__link"
->
-  BOUTIQUE
-</a>
+        <a
+          href="/pages/boutique?view=vetements"
+          class="site-header__link"
+        >
+          BOUTIQUE
+        </a>
 
 
         <div class="site-header__dropdown">
@@ -28,33 +28,26 @@
           <div class="site-header__dropdown-inner">
 
 
-            <!-- =========================================
-                 COLONNE GAUCHE
-            ========================================== -->
+            <!-- =============================================
+                 NAVIGATION MEGA MENU
+            ============================================== -->
 
             <div class="site-header__mega-navigation">
 
               <div class="site-header__mega-column">
-
-                <!-- TITRE NON CLIQUABLE -->
 
                 <p class="site-header__mega-heading">
                   VÊTEMENTS
                 </p>
 
 
-                <!-- COLLECTION -->
+                <a
+                  href="/pages/collection-001?view=collection-001"
+                  class="site-header__mega-collection site-header__mega-link"
+                >
+                  COLLECTION 001
+                </a>
 
-      <a
-  href="/pages/collection-001?view=collection-001"
-  class="site-header__mega-collection site-header__mega-link"
->
-  COLLECTION 001
-</a>
-            
-
-
-                <!-- CATÉGORIES -->
 
                 <div class="site-header__mega-links">
 
@@ -112,9 +105,9 @@
             </div>
 
 
-            <!-- =========================================
+            <!-- =============================================
                  VISUELS DROITE
-            ========================================== -->
+            ============================================== -->
 
             <div class="site-header__mega-featured">
 
@@ -167,7 +160,6 @@
               {% endif %}
 
 
-
               <!-- VISUEL 02 -->
 
               {% if section.settings.menu_image_2 != blank %}
@@ -215,7 +207,6 @@
 
               {% endif %}
 
-
             </div>
 
           </div>
@@ -225,10 +216,9 @@
       </div>
 
 
-
-      <!-- =========================
+      <!-- =================================================
            CLUB PRIVILÈGES
-      ========================== -->
+      ================================================== -->
 
       <a
         href="/pages/club-privileges?view=club-privileges"
@@ -238,20 +228,18 @@
       </a>
 
 
-
-      <!-- =========================
+      <!-- =================================================
            CONTACT
-      ========================== -->
+      ================================================== -->
 
       <a
-  href="/pages/contact?view=contact"
-  class="site-header__link"
->
-  CONTACT
-</a>
+        href="/pages/contact?view=contact"
+        class="site-header__link"
+      >
+        CONTACT
+      </a>
 
     </nav>
-
 
 
     <!-- =====================================================
@@ -283,7 +271,6 @@
     </a>
 
 
-
     <!-- =====================================================
          ACTIONS DROITE
     ====================================================== -->
@@ -297,28 +284,38 @@
         COMPTE
       </a>
 
+
       <button
-  type="button"
-  class="site-header__cart"
-  data-cart-drawer-open
-  aria-label="Ouvrir le panier"
->
-  PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
-</button>
+        type="button"
+        class="site-header__link site-header__cart"
+        data-cart-drawer-open
+        aria-label="Ouvrir le panier"
+      >
+        PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+      </button>
 
     </div>
 
   </div>
 
 </header>
-<!-- =====================================================
-     CART DRAWER
-====================================================== -->
+
+
+
+<!-- =========================================================
+     CART DRAWER — OVERLAY
+========================================================= -->
 
 <div
   class="cart-drawer-overlay"
   data-cart-drawer-overlay
 ></div>
+
+
+
+<!-- =========================================================
+     CART DRAWER
+========================================================= -->
 
 <aside
   class="cart-drawer"
@@ -326,11 +323,14 @@
   aria-hidden="true"
 >
 
+  <!-- HEADER -->
+
   <div class="cart-drawer__header">
 
     <p class="cart-drawer__title">
       PANIER
     </p>
+
 
     <button
       type="button"
@@ -346,28 +346,42 @@
 
   {% if cart.item_count > 0 %}
 
+
+    <!-- =====================================================
+         PRODUITS
+    ====================================================== -->
+
     <div class="cart-drawer__items">
 
       {% for item in cart.items %}
 
         <div class="cart-drawer__item">
 
+
+          <!-- IMAGE -->
+
           <a
             href="{{ item.url }}"
             class="cart-drawer__media"
           >
+
             {% if item.image != blank %}
+
               {{
                 item.image
-                | image_url: width: 500
+                | image_url: width: 600
                 | image_tag:
                   class: 'cart-drawer__image',
                   loading: 'lazy',
                   alt: item.product.title
               }}
+
             {% endif %}
+
           </a>
 
+
+          <!-- CONTENU -->
 
           <div class="cart-drawer__content">
 
@@ -378,64 +392,76 @@
               {{ item.product.title }}
             </a>
 
+
             <p class="cart-drawer__item-price">
               {{ item.final_line_price | money }}
             </p>
 
 
             {% unless item.product.has_only_default_variant %}
+
               <div class="cart-drawer__variants">
 
                 {% for option in item.options_with_values %}
+
                   <p>
                     {{ option.value }}
                   </p>
+
                 {% endfor %}
 
               </div>
+
             {% endunless %}
 
 
+            <!-- =============================================
+                 QUANTITÉ + SUPPRIMER
+            ============================================== -->
+
             <div class="cart-drawer__actions">
+
 
               <div class="cart-drawer__quantity">
 
-  <button
-    type="button"
-    data-cart-change
-    data-line="{{ forloop.index }}"
-    data-quantity="{{ item.quantity | minus: 1 }}"
-    aria-label="Réduire la quantité"
-  >
-    −
-  </button>
-
-  <span>
-    {{ item.quantity }}
-  </span>
-
-  <button
-    type="button"
-    data-cart-change
-    data-line="{{ forloop.index }}"
-    data-quantity="{{ item.quantity | plus: 1 }}"
-    aria-label="Augmenter la quantité"
-  >
-    +
-  </button>
-
-</div>
+                <button
+                  type="button"
+                  data-cart-change
+                  data-line="{{ forloop.index }}"
+                  data-quantity="{{ item.quantity | minus: 1 }}"
+                  aria-label="Réduire la quantité"
+                >
+                  −
+                </button>
 
 
-<button
-  type="button"
-  class="cart-drawer__remove"
-  data-cart-change
-  data-line="{{ forloop.index }}"
-  data-quantity="0"
->
-  SUPPRIMER
-</button>
+                <span>
+                  {{ item.quantity }}
+                </span>
+
+
+                <button
+                  type="button"
+                  data-cart-change
+                  data-line="{{ forloop.index }}"
+                  data-quantity="{{ item.quantity | plus: 1 }}"
+                  aria-label="Augmenter la quantité"
+                >
+                  +
+                </button>
+
+              </div>
+
+
+              <button
+                type="button"
+                class="cart-drawer__remove"
+                data-cart-change
+                data-line="{{ forloop.index }}"
+                data-quantity="0"
+              >
+                SUPPRIMER
+              </button>
 
             </div>
 
@@ -447,6 +473,10 @@
 
     </div>
 
+
+    <!-- =====================================================
+         BAS DU DRAWER
+    ====================================================== -->
 
     <div class="cart-drawer__footer">
 
@@ -472,19 +502,23 @@
         action="{{ routes.cart_url }}"
         method="post"
       >
+
         <button
           type="submit"
           name="checkout"
           class="cart-drawer__checkout"
         >
+
           <span>
             PASSER AU PAIEMENT
           </span>
 
-          <span>
+          <span aria-hidden="true">
             →
           </span>
+
         </button>
+
       </form>
 
 
@@ -500,11 +534,17 @@
 
   {% else %}
 
+
+    <!-- =====================================================
+         PANIER VIDE
+    ====================================================== -->
+
     <div class="cart-drawer__empty">
 
       <p>
         VOTRE PANIER EST VIDE.
       </p>
+
 
       <a href="/pages/boutique?view=vetements">
         DÉCOUVRIR LA COLLECTION
@@ -517,31 +557,66 @@
 </aside>
 
 
+
 <style>
 
 /* =========================================================
-   BOUTON PANIER HEADER
+   PANIER HEADER
 ========================================================= */
 
-.site-header__cart {
+.site-header__actions .site-header__cart {
   padding: 0 !important;
   margin: 0 !important;
+
+  min-width: 0 !important;
+  min-height: 0 !important;
+
+  width: auto !important;
+  height: auto !important;
+
   border: 0 !important;
+
   background: transparent !important;
+
   appearance: none !important;
   -webkit-appearance: none !important;
 
-  font-family: inherit !important;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif !important;
+
   font-size: 12px !important;
   font-weight: 400 !important;
+
   line-height: 1 !important;
+
   letter-spacing: 0 !important;
 
   color: #111111 !important;
 
   cursor: pointer;
+
   text-decoration: none;
 }
+
+
+
+/* =========================================================
+   ÉVITE LE PETIT REBOND À L'OUVERTURE
+========================================================= */
+
+html {
+  scrollbar-gutter: stable;
+}
+
+
+body.cart-drawer-open {
+  overflow: hidden;
+}
+
+
 
 /* =========================================================
    OVERLAY
@@ -549,14 +624,18 @@
 
 .cart-drawer-overlay {
   position: fixed;
+
   inset: 0;
 
   z-index: 99998;
 
-  background: rgba(0, 0, 0, .38);
+  background:
+    rgba(0, 0, 0, .38);
 
   opacity: 0;
+
   visibility: hidden;
+
   pointer-events: none;
 
   transition:
@@ -564,12 +643,15 @@
     visibility .45s ease;
 }
 
+
 .cart-drawer-overlay.is-active {
   opacity: 1;
+
   visibility: visible;
 
   pointer-events: auto;
 }
+
 
 
 /* =========================================================
@@ -588,15 +670,24 @@
   flex-direction: column;
 
   width: min(510px, 92vw);
+
   height: 100vh;
+  height: 100dvh;
 
   background: #ffffff;
+
   color: #111111;
 
-  transform: translateX(100%);
+  transform:
+    translate3d(100%, 0, 0);
 
   transition:
     transform .6s cubic-bezier(.76,0,.24,1);
+
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   font-family:
     "Helvetica Neue",
@@ -611,42 +702,13 @@
     rgba(0,0,0,.08);
 }
 
+
 .cart-drawer.is-active {
-  transform: translateX(0);
-}
-.cart-drawer__quantity button {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 32px;
-  height: 32px;
-
-  padding: 0;
-  margin: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: #111111;
-
-  font-family: inherit;
-  font-size: 11px;
-
-  cursor: pointer;
+  transform:
+    translate3d(0, 0, 0);
 }
 
 
-.cart-drawer__remove {
-  border: 0;
-  background: transparent;
-
-  cursor: pointer;
-
-  font-family: inherit;
-}
 
 /* =========================================================
    HEADER DRAWER
@@ -664,10 +726,13 @@
     0
     34px;
 
+  flex-shrink: 0;
+
   border-bottom:
     1px solid
     rgba(17,17,17,.10);
 }
+
 
 .cart-drawer__title {
   margin: 0;
@@ -680,28 +745,45 @@
   text-transform: uppercase;
 }
 
+
 .cart-drawer__close {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 30px;
+  height: 30px;
+
   padding: 0;
 
   border: 0;
+
   background: transparent;
 
   color: #111111;
 
-  font-size: 28px;
+  font-family: inherit;
+
+  font-size: 26px;
   font-weight: 200;
 
   line-height: 1;
 
   cursor: pointer;
 
+  appearance: none;
+  -webkit-appearance: none;
+
   transition:
     transform .35s ease;
 }
 
+
 .cart-drawer__close:hover {
   transform: rotate(90deg);
 }
+
 
 
 /* =========================================================
@@ -711,12 +793,16 @@
 .cart-drawer__items {
   flex: 1;
 
+  min-height: 0;
+
   overflow-y: auto;
+  overscroll-behavior: contain;
 
   padding:
     25px
     34px;
 }
+
 
 .cart-drawer__item {
   display: grid;
@@ -736,27 +822,48 @@
     rgba(17,17,17,.09);
 }
 
+
+
+/* IMAGE */
+
 .cart-drawer__media {
   display: block;
 
   width: 125px;
 
   overflow: hidden;
+
+  text-decoration: none;
 }
+
 
 .cart-drawer__image {
   display: block;
 
   width: 100%;
   height: auto;
+
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
 }
+
+
+
+/* =========================================================
+   CONTENU PRODUIT
+========================================================= */
 
 .cart-drawer__content {
   display: flex;
+
   flex-direction: column;
 
   justify-content: flex-start;
+
+  min-width: 0;
 }
+
 
 .cart-drawer__item-title {
   color: #111111;
@@ -773,6 +880,7 @@
   text-decoration: none;
 }
 
+
 .cart-drawer__item-price {
   margin:
     10px
@@ -781,20 +889,28 @@
 
   font-size: 10px;
 
-  color: rgba(17,17,17,.55);
+  color:
+    rgba(17,17,17,.55);
 }
+
 
 .cart-drawer__variants {
   margin-top: 8px;
 }
 
+
 .cart-drawer__variants p {
-  margin: 2px 0 0;
+  margin:
+    2px
+    0
+    0;
 
   font-size: 9px;
 
-  color: rgba(17,17,17,.48);
+  color:
+    rgba(17,17,17,.48);
 }
+
 
 
 /* =========================================================
@@ -812,6 +928,10 @@
   margin-top: 22px;
 }
 
+
+
+/* QUANTITÉ */
+
 .cart-drawer__quantity {
   display: grid;
 
@@ -827,7 +947,8 @@
     rgba(17,17,17,.18);
 }
 
-.cart-drawer__quantity a,
+
+.cart-drawer__quantity button,
 .cart-drawer__quantity span {
   display: flex;
 
@@ -837,28 +958,80 @@
   width: 32px;
   height: 32px;
 
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+
+  background: transparent;
+
   color: #111111;
 
-  font-size: 11px;
+  font-family: inherit;
 
-  text-decoration: none;
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  appearance: none;
+  -webkit-appearance: none;
 }
+
+
+.cart-drawer__quantity button {
+  cursor: pointer;
+
+  transition:
+    background-color .25s ease;
+}
+
+
+.cart-drawer__quantity button:hover {
+  background:
+    rgba(17,17,17,.05);
+}
+
+
+
+/* =========================================================
+   SUPPRIMER
+========================================================= */
 
 .cart-drawer__remove {
   position: relative;
 
-  padding-bottom: 4px;
+  padding:
+    0
+    0
+    4px;
 
-  color: rgba(17,17,17,.55);
+  margin: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color:
+    rgba(17,17,17,.55);
+
+  font-family: inherit;
 
   font-size: 8px;
+  font-weight: 400;
+
+  line-height: 1;
 
   letter-spacing: .10em;
 
-  text-decoration: none;
-
   text-transform: uppercase;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
 }
+
 
 .cart-drawer__remove::after {
   content: "";
@@ -873,15 +1046,17 @@
 
   background: currentColor;
 
+  transform-origin: left;
+
   transition:
     transform .4s cubic-bezier(.22,1,.36,1);
-
-  transform-origin: left;
 }
+
 
 .cart-drawer__remove:hover::after {
   transform: scaleX(.4);
 }
+
 
 
 /* =========================================================
@@ -903,6 +1078,7 @@
   background: #ffffff;
 }
 
+
 .cart-drawer__total {
   display: flex;
 
@@ -918,6 +1094,7 @@
   text-transform: uppercase;
 }
 
+
 .cart-drawer__shipping {
   margin:
     13px
@@ -928,8 +1105,10 @@
 
   line-height: 1.45;
 
-  color: rgba(17,17,17,.50);
+  color:
+    rgba(17,17,17,.50);
 }
+
 
 
 /* =========================================================
@@ -943,6 +1122,7 @@
   justify-content: space-between;
 
   width: 100%;
+
   min-height: 52px;
 
   margin-top: 22px;
@@ -964,6 +1144,7 @@
   font-family: inherit;
 
   font-size: 9px;
+  font-weight: 400;
 
   letter-spacing: .11em;
 
@@ -971,10 +1152,14 @@
 
   cursor: pointer;
 
+  appearance: none;
+  -webkit-appearance: none;
+
   transition:
     background-color .5s cubic-bezier(.22,1,.36,1),
     color .5s cubic-bezier(.22,1,.36,1);
 }
+
 
 .cart-drawer__checkout:hover {
   background: #ffffff;
@@ -983,8 +1168,9 @@
 }
 
 
+
 /* =========================================================
-   VOIR PANIER
+   VOIR LE PANIER
 ========================================================= */
 
 .cart-drawer__view-cart {
@@ -1015,6 +1201,7 @@
 }
 
 
+
 /* =========================================================
    PANIER VIDE
 ========================================================= */
@@ -1034,13 +1221,17 @@
   text-align: center;
 }
 
+
 .cart-drawer__empty p {
   margin: 0;
 
   font-size: 24px;
 
+  font-weight: 400;
+
   letter-spacing: -.03em;
 }
+
 
 .cart-drawer__empty a {
   margin-top: 24px;
@@ -1063,23 +1254,6 @@
 }
 
 
-/* =========================================================
-   BODY LOCK
-========================================================= */
-
-html {
-  scrollbar-gutter: stable;
-}
-
-body {
-  width: 100%;
-}
-
-body.cart-drawer-open {
-  overflow: hidden;
-  padding-right: var(--scrollbar-width, 0px);
-}
-
 
 /* =========================================================
    MOBILE
@@ -1091,16 +1265,19 @@ body.cart-drawer-open {
     width: 100%;
   }
 
+
   .cart-drawer__header {
     padding:
       0
       20px;
   }
 
+
   .cart-drawer__items {
     padding:
       20px;
   }
+
 
   .cart-drawer__item {
     grid-template-columns:
@@ -1110,9 +1287,11 @@ body.cart-drawer-open {
     gap: 16px;
   }
 
+
   .cart-drawer__media {
     width: 105px;
   }
+
 
   .cart-drawer__footer {
     padding:
@@ -1122,44 +1301,103 @@ body.cart-drawer-open {
   }
 
 }
-.site-header__actions button.site-header__cart {
-  font-family: inherit !important;
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  line-height: 12px !important;
-  letter-spacing: 0 !important;
 
-  padding: 0 !important;
-  margin: 0 !important;
-
-  min-width: 0 !important;
-  min-height: 0 !important;
-  width: auto !important;
-  height: auto !important;
-
-  border: 0 !important;
-  background: none !important;
-
-  color: #111 !important;
-
-  appearance: none !important;
-  -webkit-appearance: none !important;
-}
-.site-header__actions > .site-header__link,
-.site-header__actions > .site-header__cart {
-  font-size: 12px !important;
-  font-weight: 400 !important;
-  line-height: 1 !important;
-  font-family: inherit !important;
-}
 </style>
+
 
 
 <script>
 
 (function () {
 
-  function initCartDrawer() {
+  /* =========================================================
+     ÉVITE D'INITIALISER LE SCRIPT PLUSIEURS FOIS
+  ========================================================= */
+
+  if (window.__pourCartSystemLoaded) {
+    return;
+  }
+
+  window.__pourCartSystemLoaded = true;
+
+
+
+  /* =========================================================
+     UTILITAIRES
+  ========================================================= */
+
+  function getRoot() {
+
+    if (
+      window.Shopify &&
+      Shopify.routes &&
+      Shopify.routes.root
+    ) {
+      return Shopify.routes.root;
+    }
+
+    return '/';
+
+  }
+
+
+  function getCurrency() {
+
+    if (
+      window.Shopify &&
+      Shopify.currency &&
+      Shopify.currency.active
+    ) {
+      return Shopify.currency.active;
+    }
+
+    return 'EUR';
+
+  }
+
+
+  function money(cents) {
+
+    try {
+
+      return new Intl.NumberFormat(
+        'fr-FR',
+        {
+          style: 'currency',
+          currency: getCurrency()
+        }
+      ).format(cents / 100);
+
+    } catch (error) {
+
+      return (cents / 100)
+        .toFixed(2)
+        .replace('.', ',') + ' €';
+
+    }
+
+  }
+
+
+  function escapeHTML(value) {
+
+    const div =
+      document.createElement('div');
+
+    div.textContent =
+      value == null ? '' : String(value);
+
+    return div.innerHTML;
+
+  }
+
+
+
+  /* =========================================================
+     OUVERTURE DU DRAWER
+  ========================================================= */
+
+  function openDrawer() {
 
     const drawer =
       document.querySelector(
@@ -1171,49 +1409,55 @@ body.cart-drawer-open {
         '[data-cart-drawer-overlay]'
       );
 
-    const openButtons =
-      document.querySelectorAll(
-        '[data-cart-drawer-open]'
-      );
 
-    const closeButtons =
-      document.querySelectorAll(
-        '[data-cart-drawer-close]'
-      );
-
-
-    if (!drawer || !overlay) return;
-
-
-    function openDrawer() {
-
-      drawer.classList.add(
-        'is-active'
-      );
-
-      overlay.classList.add(
-        'is-active'
-      );
-
-      drawer.setAttribute(
-        'aria-hidden',
-        'false'
-      );
-
-      document.body.classList.add(
-        'cart-drawer-open'
-      );
-
+    if (!drawer || !overlay) {
+      return;
     }
 
 
-    function closeDrawer() {
+    drawer.classList.add(
+      'is-active'
+    );
 
-      drawer.classList.remove(
-        'is-active'
+    overlay.classList.add(
+      'is-active'
+    );
+
+
+    drawer.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+
+    document.body.classList.add(
+      'cart-drawer-open'
+    );
+
+  }
+
+
+
+  /* =========================================================
+     FERMETURE
+  ========================================================= */
+
+  function closeDrawer() {
+
+    const drawer =
+      document.querySelector(
+        '[data-cart-drawer]'
       );
 
-      overlay.classList.remove(
+    const overlay =
+      document.querySelector(
+        '[data-cart-drawer-overlay]'
+      );
+
+
+    if (drawer) {
+
+      drawer.classList.remove(
         'is-active'
       );
 
@@ -1222,81 +1466,623 @@ body.cart-drawer-open {
         'true'
       );
 
-      document.body.classList.remove(
-  'cart-drawer-open'
-);
+    }
 
-document.body.style.removeProperty(
-  '--scrollbar-width'
-);
+
+    if (overlay) {
+
+      overlay.classList.remove(
+        'is-active'
+      );
 
     }
 
 
-    openButtons.forEach((button) => {
-
-      button.addEventListener(
-        'click',
-        openDrawer
-      );
-
-    });
-
-
-    closeButtons.forEach((button) => {
-
-      button.addEventListener(
-        'click',
-        closeDrawer
-      );
-
-    });
-
-
-    overlay.addEventListener(
-      'click',
-      closeDrawer
+    document.body.classList.remove(
+      'cart-drawer-open'
     );
 
+  }
 
-    document.addEventListener(
-      'keydown',
-      function (event) {
 
-        if (event.key === 'Escape') {
-          closeDrawer();
+
+  /* =========================================================
+     COMPTEUR HEADER
+  ========================================================= */
+
+  function updateHeaderCartCount(cart) {
+
+    document
+      .querySelectorAll(
+        '[data-cart-drawer-open]'
+      )
+      .forEach((button) => {
+
+        button.textContent =
+          cart.item_count > 0
+            ? `PANIER (${cart.item_count})`
+            : 'PANIER';
+
+      });
+
+  }
+
+
+
+  /* =========================================================
+     RECONSTRUCTION DU DRAWER
+  ========================================================= */
+
+  async function refreshDrawer() {
+
+    const root =
+      getRoot();
+
+
+    const response =
+      await fetch(
+        root + 'cart.js',
+        {
+          headers: {
+            Accept:
+              'application/json'
+          }
+        }
+      );
+
+
+    if (!response.ok) {
+      throw new Error(
+        'Impossible de charger le panier.'
+      );
+    }
+
+
+    const cart =
+      await response.json();
+
+
+    updateHeaderCartCount(cart);
+
+
+    const drawer =
+      document.querySelector(
+        '[data-cart-drawer]'
+      );
+
+
+    if (!drawer) {
+      return cart;
+    }
+
+
+
+    /* =====================================================
+       PANIER VIDE
+    ====================================================== */
+
+    if (cart.item_count === 0) {
+
+      drawer.innerHTML = `
+
+        <div class="cart-drawer__header">
+
+          <p class="cart-drawer__title">
+            PANIER
+          </p>
+
+          <button
+            type="button"
+            class="cart-drawer__close"
+            data-cart-drawer-close
+            aria-label="Fermer le panier"
+          >
+            ×
+          </button>
+
+        </div>
+
+
+        <div class="cart-drawer__empty">
+
+          <p>
+            VOTRE PANIER EST VIDE.
+          </p>
+
+          <a href="/pages/boutique?view=vetements">
+            DÉCOUVRIR LA COLLECTION
+          </a>
+
+        </div>
+      `;
+
+
+      return cart;
+
+    }
+
+
+
+    /* =====================================================
+       ITEMS
+    ====================================================== */
+
+    const itemsHTML =
+      cart.items
+        .map(
+          (item, index) => {
+
+            const imageHTML =
+              item.image
+                ? `
+                  <img
+                    src="${escapeHTML(item.image)}"
+                    class="cart-drawer__image"
+                    alt="${escapeHTML(item.product_title)}"
+                    loading="lazy"
+                  >
+                `
+                : '';
+
+
+            const variantHTML =
+              item.variant_title &&
+              item.variant_title !== 'Default Title'
+                ? `
+                  <div class="cart-drawer__variants">
+                    <p>
+                      ${escapeHTML(item.variant_title)}
+                    </p>
+                  </div>
+                `
+                : '';
+
+
+            return `
+
+              <div class="cart-drawer__item">
+
+
+                <a
+                  href="${escapeHTML(item.url)}"
+                  class="cart-drawer__media"
+                >
+                  ${imageHTML}
+                </a>
+
+
+                <div class="cart-drawer__content">
+
+
+                  <a
+                    href="${escapeHTML(item.url)}"
+                    class="cart-drawer__item-title"
+                  >
+                    ${escapeHTML(item.product_title)}
+                  </a>
+
+
+                  <p class="cart-drawer__item-price">
+                    ${money(item.final_line_price)}
+                  </p>
+
+
+                  ${variantHTML}
+
+
+                  <div class="cart-drawer__actions">
+
+
+                    <div class="cart-drawer__quantity">
+
+                      <button
+                        type="button"
+                        data-cart-change
+                        data-line="${index + 1}"
+                        data-quantity="${Math.max(0, item.quantity - 1)}"
+                        aria-label="Réduire la quantité"
+                      >
+                        −
+                      </button>
+
+
+                      <span>
+                        ${item.quantity}
+                      </span>
+
+
+                      <button
+                        type="button"
+                        data-cart-change
+                        data-line="${index + 1}"
+                        data-quantity="${item.quantity + 1}"
+                        aria-label="Augmenter la quantité"
+                      >
+                        +
+                      </button>
+
+                    </div>
+
+
+                    <button
+                      type="button"
+                      class="cart-drawer__remove"
+                      data-cart-change
+                      data-line="${index + 1}"
+                      data-quantity="0"
+                    >
+                      SUPPRIMER
+                    </button>
+
+                  </div>
+
+                </div>
+
+              </div>
+            `;
+
+          }
+        )
+        .join('');
+
+
+
+    drawer.innerHTML = `
+
+      <div class="cart-drawer__header">
+
+        <p class="cart-drawer__title">
+          PANIER
+        </p>
+
+
+        <button
+          type="button"
+          class="cart-drawer__close"
+          data-cart-drawer-close
+          aria-label="Fermer le panier"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="cart-drawer__items">
+        ${itemsHTML}
+      </div>
+
+
+      <div class="cart-drawer__footer">
+
+        <div class="cart-drawer__total">
+
+          <span>
+            SOUS-TOTAL
+          </span>
+
+          <span>
+            ${money(cart.total_price)}
+          </span>
+
+        </div>
+
+
+        <p class="cart-drawer__shipping">
+          Livraison et taxes calculées à l’étape suivante.
+        </p>
+
+
+        <form
+          action="${root}cart"
+          method="post"
+        >
+
+          <button
+            type="submit"
+            name="checkout"
+            class="cart-drawer__checkout"
+          >
+
+            <span>
+              PASSER AU PAIEMENT
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </form>
+
+
+        <a
+          href="${root}cart"
+          class="cart-drawer__view-cart"
+        >
+          VOIR LE PANIER
+        </a>
+
+      </div>
+    `;
+
+
+    return cart;
+
+  }
+
+
+
+  /* =========================================================
+     CLICK GLOBAL
+  ========================================================= */
+
+  document.addEventListener(
+    'click',
+    async function (event) {
+
+
+      /* OUVERTURE */
+
+      const openButton =
+        event.target.closest(
+          '[data-cart-drawer-open]'
+        );
+
+
+      if (openButton) {
+
+        event.preventDefault();
+
+        openDrawer();
+
+        return;
+
+      }
+
+
+
+      /* FERMETURE */
+
+      const closeButton =
+        event.target.closest(
+          '[data-cart-drawer-close]'
+        );
+
+
+      if (closeButton) {
+
+        event.preventDefault();
+
+        closeDrawer();
+
+        return;
+
+      }
+
+
+
+      /* OVERLAY */
+
+      if (
+        event.target.matches(
+          '[data-cart-drawer-overlay]'
+        )
+      ) {
+
+        closeDrawer();
+
+        return;
+
+      }
+
+
+
+      /* QUANTITÉ / SUPPRIMER */
+
+      const changeButton =
+        event.target.closest(
+          '[data-cart-change]'
+        );
+
+
+      if (changeButton) {
+
+        event.preventDefault();
+
+
+        const line =
+          Number(
+            changeButton.dataset.line
+          );
+
+
+        const quantity =
+          Math.max(
+            0,
+            Number(
+              changeButton.dataset.quantity
+            )
+          );
+
+
+        changeButton.disabled = true;
+
+
+        try {
+
+          const response =
+            await fetch(
+              getRoot() + 'cart/change.js',
+              {
+                method: 'POST',
+
+                headers: {
+                  'Content-Type':
+                    'application/json',
+
+                  Accept:
+                    'application/json'
+                },
+
+                body:
+                  JSON.stringify({
+                    line: line,
+                    quantity: quantity
+                  })
+              }
+            );
+
+
+          if (!response.ok) {
+            throw new Error(
+              'Impossible de modifier le panier.'
+            );
+          }
+
+
+          await refreshDrawer();
+
+
+          openDrawer();
+
+
+        } catch (error) {
+
+          console.error(
+            'POUR Cart:',
+            error
+          );
+
+        }
+
+
+        return;
+
+      }
+
+    }
+  );
+
+
+
+  /* =========================================================
+     AJOUT PRODUIT AU PANIER EN AJAX
+  ========================================================= */
+
+  document.addEventListener(
+    'submit',
+    async function (event) {
+
+      const form =
+        event.target.closest(
+          'form[action*="/cart/add"]'
+        );
+
+
+      if (!form) {
+        return;
+      }
+
+
+      event.preventDefault();
+
+
+      const submitButton =
+        form.querySelector(
+          '[type="submit"]'
+        );
+
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+
+      try {
+
+        const response =
+          await fetch(
+            getRoot() + 'cart/add.js',
+            {
+              method: 'POST',
+
+              headers: {
+                Accept:
+                  'application/json'
+              },
+
+              body:
+                new FormData(form)
+            }
+          );
+
+
+        if (!response.ok) {
+
+          const data =
+            await response.json();
+
+          throw new Error(
+            data.description ||
+            'Impossible d’ajouter ce produit.'
+          );
+
+        }
+
+
+        await refreshDrawer();
+
+
+        openDrawer();
+
+
+      } catch (error) {
+
+        console.error(
+          'POUR Add to cart:',
+          error
+        );
+
+
+        alert(
+          error.message ||
+          'Une erreur est survenue.'
+        );
+
+      } finally {
+
+        if (submitButton) {
+          submitButton.disabled = false;
         }
 
       }
-    );
 
-  }
+    }
+  );
 
 
-  if (
-    document.readyState === 'loading'
-  ) {
 
-    document.addEventListener(
-      'DOMContentLoaded',
-      initCartDrawer
-    );
-
-  } else {
-
-    initCartDrawer();
-
-  }
-
+  /* =========================================================
+     ESCAPE
+  ========================================================= */
 
   document.addEventListener(
-    'shopify:section:load',
-    initCartDrawer
+    'keydown',
+    function (event) {
+
+      if (event.key === 'Escape') {
+        closeDrawer();
+      }
+
+    }
   );
 
 })();
 
 </script>
+
 
 
 {% schema %}
