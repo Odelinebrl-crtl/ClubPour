@@ -31,64 +31,64 @@
           "type": "product_card",
           "settings": {
             "product": "riviera",
-            "image_primary": "shopify://shop_images/Copie_de_POST_RECAP_FEVRIER.png",
-            "image_secondary": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
+            "image_primary": "shopify://shop_images/14_7f827561-18cc-423c-a25d-daffd177857d.png",
+            "image_secondary": "shopify://shop_images/13_3aa1a95e-dc40-42d9-afa8-407963a9ac3d.png"
           }
         },
         "product_card_NHQ6tT": {
           "type": "product_card",
           "settings": {
             "product": "cypres-italien",
-            "image_primary": "shopify://shop_images/Copie_de_POST_RECAP_FEVRIER-2.png",
-            "image_secondary": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
+            "image_primary": "shopify://shop_images/8_3e9c3104-e7a5-4a1b-b95f-b3e00e7f51eb.png",
+            "image_secondary": "shopify://shop_images/7_69f4de69-3cf7-4fec-ba09-73fff8a058a9.png"
           }
         },
         "product_card_zJAett": {
           "type": "product_card",
           "settings": {
             "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
-            "image_secondary": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
+            "image_primary": "shopify://shop_images/6_29210df8-4071-47b5-990d-a0b599671649.png",
+            "image_secondary": "shopify://shop_images/5_ec8bfffa-eeaa-4377-8ad6-e1b3514ca329.png"
           }
         },
         "product_card_BVhk8w": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-orange",
-            "image_primary": "shopify://shop_images/2_7875d19f-297c-49a0-b345-60c60834d1b8.png",
-            "image_secondary": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
+            "image_primary": "shopify://shop_images/2_46d01fb8-b0c1-4594-9a85-c56e20580920.png",
+            "image_secondary": "shopify://shop_images/1_033ad38b-a54f-4c61-830a-2a3e59ef0750.png"
           }
         },
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-japalenos",
-            "image_primary": "shopify://shop_images/20.png",
-            "image_secondary": "shopify://shop_images/19.png"
+            "image_primary": "shopify://shop_images/16_cb290383-54ca-4cad-b46b-ebe2cdd3fa3a.png",
+            "image_secondary": "shopify://shop_images/15_9354b92d-ba54-4273-9d88-6c916b1e6ada.png"
           }
         },
         "product_card_kwbHz7": {
           "type": "product_card",
           "settings": {
             "product": "club-pour-test",
-            "image_primary": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
-            "image_secondary": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
+            "image_primary": "shopify://shop_images/12_37f66bac-0c81-4512-b18d-ddddb269f72e.png",
+            "image_secondary": "shopify://shop_images/11_0fff1097-39b1-4631-8ab2-8bb1627c71a6.png"
           }
         },
         "product_card_gAaqnd": {
           "type": "product_card",
           "settings": {
             "product": "monaco-94",
-            "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
-            "image_secondary": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
+            "image_primary": "shopify://shop_images/4_c7b86a3f-35a7-4756-aff6-861f67d80f6c.png",
+            "image_secondary": "shopify://shop_images/3_da56c625-c023-450d-88ad-6b960142d32a.png"
           }
         },
         "product_card_Jt7Npe": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-pegasus",
-            "image_primary": "shopify://shop_images/12.png",
-            "image_secondary": "shopify://shop_images/11_e14a1878-ee5f-40a2-8a8c-8fddc911633f.png"
+            "image_primary": "shopify://shop_images/10_dc454cb8-0212-4370-b291-440b149e997e.png",
+            "image_secondary": "shopify://shop_images/9.png"
           }
         }
       },
