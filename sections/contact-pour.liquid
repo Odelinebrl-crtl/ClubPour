@@ -1,0 +1,1121 @@
+<section
+  id="ContactPour-{{ section.id }}"
+  class="contact-pour"
+>
+
+  <!-- =====================================================
+       INTRO
+  ====================================================== -->
+
+  <div class="contact-pour__intro">
+
+    <p class="contact-pour__eyebrow">
+      POUR — SERVICE CLIENT
+    </p>
+
+    <h1 class="contact-pour__title">
+      CONTACT
+    </h1>
+
+    <p class="contact-pour__lead">
+      Une question sur une commande, un produit ou un retour ?
+      Notre équipe est là pour vous répondre.
+    </p>
+
+  </div>
+
+
+  <!-- =====================================================
+       CONTENU PRINCIPAL
+  ====================================================== -->
+
+  <div class="contact-pour__main">
+
+
+    <!-- ===================================================
+         INFOS
+    ==================================================== -->
+
+    <div class="contact-pour__infos">
+
+      <div class="contact-pour__info-block">
+
+        <p class="contact-pour__label">
+          EMAIL
+        </p>
+
+        <a
+          href="mailto:{{ section.settings.email }}"
+          class="contact-pour__info-link"
+        >
+          {{ section.settings.email }}
+        </a>
+
+      </div>
+
+
+      {% if section.settings.phone != blank %}
+
+        <div class="contact-pour__info-block">
+
+          <p class="contact-pour__label">
+            TÉLÉPHONE
+          </p>
+
+          <a
+            href="tel:{{ section.settings.phone | replace: ' ', '' }}"
+            class="contact-pour__info-link"
+          >
+            {{ section.settings.phone }}
+          </a>
+
+        </div>
+
+      {% endif %}
+
+
+      <div class="contact-pour__info-block">
+
+        <p class="contact-pour__label">
+          HORAIRES
+        </p>
+
+        <p class="contact-pour__info-text">
+          {{ section.settings.hours }}
+        </p>
+
+      </div>
+
+
+      <div class="contact-pour__info-block">
+
+        <p class="contact-pour__label">
+          DÉLAI DE RÉPONSE
+        </p>
+
+        <p class="contact-pour__info-text">
+          {{ section.settings.response_time }}
+        </p>
+
+      </div>
+
+
+      {% if section.settings.address != blank %}
+
+        <div class="contact-pour__info-block">
+
+          <p class="contact-pour__label">
+            ADRESSE
+          </p>
+
+          <p class="contact-pour__info-text">
+            {{ section.settings.address }}
+          </p>
+
+        </div>
+
+      {% endif %}
+
+    </div>
+
+
+
+    <!-- ===================================================
+         FORMULAIRE
+    ==================================================== -->
+
+    <div class="contact-pour__form-wrap">
+
+      {% form 'contact', id: 'ContactPourForm' %}
+
+        {% if form.posted_successfully? %}
+
+          <div class="contact-pour__success">
+            Votre demande a bien été envoyée. Nous reviendrons vers vous rapidement.
+          </div>
+
+        {% endif %}
+
+
+        {{ form.errors | default_errors }}
+
+
+        <!-- NOM / PRÉNOM -->
+
+        <div class="contact-pour__row">
+
+          <div class="contact-pour__field">
+
+            <label for="ContactFirstName-{{ section.id }}">
+              PRÉNOM
+            </label>
+
+            <input
+              id="ContactFirstName-{{ section.id }}"
+              type="text"
+              name="contact[Prénom]"
+              autocomplete="given-name"
+              required
+            >
+
+          </div>
+
+
+          <div class="contact-pour__field">
+
+            <label for="ContactLastName-{{ section.id }}">
+              NOM
+            </label>
+
+            <input
+              id="ContactLastName-{{ section.id }}"
+              type="text"
+              name="contact[Nom]"
+              autocomplete="family-name"
+              required
+            >
+
+          </div>
+
+        </div>
+
+
+
+        <!-- EMAIL / TÉLÉPHONE -->
+
+        <div class="contact-pour__row">
+
+          <div class="contact-pour__field">
+
+            <label for="ContactEmail-{{ section.id }}">
+              EMAIL
+            </label>
+
+            <input
+              id="ContactEmail-{{ section.id }}"
+              type="email"
+              name="contact[email]"
+              autocomplete="email"
+              required
+            >
+
+          </div>
+
+
+          <div class="contact-pour__field">
+
+            <label for="ContactPhone-{{ section.id }}">
+              TÉLÉPHONE
+            </label>
+
+            <input
+              id="ContactPhone-{{ section.id }}"
+              type="tel"
+              name="contact[Téléphone]"
+              autocomplete="tel"
+            >
+
+          </div>
+
+        </div>
+
+
+
+        <!-- TYPE DE DEMANDE -->
+
+        <div class="contact-pour__field">
+
+          <label for="ContactReason-{{ section.id }}">
+            MOTIF DE LA DEMANDE
+          </label>
+
+          <select
+            id="ContactReason-{{ section.id }}"
+            name="contact[Motif]"
+            data-contact-reason
+            required
+          >
+            <option value="">
+              Sélectionnez une option
+            </option>
+
+            <option value="Question générale">
+              Question générale
+            </option>
+
+            <option value="Question produit">
+              Question produit
+            </option>
+
+            <option value="Suivi de commande">
+              Suivi de commande
+            </option>
+
+            <option value="Retour">
+              Retour
+            </option>
+
+            <option value="Échange">
+              Échange
+            </option>
+
+            <option value="Problème de livraison">
+              Problème de livraison
+            </option>
+
+            <option value="Autre">
+              Autre
+            </option>
+          </select>
+
+        </div>
+
+
+
+        <!-- NUMÉRO DE COMMANDE -->
+
+        <div
+          class="contact-pour__field contact-pour__order-field"
+          data-order-field
+        >
+
+          <label for="ContactOrder-{{ section.id }}">
+            NUMÉRO DE COMMANDE
+          </label>
+
+          <input
+            id="ContactOrder-{{ section.id }}"
+            type="text"
+            name="contact[Numéro de commande]"
+            placeholder="#1001"
+          >
+
+        </div>
+
+
+
+        <!-- MESSAGE -->
+
+        <div class="contact-pour__field">
+
+          <label for="ContactMessage-{{ section.id }}">
+            MESSAGE
+          </label>
+
+          <textarea
+            id="ContactMessage-{{ section.id }}"
+            name="contact[body]"
+            rows="7"
+            required
+          ></textarea>
+
+        </div>
+
+
+
+        <!-- BOUTON -->
+
+        <button
+          type="submit"
+          class="contact-pour__submit"
+        >
+          <span>
+            ENVOYER
+          </span>
+
+          <span aria-hidden="true">
+            →
+          </span>
+        </button>
+
+      {% endform %}
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =====================================================
+       AIDE RAPIDE
+  ====================================================== -->
+
+  <div class="contact-pour__help">
+
+    <div class="contact-pour__help-header">
+
+      <p class="contact-pour__eyebrow">
+        BESOIN D’AIDE ?
+      </p>
+
+      <h2 class="contact-pour__help-title">
+        LES DEMANDES LES PLUS COURANTES.
+      </h2>
+
+    </div>
+
+
+    <div class="contact-pour__help-grid">
+
+
+      <div class="contact-pour__help-card">
+
+        <span class="contact-pour__help-number">
+          01
+        </span>
+
+        <h3>
+          SUIVI DE COMMANDE
+        </h3>
+
+        <p>
+          Retrouvez les informations concernant la préparation,
+          l’expédition et la livraison de votre commande.
+        </p>
+
+      </div>
+
+
+      <div class="contact-pour__help-card">
+
+        <span class="contact-pour__help-number">
+          02
+        </span>
+
+        <h3>
+          RETOURS & ÉCHANGES
+        </h3>
+
+        <p>
+          Une taille ne convient pas ou vous souhaitez effectuer
+          un retour ? Sélectionnez directement la demande dans le formulaire.
+        </p>
+
+      </div>
+
+
+      <div class="contact-pour__help-card">
+
+        <span class="contact-pour__help-number">
+          03
+        </span>
+
+        <h3>
+          PRODUITS
+        </h3>
+
+        <p>
+          Coupe, taille, entretien ou disponibilité :
+          contactez-nous pour toute question liée à nos pièces.
+        </p>
+
+      </div>
+
+
+      <div class="contact-pour__help-card">
+
+        <span class="contact-pour__help-number">
+          04
+        </span>
+
+        <h3>
+          LIVRAISON
+        </h3>
+
+        <p>
+          Une question sur les délais, les pays desservis
+          ou votre colis ? Notre équipe peut vous accompagner.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+/* =========================================================
+   CONTACT POUR
+========================================================= */
+
+#ContactPour-{{ section.id }} {
+  width: 100%;
+
+  padding-top: 68px;
+
+  background: #FAF9F6;
+
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  padding:
+    115px
+    54px
+    100px;
+
+  text-align: center;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__eyebrow {
+  margin: 0 0 22px;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .20em;
+
+  text-transform: uppercase;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      72px,
+      10vw,
+      160px
+    );
+
+  font-weight: 400;
+
+  line-height: .85;
+
+  letter-spacing: -.065em;
+
+  text-transform: uppercase;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__lead {
+  max-width: 570px;
+
+  margin: 42px 0 0;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  color: rgba(17,17,17,.68);
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__main {
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, .72fr)
+    minmax(0, 1.28fr);
+
+  gap: clamp(70px, 8vw, 150px);
+
+  width: 100%;
+
+  padding:
+    90px
+    54px
+    120px;
+
+  border-top:
+    1px solid
+    rgba(17,17,17,.12);
+}
+
+
+/* =========================================================
+   INFOS
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__infos {
+  display: flex;
+  flex-direction: column;
+
+  gap: 42px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__info-block {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__label {
+  margin: 0;
+
+  font-size: 9px;
+
+  letter-spacing: .18em;
+
+  color: rgba(17,17,17,.48);
+
+  text-transform: uppercase;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__info-link,
+#ContactPour-{{ section.id }}
+.contact-pour__info-text {
+  margin: 0;
+
+  font-size: 15px;
+
+  line-height: 1.45;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__form-wrap {
+  width: 100%;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__row {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 18px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 10px;
+
+  margin-bottom: 24px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field label {
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  color: rgba(17,17,17,.58);
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field input,
+#ContactPour-{{ section.id }}
+.contact-pour__field select,
+#ContactPour-{{ section.id }}
+.contact-pour__field textarea {
+  width: 100%;
+
+  border: 1px solid rgba(17,17,17,.18);
+
+  border-radius: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color .25s ease,
+    background .25s ease;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field input,
+#ContactPour-{{ section.id }}
+.contact-pour__field select {
+  height: 52px;
+
+  padding: 0 14px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field textarea {
+  min-height: 180px;
+
+  padding: 15px;
+
+  resize: vertical;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__field input:focus,
+#ContactPour-{{ section.id }}
+.contact-pour__field select:focus,
+#ContactPour-{{ section.id }}
+.contact-pour__field textarea:focus {
+  border-color: #111111;
+
+  background: rgba(255,255,255,.4);
+}
+
+
+/* NUMÉRO COMMANDE MASQUÉ PAR DÉFAUT */
+
+#ContactPour-{{ section.id }}
+.contact-pour__order-field {
+  display: none;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__order-field.is-visible {
+  display: flex;
+}
+
+
+/* =========================================================
+   BOUTON
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 18px;
+
+  min-width: 180px;
+  height: 50px;
+
+  padding: 0 22px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background-color .5s cubic-bezier(.22,1,.36,1),
+    color .4s cubic-bezier(.22,1,.36,1);
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__submit:hover {
+  background: transparent;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   SUCCESS
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__success {
+  margin-bottom: 28px;
+
+  padding: 16px 18px;
+
+  border:
+    1px solid
+    rgba(17,17,17,.18);
+
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+#ContactPour-{{ section.id }}
+.contact-pour__help {
+  padding:
+    110px
+    54px
+    130px;
+
+  background: #ffffff;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-header {
+  max-width: 900px;
+
+  margin-bottom: 70px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-title {
+  max-width: 850px;
+
+  margin: 0;
+
+  font-size:
+    clamp(
+      48px,
+      6vw,
+      95px
+    );
+
+  font-weight: 400;
+
+  line-height: .92;
+
+  letter-spacing: -.055em;
+
+  text-transform: uppercase;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0,1fr));
+
+  gap: 16px;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-card {
+  min-height: 280px;
+
+  padding: 28px;
+
+  border:
+    1px solid
+    rgba(17,17,17,.12);
+
+  background: #ffffff;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-number {
+  display: block;
+
+  margin-bottom: 78px;
+
+  font-size: 9px;
+
+  color: rgba(17,17,17,.45);
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-card h3 {
+  margin: 0 0 18px;
+
+  font-size: 18px;
+  font-weight: 400;
+
+  text-transform: uppercase;
+}
+
+
+#ContactPour-{{ section.id }}
+.contact-pour__help-card p {
+  max-width: 460px;
+
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+
+  color: rgba(17,17,17,.62);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  #ContactPour-{{ section.id }} {
+    padding-top: 64px;
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__intro {
+    padding:
+      80px
+      18px
+      70px;
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__title {
+    font-size:
+      clamp(
+        62px,
+        20vw,
+        100px
+      );
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__main {
+    grid-template-columns: 1fr;
+
+    gap: 65px;
+
+    padding:
+      70px
+      18px
+      85px;
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__help {
+    padding:
+      80px
+      18px
+      90px;
+  }
+
+
+  #ContactPour-{{ section.id }}
+  .contact-pour__help-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<script>
+
+(function () {
+
+  function initContactPour() {
+
+    const section =
+      document.getElementById(
+        'ContactPour-{{ section.id }}'
+      );
+
+    if (!section) return;
+
+
+    const reason =
+      section.querySelector(
+        '[data-contact-reason]'
+      );
+
+
+    const orderField =
+      section.querySelector(
+        '[data-order-field]'
+      );
+
+
+    if (
+      !reason ||
+      !orderField
+    ) {
+      return;
+    }
+
+
+    function updateOrderField() {
+
+      const value =
+        reason.value;
+
+
+      const needsOrderNumber =
+        [
+          'Suivi de commande',
+          'Retour',
+          'Échange',
+          'Problème de livraison'
+        ].includes(value);
+
+
+      orderField.classList.toggle(
+        'is-visible',
+        needsOrderNumber
+      );
+
+    }
+
+
+    reason.addEventListener(
+      'change',
+      updateOrderField
+    );
+
+
+    updateOrderField();
+
+  }
+
+
+  if (
+    document.readyState === 'loading'
+  ) {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initContactPour
+    );
+
+  } else {
+
+    initContactPour();
+
+  }
+
+
+  document.addEventListener(
+    'shopify:section:load',
+    initContactPour
+  );
+
+})();
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Contact POUR",
+
+  "settings": [
+
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "contact@pour-store.com"
+    },
+
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Téléphone"
+    },
+
+    {
+      "type": "text",
+      "id": "hours",
+      "label": "Horaires",
+      "default": "Lundi — Vendredi · 9h — 18h"
+    },
+
+    {
+      "type": "text",
+      "id": "response_time",
+      "label": "Délai de réponse",
+      "default": "Sous 24 à 48 heures ouvrées"
+    },
+
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Adresse"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Contact POUR"
+    }
+  ]
+}
+{% endschema %}
