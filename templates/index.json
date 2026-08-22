@@ -202,9 +202,9 @@
       "settings": {
         "image": "shopify://shop_images/Ajouter_un_titre-3.png",
         "eyebrow": "COLLECTION 001",
-        "heading": "UNE PIÈCE. UNE HISTOIRE.",
-        "text": "<p>Une pièce pensée dans les détails, inspirée par l’automobile et conçue pour accompagner bien plus que la route.</p>",
-        "button_label": "ACHETER",
+        "heading": "UNE COLLECTION. HUIT HISTOIRES.",
+        "text": "<p>Huit pièces inspirées par l’automobile, les destinations et l’art de vivre. Le premier chapitre de l’univers POUR.</p>",
+        "button_label": "DÉCOUVRIR LA COLLECTION",
         "button_link": ""
       }
     }
