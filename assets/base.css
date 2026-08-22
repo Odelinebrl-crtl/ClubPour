@@ -3636,127 +3636,529 @@ html {
   scroll-behavior: smooth;
 }
 /* =========================================================
-   POUR — QUICK ADD +
-   Petit bouton dans le coin inférieur droit de l'image
+   POUR — QUICK ADD
 ========================================================= */
 
+.pour-product {
+  position: relative;
+}
+
 .pour-product__media {
-  position: relative !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.pour-product__media-link {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+.pour-product__info-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
 }
 
 
 /* =========================================================
-   BOUTON
+   SURVOL DES IMAGES
+========================================================= */
+
+.pour-product__image--primary {
+  position: relative;
+
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  opacity: 1;
+}
+
+.pour-product__image--secondary {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity .28s cubic-bezier(.22,1,.36,1);
+}
+
+.pour-product:hover
+.pour-product__image--secondary {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   QUICK ADD +
 ========================================================= */
 
 .pour-product__quick-add {
-  position: absolute !important;
+  position: absolute;
 
-  /* VRAIMENT DANS LE COIN DE L'IMAGE */
-  right: 10px !important;
-  bottom: 10px !important;
+  right: 9px;
+  bottom: 9px;
 
-  z-index: 30 !important;
+  z-index: 20;
 
-  /* PLUS PETIT */
-  width: 32px !important;
-  height: 32px !important;
+  width: 30px;
+  height: 30px;
 
-  min-width: 32px !important;
-  min-height: 32px !important;
+  min-width: 30px;
+  min-height: 30px;
 
-  padding: 0 !important;
-  margin: 0 !important;
+  padding: 0;
+  margin: 0;
 
-  /* CENTRAGE */
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  border: 0;
+  border-radius: 0;
 
-  /* DESIGN */
-  background: #ffffff !important;
+  background: #ffffff;
 
-  border: 0 !important;
-  border-radius: 0 !important;
-
-  box-shadow: none !important;
-
-  color: #111111 !important;
-
-  /* RESET SHOPIFY */
-  appearance: none !important;
-  -webkit-appearance: none !important;
+  box-shadow: none;
 
   cursor: pointer;
 
-  /* INVISIBLE AVANT SURVOL */
   opacity: 0;
   visibility: hidden;
 
-  transform: translateY(3px);
+  transform: translateY(4px);
 
   transition:
     opacity .18s ease,
     visibility .18s ease,
-    transform .22s ease !important;
+    transform .25s cubic-bezier(.22,1,.36,1);
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+/* trait horizontal du + */
+
+.pour-product__quick-add::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 12px;
+  height: 1px;
+
+  background: #111111;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* trait vertical du + */
+
+.pour-product__quick-add::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 1px;
+  height: 12px;
+
+  background: #111111;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* apparaît uniquement quand on survole l'image */
+
+.pour-product__media:hover
+.pour-product__quick-add {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
 }
 
 
 /* =========================================================
-   LE +
+   QUICK VIEW — OVERLAY
 ========================================================= */
 
-.pour-product__quick-add span {
-  display: flex !important;
+.pour-quickview-overlay {
+  position: fixed;
 
-  align-items: center !important;
-  justify-content: center !important;
+  inset: 0;
 
-  width: 100% !important;
-  height: 100% !important;
+  z-index: 100000;
 
-  padding: 0 !important;
-  margin: 0 !important;
+  background: rgba(0,0,0,.38);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.pour-quickview-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   QUICK VIEW — MODALE
+========================================================= */
+
+.pour-quickview {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 100001;
+
+  width: min(980px, calc(100vw - 90px));
+
+  max-height: calc(100vh - 80px);
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -47%);
+
+  transition:
+    opacity .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1),
+    visibility .3s ease;
+}
+
+.pour-quickview.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   FERMETURE
+========================================================= */
+
+.pour-quickview__close {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 5;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.pour-quickview__close::before,
+.pour-quickview__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 19px;
+  height: 1px;
+
+  background: #111111;
+}
+
+.pour-quickview__close::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+}
+
+.pour-quickview__close::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   CONTENU QUICK VIEW
+========================================================= */
+
+.pour-quickview__content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(350px, .9fr);
+
+  align-items: center;
+
+  min-height: 610px;
+
+  padding:
+    65px
+    70px;
+}
+
+.pour-quickview__media {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 0;
+}
+
+.pour-quickview__image {
+  display: block;
+
+  width: 100%;
+  max-width: 440px;
+
+  max-height: 500px;
+
+  object-fit: contain;
+}
+
+.pour-quickview__info {
+  padding-left: 55px;
+}
+
+.pour-quickview__title {
+  margin: 0;
 
   font-family:
-    Arial,
+    "Helvetica Neue",
     Helvetica,
-    sans-serif !important;
+    Arial,
+    sans-serif;
 
-  font-size: 20px !important;
-  font-weight: 300 !important;
+  font-size: 15px;
+  font-weight: 400;
 
-  line-height: 1 !important;
+  line-height: 1.25;
 
-  color: #111111 !important;
+  letter-spacing: .12em;
 
-  /* correction optique du + */
-  transform: translateY(-1px) !important;
+  text-transform: uppercase;
+}
+
+.pour-quickview__price {
+  margin: 17px 0 0;
+
+  font-size: 13px;
+
+  color: rgba(17,17,17,.58);
+}
+
+
+/* =========================================================
+   VARIANTES
+========================================================= */
+
+.pour-quickview__options {
+  margin-top: 34px;
+}
+
+.pour-quickview__option-label {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+}
+
+.pour-quickview__variants {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.pour-quickview__variant {
+  position: relative;
+}
+
+.pour-quickview__variant input {
+  position: absolute;
+
+  opacity: 0;
 
   pointer-events: none;
 }
 
+.pour-quickview__variant span {
+  display: flex;
 
-/* =========================================================
-   APPARITION AU SURVOL
-========================================================= */
+  align-items: center;
+  justify-content: center;
 
-.pour-product__media:hover
-.pour-product__quick-add {
-  opacity: 1 !important;
-  visibility: visible !important;
+  min-width: 48px;
+  height: 44px;
 
-  transform: translateY(0) !important;
+  padding: 0 14px;
+
+  border:
+    1px solid
+    rgba(17,17,17,.17);
+
+  font-size: 11px;
+
+  cursor: pointer;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.pour-quickview__variant
+input:checked + span {
+  border-color: #111111;
+
+  box-shadow:
+    inset 0 0 0 1px #111111;
+}
+
+.pour-quickview__variant.is-disabled span {
+  opacity: .28;
+
+  cursor: not-allowed;
 }
 
 
 /* =========================================================
-   HOVER DU BOUTON
+   AJOUTER PANIER
 ========================================================= */
 
-.pour-product__quick-add:hover {
-  background: #ffffff !important;
-  color: #111111 !important;
+.pour-quickview__submit {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 50px;
+
+  margin-top: 32px;
+
+  padding: 0 20px;
+
+  border:
+    1px solid #111111;
+
+  border-radius: 0;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.pour-quickview__details {
+  display: inline-block;
+
+  margin-top: 23px;
+
+  padding-bottom: 4px;
+
+  border-bottom:
+    1px solid currentColor;
+
+  color: #111111;
+
+  font-size: 9px;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.pour-quickview__loading {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 500px;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
 }
 
 
@@ -3764,12 +4166,46 @@ html {
    MOBILE
 ========================================================= */
 
+@media screen and (max-width: 750px) {
+
+  .pour-quickview {
+    width: calc(100vw - 24px);
+
+    max-height:
+      calc(100vh - 24px);
+  }
+
+  .pour-quickview__content {
+    grid-template-columns: 1fr;
+
+    min-height: 0;
+
+    padding:
+      65px
+      22px
+      35px;
+  }
+
+  .pour-quickview__image {
+    max-height: 300px;
+  }
+
+  .pour-quickview__info {
+    padding:
+      30px
+      0
+      0;
+  }
+
+}
+
 @media (hover: none) {
 
   .pour-product__quick-add {
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
   }
 
 }
