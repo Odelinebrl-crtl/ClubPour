@@ -1,6 +1,6 @@
 <section
   id="ClothingHero-{{ section.id }}"
-  class="clothing-hero"
+  class="clothing-hero{% if template.suffix == 'collection-001' %} clothing-hero--below-header{% endif %}"
   data-clothing-hero
   data-autoplay="{{ section.settings.autoplay }}"
   data-speed="{{ section.settings.autoplay_speed | times: 1000 }}"
