@@ -44,12 +44,8 @@
   </div>
 
 
-
   <!-- =====================================================
        FOCUS 01
-       GRAND PRODUIT GAUCHE
-       TEXTE CENTRE
-       MINI PRODUITS DROITE
   ====================================================== -->
 
   {% if section.settings.product_1 != blank %}
@@ -57,7 +53,6 @@
     {% assign product_1 = section.settings.product_1 %}
 
     <div class="collection001-pour__focus collection001-pour__focus--left">
-
 
       <!-- GRAND PRODUIT + TEXTE -->
 
@@ -143,7 +138,7 @@
 
                   {{
                     mini_image
-                    | image_url: width: 1000
+                    | image_url: width: 1200
                     | image_tag:
                       class: 'collection001-pour__mini-image',
                       loading: 'lazy',
@@ -154,7 +149,7 @@
 
                   {{
                     mini_product.featured_image
-                    | image_url: width: 1000
+                    | image_url: width: 1200
                     | image_tag:
                       class: 'collection001-pour__mini-image',
                       loading: 'lazy',
@@ -190,12 +185,8 @@
   {% endif %}
 
 
-
   <!-- =====================================================
        FOCUS 02
-       MINI PRODUITS GAUCHE
-       TEXTE CENTRE
-       GRAND PRODUIT DROITE
   ====================================================== -->
 
   {% if section.settings.product_2 != blank %}
@@ -203,7 +194,6 @@
     {% assign product_2 = section.settings.product_2 %}
 
     <div class="collection001-pour__focus collection001-pour__focus--right">
-
 
       <!-- MINI PRODUITS GAUCHE -->
 
@@ -230,7 +220,7 @@
 
                   {{
                     mini_image
-                    | image_url: width: 1000
+                    | image_url: width: 1200
                     | image_tag:
                       class: 'collection001-pour__mini-image',
                       loading: 'lazy',
@@ -241,7 +231,7 @@
 
                   {{
                     mini_product.featured_image
-                    | image_url: width: 1000
+                    | image_url: width: 1200
                     | image_tag:
                       class: 'collection001-pour__mini-image',
                       loading: 'lazy',
@@ -338,7 +328,6 @@
 </section>
 
 
-
 <style>
 
 /* =========================================================
@@ -348,9 +337,12 @@
 #Collection001Pour-{{ section.id }} {
   position: relative;
 
-  width: 100%;
+  width: 100vw;
+  max-width: none;
 
-  margin: 0;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+
   padding: 0;
 
   overflow: hidden;
@@ -378,7 +370,6 @@
 
   pointer-events: none;
 }
-
 
 
 /* =========================================================
@@ -447,7 +438,6 @@
   margin: 34px auto 0;
 
   font-size: 13px;
-  font-weight: 400;
 
   line-height: 1.6;
 
@@ -455,9 +445,8 @@
 }
 
 
-
 /* =========================================================
-   INTRO — ANIMATION SCROLL
+   INTRO — SCROLL REVEAL
 ========================================================= */
 
 #Collection001Pour-{{ section.id }}
@@ -487,9 +476,8 @@
 }
 
 
-
 /* =========================================================
-   FOCUS — BASE
+   FOCUS BASE
 ========================================================= */
 
 #Collection001Pour-{{ section.id }}
@@ -504,7 +492,6 @@
 }
 
 
-
 /* =========================================================
    FOCUS 01
 ========================================================= */
@@ -513,537 +500,14 @@
 .collection001-pour__focus--left {
   grid-template-columns:
     minmax(0, 1fr)
-    360px;
+    500px;
 
-  gap: 50px;
-
-  padding:
-    65px
-    54px
-    125px;
-}
-
-
-
-/* =========================================================
-   FOCUS 02
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right {
-  grid-template-columns:
-    360px
-    minmax(0, 1fr);
-
-  gap: 50px;
+  gap: 42px;
 
   padding:
     65px
     54px
-    125px;
-}
-
-
-
-/* =========================================================
-   PRODUIT PRINCIPAL + TEXTE
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus-main {
-  display: grid;
-
-  grid-template-columns:
-    minmax(0, 500px)
-    minmax(200px, 280px);
-
-  align-items: center;
-
-  gap: 38px;
-
-  min-width: 0;
-}
-
-
-/* FOCUS 01 ALIGNÉ À GAUCHE */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left
-.collection001-pour__focus-main {
-  justify-self: start;
-}
-
-
-/* FOCUS 02 INVERSÉ */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__focus-main {
-  grid-template-columns:
-    minmax(200px, 280px)
-    minmax(0, 500px);
-
-  justify-self: end;
-
-  width: 100%;
-  max-width: 830px;
-
-  margin-left: auto;
-}
-
-
-
-/* =========================================================
-   GRANDE IMAGE
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus-media {
-  width: 100%;
-
-  max-width: 500px;
-
-  overflow: hidden;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus-image {
-  display: block;
-
-  width: 100%;
-  height: auto;
-
-  object-fit: contain;
-}
-
-
-
-/* FOCUS 02 — IMAGE ALIGNÉE À DROITE */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__focus-media {
-  justify-self: end;
-}
-
-
-
-/* =========================================================
-   TEXTE PRINCIPAL
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus-content {
-  width: 100%;
-
-  max-width: 280px;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__number {
-  margin: 0 0 24px;
-
-  font-size: 9px;
-  font-weight: 400;
-
-  color: rgba(17,17,17,.40);
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus-title {
-  margin: 0;
-
-  font-size:
-    clamp(
-      32px,
-      3.1vw,
-      52px
-    );
-
-  font-weight: 400;
-
-  line-height: .98;
-
-  letter-spacing: -.045em;
-
-  text-transform: uppercase;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__price {
-  margin: 24px 0 0;
-
-  font-size: 11px;
-  font-weight: 400;
-
-  color: rgba(17,17,17,.54);
-}
-
-
-
-/* =========================================================
-   DÉCOUVRIR
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__link {
-  position: relative;
-
-  display: inline-block;
-
-  margin-top: 34px;
-
-  padding-bottom: 5px;
-
-  font-size: 10px;
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: .06em;
-
-  color: #111111;
-
-  text-decoration: none;
-
-  text-transform: uppercase;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__link::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: 0;
-
-  width: 100%;
-  height: 1px;
-
-  background: currentColor;
-
-  transform-origin: left center;
-
-  transition:
-    transform .4s cubic-bezier(.22,1,.36,1);
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__link:hover::after {
-  transform: scaleX(.45);
-}
-
-
-
-/* =========================================================
-   MINI PRODUITS
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(2, 160px);
-
-  gap:
-    34px
-    24px;
-
-  width: max-content;
-
-  align-items: start;
-}
-
-
-/* À DROITE POUR FOCUS 01 */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left
-.collection001-pour__mini-grid {
-  justify-self: end;
-}
-
-
-/* À GAUCHE POUR FOCUS 02 */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__mini-grid {
-  justify-self: start;
-}
-
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-card {
-  display: block;
-
-  width: 160px;
-
-  color: #111111;
-
-  text-decoration: none;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-media {
-  width: 160px;
-  height: 205px;
-
-  overflow: hidden;
-
-  background: #FAF9F6;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-image {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  transition:
-    transform .65s cubic-bezier(.22,1,.36,1);
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-card:hover
-.collection001-pour__mini-image {
-  transform: scale(1.035);
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-info {
-  padding-top: 10px;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-title {
-  margin: 0;
-
-  font-size: 9px;
-  font-weight: 400;
-
-  line-height: 1.25;
-
-  text-transform: uppercase;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-price {
-  margin: 5px 0 0;
-
-  font-size: 9px;
-
-  color: rgba(17,17,17,.48);
-}
-
-
-
-/* =========================================================
-   DESKTOP LARGE
-========================================================= */
-
-@media screen and (min-width: 1500px) {
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--right
-  .collection001-pour__focus-main {
-    margin-right: 0;
-  }
-
-}
-
-
-
-/* =========================================================
-   TABLETTE
-========================================================= */
-
-@media screen and (max-width: 1100px) {
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--left,
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--right {
-    grid-template-columns: 1fr;
-
-    gap: 55px;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-grid {
-    grid-template-columns:
-      repeat(4, 145px);
-
-    justify-self: start;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-card {
-    width: 145px;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-media {
-    width: 145px;
-    height: 185px;
-  }
-
-}
-
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media screen and (max-width: 768px) {
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__intro {
-    padding:
-      75px
-      18px
-      90px;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__title {
-    font-size:
-      clamp(
-        42px,
-        13vw,
-        62px
-      );
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--left,
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--right {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 45px;
-
-    padding:
-      45px
-      18px
-      90px;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus-main,
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--right
-  .collection001-pour__focus-main {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: flex-start;
-
-    gap: 30px;
-
-    width: 100%;
-    max-width: none;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus-media {
-    max-width: none;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus-content {
-    max-width: none;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-grid {
-    grid-template-columns:
-      repeat(2, minmax(0,1fr));
-
-    gap:
-      30px
-      12px;
-
-    width: 100%;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-card {
-    width: 100%;
-  }
-
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-media {
-    width: 100%;
-    height: auto;
-
-    aspect-ratio: 4 / 5;
-  }
-
-}
-/* =========================================================
-   CORRECTION FINALE — FOCUS COLLECTION 001
-========================================================= */
-
-/* La section utilise réellement toute la largeur de l'écran */
-#Collection001Pour-{{ section.id }} {
-  width: 100vw !important;
-  max-width: none !important;
-
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
-}
-
-
-/* =========================================================
-   FOCUS 01
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left {
-  grid-template-columns:
-    minmax(0, 1fr)
-    410px !important;
-
-  gap: 55px !important;
-
-  padding:
-    70px
-    54px
-    125px !important;
+    130px;
 }
 
 
@@ -1053,943 +517,21 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right {
-  grid-template-columns:
-    410px
-    minmax(0, 1fr) !important;
-
-  gap: 55px !important;
-
-  padding:
-    70px
-    54px
-    125px !important;
-}
-
-
-/* Le bloc principal du focus 02 part vraiment à droite */
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__focus-main {
-  grid-template-columns:
-    270px
-    500px !important;
-
-  width: 808px !important;
-  max-width: none !important;
-
-  justify-self: end !important;
-
-  margin: 0 !important;
-}
-
-
-/* Grande image du focus 02 : bord droit = 54px du viewport */
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__focus-media {
-  width: 500px !important;
-  max-width: 500px !important;
-
-  justify-self: end !important;
-}
-
-
-/* Focus 01 conserve son alignement gauche */
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left
-.collection001-pour__focus-main {
   grid-template-columns:
     500px
-    270px !important;
-
-  width: 808px !important;
-
-  justify-self: start !important;
-}
-
-
-/* =========================================================
-   MINI PRODUITS — PLUS GRANDS
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-grid {
-  grid-template-columns:
-    repeat(2, 185px) !important;
-
-  gap:
-    36px
-    24px !important;
-
-  width: 394px !important;
-}
-
-
-/* Droite du focus 01 */
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left
-.collection001-pour__mini-grid {
-  justify-self: end !important;
-}
-
-
-/* Gauche du focus 02 */
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__mini-grid {
-  justify-self: start !important;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-card {
-  width: 185px !important;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-media {
-  width: 185px !important;
-  height: 235px !important;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-image {
-  width: 100% !important;
-  height: 100% !important;
-
-  object-fit: cover !important;
-}
-
-
-/* Titres légèrement plus lisibles */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-title {
-  margin-top: 2px;
-
-  font-size: 10px !important;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__mini-price {
-  font-size: 9px !important;
-}
-</style>
-
-
-
-<script>
-
-(function () {
-
-  function initCollection001Intro() {
-
-    const section =
-      document.getElementById(
-        'Collection001Pour-{{ section.id }}'
-      );
-
-    if (!section) return;
-
-
-    const elements =
-      section.querySelectorAll(
-        '.collection001-pour__intro-reveal'
-      );
-
-
-    elements.forEach((element) => {
-
-      const delay =
-        element.getAttribute(
-          'data-delay'
-        ) || 0;
-
-      element.style.setProperty(
-        '--collection-intro-delay',
-        delay + 'ms'
-      );
-
-    });
-
-
-    const observer =
-      new IntersectionObserver(
-        (entries) => {
-
-          entries.forEach((entry) => {
-
-            entry.target.classList.toggle(
-              'is-visible',
-              entry.isIntersecting
-            );
-
-          });
-
-        },
-        {
-          threshold: .18,
-          rootMargin: '0px 0px -5% 0px'
-        }
-      );
-
-
-    elements.forEach((element) => {
-      observer.observe(element);
-    });
-
-  }
-
-
-  if (document.readyState === 'loading') {
-
-    document.addEventListener(
-      'DOMContentLoaded',
-      initCollection001Intro
-    );
-
-  } else {
-
-    initCollection001Intro();
-
-  }
-
-
-  document.addEventListener(
-    'shopify:section:load',
-    initCollection001Intro
-  );
-
-})();
-
-</script>
-
-
-
-{% schema %}
-{
-  "name": "Collection 001",
-
-  "settings": [
-
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Titre",
-      "default": "LA PREMIÈRE COLLECTION POUR"
-    },
-
-    {
-      "type": "text",
-      "id": "intro_text",
-      "label": "Texte introduction",
-      "default": "Huit pièces pensées autour de l’automobile, des destinations et de l’univers graphique POUR."
-    },
-
-
-    {
-      "type": "header",
-      "content": "Focus 01 — Produit principal"
-    },
-
-    {
-      "type": "product",
-      "id": "product_1",
-      "label": "Produit principal 01"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Image principale 01"
-    },
-
-
-    {
-      "type": "header",
-      "content": "Focus 01 — Petits produits"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_1_product_1",
-      "label": "Petit produit 01"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_1_image_1",
-      "label": "Image petit produit 01"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_1_product_2",
-      "label": "Petit produit 02"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_1_image_2",
-      "label": "Image petit produit 02"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_1_product_3",
-      "label": "Petit produit 03"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_1_image_3",
-      "label": "Image petit produit 03"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_1_product_4",
-      "label": "Petit produit 04"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_1_image_4",
-      "label": "Image petit produit 04"
-    },
-
-
-    {
-      "type": "header",
-      "content": "Focus 02 — Produit principal"
-    },
-
-    {
-      "type": "product",
-      "id": "product_2",
-      "label": "Produit principal 02"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Image principale 02"
-    },
-
-
-    {
-      "type": "header",
-      "content": "Focus 02 — Petits produits"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_2_product_1",
-      "label": "Petit produit 01"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_2_image_1",
-      "label": "Image petit produit 01"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_2_product_2",
-      "label": "Petit produit 02"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_2_image_2",
-      "label": "Image petit produit 02"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_2_product_3",
-      "label": "Petit produit 03"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_2_image_3",
-      "label": "Image petit produit 03"
-    },
-
-    {
-      "type": "product",
-      "id": "focus_2_product_4",
-      "label": "Petit produit 04"
-    },
-
-    {
-      "type": "image_picker",
-      "id": "focus_2_image_4",
-      "label": "Image petit produit 04"
-    }
-
-  ],
-
-  "presets": [
-    {
-      "name": "Collection 001"
-    }
-  ]
-}
-{% endschema %}<section
-  id="Collection001Pour-{{ section.id }}"
-  class="collection001-pour"
->
-
-  <div
-    id="collection-content"
-    class="collection001-pour__anchor"
-    aria-hidden="true"
-  ></div>
-
-
-  <!-- =====================================================
-       INTRO
-  ====================================================== -->
-
-  <div class="collection001-pour__intro">
-
-    <p
-      class="collection001-pour__eyebrow collection001-pour__intro-reveal"
-      data-delay="0"
-    >
-      COLLECTION 001
-    </p>
-
-    {% if section.settings.heading != blank %}
-      <h1
-        class="collection001-pour__title collection001-pour__intro-reveal"
-        data-delay="100"
-      >
-        {{ section.settings.heading }}
-      </h1>
-    {% endif %}
-
-    {% if section.settings.intro_text != blank %}
-      <p
-        class="collection001-pour__lead collection001-pour__intro-reveal"
-        data-delay="190"
-      >
-        {{ section.settings.intro_text }}
-      </p>
-    {% endif %}
-
-  </div>
-
-
-
-  <!-- =====================================================
-       FOCUS 01
-       GRAND PRODUIT GAUCHE
-       TEXTE CENTRE
-       MINI PRODUITS DROITE
-  ====================================================== -->
-
-  {% if section.settings.product_1 != blank %}
-
-    {% assign product_1 = section.settings.product_1 %}
-
-    <div class="collection001-pour__focus collection001-pour__focus--left">
-
-
-      <!-- GRAND PRODUIT + TEXTE -->
-
-      <div class="collection001-pour__focus-main">
-
-        <div class="collection001-pour__focus-media">
-
-          {% if section.settings.image_1 != blank %}
-
-            {{
-              section.settings.image_1
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_1.title
-            }}
-
-          {% elsif product_1.featured_image != blank %}
-
-            {{
-              product_1.featured_image
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_1.title
-            }}
-
-          {% endif %}
-
-        </div>
-
-
-        <div class="collection001-pour__focus-content">
-
-          <p class="collection001-pour__number">
-            01
-          </p>
-
-          <h2 class="collection001-pour__focus-title">
-            {{ product_1.title }}
-          </h2>
-
-          <p class="collection001-pour__price">
-            {{ product_1.price | money }}
-          </p>
-
-          <a
-            href="{{ product_1.url }}"
-            class="collection001-pour__link"
-          >
-            DÉCOUVRIR
-          </a>
-
-        </div>
-
-      </div>
-
-
-      <!-- MINI PRODUITS DROITE -->
-
-      <div class="collection001-pour__mini-grid">
-
-        {% for i in (1..4) %}
-
-          {% assign product_key = 'focus_1_product_' | append: i %}
-          {% assign image_key = 'focus_1_image_' | append: i %}
-
-          {% assign mini_product = section.settings[product_key] %}
-          {% assign mini_image = section.settings[image_key] %}
-
-          {% if mini_product != blank %}
-
-            <a
-              href="{{ mini_product.url }}"
-              class="collection001-pour__mini-card"
-            >
-
-              <div class="collection001-pour__mini-media">
-
-                {% if mini_image != blank %}
-
-                  {{
-                    mini_image
-                    | image_url: width: 1000
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
-
-                {% elsif mini_product.featured_image != blank %}
-
-                  {{
-                    mini_product.featured_image
-                    | image_url: width: 1000
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
-
-                {% endif %}
-
-              </div>
-
-              <div class="collection001-pour__mini-info">
-
-                <p class="collection001-pour__mini-title">
-                  {{ mini_product.title }}
-                </p>
-
-                <p class="collection001-pour__mini-price">
-                  {{ mini_product.price | money }}
-                </p>
-
-              </div>
-
-            </a>
-
-          {% endif %}
-
-        {% endfor %}
-
-      </div>
-
-    </div>
-
-  {% endif %}
-
-
-
-  <!-- =====================================================
-       FOCUS 02
-       MINI PRODUITS GAUCHE
-       TEXTE CENTRE
-       GRAND PRODUIT DROITE
-  ====================================================== -->
-
-  {% if section.settings.product_2 != blank %}
-
-    {% assign product_2 = section.settings.product_2 %}
-
-    <div class="collection001-pour__focus collection001-pour__focus--right">
-
-
-      <!-- MINI PRODUITS GAUCHE -->
-
-      <div class="collection001-pour__mini-grid">
-
-        {% for i in (1..4) %}
-
-          {% assign product_key = 'focus_2_product_' | append: i %}
-          {% assign image_key = 'focus_2_image_' | append: i %}
-
-          {% assign mini_product = section.settings[product_key] %}
-          {% assign mini_image = section.settings[image_key] %}
-
-          {% if mini_product != blank %}
-
-            <a
-              href="{{ mini_product.url }}"
-              class="collection001-pour__mini-card"
-            >
-
-              <div class="collection001-pour__mini-media">
-
-                {% if mini_image != blank %}
-
-                  {{
-                    mini_image
-                    | image_url: width: 1000
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
-
-                {% elsif mini_product.featured_image != blank %}
-
-                  {{
-                    mini_product.featured_image
-                    | image_url: width: 1000
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
-
-                {% endif %}
-
-              </div>
-
-              <div class="collection001-pour__mini-info">
-
-                <p class="collection001-pour__mini-title">
-                  {{ mini_product.title }}
-                </p>
-
-                <p class="collection001-pour__mini-price">
-                  {{ mini_product.price | money }}
-                </p>
-
-              </div>
-
-            </a>
-
-          {% endif %}
-
-        {% endfor %}
-
-      </div>
-
-
-      <!-- TEXTE + GRAND PRODUIT -->
-
-      <div class="collection001-pour__focus-main">
-
-        <div class="collection001-pour__focus-content">
-
-          <p class="collection001-pour__number">
-            02
-          </p>
-
-          <h2 class="collection001-pour__focus-title">
-            {{ product_2.title }}
-          </h2>
-
-          <p class="collection001-pour__price">
-            {{ product_2.price | money }}
-          </p>
-
-          <a
-            href="{{ product_2.url }}"
-            class="collection001-pour__link"
-          >
-            DÉCOUVRIR
-          </a>
-
-        </div>
-
-
-        <div class="collection001-pour__focus-media">
-
-          {% if section.settings.image_2 != blank %}
-
-            {{
-              section.settings.image_2
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_2.title
-            }}
-
-          {% elsif product_2.featured_image != blank %}
-
-            {{
-              product_2.featured_image
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_2.title
-            }}
-
-          {% endif %}
-
-        </div>
-
-      </div>
-
-    </div>
-
-  {% endif %}
-
-</section>
-
-
-
-<style>
-
-/* =========================================================
-   COLLECTION 001
-========================================================= */
-
-#Collection001Pour-{{ section.id }} {
-  position: relative;
-
-  width: 100%;
-
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-
-  background: #ffffff;
-  color: #111111;
-
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__anchor {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 1px;
-  height: 1px;
-
-  pointer-events: none;
-}
-
-
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__intro {
-  width: 100%;
-
-  padding:
-    90px
-    54px
-    115px;
-
-  box-sizing: border-box;
-
-  text-align: center;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__eyebrow {
-  margin: 0 0 24px;
-
-  font-size: 9px;
-  font-weight: 400;
-
-  line-height: 1;
-
-  letter-spacing: .22em;
-
-  text-transform: uppercase;
-
-  color: rgba(17,17,17,.46);
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__title {
-  max-width: 980px;
-
-  margin: 0 auto;
-
-  font-size:
-    clamp(
-      46px,
-      6vw,
-      92px
-    );
-
-  font-weight: 400;
-
-  line-height: .92;
-
-  letter-spacing: -.055em;
-
-  text-transform: uppercase;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__lead {
-  max-width: 560px;
-
-  margin: 34px auto 0;
-
-  font-size: 13px;
-  font-weight: 400;
-
-  line-height: 1.6;
-
-  color: rgba(17,17,17,.62);
-}
-
-
-
-/* =========================================================
-   INTRO — ANIMATION SCROLL
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__intro-reveal {
-  opacity: 0;
-
-  transform: translateY(45px);
-
-  transition:
-    opacity .9s cubic-bezier(.22,1,.36,1),
-    transform .9s cubic-bezier(.22,1,.36,1);
-
-  transition-delay:
-    var(--collection-intro-delay, 0ms);
-
-  will-change:
-    opacity,
-    transform;
-}
-
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__intro-reveal.is-visible {
-  opacity: 1;
-
-  transform: translateY(0);
-}
-
-
-
-/* =========================================================
-   FOCUS — BASE
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus {
-  display: grid;
-
-  align-items: center;
-
-  width: 100%;
-
-  box-sizing: border-box;
-}
-
-
-
-/* =========================================================
-   FOCUS 01
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--left {
-  grid-template-columns:
-    minmax(0, 1fr)
-    360px;
-
-  gap: 50px;
-
-  padding:
-    65px
-    54px
-    125px;
-}
-
-
-
-/* =========================================================
-   FOCUS 02
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right {
-  grid-template-columns:
-    360px
     minmax(0, 1fr);
 
-  gap: 50px;
+  gap: 42px;
 
   padding:
     65px
     54px
-    125px;
+    130px;
 }
 
 
-
 /* =========================================================
-   PRODUIT PRINCIPAL + TEXTE
+   PRINCIPAL + TEXTE
 ========================================================= */
 
 #Collection001Pour-{{ section.id }}
@@ -1997,18 +539,18 @@
   display: grid;
 
   grid-template-columns:
-    minmax(0, 500px)
-    minmax(200px, 280px);
+    500px
+    260px;
 
   align-items: center;
 
-  gap: 38px;
+  gap: 42px;
 
   min-width: 0;
 }
 
 
-/* FOCUS 01 ALIGNÉ À GAUCHE */
+/* FOCUS 01 À GAUCHE */
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--left
@@ -2017,23 +559,22 @@
 }
 
 
-/* FOCUS 02 INVERSÉ */
+/* FOCUS 02 À DROITE */
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
 .collection001-pour__focus-main {
   grid-template-columns:
-    minmax(200px, 280px)
-    minmax(0, 500px);
+    260px
+    500px;
 
   justify-self: end;
 
-  width: 100%;
-  max-width: 830px;
+  width: 802px;
 
   margin-left: auto;
+  margin-right: 0;
 }
-
 
 
 /* =========================================================
@@ -2042,8 +583,7 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus-media {
-  width: 100%;
-
+  width: 500px;
   max-width: 500px;
 
   overflow: hidden;
@@ -2061,15 +601,13 @@
 }
 
 
-
-/* FOCUS 02 — IMAGE ALIGNÉE À DROITE */
+/* FORCE LE FOCUS 02 AU BORD DROIT */
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
 .collection001-pour__focus-media {
   justify-self: end;
 }
-
 
 
 /* =========================================================
@@ -2080,7 +618,7 @@
 .collection001-pour__focus-content {
   width: 100%;
 
-  max-width: 280px;
+  max-width: 260px;
 }
 
 
@@ -2089,7 +627,6 @@
   margin: 0 0 24px;
 
   font-size: 9px;
-  font-weight: 400;
 
   color: rgba(17,17,17,.40);
 }
@@ -2121,11 +658,9 @@
   margin: 24px 0 0;
 
   font-size: 11px;
-  font-weight: 400;
 
   color: rgba(17,17,17,.54);
 }
-
 
 
 /* =========================================================
@@ -2143,17 +678,14 @@
   padding-bottom: 5px;
 
   font-size: 10px;
-  font-weight: 400;
-
-  line-height: 1;
 
   letter-spacing: .06em;
 
-  color: #111111;
+  text-transform: uppercase;
 
   text-decoration: none;
 
-  text-transform: uppercase;
+  color: #111111;
 }
 
 
@@ -2184,7 +716,6 @@
 }
 
 
-
 /* =========================================================
    MINI PRODUITS
 ========================================================= */
@@ -2194,19 +725,19 @@
   display: grid;
 
   grid-template-columns:
-    repeat(2, 160px);
+    repeat(2, 220px);
 
   gap:
-    34px
-    24px;
+    38px
+    28px;
 
-  width: max-content;
+  width: 468px;
 
   align-items: start;
 }
 
 
-/* À DROITE POUR FOCUS 01 */
+/* FOCUS 01 MINI À DROITE */
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--left
@@ -2215,7 +746,7 @@
 }
 
 
-/* À GAUCHE POUR FOCUS 02 */
+/* FOCUS 02 MINI À GAUCHE */
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
@@ -2224,12 +755,11 @@
 }
 
 
-
 #Collection001Pour-{{ section.id }}
 .collection001-pour__mini-card {
   display: block;
 
-  width: 160px;
+  width: 220px;
 
   color: #111111;
 
@@ -2239,8 +769,8 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__mini-media {
-  width: 160px;
-  height: 205px;
+  width: 220px;
+  height: 280px;
 
   overflow: hidden;
 
@@ -2271,7 +801,7 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__mini-info {
-  padding-top: 10px;
+  padding-top: 11px;
 }
 
 
@@ -2279,8 +809,7 @@
 .collection001-pour__mini-title {
   margin: 0;
 
-  font-size: 9px;
-  font-weight: 400;
+  font-size: 10px;
 
   line-height: 1.25;
 
@@ -2298,28 +827,11 @@
 }
 
 
-
-/* =========================================================
-   DESKTOP LARGE
-========================================================= */
-
-@media screen and (min-width: 1500px) {
-
-  #Collection001Pour-{{ section.id }}
-  .collection001-pour__focus--right
-  .collection001-pour__focus-main {
-    margin-right: 0;
-  }
-
-}
-
-
-
 /* =========================================================
    TABLETTE
 ========================================================= */
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1200px) {
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--left,
@@ -2334,26 +846,25 @@
   #Collection001Pour-{{ section.id }}
   .collection001-pour__mini-grid {
     grid-template-columns:
-      repeat(4, 145px);
+      repeat(4, 160px);
 
-    justify-self: start;
+    width: auto;
   }
 
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__mini-card {
-    width: 145px;
+    width: 160px;
   }
 
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__mini-media {
-    width: 145px;
-    height: 185px;
+    width: 160px;
+    height: 205px;
   }
 
 }
-
 
 
 /* =========================================================
@@ -2413,12 +924,14 @@
     gap: 30px;
 
     width: 100%;
-    max-width: none;
+
+    margin: 0;
   }
 
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus-media {
+    width: 100%;
     max-width: none;
   }
 
@@ -2461,7 +974,6 @@
 </style>
 
 
-
 <script>
 
 (function () {
@@ -2485,9 +997,7 @@
     elements.forEach((element) => {
 
       const delay =
-        element.getAttribute(
-          'data-delay'
-        ) || 0;
+        element.getAttribute('data-delay') || 0;
 
       element.style.setProperty(
         '--collection-intro-delay',
@@ -2549,7 +1059,6 @@
 </script>
 
 
-
 {% schema %}
 {
   "name": "Collection 001",
@@ -2570,7 +1079,6 @@
       "default": "Huit pièces pensées autour de l’automobile, des destinations et de l’univers graphique POUR."
     },
 
-
     {
       "type": "header",
       "content": "Focus 01 — Produit principal"
@@ -2587,7 +1095,6 @@
       "id": "image_1",
       "label": "Image principale 01"
     },
-
 
     {
       "type": "header",
@@ -2642,7 +1149,6 @@
       "label": "Image petit produit 04"
     },
 
-
     {
       "type": "header",
       "content": "Focus 02 — Produit principal"
@@ -2659,7 +1165,6 @@
       "id": "image_2",
       "label": "Image principale 02"
     },
-
 
     {
       "type": "header",
