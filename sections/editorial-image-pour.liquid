@@ -362,7 +362,27 @@
 
   transform: translateY(0);
 }
+/* =========================================================
+   BOUTON — HOVER FLUIDE + REVEAL
+========================================================= */
 
+#EditorialImagePour-{{ section.id }}
+.editorial-image-pour__button.editorial-image-pour__reveal {
+  transition:
+    opacity .8s cubic-bezier(.22,1,.36,1) var(--editorial-delay, 0ms),
+    transform .8s cubic-bezier(.22,1,.36,1) var(--editorial-delay, 0ms),
+    background-color .55s cubic-bezier(.22,1,.36,1) 0ms,
+    color .55s cubic-bezier(.22,1,.36,1) 0ms,
+    border-color .55s cubic-bezier(.22,1,.36,1) 0ms;
+}
+
+
+#EditorialImagePour-{{ section.id }}
+.editorial-image-pour__button.editorial-image-pour__reveal:hover {
+  background-color: #ffffff;
+  color: #111111;
+  border-color: #111111;
+}
 
 /* =========================================================
    MOBILE
