@@ -12,9 +12,21 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "contact_pour_9DNqtk": {
+      "type": "contact-pour",
+      "name": "Contact POUR",
+      "settings": {
+        "email": "contact@pour-store.com",
+        "phone": "",
+        "hours": "Lundi — Vendredi · 9h — 18h",
+        "response_time": "Sous 24 à 48 heures ouvrées",
+        "address": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "contact_pour_9DNqtk"
   ]
 }
