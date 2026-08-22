@@ -38,72 +38,118 @@
 
         {% if featured_product != blank %}
 
-          <a
-            href="{{ featured_product.url }}"
+          <article
             class="vetements-card"
             {{ block.shopify_attributes }}
           >
 
-            <!-- IMAGE -->
+            <!-- =========================
+                 IMAGE
+            ========================== -->
 
             <div class="vetements-card__media">
 
-              {% if block.settings.image_primary != blank %}
+              <a
+                href="{{ featured_product.url }}"
+                class="vetements-card__media-link"
+                aria-label="{{ featured_product.title }}"
+              >
 
-                {{
-                  block.settings.image_primary
-                  | image_url: width: 1400
-                  | image_tag:
-                    class: 'vetements-card__image vetements-card__image--primary',
-                    loading: 'lazy',
-                    alt: featured_product.title
-                }}
+                <!-- IMAGE PRINCIPALE -->
 
-              {% elsif featured_product.featured_image != blank %}
+                {% if block.settings.image_primary != blank %}
 
-                {{
-                  featured_product.featured_image
-                  | image_url: width: 1400
-                  | image_tag:
-                    class: 'vetements-card__image vetements-card__image--primary',
-                    loading: 'lazy',
-                    alt: featured_product.title
-                }}
+                  {{
+                    block.settings.image_primary
+                    | image_url: width: 1400
+                    | image_tag:
+                      class: 'vetements-card__image vetements-card__image--primary',
+                      loading: 'lazy',
+                      alt: featured_product.title
+                  }}
 
-              {% endif %}
+                {% elsif featured_product.featured_image != blank %}
+
+                  {{
+                    featured_product.featured_image
+                    | image_url: width: 1400
+                    | image_tag:
+                      class: 'vetements-card__image vetements-card__image--primary',
+                      loading: 'lazy',
+                      alt: featured_product.title
+                  }}
+
+                {% endif %}
 
 
-              {% if block.settings.image_hover != blank %}
+                <!-- IMAGE AU SURVOL -->
 
-                {{
-                  block.settings.image_hover
-                  | image_url: width: 1400
-                  | image_tag:
-                    class: 'vetements-card__image vetements-card__image--hover',
-                    loading: 'lazy',
-                    alt: featured_product.title
-                }}
+                {% if block.settings.image_hover != blank %}
 
-              {% endif %}
+                  {{
+                    block.settings.image_hover
+                    | image_url: width: 1400
+                    | image_tag:
+                      class: 'vetements-card__image vetements-card__image--hover',
+                      loading: 'lazy',
+                      alt: featured_product.title
+                  }}
+
+                {% elsif featured_product.images.size > 1 %}
+
+                  {{
+                    featured_product.images[1]
+                    | image_url: width: 1400
+                    | image_tag:
+                      class: 'vetements-card__image vetements-card__image--hover',
+                      loading: 'lazy',
+                      alt: featured_product.title
+                  }}
+
+                {% endif %}
+
+              </a>
+
+
+              <!-- =========================
+                   QUICK ADD +
+              ========================== -->
+
+              <button
+                type="button"
+                class="vetements-card__quick-add"
+                data-vetements-quick-add
+                data-product-handle="{{ featured_product.handle }}"
+                aria-label="Ajouter rapidement {{ featured_product.title }}"
+              ></button>
 
             </div>
 
 
-            <!-- INFOS -->
+            <!-- =========================
+                 INFOS
+            ========================== -->
 
-            <div class="vetements-card__info">
+            <a
+              href="{{ featured_product.url }}"
+              class="vetements-card__info-link"
+            >
 
-              <h3 class="vetements-card__title">
-                {{ featured_product.title }}
-              </h3>
+              <div class="vetements-card__info">
 
-              <div class="vetements-card__price">
-                {{ featured_product.price | money }}
+                <h3 class="vetements-card__title">
+                  {{ featured_product.title }}
+                </h3>
+
+                <div class="vetements-card__price">
+                  {{ featured_product.price | money }}
+                </div>
+
               </div>
 
-            </div>
+            </a>
 
-          </a>
+          </article>
 
         {% endif %}
 
@@ -113,12 +159,1026 @@
 
   </div>
 
+
+  <!-- =====================================================
+       QUICK VIEW OVERLAY
+  ====================================================== -->
+
+  <div
+    class="vetements-qv__overlay"
+    data-vetements-qv-overlay
+  ></div>
+
+
+  <!-- =====================================================
+       QUICK VIEW MODAL
+  ====================================================== -->
+
+  <div
+    class="vetements-qv"
+    data-vetements-qv
+    aria-hidden="true"
+  >
+
+    <button
+      type="button"
+      class="vetements-qv__close"
+      data-vetements-qv-close
+      aria-label="Fermer"
+    ></button>
+
+    <div
+      class="vetements-qv__inner"
+      data-vetements-qv-content
+    ></div>
+
+  </div>
+
 </section>
+
+
+<style>
+
+/* =========================================================
+   MEDIA + HOVER
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__media {
+  position: relative;
+  overflow: hidden;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__media-link {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__image--primary {
+  position: relative;
+  z-index: 1;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  opacity: 1;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__image--hover {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0;
+
+  pointer-events: none;
+
+  transition:
+    opacity .25s cubic-bezier(.22,1,.36,1);
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__media:hover
+.vetements-card__image--hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   QUICK ADD +
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__quick-add {
+  position: absolute;
+
+  right: 8px;
+  bottom: 8px;
+
+  z-index: 30;
+
+  width: 28px;
+  height: 28px;
+
+  min-width: 28px;
+  min-height: 28px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(3px);
+
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .25s cubic-bezier(.22,1,.36,1);
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__quick-add::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 10px;
+  height: 1px;
+
+  background: #111111;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__quick-add::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 1px;
+  height: 10px;
+
+  background: #111111;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__media:hover
+.vetements-card__quick-add {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   INFOS
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-card__info-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   QUICK VIEW — OVERLAY
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100000;
+
+  background: rgba(0,0,0,.38);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   QUICK VIEW — MODALE
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 100001;
+
+  width: min(960px, calc(100vw - 80px));
+
+  max-height: calc(100vh - 70px);
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -47%);
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   CROIX
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__close {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 10;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__close::before,
+#VetementsGrid-{{ section.id }}
+.vetements-qv__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 18px;
+  height: 1px;
+
+  background: #111111;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__close::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__close::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   CONTENU MODALE
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__inner {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(320px,.9fr);
+
+  align-items: center;
+
+  min-height: 570px;
+
+  padding:
+    65px
+    70px;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__media {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__image {
+  display: block;
+
+  width: 100%;
+  max-width: 430px;
+
+  max-height: 470px;
+
+  object-fit: contain;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__info {
+  padding-left: 50px;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__price {
+  margin-top: 15px;
+
+  font-size: 13px;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+/* =========================================================
+   VARIANTES
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__options {
+  margin-top: 32px;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__option-label {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variants {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant {
+  position: relative;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 46px;
+  height: 42px;
+
+  padding: 0 13px;
+
+  border:
+    1px solid
+    rgba(17,17,17,.18);
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant
+input:checked + span {
+  border: 1px solid #111111;
+  box-shadow: none;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant.is-disabled span {
+  opacity: .3;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   AJOUT AU PANIER
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__submit {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 50px;
+
+  margin-top: 30px;
+
+  border:
+    1px solid
+    #111111;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__details {
+  display: inline-block;
+
+  margin-top: 22px;
+
+  padding-bottom: 4px;
+
+  border-bottom:
+    1px solid
+    currentColor;
+
+  color: #111111;
+
+  font-size: 9px;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__loading {
+  grid-column: 1 / -1;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-height: 440px;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 750px) {
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv {
+    width: calc(100vw - 24px);
+
+    max-height:
+      calc(100vh - 24px);
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__inner {
+    grid-template-columns: 1fr;
+
+    min-height: 0;
+
+    padding:
+      60px
+      22px
+      35px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__image {
+    max-height: 300px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__info {
+    padding: 30px 0 0;
+  }
+
+}
+
+@media (hover: none) {
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-card__quick-add {
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+  }
+
+}
+
+</style>
+
+
+<script>
+(function () {
+
+  const section =
+    document.getElementById(
+      'VetementsGrid-{{ section.id }}'
+    );
+
+  if (!section) {
+    return;
+  }
+
+
+  const modal =
+    section.querySelector(
+      '[data-vetements-qv]'
+    );
+
+  const overlay =
+    section.querySelector(
+      '[data-vetements-qv-overlay]'
+    );
+
+  const content =
+    section.querySelector(
+      '[data-vetements-qv-content]'
+    );
+
+
+  if (!modal || !overlay || !content) {
+    return;
+  }
+
+
+  function formatMoney(cents) {
+
+    return new Intl.NumberFormat(
+      'fr-FR',
+      {
+        style: 'currency',
+        currency: 'EUR'
+      }
+    ).format(cents / 100);
+
+  }
+
+
+  function escapeHTML(value) {
+
+    const div =
+      document.createElement('div');
+
+    div.textContent =
+      value == null
+        ? ''
+        : String(value);
+
+    return div.innerHTML;
+
+  }
+
+
+  function openQuickView() {
+
+    modal.classList.add(
+      'is-active'
+    );
+
+    overlay.classList.add(
+      'is-active'
+    );
+
+    modal.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+  }
+
+
+  function closeQuickView() {
+
+    modal.classList.remove(
+      'is-active'
+    );
+
+    overlay.classList.remove(
+      'is-active'
+    );
+
+    modal.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+
+  function buildVariants(product) {
+
+    const variants =
+      product.variants || [];
+
+
+    if (!variants.length) {
+      return '';
+    }
+
+
+    if (
+      variants.length === 1 &&
+      variants[0].title === 'Default Title'
+    ) {
+
+      return `
+        <input
+          type="hidden"
+          name="id"
+          value="${variants[0].id}"
+        >
+      `;
+
+    }
+
+
+    const firstAvailable =
+      variants.findIndex(
+        variant => variant.available
+      );
+
+
+    return `
+
+      <div class="vetements-qv__options">
+
+        <p class="vetements-qv__option-label">
+          Taille :
+        </p>
+
+        <div class="vetements-qv__variants">
+
+          ${variants.map(
+            (variant, index) => {
+
+              const checked =
+                index === firstAvailable
+                  ? 'checked'
+                  : '';
+
+              const disabled =
+                variant.available
+                  ? ''
+                  : 'disabled';
+
+
+              return `
+
+                <label
+                  class="
+                    vetements-qv__variant
+                    ${variant.available ? '' : 'is-disabled'}
+                  "
+                >
+
+                  <input
+                    type="radio"
+                    name="id"
+                    value="${variant.id}"
+                    ${checked}
+                    ${disabled}
+                  >
+
+                  <span>
+                    ${escapeHTML(variant.title)}
+                  </span>
+
+                </label>
+              `;
+
+            }
+          ).join('')}
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  async function loadProduct(handle) {
+
+    content.innerHTML = `
+
+      <div class="vetements-qv__loading">
+        CHARGEMENT
+      </div>
+
+    `;
+
+
+    openQuickView();
+
+
+    try {
+
+      const response =
+        await fetch(
+          `/products/${handle}.js`,
+          {
+            headers: {
+              Accept: 'application/json'
+            }
+          }
+        );
+
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+
+      const product =
+        await response.json();
+
+
+      const image =
+        product.featured_image ||
+        product.images?.[0] ||
+        '';
+
+
+      content.innerHTML = `
+
+        <div class="vetements-qv__media">
+
+          ${
+            image
+              ? `
+                <img
+                  src="${escapeHTML(image)}"
+                  class="vetements-qv__image"
+                  alt="${escapeHTML(product.title)}"
+                >
+              `
+              : ''
+          }
+
+        </div>
+
+
+        <div class="vetements-qv__info">
+
+          <h2 class="vetements-qv__title">
+            ${escapeHTML(product.title)}
+          </h2>
+
+
+          <p class="vetements-qv__price">
+            ${formatMoney(product.price)}
+          </p>
+
+
+          <form
+            action="/cart/add"
+            method="post"
+            class="vetements-qv__form"
+          >
+
+            ${buildVariants(product)}
+
+
+            <input
+              type="hidden"
+              name="quantity"
+              value="1"
+            >
+
+
+            <button
+              type="submit"
+              class="vetements-qv__submit"
+            >
+              AJOUTER AU PANIER
+            </button>
+
+          </form>
+
+
+          <a
+            href="${escapeHTML(product.url)}"
+            class="vetements-qv__details"
+          >
+            VOIR LE PRODUIT
+          </a>
+
+        </div>
+      `;
+
+
+    } catch (error) {
+
+      content.innerHTML = `
+
+        <div class="vetements-qv__loading">
+          PRODUIT INDISPONIBLE
+        </div>
+
+      `;
+
+    }
+
+  }
+
+
+  section.addEventListener(
+    'click',
+    function (event) {
+
+      const quickButton =
+        event.target.closest(
+          '[data-vetements-quick-add]'
+        );
+
+
+      if (quickButton) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const handle =
+          quickButton.dataset.productHandle;
+
+        if (handle) {
+          loadProduct(handle);
+        }
+
+        return;
+      }
+
+
+      if (
+        event.target.closest(
+          '[data-vetements-qv-close]'
+        )
+      ) {
+
+        closeQuickView();
+
+        return;
+      }
+
+
+      if (
+        event.target === overlay
+      ) {
+
+        closeQuickView();
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'submit',
+    function (event) {
+
+      if (
+        event.target.matches(
+          '#VetementsGrid-{{ section.id }} .vetements-qv__form'
+        )
+      ) {
+
+        /*
+          Ton header.liquid intercepte ensuite /cart/add
+          et ouvre ton drawer panier à droite.
+        */
+
+        window.setTimeout(
+          closeQuickView,
+          100
+        );
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (event.key === 'Escape') {
+        closeQuickView();
+      }
+
+    }
+  );
+
+})();
+</script>
 
 
 {% schema %}
 {
   "name": "Grille Vêtements",
+
   "settings": [
     {
       "type": "text",
@@ -133,10 +1193,12 @@
       "default": "COLLECTION 001"
     }
   ],
+
   "blocks": [
     {
       "type": "product",
       "name": "Produit",
+
       "settings": [
         {
           "type": "product",
@@ -156,10 +1218,13 @@
       ]
     }
   ],
+
   "max_blocks": 20,
+
   "presets": [
     {
       "name": "Grille Vêtements",
+
       "blocks": [
         {
           "type": "product"
