@@ -3264,7 +3264,7 @@ transform: translateX(-15px);
   left: 50%;
   bottom: 32px;
 
-  z-index: 60;
+  z-index: 100;
 
   display: flex;
   flex-direction: column;
@@ -3290,23 +3290,26 @@ transform: translateX(-15px);
   text-transform: uppercase;
   text-decoration: none;
 
-  color: #111111;
+  color: #ffffff;
 
-  opacity: .7;
+  opacity: .8;
 
-  transition:
-    opacity .4s ease;
+  cursor: pointer;
+  pointer-events: auto;
+
+  text-shadow: 0 1px 8px rgba(0,0,0,.18);
+
+  transition: opacity .4s ease;
 }
 
 .clothing-hero__discover:hover {
   opacity: 1;
 }
 
-
-/* PETITE FLÈCHE */
-
 .clothing-hero__discover-arrow {
   display: block;
+
+  color: #ffffff;
 
   font-size: 17px;
   line-height: 1;
