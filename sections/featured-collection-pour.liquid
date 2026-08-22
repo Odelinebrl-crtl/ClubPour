@@ -241,14 +241,12 @@
   height: 48px;
 
   margin-top: 40px;
-
   padding: 0 28px;
 
-  border: 1px solid rgba(17,17,17,.22);
+  border: 1px solid #111111;
 
-  background: transparent;
-
-  color: #111111;
+  background: #111111;
+  color: #ffffff;
 
   font-family:
     "Helvetica Neue",
@@ -260,9 +258,7 @@
   font-weight: 400;
 
   letter-spacing: .18em;
-
   text-transform: uppercase;
-
   text-decoration: none;
 
   transition:
@@ -272,13 +268,14 @@
 }
 
 
+/* SURVOL */
+
 #FeaturedPour-{{ section.id }}
 .featured-pour__button:hover {
-  background: #111111;
+  background: #ffffff;
+  color: #111111;
 
   border-color: #111111;
-
-  color: #ffffff;
 }
 
 
@@ -319,7 +316,32 @@
   }
 
 }
+/* =========================================================
+   APPARITION AU SCROLL — TEXTES UNIQUEMENT
+========================================================= */
 
+#FeaturedPour-{{ section.id }}
+.featured-pour__reveal {
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity 0.8s cubic-bezier(.22, 1, .36, 1),
+    transform 0.8s cubic-bezier(.22, 1, .36, 1);
+
+  transition-delay: var(--reveal-delay, 0ms);
+
+  will-change: opacity, transform;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
 </style>
 
 
@@ -378,3 +400,101 @@
   ]
 }
 {% endschema %}
+
+<script>
+(function () {
+
+  function initFeaturedPourReveal() {
+
+    const section = document.getElementById(
+      'FeaturedPour-{{ section.id }}'
+    );
+
+    if (!section) return;
+
+
+    const elements =
+      section.querySelectorAll('.featured-pour__reveal');
+
+
+    elements.forEach((element) => {
+
+      const delay =
+        element.getAttribute('data-delay') || 0;
+
+      element.style.setProperty(
+        '--reveal-delay',
+        delay + 'ms'
+      );
+
+    });
+
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          /*
+           * Visible = apparition
+           * Sort de l'écran = retour état initial
+           *
+           * Donc l'effet se rejoue dans les DEUX SENS.
+           */
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add('is-visible');
+
+          } else {
+
+            entry.target.classList.remove('is-visible');
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.18,
+
+        /*
+         * On déclenche légèrement avant que
+         * l'élément arrive complètement à l'écran.
+         */
+        rootMargin: '0px 0px -8% 0px'
+      }
+    );
+
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+
+  }
+
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initFeaturedPourReveal
+    );
+
+  } else {
+
+    initFeaturedPourReveal();
+
+  }
+
+
+  /*
+   * Compatible avec l'éditeur Shopify
+   */
+  document.addEventListener(
+    'shopify:section:load',
+    initFeaturedPourReveal
+  );
+
+})();
+</script>
