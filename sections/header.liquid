@@ -400,33 +400,42 @@
 
               <div class="cart-drawer__quantity">
 
-                <a
-                  href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
-                  aria-label="Réduire la quantité"
-                >
-                  −
-                </a>
+  <button
+    type="button"
+    data-cart-change
+    data-line="{{ forloop.index }}"
+    data-quantity="{{ item.quantity | minus: 1 }}"
+    aria-label="Réduire la quantité"
+  >
+    −
+  </button>
 
-                <span>
-                  {{ item.quantity }}
-                </span>
+  <span>
+    {{ item.quantity }}
+  </span>
 
-                <a
-                  href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
-                  aria-label="Augmenter la quantité"
-                >
-                  +
-                </a>
+  <button
+    type="button"
+    data-cart-change
+    data-line="{{ forloop.index }}"
+    data-quantity="{{ item.quantity | plus: 1 }}"
+    aria-label="Augmenter la quantité"
+  >
+    +
+  </button>
 
-              </div>
+</div>
 
 
-              <a
-                href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
-                class="cart-drawer__remove"
-              >
-                SUPPRIMER
-              </a>
+<button
+  type="button"
+  class="cart-drawer__remove"
+  data-cart-change
+  data-line="{{ forloop.index }}"
+  data-quantity="0"
+>
+  SUPPRIMER
+</button>
 
             </div>
 
