@@ -1043,3 +1043,201 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   PRODUITS POUR — CARROUSEL
+   1 CLIC = 1 PRODUIT
+========================================================= */
+
+function initPourProductsCarousel() {
+
+  document
+    .querySelectorAll('[data-pour-products-carousel]')
+    .forEach((carousel) => {
+
+      if (carousel.dataset.carouselReady === 'true') {
+        return;
+      }
+
+      carousel.dataset.carouselReady = 'true';
+
+
+      const track =
+        carousel.querySelector('[data-pour-products-track]');
+
+      const prev =
+        carousel.querySelector('[data-pour-products-prev]');
+
+      const next =
+        carousel.querySelector('[data-pour-products-next]');
+
+
+      if (!track) {
+        return;
+      }
+
+
+      /* =====================================================
+         LARGEUR EXACTE D'UN PRODUIT
+      ===================================================== */
+
+      function getProductStep() {
+
+        const firstProduct =
+          track.querySelector('.pour-product');
+
+        if (!firstProduct) {
+          return 0;
+        }
+
+
+        const trackStyle =
+          window.getComputedStyle(track);
+
+
+        const gap =
+          parseFloat(trackStyle.gap) || 0;
+
+
+        const productWidth =
+          firstProduct.getBoundingClientRect().width;
+
+
+        return productWidth + gap;
+
+      }
+
+
+      /* =====================================================
+         FLÈCHE DROITE
+      ===================================================== */
+
+      if (next) {
+
+        next.addEventListener('click', () => {
+
+          track.scrollBy({
+            left: getProductStep(),
+            behavior: 'smooth'
+          });
+
+        });
+
+      }
+
+
+      /* =====================================================
+         FLÈCHE GAUCHE
+      ===================================================== */
+
+      if (prev) {
+
+        prev.addEventListener('click', () => {
+
+          track.scrollBy({
+            left: -getProductStep(),
+            behavior: 'smooth'
+          });
+
+        });
+
+      }
+
+
+      /* =====================================================
+         ÉTAT DES FLÈCHES
+      ===================================================== */
+
+      function updateArrows() {
+
+        const maxScroll =
+          track.scrollWidth -
+          track.clientWidth;
+
+
+        if (prev) {
+
+          prev.disabled =
+            track.scrollLeft <= 2;
+
+        }
+
+
+        if (next) {
+
+          next.disabled =
+            track.scrollLeft >=
+            maxScroll - 2;
+
+        }
+
+      }
+
+
+      track.addEventListener(
+        'scroll',
+        () => {
+
+          requestAnimationFrame(
+            updateArrows
+          );
+
+        },
+        {
+          passive: true
+        }
+      );
+
+
+      window.addEventListener(
+        'resize',
+        updateArrows
+      );
+
+
+      updateArrows();
+
+    });
+
+}
+
+
+/* =========================================================
+   CHARGEMENT
+========================================================= */
+
+if (document.readyState === 'loading') {
+
+  document.addEventListener(
+    'DOMContentLoaded',
+    initPourProductsCarousel
+  );
+
+} else {
+
+  initPourProductsCarousel();
+
+}
+
+
+/* =========================================================
+   SHOPIFY EDITOR
+========================================================= */
+
+document.addEventListener(
+  'shopify:section:load',
+  () => {
+
+    document
+      .querySelectorAll('[data-pour-products-carousel]')
+      .forEach((carousel) => {
+
+        carousel.dataset.carouselReady =
+          'false';
+
+      });
+
+
+    initPourProductsCarousel();
+
+  }
+);
