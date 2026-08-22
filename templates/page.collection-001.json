@@ -24,10 +24,41 @@
         "product_2": "drop-001-candy-del-mar",
         "image_2": "shopify://shop_images/6_29210df8-4071-47b5-990d-a0b599671649.png"
       }
+    },
+    "hero_vetements_zxrwhW": {
+      "type": "hero-vetements",
+      "name": "Hero Vêtements",
+      "settings": {
+        "image_1": "shopify://shop_images/tyler-clemmensen-JN3DVx1S1KE-unsplash.jpg",
+        "title_1": "COLLECTION 001",
+        "subtitle_1": "DÉCOUVREZ LA COLLECTION",
+        "text_color_1": "#FFFFFF",
+        "link_1": "",
+        "image_2": "shopify://shop_images/Design_sans_titre_e0493888-df8c-4f1a-b437-90b896e9449d.png",
+        "title_2": "CLUB POUR",
+        "subtitle_2": "COLLECTION 001",
+        "text_color_2": "#FFFFFF",
+        "link_2": "",
+        "title_3": "CANDY DEL MAR",
+        "subtitle_3": "COLLECTION 001",
+        "text_color_3": "#FFFFFF",
+        "link_3": "",
+        "title_4": "RIVIERA",
+        "subtitle_4": "COLLECTION 001",
+        "text_color_4": "#FFFFFF",
+        "link_4": "",
+        "title_5": "CYPRÈS ITALIEN",
+        "subtitle_5": "COLLECTION 001",
+        "text_color_5": "#FFFFFF",
+        "link_5": "",
+        "autoplay": true,
+        "autoplay_speed": 4
+      }
     }
   },
   "order": [
     "main",
+    "hero_vetements_zxrwhW",
     "collection_001_pour_xtFkmp"
   ]
 }
