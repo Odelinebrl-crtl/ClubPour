@@ -3636,43 +3636,121 @@ html {
   scroll-behavior: smooth;
 }
 /* =========================================================
-   QUICK ADD — BOUTON +
+   POUR — QUICK ADD +
 ========================================================= */
 
-.pour-product {
+
+/* La zone image sert de référence au bouton + */
+
+.pour-product__media {
   position: relative;
 }
 
-.pour-product__link {
+
+/* Lien couvrant l'image */
+
+.pour-product__media-link {
   display: block;
+
+  width: 100%;
+  height: 100%;
+
   color: inherit;
   text-decoration: none;
 }
 
-/* le bouton est placé DANS l'image */
+
+/* Lien nom + prix */
+
+.pour-product__info-link {
+  display: block;
+
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   BOUTON +
+========================================================= */
+
 .pour-product__quick-add {
+
   position: absolute;
 
-  right: 16px;
-  bottom: 92px;
+  right: 14px;
+  bottom: 14px;
 
-  z-index: 20;
+  z-index: 30;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  width: 38px;
-  height: 38px;
+  /* TAILLE */
+
+  width: 42px;
+  height: 42px;
 
   padding: 0;
   margin: 0;
 
+
+  /* CENTRAGE DU + */
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+
+  /* DESIGN */
+
+  background: #ffffff;
+
   border: 0;
   border-radius: 0;
 
-  background: #ffffff;
   color: #111111;
+
+  box-shadow: none;
+
+
+  /* RESET BOUTON */
+
+  appearance: none;
+  -webkit-appearance: none;
+
+
+  /* CURSEUR */
+
+  cursor: pointer;
+
+
+  /* INVISIBLE PAR DÉFAUT */
+
+  opacity: 0;
+
+  visibility: hidden;
+
+  transform: translateY(5px);
+
+
+  /* ANIMATION */
+
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .28s cubic-bezier(.22, 1, .36, 1),
+    background-color .2s ease;
+
+}
+
+
+/* =========================================================
+   DESIGN DU +
+========================================================= */
+
+.pour-product__quick-add span {
+
+  display: block;
 
   font-family:
     "Helvetica Neue",
@@ -3680,37 +3758,70 @@ html {
     Arial,
     sans-serif;
 
-  font-size: 25px;
-  font-weight: 300;
+  font-size: 26px;
+
+  font-weight: 200;
+
   line-height: 1;
 
-  cursor: pointer;
+  color: #111111;
 
-  opacity: 0;
-  visibility: hidden;
+  transform: translateY(-1px);
 
-  transform: translateY(6px);
-
-  transition:
-    opacity .22s ease,
-    transform .32s cubic-bezier(.22,1,.36,1),
-    background-color .25s ease,
-    color .25s ease;
-
-  appearance: none;
-  -webkit-appearance: none;
 }
 
-/* apparition uniquement au survol */
-.pour-product:hover .pour-product__quick-add {
+
+/* =========================================================
+   APPARITION AU SURVOL DU PRODUIT
+========================================================= */
+
+.pour-product:hover
+.pour-product__quick-add {
+
   opacity: 1;
+
   visibility: visible;
 
   transform: translateY(0);
+
 }
 
-/* hover du bouton */
+
+/* =========================================================
+   SURVOL DU BOUTON
+========================================================= */
+
 .pour-product__quick-add:hover {
-  background: #111111;
-  color: #ffffff;
+
+  background: #ffffff;
+
+}
+
+
+/* On évite tout changement étrange du + */
+
+.pour-product__quick-add:hover span {
+
+  color: #111111;
+
+}
+
+
+/* =========================================================
+   MOBILE / TABLETTE
+   Pas de vrai hover → bouton toujours visible
+========================================================= */
+
+@media (hover: none) {
+
+  .pour-product__quick-add {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: none;
+
+  }
+
 }
