@@ -12,9 +12,22 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "collection_001_pour_xtFkmp": {
+      "type": "collection-001-pour",
+      "name": "Collection 001",
+      "settings": {
+        "heading": "LA PREMIÈRE COLLECTION POUR",
+        "intro_text": "Huit pièces pensées autour de l’automobile, des destinations et de l’univers graphique POUR.",
+        "product_1": "cypres-italien",
+        "image_1": "shopify://shop_images/8_3e9c3104-e7a5-4a1b-b95f-b3e00e7f51eb.png",
+        "product_2": "drop-001-candy-del-mar",
+        "image_2": "shopify://shop_images/6_29210df8-4071-47b5-990d-a0b599671649.png"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "collection_001_pour_xtFkmp"
   ]
 }
