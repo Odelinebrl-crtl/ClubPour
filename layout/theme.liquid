@@ -29,7 +29,34 @@
     </main>
 
     {% section 'footer' %}
+<!-- =========================================================
+     POUR — QUICK VIEW
+========================================================= -->
 
+<div
+  class="pour-quickview-overlay"
+  data-pour-quickview-overlay
+></div>
+
+<div
+  class="pour-quickview"
+  data-pour-quickview
+  aria-hidden="true"
+>
+
+  <button
+    type="button"
+    class="pour-quickview__close"
+    data-pour-quickview-close
+    aria-label="Fermer"
+  ></button>
+
+  <div
+    class="pour-quickview__content"
+    data-pour-quickview-content
+  ></div>
+
+</div>
     <script
       src="{{ 'theme.js' | asset_url }}"
       defer
