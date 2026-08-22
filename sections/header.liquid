@@ -607,11 +607,6 @@
    ÉVITE LE PETIT REBOND À L'OUVERTURE
 ========================================================= */
 
-html {
-  scrollbar-gutter: stable;
-}
-
-
 body.cart-drawer-open {
   overflow: hidden;
 }
@@ -684,10 +679,6 @@ body.cart-drawer-open {
   transition:
     transform .6s cubic-bezier(.76,0,.24,1);
 
-  will-change: transform;
-
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
 
   font-family:
     "Helvetica Neue",
@@ -843,9 +834,6 @@ body.cart-drawer-open {
   width: 100%;
   height: auto;
 
-  transform: translateZ(0);
-
-  backface-visibility: hidden;
 }
 
 
