@@ -76,7 +76,7 @@ function initPourQuoteReveal() {
       */
       if (
         scrollingDown &&
-        rect.top < viewportHeight * 0.75 &&
+        rect.top < viewportHeight * 0.72 &&
         rect.bottom > viewportHeight * 0.07
       ) {
         quote.classList.add('is-visible');
