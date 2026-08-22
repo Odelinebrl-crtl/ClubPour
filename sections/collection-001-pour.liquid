@@ -224,13 +224,6 @@
   </div>
 
 
-#Collection001Pour-{{ section.id }}
-.collection001-pour__intro-reveal.is-visible {
-  opacity: 1;
-
-  transform: translateY(0);
-}
-
 </section>
 
 <style>
@@ -507,7 +500,6 @@
 #Collection001Pour-{{ section.id }}
 .collection001-pour__intro-reveal {
   opacity: 0;
-
   transform: translateY(45px);
 
   transition:
@@ -521,6 +513,15 @@
     opacity,
     transform;
 }
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__intro-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* MOBILE */
 
 
 /* MOBILE */
