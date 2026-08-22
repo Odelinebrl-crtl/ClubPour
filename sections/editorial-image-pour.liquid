@@ -113,11 +113,9 @@
   margin: 0;
   padding: 0;
 
-  background: #FAF9F6;
-
+  background: #FFFFFF;
   color: #111111;
 }
-
 
 
 /* =========================================================
@@ -129,17 +127,16 @@
   display: grid;
 
   grid-template-columns:
-    minmax(0, 60%)
-    minmax(0, 40%);
+    62% 38%;
 
-  align-items: stretch;
+  align-items: center;
 
   gap: 0;
 
   width: 100%;
-  height: 520px;
-
   margin: 0;
+
+  padding: 0;
 }
 
 /* =========================================================
@@ -149,9 +146,12 @@
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__media {
   width: 100%;
-  height: 520px;
+  height: auto;
 
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
+
+  overflow: visible;
 }
 
 #EditorialImagePour-{{ section.id }}
@@ -159,10 +159,13 @@
   display: block;
 
   width: 100%;
-  height: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
 
   object-fit: contain;
-  object-position: center;
+  object-position: left center;
 }
 
 #EditorialImagePour-{{ section.id }}
