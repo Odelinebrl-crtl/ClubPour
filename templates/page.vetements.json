@@ -41,30 +41,6 @@
     "vetements_grid_Aa73e7": {
       "type": "vetements-grid",
       "blocks": {
-        "product_pC4Qqi": {
-          "type": "product",
-          "settings": {
-            "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/24_985f09a0-c294-4326-9257-e2e315730eaf.png",
-            "image_hover": "shopify://shop_images/23.png"
-          }
-        },
-        "product_Q3Wk6X": {
-          "type": "product",
-          "settings": {
-            "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/19_7c2c841f-3127-49a6-8b99-0bef7db9ebdd.png",
-            "image_hover": "shopify://shop_images/18_dde380ad-2e3a-4880-9c92-89ad48abdd0e.png"
-          }
-        },
-        "product_rYR94T": {
-          "type": "product",
-          "settings": {
-            "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/17.png",
-            "image_hover": "shopify://shop_images/16.png"
-          }
-        },
         "product_ctQr3W": {
           "type": "product",
           "settings": {
@@ -131,9 +107,6 @@
         }
       },
       "block_order": [
-        "product_pC4Qqi",
-        "product_Q3Wk6X",
-        "product_rYR94T",
         "product_ctQr3W",
         "product_zhD6np",
         "product_XRT6it",
