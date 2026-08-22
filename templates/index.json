@@ -195,6 +195,20 @@
         "subtitle": "vos looks",
         "heading": "PORTÉ PAR VOUS"
       }
+    },
+    "hero_pour_48KHer": {
+      "type": "hero-pour",
+      "name": "Hero POUR",
+      "settings": {
+        "image_desktop": "shopify://shop_images/Design_sans_titre-4_e8e7b596-f157-45ad-a9ae-19867e5a98c9.png",
+        "eyebrow": "",
+        "hero_title": "",
+        "button_label": "",
+        "launch_text": "",
+        "content_position": "bottom-left",
+        "text_color": "#FFFFFF",
+        "overlay": 15
+      }
     }
   },
   "order": [
@@ -203,6 +217,7 @@
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
-    "community_feed_pour_4VTp68"
+    "community_feed_pour_4VTp68",
+    "hero_pour_48KHer"
   ]
 }
