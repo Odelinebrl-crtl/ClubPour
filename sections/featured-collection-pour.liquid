@@ -37,49 +37,37 @@
          CONTENU DROITE
     ========================================== -->
 
-    <div class="featured-pour__content">
+   <div class="featured-pour__content">
 
+  {% if section.settings.eyebrow != blank %}
+    <p class="featured-pour__eyebrow featured-pour__reveal" data-delay="0">
+      {{ section.settings.eyebrow }}
+    </p>
+  {% endif %}
 
-      {% if section.settings.eyebrow != blank %}
+  {% if section.settings.heading != blank %}
+    <h2 class="featured-pour__heading featured-pour__reveal" data-delay="80">
+      {{ section.settings.heading }}
+    </h2>
+  {% endif %}
 
-        <p class="featured-pour__eyebrow">
-          {{ section.settings.eyebrow }}
-        </p>
-
-      {% endif %}
-
-
-      {% if section.settings.heading != blank %}
-
-        <h2 class="featured-pour__heading">
-          {{ section.settings.heading }}
-        </h2>
-
-      {% endif %}
-
-
-      {% if section.settings.text != blank %}
-
-        <div class="featured-pour__text">
-          {{ section.settings.text }}
-        </div>
-
-      {% endif %}
-
-
-      {% if section.settings.button_label != blank %}
-
-        <a
-          href="{{ section.settings.button_link }}"
-          class="featured-pour__button"
-        >
-          {{ section.settings.button_label }}
-        </a>
-
-      {% endif %}
-
-
+  {% if section.settings.text != blank %}
+    <div class="featured-pour__text featured-pour__reveal" data-delay="160">
+      {{ section.settings.text }}
     </div>
+  {% endif %}
+
+  {% if section.settings.button_label != blank %}
+    <a
+      href="{{ section.settings.button_link }}"
+      class="featured-pour__button featured-pour__reveal"
+      data-delay="240"
+    >
+      {{ section.settings.button_label }}
+    </a>
+  {% endif %}
+
+</div>
 
   </div>
 
