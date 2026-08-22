@@ -14,16 +14,16 @@
 
   <div class="collection001-pour__intro">
 
-    <p class="collection001-pour__eyebrow">
+   <p class="collection001-pour__eyebrow collection001-pour__intro-reveal" data-delay="0">
       COLLECTION 001
     </p>
 
-    <h1 class="collection001-pour__title">
+   <h1 class="collection001-pour__title collection001-pour__intro-reveal" data-delay="100">
       {{ section.settings.heading }}
     </h1>
 
     {% if section.settings.intro_text != blank %}
-      <p class="collection001-pour__lead">
+   <p class="collection001-pour__lead collection001-pour__intro-reveal" data-delay="190">
         {{ section.settings.intro_text }}
       </p>
     {% endif %}
@@ -224,7 +224,35 @@
   </div>
 
 </section>
+/* =========================================================
+   INTRO COLLECTION 001 — SCROLL REVEAL
+========================================================= */
 
+#Collection001Pour-{{ section.id }}
+.collection001-pour__intro-reveal {
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity .9s cubic-bezier(.22,1,.36,1),
+    transform .9s cubic-bezier(.22,1,.36,1);
+
+  transition-delay:
+    var(--collection-intro-delay, 0ms);
+
+  will-change:
+    opacity,
+    transform;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__intro-reveal.is-visible {
+  opacity: 1;
+
+  transform: translateY(0);
+}
 
 <style>
 
@@ -248,9 +276,9 @@
 #Collection001Pour-{{ section.id }}
 .collection001-pour__intro {
   padding:
-    120px
+    85px
     54px
-    150px;
+    105px;
 
   text-align: center;
 }
@@ -307,24 +335,28 @@
   display: grid;
 
   grid-template-columns:
-    1.35fr
-    .65fr;
+    minmax(0, 1fr)
+    minmax(260px, 360px);
 
   align-items: center;
 
-  gap: 80px;
+  gap: clamp(50px, 7vw, 110px);
+
+  width: min(1180px, calc(100% - 108px));
+
+  margin: 0 auto;
 
   padding:
-    70px
-    54px
-    130px;
+    45px
+    0
+    90px;
 }
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--reverse {
   grid-template-columns:
-    .65fr
-    1.35fr;
+    minmax(260px, 360px)
+    minmax(0, 1fr);
 }
 
 #Collection001Pour-{{ section.id }}
@@ -342,6 +374,7 @@
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus-media {
   width: 100%;
+  max-width: 720px;
 }
 
 #Collection001Pour-{{ section.id }}
@@ -350,6 +383,10 @@
 
   width: 100%;
   height: auto;
+
+  max-height: 540px;
+
+  object-fit: contain;
 }
 
 #Collection001Pour-{{ section.id }}
@@ -541,7 +578,87 @@
 }
 
 </style>
+<script>
+(function () {
 
+  function initCollection001Intro() {
+
+    const section =
+      document.getElementById(
+        'Collection001Pour-{{ section.id }}'
+      );
+
+    if (!section) return;
+
+
+    const elements =
+      section.querySelectorAll(
+        '.collection001-pour__intro-reveal'
+      );
+
+
+    elements.forEach((element) => {
+
+      const delay =
+        element.getAttribute('data-delay') || 0;
+
+      element.style.setProperty(
+        '--collection-intro-delay',
+        delay + 'ms'
+      );
+
+    });
+
+
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            entry.target.classList.toggle(
+              'is-visible',
+              entry.isIntersecting
+            );
+
+          });
+
+        },
+        {
+          threshold: .08,
+          rootMargin: '0px 0px 10% 0px'
+        }
+      );
+
+
+    elements.forEach((element) => {
+      observer.observe(element);
+    });
+
+  }
+
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initCollection001Intro
+    );
+
+  } else {
+
+    initCollection001Intro();
+
+  }
+
+
+  document.addEventListener(
+    'shopify:section:load',
+    initCollection001Intro
+  );
+
+})();
+</script>
 
 {% schema %}
 {
