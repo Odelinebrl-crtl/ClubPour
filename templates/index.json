@@ -136,6 +136,18 @@
         "video": "shopify://files/videos/Design sans titre.mp4"
       }
     },
+    "editorial_image_pour_FREXwq": {
+      "type": "editorial-image-pour",
+      "name": "Bloc image éditorial",
+      "settings": {
+        "image": "shopify://shop_images/Ajouter_un_titre-3.png",
+        "eyebrow": "COLLECTION 001",
+        "heading": "UNE COLLECTION. HUIT HISTOIRES.",
+        "text": "<p>Huit pièces inspirées par l’automobile, les destinations et l’art de vivre. Le premier chapitre de l’univers POUR.</p>",
+        "button_label": "DÉCOUVRIR LA COLLECTION",
+        "button_link": ""
+      }
+    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -195,18 +207,6 @@
         "subtitle": "vos looks",
         "heading": "PORTÉ PAR VOUS"
       }
-    },
-    "editorial_image_pour_FREXwq": {
-      "type": "editorial-image-pour",
-      "name": "Bloc image éditorial",
-      "settings": {
-        "image": "shopify://shop_images/Ajouter_un_titre-3.png",
-        "eyebrow": "COLLECTION 001",
-        "heading": "UNE COLLECTION. HUIT HISTOIRES.",
-        "text": "<p>Huit pièces inspirées par l’automobile, les destinations et l’art de vivre. Le premier chapitre de l’univers POUR.</p>",
-        "button_label": "DÉCOUVRIR LA COLLECTION",
-        "button_link": ""
-      }
     }
   },
   "order": [
@@ -215,7 +215,7 @@
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
-    "community_feed_pour_4VTp68",
-    "editorial_image_pour_FREXwq"
+    "editorial_image_pour_FREXwq",
+    "community_feed_pour_4VTp68"
   ]
 }
