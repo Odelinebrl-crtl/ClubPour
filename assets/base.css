@@ -3637,191 +3637,139 @@ html {
 }
 /* =========================================================
    POUR — QUICK ADD +
+   Petit bouton dans le coin inférieur droit de l'image
 ========================================================= */
 
-
-/* La zone image sert de référence au bouton + */
-
 .pour-product__media {
-  position: relative;
-}
-
-
-/* Lien couvrant l'image */
-
-.pour-product__media-link {
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  color: inherit;
-  text-decoration: none;
-}
-
-
-/* Lien nom + prix */
-
-.pour-product__info-link {
-  display: block;
-
-  color: inherit;
-  text-decoration: none;
+  position: relative !important;
 }
 
 
 /* =========================================================
-   BOUTON +
+   BOUTON
 ========================================================= */
 
 .pour-product__quick-add {
+  position: absolute !important;
 
-  position: absolute;
+  /* VRAIMENT DANS LE COIN DE L'IMAGE */
+  right: 10px !important;
+  bottom: 10px !important;
 
-  right: 14px;
-  bottom: 14px;
+  z-index: 30 !important;
 
-  z-index: 30;
+  /* PLUS PETIT */
+  width: 32px !important;
+  height: 32px !important;
 
+  min-width: 32px !important;
+  min-height: 32px !important;
 
-  /* TAILLE */
+  padding: 0 !important;
+  margin: 0 !important;
 
-  width: 42px;
-  height: 42px;
-
-  padding: 0;
-  margin: 0;
-
-
-  /* CENTRAGE DU + */
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
+  /* CENTRAGE */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
 
   /* DESIGN */
+  background: #ffffff !important;
 
-  background: #ffffff;
+  border: 0 !important;
+  border-radius: 0 !important;
 
-  border: 0;
-  border-radius: 0;
+  box-shadow: none !important;
 
-  color: #111111;
+  color: #111111 !important;
 
-  box-shadow: none;
-
-
-  /* RESET BOUTON */
-
-  appearance: none;
-  -webkit-appearance: none;
-
-
-  /* CURSEUR */
+  /* RESET SHOPIFY */
+  appearance: none !important;
+  -webkit-appearance: none !important;
 
   cursor: pointer;
 
-
-  /* INVISIBLE PAR DÉFAUT */
-
+  /* INVISIBLE AVANT SURVOL */
   opacity: 0;
-
   visibility: hidden;
 
-  transform: translateY(5px);
-
-
-  /* ANIMATION */
+  transform: translateY(3px);
 
   transition:
     opacity .18s ease,
     visibility .18s ease,
-    transform .28s cubic-bezier(.22, 1, .36, 1),
-    background-color .2s ease;
-
+    transform .22s ease !important;
 }
 
 
 /* =========================================================
-   DESIGN DU +
+   LE +
 ========================================================= */
 
 .pour-product__quick-add span {
+  display: flex !important;
 
-  display: block;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: 100% !important;
+  height: 100% !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
 
   font-family:
-    "Helvetica Neue",
-    Helvetica,
     Arial,
-    sans-serif;
+    Helvetica,
+    sans-serif !important;
 
-  font-size: 26px;
+  font-size: 20px !important;
+  font-weight: 300 !important;
 
-  font-weight: 200;
+  line-height: 1 !important;
 
-  line-height: 1;
+  color: #111111 !important;
 
-  color: #111111;
+  /* correction optique du + */
+  transform: translateY(-1px) !important;
 
-  transform: translateY(-1px);
-
+  pointer-events: none;
 }
 
 
 /* =========================================================
-   APPARITION AU SURVOL DU PRODUIT
+   APPARITION AU SURVOL
 ========================================================= */
 
-.pour-product:hover
+.pour-product__media:hover
 .pour-product__quick-add {
+  opacity: 1 !important;
+  visibility: visible !important;
 
-  opacity: 1;
-
-  visibility: visible;
-
-  transform: translateY(0);
-
+  transform: translateY(0) !important;
 }
 
 
 /* =========================================================
-   SURVOL DU BOUTON
+   HOVER DU BOUTON
 ========================================================= */
 
 .pour-product__quick-add:hover {
-
-  background: #ffffff;
-
-}
-
-
-/* On évite tout changement étrange du + */
-
-.pour-product__quick-add:hover span {
-
-  color: #111111;
-
+  background: #ffffff !important;
+  color: #111111 !important;
 }
 
 
 /* =========================================================
-   MOBILE / TABLETTE
-   Pas de vrai hover → bouton toujours visible
+   MOBILE
 ========================================================= */
 
 @media (hover: none) {
 
   .pour-product__quick-add {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: none;
-
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 
 }
