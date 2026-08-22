@@ -1067,8 +1067,17 @@
    BODY LOCK
 ========================================================= */
 
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  width: 100%;
+}
+
 body.cart-drawer-open {
   overflow: hidden;
+  padding-right: var(--scrollbar-width, 0px);
 }
 
 
