@@ -217,13 +217,24 @@
       © {{ 'now' | date: '%Y' }} POUR
     </div>
 
-    <a
-      href="{{ routes.root_url }}"
-      class="footer-pour__logo"
-      aria-label="Retour à l'accueil"
-    >
-      POUR
-    </a>
+   <a
+  href="{{ routes.root_url }}"
+  class="footer-pour__logo"
+  aria-label="Retour à l'accueil"
+>
+  {% if section.settings.footer_logo != blank %}
+    {{
+      section.settings.footer_logo
+      | image_url: width: 300
+      | image_tag:
+        class: 'footer-pour__logo-image',
+        loading: 'lazy',
+        alt: 'POUR'
+    }}
+  {% else %}
+    P
+  {% endif %}
+</a>
 
     <div class="footer-pour__country">
       FRANCE / EUR €
@@ -246,7 +257,7 @@
   margin: 0;
   padding: 0;
 
-  background: #f5f5f3;
+background: #ffffff;
   color: #111111;
 
   border-top: 1px solid rgba(17,17,17,.08);
@@ -677,24 +688,24 @@
 
 #FooterPour-{{ section.id }}
 .footer-pour__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   justify-self: center;
 
   color: #111111;
-
-  font-size: clamp(
-    42px,
-    5vw,
-    78px
-  );
-
-  font-weight: 400;
-
-  line-height: .8;
-
-  letter-spacing: -.06em;
-
   text-decoration: none;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__logo-image {
+  display: block;
+
+  width: auto;
+  height: 65px;
+
+  object-fit: contain;
 }
 
 
@@ -846,6 +857,12 @@
   "name": "Footer",
 
   "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Logo du footer"
+    },
 
     {
       "type": "url",
