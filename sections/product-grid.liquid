@@ -44,7 +44,9 @@
       </button>
 
 
-      <!-- TRACK -->
+      <!-- =========================
+           TRACK PRODUITS
+      ========================== -->
 
       <div
         class="pour-products__grid"
@@ -53,124 +55,138 @@
 
         {% for block in section.blocks %}
 
-  {% assign featured_product = block.settings.product %}
+          {% assign featured_product = block.settings.product %}
 
-  {% if featured_product != blank %}
+          {% if featured_product != blank %}
 
-    <article
-      class="pour-product"
-      {{ block.shopify_attributes }}
-    >
+            <article
+              class="pour-product"
+              {{ block.shopify_attributes }}
+            >
 
-      <!-- =========================
-           LIEN PRODUIT
-      ========================== -->
 
-      <a
-        href="{{ featured_product.url }}"
-        class="pour-product__link"
-      >
+              <!-- =========================================
+                   ZONE IMAGE
+              ========================================== -->
 
-        <!-- =========================
-             IMAGES PERSONNALISÉES
-        ========================== -->
+              <div class="pour-product__media">
 
-        <div class="pour-product__media">
 
-          <!-- IMAGE PRINCIPALE -->
+                <!-- LIEN VERS LE PRODUIT -->
 
-          {% if block.settings.image_primary != blank %}
+                <a
+                  href="{{ featured_product.url }}"
+                  class="pour-product__media-link"
+                  aria-label="{{ featured_product.title }}"
+                >
 
-            {{
-              block.settings.image_primary
-              | image_url: width: 1400
-              | image_tag:
-                class: 'pour-product__image pour-product__image--primary',
-                loading: 'lazy',
-                alt: featured_product.title
-            }}
 
-          {% elsif featured_product.featured_image != blank %}
+                  <!-- =========================
+                       IMAGE PRINCIPALE
+                  ========================== -->
 
-            {{
-              featured_product.featured_image
-              | image_url: width: 1400
-              | image_tag:
-                class: 'pour-product__image pour-product__image--primary',
-                loading: 'lazy',
-                alt: featured_product.title
-            }}
+                  {% if block.settings.image_primary != blank %}
+
+                    {{
+                      block.settings.image_primary
+                      | image_url: width: 1400
+                      | image_tag:
+                        class: 'pour-product__image pour-product__image--primary',
+                        loading: 'lazy',
+                        alt: featured_product.title
+                    }}
+
+                  {% elsif featured_product.featured_image != blank %}
+
+                    {{
+                      featured_product.featured_image
+                      | image_url: width: 1400
+                      | image_tag:
+                        class: 'pour-product__image pour-product__image--primary',
+                        loading: 'lazy',
+                        alt: featured_product.title
+                    }}
+
+                  {% endif %}
+
+
+                  <!-- =========================
+                       IMAGE AU SURVOL
+                  ========================== -->
+
+                  {% if block.settings.image_secondary != blank %}
+
+                    {{
+                      block.settings.image_secondary
+                      | image_url: width: 1400
+                      | image_tag:
+                        class: 'pour-product__image pour-product__image--secondary',
+                        loading: 'lazy',
+                        alt: featured_product.title
+                    }}
+
+                  {% elsif featured_product.images.size > 1 %}
+
+                    {{
+                      featured_product.images[1]
+                      | image_url: width: 1400
+                      | image_tag:
+                        class: 'pour-product__image pour-product__image--secondary',
+                        loading: 'lazy',
+                        alt: featured_product.title
+                    }}
+
+                  {% endif %}
+
+                </a>
+
+
+                <!-- =========================================
+                     BOUTON QUICK ADD +
+                ========================================== -->
+
+                <button
+                  type="button"
+                  class="pour-product__quick-add"
+                  data-quick-add
+                  data-product-handle="{{ featured_product.handle }}"
+                  aria-label="Ajouter rapidement {{ featured_product.title }}"
+                >
+                  <span aria-hidden="true">+</span>
+                </button>
+
+              </div>
+
+
+              <!-- =========================================
+                   INFORMATIONS PRODUIT
+              ========================================== -->
+
+              <a
+                href="{{ featured_product.url }}"
+                class="pour-product__info-link"
+              >
+
+                <div class="pour-product__info">
+
+                  <h3 class="pour-product__title">
+                    {{ featured_product.title }}
+                  </h3>
+
+                  <div class="pour-product__price">
+                    {{ featured_product.price | money }}
+                  </div>
+
+                </div>
+
+              </a>
+
+
+            </article>
 
           {% endif %}
 
-
-          <!-- IMAGE AU SURVOL -->
-
-          {% if block.settings.image_secondary != blank %}
-
-            {{
-              block.settings.image_secondary
-              | image_url: width: 1400
-              | image_tag:
-                class: 'pour-product__image pour-product__image--secondary',
-                loading: 'lazy',
-                alt: featured_product.title
-            }}
-
-          {% elsif featured_product.images.size > 1 %}
-
-            {{
-              featured_product.images[1]
-              | image_url: width: 1400
-              | image_tag:
-                class: 'pour-product__image pour-product__image--secondary',
-                loading: 'lazy',
-                alt: featured_product.title
-            }}
-
-          {% endif %}
-
-        </div>
-
-
-        <!-- =========================
-             NOM + PRIX
-        ========================== -->
-
-        <div class="pour-product__info">
-
-          <h3 class="pour-product__title">
-            {{ featured_product.title }}
-          </h3>
-
-          <div class="pour-product__price">
-            {{ featured_product.price | money }}
-          </div>
-
-        </div>
-
-      </a>
-
-
-      <!-- =========================
-           QUICK ADD +
-      ========================== -->
-
-      <button
-        type="button"
-        class="pour-product__quick-add"
-        data-quick-add
-        data-product-handle="{{ featured_product.handle }}"
-        aria-label="Ajouter rapidement {{ featured_product.title }}"
-      >
-        +
-      </button>
-
-    </article>
-
-  {% endif %}
-
-{% endfor %}
+        {% endfor %}
 
       </div>
 
@@ -216,22 +232,27 @@
     {
       "type": "product_card",
       "name": "Produit",
+
       "settings": [
+
         {
           "type": "product",
           "id": "product",
           "label": "Produit Shopify"
         },
+
         {
           "type": "image_picker",
           "id": "image_primary",
           "label": "Image principale personnalisée"
         },
+
         {
           "type": "image_picker",
           "id": "image_secondary",
           "label": "Image au survol personnalisée"
         }
+
       ]
     }
   ],
@@ -241,6 +262,7 @@
   "presets": [
     {
       "name": "Produits POUR",
+
       "blocks": [
         {
           "type": "product_card"
