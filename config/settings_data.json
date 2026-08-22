@@ -29,7 +29,12 @@
       },
       "footer": {
         "type": "footer",
-        "settings": {}
+        "settings": {
+          "footer_logo": "shopify://shop_images/Design_sans_titre.png",
+          "instagram": "",
+          "tiktok": "",
+          "pinterest": ""
+        }
       },
       "hero-vetements": {
         "type": "hero-vetements",
