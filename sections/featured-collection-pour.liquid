@@ -1,0 +1,402 @@
+<section
+  id="FeaturedPour-{{ section.id }}"
+  class="featured-pour"
+>
+
+  <div class="featured-pour__inner">
+
+
+    <!-- =========================================
+         VISUEL GAUCHE
+    ========================================== -->
+
+    <div class="featured-pour__visual">
+
+      {% if section.settings.image != blank %}
+
+        {{
+          section.settings.image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'featured-pour__image',
+            loading: 'lazy'
+        }}
+
+      {% else %}
+
+        <div class="featured-pour__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+
+      {% endif %}
+
+    </div>
+
+
+    <!-- =========================================
+         CONTENU DROITE
+    ========================================== -->
+
+    <div class="featured-pour__content">
+
+
+      {% if section.settings.eyebrow != blank %}
+
+        <p class="featured-pour__eyebrow">
+          {{ section.settings.eyebrow }}
+        </p>
+
+      {% endif %}
+
+
+      {% if section.settings.heading != blank %}
+
+        <h2 class="featured-pour__heading">
+          {{ section.settings.heading }}
+        </h2>
+
+      {% endif %}
+
+
+      {% if section.settings.text != blank %}
+
+        <div class="featured-pour__text">
+          {{ section.settings.text }}
+        </div>
+
+      {% endif %}
+
+
+      {% if section.settings.button_label != blank %}
+
+        <a
+          href="{{ section.settings.button_link }}"
+          class="featured-pour__button"
+        >
+          {{ section.settings.button_label }}
+        </a>
+
+      {% endif %}
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<style>
+
+/* =========================================================
+   FEATURED COLLECTION — POUR
+========================================================= */
+
+#FeaturedPour-{{ section.id }} {
+  width: 100%;
+
+  padding: 110px 5vw 120px;
+
+  background: #FAF9F6;
+
+  color: #111111;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__inner {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.25fr)
+    minmax(360px, .75fr);
+
+  align-items: center;
+
+  gap: clamp(60px, 7vw, 130px);
+
+  width: min(100%, 1450px);
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   VISUEL
+========================================================= */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__visual {
+  width: 100%;
+
+  aspect-ratio: 5 / 4;
+
+  overflow: hidden;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__placeholder,
+#FeaturedPour-{{ section.id }}
+.featured-pour__placeholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 520px;
+}
+
+
+/* PETIT TITRE */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__eyebrow {
+  margin: 0 0 34px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .20em;
+
+  text-transform: uppercase;
+
+  color: #111111;
+}
+
+
+/* GRAND TITRE */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__heading {
+  margin: 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: clamp(30px, 3vw, 48px);
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  color: #111111;
+}
+
+
+/* TEXTE */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__text {
+  max-width: 480px;
+
+  margin-top: 30px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  color: #444444;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__text p {
+  margin: 0;
+}
+
+
+/* =========================================================
+   BOUTON
+========================================================= */
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 150px;
+  height: 48px;
+
+  margin-top: 40px;
+
+  padding: 0 28px;
+
+  border: 1px solid rgba(17,17,17,.22);
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .18em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    background .3s ease,
+    color .3s ease,
+    border-color .3s ease;
+}
+
+
+#FeaturedPour-{{ section.id }}
+.featured-pour__button:hover {
+  background: #111111;
+
+  border-color: #111111;
+
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  #FeaturedPour-{{ section.id }} {
+    padding: 70px 16px 85px;
+  }
+
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__inner {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+  }
+
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__content {
+    max-width: none;
+  }
+
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__eyebrow {
+    margin-bottom: 22px;
+  }
+
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__heading {
+    font-size: 30px;
+  }
+
+}
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Collection mise en avant",
+
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Visuel gauche"
+    },
+
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit titre",
+      "default": "COLLECTION 001"
+    },
+
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "L'UNIVERS POUR"
+    },
+
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Découvrez une collection pensée autour de l'automobile, du lifestyle et de notre univers graphique.</p>"
+    },
+
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "DÉCOUVRIR"
+    },
+
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Lien du bouton"
+    }
+
+  ],
+
+  "presets": [
+    {
+      "name": "Collection mise en avant"
+    }
+  ]
+}
+{% endschema %}
