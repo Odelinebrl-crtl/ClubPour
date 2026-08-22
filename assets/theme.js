@@ -1241,3 +1241,564 @@ document.addEventListener(
 
   }
 );
+/* =========================================================
+   POUR — AJAX ADD TO CART + OUVERTURE CART DRAWER
+========================================================= */
+
+(function () {
+
+  function getShopRoot() {
+    if (
+      window.Shopify &&
+      window.Shopify.routes &&
+      window.Shopify.routes.root
+    ) {
+      return window.Shopify.routes.root;
+    }
+
+    return '/';
+  }
+
+
+  function formatMoney(cents) {
+    return new Intl.NumberFormat('fr-FR', {
+      style: 'currency',
+      currency: 'EUR'
+    }).format(cents / 100);
+  }
+
+
+  function openPourCartDrawer() {
+
+    const drawer =
+      document.querySelector('[data-cart-drawer]');
+
+    const overlay =
+      document.querySelector('[data-cart-drawer-overlay]');
+
+    if (!drawer || !overlay) return;
+
+    drawer.classList.add('is-active');
+    overlay.classList.add('is-active');
+
+    drawer.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    document.body.classList.add(
+      'cart-drawer-open'
+    );
+  }
+
+
+  async function refreshPourCartDrawer() {
+
+    const root = getShopRoot();
+
+    const response =
+      await fetch(root + 'cart.js', {
+        headers: {
+          Accept: 'application/json'
+        }
+      });
+
+    if (!response.ok) {
+      throw new Error(
+        'Impossible de récupérer le panier.'
+      );
+    }
+
+    const cart = await response.json();
+
+
+    /* ===============================================
+       COMPTEUR HEADER
+    =============================================== */
+
+    document
+      .querySelectorAll('[data-cart-drawer-open]')
+      .forEach((button) => {
+
+        button.textContent =
+          cart.item_count > 0
+            ? `PANIER (${cart.item_count})`
+            : 'PANIER';
+
+      });
+
+
+    const drawer =
+      document.querySelector('[data-cart-drawer]');
+
+    if (!drawer) return;
+
+
+    /* ===============================================
+       PANIER VIDE
+    =============================================== */
+
+    if (cart.item_count === 0) {
+
+      drawer.innerHTML = `
+        <div class="cart-drawer__header">
+
+          <p class="cart-drawer__title">
+            PANIER
+          </p>
+
+          <button
+            type="button"
+            class="cart-drawer__close"
+            data-cart-drawer-close
+            aria-label="Fermer le panier"
+          >
+            ×
+          </button>
+
+        </div>
+
+        <div class="cart-drawer__empty">
+
+          <p>
+            VOTRE PANIER EST VIDE.
+          </p>
+
+          <a href="/pages/boutique?view=vetements">
+            DÉCOUVRIR LA COLLECTION
+          </a>
+
+        </div>
+      `;
+
+      return;
+    }
+
+
+    /* ===============================================
+       PRODUITS
+    =============================================== */
+
+    const itemsHTML =
+      cart.items
+        .map((item, index) => {
+
+          const variant =
+            item.variant_title &&
+            item.variant_title !== 'Default Title'
+              ? `
+                <div class="cart-drawer__variants">
+                  <p>${item.variant_title}</p>
+                </div>
+              `
+              : '';
+
+          const image =
+            item.image
+              ? `
+                <img
+                  src="${item.image}"
+                  class="cart-drawer__image"
+                  alt="${item.product_title}"
+                  loading="lazy"
+                >
+              `
+              : '';
+
+          return `
+            <div class="cart-drawer__item">
+
+              <a
+                href="${item.url}"
+                class="cart-drawer__media"
+              >
+                ${image}
+              </a>
+
+
+              <div class="cart-drawer__content">
+
+                <a
+                  href="${item.url}"
+                  class="cart-drawer__item-title"
+                >
+                  ${item.product_title}
+                </a>
+
+
+                <p class="cart-drawer__item-price">
+                  ${formatMoney(item.final_line_price)}
+                </p>
+
+
+                ${variant}
+
+
+                <div class="cart-drawer__actions">
+
+                  <div class="cart-drawer__quantity">
+
+                    <button
+                      type="button"
+                      data-cart-change
+                      data-line="${index + 1}"
+                      data-quantity="${item.quantity - 1}"
+                      aria-label="Réduire la quantité"
+                    >
+                      −
+                    </button>
+
+                    <span>
+                      ${item.quantity}
+                    </span>
+
+                    <button
+                      type="button"
+                      data-cart-change
+                      data-line="${index + 1}"
+                      data-quantity="${item.quantity + 1}"
+                      aria-label="Augmenter la quantité"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+
+                  <button
+                    type="button"
+                    class="cart-drawer__remove"
+                    data-cart-change
+                    data-line="${index + 1}"
+                    data-quantity="0"
+                  >
+                    SUPPRIMER
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+          `;
+
+        })
+        .join('');
+
+
+    drawer.innerHTML = `
+
+      <div class="cart-drawer__header">
+
+        <p class="cart-drawer__title">
+          PANIER
+        </p>
+
+        <button
+          type="button"
+          class="cart-drawer__close"
+          data-cart-drawer-close
+          aria-label="Fermer le panier"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="cart-drawer__items">
+        ${itemsHTML}
+      </div>
+
+
+      <div class="cart-drawer__footer">
+
+        <div class="cart-drawer__total">
+
+          <span>
+            SOUS-TOTAL
+          </span>
+
+          <span>
+            ${formatMoney(cart.total_price)}
+          </span>
+
+        </div>
+
+
+        <p class="cart-drawer__shipping">
+          Livraison et taxes calculées à l’étape suivante.
+        </p>
+
+
+        <form
+          action="${root}cart"
+          method="post"
+        >
+
+          <button
+            type="submit"
+            name="checkout"
+            class="cart-drawer__checkout"
+          >
+
+            <span>
+              PASSER AU PAIEMENT
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+
+          </button>
+
+        </form>
+
+
+        <a
+          href="${root}cart"
+          class="cart-drawer__view-cart"
+        >
+          VOIR LE PANIER
+        </a>
+
+      </div>
+    `;
+  }
+
+
+  /* =====================================================
+     AJOUT AU PANIER
+  ====================================================== */
+
+  document.addEventListener(
+    'submit',
+    async function (event) {
+
+      const form =
+        event.target.closest(
+          'form[action*="/cart/add"]'
+        );
+
+      if (!form) return;
+
+      event.preventDefault();
+
+
+      const submitButton =
+        form.querySelector(
+          '[type="submit"]'
+        );
+
+
+      if (submitButton) {
+        submitButton.disabled = true;
+      }
+
+
+      try {
+
+        const root = getShopRoot();
+
+        const formData =
+          new FormData(form);
+
+
+        const response =
+          await fetch(
+            root + 'cart/add.js',
+            {
+              method: 'POST',
+
+              headers: {
+                Accept: 'application/json'
+              },
+
+              body: formData
+            }
+          );
+
+
+        if (!response.ok) {
+
+          const error =
+            await response.json();
+
+          throw new Error(
+            error.description ||
+            'Impossible d’ajouter ce produit.'
+          );
+
+        }
+
+
+        /* Met à jour le drawer */
+
+        await refreshPourCartDrawer();
+
+
+        /* Puis l'ouvre */
+
+        openPourCartDrawer();
+
+
+      } catch (error) {
+
+        console.error(
+          'POUR — Add to cart:',
+          error
+        );
+
+        alert(
+          error.message ||
+          'Une erreur est survenue.'
+        );
+
+      } finally {
+
+        if (submitButton) {
+          submitButton.disabled = false;
+        }
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
+     MODIFICATION QUANTITÉ DANS LE DRAWER
+  ====================================================== */
+
+  document.addEventListener(
+    'click',
+    async function (event) {
+
+      const button =
+        event.target.closest(
+          '[data-cart-change]'
+        );
+
+      if (!button) return;
+
+
+      event.preventDefault();
+
+
+      const line =
+        Number(
+          button.dataset.line
+        );
+
+      const quantity =
+        Math.max(
+          0,
+          Number(
+            button.dataset.quantity
+          )
+        );
+
+
+      try {
+
+        const root = getShopRoot();
+
+
+        await fetch(
+          root + 'cart/change.js',
+          {
+            method: 'POST',
+
+            headers: {
+              'Content-Type':
+                'application/json',
+
+              Accept:
+                'application/json'
+            },
+
+            body:
+              JSON.stringify({
+                line: line,
+                quantity: quantity
+              })
+          }
+        );
+
+
+        await refreshPourCartDrawer();
+
+
+      } catch (error) {
+
+        console.error(
+          'POUR — Update cart:',
+          error
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =====================================================
+     FERMETURE APRÈS RAFRAÎCHISSEMENT DU DRAWER
+  ====================================================== */
+
+  document.addEventListener(
+    'click',
+    function (event) {
+
+      const close =
+        event.target.closest(
+          '[data-cart-drawer-close]'
+        );
+
+      if (!close) return;
+
+
+      const drawer =
+        document.querySelector(
+          '[data-cart-drawer]'
+        );
+
+      const overlay =
+        document.querySelector(
+          '[data-cart-drawer-overlay]'
+        );
+
+
+      if (drawer) {
+
+        drawer
+          .classList
+          .remove('is-active');
+
+        drawer.setAttribute(
+          'aria-hidden',
+          'true'
+        );
+
+      }
+
+
+      if (overlay) {
+
+        overlay
+          .classList
+          .remove('is-active');
+
+      }
+
+
+      document.body
+        .classList
+        .remove(
+          'cart-drawer-open'
+        );
+
+    }
+  );
+
+})();
