@@ -46,6 +46,17 @@
     },
     "collection_001_pour_xtFkmp": {
       "type": "collection-001-pour",
+      "blocks": {
+        "product_yn4N8b": {
+          "type": "product",
+          "settings": {
+            "product": "cypres-italien"
+          }
+        }
+      },
+      "block_order": [
+        "product_yn4N8b"
+      ],
       "name": "Collection 001",
       "settings": {
         "heading": "LA PREMIÈRE COLLECTION POUR",
