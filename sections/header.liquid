@@ -1,35 +1,269 @@
 <header class="site-header">
+
   <div class="site-header__inner">
+
+    <!-- =====================================================
+         NAVIGATION GAUCHE
+    ====================================================== -->
 
     <nav class="site-header__nav site-header__nav--left">
 
+
+      <!-- =========================
+           BOUTIQUE + MEGA MENU
+      ========================== -->
+
       <div class="site-header__item site-header__item--dropdown">
-      <a href="/pages/vetements?view=vetements" class="site-header__link">
-BOUTIQUE
-</a>
+
+        <a
+          href="/pages/boutique"
+          class="site-header__link"
+        >
+          BOUTIQUE
+        </a>
+
 
         <div class="site-header__dropdown">
-          <a href="/collections/collection-001">
-            COLLECTION 001
-          </a>
+
+          <div class="site-header__dropdown-inner">
+
+
+            <!-- =========================================
+                 COLONNE GAUCHE
+            ========================================== -->
+
+            <div class="site-header__mega-navigation">
+
+              <div class="site-header__mega-column">
+
+                <!-- TITRE NON CLIQUABLE -->
+
+                <p class="site-header__mega-heading">
+                  VÊTEMENTS
+                </p>
+
+
+                <!-- COLLECTION -->
+
+                <a
+                  href="{{ section.settings.collection_001_link | default: '/collections/collection-001' }}"
+                  class="site-header__mega-collection site-header__mega-link"
+                >
+                  COLLECTION 001
+                </a>
+
+
+                <!-- CATÉGORIES -->
+
+                <div class="site-header__mega-links">
+
+                  {% if section.settings.all_link != blank %}
+
+                    <a
+                      href="{{ section.settings.all_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Tous
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.tshirts_link != blank %}
+
+                    <a
+                      href="{{ section.settings.tshirts_link }}"
+                      class="site-header__mega-link"
+                    >
+                      T-Shirts
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.hoodies_link != blank %}
+
+                    <a
+                      href="{{ section.settings.hoodies_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Hoodies
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.sweatshirts_link != blank %}
+
+                    <a
+                      href="{{ section.settings.sweatshirts_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Sweatshirts
+                    </a>
+
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 VISUELS DROITE
+            ========================================== -->
+
+            <div class="site-header__mega-featured">
+
+
+              <!-- VISUEL 01 -->
+
+              {% if section.settings.menu_image_1 != blank %}
+
+                <a
+                  href="{{ section.settings.menu_image_link_1 | default: '#' }}"
+                  class="site-header__mega-card"
+                >
+
+                  <div class="site-header__mega-image-wrap">
+
+                    {{
+                      section.settings.menu_image_1
+                      | image_url: width: 1200
+                      | image_tag:
+                        class: 'site-header__mega-image',
+                        loading: 'lazy'
+                    }}
+
+                  </div>
+
+
+                  <div class="site-header__mega-card-info">
+
+                    {% if section.settings.menu_image_title_1 != blank %}
+
+                      <p class="site-header__mega-card-title">
+                        {{ section.settings.menu_image_title_1 }}
+                      </p>
+
+                    {% endif %}
+
+
+                    {% if section.settings.menu_image_subtitle_1 != blank %}
+
+                      <p class="site-header__mega-card-subtitle">
+                        {{ section.settings.menu_image_subtitle_1 }}
+                      </p>
+
+                    {% endif %}
+
+                  </div>
+
+                </a>
+
+              {% endif %}
+
+
+
+              <!-- VISUEL 02 -->
+
+              {% if section.settings.menu_image_2 != blank %}
+
+                <a
+                  href="{{ section.settings.menu_image_link_2 | default: '#' }}"
+                  class="site-header__mega-card"
+                >
+
+                  <div class="site-header__mega-image-wrap">
+
+                    {{
+                      section.settings.menu_image_2
+                      | image_url: width: 1200
+                      | image_tag:
+                        class: 'site-header__mega-image',
+                        loading: 'lazy'
+                    }}
+
+                  </div>
+
+
+                  <div class="site-header__mega-card-info">
+
+                    {% if section.settings.menu_image_title_2 != blank %}
+
+                      <p class="site-header__mega-card-title">
+                        {{ section.settings.menu_image_title_2 }}
+                      </p>
+
+                    {% endif %}
+
+
+                    {% if section.settings.menu_image_subtitle_2 != blank %}
+
+                      <p class="site-header__mega-card-subtitle">
+                        {{ section.settings.menu_image_subtitle_2 }}
+                      </p>
+
+                    {% endif %}
+
+                  </div>
+
+                </a>
+
+              {% endif %}
+
+
+            </div>
+
+          </div>
+
         </div>
+
       </div>
 
-   <a
-  href="/pages/club-privileges?view=club-privileges"
-  class="site-header__link"
->
-  CLUB PRIVILÈGES
-</a>
 
-      <a href="/pages/contact" class="site-header__link">
+
+      <!-- =========================
+           CLUB PRIVILÈGES
+      ========================== -->
+
+      <a
+        href="/pages/club-privileges?view=club-privileges"
+        class="site-header__link"
+      >
+        CLUB PRIVILÈGES
+      </a>
+
+
+
+      <!-- =========================
+           CONTACT
+      ========================== -->
+
+      <a
+        href="/pages/contact"
+        class="site-header__link"
+      >
         CONTACT
       </a>
 
     </nav>
 
-    <a href="{{ routes.root_url }}" class="site-header__logo">
+
+
+    <!-- =====================================================
+         LOGO CENTRE
+    ====================================================== -->
+
+    <a
+      href="{{ routes.root_url }}"
+      class="site-header__logo"
+    >
+
       {% if section.settings.logo != blank %}
+
         {{
           section.settings.logo
           | image_url: width: 600
@@ -38,35 +272,157 @@ BOUTIQUE
             loading: 'eager',
             alt: shop.name
         }}
+
       {% else %}
+
         POUR
+
       {% endif %}
+
     </a>
+
+
+
+    <!-- =====================================================
+         ACTIONS DROITE
+    ====================================================== -->
 
     <div class="site-header__actions">
 
-      <a href="{{ routes.account_url }}" class="site-header__link">
+      <a
+        href="{{ routes.account_url }}"
+        class="site-header__link"
+      >
         COMPTE
       </a>
 
-      <a href="{{ routes.cart_url }}" class="site-header__cart">
+      <a
+        href="{{ routes.cart_url }}"
+        class="site-header__cart"
+      >
         PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
       </a>
 
     </div>
 
   </div>
+
 </header>
+
+
 
 {% schema %}
 {
   "name": "Header",
+
   "settings": [
+
     {
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Menu Boutique"
+    },
+
+    {
+      "type": "url",
+      "id": "collection_001_link",
+      "label": "Lien Collection 001"
+    },
+
+    {
+      "type": "url",
+      "id": "all_link",
+      "label": "Lien Tous"
+    },
+
+    {
+      "type": "url",
+      "id": "tshirts_link",
+      "label": "Lien T-Shirts"
+    },
+
+    {
+      "type": "url",
+      "id": "hoodies_link",
+      "label": "Lien Hoodies"
+    },
+
+    {
+      "type": "url",
+      "id": "sweatshirts_link",
+      "label": "Lien Sweatshirts"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Visuel menu 01"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "menu_image_1",
+      "label": "Image 01"
+    },
+
+    {
+      "type": "text",
+      "id": "menu_image_title_1",
+      "label": "Petit titre 01",
+      "default": "SIGNATURE PIECES"
+    },
+
+    {
+      "type": "text",
+      "id": "menu_image_subtitle_1",
+      "label": "Sous-titre 01",
+      "default": "RACING AUTOMOBILE"
+    },
+
+    {
+      "type": "url",
+      "id": "menu_image_link_1",
+      "label": "Lien image 01"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Visuel menu 02"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "menu_image_2",
+      "label": "Image 02"
+    },
+
+    {
+      "type": "text",
+      "id": "menu_image_title_2",
+      "label": "Petit titre 02",
+      "default": "CLUB POUR"
+    },
+
+    {
+      "type": "text",
+      "id": "menu_image_subtitle_2",
+      "label": "Sous-titre 02",
+      "default": "BRAND COLLECTION"
+    },
+
+    {
+      "type": "url",
+      "id": "menu_image_link_2",
+      "label": "Lien image 02"
     }
+
   ]
 }
 {% endschema %}
