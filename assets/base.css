@@ -3254,7 +3254,71 @@ transform: translateX(-15px);
   background: currentColor;
 }
 
+/* =========================================================
+   HERO VÊTEMENTS — DÉCOUVRIR
+========================================================= */
 
+.clothing-hero__discover {
+  position: absolute;
+
+  left: 50%;
+  bottom: 32px;
+
+  z-index: 60;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 9px;
+
+  transform: translateX(-50%);
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: #111111;
+
+  opacity: .7;
+
+  transition:
+    opacity .4s ease;
+}
+
+.clothing-hero__discover:hover {
+  opacity: 1;
+}
+
+
+/* PETITE FLÈCHE */
+
+.clothing-hero__discover-arrow {
+  display: block;
+
+  font-size: 17px;
+  line-height: 1;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+.clothing-hero__discover:hover
+.clothing-hero__discover-arrow {
+  transform: translateY(5px);
+}
 /* =========================================================
    MOBILE
 ========================================================= */
@@ -3564,4 +3628,7 @@ transform: translateX(-15px);
     font-size: 10px;
   }
 
+}
+html {
+  scroll-behavior: smooth;
 }
