@@ -136,66 +136,6 @@
         "video": "shopify://files/videos/Design sans titre.mp4"
       }
     },
-    "community_feed_pour_4VTp68": {
-      "type": "community-feed-pour",
-      "blocks": {
-        "look_bUp43d": {
-          "type": "look",
-          "settings": {
-            "product": "drop-001-candy-del-mar",
-            "product_image": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
-            "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_wmjxDy": {
-          "type": "look",
-          "settings": {
-            "product": "club-pour-test",
-            "product_image": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
-            "customer_image": "shopify://shop_images/8_75301823-3afb-4899-a5f4-0820ec3b71b3.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_aJzNbw": {
-          "type": "look",
-          "settings": {
-            "product": "cypres-italien",
-            "product_image": "shopify://shop_images/7.png",
-            "customer_image": "shopify://shop_images/2_113637b5-c7b9-480c-a5d2-59ef8c1ab045.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_HrrkXy": {
-          "type": "look",
-          "settings": {
-            "product": "riviera",
-            "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
-            "customer_image": "shopify://shop_images/3_6b1015c3-e832-4e03-b2d5-19334878df88.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        }
-      },
-      "block_order": [
-        "look_bUp43d",
-        "look_wmjxDy",
-        "look_aJzNbw",
-        "look_HrrkXy"
-      ],
-      "name": "Porté par vous",
-      "settings": {
-        "subtitle": "vos looks",
-        "heading": "PORTÉ PAR VOUS"
-      }
-    },
     "editorial_image_pour_FREXwq": {
       "type": "editorial-image-pour",
       "name": "Bloc image éditorial",
@@ -215,7 +155,6 @@
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
-    "community_feed_pour_4VTp68",
     "editorial_image_pour_FREXwq"
   ]
 }
