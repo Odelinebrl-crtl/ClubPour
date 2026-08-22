@@ -4,30 +4,867 @@
 >
 
   <div class="footer-pour__inner">
-  <div class="site-footer__inner">
 
-    <div class="site-footer__brand">
-      <a href="{{ routes.root_url }}" class="site-footer__logo">
-        POUR
-      </a>
+    <!-- =====================================================
+         NEWSLETTER
+    ====================================================== -->
+
+    <div class="footer-pour__column footer-pour__newsletter">
+
+      <p class="footer-pour__heading">
+        NEWSLETTER
+      </p>
+
+      <p class="footer-pour__newsletter-text">
+        Inscrivez-vous pour recevoir nos prochaines collections,
+        accès anticipés et actualités POUR.
+      </p>
+
+      {% form 'customer', class: 'footer-pour__form' %}
+
+        <input
+          type="hidden"
+          name="contact[tags]"
+          value="newsletter"
+        >
+
+        <div class="footer-pour__input-wrap">
+
+          <input
+            type="email"
+            name="contact[email]"
+            class="footer-pour__input"
+            placeholder="E-mail"
+            required
+            autocomplete="email"
+          >
+
+        </div>
+
+        <button
+          type="submit"
+          class="footer-pour__submit"
+        >
+          S'INSCRIRE
+        </button>
+
+        {% if form.posted_successfully? %}
+          <p class="footer-pour__message">
+            Merci pour votre inscription.
+          </p>
+        {% endif %}
+
+        {% if form.errors %}
+          <div class="footer-pour__message">
+            {{ form.errors | default_errors }}
+          </div>
+        {% endif %}
+
+      {% endform %}
+
+
+      <!-- RÉSEAUX SOCIAUX -->
+
+      <div class="footer-pour__socials">
+
+        {% if section.settings.instagram != blank %}
+          <a
+            href="{{ section.settings.instagram }}"
+            target="_blank"
+            rel="noopener"
+          >
+            INSTAGRAM
+          </a>
+        {% endif %}
+
+        {% if section.settings.tiktok != blank %}
+          <a
+            href="{{ section.settings.tiktok }}"
+            target="_blank"
+            rel="noopener"
+          >
+            TIKTOK
+          </a>
+        {% endif %}
+
+        {% if section.settings.pinterest != blank %}
+          <a
+            href="{{ section.settings.pinterest }}"
+            target="_blank"
+            rel="noopener"
+          >
+            PINTEREST
+          </a>
+        {% endif %}
+
+      </div>
+
     </div>
 
-    <div class="site-footer__links">
-      <a href="/collections/all">Shop</a>
-      <a href="/pages/about">About</a>
-      <a href="/pages/contact">Contact</a>
+
+    <!-- =====================================================
+         AIDE
+    ====================================================== -->
+
+    <div class="footer-pour__column">
+
+      <p class="footer-pour__heading">
+        AIDE
+      </p>
+
+      <nav class="footer-pour__links">
+
+        <a href="/pages/contact">
+          Contact
+        </a>
+
+        <a href="/pages/livraison">
+          Livraison
+        </a>
+
+        <a href="/pages/retours-remboursements">
+          Retours & remboursements
+        </a>
+
+        <a href="/pages/guide-des-tailles">
+          Guide des tailles
+        </a>
+
+        <a href="/pages/faq">
+          FAQ
+        </a>
+
+      </nav>
+
     </div>
 
-    <div class="site-footer__legal">
-      <span>© {{ 'now' | date: '%Y' }} POUR</span>
+
+    <!-- =====================================================
+         INFORMATIONS
+    ====================================================== -->
+
+    <div class="footer-pour__column">
+
+      <p class="footer-pour__heading">
+        INFORMATIONS
+      </p>
+
+      <nav class="footer-pour__links">
+
+        <a href="/pages/a-propos">
+          À propos
+        </a>
+
+        <a href="/pages/collection-001">
+          Collection 001
+        </a>
+
+        <a href="/pages/contact">
+          Nous contacter
+        </a>
+
+      </nav>
+
+    </div>
+
+
+    <!-- =====================================================
+         LÉGAL
+    ====================================================== -->
+
+    <div class="footer-pour__column">
+
+      <p class="footer-pour__heading">
+        LÉGAL
+      </p>
+
+      <nav class="footer-pour__links">
+
+        <a href="/pages/mentions-legales">
+          Mentions légales
+        </a>
+
+        <a href="/policies/terms-of-service">
+          Conditions générales de vente
+        </a>
+
+        <a href="/policies/privacy-policy">
+          Politique de confidentialité
+        </a>
+
+        <a href="/policies/refund-policy">
+          Politique de remboursement
+        </a>
+
+        <a href="/policies/shipping-policy">
+          Politique de livraison
+        </a>
+
+      </nav>
+
     </div>
 
   </div>
+
+
+  <!-- =====================================================
+       BAS DU FOOTER
+  ====================================================== -->
+
+  <div class="footer-pour__bottom">
+
+    <div class="footer-pour__copyright">
+      © {{ 'now' | date: '%Y' }} POUR
+    </div>
+
+    <a
+      href="{{ routes.root_url }}"
+      class="footer-pour__logo"
+      aria-label="Retour à l'accueil"
+    >
+      POUR
+    </a>
+
+    <div class="footer-pour__country">
+      FRANCE / EUR €
+    </div>
+
+  </div>
+
 </footer>
+
+
+<style>
+
+/* =========================================================
+   FOOTER POUR
+========================================================= */
+
+#FooterPour-{{ section.id }} {
+  width: 100%;
+
+  margin: 0;
+  padding: 0;
+
+  background: #f5f5f3;
+  color: #111111;
+
+  border-top: 1px solid rgba(17,17,17,.08);
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   STRUCTURE PRINCIPALE
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__inner {
+
+  display: grid;
+
+  grid-template-columns:
+    1.55fr
+    .9fr
+    .9fr
+    1.15fr;
+
+  gap: 7vw;
+
+  width: 100%;
+
+  padding:
+    90px
+    3.7vw
+    85px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   COLONNES
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__column {
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+/* =========================================================
+   TITRES
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__heading {
+
+  margin: 0 0 30px;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .22em;
+
+  text-transform: uppercase;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__newsletter-text {
+
+  max-width: 330px;
+
+  margin:
+    0
+    0
+    24px;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  color: rgba(17,17,17,.62);
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__form {
+
+  width: 100%;
+  max-width: 340px;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__input-wrap {
+
+  width: 100%;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__input {
+
+  width: 100%;
+  height: 48px;
+
+  padding:
+    0
+    15px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    rgba(17,17,17,.20);
+
+  border-radius: 0;
+
+  outline: none;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 400;
+
+  -webkit-appearance: none;
+
+  transition:
+    border-color .3s ease;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__input::placeholder {
+
+  color: rgba(17,17,17,.45);
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__input:focus {
+
+  border-color: #111111;
+}
+
+
+/* =========================================================
+   BOUTON NEWSLETTER
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__submit {
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 145px;
+  height: 46px;
+
+  margin-top: 14px;
+
+  padding:
+    0
+    24px;
+
+  border:
+    1px solid
+    #111111;
+
+  border-radius: 0;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .16em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background-color .45s cubic-bezier(.22,1,.36,1),
+    color .45s cubic-bezier(.22,1,.36,1);
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__submit:hover {
+
+  background: transparent;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   MESSAGE NEWSLETTER
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__message {
+
+  margin-top: 12px;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  color: rgba(17,17,17,.65);
+}
+
+
+/* =========================================================
+   LIENS
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__links {
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 16px;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__links a {
+
+  position: relative;
+
+  display: inline-block;
+
+  color: rgba(17,17,17,.62);
+
+  font-size: 12px;
+  font-weight: 400;
+
+  line-height: 1.35;
+
+  text-decoration: none;
+
+  transition:
+    color .25s ease;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__links a:hover {
+
+  color: #111111;
+}
+
+
+/* PETIT SOULIGNEMENT AU SURVOL */
+
+#FooterPour-{{ section.id }}
+.footer-pour__links a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -3px;
+
+  width: 0;
+  height: 1px;
+
+  background: currentColor;
+
+  transition:
+    width .4s cubic-bezier(.22,1,.36,1);
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__links a:hover::after {
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   RÉSEAUX
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__socials {
+
+  display: flex;
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap:
+    12px
+    22px;
+
+  margin-top: 35px;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__socials a {
+
+  position: relative;
+
+  color: #111111;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .14em;
+
+  text-decoration: none;
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__socials a::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: -4px;
+
+  width: 0;
+  height: 1px;
+
+  background: #111111;
+
+  transition:
+    width .35s cubic-bezier(.22,1,.36,1);
+}
+
+
+#FooterPour-{{ section.id }}
+.footer-pour__socials a:hover::after {
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   BAS DU FOOTER
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__bottom {
+
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr;
+
+  align-items: end;
+
+  min-height: 110px;
+
+  padding:
+    30px
+    3.7vw;
+
+  box-sizing: border-box;
+
+  border-top:
+    1px solid
+    rgba(17,17,17,.10);
+}
+
+
+/* COPYRIGHT */
+
+#FooterPour-{{ section.id }}
+.footer-pour__copyright {
+
+  justify-self: start;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+/* =========================================================
+   GRAND LOGO CENTRAL
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__logo {
+
+  justify-self: center;
+
+  color: #111111;
+
+  font-size: clamp(
+    42px,
+    5vw,
+    78px
+  );
+
+  font-weight: 400;
+
+  line-height: .8;
+
+  letter-spacing: -.06em;
+
+  text-decoration: none;
+}
+
+
+/* =========================================================
+   PAYS
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__country {
+
+  justify-self: end;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__inner {
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap:
+      60px
+      30px;
+
+    padding:
+      65px
+      20px
+      60px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__newsletter {
+
+    grid-column:
+      1 / -1;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__newsletter-text {
+
+    max-width: 320px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__form {
+
+    max-width: none;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__heading {
+
+    margin-bottom: 22px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__links {
+
+    gap: 13px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__bottom {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 28px;
+
+    min-height: 0;
+
+    padding:
+      35px
+      20px
+      40px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__logo {
+
+    order: -1;
+
+    font-size: 54px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__country {
+
+    align-self: flex-start;
+  }
+
+}
+
+
+/* =========================================================
+   PETITS MOBILES
+========================================================= */
+
+@media screen and (max-width: 480px) {
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__inner {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 50px;
+  }
+
+
+  #FooterPour-{{ section.id }}
+  .footer-pour__newsletter {
+
+    grid-column: auto;
+  }
+
+}
+
+</style>
+
 
 {% schema %}
 {
   "name": "Footer",
-  "settings": []
+
+  "settings": [
+
+    {
+      "type": "url",
+      "id": "instagram",
+      "label": "Instagram"
+    },
+
+    {
+      "type": "url",
+      "id": "tiktok",
+      "label": "TikTok"
+    },
+
+    {
+      "type": "url",
+      "id": "pinterest",
+      "label": "Pinterest"
+    }
+
+  ]
 }
 {% endschema %}
