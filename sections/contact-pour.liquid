@@ -435,6 +435,8 @@
 
 </section>
 
+
+<style>
 /* =========================================================
    CONTACT — HEADER BLANC AU TOP UNIQUEMENT
 ========================================================= */
@@ -456,8 +458,6 @@ body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
   backdrop-filter: blur(5px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(120%) !important;
 }
-<style>
-
 /* =========================================================
    CONTACT POUR
 ========================================================= */
@@ -1065,27 +1065,31 @@ body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
   }
 
 
-  if (
-    document.readyState === 'loading'
-  ) {
-
-    document.addEventListener(
-      'DOMContentLoaded',
-      initContactPour
-    );
-
-  } else {
-
-    initContactPour();
-initContactHeaderScroll();
-
-  }
-
+  if (document.readyState === 'loading') {
 
   document.addEventListener(
-    'shopify:section:load',
-    initContactPour
+    'DOMContentLoaded',
+    () => {
+      initContactPour();
+      initContactHeaderScroll();
+    }
   );
+
+} else {
+
+  initContactPour();
+  initContactHeaderScroll();
+
+}
+
+
+document.addEventListener(
+  'shopify:section:load',
+  () => {
+    initContactPour();
+    initContactHeaderScroll();
+  }
+);
 function initContactHeaderScroll() {
 
   const section =
