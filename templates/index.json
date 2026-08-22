@@ -117,6 +117,18 @@
         "signature": "Club Pour"
       }
     },
+    "featured_collection_pour_EV7y3F": {
+      "type": "featured-collection-pour",
+      "name": "Collection mise en avant",
+      "settings": {
+        "image": "shopify://shop_images/Design_sans_titre-3_7d759045-d73b-4cdd-8bc5-b6c78f80e3c4.png",
+        "eyebrow": "RACING AUTOMOBILE",
+        "heading": "COLLECTION 001",
+        "text": "<p>Découvrez une collection pensée autour de l'automobile, du lifestyle et de notre univers graphique.</p>",
+        "button_label": "DÉCOUVRIR",
+        "button_link": ""
+      }
+    },
     "video_hero_pour_khqU9c": {
       "type": "video-hero-pour",
       "name": "Vidéo plein écran POUR",
@@ -183,26 +195,14 @@
         "subtitle": "vos looks",
         "heading": "PORTÉ PAR VOUS"
       }
-    },
-    "featured_collection_pour_EV7y3F": {
-      "type": "featured-collection-pour",
-      "name": "Collection mise en avant",
-      "settings": {
-        "image": "shopify://shop_images/Design_sans_titre-3_7d759045-d73b-4cdd-8bc5-b6c78f80e3c4.png",
-        "eyebrow": "RACING AUTOMOBILE",
-        "heading": "COLLECTION 001",
-        "text": "<p>Découvrez une collection pensée autour de l'automobile, du lifestyle et de notre univers graphique.</p>",
-        "button_label": "DÉCOUVRIR",
-        "button_link": ""
-      }
     }
   },
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
     "quote_pour_FCLgBx",
+    "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
-    "community_feed_pour_4VTp68",
-    "featured_collection_pour_EV7y3F"
+    "community_feed_pour_4VTp68"
   ]
 }
