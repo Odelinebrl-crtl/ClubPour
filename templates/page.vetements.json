@@ -41,20 +41,20 @@
     "vetements_grid_Aa73e7": {
       "type": "vetements-grid",
       "blocks": {
-        "product_Q3Wk6X": {
-          "type": "product",
-          "settings": {
-            "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/19_7c2c841f-3127-49a6-8b99-0bef7db9ebdd.png",
-            "image_hover": "shopify://shop_images/18_dde380ad-2e3a-4880-9c92-89ad48abdd0e.png"
-          }
-        },
         "product_pC4Qqi": {
           "type": "product",
           "settings": {
             "product": "drop-001-candy-del-mar",
             "image_primary": "shopify://shop_images/24_985f09a0-c294-4326-9257-e2e315730eaf.png",
             "image_hover": "shopify://shop_images/23.png"
+          }
+        },
+        "product_Q3Wk6X": {
+          "type": "product",
+          "settings": {
+            "product": "drop-001-candy-del-mar",
+            "image_primary": "shopify://shop_images/19_7c2c841f-3127-49a6-8b99-0bef7db9ebdd.png",
+            "image_hover": "shopify://shop_images/18_dde380ad-2e3a-4880-9c92-89ad48abdd0e.png"
           }
         },
         "product_rYR94T": {
@@ -65,12 +65,12 @@
             "image_hover": "shopify://shop_images/16.png"
           }
         },
-        "product_XRT6it": {
+        "product_ctQr3W": {
           "type": "product",
           "settings": {
-            "product": "cypres-italien",
-            "image_primary": "shopify://shop_images/7.png",
-            "image_hover": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
+            "product": "t-shirt-orange",
+            "image_primary": "shopify://shop_images/2_7875d19f-297c-49a0-b345-60c60834d1b8.png",
+            "image_hover": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
           }
         },
         "product_zhD6np": {
@@ -81,20 +81,20 @@
             "image_hover": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
           }
         },
+        "product_XRT6it": {
+          "type": "product",
+          "settings": {
+            "product": "cypres-italien",
+            "image_primary": "shopify://shop_images/7.png",
+            "image_hover": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
+          }
+        },
         "product_3pTwxb": {
           "type": "product",
           "settings": {
             "product": "riviera",
             "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
             "image_hover": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
-          }
-        },
-        "product_ctQr3W": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-orange",
-            "image_primary": "shopify://shop_images/2_7875d19f-297c-49a0-b345-60c60834d1b8.png",
-            "image_hover": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
           }
         },
         "product_CwqYrC": {
@@ -131,13 +131,13 @@
         }
       },
       "block_order": [
-        "product_Q3Wk6X",
         "product_pC4Qqi",
+        "product_Q3Wk6X",
         "product_rYR94T",
-        "product_XRT6it",
-        "product_zhD6np",
-        "product_3pTwxb",
         "product_ctQr3W",
+        "product_zhD6np",
+        "product_XRT6it",
+        "product_3pTwxb",
         "product_CwqYrC",
         "product_NzcP69",
         "product_mA93kj",
