@@ -355,7 +355,11 @@
 
       {% for item in cart.items %}
 
-        <div class="cart-drawer__item">
+        <div
+  class="cart-drawer__item"
+  data-cart-item
+  data-key="{{ item.key }}"
+>
 
 
           <!-- IMAGE -->
@@ -425,43 +429,40 @@
               <div class="cart-drawer__quantity">
 
                 <button
-                  type="button"
-                  data-cart-change
-                  data-line="{{ forloop.index }}"
-                  data-quantity="{{ item.quantity | minus: 1 }}"
-                  aria-label="Réduire la quantité"
-                >
-                  −
-                </button>
+  type="button"
+  data-cart-change
+  data-key="{{ item.key }}"
+  data-quantity="{{ item.quantity | minus: 1 }}"
+  aria-label="Réduire la quantité"
+>
+  −
+</button>
 
+<span data-cart-quantity>
+  {{ item.quantity }}
+</span>
 
-                <span>
-                  {{ item.quantity }}
-                </span>
-
-
-                <button
-                  type="button"
-                  data-cart-change
-                  data-line="{{ forloop.index }}"
-                  data-quantity="{{ item.quantity | plus: 1 }}"
-                  aria-label="Augmenter la quantité"
-                >
-                  +
-                </button>
+<button
+  type="button"
+  data-cart-change
+  data-key="{{ item.key }}"
+  data-quantity="{{ item.quantity | plus: 1 }}"
+  aria-label="Augmenter la quantité"
+>
+  +
+</button>
 
               </div>
 
-
-              <button
-                type="button"
-                class="cart-drawer__remove"
-                data-cart-change
-                data-line="{{ forloop.index }}"
-                data-quantity="0"
-              >
-                SUPPRIMER
-              </button>
+<button
+  type="button"
+  class="cart-drawer__remove"
+  data-cart-change
+  data-key="{{ item.key }}"
+  data-quantity="0"
+>
+  SUPPRIMER
+</button>
 
             </div>
 
@@ -486,9 +487,9 @@
           SOUS-TOTAL
         </span>
 
-        <span>
-          {{ cart.total_price | money }}
-        </span>
+       <span data-cart-total>
+  {{ cart.total_price | money }}
+</span>
 
       </div>
 
@@ -607,6 +608,11 @@
    ÉVITE LE PETIT REBOND À L'OUVERTURE
 ========================================================= */
 
+html {
+  scrollbar-gutter: stable;
+}
+
+
 body.cart-drawer-open {
   overflow: hidden;
 }
@@ -679,6 +685,10 @@ body.cart-drawer-open {
   transition:
     transform .6s cubic-bezier(.76,0,.24,1);
 
+  will-change: transform;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 
   font-family:
     "Helvetica Neue",
@@ -834,6 +844,9 @@ body.cart-drawer-open {
   width: 100%;
   height: auto;
 
+  transform: translateZ(0);
+
+  backface-visibility: hidden;
 }
 
 
@@ -1869,86 +1882,190 @@ body.cart-drawer-open {
 
       /* QUANTITÉ / SUPPRIMER */
 
-      const changeButton =
-        event.target.closest(
+     /* QUANTITÉ / SUPPRIMER — SANS RECONSTRUIRE LE DRAWER */
+
+const changeButton =
+  event.target.closest(
+    '[data-cart-change]'
+  );
+
+if (changeButton) {
+
+  event.preventDefault();
+
+  const key =
+    changeButton.dataset.key;
+
+  const quantity =
+    Math.max(
+      0,
+      Number(
+        changeButton.dataset.quantity
+      )
+    );
+
+  if (!key) {
+    return;
+  }
+
+  changeButton.disabled = true;
+
+  try {
+
+    const response =
+      await fetch(
+        getRoot() + 'cart/change.js',
+        {
+          method: 'POST',
+
+          headers: {
+            'Content-Type':
+              'application/json',
+
+            Accept:
+              'application/json'
+          },
+
+          body:
+            JSON.stringify({
+              id: key,
+              quantity: quantity
+            })
+        }
+      );
+
+    if (!response.ok) {
+      throw new Error(
+        'Impossible de modifier le panier.'
+      );
+    }
+
+    const cart =
+      await response.json();
+
+
+    /* COMPTEUR HEADER */
+
+    updateHeaderCartCount(cart);
+
+
+    /* PRODUIT CONCERNÉ */
+
+    const itemElement =
+      document.querySelector(
+        `[data-cart-item][data-key="${CSS.escape(key)}"]`
+      );
+
+
+    /* SUPPRESSION */
+
+    if (quantity === 0) {
+
+      if (itemElement) {
+        itemElement.remove();
+      }
+
+    } else if (itemElement) {
+
+      const quantityElement =
+        itemElement.querySelector(
+          '[data-cart-quantity]'
+        );
+
+      if (quantityElement) {
+        quantityElement.textContent =
+          quantity;
+      }
+
+
+      /* ACTUALISE LES BOUTONS + ET - */
+
+      const buttons =
+        itemElement.querySelectorAll(
           '[data-cart-change]'
         );
 
+      buttons.forEach((button) => {
 
-      if (changeButton) {
+        if (
+          button.classList.contains(
+            'cart-drawer__remove'
+          )
+        ) {
 
-        event.preventDefault();
-
-
-        const line =
-          Number(
-            changeButton.dataset.line
-          );
-
-
-        const quantity =
-          Math.max(
-            0,
-            Number(
-              changeButton.dataset.quantity
-            )
-          );
-
-
-        changeButton.disabled = true;
-
-
-        try {
-
-          const response =
-            await fetch(
-              getRoot() + 'cart/change.js',
-              {
-                method: 'POST',
-
-                headers: {
-                  'Content-Type':
-                    'application/json',
-
-                  Accept:
-                    'application/json'
-                },
-
-                body:
-                  JSON.stringify({
-                    line: line,
-                    quantity: quantity
-                  })
-              }
-            );
-
-
-          if (!response.ok) {
-            throw new Error(
-              'Impossible de modifier le panier.'
-            );
-          }
-
-
-          await refreshDrawer();
-
-
-          openDrawer();
-
-
-        } catch (error) {
-
-          console.error(
-            'POUR Cart:',
-            error
-          );
+          button.dataset.quantity = 0;
+          return;
 
         }
 
+        const symbol =
+          button.textContent.trim();
 
-        return;
+        if (symbol === '−') {
 
-      }
+          button.dataset.quantity =
+            Math.max(
+              0,
+              quantity - 1
+            );
+
+        }
+
+        if (symbol === '+') {
+
+          button.dataset.quantity =
+            quantity + 1;
+
+        }
+
+      });
+
+    }
+
+
+    /* SOUS-TOTAL */
+
+    const totalElement =
+      document.querySelector(
+        '[data-cart-total]'
+      );
+
+    if (totalElement) {
+
+      totalElement.textContent =
+        money(
+          cart.total_price
+        );
+
+    }
+
+
+    /* SI PANIER VIDE */
+
+    if (cart.item_count === 0) {
+
+      await refreshDrawer();
+      openDrawer();
+
+    }
+
+
+  } catch (error) {
+
+    console.error(
+      'POUR Cart:',
+      error
+    );
+
+  } finally {
+
+    changeButton.disabled = false;
+
+  }
+
+  return;
+
+}
 
     }
   );
