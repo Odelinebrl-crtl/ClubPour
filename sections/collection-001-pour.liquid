@@ -222,27 +222,6 @@
     {% endfor %}
 
   </div>
-/* =========================================================
-   INTRO COLLECTION 001 — SCROLL REVEAL
-========================================================= */
-
-#Collection001Pour-{{ section.id }}
-.collection001-pour__intro-reveal {
-  opacity: 0;
-
-  transform: translateY(45px);
-
-  transition:
-    opacity .9s cubic-bezier(.22,1,.36,1),
-    transform .9s cubic-bezier(.22,1,.36,1);
-
-  transition-delay:
-    var(--collection-intro-delay, 0ms);
-
-  will-change:
-    opacity,
-    transform;
-}
 
 
 #Collection001Pour-{{ section.id }}
@@ -520,6 +499,27 @@
   font-size: 11px;
 
   color: #777;
+}
+/* =========================================================
+   INTRO COLLECTION 001 — SCROLL REVEAL
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__intro-reveal {
+  opacity: 0;
+
+  transform: translateY(45px);
+
+  transition:
+    opacity .9s cubic-bezier(.22,1,.36,1),
+    transform .9s cubic-bezier(.22,1,.36,1);
+
+  transition-delay:
+    var(--collection-intro-delay, 0ms);
+
+  will-change:
+    opacity,
+    transform;
 }
 
 
