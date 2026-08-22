@@ -94,36 +94,31 @@
 
 #FeaturedPour-{{ section.id }} {
   width: 100%;
-
-  padding: 110px 5vw 120px;
-
+  padding: 80px 3vw 90px;
   background: #FAF9F6;
-
   color: #111111;
 }
-
 
 #FeaturedPour-{{ section.id }}
 .featured-pour__inner {
   display: grid;
 
+  /* BEAUCOUP PLUS DE PLACE AU VISUEL */
   grid-template-columns:
-    minmax(0, 1.25fr)
-    minmax(360px, .75fr);
+    minmax(0, 1.75fr)
+    minmax(380px, 0.75fr);
 
   align-items: center;
 
-  gap: clamp(60px, 7vw, 130px);
+  gap: clamp(40px, 4vw, 80px);
 
-  width: min(100%, 1450px);
+  /* ON UTILISE PRESQUE TOUTE LA LARGEUR DE L'ÉCRAN */
+  width: 94vw;
+  max-width: 1800px;
 
   margin: 0 auto;
 }
 
-
-/* =========================================================
-   VISUEL
-========================================================= */
 #FeaturedPour-{{ section.id }}
 .featured-pour__visual {
   width: 100%;
@@ -131,11 +126,9 @@
   overflow: hidden;
 }
 
-
 #FeaturedPour-{{ section.id }}
 .featured-pour__image {
   display: block;
-
   width: 100%;
   height: 100%;
 
