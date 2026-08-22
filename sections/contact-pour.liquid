@@ -435,7 +435,27 @@
 
 </section>
 
+/* =========================================================
+   CONTACT — HEADER BLANC AU TOP UNIQUEMENT
+========================================================= */
 
+body:has(#ContactPour-{{ section.id }}) .site-header {
+  background: #ffffff !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  transition:
+    background .35s ease,
+    backdrop-filter .35s ease;
+}
+
+body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
+  background: rgba(255, 255, 255, 0.82) !important;
+
+  backdrop-filter: blur(5px) saturate(120%) !important;
+  -webkit-backdrop-filter: blur(5px) saturate(120%) !important;
+}
 <style>
 
 /* =========================================================
@@ -1057,6 +1077,7 @@
   } else {
 
     initContactPour();
+initContactHeaderScroll();
 
   }
 
@@ -1065,6 +1086,44 @@
     'shopify:section:load',
     initContactPour
   );
+function initContactHeaderScroll() {
+
+  const section =
+    document.getElementById(
+      'ContactPour-{{ section.id }}'
+    );
+
+  if (!section) return;
+
+
+  const header =
+    document.querySelector('.site-header');
+
+  if (!header) return;
+
+
+  function updateContactHeader() {
+
+    header.classList.toggle(
+      'is-contact-scrolled',
+      window.scrollY > 10
+    );
+
+  }
+
+
+  window.addEventListener(
+    'scroll',
+    updateContactHeader,
+    {
+      passive: true
+    }
+  );
+
+
+  updateContactHeader();
+
+}
 
 })();
 
