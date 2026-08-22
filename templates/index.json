@@ -27,12 +27,44 @@
     "product_grid_RhwVm9": {
       "type": "product-grid",
       "blocks": {
+        "product_card_CgHeQ3": {
+          "type": "product_card",
+          "settings": {
+            "product": "riviera",
+            "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
+            "image_secondary": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
+          }
+        },
         "product_card_NHQ6tT": {
           "type": "product_card",
           "settings": {
             "product": "cypres-italien",
             "image_primary": "shopify://shop_images/7.png",
             "image_secondary": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png"
+          }
+        },
+        "product_card_zJAett": {
+          "type": "product_card",
+          "settings": {
+            "product": "drop-001-candy-del-mar",
+            "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
+            "image_secondary": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
+          }
+        },
+        "product_card_BVhk8w": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-orange",
+            "image_primary": "shopify://shop_images/2_7875d19f-297c-49a0-b345-60c60834d1b8.png",
+            "image_secondary": "shopify://shop_images/1_99d93fbb-0041-469d-be79-4dff49f1328d.png"
+          }
+        },
+        "product_card_97K8cp": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-japalenos",
+            "image_primary": "shopify://shop_images/20.png",
+            "image_secondary": "shopify://shop_images/19.png"
           }
         },
         "product_card_kwbHz7": {
@@ -43,28 +75,32 @@
             "image_secondary": "shopify://shop_images/10_dad8cbca-9e7c-48ee-a01b-edabbc451c11.png"
           }
         },
-        "product_card_CgHeQ3": {
+        "product_card_gAaqnd": {
           "type": "product_card",
           "settings": {
-            "product": "riviera",
-            "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
-            "image_secondary": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
+            "product": "monaco-94",
+            "image_primary": "shopify://shop_images/4_83ad6977-4ce6-4945-9412-8447fb1cce72.png",
+            "image_secondary": "shopify://shop_images/3_b635ee0b-d05c-4ccb-97cd-3b0fd52fc834.png"
           }
         },
-        "product_card_zJAett": {
+        "product_card_Jt7Npe": {
           "type": "product_card",
           "settings": {
-            "product": "drop-001-candy-del-mar",
-            "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
-            "image_secondary": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
+            "product": "t-shirt-pegasus",
+            "image_primary": "shopify://shop_images/12.png",
+            "image_secondary": "shopify://shop_images/11_e14a1878-ee5f-40a2-8a8c-8fddc911633f.png"
           }
         }
       },
       "block_order": [
-        "product_card_NHQ6tT",
-        "product_card_kwbHz7",
         "product_card_CgHeQ3",
-        "product_card_zJAett"
+        "product_card_NHQ6tT",
+        "product_card_zJAett",
+        "product_card_BVhk8w",
+        "product_card_97K8cp",
+        "product_card_kwbHz7",
+        "product_card_gAaqnd",
+        "product_card_Jt7Npe"
       ],
       "name": "Produits POUR",
       "settings": {
