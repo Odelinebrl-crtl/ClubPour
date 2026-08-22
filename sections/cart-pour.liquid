@@ -1,0 +1,1141 @@
+<section
+  id="CartPour-{{ section.id }}"
+  class="cart-pour"
+>
+
+  <div class="cart-pour__inner">
+
+    <!-- =====================================================
+         TITRE
+    ====================================================== -->
+
+    <div class="cart-pour__header">
+
+      <p class="cart-pour__eyebrow">
+        POUR
+      </p>
+
+      <h1 class="cart-pour__title">
+        PANIER
+      </h1>
+
+    </div>
+
+
+    {% if cart.item_count > 0 %}
+
+      <form
+        action="{{ routes.cart_url }}"
+        method="post"
+        class="cart-pour__layout"
+        novalidate
+      >
+
+        <!-- =================================================
+             PRODUITS
+        ================================================== -->
+
+        <div class="cart-pour__products">
+
+          <div class="cart-pour__products-head">
+
+            <span>
+              PRODUITS
+            </span>
+
+            <span>
+              {{ cart.item_count }}
+              {% if cart.item_count > 1 %}
+                ARTICLES
+              {% else %}
+                ARTICLE
+              {% endif %}
+            </span>
+
+          </div>
+
+
+          {% for item in cart.items %}
+
+            <article class="cart-pour__item">
+
+              <!-- IMAGE -->
+
+              <a
+                href="{{ item.url }}"
+                class="cart-pour__item-media"
+              >
+
+                {% if item.image != blank %}
+
+                  {{
+                    item.image
+                    | image_url: width: 900
+                    | image_tag:
+                      class: 'cart-pour__item-image',
+                      loading: 'lazy',
+                      alt: item.product.title
+                  }}
+
+                {% endif %}
+
+              </a>
+
+
+              <!-- INFOS -->
+
+              <div class="cart-pour__item-content">
+
+                <div class="cart-pour__item-top">
+
+                  <div>
+
+                    <a
+                      href="{{ item.url }}"
+                      class="cart-pour__item-title"
+                    >
+                      {{ item.product.title }}
+                    </a>
+
+
+                    {% unless item.product.has_only_default_variant %}
+
+                      <div class="cart-pour__variants">
+
+                        {% for option in item.options_with_values %}
+
+                          <p>
+                            <span>
+                              {{ option.name }} :
+                            </span>
+
+                            {{ option.value }}
+                          </p>
+
+                        {% endfor %}
+
+                      </div>
+
+                    {% endunless %}
+
+                  </div>
+
+
+                  <div class="cart-pour__item-price">
+
+                    {% if item.original_line_price != item.final_line_price %}
+
+                      <s>
+                        {{ item.original_line_price | money }}
+                      </s>
+
+                    {% endif %}
+
+                    <span>
+                      {{ item.final_line_price | money }}
+                    </span>
+
+                  </div>
+
+                </div>
+
+
+                <!-- BAS PRODUIT -->
+
+                <div class="cart-pour__item-bottom">
+
+                  <div class="cart-pour__quantity">
+
+                    <a
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
+                      class="cart-pour__quantity-button"
+                      aria-label="Réduire la quantité"
+                    >
+                      −
+                    </a>
+
+                    <span class="cart-pour__quantity-value">
+                      {{ item.quantity }}
+                    </span>
+
+                    <a
+                      href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
+                      class="cart-pour__quantity-button"
+                      aria-label="Augmenter la quantité"
+                    >
+                      +
+                    </a>
+
+                  </div>
+
+
+                  <a
+                    href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
+                    class="cart-pour__remove"
+                  >
+                    SUPPRIMER
+                  </a>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          {% endfor %}
+
+
+          <!-- CONTINUER -->
+
+          <div class="cart-pour__continue">
+
+            <a href="/pages/boutique">
+              ← CONTINUER MES ACHATS
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- =================================================
+             RÉCAPITULATIF
+        ================================================== -->
+
+        <aside class="cart-pour__summary">
+
+          <p class="cart-pour__summary-eyebrow">
+            RÉCAPITULATIF
+          </p>
+
+
+          <div class="cart-pour__summary-line">
+
+            <span>
+              SOUS-TOTAL
+            </span>
+
+            <span>
+              {{ cart.total_price | money }}
+            </span>
+
+          </div>
+
+
+          {% if cart.cart_level_discount_applications.size > 0 %}
+
+            <div class="cart-pour__discount">
+
+              {% for discount in cart.cart_level_discount_applications %}
+
+                <div class="cart-pour__summary-line">
+
+                  <span>
+                    {{ discount.title }}
+                  </span>
+
+                  <span>
+                    -{{ discount.total_allocated_amount | money }}
+                  </span>
+
+                </div>
+
+              {% endfor %}
+
+            </div>
+
+          {% endif %}
+
+
+          <p class="cart-pour__shipping">
+            Les frais de livraison sont calculés à l’étape suivante.
+          </p>
+
+
+          <button
+            type="submit"
+            name="checkout"
+            class="cart-pour__checkout"
+          >
+            <span>
+              PASSER AU PAIEMENT
+            </span>
+
+            <span aria-hidden="true">
+              →
+            </span>
+          </button>
+
+
+          <!-- RASSURANCE -->
+
+          <div class="cart-pour__reassurance">
+
+            <div>
+              <span class="cart-pour__reassurance-label">
+                PAIEMENT
+              </span>
+
+              <span>
+                Paiement sécurisé
+              </span>
+            </div>
+
+            <div>
+              <span class="cart-pour__reassurance-label">
+                LIVRAISON
+              </span>
+
+              <span>
+                Suivi de commande disponible
+              </span>
+            </div>
+
+            <div>
+              <span class="cart-pour__reassurance-label">
+                RETOURS
+              </span>
+
+              <span>
+                Consultez notre politique de retour
+              </span>
+            </div>
+
+          </div>
+
+        </aside>
+
+      </form>
+
+
+    {% else %}
+
+      <!-- =================================================
+           PANIER VIDE
+      ================================================== -->
+
+      <div class="cart-pour__empty">
+
+        <p class="cart-pour__empty-title">
+          VOTRE PANIER EST VIDE.
+        </p>
+
+        <p class="cart-pour__empty-text">
+          Découvrez la Collection 001 et trouvez la prochaine pièce à vous accompagner.
+        </p>
+
+        <a
+          href="/pages/boutique"
+          class="cart-pour__empty-button"
+        >
+          <span>
+            DÉCOUVRIR LA COLLECTION
+          </span>
+
+          <span aria-hidden="true">
+            →
+          </span>
+        </a>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</section>
+
+
+<style>
+
+/* =========================================================
+   CART POUR
+========================================================= */
+
+#CartPour-{{ section.id }} {
+  width: 100%;
+
+  padding:
+    115px
+    54px
+    130px;
+
+  box-sizing: border-box;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+
+/* =========================================================
+   CONTENEUR
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__inner {
+  width: 100%;
+
+  max-width: 1450px;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__header {
+  margin-bottom: 85px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__eyebrow {
+  margin: 0 0 22px;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .22em;
+
+  text-transform: uppercase;
+
+  color: rgba(17,17,17,.45);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      58px,
+      8vw,
+      118px
+    );
+
+  font-weight: 400;
+
+  line-height: .9;
+
+  letter-spacing: -.06em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,1.5fr)
+    minmax(320px,.5fr);
+
+  align-items: start;
+
+  gap:
+    clamp(
+      70px,
+      9vw,
+      150px
+    );
+}
+
+
+/* =========================================================
+   LISTE PRODUITS
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__products-head {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+
+  border-bottom:
+    1px solid
+    rgba(17,17,17,.13);
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+
+  color: rgba(17,17,17,.52);
+}
+
+
+/* =========================================================
+   PRODUIT
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__item {
+  display: grid;
+
+  grid-template-columns:
+    185px
+    minmax(0,1fr);
+
+  gap: 32px;
+
+  padding:
+    32px
+    0;
+
+  border-bottom:
+    1px solid
+    rgba(17,17,17,.10);
+}
+
+
+/* IMAGE */
+
+#CartPour-{{ section.id }}
+.cart-pour__item-media {
+  display: block;
+
+  width: 185px;
+
+  overflow: hidden;
+
+  text-decoration: none;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__item-image {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  transition:
+    transform .65s cubic-bezier(.22,1,.36,1);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__item-media:hover
+.cart-pour__item-image {
+  transform: scale(1.02);
+}
+
+
+/* =========================================================
+   INFOS PRODUIT
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__item-content {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  min-width: 0;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__item-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__item-title {
+  display: inline-block;
+
+  margin: 0;
+
+  color: #111111;
+
+  font-size:
+    clamp(
+      20px,
+      2vw,
+      30px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -.03em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+}
+
+
+/* VARIANTES */
+
+#CartPour-{{ section.id }}
+.cart-pour__variants {
+  margin-top: 15px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__variants p {
+  margin: 5px 0 0;
+
+  font-size: 10px;
+
+  color: rgba(17,17,17,.56);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__variants span {
+  text-transform: uppercase;
+}
+
+
+/* PRIX */
+
+#CartPour-{{ section.id }}
+.cart-pour__item-price {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+
+  flex-shrink: 0;
+
+  font-size: 11px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__item-price s {
+  color: rgba(17,17,17,.38);
+}
+
+
+/* =========================================================
+   QUANTITÉ
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__item-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 25px;
+
+  margin-top: 35px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__quantity {
+  display: inline-grid;
+
+  grid-template-columns:
+    34px
+    34px
+    34px;
+
+  align-items: center;
+
+  height: 34px;
+
+  border:
+    1px solid
+    rgba(17,17,17,.20);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__quantity-button,
+#CartPour-{{ section.id }}
+.cart-pour__quantity-value {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  color: #111111;
+
+  font-size: 12px;
+
+  line-height: 1;
+
+  text-decoration: none;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__quantity-button {
+  transition:
+    background-color .3s ease;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__quantity-button:hover {
+  background: rgba(17,17,17,.05);
+}
+
+
+/* SUPPRIMER */
+
+#CartPour-{{ section.id }}
+.cart-pour__remove {
+  position: relative;
+
+  padding-bottom: 4px;
+
+  color: rgba(17,17,17,.55);
+
+  font-size: 9px;
+
+  letter-spacing: .10em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__remove::after {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 1px;
+
+  background: currentColor;
+
+  transition:
+    transform .4s cubic-bezier(.22,1,.36,1);
+
+  transform-origin: left;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__remove:hover::after {
+  transform: scaleX(.45);
+}
+
+
+/* =========================================================
+   CONTINUER ACHATS
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__continue {
+  padding-top: 28px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__continue a {
+  color: rgba(17,17,17,.55);
+
+  font-size: 9px;
+
+  letter-spacing: .10em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  transition:
+    color .3s ease;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__continue a:hover {
+  color: #111111;
+}
+
+
+/* =========================================================
+   RÉCAPITULATIF
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__summary {
+  position: sticky;
+
+  top: 110px;
+
+  padding-top: 3px;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__summary-eyebrow {
+  margin: 0 0 25px;
+
+  padding-bottom: 18px;
+
+  border-bottom:
+    1px solid
+    rgba(17,17,17,.13);
+
+  font-size: 9px;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+
+  color: rgba(17,17,17,.52);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__summary-line {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__shipping {
+  margin:
+    24px
+    0
+    0;
+
+  max-width: 320px;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__checkout,
+#CartPour-{{ section.id }}
+.cart-pour__empty-button {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  width: 100%;
+  min-height: 54px;
+
+  margin-top: 32px;
+
+  padding:
+    0
+    22px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid
+    #111111;
+
+  border-radius: 0;
+
+  background: #111111;
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .11em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  transition:
+    background-color .55s cubic-bezier(.22,1,.36,1),
+    color .55s cubic-bezier(.22,1,.36,1);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__checkout:hover,
+#CartPour-{{ section.id }}
+.cart-pour__empty-button:hover {
+  background: #ffffff;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   RASSURANCE
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__reassurance {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+
+  margin-top: 35px;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(17,17,17,.10);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__reassurance > div {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__reassurance-label {
+  font-size: 8px;
+
+  letter-spacing: .13em;
+
+  text-transform: uppercase;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   PANIER VIDE
+========================================================= */
+
+#CartPour-{{ section.id }}
+.cart-pour__empty {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 420px;
+
+  padding-bottom: 60px;
+
+  text-align: center;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__empty-title {
+  margin: 0;
+
+  font-size:
+    clamp(
+      32px,
+      4vw,
+      58px
+    );
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -.04em;
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__empty-text {
+  max-width: 440px;
+
+  margin:
+    24px
+    auto
+    0;
+
+  font-size: 12px;
+
+  line-height: 1.6;
+
+  color: rgba(17,17,17,.58);
+}
+
+
+#CartPour-{{ section.id }}
+.cart-pour__empty-button {
+  width: auto;
+
+  min-width: 240px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 850px) {
+
+  #CartPour-{{ section.id }} {
+    padding:
+      85px
+      18px
+      100px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__header {
+    margin-bottom: 55px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__layout {
+    grid-template-columns: 1fr;
+
+    gap: 70px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__summary {
+    position: static;
+  }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+  #CartPour-{{ section.id }}
+  .cart-pour__item {
+    grid-template-columns:
+      115px
+      minmax(0,1fr);
+
+    gap: 18px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__item-media {
+    width: 115px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__item-top {
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__item-price {
+    align-items: flex-start;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__item-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 18px;
+
+    margin-top: 25px;
+  }
+
+
+  #CartPour-{{ section.id }}
+  .cart-pour__title {
+    font-size: 60px;
+  }
+
+}
+
+</style>
+
+
+{% schema %}
+{
+  "name": "Panier POUR",
+  "settings": []
+}
+{% endschema %}
