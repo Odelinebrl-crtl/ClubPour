@@ -1014,7 +1014,169 @@
   }
 
 }
+/* =========================================================
+   CORRECTION FINALE — FOCUS COLLECTION 001
+========================================================= */
 
+/* La section utilise réellement toute la largeur de l'écran */
+#Collection001Pour-{{ section.id }} {
+  width: 100vw !important;
+  max-width: none !important;
+
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+}
+
+
+/* =========================================================
+   FOCUS 01
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--left {
+  grid-template-columns:
+    minmax(0, 1fr)
+    410px !important;
+
+  gap: 55px !important;
+
+  padding:
+    70px
+    54px
+    125px !important;
+}
+
+
+/* =========================================================
+   FOCUS 02
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--right {
+  grid-template-columns:
+    410px
+    minmax(0, 1fr) !important;
+
+  gap: 55px !important;
+
+  padding:
+    70px
+    54px
+    125px !important;
+}
+
+
+/* Le bloc principal du focus 02 part vraiment à droite */
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--right
+.collection001-pour__focus-main {
+  grid-template-columns:
+    270px
+    500px !important;
+
+  width: 808px !important;
+  max-width: none !important;
+
+  justify-self: end !important;
+
+  margin: 0 !important;
+}
+
+
+/* Grande image du focus 02 : bord droit = 54px du viewport */
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--right
+.collection001-pour__focus-media {
+  width: 500px !important;
+  max-width: 500px !important;
+
+  justify-self: end !important;
+}
+
+
+/* Focus 01 conserve son alignement gauche */
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--left
+.collection001-pour__focus-main {
+  grid-template-columns:
+    500px
+    270px !important;
+
+  width: 808px !important;
+
+  justify-self: start !important;
+}
+
+
+/* =========================================================
+   MINI PRODUITS — PLUS GRANDS
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-grid {
+  grid-template-columns:
+    repeat(2, 185px) !important;
+
+  gap:
+    36px
+    24px !important;
+
+  width: 394px !important;
+}
+
+
+/* Droite du focus 01 */
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--left
+.collection001-pour__mini-grid {
+  justify-self: end !important;
+}
+
+
+/* Gauche du focus 02 */
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--right
+.collection001-pour__mini-grid {
+  justify-self: start !important;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-card {
+  width: 185px !important;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-media {
+  width: 185px !important;
+  height: 235px !important;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-image {
+  width: 100% !important;
+  height: 100% !important;
+
+  object-fit: cover !important;
+}
+
+
+/* Titres légèrement plus lisibles */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-title {
+  margin-top: 2px;
+
+  font-size: 10px !important;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-price {
+  font-size: 9px !important;
+}
 </style>
 
 
