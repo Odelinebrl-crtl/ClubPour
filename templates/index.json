@@ -59,6 +59,14 @@
             "image_secondary": "shopify://shop_images/1_033ad38b-a54f-4c61-830a-2a3e59ef0750.png"
           }
         },
+        "product_card_Jt7Npe": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-pegasus",
+            "image_primary": "shopify://shop_images/10_dc454cb8-0212-4370-b291-440b149e997e.png",
+            "image_secondary": "shopify://shop_images/9.png"
+          }
+        },
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
@@ -82,14 +90,6 @@
             "image_primary": "shopify://shop_images/4_c7b86a3f-35a7-4756-aff6-861f67d80f6c.png",
             "image_secondary": "shopify://shop_images/3_da56c625-c023-450d-88ad-6b960142d32a.png"
           }
-        },
-        "product_card_Jt7Npe": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-pegasus",
-            "image_primary": "shopify://shop_images/10_dc454cb8-0212-4370-b291-440b149e997e.png",
-            "image_secondary": "shopify://shop_images/9.png"
-          }
         }
       },
       "block_order": [
@@ -97,10 +97,10 @@
         "product_card_NHQ6tT",
         "product_card_zJAett",
         "product_card_BVhk8w",
+        "product_card_Jt7Npe",
         "product_card_97K8cp",
         "product_card_kwbHz7",
-        "product_card_gAaqnd",
-        "product_card_Jt7Npe"
+        "product_card_gAaqnd"
       ],
       "name": "Produits POUR",
       "settings": {
