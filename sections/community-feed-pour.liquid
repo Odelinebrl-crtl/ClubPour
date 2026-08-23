@@ -195,53 +195,6 @@
 
 </section>
 
-<script>
-(function () {
-
-  document.addEventListener(
-    'click',
-    function (event) {
-
-      const button =
-        event.target.closest(
-          '.pour-community__product-button'
-        );
-
-      if (!button) return;
-
-      if (
-        !window.matchMedia(
-          '(max-width: 768px)'
-        ).matches
-      ) {
-        return;
-      }
-
-      event.preventDefault();
-
-      const url =
-        button.getAttribute('href');
-
-      button.classList.add(
-        'is-tapped'
-      );
-
-      window.setTimeout(
-        function () {
-
-          if (url) {
-            window.location.href = url;
-          }
-
-        },
-        180
-      );
-
-    }
-  );
-
-})();
-</script>
 
 {% schema %}
 {
