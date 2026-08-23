@@ -1542,7 +1542,37 @@ body.cart-drawer-open {
       return;
     }
 
+const mobileMenu =
+  document.querySelector(
+    '[data-mobile-menu]'
+  );
 
+const mobileMenuButton =
+  document.querySelector(
+    '[data-mobile-menu-open]'
+  );
+
+if (mobileMenu) {
+  mobileMenu.classList.remove(
+    'is-open'
+  );
+
+  mobileMenu.setAttribute(
+    'aria-hidden',
+    'true'
+  );
+}
+
+if (mobileMenuButton) {
+  mobileMenuButton.setAttribute(
+    'aria-expanded',
+    'false'
+  );
+}
+
+document.body.classList.remove(
+  'mobile-menu-open'
+);
     drawer.classList.add(
       'is-active'
     );
