@@ -1444,12 +1444,31 @@ document.addEventListener(
             >
 
 
-            <button
-              type="submit"
-              class="pour-quickview__submit"
-            >
-              AJOUTER AU PANIER
-            </button>
+           <button
+  type="submit"
+  class="pour-quickview__submit"
+
+  style="
+    transition:
+      background .25s ease,
+      color .25s ease,
+      border-color .25s ease;
+  "
+
+  onmouseenter="
+    this.style.background='#ffffff';
+    this.style.color='#111111';
+    this.style.borderColor='#111111';
+  "
+
+  onmouseleave="
+    this.style.background='#111111';
+    this.style.color='#ffffff';
+    this.style.borderColor='#111111';
+  "
+>
+  AJOUTER AU PANIER
+</button>
 
           </form>
 
