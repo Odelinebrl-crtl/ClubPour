@@ -227,9 +227,110 @@
   {% endif %}
 </a>
 
-    <div class="footer-pour__country">
-      FRANCE / EUR €
-    </div>
+    <div class="footer-pour__localization">
+
+  {% if localization.available_countries.size > 1 %}
+
+    {% form 'localization', class: 'footer-pour__localization-form footer-pour__country-form' %}
+
+      <div class="footer-pour__selector">
+
+        <button
+          type="button"
+          class="footer-pour__selector-button"
+          data-footer-selector="country"
+          aria-expanded="false"
+        >
+          <span>
+            {{ localization.country.name | upcase }}
+            /
+            {{ localization.country.currency.iso_code }}
+            {{ localization.country.currency.symbol }}
+          </span>
+
+          <span class="footer-pour__selector-arrow"></span>
+        </button>
+
+
+        <div
+          class="footer-pour__selector-menu footer-pour__selector-menu--country"
+          data-footer-menu="country"
+        >
+
+          {% for country in localization.available_countries %}
+
+            <button
+              type="submit"
+              name="country_code"
+              value="{{ country.iso_code }}"
+              class="footer-pour__selector-option{% if country.iso_code == localization.country.iso_code %} is-active{% endif %}"
+            >
+              <span>{{ country.name }}</span>
+
+              <span>
+                {{ country.currency.iso_code }}
+                {{ country.currency.symbol }}
+              </span>
+            </button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    {% endform %}
+
+  {% endif %}
+
+
+  {% if localization.available_languages.size > 1 %}
+
+    {% form 'localization', class: 'footer-pour__localization-form footer-pour__language-form' %}
+
+      <div class="footer-pour__selector">
+
+        <button
+          type="button"
+          class="footer-pour__selector-button"
+          data-footer-selector="language"
+          aria-expanded="false"
+        >
+          <span>
+            {{ localization.language.endonym_name | upcase }}
+          </span>
+
+          <span class="footer-pour__selector-arrow"></span>
+        </button>
+
+
+        <div
+          class="footer-pour__selector-menu footer-pour__selector-menu--language"
+          data-footer-menu="language"
+        >
+
+          {% for language in localization.available_languages %}
+
+            <button
+              type="submit"
+              name="locale_code"
+              value="{{ language.iso_code }}"
+              class="footer-pour__selector-option{% if language.iso_code == localization.language.iso_code %} is-active{% endif %}"
+            >
+              {{ language.endonym_name }}
+            </button>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    {% endform %}
+
+  {% endif %}
+
+</div>
 
   </div>
 
@@ -701,20 +802,212 @@ padding:
 
 
 /* =========================================================
-   PAYS
+   LOCALISATION — PAYS / DEVISE / LANGUE
 ========================================================= */
 
 #FooterPour-{{ section.id }}
-.footer-pour__country {
+.footer-pour__localization {
+  position: relative;
 
   justify-self: end;
+
+  display: flex;
+  align-items: center;
+
+  gap: 22px;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__localization-form {
+  position: relative;
+  margin: 0;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector {
+  position: relative;
+}
+
+
+/* BOUTON */
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-button {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 8px 0;
+  margin: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: rgba(17,17,17,.55);
+
+  font-family: inherit;
 
   font-size: 9px;
   font-weight: 400;
 
+  line-height: 1;
+
   letter-spacing: .14em;
 
-  color: rgba(17,17,17,.55);
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition: color .25s ease;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-button:hover {
+  color: #111111;
+}
+
+
+/* PETITE FLÈCHE */
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-arrow {
+  display: block;
+
+  width: 5px;
+  height: 5px;
+
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+
+  transform:
+    translateY(-2px)
+    rotate(45deg);
+
+  transition:
+    transform .25s ease;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector.is-open
+.footer-pour__selector-arrow {
+  transform:
+    translateY(1px)
+    rotate(225deg);
+}
+
+
+/* =========================================================
+   MENU DÉROULANT
+========================================================= */
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-menu {
+  position: absolute;
+
+  right: 0;
+  bottom: calc(100% + 12px);
+
+  z-index: 100;
+
+  min-width: 220px;
+
+  max-height: 300px;
+
+  overflow-y: auto;
+
+  padding: 8px;
+
+  background: #ffffff;
+
+  border: 1px solid rgba(17,17,17,.12);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform: translateY(6px);
+
+  transition:
+    opacity .2s ease,
+    visibility .2s ease,
+    transform .25s cubic-bezier(.22,1,.36,1);
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector.is-open
+.footer-pour__selector-menu {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+
+/* OPTIONS */
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-option {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  width: 100%;
+
+  padding: 11px 12px;
+
+  border: 0;
+
+  background: transparent;
+
+  color: rgba(17,17,17,.62);
+
+  font-family: inherit;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1.3;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition:
+    background-color .2s ease,
+    color .2s ease;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-option:hover {
+  background: rgba(17,17,17,.035);
+  color: #111111;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-option.is-active {
+  color: #111111;
+}
+
+
+/* LANGUES */
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-menu--language {
+  min-width: 170px;
 }
 
 
@@ -808,11 +1101,20 @@ padding:
 
 
   #FooterPour-{{ section.id }}
-  .footer-pour__country {
+.footer-pour__localization {
+  align-self: flex-start;
+  justify-self: start;
 
-    align-self: flex-start;
-  }
+  flex-wrap: wrap;
 
+  gap: 10px 22px;
+}
+
+#FooterPour-{{ section.id }}
+.footer-pour__selector-menu {
+  right: auto;
+  left: 0;
+}
 }
 
 
@@ -841,7 +1143,147 @@ padding:
 }
 
 </style>
+<script>
+(function () {
 
+  function initFooterLocalization() {
+
+    const footer =
+      document.getElementById(
+        'FooterPour-{{ section.id }}'
+      );
+
+    if (!footer) return;
+
+
+    const selectors =
+      footer.querySelectorAll(
+        '.footer-pour__selector'
+      );
+
+
+    function closeAll(exception) {
+
+      selectors.forEach((selector) => {
+
+        if (selector === exception) return;
+
+        selector.classList.remove('is-open');
+
+        const button =
+          selector.querySelector(
+            '.footer-pour__selector-button'
+          );
+
+        if (button) {
+          button.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+        }
+
+      });
+
+    }
+
+
+    selectors.forEach((selector) => {
+
+      const button =
+        selector.querySelector(
+          '.footer-pour__selector-button'
+        );
+
+      if (!button) return;
+
+
+      button.addEventListener(
+        'click',
+        function (event) {
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          const opening =
+            !selector.classList.contains(
+              'is-open'
+            );
+
+          closeAll(selector);
+
+          selector.classList.toggle(
+            'is-open',
+            opening
+          );
+
+          button.setAttribute(
+            'aria-expanded',
+            opening ? 'true' : 'false'
+          );
+
+        }
+      );
+
+    });
+
+
+    document.addEventListener(
+      'click',
+      function (event) {
+
+        if (!footer.contains(event.target)) {
+          closeAll();
+          return;
+        }
+
+
+        if (
+          !event.target.closest(
+            '.footer-pour__selector'
+          )
+        ) {
+          closeAll();
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function (event) {
+
+        if (event.key === 'Escape') {
+          closeAll();
+        }
+
+      }
+    );
+
+  }
+
+
+  if (document.readyState === 'loading') {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initFooterLocalization
+    );
+
+  } else {
+
+    initFooterLocalization();
+
+  }
+
+
+  document.addEventListener(
+    'shopify:section:load',
+    initFooterLocalization
+  );
+
+})();
+</script>
 
 {% schema %}
 {
