@@ -3270,7 +3270,7 @@ a {
   .product-page-pour__top {
     display: block;
 
-    padding: 28px 16px 60px;
+    padding: 16px 16px 60px;
   }
 
   .product-page-pour__main-media {
@@ -3634,8 +3634,16 @@ a {
 
 @media screen and (max-width: 768px) {
 
+  .product-page-pour {
+    padding-top: 64px;
+  }
+
   .product-page-pour__breadcrumb {
-    padding: 76px 0 12px 18px !important;
+    padding:
+      14px
+      0
+      0
+      18px !important;
 
     font-size: 8px;
     gap: 3px;
