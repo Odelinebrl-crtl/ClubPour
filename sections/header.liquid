@@ -2633,67 +2633,6 @@ if (changeButton) {
     }
 
 
-    /* =====================================================
-       CLIC SUR BOUTIQUE
-
-       PREMIER CLIC :
-       ouvre le sous-menu.
-
-       DEUXIÈME CLIC :
-       laisse fonctionner le href.
-    ===================================================== */
-
-    if (
-      boutiqueLink &&
-      boutiqueItem
-    ) {
-
-      boutiqueLink.addEventListener(
-        'click',
-        function (event) {
-
-          const isOpen =
-            boutiqueItem.classList.contains(
-              'is-open'
-            );
-
-
-          /* PREMIER CLIC */
-
-          if (!isOpen) {
-
-            event.preventDefault();
-            event.stopPropagation();
-
-            boutiqueItem.classList.add(
-              'is-open'
-            );
-
-            if (boutiqueButton) {
-
-              boutiqueButton.setAttribute(
-                'aria-expanded',
-                'true'
-              );
-
-            }
-
-            return;
-
-          }
-
-
-          /*
-            DEUXIÈME CLIC :
-            aucun preventDefault.
-            Le lien Boutique fonctionne.
-          */
-
-        }
-      );
-
-    }
-
 
     /* =====================================================
        AUTRES LIENS
