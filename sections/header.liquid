@@ -2480,9 +2480,19 @@ if (form.matches('.pour-quickview__form')) {
       );
 
 
-      await refreshDrawer();
+     await refreshDrawer();
 
-      openDrawer();
+if (form.matches('.pour-quickview__form')) {
+
+  setTimeout(function () {
+    openDrawer();
+  }, 650);
+
+} else {
+
+  openDrawer();
+
+}
 
 
     } catch (error) {
