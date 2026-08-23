@@ -277,30 +277,106 @@
 
     <div class="site-header__actions">
 
-      <a
-        href="{{ routes.account_url }}"
-        class="site-header__link"
-      >
-        COMPTE
-      </a>
+  <!-- DESKTOP -->
+
+  <div class="site-header__desktop-actions">
+
+    <a
+      href="{{ routes.account_url }}"
+      class="site-header__link"
+    >
+      COMPTE
+    </a>
+
+    <button
+      type="button"
+      class="site-header__cart"
+      data-cart-open
+    >
+      PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+    </button>
+
+  </div>
 
 
-      <button
-        type="button"
-        class="site-header__link site-header__cart"
-        data-cart-drawer-open
-        aria-label="Ouvrir le panier"
-      >
-        PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
-      </button>
+  <!-- MOBILE BURGER -->
 
-    </div>
+  <button
+    type="button"
+    class="site-header__burger"
+    data-mobile-menu-open
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+  </button>
+
+</div>
 
   </div>
 
 </header>
 
+<div
+  class="mobile-menu"
+  data-mobile-menu
+  aria-hidden="true"
+>
 
+  <div class="mobile-menu__top">
+
+    <button
+      type="button"
+      class="mobile-menu__close"
+      data-mobile-menu-close
+      aria-label="Fermer le menu"
+    >
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
+
+
+  <nav class="mobile-menu__nav">
+
+    <a href="/pages/boutique?view=vetements">
+      BOUTIQUE
+    </a>
+
+    <a href="/pages/collection-001?view=collection-001">
+      COLLECTION 001
+    </a>
+
+    <a href="/pages/club-privileges?view=club-privileges">
+      CLUB PRIVILÈGES
+    </a>
+
+    <a href="/pages/contact?view=contact">
+      CONTACT
+    </a>
+
+  </nav>
+
+
+  <div class="mobile-menu__bottom">
+
+    <a href="{{ routes.account_url }}">
+      COMPTE
+    </a>
+
+    <button
+      type="button"
+      class="mobile-menu__cart"
+      data-cart-open
+    >
+      PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+    </button>
+
+  </div>
+
+</div>
 
 <!-- =========================================================
      CART DRAWER — OVERLAY
