@@ -61,6 +61,81 @@
       src="{{ 'theme.js' | asset_url }}"
       defer
     ></script>
+<script>
+document.addEventListener('mouseover', function(event) {
 
+  const button = event.target.closest(
+    'form[action*="/cart/add"] button[type="submit"]'
+  );
+
+  if (!button) return;
+
+  const text = button.textContent.trim().toUpperCase();
+
+  if (
+    text !== 'AJOUTER AU PANIER' &&
+    text !== 'AJOUTER'
+  ) {
+    return;
+  }
+
+  button.style.setProperty(
+    'background',
+    '#ffffff',
+    'important'
+  );
+
+  button.style.setProperty(
+    'color',
+    '#111111',
+    'important'
+  );
+
+  button.style.setProperty(
+    'border-color',
+    '#111111',
+    'important'
+  );
+
+});
+
+
+document.addEventListener('mouseout', function(event) {
+
+  const button = event.target.closest(
+    'form[action*="/cart/add"] button[type="submit"]'
+  );
+
+  if (!button) return;
+
+  const text = button.textContent.trim().toUpperCase();
+
+  if (
+    text !== 'AJOUTER AU PANIER' &&
+    text !== 'AJOUTER'
+  ) {
+    return;
+  }
+
+  button.style.setProperty(
+    'background',
+    '#111111',
+    'important'
+  );
+
+  button.style.setProperty(
+    'color',
+    '#ffffff',
+    'important'
+  );
+
+  button.style.setProperty(
+    'border-color',
+    '#111111',
+    'important'
+  );
+
+});
+</script>
   </body>
 </html>
