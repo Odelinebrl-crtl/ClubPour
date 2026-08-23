@@ -85,12 +85,11 @@
 
   {% if section.settings.button_label != blank %}
     <a
-      href="{{ section.settings.button_link }}"
-      class="featured-pour__button featured-pour__reveal"
-      data-delay="240"
-    >
-      {{ section.settings.button_label }}
-    </a>
+  href="{{ section.settings.button_link }}"
+  class="featured-pour__button"
+>
+  {{ section.settings.button_label }}
+</a>
   {% endif %}
 
 </div>
@@ -274,7 +273,7 @@
 
   border: 1px solid #111111;
 
- background-color: #111111;
+  background-color: #111111;
   color: #ffffff;
 
   font-family:
@@ -290,20 +289,16 @@
   text-transform: uppercase;
   text-decoration: none;
 
- transition:
-  background-color .55s cubic-bezier(.22,1,.36,1),
-  color .55s cubic-bezier(.22,1,.36,1),
-  border-color .55s cubic-bezier(.22,1,.36,1);
+  transition:
+    background-color .55s cubic-bezier(.22,1,.36,1),
+    color .55s cubic-bezier(.22,1,.36,1),
+    border-color .55s cubic-bezier(.22,1,.36,1);
 }
-
-
-/* SURVOL */
 
 #FeaturedPour-{{ section.id }}
 .featured-pour__button:hover {
   background-color: #ffffff;
   color: #111111;
-
   border-color: #111111;
 }
 
@@ -392,24 +387,7 @@
   transform: translateY(0);
 }
 
-/* BOUTON — HOVER FLUIDE */
 
-#FeaturedPour-{{ section.id }}
-.featured-pour__button.featured-pour__reveal {
-  transition:
-    opacity .8s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms),
-    transform .8s cubic-bezier(.22,1,.36,1) var(--reveal-delay, 0ms),
-    background-color .55s cubic-bezier(.22,1,.36,1),
-    color .55s cubic-bezier(.22,1,.36,1),
-    border-color .55s cubic-bezier(.22,1,.36,1);
-}
-
-#FeaturedPour-{{ section.id }}
-.featured-pour__button.featured-pour__reveal:hover {
-  background-color: #ffffff;
-  color: #111111;
-  border-color: #111111;
-}
 </style>
 
 
