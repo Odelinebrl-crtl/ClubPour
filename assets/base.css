@@ -2752,11 +2752,33 @@ a {
 /* 3 AUTRES PRODUITS */
 
 .product-page-pour__related-grid {
-  display: grid;
+  display: flex;
 
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
 
-  gap: clamp(40px, 8vw, 130px);
+  gap: 24px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+
+  -webkit-overflow-scrolling: touch;
+}
+
+.product-page-pour__related-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__related-card {
+  flex: 0 0 calc((100% - 72px) / 4);
+
+  min-width: 0;
+
+  scroll-snap-align: start;
 }
 
 .product-page-pour__related-card {
@@ -2845,11 +2867,42 @@ a {
     max-width: none;
   }
 
-  .product-page-pour__thumbs {
-    max-width: none;
+ .product-page-pour__thumbs {
+  display: flex;
 
-    grid-template-columns: repeat(2, 1fr);
-  }
+  width: 100%;
+  max-width: none;
+
+  gap: 8px;
+
+  margin:
+    6px
+    0
+    0;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__thumb {
+  flex:
+    0
+    0
+    110px;
+
+  width: 110px;
+  height: 135px;
+}
 
   .product-page-pour__info-inner {
     max-width: none;
@@ -2874,8 +2927,46 @@ a {
   }
 
   .product-page-pour__add {
-    width: 100%;
-  }
+  width: 100%;
+  min-width: 0;
+
+  height: 52px;
+
+  padding:
+    0
+    24px;
+
+  border:
+    1px solid
+    #111111;
+
+  background:
+    #111111;
+
+  color:
+    #ffffff;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+}
+
+
+/* PRODUIT ÉPUISÉ */
+
+.product-page-pour__add:disabled {
+  background:
+    #f3f3f1;
+
+  color:
+    rgba(17,17,17,.45);
+
+  border-color:
+    rgba(17,17,17,.24);
+}
 
   .product-page-pour__details {
     width: auto;
@@ -2908,12 +2999,42 @@ a {
     font-size: 18px;
   }
 
- .product-page-pour__related-grid {
+/* =========================================================
+   VOIR AUSSI — MOBILE TYPE JAY BLANC
+========================================================= */
+
+.product-page-pour__related {
+  padding:
+    60px
+    0
+    85px;
+
+  overflow: hidden;
+}
+
+.product-page-pour__related-heading {
+  margin-bottom: 42px;
+
+  font-size: 15px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+}
+
+
+/* TRACK */
+
+.product-page-pour__related-grid {
   display: flex;
 
   width: 100%;
 
-  gap: 8px;
+  gap: 10px;
+
+  padding-left: 16px;
+  padding-right: 0;
 
   overflow-x: auto;
   overflow-y: hidden;
@@ -2930,32 +3051,73 @@ a {
   display: none;
 }
 
+
+/*
+   environ 1,55 produit visible :
+   premier produit entier
+   + une partie du deuxième,
+   comme ton exemple Jay Blanc
+*/
+
 .product-page-pour__related-card {
-  flex: 0 0 calc((100% - 16px) / 3);
+  flex:
+    0
+    0
+    62vw;
+
+  max-width: 300px;
 
   min-width: 0;
 
   scroll-snap-align: start;
 }
+
+
+/* IMAGE */
+
 .product-page-pour__related-media {
+  position: relative;
+
   width: 100%;
+
+  aspect-ratio: 4 / 5;
+
+  overflow: hidden;
+
+  background: #f5f4f1;
 }
 
-.product-page-pour__related-title {
-  margin-top: 12px;
+.product-page-pour__related-image {
+  display: block;
 
-  font-size: 9px;
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+
+/* INFOS */
+
+.product-page-pour__related-title {
+  margin-top: 14px;
+
+  font-size: 10px;
+
   line-height: 1.2;
 
-  letter-spacing: .08em;
+  letter-spacing: .12em;
 
   text-align: center;
+
+  text-transform: uppercase;
 }
 
 .product-page-pour__related-price {
-  margin-top: 7px;
+  margin-top: 8px;
 
-  font-size: 10px;
+  font-size: 11px;
 
   text-align: center;
 }
