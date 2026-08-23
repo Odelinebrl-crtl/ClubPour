@@ -2345,25 +2345,19 @@ document.addEventListener(
       return;
     }
 
+
     event.preventDefault();
-    event.stopPropagation();
-
-
-    const submitButton =
-      form.querySelector(
-        '[type="submit"]'
-      );
+    event.stopImmediatePropagation();
 
 
     const variantInput =
       form.querySelector(
-        '[name="id"]'
+        'input[name="id"]:checked, input[name="id"]'
       );
-
 
     const quantityInput =
       form.querySelector(
-        '[name="quantity"]'
+        'input[name="quantity"]'
       );
 
 
@@ -2377,7 +2371,10 @@ document.addEventListener(
       quantityInput
         ? Math.max(
             1,
-            Number(quantityInput.value) || 1
+            parseInt(
+              quantityInput.value,
+              10
+            ) || 1
           )
         : 1;
 
@@ -2385,11 +2382,17 @@ document.addEventListener(
     if (!variantId) {
 
       console.error(
-        'POUR Add to cart: variante introuvable'
+        'POUR : aucun ID de variante.'
       );
 
       return;
     }
+
+
+    const submitButton =
+      form.querySelector(
+        '[type="submit"]'
+      );
 
 
     if (submitButton) {
@@ -2415,33 +2418,35 @@ document.addEventListener(
 
             body:
               JSON.stringify({
-                items: [
-                  {
-                    id:
-                      Number(variantId),
+                id:
+                  Number(variantId),
 
-                    quantity:
-                      quantity
-                  }
-                ]
+                quantity:
+                  quantity
               })
           }
         );
 
 
-      const data =
+      const result =
         await response.json();
 
 
       if (!response.ok) {
 
         throw new Error(
-          data.description ||
-          data.message ||
+          result.description ||
+          result.message ||
           'Impossible d’ajouter ce produit.'
         );
 
       }
+
+
+      console.log(
+        'POUR produit ajouté :',
+        result
+      );
 
 
       await refreshDrawer();
@@ -2455,7 +2460,6 @@ document.addEventListener(
         'POUR Add to cart:',
         error
       );
-
 
       alert(
         error.message ||
@@ -2471,9 +2475,9 @@ document.addEventListener(
 
     }
 
-  }
+  },
+  true
 );
-
   /* =========================================================
      ESCAPE
   ========================================================= */
