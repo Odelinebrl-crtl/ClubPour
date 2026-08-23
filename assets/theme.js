@@ -1198,94 +1198,158 @@ document.addEventListener(
   }
 
 
-  function buildVariants(product) {
+ function buildVariants(product) {
 
-    const variants =
-      product.variants || [];
-
-
-    if (
-      variants.length === 1 &&
-      variants[0].title === 'Default Title'
-    ) {
-
-      return `
-        <input
-          type="hidden"
-          name="id"
-          value="${variants[0].id}"
-        >
-      `;
-
-    }
+  const variants =
+    product.variants || [];
 
 
-    const firstAvailable =
-      variants.findIndex(
-        variant =>
-          variant.available
-      );
-
+  if (
+    variants.length === 1 &&
+    variants[0].title === 'Default Title'
+  ) {
 
     return `
-
-      <div class="pour-quickview__options">
-
-        <p class="pour-quickview__option-label">
-          Taille :
-        </p>
-
-        <div class="pour-quickview__variants">
-
-          ${variants
-            .map(
-              (variant, index) => {
-
-                const checked =
-                  index === firstAvailable
-                    ? 'checked'
-                    : '';
-
-                const disabled =
-                  variant.available
-                    ? ''
-                    : 'disabled';
-
-
-                return `
-
-                  <label
-                    class="
-                      pour-quickview__variant
-                      ${variant.available ? '' : 'is-disabled'}
-                    "
-                  >
-
-                    <input
-                      type="radio"
-                      name="id"
-                      value="${variant.id}"
-                      ${checked}
-                      ${disabled}
-                    >
-
-                    <span>
-                      ${escapeHTML(variant.title)}
-                    </span>
-
-                  </label>
-                `;
-
-              }
-            )
-            .join('')}
-
-        </div>
-
-      </div>
+      <input
+        type="hidden"
+        name="id"
+        value="${variants[0].id}"
+        data-quickview-variant-id
+      >
     `;
 
   }
+
+
+  const firstAvailable =
+    variants.find(
+      variant => variant.available
+    ) || variants[0];
+
+
+  const parsedVariants =
+    variants.map(variant => {
+
+      const parts =
+        variant.title
+          .split(' / ')
+          .map(value => value.trim());
+
+      return {
+        variant,
+        color: parts[0] || '',
+        size: parts[1] || ''
+      };
+
+    });
+
+
+  const colors =
+    [
+      ...new Set(
+        parsedVariants
+          .map(item => item.color)
+          .filter(Boolean)
+      )
+    ];
+
+
+  const sizes =
+    [
+      ...new Set(
+        parsedVariants
+          .map(item => item.size)
+          .filter(Boolean)
+      )
+    ];
+
+
+  const firstParsed =
+    parsedVariants.find(
+      item =>
+        item.variant.id ===
+        firstAvailable.id
+    ) || parsedVariants[0];
+
+
+  return `
+
+    <input
+      type="hidden"
+      name="id"
+      value="${firstAvailable.id}"
+      data-quickview-variant-id
+    >
+
+
+    <div class="pour-quickview__options">
+
+      <p class="pour-quickview__option-label">
+        COULEUR
+      </p>
+
+      <div class="pour-quickview__variants">
+
+        ${colors.map(color => `
+
+          <label class="pour-quickview__variant">
+
+            <input
+              type="radio"
+              name="quickview-color"
+              value="${escapeHTML(color)}"
+              data-quickview-color
+              ${color === firstParsed.color ? 'checked' : ''}
+            >
+
+            <span>
+              ${escapeHTML(color)}
+            </span>
+
+          </label>
+
+        `).join('')}
+
+      </div>
+
+    </div>
+
+
+    <div class="pour-quickview__options">
+
+      <p class="pour-quickview__option-label">
+        TAILLE
+      </p>
+
+      <div class="pour-quickview__variants">
+
+        ${sizes.map(size => `
+
+          <label class="pour-quickview__variant">
+
+            <input
+              type="radio"
+              name="quickview-size"
+              value="${escapeHTML(size)}"
+              data-quickview-size
+              ${size === firstParsed.size ? 'checked' : ''}
+            >
+
+            <span>
+              ${escapeHTML(size)}
+            </span>
+
+          </label>
+
+        `).join('')}
+
+      </div>
+
+    </div>
+
+  `;
+
+}
 
 
   async function loadProduct(handle) {
@@ -1400,7 +1464,126 @@ document.addEventListener(
         </div>
       `;
 
+const quickViewForm =
+  content.querySelector(
+    '.pour-quickview__form'
+  );
 
+
+if (quickViewForm) {
+
+  const variantInput =
+    quickViewForm.querySelector(
+      '[data-quickview-variant-id]'
+    );
+
+  const submitButton =
+    quickViewForm.querySelector(
+      '.pour-quickview__submit'
+    );
+
+
+  function updateQuickViewVariant() {
+
+    const colorInput =
+      quickViewForm.querySelector(
+        '[data-quickview-color]:checked'
+      );
+
+    const sizeInput =
+      quickViewForm.querySelector(
+        '[data-quickview-size]:checked'
+      );
+
+
+    const selectedColor =
+      colorInput
+        ? colorInput.value
+        : null;
+
+    const selectedSize =
+      sizeInput
+        ? sizeInput.value
+        : null;
+
+
+    const matchingVariant =
+      product.variants.find(
+        variant => {
+
+          const parts =
+            variant.title
+              .split(' / ')
+              .map(value => value.trim());
+
+
+          const variantColor =
+            parts[0] || null;
+
+          const variantSize =
+            parts[1] || null;
+
+
+          return (
+            variantColor === selectedColor &&
+            variantSize === selectedSize
+          );
+
+        }
+      );
+
+
+    if (!matchingVariant) {
+
+      submitButton.disabled = true;
+
+      submitButton.textContent =
+        'INDISPONIBLE';
+
+      return;
+    }
+
+
+    variantInput.value =
+      matchingVariant.id;
+
+
+    submitButton.disabled =
+      !matchingVariant.available;
+
+
+    submitButton.textContent =
+      matchingVariant.available
+        ? 'AJOUTER AU PANIER'
+        : 'ÉPUISÉ';
+
+  }
+
+
+  quickViewForm.addEventListener(
+    'change',
+    function (event) {
+
+      if (
+        event.target.matches(
+          '[data-quickview-color]'
+        ) ||
+        event.target.matches(
+          '[data-quickview-size]'
+        )
+      ) {
+
+        updateQuickViewVariant();
+
+      }
+
+    }
+  );
+
+
+  updateQuickViewVariant();
+
+}
     } catch (error) {
 
       console.error(
