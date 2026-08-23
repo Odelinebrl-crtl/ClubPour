@@ -2348,7 +2348,38 @@ document.addEventListener(
 
     event.preventDefault();
     event.stopImmediatePropagation();
+/* FERME LA QUICK VIEW AVANT D'OUVRIR LE PANIER */
 
+if (form.matches('.pour-quickview__form')) {
+
+  const quickView =
+    document.querySelector(
+      '[data-pour-quickview]'
+    );
+
+  const quickViewOverlay =
+    document.querySelector(
+      '[data-pour-quickview-overlay]'
+    );
+
+  if (quickView) {
+    quickView.classList.remove('is-active');
+
+    quickView.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    quickView.style.display = '';
+  }
+
+  if (quickViewOverlay) {
+    quickViewOverlay.classList.remove('is-active');
+
+    quickViewOverlay.style.display = '';
+  }
+
+}
 
     const variantInput =
       form.querySelector(
