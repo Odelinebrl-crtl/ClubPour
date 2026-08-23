@@ -127,52 +127,74 @@
 
           {% if mini_product != blank %}
 
-            <a
-              href="{{ mini_product.url }}"
-              class="collection001-pour__mini-card"
-            >
+           <article class="collection001-pour__mini-card">
 
-              <div class="collection001-pour__mini-media">
+  <div class="collection001-pour__mini-media">
 
-                {% if mini_image != blank %}
+    <a
+      href="{{ mini_product.url }}"
+      class="collection001-pour__mini-media-link"
+      aria-label="{{ mini_product.title }}"
+    >
 
-                  {{
-                    mini_image
-                    | image_url: width: 1200
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
+      {% if mini_image != blank %}
 
-                {% elsif mini_product.featured_image != blank %}
+        {{
+          mini_image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'collection001-pour__mini-image',
+            loading: 'lazy',
+            alt: mini_product.title
+        }}
 
-                  {{
-                    mini_product.featured_image
-                    | image_url: width: 1200
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
+      {% elsif mini_product.featured_image != blank %}
 
-                {% endif %}
+        {{
+          mini_product.featured_image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'collection001-pour__mini-image',
+            loading: 'lazy',
+            alt: mini_product.title
+        }}
 
-              </div>
+      {% endif %}
 
-              <div class="collection001-pour__mini-info">
+    </a>
 
-                <p class="collection001-pour__mini-title">
-                  {{ mini_product.title }}
-                </p>
 
-                <p class="collection001-pour__mini-price">
-                  {{ mini_product.price | money }}
-                </p>
+    <button
+      type="button"
+      class="collection001-pour__mini-quick-add"
+      data-collection-mini-quick-add
+      data-product-handle="{{ mini_product.handle }}"
+      aria-label="Ajouter rapidement {{ mini_product.title }}"
+    ></button>
 
-              </div>
+  </div>
 
-            </a>
+
+  <a
+    href="{{ mini_product.url }}"
+    class="collection001-pour__mini-info-link"
+  >
+
+    <div class="collection001-pour__mini-info">
+
+      <p class="collection001-pour__mini-title">
+        {{ mini_product.title }}
+      </p>
+
+      <p class="collection001-pour__mini-price">
+        {{ mini_product.price | money }}
+      </p>
+
+    </div>
+
+  </a>
+
+</article>
 
           {% endif %}
 
@@ -209,52 +231,74 @@
 
           {% if mini_product != blank %}
 
-            <a
-              href="{{ mini_product.url }}"
-              class="collection001-pour__mini-card"
-            >
+            <article class="collection001-pour__mini-card">
 
-              <div class="collection001-pour__mini-media">
+  <div class="collection001-pour__mini-media">
 
-                {% if mini_image != blank %}
+    <a
+      href="{{ mini_product.url }}"
+      class="collection001-pour__mini-media-link"
+      aria-label="{{ mini_product.title }}"
+    >
 
-                  {{
-                    mini_image
-                    | image_url: width: 1200
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
+      {% if mini_image != blank %}
 
-                {% elsif mini_product.featured_image != blank %}
+        {{
+          mini_image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'collection001-pour__mini-image',
+            loading: 'lazy',
+            alt: mini_product.title
+        }}
 
-                  {{
-                    mini_product.featured_image
-                    | image_url: width: 1200
-                    | image_tag:
-                      class: 'collection001-pour__mini-image',
-                      loading: 'lazy',
-                      alt: mini_product.title
-                  }}
+      {% elsif mini_product.featured_image != blank %}
 
-                {% endif %}
+        {{
+          mini_product.featured_image
+          | image_url: width: 1200
+          | image_tag:
+            class: 'collection001-pour__mini-image',
+            loading: 'lazy',
+            alt: mini_product.title
+        }}
 
-              </div>
+      {% endif %}
 
-              <div class="collection001-pour__mini-info">
+    </a>
 
-                <p class="collection001-pour__mini-title">
-                  {{ mini_product.title }}
-                </p>
 
-                <p class="collection001-pour__mini-price">
-                  {{ mini_product.price | money }}
-                </p>
+    <button
+      type="button"
+      class="collection001-pour__mini-quick-add"
+      data-collection-mini-quick-add
+      data-product-handle="{{ mini_product.handle }}"
+      aria-label="Ajouter rapidement {{ mini_product.title }}"
+    ></button>
 
-              </div>
+  </div>
 
-            </a>
+
+  <a
+    href="{{ mini_product.url }}"
+    class="collection001-pour__mini-info-link"
+  >
+
+    <div class="collection001-pour__mini-info">
+
+      <p class="collection001-pour__mini-title">
+        {{ mini_product.title }}
+      </p>
+
+      <p class="collection001-pour__mini-price">
+        {{ mini_product.price | money }}
+      </p>
+
+    </div>
+
+  </a>
+
+</article>
 
           {% endif %}
 
@@ -324,7 +368,34 @@
     </div>
 
   {% endif %}
+<!-- =====================================================
+     QUICK VIEW MINIATURES
+====================================================== -->
 
+<div
+  class="collection-mini-qv__overlay"
+  data-collection-mini-qv-overlay
+></div>
+
+<div
+  class="collection-mini-qv"
+  data-collection-mini-qv
+  aria-hidden="true"
+>
+
+  <button
+    type="button"
+    class="collection-mini-qv__close"
+    data-collection-mini-qv-close
+    aria-label="Fermer"
+  ></button>
+
+  <div
+    class="collection-mini-qv__inner"
+    data-collection-mini-qv-content
+  ></div>
+
+</div>
 </section>
 
 
@@ -826,7 +897,474 @@
   color: rgba(17,17,17,.48);
 }
 
+/* =========================================================
+   MINIATURES — QUICK ADD
+========================================================= */
 
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-media {
+  position: relative;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-media-link,
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-info-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* PETIT + */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-quick-add {
+  position: absolute;
+
+  right: 7px;
+  bottom: 7px;
+
+  z-index: 10;
+
+  width: 27px;
+  height: 27px;
+
+  min-width: 27px;
+  min-height: 27px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(3px);
+
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .24s cubic-bezier(.22,1,.36,1);
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+/* + horizontal */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-quick-add::before {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 9px;
+  height: 1px;
+
+  background: #111111;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* + vertical */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-quick-add::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 1px;
+  height: 9px;
+
+  background: #111111;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* visible uniquement au hover */
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-media:hover
+.collection001-pour__mini-quick-add {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   QUICK VIEW — OVERLAY
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 100000;
+
+  background: rgba(0,0,0,.38);
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   QUICK VIEW
+========================================================= */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 100001;
+
+  width: min(960px, calc(100vw - 80px));
+
+  max-height: calc(100vh - 70px);
+
+  overflow-y: auto;
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  transform: translate(-50%, -47%);
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv.is-active {
+  opacity: 1;
+  visibility: visible;
+
+  pointer-events: auto;
+
+  transform: translate(-50%, -50%);
+}
+
+
+/* CROIX */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__close {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+
+  z-index: 10;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__close::before,
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 18px;
+  height: 1px;
+
+  background: #111111;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* CONTENU */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__inner {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0,1fr)
+    minmax(320px,.9fr);
+
+  align-items: center;
+
+  min-height: 570px;
+
+  padding: 65px 70px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__image {
+  display: block;
+
+  width: 100%;
+  max-width: 430px;
+  max-height: 470px;
+
+  object-fit: contain;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__info {
+  padding-left: 50px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__title {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 400;
+
+  letter-spacing: .1em;
+
+  text-transform: uppercase;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__price {
+  margin-top: 15px;
+
+  font-size: 13px;
+
+  color: rgba(17,17,17,.55);
+}
+
+
+/* TAILLES */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__options {
+  margin-top: 32px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__option-label {
+  margin: 0 0 12px;
+
+  font-size: 11px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__variants {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__variant {
+  position: relative;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__variant input {
+  position: absolute;
+
+  opacity: 0;
+
+  pointer-events: none;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__variant span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 46px;
+  height: 42px;
+
+  padding: 0 13px;
+
+  border: 1px solid rgba(17,17,17,.18);
+
+  font-size: 11px;
+
+  cursor: pointer;
+}
+
+
+/* sélection fine, comme celle qu'on vient de corriger */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__variant
+input:checked + span {
+  border: 1px solid #111111;
+  box-shadow: none;
+}
+
+
+/* AJOUTER */
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__submit {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 50px;
+
+  margin-top: 30px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-size: 10px;
+
+  letter-spacing: .15em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__details {
+  display: inline-block;
+
+  margin-top: 22px;
+
+  padding-bottom: 4px;
+
+  border-bottom: 1px solid currentColor;
+
+  color: #111111;
+
+  font-size: 9px;
+
+  text-decoration: none;
+
+  text-transform: uppercase;
+}
+
+
+#Collection001Pour-{{ section.id }}
+.collection-mini-qv__loading {
+  grid-column: 1 / -1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 440px;
+
+  font-size: 9px;
+
+  letter-spacing: .15em;
+}
+
+
+@media screen and (max-width: 750px) {
+
+  #Collection001Pour-{{ section.id }}
+  .collection-mini-qv {
+    width: calc(100vw - 24px);
+
+    max-height: calc(100vh - 24px);
+  }
+
+  #Collection001Pour-{{ section.id }}
+  .collection-mini-qv__inner {
+    grid-template-columns: 1fr;
+
+    min-height: 0;
+
+    padding: 60px 22px 35px;
+  }
+
+  #Collection001Pour-{{ section.id }}
+  .collection-mini-qv__info {
+    padding: 30px 0 0;
+  }
+
+}
+
+@media (hover: none) {
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-quick-add {
+    opacity: 1;
+    visibility: visible;
+
+    transform: none;
+  }
+
+}
 /* =========================================================
    TABLETTE
 ========================================================= */
@@ -1058,7 +1596,380 @@
 
 </script>
 
+<script>
+(function () {
 
+  const section =
+    document.getElementById(
+      'Collection001Pour-{{ section.id }}'
+    );
+
+  if (!section) return;
+
+
+  const modal =
+    section.querySelector(
+      '[data-collection-mini-qv]'
+    );
+
+  const overlay =
+    section.querySelector(
+      '[data-collection-mini-qv-overlay]'
+    );
+
+  const content =
+    section.querySelector(
+      '[data-collection-mini-qv-content]'
+    );
+
+
+  if (!modal || !overlay || !content) {
+    return;
+  }
+
+
+  function money(cents) {
+
+    return new Intl.NumberFormat(
+      'fr-FR',
+      {
+        style: 'currency',
+        currency: 'EUR'
+      }
+    ).format(cents / 100);
+
+  }
+
+
+  function escapeHTML(value) {
+
+    const div =
+      document.createElement('div');
+
+    div.textContent =
+      value == null
+        ? ''
+        : String(value);
+
+    return div.innerHTML;
+
+  }
+
+
+  function openModal() {
+
+    modal.classList.add('is-active');
+    overlay.classList.add('is-active');
+
+    modal.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+  }
+
+
+  function closeModal() {
+
+    modal.classList.remove('is-active');
+    overlay.classList.remove('is-active');
+
+    modal.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+
+  function variantsHTML(product) {
+
+    const variants =
+      product.variants || [];
+
+
+    if (
+      variants.length === 1 &&
+      variants[0].title === 'Default Title'
+    ) {
+
+      return `
+        <input
+          type="hidden"
+          name="id"
+          value="${variants[0].id}"
+        >
+      `;
+
+    }
+
+
+    const firstAvailable =
+      variants.findIndex(
+        variant => variant.available
+      );
+
+
+    return `
+
+      <div class="collection-mini-qv__options">
+
+        <p class="collection-mini-qv__option-label">
+          Taille :
+        </p>
+
+        <div class="collection-mini-qv__variants">
+
+          ${variants.map(
+            (variant, index) => {
+
+              const checked =
+                index === firstAvailable
+                  ? 'checked'
+                  : '';
+
+              const disabled =
+                variant.available
+                  ? ''
+                  : 'disabled';
+
+
+              return `
+
+                <label
+                  class="
+                    collection-mini-qv__variant
+                    ${variant.available ? '' : 'is-disabled'}
+                  "
+                >
+
+                  <input
+                    type="radio"
+                    name="id"
+                    value="${variant.id}"
+                    ${checked}
+                    ${disabled}
+                  >
+
+                  <span>
+                    ${escapeHTML(variant.title)}
+                  </span>
+
+                </label>
+              `;
+
+            }
+          ).join('')}
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  async function loadProduct(handle) {
+
+    content.innerHTML = `
+      <div class="collection-mini-qv__loading">
+        CHARGEMENT
+      </div>
+    `;
+
+    openModal();
+
+
+    try {
+
+      const response =
+        await fetch(
+          `/products/${handle}.js`,
+          {
+            headers: {
+              Accept: 'application/json'
+            }
+          }
+        );
+
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+
+      const product =
+        await response.json();
+
+
+      const image =
+        product.featured_image ||
+        product.images?.[0] ||
+        '';
+
+
+      content.innerHTML = `
+
+        <div class="collection-mini-qv__media">
+
+          ${
+            image
+              ? `
+                <img
+                  src="${escapeHTML(image)}"
+                  class="collection-mini-qv__image"
+                  alt="${escapeHTML(product.title)}"
+                >
+              `
+              : ''
+          }
+
+        </div>
+
+
+        <div class="collection-mini-qv__info">
+
+          <h2 class="collection-mini-qv__title">
+            ${escapeHTML(product.title)}
+          </h2>
+
+          <p class="collection-mini-qv__price">
+            ${money(product.price)}
+          </p>
+
+
+          <form
+            action="/cart/add"
+            method="post"
+            class="collection-mini-qv__form"
+          >
+
+            ${variantsHTML(product)}
+
+            <input
+              type="hidden"
+              name="quantity"
+              value="1"
+            >
+
+            <button
+              type="submit"
+              class="collection-mini-qv__submit"
+            >
+              AJOUTER AU PANIER
+            </button>
+
+          </form>
+
+
+          <a
+            href="${escapeHTML(product.url)}"
+            class="collection-mini-qv__details"
+          >
+            VOIR LE PRODUIT
+          </a>
+
+        </div>
+      `;
+
+
+    } catch (error) {
+
+      content.innerHTML = `
+        <div class="collection-mini-qv__loading">
+          PRODUIT INDISPONIBLE
+        </div>
+      `;
+
+    }
+
+  }
+
+
+  section.addEventListener(
+    'click',
+    function (event) {
+
+      const button =
+        event.target.closest(
+          '[data-collection-mini-quick-add]'
+        );
+
+
+      if (button) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const handle =
+          button.dataset.productHandle;
+
+        if (handle) {
+          loadProduct(handle);
+        }
+
+        return;
+      }
+
+
+      if (
+        event.target.closest(
+          '[data-collection-mini-qv-close]'
+        )
+      ) {
+
+        closeModal();
+        return;
+      }
+
+
+      if (event.target === overlay) {
+        closeModal();
+      }
+
+    }
+  );
+
+
+  /*
+    Le header.liquid gère déjà /cart/add :
+    donc aucune redirection vers la page panier.
+  */
+
+  document.addEventListener(
+    'submit',
+    function (event) {
+
+      if (
+        event.target.matches(
+          '#Collection001Pour-{{ section.id }} .collection-mini-qv__form'
+        )
+      ) {
+
+        window.setTimeout(
+          closeModal,
+          100
+        );
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+
+    }
+  );
+
+})();
+</script>
 {% schema %}
 {
   "name": "Collection 001",
