@@ -122,6 +122,7 @@
       "name": "Collection mise en avant",
       "settings": {
         "image": "shopify://shop_images/Sans_titre_2400_x_1600_px_-2.png",
+        "image_mobile": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px.png",
         "eyebrow": "COLLECTION 001",
         "heading": "RACING AUTOMOBILE",
         "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
