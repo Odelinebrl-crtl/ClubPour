@@ -1164,38 +1164,66 @@ document.addEventListener(
 
   function openModal() {
 
-    modal.classList.add(
-      'is-active'
-    );
+  /* Réinitialise au cas où elle a été fermée
+     immédiatement après un ajout panier */
+  modal.style.display = '';
+  overlay.style.display = '';
 
-    overlay.classList.add(
-      'is-active'
-    );
+  modal.classList.add(
+    'is-active'
+  );
 
-    modal.setAttribute(
-      'aria-hidden',
-      'false'
-    );
+  overlay.classList.add(
+    'is-active'
+  );
 
-  }
+  modal.setAttribute(
+    'aria-hidden',
+    'false'
+  );
+
+}
 
 
-  function closeModal() {
+function closeModal() {
 
-    modal.classList.remove(
-      'is-active'
-    );
+  modal.classList.remove(
+    'is-active'
+  );
 
-    overlay.classList.remove(
-      'is-active'
-    );
+  overlay.classList.remove(
+    'is-active'
+  );
 
-    modal.setAttribute(
-      'aria-hidden',
-      'true'
-    );
+  modal.setAttribute(
+    'aria-hidden',
+    'true'
+  );
 
-  }
+}
+
+
+/* FERMETURE IMMÉDIATE AVANT OUVERTURE DU PANIER */
+
+function closeModalImmediately() {
+
+  modal.classList.remove(
+    'is-active'
+  );
+
+  overlay.classList.remove(
+    'is-active'
+  );
+
+  modal.setAttribute(
+    'aria-hidden',
+    'true'
+  );
+
+  modal.style.display = 'none';
+  overlay.style.display = 'none';
+
+}
 
 
  function buildVariants(product) {
@@ -1693,21 +1721,22 @@ if (quickViewForm) {
   */
 
   document.addEventListener(
-    'submit',
-    function (event) {
+  'submit',
+  function (event) {
 
-      if (
-        event.target.matches(
-          '.pour-quickview__form'
-        )
-      ) {
+    if (
+      event.target.matches(
+        '.pour-quickview__form'
+      )
+    ) {
 
-        closeModal();
-
-      }
+      closeModalImmediately();
 
     }
-  );
+
+  },
+  true
+);
 
 
   document.addEventListener(
