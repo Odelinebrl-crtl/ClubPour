@@ -966,12 +966,11 @@ a {
 
   /* HERO */
 
-  .pour-hero {
-    height: 78vh;
-
-    min-height: 560px;
-  }
-
+ .pour-hero {
+  height: 100svh;
+  min-height: 100svh;
+}
+   
   .pour-hero__content {
     width: 100%;
 
