@@ -425,7 +425,12 @@ height: 44px;
     background: #ffffff;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
   }
-
+.product-page-pour__related-arrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
 }
 </style>
 <script>
@@ -437,6 +442,7 @@ height: 44px;
     );
 
   if (!carousel) return;
+
 
   const grid =
     carousel.querySelector(
@@ -453,6 +459,7 @@ height: 44px;
       '[data-related-next]'
     );
 
+
   if (!grid || !prev || !next) return;
 
 
@@ -462,14 +469,48 @@ height: 44px;
     );
 
 
-  /* Les flèches existent uniquement avec 5 produits */
+  /* =========================================================
+     FLÈCHES UNIQUEMENT S'IL Y A 5 PRODUITS
+  ========================================================= */
 
   if (cards.length === 5) {
+
     carousel.classList.add(
       'has-five-products'
     );
+
   }
 
+
+  /* =========================================================
+     ÉTAT DES FLÈCHES
+
+     Début = gauche transparente
+     Fin   = droite transparente
+  ========================================================= */
+
+  function updateArrows() {
+
+    const maxScroll =
+      grid.scrollWidth - grid.clientWidth;
+
+    const currentScroll =
+      grid.scrollLeft;
+
+
+    prev.disabled =
+      currentScroll <= 2;
+
+
+    next.disabled =
+      currentScroll >= maxScroll - 2;
+
+  }
+
+
+  /* =========================================================
+     FLÈCHE DROITE
+  ========================================================= */
 
   next.addEventListener(
     'click',
@@ -482,15 +523,21 @@ height: 44px;
 
       if (!card) return;
 
+
       grid.scrollBy({
         left:
           card.getBoundingClientRect().width + 28,
+
         behavior: 'smooth'
       });
 
     }
   );
 
+
+  /* =========================================================
+     FLÈCHE GAUCHE
+  ========================================================= */
 
   prev.addEventListener(
     'click',
@@ -503,14 +550,38 @@ height: 44px;
 
       if (!card) return;
 
+
       grid.scrollBy({
         left:
           -(card.getBoundingClientRect().width + 28),
+
         behavior: 'smooth'
       });
 
     }
   );
+
+
+  /* =========================================================
+     MISE À JOUR AUTOMATIQUE DES FLÈCHES
+  ========================================================= */
+
+  grid.addEventListener(
+    'scroll',
+    updateArrows,
+    { passive: true }
+  );
+
+
+  window.addEventListener(
+    'resize',
+    updateArrows
+  );
+
+
+  /* État initial */
+  updateArrows();
+
 
 })();
 </script>
