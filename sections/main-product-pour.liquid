@@ -366,7 +366,104 @@
 
 
 </section>
+<script>
+(function () {
 
+  const productSection =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
+
+  if (!productSection) return;
+
+  const form =
+    productSection.querySelector(
+      '.product-page-pour__form'
+    );
+
+  if (!form) return;
+
+  const variantInput =
+    form.querySelector(
+      '[data-product-variant-id]'
+    );
+
+  const variants =
+    {{ product.variants | json }};
+
+
+  function updateVariant() {
+
+    const selectedOptions =
+      Array.from(
+        form.querySelectorAll(
+          'input[name^="options["]:checked'
+        )
+      ).map(
+        input => input.value
+      );
+
+
+    const matchingVariant =
+      variants.find(
+        variant =>
+          variant.options.every(
+            (option, index) =>
+              option === selectedOptions[index]
+          )
+      );
+
+
+    if (!matchingVariant) {
+      return;
+    }
+
+
+    variantInput.value =
+      matchingVariant.id;
+
+
+    const submitButton =
+      form.querySelector(
+        '.product-page-pour__add'
+      );
+
+
+    if (submitButton) {
+
+      submitButton.disabled =
+        !matchingVariant.available;
+
+      submitButton.textContent =
+        matchingVariant.available
+          ? 'AJOUTER AU PANIER'
+          : 'ÉPUISÉ';
+
+    }
+
+  }
+
+
+  form.addEventListener(
+    'change',
+    function (event) {
+
+      if (
+        event.target.matches(
+          'input[name^="options["]'
+        )
+      ) {
+        updateVariant();
+      }
+
+    }
+  );
+
+
+  updateVariant();
+
+})();
+</script>
 <script>
 (function () {
 
