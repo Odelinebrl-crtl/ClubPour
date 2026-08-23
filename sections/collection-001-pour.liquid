@@ -60,31 +60,39 @@
 
         <div class="collection001-pour__focus-media">
 
-          {% if section.settings.image_1 != blank %}
+  <a
+    href="{{ product_1.url }}"
+    class="collection001-pour__focus-media-link"
+    aria-label="Voir {{ product_1.title }}"
+  >
 
-            {{
-              section.settings.image_1
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_1.title
-            }}
+    {% if section.settings.image_1 != blank %}
 
-          {% elsif product_1.featured_image != blank %}
+      {{
+        section.settings.image_1
+        | image_url: width: 1800
+        | image_tag:
+          class: 'collection001-pour__focus-image',
+          loading: 'lazy',
+          alt: product_1.title
+      }}
 
-            {{
-              product_1.featured_image
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_1.title
-            }}
+    {% elsif product_1.featured_image != blank %}
 
-          {% endif %}
+      {{
+        product_1.featured_image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'collection001-pour__focus-image',
+          loading: 'lazy',
+          alt: product_1.title
+      }}
 
-        </div>
+    {% endif %}
+
+  </a>
+
+</div>
 
 
         <div class="collection001-pour__focus-content">
@@ -335,33 +343,41 @@
         </div>
 
 
-        <div class="collection001-pour__focus-media">
+       <div class="collection001-pour__focus-media">
 
-          {% if section.settings.image_2 != blank %}
+  <a
+    href="{{ product_2.url }}"
+    class="collection001-pour__focus-media-link"
+    aria-label="Voir {{ product_2.title }}"
+  >
 
-            {{
-              section.settings.image_2
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_2.title
-            }}
+    {% if section.settings.image_2 != blank %}
 
-          {% elsif product_2.featured_image != blank %}
+      {{
+        section.settings.image_2
+        | image_url: width: 1800
+        | image_tag:
+          class: 'collection001-pour__focus-image',
+          loading: 'lazy',
+          alt: product_2.title
+      }}
 
-            {{
-              product_2.featured_image
-              | image_url: width: 1800
-              | image_tag:
-                class: 'collection001-pour__focus-image',
-                loading: 'lazy',
-                alt: product_2.title
-            }}
+    {% elsif product_2.featured_image != blank %}
 
-          {% endif %}
+      {{
+        product_2.featured_image
+        | image_url: width: 1800
+        | image_tag:
+          class: 'collection001-pour__focus-image',
+          loading: 'lazy',
+          alt: product_2.title
+      }}
 
-        </div>
+    {% endif %}
+
+  </a>
+
+</div>
 
       </div>
 
