@@ -3622,12 +3622,13 @@ a {
       88px
       0
       0
-      24px;
+      40px;
 
-    transform: translateX(0);
+    transform: none;
   }
 
 }
+
 
 }
 /* MOBILE — POSITION FIL D'ARIANE */
@@ -3635,13 +3636,7 @@ a {
 @media screen and (max-width: 768px) {
 
   .product-page-pour__breadcrumb {
-    padding:
-      76px
-      0
-      0
-      6px !important;
-
-    transform: none !important;
+    padding-left: 12px !important;
 
     font-size: 8px;
     gap: 3px;
@@ -3652,7 +3647,6 @@ a {
   .product-page-pour__breadcrumb-separator {
     font-size: 8px;
   }
-
 
 }
 
