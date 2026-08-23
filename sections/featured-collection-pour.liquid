@@ -274,7 +274,7 @@
 
   border: 1px solid #111111;
 
-  background: #111111;
+ background-color: #111111;
   color: #ffffff;
 
   font-family:
@@ -290,10 +290,10 @@
   text-transform: uppercase;
   text-decoration: none;
 
-  transition:
-    background .3s ease,
-    color .3s ease,
-    border-color .3s ease;
+ transition:
+  background-color .55s cubic-bezier(.22,1,.36,1),
+  color .55s cubic-bezier(.22,1,.36,1),
+  border-color .55s cubic-bezier(.22,1,.36,1);
 }
 
 
@@ -301,7 +301,7 @@
 
 #FeaturedPour-{{ section.id }}
 .featured-pour__button:hover {
-  background: #ffffff;
+  background-color: #ffffff;
   color: #111111;
 
   border-color: #111111;
