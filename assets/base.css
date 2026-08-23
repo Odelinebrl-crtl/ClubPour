@@ -3581,38 +3581,6 @@ a {
     0
     0;
 }
-   /* FIL D'ARIANE — MOBILE */
-
-.product-page-pour__breadcrumb {
-  position: relative;
-
-  width: 100%;
-
-  margin: 0;
-
-  padding:
-  76px
-  8px
-  0;
-
-  gap: 3px;
-
-  font-size: 8px;
-  font-weight: 400;
-
-  line-height: 1.2;
-
-  letter-spacing: .04em;
-
-  text-transform: uppercase;
-}
-
-.product-page-pour__breadcrumb-link,
-.product-page-pour__breadcrumb-current,
-.product-page-pour__breadcrumb-separator {
-  font-size: 8px;
-  line-height: 1.2;
-}
 }
 /* =========================================================
    PRODUCT PAGE — ALIGNEMENTS FINAUX
@@ -3638,17 +3606,54 @@ a {
 
   gap: 4px;
 
-  padding:
-    88px
-    clamp(40px, 5vw, 80px)
-    0;
-
   margin: 0;
 
   font-size: 10px;
   line-height: 1.2;
 
   text-transform: uppercase;
+}
+/* DESKTOP — POSITION FIL D'ARIANE */
+
+@media screen and (min-width: 769px) {
+
+  .product-page-pour__breadcrumb {
+    padding:
+      88px
+      0
+      0
+      24px;
+
+    transform: translateX(0);
+  }
+
+}
+
+}
+/* MOBILE — POSITION FIL D'ARIANE */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__breadcrumb {
+    padding:
+      76px
+      0
+      0
+      6px !important;
+
+    transform: none !important;
+
+    font-size: 8px;
+    gap: 3px;
+  }
+
+  .product-page-pour__breadcrumb-link,
+  .product-page-pour__breadcrumb-current,
+  .product-page-pour__breadcrumb-separator {
+    font-size: 8px;
+  }
+
+
 }
 
 .product-page-pour__breadcrumb-link {
