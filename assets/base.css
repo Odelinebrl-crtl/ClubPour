@@ -5005,18 +5005,22 @@ html {
   scroll-behavior: smooth;
 }
 /* =========================================================
-   QUICK VIEW — BOUTON AJOUTER AU PANIER — HOVER
+   QUICK VIEW — BOUTON AJOUTER AU PANIER
 ========================================================= */
 
-.pour-quickview__submit {
+.pour-quickview .pour-quickview__submit {
+  background: #111111 !important;
+  color: #ffffff !important;
+  border: 1px solid #111111 !important;
+
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease,
-    border-color 0.25s ease;
+    background-color .25s ease,
+    color .25s ease,
+    border-color .25s ease !important;
 }
 
-.pour-quickview__submit:hover:not(:disabled) {
-  background-color: #ffffff;
-  color: #000000;
-  border-color: #000000;
+.pour-quickview .pour-quickview__submit:hover:not(:disabled) {
+  background: #ffffff !important;
+  color: #111111 !important;
+  border-color: #111111 !important;
 }
