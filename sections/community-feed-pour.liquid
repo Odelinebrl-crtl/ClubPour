@@ -206,6 +206,25 @@
     touch-action: manipulation;
   }
 
+  #CommunityFeed-{{ section.id }}
+  .pour-community__product-button:active,
+  #CommunityFeed-{{ section.id }}
+  .pour-community__product-button:focus:active {
+    background-color: #ffffff !important;
+    color: #111111 !important;
+    border-color: #111111 !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+
+  #CommunityFeed-{{ section.id }}
+  .pour-community__product-button:active::before,
+  #CommunityFeed-{{ section.id }}
+  .pour-community__product-button:active::after {
+    opacity: 0 !important;
+    background: transparent !important;
+  }
+
 }
 </style>
 {% schema %}
