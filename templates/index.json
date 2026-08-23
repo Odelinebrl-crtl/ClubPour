@@ -202,6 +202,7 @@
       "name": "Bloc image éditorial",
       "settings": {
         "image": "shopify://shop_images/Ajouter_un_titre-3.png",
+        "image_mobile": "shopify://shop_images/Ajouter_un_titre_1080_x_1350_px.png",
         "eyebrow": "COLLECTION 001",
         "heading": "UNE COLLECTION. HUIT HISTOIRES.",
         "text": "<p>Huit pièces inspirées par l’automobile, les destinations et l’art de vivre. Le premier chapitre de l’univers POUR.</p>",
