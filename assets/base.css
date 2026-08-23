@@ -1289,31 +1289,85 @@ a {
   }
 
 
-  .mobile-menu__nav a {
-    display: block;
+  .mobile-menu__main-link {
+  display: block;
 
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 
-    color: #111111;
+  color: #111111;
 
-    font-family:
-      "Helvetica Neue",
-      Helvetica,
-      Arial,
-      sans-serif;
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
 
-    font-size: 25px;
-    font-weight: 400;
+  font-size: 25px;
+  font-weight: 400;
 
-    line-height: 1.05;
+  line-height: 1.05;
 
-    letter-spacing: -0.025em;
+  letter-spacing: -0.025em;
 
-    text-transform: uppercase;
+  text-transform: uppercase;
 
-    text-decoration: none;
-  }
+  text-decoration: none;
+}
+
+
+/* SOUS-RUBRIQUES BOUTIQUE */
+
+.mobile-menu__subnav {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  margin:
+    -2px
+    0
+    8px;
+}
+
+
+.mobile-menu__subheading {
+  display: block;
+
+  margin: 0;
+
+  color: #111111;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .20em;
+
+  text-transform: uppercase;
+}
+
+
+.mobile-menu__sublink {
+  display: inline-block;
+
+  color: rgba(17,17,17,.58);
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  text-decoration: none;
+}
 
 
   /* =======================================================
