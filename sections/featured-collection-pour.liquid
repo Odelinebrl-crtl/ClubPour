@@ -14,21 +14,47 @@
 
       {% if section.settings.image != blank %}
 
-        {{
-          section.settings.image
-          | image_url: width: 2400
-          | image_tag:
-            class: 'featured-pour__image',
-            loading: 'lazy'
-        }}
+  {{
+    section.settings.image
+    | image_url: width: 2400
+    | image_tag:
+      class: 'featured-pour__image featured-pour__image--desktop',
+      loading: 'lazy'
+  }}
 
-      {% else %}
+{% endif %}
 
-        <div class="featured-pour__placeholder">
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        </div>
 
-      {% endif %}
+{% if section.settings.image_mobile != blank %}
+
+  {{
+    section.settings.image_mobile
+    | image_url: width: 1400
+    | image_tag:
+      class: 'featured-pour__image featured-pour__image--mobile',
+      loading: 'lazy'
+  }}
+
+{% elsif section.settings.image != blank %}
+
+  {{
+    section.settings.image
+    | image_url: width: 1400
+    | image_tag:
+      class: 'featured-pour__image featured-pour__image--mobile',
+      loading: 'lazy'
+  }}
+
+{% endif %}
+
+
+{% if section.settings.image == blank and section.settings.image_mobile == blank %}
+
+  <div class="featured-pour__placeholder">
+    {{ 'lifestyle-1' | placeholder_svg_tag }}
+  </div>
+
+{% endif %}
 
     </div>
 
@@ -124,7 +150,10 @@
   object-position: center;
 }
 
-
+#FeaturedPour-{{ section.id }}
+.featured-pour__image--mobile {
+  display: none;
+}
 #FeaturedPour-{{ section.id }}
 .featured-pour__placeholder,
 #FeaturedPour-{{ section.id }}
@@ -288,7 +317,27 @@
   #FeaturedPour-{{ section.id }} {
     padding: 70px 16px 85px;
   }
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__visual {
+    aspect-ratio: 4 / 5;
+  }
 
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__image--desktop {
+    display: none;
+  }
+
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__image--mobile {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
 
   #FeaturedPour-{{ section.id }}
   .featured-pour__inner {
@@ -356,7 +405,11 @@
       "id": "image",
       "label": "Visuel gauche"
     },
-
+{
+  "type": "image_picker",
+  "id": "image_mobile",
+  "label": "Visuel mobile"
+},
     {
       "type": "text",
       "id": "eyebrow",
