@@ -302,7 +302,7 @@
             <button
               type="button"
               class="product-page-pour__related-quick-add"
-              data-related-quick-add
+              data-product-related-quick-add
               data-product-handle="{{ related_product.handle }}"
               aria-label="Ajouter rapidement {{ related_product.title }}"
             ></button>
@@ -331,13 +331,346 @@
 
     {% endfor %}
 
-  </div>
+    </div>
+
+</div>
+<!-- FIN VOIR AUSSI -->
+
+
+<!-- QUICK VIEW VOIR AUSSI -->
+
+<div
+  class="product-related-qv__overlay"
+  data-product-related-qv-overlay
+></div>
+
+<div
+  class="product-related-qv"
+  data-product-related-qv
+  aria-hidden="true"
+>
+
+  <button
+    type="button"
+    class="product-related-qv__close"
+    data-product-related-qv-close
+    aria-label="Fermer"
+  ></button>
+
+  <div
+    class="product-related-qv__content"
+    data-product-related-qv-content
+  ></div>
 
 </div>
 
+
 </section>
 
+<script>
+(function () {
 
+  const section =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
+
+  if (!section) return;
+
+
+  const modal =
+    section.querySelector(
+      '[data-product-related-qv]'
+    );
+
+  const overlay =
+    section.querySelector(
+      '[data-product-related-qv-overlay]'
+    );
+
+  const content =
+    section.querySelector(
+      '[data-product-related-qv-content]'
+    );
+
+  if (!modal || !overlay || !content) {
+    return;
+  }
+
+
+  function formatMoney(cents) {
+
+    return new Intl.NumberFormat(
+      'fr-FR',
+      {
+        style: 'currency',
+        currency: 'EUR'
+      }
+    ).format(cents / 100);
+
+  }
+
+
+  function openModal() {
+
+    modal.classList.add('is-active');
+    overlay.classList.add('is-active');
+
+    modal.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+  }
+
+
+  function closeModal() {
+
+    modal.classList.remove('is-active');
+    overlay.classList.remove('is-active');
+
+    modal.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+
+  function buildVariants(product) {
+
+    const variants =
+      product.variants || [];
+
+
+    if (
+      variants.length === 1 &&
+      variants[0].title === 'Default Title'
+    ) {
+
+      return `
+        <input
+          type="hidden"
+          name="id"
+          value="${variants[0].id}"
+        >
+      `;
+
+    }
+
+
+    const firstAvailable =
+      variants.findIndex(
+        variant => variant.available
+      );
+
+
+    return `
+      <div class="product-related-qv__options">
+
+        <p class="product-related-qv__label">
+          Taille :
+        </p>
+
+        <div class="product-related-qv__variants">
+
+          ${variants.map(
+            (variant, index) => {
+
+              return `
+                <label class="product-related-qv__variant">
+
+                  <input
+                    type="radio"
+                    name="id"
+                    value="${variant.id}"
+                    ${index === firstAvailable ? 'checked' : ''}
+                    ${variant.available ? '' : 'disabled'}
+                  >
+
+                  <span>
+                    ${variant.title}
+                  </span>
+
+                </label>
+              `;
+
+            }
+          ).join('')}
+
+        </div>
+
+      </div>
+    `;
+
+  }
+
+
+  async function loadProduct(handle) {
+
+    content.innerHTML =
+      '<div class="product-related-qv__loading">CHARGEMENT</div>';
+
+    openModal();
+
+
+    try {
+
+      const response =
+        await fetch(
+          `/products/${handle}.js`
+        );
+
+
+      if (!response.ok) {
+        throw new Error();
+      }
+
+
+      const product =
+        await response.json();
+
+
+      const image =
+        product.featured_image ||
+        product.images?.[0] ||
+        '';
+
+
+      content.innerHTML = `
+
+        <div class="product-related-qv__media">
+
+          ${
+            image
+              ? `
+                <img
+                  src="${image}"
+                  class="product-related-qv__image"
+                  alt="${product.title}"
+                >
+              `
+              : ''
+          }
+
+        </div>
+
+
+        <div class="product-related-qv__info">
+
+          <h2 class="product-related-qv__title">
+            ${product.title}
+          </h2>
+
+          <p class="product-related-qv__price">
+            ${formatMoney(product.price)}
+          </p>
+
+
+          <form
+            action="/cart/add"
+            method="post"
+            class="product-related-qv__form"
+          >
+
+            ${buildVariants(product)}
+
+            <input
+              type="hidden"
+              name="quantity"
+              value="1"
+            >
+
+            <button
+              type="submit"
+              class="product-related-qv__submit"
+            >
+              AJOUTER AU PANIER
+            </button>
+
+          </form>
+
+
+          <a
+            href="${product.url}"
+            class="product-related-qv__details"
+          >
+            VOIR LE PRODUIT
+          </a>
+
+        </div>
+
+      `;
+
+
+    } catch (error) {
+
+      content.innerHTML =
+        '<div class="product-related-qv__loading">PRODUIT INDISPONIBLE</div>';
+
+    }
+
+  }
+
+
+  section.addEventListener(
+    'click',
+    function (event) {
+
+      const quickButton =
+        event.target.closest(
+          '[data-product-related-quick-add]'
+        );
+
+
+      if (quickButton) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        const handle =
+          quickButton.dataset.productHandle;
+
+        if (handle) {
+          loadProduct(handle);
+        }
+
+        return;
+      }
+
+
+      if (
+        event.target.closest(
+          '[data-product-related-qv-close]'
+        )
+      ) {
+
+        closeModal();
+        return;
+      }
+
+
+      if (event.target === overlay) {
+        closeModal();
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (event.key === 'Escape') {
+        closeModal();
+      }
+
+    }
+  );
+
+})();
+</script>
 {% schema %}
 {
   "name": "Produit POUR",
