@@ -4024,15 +4024,13 @@ color: rgba(17,17,17,.42);
 }
 @media screen and (max-width: 768px) {
 
-  .pour-community__product-button {
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .pour-community__product-button:active {
+  .pour-community__product-button.is-tapped {
     background: #ffffff !important;
     color: #111111 !important;
     border-color: #111111 !important;
   }
+
+}
 
 }
 
