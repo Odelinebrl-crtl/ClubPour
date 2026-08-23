@@ -251,11 +251,15 @@
       {% assign product_key = 'related_product_' | append: i %}
       {% assign image_key = 'related_image_' | append: i %}
 
-      {% assign related_product = section.settings[product_key] %}
-      {% assign custom_image = section.settings[image_key] %}
+     {% assign related_product = section.settings[product_key] %}
+{% assign custom_image = section.settings[image_key] %}
 
-      {% if related_product != blank %}
+{% if related_product == blank %}
+  {% assign fallback_index = i | minus: 1 %}
+  {% assign related_product = collections.all.products[fallback_index] %}
+{% endif %}
 
+{% if related_product != blank and related_product.id != product.id %}
         <div class="product-page-pour__related-card">
 
           <div class="product-page-pour__related-media">
