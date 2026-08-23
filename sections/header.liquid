@@ -339,47 +339,71 @@
   </div>
 
 
-  <nav class="mobile-menu__nav">
+ <nav class="mobile-menu__nav">
 
-   <a
-  href="/pages/boutique?view=vetements"
-  class="mobile-menu__main-link"
->
-  BOUTIQUE
-</a>
+  <!-- BOUTIQUE + SOUS-MENU -->
+
+  <div
+    class="mobile-menu__item mobile-menu__item--submenu"
+    data-mobile-submenu
+  >
+
+    <a
+      href="/pages/boutique?view=vetements"
+      class="mobile-menu__main-link mobile-menu__submenu-toggle"
+      data-mobile-submenu-toggle
+      aria-expanded="false"
+    >
+      <span>BOUTIQUE</span>
+
+      <span
+        class="mobile-menu__plus"
+        aria-hidden="true"
+      ></span>
+    </a>
 
 
-<div class="mobile-menu__subnav">
+    <div
+      class="mobile-menu__submenu"
+      data-mobile-submenu-panel
+    >
 
-  <span class="mobile-menu__subheading">
-    VÊTEMENTS
-  </span>
+      <span class="mobile-menu__subheading">
+        VÊTEMENTS
+      </span>
+
+      <a
+        href="/pages/collection-001?view=collection-001"
+        class="mobile-menu__sublink"
+      >
+        COLLECTION 001
+      </a>
+
+    </div>
+
+  </div>
+
+
+  <!-- CLUB PRIVILÈGES -->
 
   <a
-    href="/pages/collection-001?view=collection-001"
-    class="mobile-menu__sublink"
+    href="/pages/club-privileges?view=club-privileges"
+    class="mobile-menu__main-link"
   >
-    COLLECTION 001
+    CLUB PRIVILÈGES
   </a>
 
-</div>
 
+  <!-- CONTACT -->
 
-<a
-  href="/pages/club-privileges?view=club-privileges"
-  class="mobile-menu__main-link"
->
-  CLUB PRIVILÈGES
-</a>
+  <a
+    href="/pages/contact?view=contact"
+    class="mobile-menu__main-link"
+  >
+    CONTACT
+  </a>
 
-
-<a
-  href="/pages/contact?view=contact"
-  class="mobile-menu__main-link"
->
-  CONTACT
-</a>
-  </nav>
+</nav>
 
 
   <div class="mobile-menu__bottom">
@@ -2389,7 +2413,6 @@ if (changeButton) {
         '[data-mobile-menu-close]'
       );
 
-
     if (
       !menu ||
       !openButton ||
@@ -2398,6 +2421,25 @@ if (changeButton) {
       return;
     }
 
+
+    /* =========================================================
+       SOUS-MENU BOUTIQUE
+    ========================================================= */
+
+    const boutiqueItem =
+      menu.querySelector(
+        '[data-mobile-submenu]'
+      );
+
+    const boutiqueToggle =
+      menu.querySelector(
+        '[data-mobile-submenu-toggle]'
+      );
+
+
+    /* =========================================================
+       OUVERTURE MENU
+    ========================================================= */
 
     function openMenu() {
 
@@ -2422,6 +2464,10 @@ if (changeButton) {
     }
 
 
+    /* =========================================================
+       FERMETURE MENU
+    ========================================================= */
+
     function closeMenu() {
 
       menu.classList.remove(
@@ -2442,8 +2488,31 @@ if (changeButton) {
         'mobile-menu-open'
       );
 
+
+      /* REFERME AUSSI BOUTIQUE */
+
+      if (
+        boutiqueItem &&
+        boutiqueToggle
+      ) {
+
+        boutiqueItem.classList.remove(
+          'is-open'
+        );
+
+        boutiqueToggle.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+      }
+
     }
 
+
+    /* =========================================================
+       OUVERTURE BURGER
+    ========================================================= */
 
     openButton.addEventListener(
       'click',
@@ -2451,14 +2520,83 @@ if (changeButton) {
     );
 
 
+    /* =========================================================
+       FERMETURE CROIX
+    ========================================================= */
+
     closeButton.addEventListener(
       'click',
       closeMenu
     );
 
 
+    /* =========================================================
+       BOUTIQUE
+       
+       1ER CLIC  = ouvre le sous-menu
+       2E CLIC   = ouvre la page Boutique
+    ========================================================= */
+
+    if (
+      boutiqueItem &&
+      boutiqueToggle
+    ) {
+
+      boutiqueToggle.addEventListener(
+        'click',
+        function (event) {
+
+          const isOpen =
+            boutiqueItem.classList.contains(
+              'is-open'
+            );
+
+
+          /* PREMIER CLIC */
+
+          if (!isOpen) {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            boutiqueItem.classList.add(
+              'is-open'
+            );
+
+            boutiqueToggle.setAttribute(
+              'aria-expanded',
+              'true'
+            );
+
+            return;
+
+          }
+
+
+          /*
+             DEUXIÈME CLIC :
+             on ne fait rien.
+
+             Le href de BOUTIQUE fonctionne
+             normalement et ouvre la page.
+          */
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
+       FERMETURE APRÈS CLIC SUR UN VRAI LIEN
+       
+       IMPORTANT :
+       on EXCLUT le bouton BOUTIQUE.
+    ========================================================= */
+
     menu.querySelectorAll(
-      'a'
+      'a:not([data-mobile-submenu-toggle])'
     ).forEach((link) => {
 
       link.addEventListener(
@@ -2468,6 +2606,10 @@ if (changeButton) {
 
     });
 
+
+    /* =========================================================
+       TOUCHE ESCAPE
+    ========================================================= */
 
     document.addEventListener(
       'keydown',
@@ -2482,6 +2624,10 @@ if (changeButton) {
 
   }
 
+
+  /* =========================================================
+     INITIALISATION
+  ========================================================= */
 
   if (
     document.readyState === 'loading'
