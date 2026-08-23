@@ -244,7 +244,21 @@
     VOIR AUSSI
   </div>
 
-  <div class="product-page-pour__related-grid">
+<div class="product-page-pour__related-carousel">
+
+  <button
+    type="button"
+    class="product-page-pour__related-arrow product-page-pour__related-arrow--prev"
+    data-related-prev
+    aria-label="Produits précédents"
+  >
+    ‹
+  </button>
+
+  <div
+    class="product-page-pour__related-grid"
+    data-related-grid
+  >
 
     {% for i in (1..5) %}
 
@@ -331,12 +345,172 @@
 
     {% endfor %}
 
-    </div>
+      </div>
+
+  <button
+    type="button"
+    class="product-page-pour__related-arrow product-page-pour__related-arrow--next"
+    data-related-next
+    aria-label="Produits suivants"
+  >
+    ›
+  </button>
+
+</div>
 
 </div>
 <!-- FIN VOIR AUSSI -->
 
+<style>
+/* =========================================================
+   VOIR AUSSI — FLÈCHES DESKTOP
+========================================================= */
 
+.product-page-pour__related-carousel {
+  position: relative;
+}
+
+.product-page-pour__related-arrow {
+  display: none;
+}
+
+@media screen and (min-width: 769px) {
+
+  .product-page-pour__related-carousel.has-five-products
+  .product-page-pour__related-arrow {
+    position: absolute;
+    top: 46%;
+    z-index: 5;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    padding: 0;
+
+    border: 1px solid rgba(17,17,17,.12);
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #111111;
+
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    transition:
+      background .25s ease,
+      color .25s ease;
+  }
+
+  .product-page-pour__related-arrow--prev {
+    left: -24px;
+  }
+
+  .product-page-pour__related-arrow--next {
+    right: -24px;
+  }
+
+  .product-page-pour__related-arrow:hover {
+    background: #111111;
+    color: #ffffff;
+  }
+
+}
+</style>
+<script>
+(function () {
+
+  const carousel =
+    document.querySelector(
+      '.product-page-pour__related-carousel'
+    );
+
+  if (!carousel) return;
+
+  const grid =
+    carousel.querySelector(
+      '[data-related-grid]'
+    );
+
+  const prev =
+    carousel.querySelector(
+      '[data-related-prev]'
+    );
+
+  const next =
+    carousel.querySelector(
+      '[data-related-next]'
+    );
+
+  if (!grid || !prev || !next) return;
+
+
+  const cards =
+    grid.querySelectorAll(
+      '.product-page-pour__related-card'
+    );
+
+
+  /* Les flèches existent uniquement avec 5 produits */
+
+  if (cards.length === 5) {
+    carousel.classList.add(
+      'has-five-products'
+    );
+  }
+
+
+  next.addEventListener(
+    'click',
+    function () {
+
+      const card =
+        grid.querySelector(
+          '.product-page-pour__related-card'
+        );
+
+      if (!card) return;
+
+      grid.scrollBy({
+        left:
+          card.getBoundingClientRect().width + 28,
+        behavior: 'smooth'
+      });
+
+    }
+  );
+
+
+  prev.addEventListener(
+    'click',
+    function () {
+
+      const card =
+        grid.querySelector(
+          '.product-page-pour__related-card'
+        );
+
+      if (!card) return;
+
+      grid.scrollBy({
+        left:
+          -(card.getBoundingClientRect().width + 28),
+        behavior: 'smooth'
+      });
+
+    }
+  );
+
+})();
+</script>
 <!-- QUICK VIEW VOIR AUSSI -->
 
 <div
