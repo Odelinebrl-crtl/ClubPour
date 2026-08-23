@@ -3218,8 +3218,16 @@ a {
   text-transform: uppercase;
 
   cursor: pointer;
+   transition:
+  background .25s ease,
+  color .25s ease,
+  border-color .25s ease;
 }
-
+.product-related-qv__submit:hover:not(:disabled) {
+  background: #ffffff;
+  color: #111111;
+  border-color: #111111;
+}
 
 /* VOIR PRODUIT */
 
