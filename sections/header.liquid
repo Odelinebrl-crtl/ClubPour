@@ -344,44 +344,53 @@
   <!-- BOUTIQUE + SOUS-MENU -->
 
   <div
-    class="mobile-menu__item mobile-menu__item--submenu"
-    data-mobile-submenu
-  >
+  class="mobile-menu__item mobile-menu__item--submenu"
+  data-mobile-submenu
+>
+
+  <div class="mobile-menu__submenu-head">
 
     <a
       href="/pages/boutique?view=vetements"
-      class="mobile-menu__main-link mobile-menu__submenu-toggle"
-      data-mobile-submenu-toggle
-      aria-expanded="false"
+      class="mobile-menu__main-link"
+      data-mobile-boutique-link
     >
-      <span>BOUTIQUE</span>
-
-      <span
-        class="mobile-menu__plus"
-        aria-hidden="true"
-      ></span>
+      BOUTIQUE
     </a>
 
-
-    <div
-      class="mobile-menu__submenu"
-      data-mobile-submenu-panel
+    <button
+      type="button"
+      class="mobile-menu__plus"
+      data-mobile-submenu-button
+      aria-label="Ouvrir Boutique"
+      aria-expanded="false"
     >
-
-      <span class="mobile-menu__subheading">
-        VÊTEMENTS
-      </span>
-
-      <a
-        href="/pages/collection-001?view=collection-001"
-        class="mobile-menu__sublink"
-      >
-        COLLECTION 001
-      </a>
-
-    </div>
+      <span></span>
+      <span></span>
+    </button>
 
   </div>
+
+
+  <div
+    class="mobile-menu__submenu"
+    data-mobile-submenu-panel
+  >
+
+    <span class="mobile-menu__subheading">
+      VÊTEMENTS
+    </span>
+
+    <a
+      href="/pages/collection-001?view=collection-001"
+      class="mobile-menu__sublink"
+    >
+      COLLECTION 001
+    </a>
+
+  </div>
+
+</div>
 
 
   <!-- CLUB PRIVILÈGES -->
