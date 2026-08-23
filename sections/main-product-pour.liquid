@@ -234,53 +234,82 @@
   </div>
 
 
-  <!-- AUTRES PRODUITS -->
-  {% assign recommendations = collections.all.products %}
+ <!-- =====================================================
+     VOIR AUSSI — 5 PRODUITS PERSONNALISABLES
+===================================================== -->
 
-  <div class="product-page-pour__related">
+<div class="product-page-pour__related">
 
-   <div class="product-page-pour__related-heading">
-  VOIR AUSSI
-</div>
+  <div class="product-page-pour__related-heading">
+    VOIR AUSSI
+  </div>
 
-    <div class="product-page-pour__related-grid">
+  <div class="product-page-pour__related-grid">
 
-      {% assign shown = 0 %}
+    {% for i in (1..5) %}
 
-      {% for related_product in recommendations %}
+      {% assign product_key = 'related_product_' | append: i %}
+      {% assign image_key = 'related_image_' | append: i %}
 
-        {% if related_product.id != product.id and shown < 3 %}
+      {% assign related_product = section.settings[product_key] %}
+      {% assign custom_image = section.settings[image_key] %}
+
+      {% if related_product != blank %}
+
+        <div class="product-page-pour__related-card">
+
+          <div class="product-page-pour__related-media">
+
+            <a
+              href="{{ related_product.url }}"
+              class="product-page-pour__related-media-link"
+              aria-label="{{ related_product.title }}"
+            >
+
+              {% if custom_image != blank %}
+
+                {{
+                  custom_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    class: 'product-page-pour__related-image product-page-pour__related-image--primary',
+                    loading: 'lazy',
+                    alt: related_product.title
+                }}
+
+              {% elsif related_product.featured_image != blank %}
+
+                {{
+                  related_product.featured_image
+                  | image_url: width: 1200
+                  | image_tag:
+                    class: 'product-page-pour__related-image product-page-pour__related-image--primary',
+                    loading: 'lazy',
+                    alt: related_product.title
+                }}
+
+              {% endif %}
+
+            </a>
+
+
+            <!-- QUICK ADD + -->
+
+            <button
+              type="button"
+              class="product-page-pour__related-quick-add"
+              data-related-quick-add
+              data-product-handle="{{ related_product.handle }}"
+              aria-label="Ajouter rapidement {{ related_product.title }}"
+            ></button>
+
+          </div>
+
 
           <a
             href="{{ related_product.url }}"
-            class="product-page-pour__related-card"
+            class="product-page-pour__related-info"
           >
-
-           {% if related_product.featured_image %}
-  <div class="product-page-pour__related-media">
-
-    {{
-      related_product.featured_image
-      | image_url: width: 1000
-      | image_tag:
-        class: 'product-page-pour__related-image product-page-pour__related-image--primary',
-        loading: 'lazy',
-        alt: related_product.title
-    }}
-
-    {% if related_product.images.size > 1 %}
-      {{
-        related_product.images[1]
-        | image_url: width: 1000
-        | image_tag:
-          class: 'product-page-pour__related-image product-page-pour__related-image--secondary',
-          loading: 'lazy',
-          alt: related_product.title
-      }}
-    {% endif %}
-
-  </div>
-{% endif %}
 
             <div class="product-page-pour__related-title">
               {{ related_product.title }}
@@ -292,15 +321,15 @@
 
           </a>
 
-          {% assign shown = shown | plus: 1 %}
+        </div>
 
-        {% endif %}
+      {% endif %}
 
-      {% endfor %}
-
-    </div>
+    {% endfor %}
 
   </div>
+
+</div>
 
 </section>
 
@@ -308,19 +337,113 @@
 {% schema %}
 {
   "name": "Produit POUR",
+
   "settings": [
+
     {
       "type": "textarea",
       "id": "composition",
       "label": "Texte composition",
       "default": "100 % coton biologique. Coupe premium. Matière épaisse et confortable."
     },
+
     {
       "type": "textarea",
       "id": "care",
       "label": "Texte entretien",
       "default": "Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux."
+    },
+
+
+    {
+      "type": "header",
+      "content": "Voir aussi — Produit 01"
+    },
+
+    {
+      "type": "product",
+      "id": "related_product_1",
+      "label": "Produit 01"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "related_image_1",
+      "label": "Image personnalisée 01"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Voir aussi — Produit 02"
+    },
+
+    {
+      "type": "product",
+      "id": "related_product_2",
+      "label": "Produit 02"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "related_image_2",
+      "label": "Image personnalisée 02"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Voir aussi — Produit 03"
+    },
+
+    {
+      "type": "product",
+      "id": "related_product_3",
+      "label": "Produit 03"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "related_image_3",
+      "label": "Image personnalisée 03"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Voir aussi — Produit 04"
+    },
+
+    {
+      "type": "product",
+      "id": "related_product_4",
+      "label": "Produit 04"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "related_image_4",
+      "label": "Image personnalisée 04"
+    },
+
+
+    {
+      "type": "header",
+      "content": "Voir aussi — Produit 05"
+    },
+
+    {
+      "type": "product",
+      "id": "related_product_5",
+      "label": "Produit 05"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "related_image_5",
+      "label": "Image personnalisée 05"
     }
+
   ]
 }
 {% endschema %}
