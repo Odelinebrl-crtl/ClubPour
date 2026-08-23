@@ -126,7 +126,7 @@
         "heading": "RACING AUTOMOBILE",
         "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
         "button_label": "ACHETER",
-        "button_link": ""
+        "button_link": "shopify://pages/collection-001"
       }
     },
     "video_hero_pour_khqU9c": {
@@ -205,7 +205,7 @@
         "heading": "UNE COLLECTION. HUIT HISTOIRES.",
         "text": "<p>Huit pièces inspirées par l’automobile, les destinations et l’art de vivre. Le premier chapitre de l’univers POUR.</p>",
         "button_label": "DÉCOUVRIR LA COLLECTION",
-        "button_link": ""
+        "button_link": "shopify://pages/collection-001"
       }
     }
   },
