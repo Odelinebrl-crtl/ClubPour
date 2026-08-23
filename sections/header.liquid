@@ -2348,7 +2348,47 @@ document.addEventListener(
 
     event.preventDefault();
     event.stopImmediatePropagation();
-/* FERME LA QUICK VIEW AVANT D'OUVRIR LE PANIER */
+/* =====================================================
+   FERME L'AJOUT RAPIDE AVANT D'OUVRIR LE PANIER
+===================================================== */
+
+if (form.matches('.product-related-qv__form')) {
+
+  const quickView =
+    document.querySelector(
+      '[data-product-related-qv]'
+    );
+
+  const quickViewOverlay =
+    document.querySelector(
+      '[data-product-related-qv-overlay]'
+    );
+
+  if (quickView) {
+
+    quickView.classList.remove(
+      'is-active'
+    );
+
+    quickView.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+  if (quickViewOverlay) {
+
+    quickViewOverlay.classList.remove(
+      'is-active'
+    );
+
+  }
+
+}
+
+
+/* QUICK VIEW GÉNÉRALE */
 
 if (form.matches('.pour-quickview__form')) {
 
@@ -2363,20 +2403,24 @@ if (form.matches('.pour-quickview__form')) {
     );
 
   if (quickView) {
-    quickView.classList.remove('is-active');
+
+    quickView.classList.remove(
+      'is-active'
+    );
 
     quickView.setAttribute(
       'aria-hidden',
       'true'
     );
 
-    quickView.style.display = '';
   }
 
   if (quickViewOverlay) {
-    quickViewOverlay.classList.remove('is-active');
 
-    quickViewOverlay.style.display = '';
+    quickViewOverlay.classList.remove(
+      'is-active'
+    );
+
   }
 
 }
@@ -2482,17 +2526,7 @@ if (form.matches('.pour-quickview__form')) {
 
      await refreshDrawer();
 
-if (form.matches('.pour-quickview__form')) {
-
-  setTimeout(function () {
-    openDrawer();
-  }, 650);
-
-} else {
-
-  openDrawer();
-
-}
+openDrawer();
 
 
     } catch (error) {
