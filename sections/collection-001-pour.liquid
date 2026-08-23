@@ -1513,35 +1513,52 @@ input:checked + span {
     aspect-ratio: 4 / 5;
   }
 /* =========================================================
-   MOBILE — FOCUS 02 IDENTIQUE AU FOCUS 01
+   MOBILE — FOCUS 02 MÊME ORDRE QUE FOCUS 01
 ========================================================= */
 
 #Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right {
-  direction: ltr;
+.collection001-pour__focus--right
+.collection001-pour__focus-main {
+  order: 1;
 }
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
-.collection001-pour__focus-content {
-  text-align: left;
-  justify-self: start;
+.collection001-pour__mini-grid {
+  order: 2;
+}
+
+
+/* Dans le bloc principal :
+   image d'abord, texte ensuite
+*/
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus--right
+.collection001-pour__focus-main {
+  flex-direction: column;
   align-items: flex-start;
 }
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
-.collection001-pour__focus-title,
+.collection001-pour__focus-media {
+  order: 1;
+  width: 100%;
+  max-width: none;
+}
+
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus--right
-.collection001-pour__focus-number,
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__focus-price,
-#Collection001Pour-{{ section.id }}
-.collection001-pour__focus--right
-.collection001-pour__link {
+.collection001-pour__focus-content {
+  order: 2;
+
+  width: 100%;
+  max-width: none;
+
   text-align: left;
+  align-items: flex-start;
+  justify-self: start;
 }
 }
 
