@@ -2894,8 +2894,13 @@ a {
   }
 
   .product-page-pour__related {
-    padding: 60px 16px 90px;
-  }
+  padding: 60px 0 90px;
+
+  overflow: hidden;
+}
+   .product-page-pour__related-grid {
+  padding: 0 16px;
+}
 
   .product-page-pour__related-heading {
     margin-bottom: 55px;
@@ -2903,12 +2908,57 @@ a {
     font-size: 18px;
   }
 
-  .product-page-pour__related-grid {
-    grid-template-columns: 1fr;
+ .product-page-pour__related-grid {
+  display: flex;
 
-    gap: 60px;
-  }
+  width: 100%;
 
+  gap: 8px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__related-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__related-card {
+  flex: 0 0 calc((100% - 16px) / 3);
+
+  min-width: 0;
+
+  scroll-snap-align: start;
+}
+.product-page-pour__related-media {
+  width: 100%;
+}
+
+.product-page-pour__related-title {
+  margin-top: 12px;
+
+  font-size: 9px;
+  line-height: 1.2;
+
+  letter-spacing: .08em;
+
+  text-align: center;
+}
+
+.product-page-pour__related-price {
+  margin-top: 7px;
+
+  font-size: 10px;
+
+  text-align: center;
+}
 }
 /* =========================================================
    PRODUCT PAGE — ALIGNEMENTS FINAUX
