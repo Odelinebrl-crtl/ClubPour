@@ -289,12 +289,12 @@
     </a>
 
     <button
-      type="button"
-      class="site-header__cart"
-     data-cart-drawer-open
-    >
-      PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
-    </button>
+  type="button"
+  class="site-header__cart"
+  data-cart-drawer-open
+>
+  PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+</button>
 
   </div>
 
@@ -1447,15 +1447,6 @@ body.cart-drawer-open {
 
 (function () {
 
-  /* =========================================================
-     ÉVITE D'INITIALISER LE SCRIPT PLUSIEURS FOIS
-  ========================================================= */
-
-  if (window.__pourCartSystemLoaded) {
-    return;
-  }
-
-  window.__pourCartSystemLoaded = true;
 
 
 
@@ -1992,7 +1983,27 @@ body.cart-drawer-open {
       if (closeButton) {
 
         event.preventDefault();
+/* =========================================================
+   CLIC DIRECT SUR PANIER
+========================================================= */
 
+document
+  .querySelectorAll('[data-cart-drawer-open]')
+  .forEach((button) => {
+
+    button.addEventListener(
+      'click',
+      function (event) {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        openDrawer();
+
+      }
+    );
+
+  });
         closeDrawer();
 
         return;
