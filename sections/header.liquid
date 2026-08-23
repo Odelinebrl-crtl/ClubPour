@@ -2431,30 +2431,29 @@ if (changeButton) {
     }
 
 
-    /* =========================================================
-       SOUS-MENU BOUTIQUE
-    ========================================================= */
-
     const boutiqueItem =
       menu.querySelector(
         '[data-mobile-submenu]'
       );
 
-    const boutiqueToggle =
+    const boutiqueLink =
       menu.querySelector(
-        '[data-mobile-submenu-toggle]'
+        '[data-mobile-boutique-link]'
+      );
+
+    const boutiqueButton =
+      menu.querySelector(
+        '[data-mobile-submenu-button]'
       );
 
 
-    /* =========================================================
-       OUVERTURE MENU
-    ========================================================= */
+    /* =====================================================
+       OUVRIR BURGER
+    ===================================================== */
 
     function openMenu() {
 
-      menu.classList.add(
-        'is-open'
-      );
+      menu.classList.add('is-open');
 
       menu.setAttribute(
         'aria-hidden',
@@ -2473,9 +2472,33 @@ if (changeButton) {
     }
 
 
-    /* =========================================================
-       FERMETURE MENU
-    ========================================================= */
+    /* =====================================================
+       REFERMER SOUS-MENU BOUTIQUE
+    ===================================================== */
+
+    function resetBoutique() {
+
+      if (!boutiqueItem) return;
+
+      boutiqueItem.classList.remove(
+        'is-open'
+      );
+
+      if (boutiqueButton) {
+
+        boutiqueButton.setAttribute(
+          'aria-expanded',
+          'false'
+        );
+
+      }
+
+    }
+
+
+    /* =====================================================
+       FERMER BURGER
+    ===================================================== */
 
     function closeMenu() {
 
@@ -2497,21 +2520,34 @@ if (changeButton) {
         'mobile-menu-open'
       );
 
+      resetBoutique();
 
-      /* REFERME AUSSI BOUTIQUE */
+    }
 
-      if (
-        boutiqueItem &&
-        boutiqueToggle
-      ) {
 
-        boutiqueItem.classList.remove(
+    /* =====================================================
+       OUVRIR / FERMER BOUTIQUE
+    ===================================================== */
+
+    function toggleBoutique() {
+
+      if (!boutiqueItem) return;
+
+      const isOpen =
+        boutiqueItem.classList.contains(
           'is-open'
         );
 
-        boutiqueToggle.setAttribute(
+      boutiqueItem.classList.toggle(
+        'is-open',
+        !isOpen
+      );
+
+      if (boutiqueButton) {
+
+        boutiqueButton.setAttribute(
           'aria-expanded',
-          'false'
+          !isOpen ? 'true' : 'false'
         );
 
       }
@@ -2519,9 +2555,7 @@ if (changeButton) {
     }
 
 
-    /* =========================================================
-       OUVERTURE BURGER
-    ========================================================= */
+    /* BURGER */
 
     openButton.addEventListener(
       'click',
@@ -2529,9 +2563,7 @@ if (changeButton) {
     );
 
 
-    /* =========================================================
-       FERMETURE CROIX
-    ========================================================= */
+    /* CROIX */
 
     closeButton.addEventListener(
       'click',
@@ -2539,19 +2571,43 @@ if (changeButton) {
     );
 
 
-    /* =========================================================
-       BOUTIQUE
-       
-       1ER CLIC  = ouvre le sous-menu
-       2E CLIC   = ouvre la page Boutique
-    ========================================================= */
+    /* =====================================================
+       CLIC SUR LE +
+    ===================================================== */
+
+    if (boutiqueButton) {
+
+      boutiqueButton.addEventListener(
+        'click',
+        function (event) {
+
+          event.preventDefault();
+          event.stopPropagation();
+
+          toggleBoutique();
+
+        }
+      );
+
+    }
+
+
+    /* =====================================================
+       CLIC SUR BOUTIQUE
+
+       PREMIER CLIC :
+       ouvre le sous-menu.
+
+       DEUXIÈME CLIC :
+       laisse fonctionner le href.
+    ===================================================== */
 
     if (
-      boutiqueItem &&
-      boutiqueToggle
+      boutiqueLink &&
+      boutiqueItem
     ) {
 
-      boutiqueToggle.addEventListener(
+      boutiqueLink.addEventListener(
         'click',
         function (event) {
 
@@ -2566,17 +2622,20 @@ if (changeButton) {
           if (!isOpen) {
 
             event.preventDefault();
-
             event.stopPropagation();
 
             boutiqueItem.classList.add(
               'is-open'
             );
 
-            boutiqueToggle.setAttribute(
-              'aria-expanded',
-              'true'
-            );
+            if (boutiqueButton) {
+
+              boutiqueButton.setAttribute(
+                'aria-expanded',
+                'true'
+              );
+
+            }
 
             return;
 
@@ -2584,11 +2643,9 @@ if (changeButton) {
 
 
           /*
-             DEUXIÈME CLIC :
-             on ne fait rien.
-
-             Le href de BOUTIQUE fonctionne
-             normalement et ouvre la page.
+            DEUXIÈME CLIC :
+            aucun preventDefault.
+            Le lien Boutique fonctionne.
           */
 
         }
@@ -2597,28 +2654,25 @@ if (changeButton) {
     }
 
 
-    /* =========================================================
-       FERMETURE APRÈS CLIC SUR UN VRAI LIEN
-       
-       IMPORTANT :
-       on EXCLUT le bouton BOUTIQUE.
-    ========================================================= */
+    /* =====================================================
+       AUTRES LIENS
+    ===================================================== */
 
-    menu.querySelectorAll(
-      'a:not([data-mobile-submenu-toggle])'
-    ).forEach((link) => {
+    menu
+      .querySelectorAll(
+        'a:not([data-mobile-boutique-link])'
+      )
+      .forEach((link) => {
 
-      link.addEventListener(
-        'click',
-        closeMenu
-      );
+        link.addEventListener(
+          'click',
+          closeMenu
+        );
 
-    });
+      });
 
 
-    /* =========================================================
-       TOUCHE ESCAPE
-    ========================================================= */
+    /* ESCAPE */
 
     document.addEventListener(
       'keydown',
@@ -2633,10 +2687,6 @@ if (changeButton) {
 
   }
 
-
-  /* =========================================================
-     INITIALISATION
-  ========================================================= */
 
   if (
     document.readyState === 'loading'
