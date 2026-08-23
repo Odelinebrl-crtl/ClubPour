@@ -69,7 +69,11 @@ document.addEventListener('mouseover', function(event) {
   );
 
   if (!button) return;
-
+button.style.setProperty(
+  'transition',
+  'background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease',
+  'important'
+);
   const text = button.textContent.trim().toUpperCase();
 
   if (
