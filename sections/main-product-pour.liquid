@@ -379,25 +379,25 @@
   .product-page-pour__related-carousel.has-five-products
   .product-page-pour__related-arrow {
     position: absolute;
-    top: 46%;
-    z-index: 5;
+    top: 50%;
+    z-index: 10;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    width: 48px;
-    height: 48px;
+    width: 54px;
+    height: 54px;
 
     padding: 0;
 
-    border: 1px solid rgba(17,17,17,.12);
+    border: 1px solid rgba(17, 17, 17, 0.10);
     border-radius: 50%;
 
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.96);
     color: #111111;
 
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 300;
     line-height: 1;
 
@@ -405,22 +405,25 @@
 
     transform: translateY(-50%);
 
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
     transition:
       background .25s ease,
-      color .25s ease;
+      transform .25s ease,
+      box-shadow .25s ease;
   }
 
   .product-page-pour__related-arrow--prev {
-    left: -24px;
+    left: -27px;
   }
 
   .product-page-pour__related-arrow--next {
-    right: -24px;
+    right: -27px;
   }
 
   .product-page-pour__related-arrow:hover {
-    background: #111111;
-    color: #ffffff;
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
   }
 
 }
