@@ -2235,7 +2235,7 @@ a {
   gap: clamp(55px, 6vw, 100px);
 
   padding:
-    55px
+    30px
     clamp(40px, 5vw, 80px)
     90px;
 }
@@ -3592,7 +3592,7 @@ a {
 
   padding:
   76px
-  16px
+  8px
   0;
 
   gap: 3px;
@@ -3652,8 +3652,8 @@ a {
 }
 
 .product-page-pour__breadcrumb-link {
-  color: inherit;
-  text-decoration: none;
+color: rgba(17,17,17,.42);
+   text-decoration: none;
   transition: opacity .2s ease;
 }
 
@@ -3662,7 +3662,8 @@ a {
 }
 
 .product-page-pour__breadcrumb-separator {
-  opacity: .45;
+  color: rgba(17,17,17,.28);
+  opacity: 1;
 }
 
 .product-page-pour__breadcrumb-current {
