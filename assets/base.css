@@ -5027,3 +5027,396 @@ html {
   color: #111111 !important;
   border-color: #111111 !important;
 }
+/* =========================================================
+   POUR — QUICK VIEW GLOBALE
+========================================================= */
+
+.pour-quickview-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 99998;
+
+  background: rgba(0, 0, 0, 0.35);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease;
+}
+
+
+.pour-quickview-overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
+/* =========================================================
+   FENÊTRE
+========================================================= */
+
+.pour-quickview {
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+
+  z-index: 99999;
+
+  width: min(1110px, calc(100vw - 80px));
+  max-height: calc(100vh - 80px);
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -48%);
+
+  transition:
+    opacity .25s ease,
+    visibility .25s ease,
+    transform .35s cubic-bezier(.22,1,.36,1);
+
+  overflow: auto;
+}
+
+
+.pour-quickview.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.pour-quickview__content {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  align-items: center;
+
+  gap: 70px;
+
+  width: 100%;
+
+  padding: 74px 90px;
+}
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
+
+.pour-quickview__media {
+  width: 100%;
+}
+
+
+.pour-quickview__image {
+  display: block;
+
+  width: 100%;
+  max-height: 545px;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   INFORMATIONS
+========================================================= */
+
+.pour-quickview__info {
+  width: 100%;
+}
+
+
+.pour-quickview__title {
+  margin: 0 0 14px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 20px;
+  font-weight: 400;
+
+  line-height: 1.15;
+
+  letter-spacing: .06em;
+
+  text-transform: uppercase;
+}
+
+
+.pour-quickview__price {
+  margin: 0 0 38px;
+
+  font-size: 15px;
+
+  color: #777777;
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.pour-quickview__options {
+  margin-bottom: 34px;
+}
+
+
+.pour-quickview__option-label {
+  margin: 0 0 12px;
+
+  font-size: 12px;
+}
+
+
+.pour-quickview__variants {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+
+.pour-quickview__variant {
+  position: relative;
+}
+
+
+.pour-quickview__variant input {
+  position: absolute;
+
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+.pour-quickview__variant span {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 54px;
+  height: 48px;
+
+  padding: 0 16px;
+
+  border: 1px solid #d8d8d8;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+
+.pour-quickview__variant input:checked + span {
+  border-color: #111111;
+}
+
+
+.pour-quickview__variant.is-disabled {
+  opacity: .35;
+}
+
+
+/* =========================================================
+   AJOUTER AU PANIER
+========================================================= */
+
+.pour-quickview__submit {
+  width: 100%;
+  height: 58px;
+
+  margin-top: 0;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: .18em;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   VOIR LE PRODUIT
+========================================================= */
+
+.pour-quickview__details {
+  display: inline-block;
+
+  margin-top: 25px;
+
+  padding-bottom: 4px;
+
+  border-bottom: 1px solid #111111;
+
+  font-size: 10px;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CROIX
+========================================================= */
+
+.pour-quickview__close {
+  position: absolute;
+
+  top: 28px;
+  right: 30px;
+
+  z-index: 10;
+
+  width: 26px;
+  height: 26px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.pour-quickview__close::before,
+.pour-quickview__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #111111;
+}
+
+
+.pour-quickview__close::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+}
+
+
+.pour-quickview__close::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .pour-quickview {
+    width: calc(100vw - 24px);
+    max-height: calc(100svh - 24px);
+  }
+
+
+  .pour-quickview__content {
+    display: block;
+
+    padding:
+      55px
+      20px
+      30px;
+  }
+
+
+  .pour-quickview__media {
+    width: 100%;
+
+    margin-bottom: 28px;
+  }
+
+
+  .pour-quickview__image {
+    width: 100%;
+    max-height: 48vh;
+
+    object-fit: contain;
+  }
+
+
+  .pour-quickview__title {
+    font-size: 16px;
+  }
+
+
+  .pour-quickview__price {
+    margin-bottom: 26px;
+
+    font-size: 13px;
+  }
+
+
+  .pour-quickview__variants {
+    gap: 6px;
+  }
+
+
+  .pour-quickview__variant span {
+    min-width: 46px;
+    height: 42px;
+
+    padding: 0 12px;
+  }
+
+
+  .pour-quickview__submit {
+    height: 52px;
+  }
+
+
+  .pour-quickview__close {
+    top: 18px;
+    right: 18px;
+  }
+
+}
