@@ -1683,17 +1683,36 @@ if (quickViewForm) {
   );
 
 
-  /*
-    IMPORTANT :
-    on NE fait PAS l'ajout au panier ici.
+    /* =========================================================
+     QUICK VIEW — FERMETURE APRÈS AJOUT AU PANIER
+  ========================================================= */
 
-    Ton header.liquid intercepte déjà tous les formulaires :
+  document.addEventListener(
+    'submit',
+    function (event) {
 
-    form[action*="/cart/add"]
+      const form =
+        event.target.closest(
+          '.pour-quickview__form'
+        );
 
-    Il ajoute donc le produit en AJAX et ouvre automatiquement
-    TON DRAWER À DROITE.
-  */
+      if (!form) {
+        return;
+      }
+
+      /*
+       * On laisse le système panier existant
+       * gérer l'ajout AJAX + l'ouverture du drawer.
+       *
+       * Ici, on s'occupe UNIQUEMENT
+       * de fermer la Quick View.
+       */
+
+      closeModal();
+
+    },
+    true
+  );
 
 
 
