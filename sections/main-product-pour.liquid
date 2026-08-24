@@ -1158,13 +1158,19 @@ if (quickViewForm) {
 
 
   updateQuickViewVariant();
-/* FERME LA FENÊTRE RAPIDE AVANT L'OUVERTURE DU PANIER */
+/* FERME LA QUICK VIEW DÈS QUE SON FORMULAIRE EST SOUMIS */
 
-submitButton.addEventListener(
-  'click',
+quickViewForm.addEventListener(
+  'submit',
   function () {
     closeModal();
-  }
+
+    modal.classList.remove('is-active');
+    overlay.classList.remove('is-active');
+
+    modal.setAttribute('aria-hidden', 'true');
+  },
+  true
 );
 }
     } catch (error) {
