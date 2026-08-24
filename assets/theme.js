@@ -1164,83 +1164,17 @@ document.addEventListener(
 
   function openModal() {
 
-  modal.classList.add('is-active');
-  overlay.classList.add('is-active');
+  modal.classList.add(
+    'is-active'
+  );
+
+  overlay.classList.add(
+    'is-active'
+  );
 
   modal.setAttribute(
     'aria-hidden',
     'false'
-  );
-
-  /* FORCE LA QUICK VIEW AU-DESSUS DE LA PAGE */
-  modal.style.setProperty('position', 'fixed', 'important');
-  modal.style.setProperty('top', '50%', 'important');
-  modal.style.setProperty('left', '50%', 'important');
-  modal.style.setProperty(
-    'transform',
-    'translate(-50%, -50%)',
-    'important'
-  );
-
-  modal.style.setProperty(
-    'z-index',
-    '999999',
-    'important'
-  );
-
-  modal.style.setProperty(
-    'visibility',
-    'visible',
-    'important'
-  );
-
-  modal.style.setProperty(
-    'opacity',
-    '1',
-    'important'
-  );
-
-  modal.style.setProperty(
-    'pointer-events',
-    'auto',
-    'important'
-  );
-
-
-  overlay.style.setProperty(
-    'position',
-    'fixed',
-    'important'
-  );
-
-  overlay.style.setProperty(
-    'inset',
-    '0',
-    'important'
-  );
-
-  overlay.style.setProperty(
-    'z-index',
-    '999998',
-    'important'
-  );
-
-  overlay.style.setProperty(
-    'visibility',
-    'visible',
-    'important'
-  );
-
-  overlay.style.setProperty(
-    'opacity',
-    '1',
-    'important'
-  );
-
-  overlay.style.setProperty(
-    'pointer-events',
-    'auto',
-    'important'
   );
 
 }
