@@ -2348,71 +2348,43 @@ document.addEventListener(
     event.stopImmediatePropagation();
 
 
-   /* =====================================================
-   FERME LA QUICK VIEW DU PRODUCT GRID
+  /* =====================================================
+   FERME TOUTES LES QUICK VIEWS OUVERTES
 ===================================================== */
 
-if (form.matches('.pour-qv__form')) {
+document
+  .querySelectorAll(
+    '[data-pour-qv], [data-pour-quickview], [data-product-related-qv]'
+  )
+  .forEach(function (quickView) {
 
-  const quickView =
-    form.closest('[data-pour-qv]');
+    quickView.classList.remove('is-active');
 
-  const closeButton =
-    quickView
-      ? quickView.querySelector('[data-pour-qv-close]')
-      : null;
+    quickView.setAttribute(
+      'aria-hidden',
+      'true'
+    );
 
-  if (closeButton) {
-    closeButton.click();
-  }
+    quickView.style.opacity = '0';
+    quickView.style.visibility = 'hidden';
+    quickView.style.pointerEvents = 'none';
 
-}
-    /* =====================================================
-       FERME LA QUICK VIEW "VOIR AUSSI"
-    ===================================================== */
-
-    if (form.matches('.product-related-qv__form')) {
-
-      const quickView =
-        document.querySelector('[data-product-related-qv]');
-
-      const quickViewOverlay =
-        document.querySelector('[data-product-related-qv-overlay]');
-
-      if (quickView) {
-        quickView.classList.remove('is-active');
-        quickView.setAttribute('aria-hidden', 'true');
-      }
-
-      if (quickViewOverlay) {
-        quickViewOverlay.classList.remove('is-active');
-      }
-
-    }
+  });
 
 
-    /* =====================================================
-       FERME LA QUICK VIEW GÉNÉRALE
-    ===================================================== */
+document
+  .querySelectorAll(
+    '[data-pour-qv-overlay], [data-pour-quickview-overlay], [data-product-related-qv-overlay]'
+  )
+  .forEach(function (overlay) {
 
-    if (form.matches('.pour-quickview__form')) {
+    overlay.classList.remove('is-active');
 
-      const quickView =
-        document.querySelector('[data-pour-quickview]');
+    overlay.style.opacity = '0';
+    overlay.style.visibility = 'hidden';
+    overlay.style.pointerEvents = 'none';
 
-      const quickViewOverlay =
-        document.querySelector('[data-pour-quickview-overlay]');
-
-      if (quickView) {
-        quickView.classList.remove('is-active');
-        quickView.setAttribute('aria-hidden', 'true');
-      }
-
-      if (quickViewOverlay) {
-        quickViewOverlay.classList.remove('is-active');
-      }
-
-    }
+  });
 
 
     /* =====================================================
