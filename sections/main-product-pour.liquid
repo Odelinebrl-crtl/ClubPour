@@ -1158,7 +1158,14 @@ if (quickViewForm) {
 
 
   updateQuickViewVariant();
+/* FERME LA FENÊTRE RAPIDE AVANT L'OUVERTURE DU PANIER */
 
+submitButton.addEventListener(
+  'click',
+  function () {
+    closeModal();
+  }
+);
 }
     } catch (error) {
 
