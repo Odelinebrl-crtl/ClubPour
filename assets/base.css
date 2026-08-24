@@ -3007,7 +3007,23 @@ a {
   transform: translate(-50%, -50%);
 }
 
+@media screen and (min-width: 769px) {
 
+  .product-related-qv[aria-hidden="true"] {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+
+    transform: translate(-50%, -47%) !important;
+  }
+
+  .product-related-qv__overlay:not(.is-active) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+
+}
 /* CROIX */
 
 .product-related-qv__close {
