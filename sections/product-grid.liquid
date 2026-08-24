@@ -1160,23 +1160,6 @@ input:checked + span {
   );
 
 
-  document.addEventListener(
-  'submit',
-  function (event) {
-
-    const form = event.target;
-
-    if (!form.matches('.pour-qv__form')) {
-      return;
-    }
-
-    /* Ferme immédiatement la Quick View */
-    closeQuickView();
-
-  },
-  true
-);
-
 
   document.addEventListener(
     'keydown',
