@@ -2346,47 +2346,39 @@ document.addEventListener(
     }
 
 
-    event.preventDefault();
-    event.stopImmediatePropagation();
-/* =====================================================
-   FERME L'AJOUT RAPIDE AVANT D'OUVRIR LE PANIER
-===================================================== */
+   event.preventDefault();
+event.stopImmediatePropagation();
 
-if (form.matches('.product-related-qv__form')) {
+
+/* QUICK VIEW PRODUCT GRID */
+
+if (form.matches('.pour-qv__form')) {
 
   const quickView =
     document.querySelector(
-      '[data-product-related-qv]'
+      '[data-pour-qv]'
     );
 
   const quickViewOverlay =
     document.querySelector(
-      '[data-product-related-qv-overlay]'
+      '[data-pour-qv-overlay]'
     );
 
   if (quickView) {
-
-    quickView.classList.remove(
-      'is-active'
-    );
-
-    quickView.setAttribute(
-      'aria-hidden',
-      'true'
-    );
-
+    quickView.classList.remove('is-active');
+    quickView.setAttribute('aria-hidden', 'true');
   }
 
   if (quickViewOverlay) {
-
-    quickViewOverlay.classList.remove(
-      'is-active'
-    );
-
+    quickViewOverlay.classList.remove('is-active');
   }
 
 }
 
+
+/* QUICK VIEW VOIR AUSSI */
+
+if (form.matches('.product-related-qv__form')) {
 
 /* QUICK VIEW GÉNÉRALE */
 
