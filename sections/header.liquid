@@ -2352,26 +2352,30 @@ document.addEventListener(
        FERME LA QUICK VIEW DU PRODUCT GRID
     ===================================================== */
 
-    if (form.matches('.pour-qv__form')) {
+   const productQuickView =
+  form.closest('[data-pour-qv]');
 
-      const quickView =
-        document.querySelector('[data-pour-qv]');
+if (productQuickView) {
 
-      const quickViewOverlay =
-        document.querySelector('[data-pour-qv-overlay]');
+  productQuickView.classList.remove('is-active');
 
-      if (quickView) {
-        quickView.classList.remove('is-active');
-        quickView.setAttribute('aria-hidden', 'true');
-      }
+  productQuickView.setAttribute(
+    'aria-hidden',
+    'true'
+  );
 
-      if (quickViewOverlay) {
-        quickViewOverlay.classList.remove('is-active');
-      }
+  const productQuickViewOverlay =
+    document.querySelector(
+      '[data-pour-qv-overlay]'
+    );
 
-    }
+  if (productQuickViewOverlay) {
+    productQuickViewOverlay.classList.remove(
+      'is-active'
+    );
+  }
 
-
+}
     /* =====================================================
        FERME LA QUICK VIEW "VOIR AUSSI"
     ===================================================== */
