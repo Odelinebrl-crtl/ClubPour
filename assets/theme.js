@@ -1695,35 +1695,6 @@ if (quickViewForm) {
     TON DRAWER À DROITE.
   */
 
-  document.addEventListener(
-  'submit',
-  function (event) {
 
-    if (
-      event.target.matches(
-        '.pour-quickview__form'
-      )
-    ) {
-
-      closeModal();
-
-    }
-
-  }
-);
-
-
-  document.addEventListener(
-    'keydown',
-    function (event) {
-
-      if (event.key === 'Escape') {
-
-        closeModal();
-
-      }
-
-    }
-  );
 
 })();
