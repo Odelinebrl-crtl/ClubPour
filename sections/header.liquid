@@ -2348,31 +2348,22 @@ document.addEventListener(
     event.stopImmediatePropagation();
 
 
-    /* =====================================================
-       FERME LA QUICK VIEW DU PRODUCT GRID
-    ===================================================== */
+   /* =====================================================
+   FERME LA QUICK VIEW DU PRODUCT GRID
+===================================================== */
 
-   const productQuickView =
-  form.closest('[data-pour-qv]');
+if (form.matches('.pour-qv__form')) {
 
-if (productQuickView) {
+  const quickView =
+    form.closest('[data-pour-qv]');
 
-  productQuickView.classList.remove('is-active');
+  const closeButton =
+    quickView
+      ? quickView.querySelector('[data-pour-qv-close]')
+      : null;
 
-  productQuickView.setAttribute(
-    'aria-hidden',
-    'true'
-  );
-
-  const productQuickViewOverlay =
-    document.querySelector(
-      '[data-pour-qv-overlay]'
-    );
-
-  if (productQuickViewOverlay) {
-    productQuickViewOverlay.classList.remove(
-      'is-active'
-    );
+  if (closeButton) {
+    closeButton.click();
   }
 
 }
