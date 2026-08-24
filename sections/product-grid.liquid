@@ -1161,29 +1161,21 @@ input:checked + span {
 
 
   document.addEventListener(
-    'submit',
-    function (event) {
+  'submit',
+  function (event) {
 
-      if (
-        event.target.matches(
-          '#PourProducts-{{ section.id }} .pour-qv__form'
-        )
-      ) {
+    const form = event.target;
 
-        /*
-          Le header intercepte ensuite /cart/add
-          et ouvre le drawer panier à droite.
-        */
-
-        window.setTimeout(
-          closeQuickView,
-          100
-        );
-
-      }
-
+    if (!form.matches('.pour-qv__form')) {
+      return;
     }
-  );
+
+    /* Ferme immédiatement la Quick View */
+    closeQuickView();
+
+  },
+  true
+);
 
 
   document.addEventListener(
