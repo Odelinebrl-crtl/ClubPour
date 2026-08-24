@@ -2336,86 +2336,93 @@ document.addEventListener(
   'submit',
   async function (event) {
 
-    const form =
-      event.target.closest(
-        'form[action*="/cart/add"]'
-      );
+    const form = event.target.closest(
+      'form[action*="/cart/add"]'
+    );
 
-    if (!form) {
-      return;
+    if (!form) return;
+
+    /* EMPÊCHE ABSOLUMENT LA REDIRECTION VERS /cart */
+    event.preventDefault();
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+
+
+    /* =====================================================
+       FERME LA QUICK VIEW DU PRODUCT GRID
+    ===================================================== */
+
+    if (form.matches('.pour-qv__form')) {
+
+      const quickView =
+        document.querySelector('[data-pour-qv]');
+
+      const quickViewOverlay =
+        document.querySelector('[data-pour-qv-overlay]');
+
+      if (quickView) {
+        quickView.classList.remove('is-active');
+        quickView.setAttribute('aria-hidden', 'true');
+      }
+
+      if (quickViewOverlay) {
+        quickViewOverlay.classList.remove('is-active');
+      }
+
     }
 
 
-   event.preventDefault();
-event.stopImmediatePropagation();
+    /* =====================================================
+       FERME LA QUICK VIEW "VOIR AUSSI"
+    ===================================================== */
+
+    if (form.matches('.product-related-qv__form')) {
+
+      const quickView =
+        document.querySelector('[data-product-related-qv]');
+
+      const quickViewOverlay =
+        document.querySelector('[data-product-related-qv-overlay]');
+
+      if (quickView) {
+        quickView.classList.remove('is-active');
+        quickView.setAttribute('aria-hidden', 'true');
+      }
+
+      if (quickViewOverlay) {
+        quickViewOverlay.classList.remove('is-active');
+      }
+
+    }
 
 
-/* QUICK VIEW PRODUCT GRID */
+    /* =====================================================
+       FERME LA QUICK VIEW GÉNÉRALE
+    ===================================================== */
 
-if (form.matches('.pour-qv__form')) {
+    if (form.matches('.pour-quickview__form')) {
 
-  const quickView =
-    document.querySelector(
-      '[data-pour-qv]'
-    );
+      const quickView =
+        document.querySelector('[data-pour-quickview]');
 
-  const quickViewOverlay =
-    document.querySelector(
-      '[data-pour-qv-overlay]'
-    );
+      const quickViewOverlay =
+        document.querySelector('[data-pour-quickview-overlay]');
 
-  if (quickView) {
-    quickView.classList.remove('is-active');
-    quickView.setAttribute('aria-hidden', 'true');
-  }
+      if (quickView) {
+        quickView.classList.remove('is-active');
+        quickView.setAttribute('aria-hidden', 'true');
+      }
 
-  if (quickViewOverlay) {
-    quickViewOverlay.classList.remove('is-active');
-  }
+      if (quickViewOverlay) {
+        quickViewOverlay.classList.remove('is-active');
+      }
 
-}
+    }
 
 
-/* QUICK VIEW VOIR AUSSI */
-
-if (form.matches('.product-related-qv__form')) {
-
-/* QUICK VIEW GÉNÉRALE */
-
-if (form.matches('.pour-quickview__form')) {
-
-  const quickView =
-    document.querySelector(
-      '[data-pour-quickview]'
-    );
-
-  const quickViewOverlay =
-    document.querySelector(
-      '[data-pour-quickview-overlay]'
-    );
-
-  if (quickView) {
-
-    quickView.classList.remove(
-      'is-active'
-    );
-
-    quickView.setAttribute(
-      'aria-hidden',
-      'true'
-    );
-
-  }
-
-  if (quickViewOverlay) {
-
-    quickViewOverlay.classList.remove(
-      'is-active'
-    );
-
-  }
-
-}
+    /* =====================================================
+       RÉCUPÈRE VARIANTE + QUANTITÉ
+    ===================================================== */
 
     const variantInput =
       form.querySelector(
@@ -2427,40 +2434,28 @@ if (form.matches('.pour-quickview__form')) {
         'input[name="quantity"]'
       );
 
-
     const variantId =
       variantInput
         ? variantInput.value
         : null;
 
-
     const quantity =
       quantityInput
         ? Math.max(
             1,
-            parseInt(
-              quantityInput.value,
-              10
-            ) || 1
+            parseInt(quantityInput.value, 10) || 1
           )
         : 1;
 
 
     if (!variantId) {
-
-      console.error(
-        'POUR : aucun ID de variante.'
-      );
-
+      console.error('POUR : aucun ID de variante.');
       return;
     }
 
 
     const submitButton =
-      form.querySelector(
-        '[type="submit"]'
-      );
-
+      form.querySelector('[type="submit"]');
 
     if (submitButton) {
       submitButton.disabled = true;
@@ -2476,21 +2471,14 @@ if (form.matches('.pour-quickview__form')) {
             method: 'POST',
 
             headers: {
-              'Content-Type':
-                'application/json',
-
-              Accept:
-                'application/json'
+              'Content-Type': 'application/json',
+              Accept: 'application/json'
             },
 
-            body:
-              JSON.stringify({
-                id:
-                  Number(variantId),
-
-                quantity:
-                  quantity
-              })
+            body: JSON.stringify({
+              id: Number(variantId),
+              quantity: quantity
+            })
           }
         );
 
@@ -2500,25 +2488,20 @@ if (form.matches('.pour-quickview__form')) {
 
 
       if (!response.ok) {
-
         throw new Error(
           result.description ||
           result.message ||
           'Impossible d’ajouter ce produit.'
         );
-
       }
 
 
-      console.log(
-        'POUR produit ajouté :',
-        result
-      );
+      /* ACTUALISE LE PANIER */
+      await refreshDrawer();
 
 
-     await refreshDrawer();
-
-openDrawer();
+      /* OUVRE LE PANIER À DROITE */
+      openDrawer();
 
 
     } catch (error) {
@@ -2532,7 +2515,6 @@ openDrawer();
         error.message ||
         'Une erreur est survenue.'
       );
-
 
     } finally {
 
