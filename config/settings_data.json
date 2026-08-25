@@ -31,9 +31,9 @@
         "type": "footer",
         "settings": {
           "footer_logo": "shopify://shop_images/Design_sans_titre.png",
-          "instagram": "",
+          "instagram": "https://www.instagram.com/clubpour/",
           "tiktok": "",
-          "pinterest": ""
+          "pinterest": "https://www.pinterest.com/pourclub"
         }
       },
       "hero-vetements": {
