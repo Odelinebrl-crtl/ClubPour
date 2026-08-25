@@ -290,11 +290,22 @@
 
               <th></th>
 
-              {% for size in pour_sizes %}
-                <th>
-                  {{ size | strip }}
-                </th>
-              {% endfor %}
+             {% for size in pour_sizes %}
+  <th
+    class="pour-size-guide__size-column"
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    <button
+      type="button"
+      class="pour-size-guide__size-button"
+      data-size-guide-size
+      data-size="{{ size | strip | escape }}"
+      data-size-index="{{ forloop.index0 }}"
+    >
+      {{ size | strip }}
+    </button>
+  </th>
+{% endfor %}
 
             </tr>
           </thead>
@@ -306,11 +317,13 @@
               <tr>
                 <th>POITRINE</th>
 
-                {% for value in pour_chest %}
-                  <td>
-                    {{ value | strip }}
-                  </td>
-                {% endfor %}
+              {% for value in pour_chest %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
               </tr>
             {% endif %}
 
@@ -320,10 +333,12 @@
                 <th>LONGUEUR</th>
 
                 {% for value in pour_length %}
-                  <td>
-                    {{ value | strip }}
-                  </td>
-                {% endfor %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
               </tr>
             {% endif %}
 
@@ -332,11 +347,13 @@
               <tr>
                 <th>MANCHE</th>
 
-                {% for value in pour_sleeve %}
-                  <td>
-                    {{ value | strip }}
-                  </td>
-                {% endfor %}
+               {% for value in pour_sleeve %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
               </tr>
             {% endif %}
 
@@ -345,7 +362,16 @@
         </table>
 
       </div>
-
+<button
+  type="button"
+  class="pour-size-guide__add"
+  data-size-guide-add
+  disabled
+>
+  <span data-size-guide-add-text>
+    SÉLECTIONNEZ UNE TAILLE
+  </span>
+</button>
     {% else %}
 
       <p class="pour-size-guide__empty">
@@ -701,7 +727,115 @@
   letter-spacing: .05em;
 }
 
+/* =========================================================
+   GUIDE DES TAILLES — SÉLECTION
+========================================================= */
 
+.pour-size-guide__size-column {
+  padding: 0 !important;
+}
+
+.pour-size-guide__size-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 55px;
+  height: 52px;
+
+  padding: 0 10px;
+
+  border: 0;
+
+  background: transparent;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease;
+}
+
+.pour-size-guide__size-button:hover {
+  background: #f0f0f0;
+}
+
+.pour-size-guide__table
+[data-size-guide-column].is-selected {
+  background: #e5e3e3;
+}
+
+.pour-size-guide__size-button.is-selected {
+  background: #e5e3e3;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   BOUTON AJOUT PANIER DU GUIDE
+========================================================= */
+
+.pour-size-guide__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 56px;
+
+  margin-top: 8px;
+  padding: 0 24px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.pour-size-guide__add:hover:not(:disabled) {
+  background: #ffffff;
+  color: #111111;
+}
+
+.pour-size-guide__add:disabled {
+  background: #f2f2f2;
+  color: #777777;
+
+  border-color: #f2f2f2;
+
+  cursor: default;
+}
 /* MANNEQUIN */
 
 .pour-size-guide__model {
@@ -988,19 +1122,36 @@ height: 44px;
 (function () {
 
   const guide =
-    document.querySelector(
-      '[data-pour-size-guide]'
-    );
+  document.querySelector(
+    '[data-pour-size-guide]'
+  );
 
-  const openButton =
-    document.querySelector(
-      '[data-pour-size-guide-open]'
-    );
+const openButton =
+  document.querySelector(
+    '[data-pour-size-guide-open]'
+  );
 
-  if (!guide || !openButton) {
-    return;
-  }
+if (!guide || !openButton) {
+  return;
+}
 
+const productForm =
+  document.querySelector(
+    '.product-page-pour__form'
+  );
+
+const addButton =
+  guide.querySelector(
+    '[data-size-guide-add]'
+  );
+
+const addButtonText =
+  guide.querySelector(
+    '[data-size-guide-add-text]'
+  );
+
+const variants =
+  {{ product.variants | json }};
 
   function openSizeGuide() {
 
@@ -1029,7 +1180,238 @@ height: 44px;
 
   }
 
+/* =========================================================
+   SÉLECTION D'UNE TAILLE
+========================================================= */
 
+guide.addEventListener(
+  'click',
+  function (event) {
+
+    const sizeButton =
+      event.target.closest(
+        '[data-size-guide-size]'
+      );
+
+    if (!sizeButton) {
+      return;
+    }
+
+
+    const selectedSize =
+      sizeButton.dataset.size;
+
+    const selectedIndex =
+      sizeButton.dataset.sizeIndex;
+
+
+    /* =========================================
+       SURBRILLANCE DE LA COLONNE
+    ========================================= */
+
+    guide
+      .querySelectorAll(
+        '[data-size-guide-column]'
+      )
+      .forEach(
+        function (element) {
+
+          element.classList.toggle(
+            'is-selected',
+            element.dataset.sizeGuideColumn ===
+              selectedIndex
+          );
+
+        }
+      );
+
+
+    guide
+      .querySelectorAll(
+        '[data-size-guide-size]'
+      )
+      .forEach(
+        function (button) {
+
+          button.classList.toggle(
+            'is-selected',
+            button === sizeButton
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       SYNCHRONISE AVEC LE VRAI FORMULAIRE
+    ========================================= */
+
+    if (!productForm) {
+      return;
+    }
+
+
+    const optionInputs =
+      Array.from(
+        productForm.querySelectorAll(
+          'input[name^="options["]'
+        )
+      );
+
+
+    let sizeInput =
+      optionInputs.find(
+        function (input) {
+
+          const name =
+            input.name.toLowerCase();
+
+          return (
+            input.value === selectedSize &&
+            (
+              name.includes('taille') ||
+              name.includes('size')
+            )
+          );
+
+        }
+      );
+
+
+    /*
+     * Sécurité si Shopify utilise
+     * un autre nom pour l'option.
+     */
+    if (!sizeInput) {
+
+      sizeInput =
+        optionInputs.find(
+          function (input) {
+            return input.value === selectedSize;
+          }
+        );
+
+    }
+
+
+    if (!sizeInput) {
+      return;
+    }
+
+
+    sizeInput.checked = true;
+
+
+    sizeInput.dispatchEvent(
+      new Event(
+        'change',
+        {
+          bubbles: true
+        }
+      )
+    );
+
+
+    /* =========================================
+       RÉCUPÈRE LA VARIANTE APRÈS SYNCHRONISATION
+    ========================================= */
+
+    window.setTimeout(
+      function () {
+
+        const variantIdInput =
+          productForm.querySelector(
+            '[data-product-variant-id]'
+          );
+
+
+        if (!variantIdInput) {
+          return;
+        }
+
+
+        const selectedVariant =
+          variants.find(
+            function (variant) {
+
+              return String(variant.id) ===
+                String(variantIdInput.value);
+
+            }
+          );
+
+
+        if (
+          !selectedVariant ||
+          !selectedVariant.available
+        ) {
+
+          addButton.disabled = true;
+
+          addButtonText.textContent =
+            'TAILLE ÉPUISÉE';
+
+          return;
+        }
+
+
+        addButton.disabled = false;
+
+
+        const price =
+          new Intl.NumberFormat(
+            'fr-FR',
+            {
+              style: 'currency',
+              currency: 'EUR'
+            }
+          ).format(
+            selectedVariant.price / 100
+          );
+
+
+        addButtonText.textContent =
+          'AJOUTER AU PANIER — ' + price;
+
+      },
+      0
+    );
+
+  }
+);
+/* =========================================================
+   AJOUT AU PANIER DEPUIS LE GUIDE
+========================================================= */
+
+if (addButton && productForm) {
+
+  addButton.addEventListener(
+    'click',
+    function () {
+
+      if (addButton.disabled) {
+        return;
+      }
+
+      const realSubmitButton =
+        productForm.querySelector(
+          '.product-page-pour__add'
+        );
+
+      if (!realSubmitButton) {
+        return;
+      }
+
+      closeSizeGuide();
+
+      productForm.requestSubmit(
+        realSubmitButton
+      );
+
+    }
+  );
+
+}
   openButton.addEventListener(
     'click',
     openSizeGuide
