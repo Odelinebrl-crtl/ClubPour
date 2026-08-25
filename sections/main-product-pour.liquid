@@ -179,7 +179,15 @@
           </div>
 
         {% endform %}
-
+<div class="product-page-pour__size-guide-row">
+  <button
+    type="button"
+    class="product-page-pour__size-guide-trigger"
+    data-pour-size-guide-open
+  >
+    GUIDE DES TAILLES
+  </button>
+</div>
         {% if product.description != blank %}
           <div class="product-page-pour__description">
             {{ product.description }}
@@ -233,7 +241,157 @@
 
   </div>
 
+<!-- =====================================================
+     GUIDE DES TAILLES — PAGE PRODUIT UNIQUEMENT
+===================================================== -->
 
+<div
+  class="pour-size-guide"
+  data-pour-size-guide
+  aria-hidden="true"
+>
+
+  <div class="pour-size-guide__header">
+
+    <h2 class="pour-size-guide__title">
+      GUIDE DES TAILLES
+    </h2>
+
+    <button
+      type="button"
+      class="pour-size-guide__close"
+      data-pour-size-guide-close
+      aria-label="Fermer le guide des tailles"
+    ></button>
+
+  </div>
+
+
+  <div class="pour-size-guide__body">
+
+    <p class="pour-size-guide__eyebrow">
+      MESURES DU VÊTEMENT
+    </p>
+
+
+    {% if product.metafields.custom.size_labels != blank %}
+
+      {% assign pour_sizes = product.metafields.custom.size_labels.value | split: '|' %}
+      {% assign pour_chest = product.metafields.custom.size_chest.value | split: '|' %}
+      {% assign pour_length = product.metafields.custom.size_length.value | split: '|' %}
+      {% assign pour_sleeve = product.metafields.custom.size_sleeve.value | split: '|' %}
+
+      <div class="pour-size-guide__table-wrap">
+
+        <table class="pour-size-guide__table">
+
+          <thead>
+            <tr>
+
+              <th></th>
+
+              {% for size in pour_sizes %}
+                <th>
+                  {{ size | strip }}
+                </th>
+              {% endfor %}
+
+            </tr>
+          </thead>
+
+
+          <tbody>
+
+            {% if product.metafields.custom.size_chest != blank %}
+              <tr>
+                <th>POITRINE</th>
+
+                {% for value in pour_chest %}
+                  <td>
+                    {{ value | strip }}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+
+
+            {% if product.metafields.custom.size_length != blank %}
+              <tr>
+                <th>LONGUEUR</th>
+
+                {% for value in pour_length %}
+                  <td>
+                    {{ value | strip }}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+
+
+            {% if product.metafields.custom.size_sleeve != blank %}
+              <tr>
+                <th>MANCHE</th>
+
+                {% for value in pour_sleeve %}
+                  <td>
+                    {{ value | strip }}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endif %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    {% else %}
+
+      <p class="pour-size-guide__empty">
+        Guide des tailles prochainement disponible.
+      </p>
+
+    {% endif %}
+
+
+    {% if product.metafields.custom.model_height != blank
+      or product.metafields.custom.model_weight != blank
+      or product.metafields.custom.model_size != blank
+    %}
+
+      <div class="pour-size-guide__model">
+
+        <p class="pour-size-guide__model-title">
+          LE MODÈLE
+        </p>
+
+        <p class="pour-size-guide__model-text">
+
+          {% if product.metafields.custom.model_height != blank %}
+            Le mannequin mesure
+            {{ product.metafields.custom.model_height.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_weight != blank %}
+            et pèse
+            {{ product.metafields.custom.model_weight.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_size != blank %}
+            et porte une taille
+            {{ product.metafields.custom.model_size.value }}.
+          {% endif %}
+
+        </p>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
  <!-- =====================================================
      VOIR AUSSI — 5 PRODUITS PERSONNALISABLES
 ===================================================== -->
@@ -362,6 +520,247 @@
 <!-- FIN VOIR AUSSI -->
 
 <style>
+/* =========================================================
+   GUIDE DES TAILLES
+========================================================= */
+
+.pour-size-guide {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  z-index: 99990;
+
+  width: min(620px, 100vw);
+  height: 100dvh;
+
+  background: #ffffff;
+  color: #111111;
+
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  visibility: hidden;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    visibility .45s;
+}
+
+.pour-size-guide.is-active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+
+/* LIEN SUR LA PAGE PRODUIT */
+
+.product-page-pour__size-guide-row {
+  margin-top: 18px;
+}
+
+.product-page-pour__size-guide-trigger {
+  padding: 0;
+
+  border: 0;
+  border-bottom: 1px solid #111111;
+
+  background: transparent;
+  color: #111111;
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+
+/* HEADER */
+
+.pour-size-guide__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 35px 40px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pour-size-guide__title {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: .08em;
+}
+
+
+/* CROIX */
+
+.pour-size-guide__close {
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.pour-size-guide__close::before,
+.pour-size-guide__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #111111;
+}
+
+.pour-size-guide__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pour-size-guide__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* CONTENU */
+
+.pour-size-guide__body {
+  padding: 45px 40px 60px;
+}
+
+.pour-size-guide__eyebrow,
+.pour-size-guide__model-title {
+  margin: 0 0 25px;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+}
+
+
+/* TABLEAU */
+
+.pour-size-guide__table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.pour-size-guide__table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 11px;
+}
+
+.pour-size-guide__table th,
+.pour-size-guide__table td {
+  padding: 17px 10px;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  text-align: center;
+
+  font-weight: 400;
+}
+
+.pour-size-guide__table tbody th {
+  padding-left: 0;
+
+  text-align: left;
+
+  font-size: 10px;
+
+  letter-spacing: .05em;
+}
+
+
+/* MANNEQUIN */
+
+.pour-size-guide__model {
+  margin-top: 50px;
+
+  padding-top: 30px;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+.pour-size-guide__model-title {
+  margin-bottom: 12px;
+}
+
+.pour-size-guide__model-text {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #555555;
+}
+
+
+/* VIDE */
+
+.pour-size-guide__empty {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: #777777;
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+
+  .pour-size-guide {
+    width: 100%;
+  }
+
+  .pour-size-guide__header {
+    padding: 25px 20px;
+  }
+
+  .pour-size-guide__body {
+    padding: 35px 20px 50px;
+  }
+
+  .pour-size-guide__table th,
+  .pour-size-guide__table td {
+    padding:
+      15px
+      8px;
+  }
+
+}
 /* =========================================================
    VOIR AUSSI — FLÈCHES DESKTOP
 ========================================================= */
@@ -585,7 +984,90 @@ height: 44px;
 
 })();
 </script>
+<script>
+(function () {
 
+  const guide =
+    document.querySelector(
+      '[data-pour-size-guide]'
+    );
+
+  const openButton =
+    document.querySelector(
+      '[data-pour-size-guide-open]'
+    );
+
+  if (!guide || !openButton) {
+    return;
+  }
+
+
+  function openSizeGuide() {
+
+    guide.classList.add(
+      'is-active'
+    );
+
+    guide.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+  }
+
+
+  function closeSizeGuide() {
+
+    guide.classList.remove(
+      'is-active'
+    );
+
+    guide.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+
+  openButton.addEventListener(
+    'click',
+    openSizeGuide
+  );
+
+
+  guide.addEventListener(
+    'click',
+    function (event) {
+
+      if (
+        event.target.closest(
+          '[data-pour-size-guide-close]'
+        )
+      ) {
+        closeSizeGuide();
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        event.key === 'Escape' &&
+        guide.classList.contains('is-active')
+      ) {
+        closeSizeGuide();
+      }
+
+    }
+  );
+
+})();
+</script>
 </section>
 <script>
 (function () {
