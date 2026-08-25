@@ -2573,9 +2573,9 @@ a {
 
   border: 1px solid #111111;
 
-  background: #ffffff;
-  color: #111111;
-
+ background: #111111;
+color: #ffffff;
+   
   font-family: inherit;
 
   font-size: 11px;
@@ -2593,8 +2593,8 @@ a {
 }
 
 .product-page-pour__add:hover {
-  background: #111111;
-  color: #ffffff;
+  background: #ffffff;
+  color: #111111;
 }
 
 
