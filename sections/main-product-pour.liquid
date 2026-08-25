@@ -380,7 +380,11 @@
 
     {% endif %}
 
-
+<div class="pour-size-guide__fit-advice">
+  <p>
+    Nos coupes sont oversize. Pour un rendu optimal, nous vous conseillons de choisir une taille en dessous de votre taille habituelle.
+  </p>
+</div>
     {% if product.metafields.custom.model_height != blank
       or product.metafields.custom.model_weight != blank
       or product.metafields.custom.model_size != blank
@@ -835,6 +839,18 @@ width: min(680px, 100vw);
   border-color: #f2f2f2;
 
   cursor: default;
+}
+.pour-size-guide__fit-advice {
+  margin-top: 30px;
+}
+
+.pour-size-guide__fit-advice p {
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.6;
+
+  color: #555555;
 }
 /* MANNEQUIN */
 
