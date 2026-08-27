@@ -22,9 +22,36 @@
         "exclusive_image": "shopify://shop_images/jahanzeb-ahsan-_4Rwhef-LB0-unsplash.jpg",
         "editorial_image": "shopify://shop_images/abhinand-venugopal-5iwG_OI-Uxg-unsplash.jpg"
       }
+    },
+    "1787854017b2dc7f0f": {
+      "type": "apps",
+      "blocks": {
+        "forms_inline_Ti6TCn": {
+          "type": "shopify://apps/forms/blocks/inline/8744a304-fcb1-4347-b211-bb6b4759a76a",
+          "settings": {
+            "form_id": "1130823",
+            "text_color": "#202020",
+            "button_background_color": "#202020",
+            "button_label_color": "#FFFFFF",
+            "links_color": "#1878B9",
+            "errors_color": "#E02229",
+            "text_alignment": "center",
+            "form_alignment": "center",
+            "padding_top": 0,
+            "padding_bottom": 24,
+            "padding_right": 0,
+            "padding_left": 0
+          }
+        }
+      },
+      "block_order": [
+        "forms_inline_Ti6TCn"
+      ],
+      "settings": {}
     }
   },
   "order": [
-    "hero_club_privileges_tWQjQY"
+    "hero_club_privileges_tWQjQY",
+    "1787854017b2dc7f0f"
   ]
 }
