@@ -109,11 +109,13 @@
 
 {% endform %}
 
-    {% if section.settings.launch_text != blank %}
-      <p class="club-hero__launch">
-        {{ section.settings.launch_text }}
-      </p>
-    {% endif %}
+    {% unless form.posted_successfully? %}
+  {% if section.settings.launch_text != blank %}
+    <p class="club-hero__launch">
+      {{ section.settings.launch_text }}
+    </p>
+  {% endif %}
+{% endunless %}
 
   </div>
 
