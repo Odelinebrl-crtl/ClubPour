@@ -63,61 +63,53 @@
 
  {% form 'customer', class: 'club-hero__form', id: 'club-hero-form' %}
 
-  {% if form.posted_successfully? %}
+  <input type="hidden" name="contact[tags]" value="club-privileges">
 
-    <div class="club-form-success">
-      <p class="club-form-success__title">
-        INSCRIPTION CONFIRMÉE
-      </p>
-
-      <p class="club-form-success__text">
-        Votre inscription au Club POUR a bien été prise en compte.<br>
-        Surveillez votre boîte mail pour découvrir les prochains accès privés.
-      </p>
-    </div>
-
-  {% else %}
-
-    <input type="hidden" name="contact[tags]" value="club-privileges">
-
-    <div class="club-hero__email-wrap">
-      <input
-        type="email"
-        name="contact[email]"
-        class="club-hero__email"
-        placeholder="VOTRE EMAIL"
-        required
-        autocomplete="email"
-        aria-label="Votre email"
-      >
-    </div>
-
-    <button
-      type="submit"
-      class="club-hero__submit"
+  <div class="club-hero__email-wrap">
+    <input
+      type="email"
+      name="contact[email]"
+      class="club-hero__email"
+      placeholder="VOTRE EMAIL"
+      required
+      autocomplete="email"
+      aria-label="Votre email"
     >
-      <span>
-        REJOIGNEZ LE CLUB
-      </span>
+  </div>
 
-      <span aria-hidden="true">
-        →
-      </span>
-    </button>
+  <button
+    type="submit"
+    class="club-hero__submit"
+  >
+    <span>
+      REJOIGNEZ LE CLUB
+    </span>
 
-  {% endif %}
+    <span aria-hidden="true">
+      →
+    </span>
+  </button>
 
 {% endform %}
 
-   {% unless form.posted_successfully? %}
-  {% if section.settings.launch_text != blank %}
-    <p class="club-hero__launch">
-      {{ section.settings.launch_text }}
-    </p>
-  {% endif %}
-{% endunless %}
+{% if section.settings.launch_text != blank %}
+  <p class="club-hero__launch">
+    {{ section.settings.launch_text }}
+  </p>
+{% endif %}
 
+{% if form.posted_successfully? %}
+  <div class="club-form-success">
+    <p class="club-form-success__title">
+      INSCRIPTION CONFIRMÉE
+    </p>
+
+    <p class="club-form-success__text">
+      Votre inscription au Club POUR a bien été prise en compte.<br>
+      Surveillez votre boîte mail pour découvrir les prochains accès privés.
+    </p>
   </div>
+{% endif %}
 
 </section>
 
@@ -1846,34 +1838,37 @@ background: #FFFFFF;
 #shopify-section-{{ section.id }} .club-form-success {
   width: 100%;
   text-align: center;
- padding: 28px 25px;
+  padding: 18px 25px 10px;
 }
 
 #shopify-section-{{ section.id }} .club-form-success__title {
- margin: 0 0 18px;
+  margin: 0 0 10px;
+
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 11px;
   font-weight: 400;
+
+  line-height: 1.2;
   letter-spacing: .16em;
+
   text-transform: uppercase;
 }
 
 #shopify-section-{{ section.id }} .club-form-success__text {
   margin: 0;
+
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10px;
-  line-height: 1.6;
+
+  line-height: 1.5;
   letter-spacing: .04em;
+
   text-transform: uppercase;
 }
 
 /* HERO */
 
-#shopify-section-{{ section.id }} .club-hero__form .club-form-success {
-  position: relative;
-  top: 18px;
-
-  width: 100%;
+#shopify-section-{{ section.id }} .club-form-success {
   color: #fff;
 
   border: 1px solid rgba(255,255,255,.65);
@@ -1887,6 +1882,7 @@ background: #FFFFFF;
 
 #shopify-section-{{ section.id }} .club-final__form .club-form-success {
   color: #111;
+
   border: 1px solid rgba(17,17,17,.55);
   background: rgba(255,255,255,.55);
 }
@@ -2103,7 +2099,36 @@ background: #FFFFFF;
     );
 
   if (!root) return;
+/* ========================================================
+   FORMULAIRE — CONSERVATION DE LA POSITION
+======================================================== */
 
+const clubForms = root.querySelectorAll(
+  '#club-hero-form, #club-final-form'
+);
+
+clubForms.forEach((form) => {
+  form.addEventListener('submit', () => {
+    sessionStorage.setItem(
+      'club-form-scroll-position',
+      String(window.scrollY)
+    );
+  });
+});
+
+const savedScrollPosition =
+  sessionStorage.getItem('club-form-scroll-position');
+
+if (savedScrollPosition !== null) {
+  sessionStorage.removeItem('club-form-scroll-position');
+
+  window.addEventListener('load', () => {
+    window.scrollTo(
+      0,
+      Number(savedScrollPosition)
+    );
+  });
+}
 
   /* ========================================================
      DIRECTION DU SCROLL
@@ -2585,24 +2610,6 @@ background: #FFFFFF;
 })();
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  {% if form.posted_successfully? %}
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'instant'
-    });
-  {% endif %}
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  {% if form.posted_successfully? %}
-    window.scrollTo(0, 0);
-  {% endif %}
-});
-</script>
 {% schema %}
 {
   "name": "Hero Club Privilèges",
