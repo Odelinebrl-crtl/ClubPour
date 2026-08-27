@@ -8,7 +8,7 @@
       content="width=device-width, initial-scale=1"
     >
 
-    <title>
+       <title>
       {{ page_title }}
       {% unless page_title contains shop.name %}
         — {{ shop.name }}
@@ -18,6 +18,14 @@
     {{ content_for_header }}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+
+    {% if request.path contains '/challenge' %}
+      <style>
+        .shopify-challenge__container {
+          padding-top: 120px !important;
+        }
+      </style>
+    {% endif %}
   </head>
 
   <body>
