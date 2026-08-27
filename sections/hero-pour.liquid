@@ -56,41 +56,18 @@
   </h1>
 {% endif %}
 
-<form
-  class="pour-hero__preorder"
-  method="post"
-  action="/contact#pour-preorder"
-  accept-charset="UTF-8"
-  id="pour-preorder"
+<a
+  href="/collections/collection-001"
+  class="pour-hero__submit"
 >
-  <input type="hidden" name="form_type" value="customer">
-  <input type="hidden" name="utf8" value="✓">
+  <span class="pour-hero__submit-text">
+    {{ section.settings.button_label }}
+  </span>
 
-  <div class="pour-hero__email-wrap">
-    <input
-      class="pour-hero__email"
-      type="email"
-      name="contact[email]"
-      placeholder="VOTRE EMAIL"
-      required
-      autocomplete="email"
-      aria-label="Votre email"
-    >
-  </div>
-
-  <button
-    class="pour-hero__submit"
-    type="submit"
-  >
-   <span class="pour-hero__submit-text">
-  {{ section.settings.button_label }}
-</span>
-
-    <span class="pour-hero__submit-arrow" aria-hidden="true">
-      →
-    </span>
-  </button>
-</form>
+  <span class="pour-hero__submit-arrow" aria-hidden="true">
+    →
+  </span>
+</a>
 
   {% if section.settings.launch_text != blank %}
     <p class="pour-hero__launch">
