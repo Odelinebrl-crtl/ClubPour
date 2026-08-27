@@ -63,18 +63,9 @@
 
 {% form 'customer', return_to: request.path, class: 'club-hero__form', id: 'club-hero-form' %}
 
-  {% if form.posted_successfully? %}
+  {% assign club_hero_form_success = form.posted_successfully? %}
 
-    <div class="club-form-success" role="status" aria-live="polite">
-      <p class="club-form-success__title">INSCRIPTION CONFIRMÉE</p>
-      <p class="club-form-success__text">
-        Votre inscription au Club POUR a bien été prise en compte.<br>
-        Surveillez votre boîte mail pour découvrir les prochains accès privés.
-      </p>
-    </div>
-
-  {% else %}
-
+  {% unless club_hero_form_success %}
     <div class="club-hero__form-fields">
       <input type="hidden" name="contact[tags]" value="club-privileges">
 
@@ -95,14 +86,23 @@
         <span aria-hidden="true">→</span>
       </button>
     </div>
-
-    {% if section.settings.launch_text != blank %}
-      <p class="club-hero__launch">{{ section.settings.launch_text }}</p>
-    {% endif %}
-
-  {% endif %}
+  {% endunless %}
 
 {% endform %}
+
+{% if section.settings.launch_text != blank %}
+  <p class="club-hero__launch">{{ section.settings.launch_text }}</p>
+{% endif %}
+
+{% if club_hero_form_success %}
+  <div class="club-form-success" role="status" aria-live="polite">
+    <p class="club-form-success__title">INSCRIPTION CONFIRMÉE</p>
+    <p class="club-form-success__text">
+      Votre inscription au Club POUR a bien été prise en compte.<br>
+      Surveillez votre boîte mail pour découvrir les prochains accès privés.
+    </p>
+  </div>
+{% endif %}
 
 </section>
 
@@ -706,21 +706,9 @@
 
 {% form 'customer', class: 'club-final__form', id: 'club-final-form' %}
 
-  {% if form.posted_successfully? %}
+  {% assign club_final_form_success = form.posted_successfully? %}
 
-    <div class="club-form-success club-form-success--final">
-      <p class="club-form-success__title">
-        INSCRIPTION CONFIRMÉE
-      </p>
-
-      <p class="club-form-success__text">
-        Votre inscription au Club POUR a bien été prise en compte.<br>
-        Surveillez votre boîte mail pour découvrir les prochains accès privés.
-      </p>
-    </div>
-
-  {% else %}
-
+  {% unless club_final_form_success %}
     <input type="hidden" name="contact[tags]" value="club-privileges">
 
     <div class="club-final__email-wrap">
@@ -739,18 +727,22 @@
       type="submit"
       class="club-final__submit"
     >
-      <span>
-        REJOIGNEZ LE CLUB
-      </span>
-
-      <span aria-hidden="true">
-        →
-      </span>
+      <span>REJOIGNEZ LE CLUB</span>
+      <span aria-hidden="true">→</span>
     </button>
-
-  {% endif %}
+  {% endunless %}
 
 {% endform %}
+
+{% if club_final_form_success %}
+  <div class="club-form-success club-form-success--final" role="status" aria-live="polite">
+    <p class="club-form-success__title">INSCRIPTION CONFIRMÉE</p>
+    <p class="club-form-success__text">
+      Votre inscription au Club POUR a bien été prise en compte.<br>
+      Surveillez votre boîte mail pour découvrir les prochains accès privés.
+    </p>
+  </div>
+{% endif %}
 
 
   <p
@@ -814,6 +806,8 @@
 
 #ClubPrivilegesHero-{{ section.id }} {
   position: relative;
+
+  overflow-anchor: none;
 
   width: 100%;
   height: 100svh;
@@ -1034,9 +1028,11 @@
 
 
 #ClubPrivilegesHero-{{ section.id }} .club-hero__launch {
-  margin: 0;
+  margin: 16px 0 0;
 
   font-size: 10px;
+
+  line-height: 1.4;
 
   letter-spacing: .06em;
 
@@ -1831,8 +1827,8 @@ background: #FFFFFF;
 
 #shopify-section-{{ section.id }} .club-form-success {
   width: 100%;
-  margin: 0;
-  padding: 18px 24px;
+  margin: 14px auto 0;
+  padding: 12px 24px 16px;
   text-align: center;
 }
 
@@ -2094,6 +2090,77 @@ background: #FFFFFF;
     );
 
   if (!root) return;
+
+
+  /* ========================================================
+     FORMULAIRES — CONSERVATION DE LA POSITION
+
+     Shopify recharge la page après validation. On mémorise
+     la position avant le captcha / submit puis on la restaure
+     au retour avec ?customer_posted=true.
+  ======================================================== */
+
+  const customerForms = root.querySelectorAll(
+    '#club-hero-form, #club-final-form'
+  );
+
+  const scrollStorageKey = 'clubPrivilegesScrollY';
+
+  function saveFormScrollPosition() {
+    sessionStorage.setItem(
+      scrollStorageKey,
+      String(window.scrollY)
+    );
+  }
+
+  customerForms.forEach((form) => {
+    form.addEventListener('submit', saveFormScrollPosition);
+
+    const submitButton = form.querySelector(
+      'button[type="submit"]'
+    );
+
+    if (submitButton) {
+      submitButton.addEventListener(
+        'click',
+        saveFormScrollPosition
+      );
+    }
+  });
+
+  const params = new URLSearchParams(
+    window.location.search
+  );
+
+  if (params.get('customer_posted') === 'true') {
+
+    const savedScrollY = Number(
+      sessionStorage.getItem(scrollStorageKey)
+    );
+
+    if (Number.isFinite(savedScrollY)) {
+
+      const restoreScroll = () => {
+        window.scrollTo(0, savedScrollY);
+      };
+
+      requestAnimationFrame(restoreScroll);
+      setTimeout(restoreScroll, 50);
+      setTimeout(restoreScroll, 250);
+      setTimeout(restoreScroll, 600);
+
+      sessionStorage.removeItem(scrollStorageKey);
+    }
+
+    if (window.location.hash) {
+      history.replaceState(
+        null,
+        '',
+        window.location.pathname +
+        window.location.search
+      );
+    }
+  }
 
 
   /* ========================================================
