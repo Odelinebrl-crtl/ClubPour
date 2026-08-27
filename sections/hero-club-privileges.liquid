@@ -1772,8 +1772,73 @@ background: #FFFFFF;
 
 /* BOUTON NOIR DE BASE */
 
+.club-final__form {
+  display: flex;
+  align-items: stretch;
+
+  width: min(100%, 610px);
+  height: 54px;
+
+  margin-top: 70px;
+
+  gap: 8px;
+}
+
+
+/* CHAMP EMAIL */
+
+.club-final__email-wrap {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+
+  background: rgba(255,255,255,.55);
+
+  border: 1px solid rgba(17,17,17,.55);
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
+
+
+.club-final__email {
+  width: 100%;
+  height: 100%;
+
+  padding: 0 17px;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: #111;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .06em;
+
+  text-transform: uppercase;
+}
+
+
+.club-final__email::placeholder {
+  color: rgba(17,17,17,.62);
+  opacity: 1;
+}
+
+
+/* BOUTON */
+
 .club-final__submit {
   min-width: 205px;
+
+  height: 54px;
 
   display: inline-flex;
   align-items: center;
@@ -1792,6 +1857,7 @@ background: #FFFFFF;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   font-size: 11px;
+  font-weight: 400;
 
   letter-spacing: .06em;
 
@@ -1801,14 +1867,15 @@ background: #FFFFFF;
 
   transition:
     background .3s ease,
-    color .3s ease;
+    color .3s ease,
+    border-color .3s ease;
 }
 
 
-/* HOVER BLANC */
-
 .club-final__submit:hover {
   background: #fff;
+
+  border-color: #111;
 
   color: #111;
 }
