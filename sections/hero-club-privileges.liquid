@@ -2230,7 +2230,7 @@ background: #FFFFFF;
 
 const submittedForm = sessionStorage.getItem(formStateKey);
  
-if (params.get('customer_posted') === 'true' && submittedForm) {
+if (submittedForm) {
 
   const fields = root.querySelector(
     `[data-club-form-fields="${submittedForm}"]`
@@ -2244,30 +2244,33 @@ if (params.get('customer_posted') === 'true' && submittedForm) {
     `[data-club-form-error="${submittedForm}"]`
   );
 
-  /*
-   * Shopify renvoie les erreurs du formulaire
-   * directement dans le HTML Liquid.
-   */
+  const already = root.querySelector(
+    `[data-club-already="${submittedForm}"]`
+  );
 
-  const hasError =
+  const hasEmailError =
     error &&
-    error.textContent.trim() !== '';
+    error.textContent.toLowerCase().includes('déjà inscrit');
 
-  if (hasError) {
+  if (hasEmailError) {
 
     if (fields) {
       fields.hidden = false;
     }
 
     if (error) {
-      error.hidden = false;
+      error.hidden = true;
+    }
+
+    if (already) {
+      already.hidden = false;
     }
 
     if (success) {
       success.hidden = true;
     }
 
-  } else {
+  } else if (params.get('customer_posted') === 'true') {
 
     if (fields) {
       fields.hidden = true;
@@ -2277,6 +2280,9 @@ if (params.get('customer_posted') === 'true' && submittedForm) {
       success.hidden = false;
     }
 
+    if (already) {
+      already.hidden = true;
+    }
   }
 
   sessionStorage.removeItem(formStateKey);
