@@ -109,7 +109,7 @@
 
 {% endform %}
 
-    {% unless form.posted_successfully? %}
+   {% unless form.posted_successfully? %}
   {% if section.settings.launch_text != blank %}
     <p class="club-hero__launch">
       {{ section.settings.launch_text }}
@@ -1870,9 +1870,15 @@ background: #FFFFFF;
 /* HERO */
 
 #shopify-section-{{ section.id }} .club-hero__form .club-form-success {
+  position: relative;
+  top: 18px;
+
+  width: 100%;
   color: #fff;
+
   border: 1px solid rgba(255,255,255,.65);
   background: rgba(255,255,255,.12);
+
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
@@ -2579,8 +2585,24 @@ background: #FFFFFF;
 })();
 </script>
 
-
-
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  {% if form.posted_successfully? %}
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'instant'
+    });
+  {% endif %}
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  {% if form.posted_successfully? %}
+    window.scrollTo(0, 0);
+  {% endif %}
+});
+</script>
 {% schema %}
 {
   "name": "Hero Club Privilèges",
