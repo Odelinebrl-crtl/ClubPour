@@ -61,7 +61,7 @@
     {% endif %}
 
 
- {% form 'customer', class: 'club-hero__form', id: 'club-hero-form' %}
+{% form 'customer', return_to: request.path, class: 'club-hero__form', id: 'club-hero-form' %}
 
   <input type="hidden" name="contact[tags]" value="club-privileges">
 
@@ -90,14 +90,6 @@
     </span>
   </button>
 
-{% endform %}
-
-{% if section.settings.launch_text != blank %}
-  <p class="club-hero__launch">
-    {{ section.settings.launch_text }}
-  </p>
-{% endif %}
-
 {% if form.posted_successfully? %}
   <div class="club-form-success">
     <p class="club-form-success__title">
@@ -109,6 +101,14 @@
       Surveillez votre boîte mail pour découvrir les prochains accès privés.
     </p>
   </div>
+{% endif %}
+
+{% endform %}
+
+{% if section.settings.launch_text != blank %}
+  <p class="club-hero__launch">
+    {{ section.settings.launch_text }}
+  </p>
 {% endif %}
 
 </section>
@@ -2099,36 +2099,7 @@ background: #FFFFFF;
     );
 
   if (!root) return;
-/* ========================================================
-   FORMULAIRE — CONSERVATION DE LA POSITION
-======================================================== */
 
-const clubForms = root.querySelectorAll(
-  '#club-hero-form, #club-final-form'
-);
-
-clubForms.forEach((form) => {
-  form.addEventListener('submit', () => {
-    sessionStorage.setItem(
-      'club-form-scroll-position',
-      String(window.scrollY)
-    );
-  });
-});
-
-const savedScrollPosition =
-  sessionStorage.getItem('club-form-scroll-position');
-
-if (savedScrollPosition !== null) {
-  sessionStorage.removeItem('club-form-scroll-position');
-
-  window.addEventListener('load', () => {
-    window.scrollTo(
-      0,
-      Number(savedScrollPosition)
-    );
-  });
-}
 
   /* ========================================================
      DIRECTION DU SCROLL
