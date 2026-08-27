@@ -2229,71 +2229,7 @@ background: #FFFFFF;
  const params = new URLSearchParams(window.location.search);
 
 const submittedForm = sessionStorage.getItem(formStateKey);
-  /* ========================================================
-     EMAIL DÉJÀ INSCRIT
-
-     Shopify ne renvoie pas toujours cette situation
-     dans form.errors pour un formulaire customer.
-
-     On détecte donc le retour Shopify :
-     - form_type=customer
-     - pas de customer_posted=true
-     - un email est présent dans le formulaire
-  ======================================================== */
-
-  const alreadySubscribed = () => {
-    const url = new URL(window.location.href);
-
-    const isCustomerForm =
-      url.searchParams.get('form_type') === 'customer';
-
-    const isSuccessful =
-      url.searchParams.get('customer_posted') === 'true';
-
-    if (!isCustomerForm || isSuccessful) {
-      return;
-    }
-
-    const heroForm =
-      root.querySelector('#club-hero-form');
-
-    const finalForm =
-      root.querySelector('#club-final-form');
-
-    const heroEmail =
-      heroForm
-        ? heroForm.querySelector('input[name="contact[email]"]')
-        : null;
-
-    const finalEmail =
-      finalForm
-        ? finalForm.querySelector('input[name="contact[email]"]')
-        : null;
-
-    const heroMessage =
-      root.querySelector('[data-club-already="hero"]');
-
-    const finalMessage =
-      root.querySelector('[data-club-already="final"]');
-
-    if (
-      heroEmail &&
-      heroEmail.value.trim() !== '' &&
-      heroMessage
-    ) {
-      heroMessage.hidden = false;
-    }
-
-    if (
-      finalEmail &&
-      finalEmail.value.trim() !== '' &&
-      finalMessage
-    ) {
-      finalMessage.hidden = false;
-    }
-  };
-
-  alreadySubscribed();
+ 
 if (params.get('customer_posted') === 'true' && submittedForm) {
 
   const fields = root.querySelector(
@@ -2308,17 +2244,15 @@ if (params.get('customer_posted') === 'true' && submittedForm) {
     `[data-club-form-error="${submittedForm}"]`
   );
 
+  /*
+   * Shopify renvoie les erreurs du formulaire
+   * directement dans le HTML Liquid.
+   */
+
   const hasError =
     error &&
-    error.textContent.trim().length > 0;
+    error.textContent.trim() !== '';
 
-  /*
-   * SI SHOPIFY RENVOIE UNE ERREUR
-   * (ex : email déjà inscrit)
-   * → on garde le formulaire visible
-   * → on affiche le message d'erreur
-   * → surtout, on n'affiche PAS "INSCRIPTION CONFIRMÉE"
-   */
   if (hasError) {
 
     if (fields) {
@@ -2335,10 +2269,6 @@ if (params.get('customer_posted') === 'true' && submittedForm) {
 
   } else {
 
-    /*
-     * AUCUNE ERREUR
-     * → inscription réellement validée
-     */
     if (fields) {
       fields.hidden = true;
     }
