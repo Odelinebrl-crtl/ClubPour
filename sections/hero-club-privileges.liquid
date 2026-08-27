@@ -61,49 +61,53 @@
     {% endif %}
 
 
-    <form
-      class="club-hero__form"
-      method="post"
-      action="/contact#club-privileges"
-      accept-charset="UTF-8"
-    >
+ {% form 'customer', class: 'club-hero__form', id: 'club-hero-form' %}
 
-      <input type="hidden" name="form_type" value="customer">
-      <input type="hidden" name="utf8" value="✓">
+  {% if form.posted_successfully? %}
 
+    <div class="club-form-success">
+      <p class="club-form-success__title">
+        INSCRIPTION CONFIRMÉE
+      </p>
 
-      <div class="club-hero__email-wrap">
+      <p class="club-form-success__text">
+        Votre inscription au Club POUR a bien été prise en compte.<br>
+        Surveillez votre boîte mail pour découvrir les prochains accès privés.
+      </p>
+    </div>
 
-        <input
-          type="email"
-          name="contact[email]"
-          class="club-hero__email"
-          placeholder="VOTRE EMAIL"
-          required
-          autocomplete="email"
-          aria-label="Votre email"
-        >
+  {% else %}
 
-      </div>
+    <input type="hidden" name="contact[tags]" value="club-privileges">
 
-
-      <button
-        type="submit"
-        class="club-hero__submit"
+    <div class="club-hero__email-wrap">
+      <input
+        type="email"
+        name="contact[email]"
+        class="club-hero__email"
+        placeholder="VOTRE EMAIL"
+        required
+        autocomplete="email"
+        aria-label="Votre email"
       >
+    </div>
 
-        <span>
-          REJOIGNEZ LE CLUB
-        </span>
+    <button
+      type="submit"
+      class="club-hero__submit"
+    >
+      <span>
+        REJOIGNEZ LE CLUB
+      </span>
 
-        <span aria-hidden="true">
-          →
-        </span>
+      <span aria-hidden="true">
+        →
+      </span>
+    </button>
 
-      </button>
+  {% endif %}
 
-    </form>
-
+{% endform %}
 
     {% if section.settings.launch_text != blank %}
       <p class="club-hero__launch">
@@ -713,20 +717,26 @@
   </h2>
 
 
-  <form
-    class="club-final__form club-reveal-item"
-    data-reveal-delay="160"
-    method="post"
-    action="/contact#club-final"
-    accept-charset="UTF-8"
-  >
+{% form 'customer', class: 'club-final__form', id: 'club-final-form' %}
 
-    <input type="hidden" name="form_type" value="customer">
-    <input type="hidden" name="utf8" value="✓">
+  {% if form.posted_successfully? %}
 
+    <div class="club-form-success club-form-success--final">
+      <p class="club-form-success__title">
+        INSCRIPTION CONFIRMÉE
+      </p>
+
+      <p class="club-form-success__text">
+        Votre inscription au Club POUR a bien été prise en compte.<br>
+        Surveillez votre boîte mail pour découvrir les prochains accès privés.
+      </p>
+    </div>
+
+  {% else %}
+
+    <input type="hidden" name="contact[tags]" value="club-privileges">
 
     <div class="club-final__email-wrap">
-
       <input
         type="email"
         name="contact[email]"
@@ -734,16 +744,14 @@
         placeholder="VOTRE EMAIL"
         required
         autocomplete="email"
+        aria-label="Votre email"
       >
-
     </div>
-
 
     <button
       type="submit"
       class="club-final__submit"
     >
-
       <span>
         REJOIGNEZ LE CLUB
       </span>
@@ -751,10 +759,11 @@
       <span aria-hidden="true">
         →
       </span>
-
     </button>
 
-  </form>
+  {% endif %}
+
+{% endform %}
 
 
   <p
@@ -1828,7 +1837,55 @@ background: #FFFFFF;
 
   color: #666;
 }
+/* =========================================================
+   FORMULAIRE — CONFIRMATION INSCRIPTION
+========================================================= */
 
+#shopify-section-{{ section.id }} .club-form-success {
+  width: 100%;
+  text-align: center;
+  padding: 18px 20px;
+}
+
+#shopify-section-{{ section.id }} .club-form-success__title {
+  margin: 0 0 10px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+
+#shopify-section-{{ section.id }} .club-form-success__text {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+/* HERO */
+
+#shopify-section-{{ section.id }} .club-hero__form .club-form-success {
+  color: #fff;
+  border: 1px solid rgba(255,255,255,.65);
+  background: rgba(255,255,255,.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* CTA FINAL */
+
+#shopify-section-{{ section.id }} .club-final__form .club-form-success {
+  color: #111;
+  border: 1px solid rgba(17,17,17,.55);
+  background: rgba(255,255,255,.55);
+}
+
+#shopify-section-{{ section.id }} .club-form-success--final {
+  padding: 18px 25px;
+}
 /* =========================================================
    BEFORE EVERYONE ELSE — TEXTES BLANCS
 ========================================================= */
