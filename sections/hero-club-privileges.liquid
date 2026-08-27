@@ -84,11 +84,20 @@
     </button>
   </div>
 
-  <div class="club-form-error" data-club-form-error="hero" role="alert" hidden>
-    {% if form.errors %}
+ <div
+  class="club-form-error"
+  data-club-form-error="hero"
+  role="alert"
+  {% unless form.errors %}hidden{% endunless %}
+>
+  {% if form.errors %}
+    {% if form.errors contains 'email' %}
+      VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.
+    {% else %}
       {{ form.errors | default_errors }}
     {% endif %}
-  </div>
+  {% endif %}
+</div>
 
 {% endform %}
 
@@ -730,11 +739,20 @@
     </button>
   </div>
 
-  <div class="club-form-error" data-club-form-error="final" role="alert" hidden>
-    {% if form.errors %}
+ <div
+  class="club-form-error"
+  data-club-form-error="final"
+  role="alert"
+  {% unless form.errors %}hidden{% endunless %}
+>
+  {% if form.errors %}
+    {% if form.errors contains 'email' %}
+      VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.
+    {% else %}
       {{ form.errors | default_errors }}
     {% endif %}
-  </div>
+  {% endif %}
+</div>
 
 {% endform %}
 
@@ -2192,20 +2210,51 @@ background: #FFFFFF;
 
   const params = new URLSearchParams(window.location.search);
 
-  if (params.get('customer_posted') === 'true' && 'scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-  }
-
-  const submittedForm = sessionStorage.getItem(formStateKey);
-
   if (params.get('customer_posted') === 'true' && submittedForm) {
-    const fields = root.querySelector(
-      `[data-club-form-fields="${submittedForm}"]`
-    );
-    const success = root.querySelector(
-      `[data-club-success="${submittedForm}"]`
-    );
 
+  const fields = root.querySelector(
+    `[data-club-form-fields="${submittedForm}"]`
+  );
+
+  const success = root.querySelector(
+    `[data-club-success="${submittedForm}"]`
+  );
+
+  const error = root.querySelector(
+    `[data-club-form-error="${submittedForm}"]`
+  );
+
+  const hasError =
+    error &&
+    error.textContent.trim().length > 0;
+
+  /*
+   * SI SHOPIFY RENVOIE UNE ERREUR
+   * (ex : email déjà inscrit)
+   * → on garde le formulaire visible
+   * → on affiche le message d'erreur
+   * → surtout, on n'affiche PAS "INSCRIPTION CONFIRMÉE"
+   */
+  if (hasError) {
+
+    if (fields) {
+      fields.hidden = false;
+    }
+
+    if (error) {
+      error.hidden = false;
+    }
+
+    if (success) {
+      success.hidden = true;
+    }
+
+  } else {
+
+    /*
+     * AUCUNE ERREUR
+     * → inscription réellement validée
+     */
     if (fields) {
       fields.hidden = true;
     }
@@ -2214,8 +2263,10 @@ background: #FFFFFF;
       success.hidden = false;
     }
 
-    sessionStorage.removeItem(formStateKey);
   }
+
+  sessionStorage.removeItem(formStateKey);
+}
 
   /* ========================================================
      DIRECTION DU SCROLL
