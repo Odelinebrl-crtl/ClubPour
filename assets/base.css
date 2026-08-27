@@ -5466,3 +5466,11 @@ html {
 }
 
 }
+/* =========================================================
+   SHOPIFY CAPTCHA — PAGE /CHALLENGE
+   ========================================================= */
+
+.shopify-challenge__container {
+  padding-top: 110px !important;
+  padding-bottom: 80px !important;
+}
