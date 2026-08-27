@@ -2208,9 +2208,11 @@ background: #FFFFFF;
     }
   });
 
-  const params = new URLSearchParams(window.location.search);
+ const params = new URLSearchParams(window.location.search);
 
-  if (params.get('customer_posted') === 'true' && submittedForm) {
+const submittedForm = sessionStorage.getItem(formStateKey);
+
+if (params.get('customer_posted') === 'true' && submittedForm) {
 
   const fields = root.querySelector(
     `[data-club-form-fields="${submittedForm}"]`
