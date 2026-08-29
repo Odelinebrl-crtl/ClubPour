@@ -26,7 +26,17 @@
       name="contact[tags]"
       value="club-privileges"
     >
-
+  <label class="footer-pour__marketing-consent">
+    <input
+      type="checkbox"
+      name="contact[accepts_marketing]"
+      value="true"
+      required
+    >
+    <span>
+      J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.
+    </span>
+  </label>
     <div class="footer-pour__input-wrap">
 
       <input
@@ -452,7 +462,28 @@ background: #ffffff;
   width: 100%;
   max-width: 340px;
 }
+#FooterPour-{{ section.id }}
+.footer-pour__marketing-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 340px;
+  margin: 0 0 14px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: rgba(17,17,17,.62);
+  cursor: pointer;
+}
 
+#FooterPour-{{ section.id }}
+.footer-pour__marketing-consent input {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+  margin: 1px 0 0;
+  cursor: pointer;
+  accent-color: #111111;
+}
 
 #FooterPour-{{ section.id }}
 .footer-pour__input-wrap {
