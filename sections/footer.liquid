@@ -11,14 +11,6 @@
 
 <div class="footer-pour__column footer-pour__newsletter">
 
-  <p class="footer-pour__heading">
-    REJOIGNEZ LE CLUB PRIVILÈGE
-  </p>
-
-  <p class="footer-pour__newsletter-text">
-    Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.
-  </p>
-
   {% form 'customer', class: 'footer-pour__form' %}
 
     <input
@@ -26,39 +18,52 @@
       name="contact[tags]"
       value="club-privileges"
     >
-  <label class="footer-pour__marketing-consent">
-    <input
-      type="checkbox"
-      name="contact[accepts_marketing]"
-      value="true"
-      required
-    >
-    <span>
-      J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.
-    </span>
-  </label>
-    <div class="footer-pour__input-wrap">
 
-      <input
-        type="email"
-        name="contact[email]"
-        class="footer-pour__input"
-        placeholder="E-mail"
-        required
-        autocomplete="email"
+    {% unless form.posted_successfully? %}
+      <p class="footer-pour__heading">
+        REJOIGNEZ LE CLUB PRIVILÈGE
+      </p>
+
+      <p class="footer-pour__newsletter-text">
+        Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.
+      </p>
+
+      <label class="footer-pour__marketing-consent">
+        <input
+          type="checkbox"
+          name="contact[accepts_marketing]"
+          value="true"
+          required
+        >
+
+        <span>
+          J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.
+        </span>
+      </label>
+
+      <div class="footer-pour__input-wrap">
+
+        <input
+          type="email"
+          name="contact[email]"
+          class="footer-pour__input"
+          placeholder="E-mail"
+          required
+          autocomplete="email"
+        >
+
+      </div>
+
+      <button
+        type="submit"
+        class="footer-pour__submit"
       >
-
-    </div>
-
-    <button
-      type="submit"
-      class="footer-pour__submit"
-    >
-      REJOINDRE LE CLUB
-    </button>
+        REJOINDRE LE CLUB
+      </button>
+    {% endunless %}
 
     {% if form.posted_successfully? %}
-      <p class="footer-pour__message">
+      <p class="footer-pour__message footer-pour__message--success">
         <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
         Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
       </p>
@@ -71,7 +76,6 @@
     {% endif %}
 
   {% endform %}
-
 
       <!-- RÉSEAUX SOCIAUX -->
 
@@ -1183,12 +1187,10 @@ padding:
 
     if (!footer) return;
 
-
     const selectors =
       footer.querySelectorAll(
         '.footer-pour__selector'
       );
-
 
     function closeAll(exception) {
 
@@ -1214,7 +1216,6 @@ padding:
 
     }
 
-
     selectors.forEach((selector) => {
 
       const button =
@@ -1223,7 +1224,6 @@ padding:
         );
 
       if (!button) return;
-
 
       button.addEventListener(
         'click',
@@ -1254,7 +1254,6 @@ padding:
 
     });
 
-
     document.addEventListener(
       'click',
       function (event) {
@@ -1263,7 +1262,6 @@ padding:
           closeAll();
           return;
         }
-
 
         if (
           !event.target.closest(
@@ -1275,7 +1273,6 @@ padding:
 
       }
     );
-
 
     document.addEventListener(
       'keydown',
@@ -1291,23 +1288,80 @@ padding:
   }
 
 
+  function initFooterClubCaptcha() {
+
+    const footer =
+      document.getElementById(
+        'FooterPour-{{ section.id }}'
+      );
+
+    if (!footer) return;
+
+    const form =
+      footer.querySelector(
+        '.footer-pour__form'
+      );
+
+    if (!form || form.dataset.clubCaptchaReady === 'true') {
+      return;
+    }
+
+    form.dataset.clubCaptchaReady = 'true';
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    form.addEventListener(
+      'submit',
+      function () {
+
+        /*
+         * Shopify peut afficher son CAPTCHA après le déclenchement
+         * de la soumission. On remonte donc immédiatement en haut,
+         * puis à nouveau quelques instants après pour que le CAPTCHA
+         * soit visible même s'il est injecté dynamiquement.
+         */
+
+        scrollToTop();
+
+        setTimeout(scrollToTop, 250);
+        setTimeout(scrollToTop, 750);
+        setTimeout(scrollToTop, 1500);
+
+      }
+    );
+
+  }
+
+
+  function initFooter() {
+    initFooterLocalization();
+    initFooterClubCaptcha();
+  }
+
+
   if (document.readyState === 'loading') {
 
     document.addEventListener(
       'DOMContentLoaded',
-      initFooterLocalization
+      initFooter
     );
 
   } else {
 
-    initFooterLocalization();
+    initFooter();
 
   }
 
 
   document.addEventListener(
     'shopify:section:load',
-    initFooterLocalization
+    initFooter
   );
 
 })();
