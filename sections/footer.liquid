@@ -6,60 +6,61 @@
   <div class="footer-pour__inner">
 
     <!-- =====================================================
-         NEWSLETTER
-    ====================================================== -->
+     CLUB PRIVILÈGE
+====================================================== -->
 
-    <div class="footer-pour__column footer-pour__newsletter">
+<div class="footer-pour__column footer-pour__newsletter">
 
-      <p class="footer-pour__heading">
-        NEWSLETTER
+  <p class="footer-pour__heading">
+    REJOIGNEZ LE CLUB PRIVILÈGE
+  </p>
+
+  <p class="footer-pour__newsletter-text">
+    Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.
+  </p>
+
+  {% form 'customer', class: 'footer-pour__form' %}
+
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="club-privileges"
+    >
+
+    <div class="footer-pour__input-wrap">
+
+      <input
+        type="email"
+        name="contact[email]"
+        class="footer-pour__input"
+        placeholder="E-mail"
+        required
+        autocomplete="email"
+      >
+
+    </div>
+
+    <button
+      type="submit"
+      class="footer-pour__submit"
+    >
+      REJOINDRE LE CLUB
+    </button>
+
+    {% if form.posted_successfully? %}
+      <p class="footer-pour__message">
+        <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
+        Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
       </p>
+    {% endif %}
 
-      <p class="footer-pour__newsletter-text">
-        Inscrivez-vous pour recevoir nos prochaines collections et actualités POUR.
-      </p>
+    {% if form.errors %}
+      <div class="footer-pour__message">
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
 
-      {% form 'customer', class: 'footer-pour__form' %}
-
-        <input
-          type="hidden"
-          name="contact[tags]"
-          value="newsletter"
-        >
-
-        <div class="footer-pour__input-wrap">
-
-          <input
-            type="email"
-            name="contact[email]"
-            class="footer-pour__input"
-            placeholder="E-mail"
-            required
-            autocomplete="email"
-          >
-
-        </div>
-
-        <button
-          type="submit"
-          class="footer-pour__submit"
-        >
-          S'INSCRIRE
-        </button>
-
-        {% if form.posted_successfully? %}
-          <p class="footer-pour__message">
-            Merci pour votre inscription.
-          </p>
-        {% endif %}
-
-        {% if form.errors %}
-          <div class="footer-pour__message">
-            {{ form.errors | default_errors }}
-          </div>
-        {% endif %}
-
-      {% endform %}
+  {% endform %}
 
 
       <!-- RÉSEAUX SOCIAUX -->
