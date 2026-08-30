@@ -664,7 +664,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 </div>
  <!-- =====================================================
-     VOIR AUSSI — PRODUITS
+     VOIR AUSSI — 5 PRODUITS PERSONNALISABLES
 ===================================================== -->
 
 <div class="product-page-pour__related">
@@ -673,23 +673,36 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
     TU AIMERAIS PEUT-ÊTRE AUSSI
   </div>
 
-  <div class="product-page-pour__related-grid">
+<div class="product-page-pour__related-carousel">
 
-    {% assign related_count = 0 %}
+  <button
+    type="button"
+    class="product-page-pour__related-arrow product-page-pour__related-arrow--prev"
+    data-related-prev
+    aria-label="Produits précédents"
+  >
+    ‹
+  </button>
+
+  <div
+    class="product-page-pour__related-grid"
+    data-related-grid
+  >
 
     {% for i in (1..5) %}
 
       {% assign product_key = 'related_product_' | append: i %}
       {% assign image_key = 'related_image_' | append: i %}
 
-      {% assign related_product = section.settings[product_key] %}
-      {% assign custom_image = section.settings[image_key] %}
+     {% assign related_product = section.settings[product_key] %}
+{% assign custom_image = section.settings[image_key] %}
 
-      {% if related_product != blank
-        and related_product.id != product.id
-        and related_count < 4
-      %}
+{% if related_product == blank %}
+  {% assign fallback_index = i | minus: 1 %}
+  {% assign related_product = collections.all.products[fallback_index] %}
+{% endif %}
 
+{% if related_product != blank and related_product.id != product.id %}
         <div class="product-page-pour__related-card">
 
           <div class="product-page-pour__related-media">
@@ -704,9 +717,9 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
                 {{
                   custom_image
-                  | image_url: width: 1600
+                  | image_url: width: 1200
                   | image_tag:
-                    class: 'product-page-pour__related-image',
+                    class: 'product-page-pour__related-image product-page-pour__related-image--primary',
                     loading: 'lazy',
                     alt: related_product.title
                 }}
@@ -715,9 +728,9 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
                 {{
                   related_product.featured_image
-                  | image_url: width: 1600
+                  | image_url: width: 1200
                   | image_tag:
-                    class: 'product-page-pour__related-image',
+                    class: 'product-page-pour__related-image product-page-pour__related-image--primary',
                     loading: 'lazy',
                     alt: related_product.title
                 }}
@@ -726,15 +739,19 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
             </a>
 
+
+            <!-- QUICK ADD + -->
+
             <button
               type="button"
               class="product-page-pour__related-quick-add"
-              aria-label="Ajouter rapidement {{ related_product.title }}"
               data-quick-add
               data-product-handle="{{ related_product.handle }}"
+              aria-label="Ajouter rapidement {{ related_product.title }}"
             ></button>
 
           </div>
+
 
           <a
             href="{{ related_product.url }}"
@@ -753,19 +770,28 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
         </div>
 
-        {% assign related_count = related_count | plus: 1 %}
-
       {% endif %}
 
     {% endfor %}
 
-  </div>
+      </div>
+
+  <button
+    type="button"
+    class="product-page-pour__related-arrow product-page-pour__related-arrow--next"
+    data-related-next
+    aria-label="Produits suivants"
+  >
+    ›
+  </button>
 
 </div>
 
+</div>
 <!-- FIN VOIR AUSSI -->
 
 <style>
+
 
 /* =========================================================
    POUR — FICHE PRODUIT / GALERIE
@@ -1523,75 +1549,155 @@ width: min(680px, 100vw);
 
 }
 /* =========================================================
-   VOIR AUSSI — GRILLE PROPRE
+   VOIR AUSSI
 ========================================================= */
 
 .product-page-pour__related {
-  width: 100%;
-  margin: 0;
-  padding: 90px 0 130px;
-  border-top: 0;
-  border-bottom: 0;
-  background: #ffffff;
+  width: 100vw !important;
+  max-width: none !important;
+
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+
+  padding:
+    90px
+    56px
+    130px;
+
+  border-top: 1px solid #f0f0f0;
 }
 
 .product-page-pour__related-heading {
-  width: 100%;
-  margin: 0 0 60px;
-  padding: 0 20px;
+  display: flex;
 
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  margin-bottom: 90px;
 
   font-size: 22px;
   font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: .01em;
+
+  letter-spacing: 0.01em;
 
   text-transform: uppercase;
 }
 
-.product-page-pour__related-grid {
-  display: grid;
+
+/* =========================================================
+   CARROUSEL VOIR AUSSI
+========================================================= */
+
+.product-page-pour__related-carousel {
+  position: relative;
 
   width: 100%;
-  margin: 0;
-  padding: 0;
-
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-
-  column-gap: 0;
-  row-gap: 0;
 }
 
-.product-page-pour__related-card {
-  display: block;
+
+/* =========================================================
+   FLÈCHES
+========================================================= */
+
+.product-page-pour__related-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 40;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 0;
+
+  border: 1px solid rgba(17,17,17,.10);
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.96);
+  color: #111111;
+
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.product-page-pour__related-arrow--prev {
+  left: -23px;
+}
+
+.product-page-pour__related-arrow--next {
+  right: -23px;
+}
+
+
+/* =========================================================
+   GRILLE HORIZONTALE
+========================================================= */
+
+.product-page-pour__related-grid {
+  display: flex;
 
   width: 100%;
+  gap: 24px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  justify-content: center;
+}
+
+.product-page-pour__related-grid::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   4 PRODUITS VISIBLES
+========================================================= */
+
+.product-page-pour__related-card {
+  flex: 0 0 calc((100% - 72px) / 4);
+
+  width: calc((100% - 72px) / 4);
   min-width: 0;
-  margin: 0;
-  padding: 0;
+
+  scroll-snap-align: start;
+
+  display: block;
 
   color: #111111;
 }
+
+
+/* =========================================================
+   IMAGE
+========================================================= */
 
 .product-page-pour__related-media {
   position: relative;
 
   width: 100%;
-  margin: 0;
-  padding: 0;
 
   overflow: hidden;
 
   background: #f5f4f1;
-}
-
-.product-page-pour__related-media-link {
-  display: block;
-
-  width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 .product-page-pour__related-image {
@@ -1599,13 +1705,17 @@ width: min(680px, 100vw);
 
   width: 100%;
   height: auto;
-
-  margin: 0;
-  padding: 0;
 }
 
+.product-page-pour__related-image--primary {
+  position: relative;
+
+  z-index: 1;
+}
+
+
 /* =========================================================
-   QUICK ADD +
+   QUICK ADD
 ========================================================= */
 
 .product-page-pour__related-quick-add {
@@ -1617,7 +1727,7 @@ width: min(680px, 100vw);
   top: auto !important;
   left: auto !important;
 
-  z-index: 5;
+  z-index: 30;
 
   display: block !important;
 
@@ -1627,8 +1737,8 @@ width: min(680px, 100vw);
   min-width: 32px !important;
   min-height: 32px !important;
 
-  margin: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
 
   border: 0 !important;
   border-radius: 0 !important;
@@ -1675,27 +1785,18 @@ width: min(680px, 100vw);
   visibility: visible;
 }
 
+
 /* =========================================================
-   INFORMATIONS
+   TEXTE
 ========================================================= */
 
-.product-page-pour__related-info {
-  display: block;
-
-  margin: 0;
-  padding: 14px 0 0;
-
-  color: #111111;
-  text-decoration: none;
-}
-
 .product-page-pour__related-title {
-  margin: 0;
+  margin-top: 14px;
 
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: .01em;
+
+  letter-spacing: 0.01em;
 
   text-transform: uppercase;
 }
@@ -1705,54 +1806,211 @@ width: min(680px, 100vw);
 
   font-size: 12px;
   font-weight: 400;
-  line-height: 1.2;
 }
-
 /* =========================================================
-   MOBILE
+   VOIR AUSSI — FLÈCHES DESKTOP
 ========================================================= */
 
+.product-page-pour__related-carousel {
+  position: relative;
+}
+
+.product-page-pour__related-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #111111;
+
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  transition:
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
+}
+
+.product-page-pour__related-arrow--prev {
+  left: -21px;
+}
+
+.product-page-pour__related-arrow--next {
+  right: -21px;
+}
+
+.product-page-pour__related-arrow:hover {
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
+.product-page-pour__related-arrow:disabled {
+  opacity: 0.28;
+  cursor: default;
+  pointer-events: none;
+  box-shadow: none;
+}
+
+@media screen and (max-width: 768px) {
+  .product-page-pour__related-arrow {
+    display: none;
+  }
+}
 @media screen and (max-width: 768px) {
 
   .product-page-pour__related {
-    padding: 70px 0 90px;
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+
+    padding: 60px 0 90px !important;
   }
 
   .product-page-pour__related-heading {
-    margin-bottom: 35px;
-
+    width: 100%;
     padding: 0 16px;
 
-    font-size: 18px;
+    margin-bottom: 45px;
+
+    justify-content: flex-start;
+
+    font-size: 20px;
+  }
+
+  .product-page-pour__related-carousel {
+    width: 100vw;
+    overflow: visible;
   }
 
   .product-page-pour__related-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100vw;
+
+    display: flex;
+
+    gap: 12px;
+
+    padding: 0 12px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    justify-content: flex-start;
+
+    scroll-snap-type: x mandatory;
+    scroll-padding-left: 12px;
   }
 
-  .product-page-pour__related-info {
-    padding: 11px 10px 0 0;
+  .product-page-pour__related-card {
+    flex: 0 0 calc((100vw - 36px) / 2);
+
+    width: calc((100vw - 36px) / 2);
+
+    min-width: calc((100vw - 36px) / 2);
+
+    scroll-snap-align: start;
   }
 
   .product-page-pour__related-title {
+    margin-top: 10px;
     font-size: 10px;
   }
 
   .product-page-pour__related-price {
     margin-top: 5px;
-
     font-size: 10px;
   }
 
-  .product-page-pour__related-quick-add {
-    opacity: 1;
-    visibility: visible;
-
-    right: 7px !important;
-    bottom: 7px !important;
-  }
-
 }
+/* SUPPRESSION DE LA BARRE — VOIR AUSSI */
+
+.product-page-pour__related,
+.product-page-pour__related-heading,
+.product-page-pour__related-carousel {
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+}
+
+@media screen and (min-width: 769px) {
+  .product-page-pour__gallery {
+    margin-top: -18px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-page-pour__gallery {
+    margin-top: -12px !important;
+  }
+}
+
+/* =========================================================
+   CARROUSEL DESKTOP — FLÈCHES
+========================================================= */
+
+.product-page-pour__gallery-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 26px;
+font-weight: 200;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition: opacity .2s ease;
+}
+
+.product-page-pour__gallery-arrow:hover {
+  opacity: .55;
+}
+
+.product-page-pour__gallery-arrow--prev {
+  left: 18px;
+}
+
+.product-page-pour__gallery-arrow--next {
+  right: 18px;
+}
+
+
 /* =========================================================
    COMPTEUR + MANNEQUIN
 ========================================================= */
@@ -2400,7 +2658,159 @@ width: min(680px, 100vw);
 </style>
 
 
+<script>
+(function () {
 
+  const carousel =
+    document.querySelector(
+      '.product-page-pour__related-carousel'
+    );
+
+  if (!carousel) return;
+
+
+  const grid =
+    carousel.querySelector(
+      '[data-related-grid]'
+    );
+
+  const prev =
+    carousel.querySelector(
+      '[data-related-prev]'
+    );
+
+  const next =
+    carousel.querySelector(
+      '[data-related-next]'
+    );
+
+
+  if (!grid || !prev || !next) return;
+
+
+  const cards =
+    grid.querySelectorAll(
+      '.product-page-pour__related-card'
+    );
+
+
+  /* =========================================================
+     FLÈCHES UNIQUEMENT S'IL Y A 5 PRODUITS
+  ========================================================= */
+
+  if (cards.length === 5) {
+
+    carousel.classList.add(
+      'has-five-products'
+    );
+
+  }
+
+
+  /* =========================================================
+     ÉTAT DES FLÈCHES
+
+     Début = gauche transparente
+     Fin   = droite transparente
+  ========================================================= */
+
+  function updateArrows() {
+
+    const maxScroll =
+      grid.scrollWidth - grid.clientWidth;
+
+    const currentScroll =
+      grid.scrollLeft;
+
+
+    prev.disabled =
+      currentScroll <= 2;
+
+
+    next.disabled =
+      currentScroll >= maxScroll - 2;
+
+  }
+
+
+  /* =========================================================
+     FLÈCHE DROITE
+  ========================================================= */
+
+  next.addEventListener(
+    'click',
+    function () {
+
+      const card =
+        grid.querySelector(
+          '.product-page-pour__related-card'
+        );
+
+      if (!card) return;
+
+
+      grid.scrollBy({
+        left:
+          card.getBoundingClientRect().width + 28,
+
+        behavior: 'smooth'
+      });
+
+    }
+  );
+
+
+  /* =========================================================
+     FLÈCHE GAUCHE
+  ========================================================= */
+
+  prev.addEventListener(
+    'click',
+    function () {
+
+      const card =
+        grid.querySelector(
+          '.product-page-pour__related-card'
+        );
+
+      if (!card) return;
+
+
+      grid.scrollBy({
+        left:
+          -(card.getBoundingClientRect().width + 28),
+
+        behavior: 'smooth'
+      });
+
+    }
+  );
+
+
+  /* =========================================================
+     MISE À JOUR AUTOMATIQUE DES FLÈCHES
+  ========================================================= */
+
+  grid.addEventListener(
+    'scroll',
+    updateArrows,
+    { passive: true }
+  );
+
+
+  window.addEventListener(
+    'resize',
+    updateArrows
+  );
+
+
+/* État initial */
+grid.scrollLeft = 0;
+updateArrows();
+
+
+})();
+</script>
 <script>
 (function () {
 
