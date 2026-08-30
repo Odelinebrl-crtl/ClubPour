@@ -1,75 +1,79 @@
 <section class="product-page-pour" data-product-page>
 
- <div class="product-page-pour__breadcrumb">
-
-  <a
-    href="/pages/boutique?view=vetements"
-    class="product-page-pour__breadcrumb-link"
-  >
-    BOUTIQUE
-  </a>
-
-  <span class="product-page-pour__breadcrumb-separator">
-    /
-  </span>
-
-  <a
-    href="/pages/collection-001?view=collection-001"
-    class="product-page-pour__breadcrumb-link"
-  >
-    COLLECTION 001
-  </a>
-
-  <span class="product-page-pour__breadcrumb-separator">
-    /
-  </span>
-
-  <span class="product-page-pour__breadcrumb-current">
-    {{ product.title }}
-  </span>
-
-</div>
-
 
   <div class="product-page-pour__top">
 
-    <!-- GALERIE -->
+    <!-- GALERIE PRODUIT -->
     <div class="product-page-pour__gallery">
 
       {% if product.images.size > 0 %}
 
-        <div class="product-page-pour__main-media">
-          <img
-            src="{{ product.featured_image | image_url: width: 1800 }}"
-            alt="{{ product.featured_image.alt | escape }}"
-            class="product-page-pour__main-image"
-            data-main-product-image
-            width="{{ product.featured_image.width }}"
-            height="{{ product.featured_image.height }}"
-          >
+        <!-- DESKTOP : GRANDE IMAGE + MINIATURES SUPERPOSÉES -->
+        <div class="product-page-pour__desktop-gallery">
+
+          <div class="product-page-pour__main-media">
+            <img
+              src="{{ product.featured_image | image_url: width: 2400 }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              class="product-page-pour__main-image"
+              data-main-product-image
+              width="{{ product.featured_image.width }}"
+              height="{{ product.featured_image.height }}"
+            >
+          </div>
+
+          {% if product.images.size > 1 %}
+            <div class="product-page-pour__thumbs" aria-label="Galerie produit">
+
+              {% for image in product.images %}
+                <button
+                  type="button"
+                  class="product-page-pour__thumb{% if forloop.first %} is-active{% endif %}"
+                  data-product-thumb
+                  data-image="{{ image | image_url: width: 2400 }}"
+                  aria-label="Voir l'image {{ forloop.index }}"
+                >
+                  <img
+                    src="{{ image | image_url: width: 500 }}"
+                    alt="{{ image.alt | escape }}"
+                    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                  >
+                </button>
+              {% endfor %}
+
+            </div>
+          {% endif %}
+
+        </div>
+
+        <!-- MOBILE : CARROUSEL PLEINE LARGEUR -->
+        <div class="product-page-pour__mobile-gallery" data-mobile-product-gallery>
+
+          {% for image in product.images %}
+            <div
+              class="product-page-pour__mobile-slide"
+              data-mobile-product-slide
+              data-image-index="{{ forloop.index0 }}"
+            >
+              <img
+                src="{{ image | image_url: width: 1800 }}"
+                alt="{{ image.alt | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              >
+            </div>
+          {% endfor %}
+
         </div>
 
         {% if product.images.size > 1 %}
-          <div class="product-page-pour__thumbs">
-
-            {% for image in product.images %}
-              <button
-                type="button"
-                class="product-page-pour__thumb{% if forloop.first %} is-active{% endif %}"
-                data-product-thumb
-                data-image="{{ image | image_url: width: 1800 }}"
-                aria-label="Voir l'image {{ forloop.index }}"
-              >
-                <img
-                  src="{{ image | image_url: width: 400 }}"
-                  alt="{{ image.alt | escape }}"
-                  loading="lazy"
-                  width="{{ image.width }}"
-                  height="{{ image.height }}"
-                >
-              </button>
-            {% endfor %}
-
+          <div class="product-page-pour__mobile-counter" aria-hidden="true">
+            <span data-mobile-gallery-current>1</span>
+            <span>/</span>
+            <span>{{ product.images.size }}</span>
           </div>
         {% endif %}
 
@@ -550,6 +554,379 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 <!-- FIN VOIR AUSSI -->
 
 <style>
+
+/* =========================================================
+   POUR — FICHE PRODUIT / GALERIE
+   Inspiration : présentation REPRESENT
+========================================================= */
+
+.product-page-pour {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: #111111;
+  background: #ffffff;
+}
+
+.product-page-pour *,
+.product-page-pour *::before,
+.product-page-pour *::after {
+  box-sizing: border-box;
+}
+
+/* FIL D'ARIANE SUPPRIMÉ */
+.product-page-pour__breadcrumb {
+  display: none !important;
+}
+
+/* =========================================================
+   DESKTOP — GALERIE + INFOS
+========================================================= */
+
+.product-page-pour__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
+  gap: clamp(32px, 4vw, 76px);
+  align-items: start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.product-page-pour__gallery {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.product-page-pour__desktop-gallery {
+  position: relative;
+  width: 100%;
+}
+
+.product-page-pour__main-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #f5f5f3;
+}
+
+.product-page-pour__main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =========================================================
+   MINIATURES DESKTOP — SUPERPOSÉES À GAUCHE
+========================================================= */
+
+.product-page-pour__thumbs {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 8px;
+  width: 74px;
+  max-height: calc(100% - 44px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__thumb {
+  flex: 0 0 auto;
+
+  width: 62px;
+  height: 78px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: rgba(255, 255, 255, .18);
+
+  opacity: .52;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    background .25s ease;
+}
+
+.product-page-pour__thumb img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-page-pour__thumb:hover {
+  opacity: .9;
+  transform: translateX(2px);
+}
+
+.product-page-pour__thumb.is-active {
+  opacity: 1;
+  background: rgba(255, 255, 255, .92);
+}
+
+/* =========================================================
+   MOBILE — GALERIE PLEINE LARGEUR / SWIPE
+========================================================= */
+
+.product-page-pour__mobile-gallery {
+  display: none;
+}
+
+.product-page-pour__mobile-counter {
+  display: none;
+}
+
+/* =========================================================
+   INFOS PRODUIT — DESKTOP
+========================================================= */
+
+.product-page-pour__info {
+  width: 100%;
+  min-width: 0;
+}
+
+.product-page-pour__info-inner {
+  width: 100%;
+  max-width: 430px;
+  padding-top: clamp(20px, 4vw, 70px);
+  padding-right: clamp(16px, 2vw, 30px);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__top {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-page-pour__gallery {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* On supprime entièrement la galerie desktop sur mobile */
+  .product-page-pour__desktop-gallery {
+    display: none;
+  }
+
+  /* Carrousel horizontal plein écran */
+  .product-page-pour__mobile-gallery {
+    display: flex;
+
+    width: 100vw;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .product-page-pour__mobile-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-page-pour__mobile-slide {
+    flex: 0 0 100vw;
+
+    width: 100vw;
+    aspect-ratio: 4 / 5;
+
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    overflow: hidden;
+
+    background: #f5f5f3;
+  }
+
+  .product-page-pour__mobile-slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .product-page-pour__mobile-counter {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    z-index: 10;
+
+    padding: 7px 10px;
+
+    background: rgba(255, 255, 255, .82);
+
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .08em;
+
+    pointer-events: none;
+  }
+
+  /* Informations sous la galerie */
+  .product-page-pour__info {
+    width: 100%;
+  }
+
+  .product-page-pour__info-inner {
+    width: 100%;
+    max-width: none;
+
+    padding:
+      34px
+      16px
+      0;
+  }
+
+  /* =====================================================
+     TEXTES MOBILE — MODIFIÉS UNIQUEMENT ICI
+  ===================================================== */
+
+  .product-page-pour__title {
+    margin-bottom: 16px;
+
+    font-size: 23px !important;
+    line-height: 1.05;
+    letter-spacing: -.025em;
+  }
+
+  .product-page-pour__subtitle {
+    margin-bottom: 20px;
+
+    max-width: 100%;
+
+    font-size: 11px !important;
+    line-height: 1.35;
+  }
+
+  .product-page-pour__price {
+    margin-bottom: 30px;
+
+    font-size: 20px !important;
+    line-height: 1;
+  }
+
+  .product-page-pour__option {
+    margin-bottom: 26px;
+  }
+
+  .product-page-pour__option-label {
+    margin-bottom: 10px;
+
+    font-size: 10px !important;
+    letter-spacing: .08em;
+  }
+
+  .product-page-pour__option-value span {
+    min-width: 46px;
+    height: 38px;
+
+    padding: 0 13px;
+
+    font-size: 10px !important;
+  }
+
+  .product-page-pour__description {
+    max-width: 100%;
+
+    margin-top: 42px;
+
+    font-size: 12px !important;
+    line-height: 1.45;
+  }
+
+  .product-page-pour__details {
+    width: 100%;
+    max-width: none;
+
+    margin-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .product-page-pour__details-title {
+    font-size: 26px !important;
+    line-height: 1.05;
+  }
+
+  .product-page-pour__tab {
+    font-size: 11px !important;
+  }
+
+  .product-page-pour__tab-content {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+
+}
+
+/* Petits mobiles */
+@media screen and (max-width: 390px) {
+
+  .product-page-pour__info-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .product-page-pour__title {
+    font-size: 22px !important;
+  }
+
+  .product-page-pour__price {
+    font-size: 19px !important;
+  }
+
+}
+
 /* =========================================================
    GUIDE DES TAILLES
 ========================================================= */
@@ -1563,6 +1940,29 @@ if (addButton && productForm) {
 
   updateVariant();
 
+})();
+</script>
+
+
+<script>
+(function () {
+  const gallery = document.querySelector('[data-mobile-product-gallery]');
+  const current = document.querySelector('[data-mobile-gallery-current]');
+
+  if (!gallery || !current) return;
+
+  const slides = gallery.querySelectorAll('[data-mobile-product-slide]');
+
+  function updateCounter() {
+    if (!slides.length) return;
+
+    const index = Math.round(gallery.scrollLeft / gallery.clientWidth);
+    current.textContent = String(Math.min(index + 1, slides.length));
+  }
+
+  gallery.addEventListener('scroll', updateCounter, { passive: true });
+  window.addEventListener('resize', updateCounter);
+  updateCounter();
 })();
 </script>
 
