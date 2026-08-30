@@ -675,21 +675,13 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 <div class="product-page-pour__related-carousel">
 
-  <button
-    type="button"
-    class="product-page-pour__related-arrow product-page-pour__related-arrow--prev"
-    data-related-prev
-    aria-label="Produits précédents"
-  >
-    ‹
-  </button>
 
   <div
     class="product-page-pour__related-grid"
     data-related-grid
   >
 
-    {% for i in (1..5) %}
+    {% for i in (1..4) %}
 
       {% assign product_key = 'related_product_' | append: i %}
       {% assign image_key = 'related_image_' | append: i %}
@@ -775,15 +767,6 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
     {% endfor %}
 
       </div>
-
-  <button
-    type="button"
-    class="product-page-pour__related-arrow product-page-pour__related-arrow--next"
-    data-related-next
-    aria-label="Produits suivants"
-  >
-    ›
-  </button>
 
 </div>
 
@@ -1597,70 +1580,21 @@ width: min(680px, 100vw);
 }
 
 
-/* =========================================================
-   FLÈCHES
-========================================================= */
-
-.product-page-pour__related-arrow {
-  position: absolute;
-
-  top: 50%;
-  z-index: 40;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  width: 46px;
-  height: 46px;
-
-  padding: 0;
-
-  border: 1px solid rgba(17,17,17,.10);
-  border-radius: 50%;
-
-  background: rgba(255,255,255,.96);
-  color: #111111;
-
-  font-size: 22px;
-  font-weight: 300;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transform: translateY(-50%);
-}
-
-.product-page-pour__related-arrow--prev {
-  left: -23px;
-}
-
-.product-page-pour__related-arrow--next {
-  right: -23px;
-}
-
 
 /* =========================================================
-   GRILLE HORIZONTALE
+   GRILLE — 4 PRODUITS
 ========================================================= */
 
 .product-page-pour__related-grid {
-  display: flex;
+  display: grid;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 
   width: 100%;
-  gap: 24px;
 
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-
-  justify-content: flex-start;
+  gap: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .product-page-pour__related-grid::-webkit-scrollbar {
@@ -1669,22 +1603,20 @@ width: min(680px, 100vw);
 
 
 /* =========================================================
-   4 PRODUITS VISIBLES
+   CARTE PRODUIT
 ========================================================= */
 
 .product-page-pour__related-card {
-  flex: 0 0 calc((100% - 72px) / 4);
-
-  width: calc((100% - 72px) / 4);
+  width: 100%;
   min-width: 0;
 
-  scroll-snap-align: start;
+  margin: 0;
+  padding: 0;
 
   display: block;
 
   color: #111111;
 }
-
 
 /* =========================================================
    IMAGE
@@ -1807,75 +1739,7 @@ width: min(680px, 100vw);
   font-size: 12px;
   font-weight: 400;
 }
-/* =========================================================
-   VOIR AUSSI — FLÈCHES DESKTOP
-========================================================= */
 
-.product-page-pour__related-carousel {
-  position: relative;
-}
-
-.product-page-pour__related-arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 40;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 44px;
-  height: 44px;
-
-  padding: 0;
-
-  border: 1px solid rgba(17, 17, 17, 0.10);
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.96);
-  color: #111111;
-
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transform: translateY(-50%);
-
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-
-  transition:
-    background .25s ease,
-    box-shadow .25s ease,
-    opacity .25s ease;
-}
-
-.product-page-pour__related-arrow--prev {
-  left: -21px;
-}
-
-.product-page-pour__related-arrow--next {
-  right: -21px;
-}
-
-.product-page-pour__related-arrow:hover {
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-}
-
-.product-page-pour__related-arrow:disabled {
-  opacity: 0.28;
-  cursor: default;
-  pointer-events: none;
-  box-shadow: none;
-}
-
-@media screen and (max-width: 768px) {
-  .product-page-pour__related-arrow {
-    display: none;
-  }
-}
 @media screen and (max-width: 768px) {
 
   .product-page-pour__related {
@@ -1903,32 +1767,26 @@ width: min(680px, 100vw);
   }
 
   .product-page-pour__related-grid {
-    width: 100vw;
+  width: 100vw;
 
-    display: flex;
+  display: grid;
 
-    gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-    padding: 0 12px;
+  gap: 0;
 
-    overflow-x: auto;
-    overflow-y: hidden;
+  padding: 0;
 
-    justify-content: flex-start;
+  margin: 0;
+}
 
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 12px;
-  }
+.product-page-pour__related-card {
+  width: 100%;
+  min-width: 0;
 
-  .product-page-pour__related-card {
-    flex: 0 0 calc((100vw - 36px) / 2);
-
-    width: calc((100vw - 36px) / 2);
-
-    min-width: calc((100vw - 36px) / 2);
-
-    scroll-snap-align: start;
-  }
+  margin: 0;
+  padding: 0;
+}
 
   .product-page-pour__related-title {
     margin-top: 10px;
@@ -2658,159 +2516,7 @@ font-weight: 200;
 </style>
 
 
-<script>
-(function () {
 
-  const carousel =
-    document.querySelector(
-      '.product-page-pour__related-carousel'
-    );
-
-  if (!carousel) return;
-
-
-  const grid =
-    carousel.querySelector(
-      '[data-related-grid]'
-    );
-
-  const prev =
-    carousel.querySelector(
-      '[data-related-prev]'
-    );
-
-  const next =
-    carousel.querySelector(
-      '[data-related-next]'
-    );
-
-
-  if (!grid || !prev || !next) return;
-
-
-  const cards =
-    grid.querySelectorAll(
-      '.product-page-pour__related-card'
-    );
-
-
-  /* =========================================================
-     FLÈCHES UNIQUEMENT S'IL Y A 5 PRODUITS
-  ========================================================= */
-
-  if (cards.length === 5) {
-
-    carousel.classList.add(
-      'has-five-products'
-    );
-
-  }
-
-
-  /* =========================================================
-     ÉTAT DES FLÈCHES
-
-     Début = gauche transparente
-     Fin   = droite transparente
-  ========================================================= */
-
-  function updateArrows() {
-
-    const maxScroll =
-      grid.scrollWidth - grid.clientWidth;
-
-    const currentScroll =
-      grid.scrollLeft;
-
-
-    prev.disabled =
-      currentScroll <= 2;
-
-
-    next.disabled =
-      currentScroll >= maxScroll - 2;
-
-  }
-
-
-  /* =========================================================
-     FLÈCHE DROITE
-  ========================================================= */
-
-  next.addEventListener(
-    'click',
-    function () {
-
-      const card =
-        grid.querySelector(
-          '.product-page-pour__related-card'
-        );
-
-      if (!card) return;
-
-
-      grid.scrollBy({
-        left:
-          card.getBoundingClientRect().width + 28,
-
-        behavior: 'smooth'
-      });
-
-    }
-  );
-
-
-  /* =========================================================
-     FLÈCHE GAUCHE
-  ========================================================= */
-
-  prev.addEventListener(
-    'click',
-    function () {
-
-      const card =
-        grid.querySelector(
-          '.product-page-pour__related-card'
-        );
-
-      if (!card) return;
-
-
-      grid.scrollBy({
-        left:
-          -(card.getBoundingClientRect().width + 28),
-
-        behavior: 'smooth'
-      });
-
-    }
-  );
-
-
-  /* =========================================================
-     MISE À JOUR AUTOMATIQUE DES FLÈCHES
-  ========================================================= */
-
-  grid.addEventListener(
-    'scroll',
-    updateArrows,
-    { passive: true }
-  );
-
-
-  window.addEventListener(
-    'resize',
-    updateArrows
-  );
-
-
-/* État initial */
-grid.scrollLeft = 0;
-updateArrows();
-
-
-})();
-</script>
 <script>
 (function () {
 
