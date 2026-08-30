@@ -1825,10 +1825,9 @@ if (submittedForm) {
 
 
     const success =
-      form.querySelector(
-        '[data-club-success]'
-      );
-
+  document.querySelector(
+    `[data-club-success="${submittedForm}"]`
+  );
 
     const error =
       form.querySelector(
