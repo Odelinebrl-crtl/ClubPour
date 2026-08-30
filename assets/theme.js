@@ -1718,29 +1718,39 @@ if (quickViewForm) {
 })();
 /* =========================================================
    POUR — NEWSLETTER / CAPTCHA
-   SCROLL AUTOMATIQUE VERS LE CAPTCHA
+   GESTION DU SCROLL CAPTCHA
 ========================================================= */
 
 (function () {
 
-  const STORAGE_KEY = 'pour_newsletter_captcha_scroll';
+  const STORAGE_KEY = 'pour_newsletter_scroll_position';
 
-  /*
-   * On identifie uniquement les formulaires newsletter
-   * contenant un champ e-mail Shopify.
-   */
+  let captchaActive = false;
+  let captchaScrollLock = null;
+
+
+  /* =========================================================
+     IDENTIFICATION DU FORMULAIRE NEWSLETTER
+  ========================================================= */
+
   function isNewsletterForm(form) {
+
     if (!form) return false;
 
     return !!form.querySelector(
-      'input[name="contact[email]"], input[type="email"]'
+      'input[type="email"], input[name="contact[email]"]'
     );
+
   }
 
-  /*
-   * Quand le client valide le formulaire,
-   * on mémorise sa position actuelle.
-   */
+
+  /* =========================================================
+     1. CLIC / SUBMIT DU FORMULAIRE
+     
+     On mémorise simplement la position.
+     On NE touche PAS au scroll à ce moment-là.
+  ========================================================= */
+
   document.addEventListener(
     'submit',
     function (event) {
@@ -1753,7 +1763,7 @@ if (quickViewForm) {
         STORAGE_KEY,
         JSON.stringify({
           scrollY: window.scrollY,
-          time: Date.now()
+          timestamp: Date.now()
         })
       );
 
@@ -1762,58 +1772,102 @@ if (quickViewForm) {
   );
 
 
-  /*
-   * Détection de l'apparition du CAPTCHA Shopify.
-   */
-  const captchaObserver = new MutationObserver(function () {
+  /* =========================================================
+     2. DÉTECTION DU CAPTCHA
+     
+     Shopify peut modifier le DOM après le submit.
+     Dès que le CAPTCHA apparaît :
+     → on remonte tout en haut
+     → on empêche Shopify de nous faire redescendre
+  ========================================================= */
+
+  function detectCaptcha() {
 
     const captcha =
       document.querySelector(
-        'iframe[src*="hcaptcha"], .h-captcha, [data-hcaptcha-widget-id]'
+        'iframe[src*="hcaptcha"], iframe[src*="captcha"], .h-captcha, [data-hcaptcha-widget-id]'
       );
 
     if (!captcha) return;
 
-    const saved =
-      sessionStorage.getItem(STORAGE_KEY);
+    if (captchaActive) return;
 
-    if (!saved) return;
-
-    /*
-     * Évite de déclencher le scroll plusieurs fois
-     * pendant que Shopify charge le CAPTCHA.
-     */
-    if (document.documentElement.dataset.pourCaptchaSeen === 'true') {
-      return;
-    }
-
-    document.documentElement.dataset.pourCaptchaSeen = 'true';
+    captchaActive = true;
 
     /*
-     * On remonte tout en haut pour que le client
-     * voie immédiatement le CAPTCHA.
+     * On remonte immédiatement.
      */
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
+    window.scrollTo(0, 0);
+
+
+    /*
+     * Shopify peut essayer de refaire défiler
+     * la page juste après l'apparition du CAPTCHA.
+     *
+     * On verrouille donc temporairement la position
+     * tout en haut.
+     */
+    let startTime = Date.now();
+
+    captchaScrollLock =
+      window.setInterval(function () {
+
+        window.scrollTo(0, 0);
+
+        /*
+         * Verrouillage pendant 3 secondes.
+         * Cela laisse largement le temps au CAPTCHA
+         * de s'afficher correctement.
+         */
+        if (Date.now() - startTime > 3000) {
+
+          window.clearInterval(
+            captchaScrollLock
+          );
+
+          captchaScrollLock = null;
+
+        }
+
+      }, 50);
+
+  }
+
+
+  /* =========================================================
+     OBSERVATION DU DOM
+  ========================================================= */
+
+  const observer =
+    new MutationObserver(function () {
+
+      detectCaptcha();
+
     });
 
-  });
+
+  if (document.body) {
+
+    observer.observe(
+      document.body,
+      {
+        childList: true,
+        subtree: true
+      }
+    );
+
+  }
 
 
-  captchaObserver.observe(
-    document.body,
-    {
-      childList: true,
-      subtree: true
-    }
-  );
+  /* =========================================================
+     3. RESTAURATION APRÈS RETOUR SUR LA HOMEPAGE
+     
+     Shopify peut continuer à modifier le scroll
+     pendant plusieurs centaines de millisecondes.
+     
+     On attend donc que la page soit réellement chargée.
+  ========================================================= */
 
-
-  /*
-   * Après le retour sur la page,
-   * on restaure la position du formulaire.
-   */
   function restoreNewsletterPosition() {
 
     const saved =
@@ -1821,65 +1875,118 @@ if (quickViewForm) {
 
     if (!saved) return;
 
+
     let data;
 
     try {
+
       data = JSON.parse(saved);
+
     } catch (error) {
+
       sessionStorage.removeItem(STORAGE_KEY);
+
       return;
+
     }
 
+
     /*
-     * On évite de restaurer une ancienne session
-     * datant de plus de 10 minutes.
+     * Si la sauvegarde date de plus de 10 minutes,
+     * on considère qu'elle n'est plus pertinente.
      */
     if (
-      !data.time ||
-      Date.now() - data.time > 10 * 60 * 1000
+      !data.timestamp ||
+      Date.now() - data.timestamp > 10 * 60 * 1000
     ) {
+
       sessionStorage.removeItem(STORAGE_KEY);
+
       return;
+
     }
 
+
+    const targetScroll =
+      Number(data.scrollY) || 0;
+
+
     /*
-     * On attend que Shopify ait terminé de construire
-     * la page avant de revenir à la position précédente.
+     * On attend que Shopify ait fini ses propres
+     * manipulations de navigation / scroll.
      */
-    window.setTimeout(function () {
+    const restore =
+      function () {
 
-      window.scrollTo({
-        top: data.scrollY,
-        behavior: 'smooth'
-      });
+        window.scrollTo({
+          top: targetScroll,
+          left: 0,
+          behavior: 'instant'
+        });
 
-      sessionStorage.removeItem(STORAGE_KEY);
+      };
 
-    }, 500);
+
+    /*
+     * Plusieurs passages volontairement.
+     *
+     * Shopify peut remettre le scroll à 0
+     * après notre premier scroll.
+     */
+    window.setTimeout(restore, 100);
+    window.setTimeout(restore, 400);
+    window.setTimeout(restore, 800);
+    window.setTimeout(restore, 1200);
+    window.setTimeout(restore, 1800);
+
+
+    /*
+     * On supprime ensuite la sauvegarde.
+     */
+    window.setTimeout(
+      function () {
+
+        sessionStorage.removeItem(
+          STORAGE_KEY
+        );
+
+      },
+      2000
+    );
 
   }
 
 
-  /*
-   * Cas d'un retour/navigation classique.
-   */
+  /* =========================================================
+     RETOUR APRÈS NAVIGATION
+  ========================================================= */
+
   window.addEventListener(
     'pageshow',
-    restoreNewsletterPosition
+    function () {
+
+      restoreNewsletterPosition();
+
+    }
   );
 
 
   /*
-   * Cas où la page est déjà chargée au moment
-   * où le script est exécuté.
+   * DOM déjà chargé
    */
-  if (document.readyState !== 'loading') {
+  if (
+    document.readyState !== 'loading'
+  ) {
+
     restoreNewsletterPosition();
+
   } else {
+
     document.addEventListener(
       'DOMContentLoaded',
       restoreNewsletterPosition
     );
+
   }
 
 })();
