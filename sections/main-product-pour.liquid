@@ -663,7 +663,100 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   </div>
 
 </div>
+<!-- =====================================================
+     STYLE AVEC — 4 PRODUITS
+===================================================== -->
 
+<div class="product-page-pour__style-with">
+
+  <div class="product-page-pour__style-with-heading">
+    STYLE AVEC
+  </div>
+
+  <div class="product-page-pour__style-with-grid">
+
+    {% for i in (1..4) %}
+
+      {% assign product_key = 'style_with_product_' | append: i %}
+      {% assign image_key = 'style_with_image_' | append: i %}
+
+      {% assign style_product = section.settings[product_key] %}
+      {% assign style_image = section.settings[image_key] %}
+
+      {% if style_product != blank %}
+
+        <article class="product-page-pour__style-with-card">
+
+          <div class="product-page-pour__style-with-media">
+
+            <a
+              href="{{ style_product.url }}"
+              class="product-page-pour__style-with-media-link"
+              aria-label="{{ style_product.title }}"
+            >
+
+              {% if style_image != blank %}
+
+                {{
+                  style_image
+                  | image_url: width: 1800
+                  | image_tag:
+                    class: 'product-page-pour__style-with-image',
+                    loading: 'lazy',
+                    alt: style_product.title
+                }}
+
+              {% elsif style_product.featured_image != blank %}
+
+                {{
+                  style_product.featured_image
+                  | image_url: width: 1800
+                  | image_tag:
+                    class: 'product-page-pour__style-with-image',
+                    loading: 'lazy',
+                    alt: style_product.title
+                }}
+
+              {% endif %}
+
+            </a>
+
+            <!-- QUICK ADD + -->
+
+            <button
+              type="button"
+              class="product-page-pour__style-with-quick-add"
+              data-quick-add
+              data-product-handle="{{ style_product.handle }}"
+              aria-label="Ajouter rapidement {{ style_product.title }}"
+            ></button>
+
+          </div>
+
+          <a
+            href="{{ style_product.url }}"
+            class="product-page-pour__style-with-info"
+          >
+
+            <div class="product-page-pour__style-with-title">
+              {{ style_product.title }}
+            </div>
+
+            <div class="product-page-pour__style-with-price">
+              {{ style_product.price | money }}
+            </div>
+
+          </a>
+
+        </article>
+
+      {% endif %}
+
+    {% endfor %}
+
+  </div>
+
+</div>
 <style>
 
 
@@ -3349,7 +3442,73 @@ if (addButton && productForm) {
   "label": "Expédition & retours",
   "default": "Retrouvez ici toutes les informations concernant l’expédition et les retours."
 },
+{
+  "type": "header",
+  "content": "Style avec — Produit 01"
+},
 
+{
+  "type": "product",
+  "id": "style_with_product_1",
+  "label": "Produit 01"
+},
+
+{
+  "type": "image_picker",
+  "id": "style_with_image_1",
+  "label": "Image personnalisée 01"
+},
+
+{
+  "type": "header",
+  "content": "Style avec — Produit 02"
+},
+
+{
+  "type": "product",
+  "id": "style_with_product_2",
+  "label": "Produit 02"
+},
+
+{
+  "type": "image_picker",
+  "id": "style_with_image_2",
+  "label": "Image personnalisée 02"
+},
+
+{
+  "type": "header",
+  "content": "Style avec — Produit 03"
+},
+
+{
+  "type": "product",
+  "id": "style_with_product_3",
+  "label": "Produit 03"
+},
+
+{
+  "type": "image_picker",
+  "id": "style_with_image_3",
+  "label": "Image personnalisée 03"
+},
+
+{
+  "type": "header",
+  "content": "Style avec — Produit 04"
+},
+
+{
+  "type": "product",
+  "id": "style_with_product_4",
+  "label": "Produit 04"
+},
+
+{
+  "type": "image_picker",
+  "id": "style_with_image_4",
+  "label": "Image personnalisée 04"
+}
   ]
 }
 {% endschema %}
