@@ -1979,6 +1979,7 @@ if (addButton && productForm) {
 
 <script>
 (function () {
+
   const gallery = document.querySelector('[data-mobile-product-gallery]');
   const current = document.querySelector('[data-mobile-gallery-current]');
 
@@ -1987,13 +1988,16 @@ if (addButton && productForm) {
   const slides = gallery.querySelectorAll('[data-mobile-product-slide]');
   if (!slides.length) return;
 
-  let wrapTimer = null;
-  let isWrapping = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let isJumping = false;
 
   function getIndex() {
     if (!gallery.clientWidth) return 0;
 
-    return Math.round(gallery.scrollLeft / gallery.clientWidth);
+    return Math.round(
+      gallery.scrollLeft / gallery.clientWidth
+    );
   }
 
   function updateCounter() {
@@ -2002,45 +2006,140 @@ if (addButton && productForm) {
     const index = getIndex();
 
     current.textContent = String(
-      Math.min(Math.max(index + 1, 1), slides.length)
+      Math.min(
+        Math.max(index + 1, 1),
+        slides.length
+      )
     );
   }
 
-  gallery.addEventListener('scroll', function () {
-    updateCounter();
+  /*
+   * TOUCH START
+   */
+  gallery.addEventListener(
+    'touchstart',
+    function (event) {
 
-    if (isWrapping) return;
+      if (!event.touches.length) return;
 
-    clearTimeout(wrapTimer);
+      startX = event.touches[0].clientX;
+      startScrollLeft = gallery.scrollLeft;
 
-    wrapTimer = setTimeout(function () {
-      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+    },
+    { passive: true }
+  );
 
-      if (maxScroll <= 0 || slides.length <= 1) return;
 
-      const atEnd = gallery.scrollLeft >= maxScroll - 8;
+  /*
+   * TOUCH END
+   *
+   * On détecte si l'utilisateur essaye
+   * de dépasser le début ou la fin.
+   */
+  gallery.addEventListener(
+    'touchend',
+    function (event) {
+
+      if (isJumping || !event.changedTouches.length) return;
+
+      const endX =
+        event.changedTouches[0].clientX;
+
+      const deltaX = endX - startX;
+
+      const maxScroll =
+        gallery.scrollWidth - gallery.clientWidth;
+
+      const threshold = 40;
+
 
       /*
-         Dernière image : si l'utilisateur continue à glisser
-         vers la gauche, on revient proprement à la première.
-      */
-      if (atEnd) {
-        isWrapping = true;
+       * SWIPE VERS LA GAUCHE
+       *
+       * 1 → 2
+       * 2 → 1
+       */
+      if (deltaX < -threshold) {
 
-        gallery.scrollTo({
-          left: 0,
-          behavior: 'smooth'
-        });
+        if (
+          startScrollLeft >=
+          maxScroll - 5
+        ) {
 
-        setTimeout(function () {
-          isWrapping = false;
+          isJumping = true;
+
+          gallery.scrollTo({
+            left: 0,
+            behavior: 'auto'
+          });
+
           updateCounter();
-        }, 350);
-      }
-    }, 120);
-  }, { passive: true });
 
-  window.addEventListener('resize', updateCounter);
+          requestAnimationFrame(function () {
+            isJumping = false;
+          });
+
+          return;
+        }
+      }
+
+
+      /*
+       * SWIPE VERS LA DROITE
+       *
+       * 2 → 1
+       * 1 → 2
+       */
+      if (deltaX > threshold) {
+
+        if (startScrollLeft <= 5) {
+
+          isJumping = true;
+
+          gallery.scrollTo({
+            left: maxScroll,
+            behavior: 'auto'
+          });
+
+          updateCounter();
+
+          requestAnimationFrame(function () {
+            isJumping = false;
+          });
+
+          return;
+        }
+      }
+
+      updateCounter();
+
+    },
+    { passive: true }
+  );
+
+
+  /*
+   * MISE À JOUR DU NUMÉRO
+   */
+  gallery.addEventListener(
+    'scroll',
+    function () {
+
+      if (isJumping) return;
+
+      updateCounter();
+
+    },
+    { passive: true }
+  );
+
+
+  window.addEventListener(
+    'resize',
+    updateCounter
+  );
+
+
   updateCounter();
 
 })();
