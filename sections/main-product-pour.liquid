@@ -586,8 +586,8 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 390px);
-  gap: clamp(28px, 3vw, 52px);
+  grid-template-columns: 50% 50%;
+  gap: 0;
   align-items: start;
   width: 100%;
   margin: 0;
@@ -610,7 +610,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   width: 100% !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
   background: #f5f5f3;
 }
@@ -720,10 +720,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__info-inner {
   width: 100%;
-  max-width: 390px;
-  padding-top: clamp(20px, 3vw, 55px);
-  padding-left: 0;
-  padding-right: 0;
+  max-width: 500px;
+  padding-top: clamp(32px, 4vw, 58px);
+  padding-left: clamp(36px, 5vw, 76px);
+  padding-right: clamp(24px, 4vw, 64px);
 }
 
 /* =========================================================
@@ -1964,13 +1964,12 @@ if (addButton && productForm) {
   if (!slides.length) return;
 
   let wrapTimer = null;
+  let isWrapping = false;
 
   function getIndex() {
     if (!gallery.clientWidth) return 0;
 
-    return Math.round(
-      gallery.scrollLeft / gallery.clientWidth
-    );
+    return Math.round(gallery.scrollLeft / gallery.clientWidth);
   }
 
   function updateCounter() {
@@ -1979,80 +1978,45 @@ if (addButton && productForm) {
     const index = getIndex();
 
     current.textContent = String(
-      Math.min(
-        Math.max(index + 1, 1),
-        slides.length
-      )
+      Math.min(Math.max(index + 1, 1), slides.length)
     );
   }
 
-  function wrapToStart() {
-    gallery.scrollTo({
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
+  gallery.addEventListener('scroll', function () {
+    updateCounter();
 
-  function wrapToEnd() {
-    gallery.scrollTo({
-      left: gallery.scrollWidth - gallery.clientWidth,
-      behavior: 'smooth'
-    });
-  }
+    if (isWrapping) return;
 
-  gallery.addEventListener(
-    'scroll',
-    function () {
+    clearTimeout(wrapTimer);
 
-      updateCounter();
+    wrapTimer = setTimeout(function () {
+      const maxScroll = gallery.scrollWidth - gallery.clientWidth;
 
-      clearTimeout(wrapTimer);
+      if (maxScroll <= 0 || slides.length <= 1) return;
 
-      wrapTimer = setTimeout(
-        function () {
+      const atEnd = gallery.scrollLeft >= maxScroll - 8;
 
-          const maxScroll =
-            gallery.scrollWidth - gallery.clientWidth;
+      /*
+         Dernière image : si l'utilisateur continue à glisser
+         vers la gauche, on revient proprement à la première.
+      */
+      if (atEnd) {
+        isWrapping = true;
 
-          if (maxScroll <= 0) return;
+        gallery.scrollTo({
+          left: 0,
+          behavior: 'smooth'
+        });
 
-          const atEnd =
-            gallery.scrollLeft >= maxScroll - 8;
+        setTimeout(function () {
+          isWrapping = false;
+          updateCounter();
+        }, 350);
+      }
+    }, 120);
+  }, { passive: true });
 
-          const atStart =
-            gallery.scrollLeft <= 8;
-
-          /*
-             Dernière image → retour automatique
-             à la première.
-          */
-          if (atEnd && slides.length > 1) {
-            wrapToStart();
-            return;
-          }
-
-          /*
-             Première image → possibilité de repartir
-             vers la dernière en tirant vers la gauche.
-          */
-          if (atStart && slides.length > 1) {
-            /* Rien à faire ici :
-               le retour arrière reste naturel. */
-          }
-
-        },
-        120
-      );
-
-    },
-    { passive: true }
-  );
-
-  window.addEventListener(
-    'resize',
-    updateCounter
-  );
-
+  window.addEventListener('resize', updateCounter);
   updateCounter();
 
 })();
