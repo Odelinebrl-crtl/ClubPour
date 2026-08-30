@@ -273,39 +273,94 @@
       CONÇU POUR ÊTRE PORTÉ, REPORTÉ, VÉCU.
     </div>
 
-    <div class="product-page-pour__tabs">
+   <div class="product-page-pour__accordions">
 
-      <button
-        class="product-page-pour__tab is-active"
-        data-product-tab="composition"
-      >
-        COMPOSITION
-      </button>
+  <!-- DÉTAILS DU PRODUIT -->
+  <div class="product-page-pour__accordion">
 
-      <button
-        class="product-page-pour__tab"
-        data-product-tab="entretien"
-      >
-        ENTRETIEN
-      </button>
+    <button
+      type="button"
+      class="product-page-pour__accordion-trigger"
+      data-product-accordion="details"
+      aria-expanded="false"
+    >
+      <span class="product-page-pour__accordion-icon">+</span>
+      <span>DÉTAILS DU PRODUIT</span>
+    </button>
 
-    </div>
-
-    <div class="product-page-pour__tab-content is-active" data-product-panel="composition">
+    <div
+      class="product-page-pour__accordion-content"
+      data-product-accordion-panel="details"
+    >
       {% if section.settings.composition != blank %}
         {{ section.settings.composition }}
       {% else %}
         100 % coton biologique. Coupe premium. Matière épaisse et confortable.
       {% endif %}
-    </div>
 
-    <div class="product-page-pour__tab-content" data-product-panel="entretien">
       {% if section.settings.care != blank %}
+        <br><br>
         {{ section.settings.care }}
-      {% else %}
-        Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux.
       {% endif %}
     </div>
+
+  </div>
+
+
+  <!-- FAQ -->
+  <div class="product-page-pour__accordion">
+
+    <button
+      type="button"
+      class="product-page-pour__accordion-trigger"
+      data-product-accordion="faq"
+      aria-expanded="false"
+    >
+      <span class="product-page-pour__accordion-icon">+</span>
+      <span>FAQ SUR LES PRODUITS</span>
+    </button>
+
+    <div
+      class="product-page-pour__accordion-content"
+      data-product-accordion-panel="faq"
+    >
+      {% if section.settings.faq != blank %}
+        {{ section.settings.faq }}
+      {% else %}
+        Une question sur ce produit ? Retrouvez ici les réponses aux questions les plus fréquentes.
+      {% endif %}
+    </div>
+
+  </div>
+
+
+  <!-- EXPÉDITION & RETOURS -->
+  <div class="product-page-pour__accordion">
+
+    <button
+      type="button"
+      class="product-page-pour__accordion-trigger"
+      data-product-accordion="shipping"
+      aria-expanded="false"
+    >
+      <span class="product-page-pour__accordion-icon">+</span>
+      <span>EXPÉDITION & RETOURS</span>
+    </button>
+
+    <div
+      class="product-page-pour__accordion-content"
+      data-product-accordion-panel="shipping"
+    >
+      {% if section.settings.shipping != blank %}
+        {{ section.settings.shipping }}
+      {% else %}
+        Les informations concernant l’expédition et les retours seront affichées ici.
+      {% endif %}
+    </div>
+
+  </div>
+
+</div>
 
   </div>
       </div>
@@ -1855,6 +1910,132 @@ font-weight: 200;
   }
 
 }
+
+/* =========================================================
+   ACCORDÉONS — DÉTAILS PRODUIT
+========================================================= */
+
+.product-page-pour__accordions {
+  width: 100%;
+  margin-top: 55px;
+}
+
+.product-page-pour__accordion {
+  width: 100%;
+  border-top: 1px solid #111111;
+}
+
+.product-page-pour__accordion:last-child {
+  border-bottom: 1px solid #111111;
+}
+
+.product-page-pour__accordion-trigger {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  padding: 18px 0;
+
+  border: 0;
+  background: transparent;
+  color: #111111;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.2;
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.product-page-pour__accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  margin-right: 2px;
+
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1;
+
+  transition: transform .35s ease;
+}
+
+.product-page-pour__accordion-content {
+  display: grid;
+  grid-template-rows: 0fr;
+
+  opacity: 0;
+  overflow: hidden;
+
+  padding-left: 24px;
+
+  font-size: 12px;
+  line-height: 1.6;
+
+  transition:
+    grid-template-rows .45s cubic-bezier(.22,1,.36,1),
+    opacity .3s ease,
+    padding-bottom .45s cubic-bezier(.22,1,.36,1);
+}
+
+.product-page-pour__accordion-content::before {
+  content: "";
+  min-height: 0;
+}
+
+.product-page-pour__accordion.is-open
+.product-page-pour__accordion-content {
+  grid-template-rows: 1fr;
+
+  opacity: 1;
+
+  padding-bottom: 24px;
+}
+
+.product-page-pour__accordion.is-open
+.product-page-pour__accordion-icon {
+  transform: rotate(45deg);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__accordions {
+    margin-top: 55px;
+  }
+
+  .product-page-pour__accordion-trigger {
+    padding: 17px 0;
+
+    font-size: 11px !important;
+  }
+
+  .product-page-pour__accordion-icon {
+    width: 20px;
+    font-size: 16px;
+  }
+
+  .product-page-pour__accordion-content {
+    padding-left: 22px;
+
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+
+  .product-page-pour__accordion.is-open
+  .product-page-pour__accordion-content {
+    padding-bottom: 22px;
+  }
+
+}
 </style>
 
 
@@ -2990,6 +3171,76 @@ if (addButton && productForm) {
     }
   );
 
+
+})();
+</script>
+
+<script>
+(function () {
+
+  const section =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
+
+  if (!section) return;
+
+  const accordions =
+    section.querySelectorAll(
+      '.product-page-pour__accordion'
+    );
+
+  accordions.forEach(function (accordion) {
+
+    const trigger =
+      accordion.querySelector(
+        '.product-page-pour__accordion-trigger'
+      );
+
+    if (!trigger) return;
+
+    trigger.addEventListener(
+      'click',
+      function () {
+
+        const wasOpen =
+          accordion.classList.contains('is-open');
+
+        /* Ferme tous les autres */
+        accordions.forEach(function (item) {
+
+          item.classList.remove('is-open');
+
+          const itemTrigger =
+            item.querySelector(
+              '.product-page-pour__accordion-trigger'
+            );
+
+          if (itemTrigger) {
+            itemTrigger.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+          }
+
+        });
+
+        /* Ouvre celui sélectionné */
+        if (!wasOpen) {
+
+          accordion.classList.add('is-open');
+
+          trigger.setAttribute(
+            'aria-expanded',
+            'true'
+          );
+
+        }
+
+      }
+    );
+
+  });
 
 })();
 </script>
