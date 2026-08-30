@@ -1716,3 +1716,170 @@ if (quickViewForm) {
 
 
 })();
+/* =========================================================
+   POUR — NEWSLETTER / CAPTCHA
+   SCROLL AUTOMATIQUE VERS LE CAPTCHA
+========================================================= */
+
+(function () {
+
+  const STORAGE_KEY = 'pour_newsletter_captcha_scroll';
+
+  /*
+   * On identifie uniquement les formulaires newsletter
+   * contenant un champ e-mail Shopify.
+   */
+  function isNewsletterForm(form) {
+    if (!form) return false;
+
+    return !!form.querySelector(
+      'input[name="contact[email]"], input[type="email"]'
+    );
+  }
+
+  /*
+   * Quand le client valide le formulaire,
+   * on mémorise sa position actuelle.
+   */
+  document.addEventListener(
+    'submit',
+    function (event) {
+
+      const form = event.target.closest('form');
+
+      if (!isNewsletterForm(form)) return;
+
+      sessionStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          scrollY: window.scrollY,
+          time: Date.now()
+        })
+      );
+
+    },
+    true
+  );
+
+
+  /*
+   * Détection de l'apparition du CAPTCHA Shopify.
+   */
+  const captchaObserver = new MutationObserver(function () {
+
+    const captcha =
+      document.querySelector(
+        'iframe[src*="hcaptcha"], .h-captcha, [data-hcaptcha-widget-id]'
+      );
+
+    if (!captcha) return;
+
+    const saved =
+      sessionStorage.getItem(STORAGE_KEY);
+
+    if (!saved) return;
+
+    /*
+     * Évite de déclencher le scroll plusieurs fois
+     * pendant que Shopify charge le CAPTCHA.
+     */
+    if (document.documentElement.dataset.pourCaptchaSeen === 'true') {
+      return;
+    }
+
+    document.documentElement.dataset.pourCaptchaSeen = 'true';
+
+    /*
+     * On remonte tout en haut pour que le client
+     * voie immédiatement le CAPTCHA.
+     */
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
+  });
+
+
+  captchaObserver.observe(
+    document.body,
+    {
+      childList: true,
+      subtree: true
+    }
+  );
+
+
+  /*
+   * Après le retour sur la page,
+   * on restaure la position du formulaire.
+   */
+  function restoreNewsletterPosition() {
+
+    const saved =
+      sessionStorage.getItem(STORAGE_KEY);
+
+    if (!saved) return;
+
+    let data;
+
+    try {
+      data = JSON.parse(saved);
+    } catch (error) {
+      sessionStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+
+    /*
+     * On évite de restaurer une ancienne session
+     * datant de plus de 10 minutes.
+     */
+    if (
+      !data.time ||
+      Date.now() - data.time > 10 * 60 * 1000
+    ) {
+      sessionStorage.removeItem(STORAGE_KEY);
+      return;
+    }
+
+    /*
+     * On attend que Shopify ait terminé de construire
+     * la page avant de revenir à la position précédente.
+     */
+    window.setTimeout(function () {
+
+      window.scrollTo({
+        top: data.scrollY,
+        behavior: 'smooth'
+      });
+
+      sessionStorage.removeItem(STORAGE_KEY);
+
+    }, 500);
+
+  }
+
+
+  /*
+   * Cas d'un retour/navigation classique.
+   */
+  window.addEventListener(
+    'pageshow',
+    restoreNewsletterPosition
+  );
+
+
+  /*
+   * Cas où la page est déjà chargée au moment
+   * où le script est exécuté.
+   */
+  if (document.readyState !== 'loading') {
+    restoreNewsletterPosition();
+  } else {
+    document.addEventListener(
+      'DOMContentLoaded',
+      restoreNewsletterPosition
+    );
+  }
+
+})();
