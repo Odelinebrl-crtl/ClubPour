@@ -61,8 +61,8 @@
     {% endif %}
 
 
-{% form 'customer', class: 'club-hero__form', id: 'club-hero-form' %}
-
+{% assign club_hero_return_to = request.path | append: '#club-hero-form' %}
+{% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
  <div class="club-hero__form-fields" data-club-form-fields="hero">
   <input type="hidden" name="contact[tags]" value="club-privileges">
 
@@ -722,7 +722,8 @@
   </h2>
 
 
-{% form 'customer', class: 'club-final__form', id: 'club-final-form' %}
+{% assign club_final_return_to = request.path | append: '#club-final-form' %}
+{% form 'customer', return_to: club_final_return_to, class: 'club-final__form', id: 'club-final-form' %}
 
   <div class="club-final__form-fields" data-club-form-fields="final">
     <input type="hidden" name="contact[tags]" value="club-privileges">
@@ -799,7 +800,10 @@
 /* =========================================================
    VARIABLES / BASE
 ========================================================= */
-
+#club-hero-form,
+#club-final-form {
+  scroll-margin-top: 120px;
+}
 #shopify-section-{{ section.id }} {
   --club-cream: #FAF9F6;
   --club-white: #FFFFFF;
