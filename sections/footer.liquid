@@ -11,8 +11,7 @@
 
 <div class="footer-pour__column footer-pour__newsletter">
 
-  {% form 'customer', return_to: 'back', class: 'footer-pour__form' %}
-
+ {% form 'customer', return_to: routes.root_url, class: 'footer-pour__form' %}
 
     <input
       type="hidden"
