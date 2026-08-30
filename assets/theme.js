@@ -1762,8 +1762,7 @@ customerForms.forEach((form) => {
 
 
     /*
-       On mémorise également l'adresse email
-       pour pouvoir la restaurer après le CAPTCHA.
+       On mémorise l'adresse email.
     */
 
     if (
@@ -1811,152 +1810,150 @@ const submittedEmail =
 
 if (submittedForm) {
 
-  const fields =
+  const form =
     document.querySelector(
-      `[data-club-form-fields="${submittedForm}"]`
+      `#club-${submittedForm}-form`
     );
 
 
-  const success =
-    document.querySelector(
-      `[data-club-success="${submittedForm}"]`
-    );
+  if (form) {
+
+    const fields =
+      form.querySelector(
+        '[data-club-form-fields]'
+      );
 
 
-  const error =
-    document.querySelector(
-      `[data-club-form-error="${submittedForm}"]`
-    );
+    const success =
+      form.querySelector(
+        '[data-club-success]'
+      );
 
 
-  const already =
-    document.querySelector(
-      `[data-club-already="${submittedForm}"]`
-    );
+    const error =
+      form.querySelector(
+        '[data-club-form-error]'
+      );
 
 
-  const emailInput =
-    document.querySelector(
-      `#club-${submittedForm}-form input[name="contact[email]"]`
-    );
+    const already =
+      form.querySelector(
+        '[data-club-already]'
+      );
 
 
-  /*
-     RESTAURATION DE L'EMAIL
-  */
-
-  if (
-    emailInput &&
-    !emailInput.value &&
-    submittedEmail
-  ) {
-
-    emailInput.value =
-      submittedEmail;
-
-  }
-
-
-  /*
-     DÉTECTION — EMAIL DÉJÀ INSCRIT
-  */
-
-  const hasEmailError =
-    error &&
-    error.textContent
-      .toLowerCase()
-      .includes('déjà inscrit');
-
-
-  /*
-     CAS 1 — EMAIL DÉJÀ INSCRIT
-  */
-
-  if (hasEmailError) {
-
-    if (fields) {
-      fields.hidden = false;
-    }
-
-
-    if (error) {
-      error.hidden = true;
-    }
-
-
-    if (already) {
-      already.hidden = false;
-    }
-
-
-    if (success) {
-      success.hidden = true;
-    }
-
-  }
-
-
-  /*
-     CAS 2 — INSCRIPTION VALIDÉE
-  */
-
-  else if (
-    params.get('customer_posted') === 'true'
-  ) {
-
-    /*
-       On masque uniquement les champs
-       du formulaire qui vient d'être envoyé.
-    */
-
-    if (fields) {
-      fields.hidden = true;
-    }
+    const emailInput =
+      form.querySelector(
+        'input[name="contact[email]"]'
+      );
 
 
     /*
-       IMPORTANT :
-       on réaffiche le message de succès.
+       RESTAURATION DE L'EMAIL
     */
 
-    if (success) {
+    if (
+      emailInput &&
+      !emailInput.value &&
+      submittedEmail
+    ) {
 
-      success.hidden = false;
-
-      success.style.display = '';
+      emailInput.value =
+        submittedEmail;
 
     }
 
 
     /*
-       On s'assure que les autres messages
-       ne prennent pas sa place.
+       DÉTECTION — EMAIL DÉJÀ INSCRIT
     */
 
-    if (already) {
-      already.hidden = true;
+    const hasEmailError =
+      error &&
+      error.textContent
+        .toLowerCase()
+        .includes('déjà inscrit');
+
+
+    /*
+       CAS 1 — EMAIL DÉJÀ INSCRIT
+    */
+
+    if (hasEmailError) {
+
+      if (fields) {
+        fields.hidden = false;
+      }
+
+
+      if (error) {
+        error.hidden = true;
+      }
+
+
+      if (already) {
+        already.hidden = false;
+      }
+
+
+      if (success) {
+        success.hidden = true;
+      }
+
     }
 
 
-    if (error) {
-      error.hidden = true;
+    /*
+       CAS 2 — INSCRIPTION VALIDÉE
+    */
+
+    else if (
+      params.get('customer_posted') === 'true'
+    ) {
+
+      /*
+         On masque uniquement les champs
+         du formulaire concerné.
+      */
+
+      if (fields) {
+        fields.hidden = true;
+      }
+
+
+      /*
+         On affiche le message de succès.
+      */
+
+      if (success) {
+
+        success.hidden = false;
+
+        success.style.display = '';
+
+      }
+
+
+      /*
+         On masque les autres messages.
+      */
+
+      if (already) {
+        already.hidden = true;
+      }
+
+
+      if (error) {
+        error.hidden = true;
+      }
+
     }
 
   }
 
 
   /*
-     IMPORTANT :
-     aucun scroll forcé ici.
-
-     Le système CAPTCHA reste donc exactement
-     comme il fonctionne actuellement.
-  */
-
-
-  /*
-     On nettoie le sessionStorage uniquement
-     après le traitement du retour Shopify.
+     On nettoie après traitement.
   */
 
   sessionStorage.removeItem(
