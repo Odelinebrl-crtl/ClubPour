@@ -11,7 +11,9 @@
 
 <div class="footer-pour__column footer-pour__newsletter">
 
- {% form 'customer', return_to: routes.root_url, class: 'footer-pour__form' %}
+{% assign newsletter_return_url = routes.root_url | append: '?newsletter_success=true' %}
+
+{% form 'customer', return_to: newsletter_return_url, class: 'footer-pour__form' %}
 
     <input
       type="hidden"
@@ -62,7 +64,7 @@
       </button>
     {% endunless %}
 
-    {% if form.posted_successfully? %}
+  {% if form.posted_successfully? or request.query_string contains 'newsletter_success=true' %}
       <p class="footer-pour__message footer-pour__message--success">
         <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
         Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
