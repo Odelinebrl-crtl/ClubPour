@@ -2152,82 +2152,107 @@ if (addButton && productForm) {
 
   function handleScroll() {
 
-    if (ticking) return;
+  if (ticking) return;
 
-    ticking = true;
+  ticking = true;
 
+  requestAnimationFrame(() => {
 
-    requestAnimationFrame(() => {
+    ticking = false;
 
-      ticking = false;
+    const width =
+      gallery.clientWidth;
 
+    if (!width) return;
 
-      const width =
-        gallery.clientWidth;
-
-      if (!width) return;
-
-
-      const position =
-        Math.round(
-          gallery.scrollLeft / width
-        );
+    const position =
+      Math.round(
+        gallery.scrollLeft / width
+      );
 
 
-      /*
-       * =================================================
-       * CLONE PREMIÈRE IMAGE
-       *
-       * [dernière] [1] [2] [1 clone]
-       *                         ↑
-       *
-       * → retour IMMÉDIAT sur la vraie 1
-       * =================================================
-       */
+    /*
+     * =================================================
+     * CLONE DE LA PREMIÈRE IMAGE
+     * =================================================
+     */
 
-      if (
-        position ===
-        allSlides.length - 1
-      ) {
-
-        goToPosition(1);
-
-        updateCounter();
-
-        return;
-      }
-
-
-      /*
-       * =================================================
-       * CLONE DERNIÈRE IMAGE
-       *
-       * [clone dernière] [1] [2] [dernière]
-       *        ↑
-       *
-       * → retour IMMÉDIAT sur la vraie dernière
-       * =================================================
-       */
-
-      if (
-        position === 0
-      ) {
-
-        goToPosition(
-          originalSlides.length
-        );
-
-        updateCounter();
-
-        return;
-      }
-
+    if (
+      position ===
+      allSlides.length - 1
+    ) {
 
       updateCounter();
 
-    });
+      /*
+       * On attend que le navigateur ait terminé
+       * le rendu du swipe avant de replacer
+       * la vraie première image.
+       */
+      requestAnimationFrame(() => {
 
-  }
+        gallery.style.scrollSnapType =
+          'none';
+
+        gallery.scrollLeft =
+          width;
+
+        /*
+         * On réactive le snap immédiatement
+         * après le repositionnement.
+         */
+        requestAnimationFrame(() => {
+
+          gallery.style.scrollSnapType =
+            'x mandatory';
+
+        });
+
+      });
+
+      return;
+    }
+
+
+    /*
+     * =================================================
+     * CLONE DE LA DERNIÈRE IMAGE
+     * =================================================
+     */
+
+    if (
+      position === 0
+    ) {
+
+      updateCounter();
+
+      requestAnimationFrame(() => {
+
+        gallery.style.scrollSnapType =
+          'none';
+
+        gallery.scrollLeft =
+          width *
+          originalSlides.length;
+
+        requestAnimationFrame(() => {
+
+          gallery.style.scrollSnapType =
+            'x mandatory';
+
+        });
+
+      });
+
+      return;
+    }
+
+
+    updateCounter();
+
+  });
+
+}
 
 
   gallery.addEventListener(
