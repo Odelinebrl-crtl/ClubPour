@@ -5466,4 +5466,20 @@ html {
 }
 
 }
+.footer-pour__success {
+  max-width: 360px;
+}
 
+.footer-pour__success-title {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.footer-pour__success-text {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666666;
+}
