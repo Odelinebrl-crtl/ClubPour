@@ -786,7 +786,7 @@ overscroll-behavior-x: contain;
     aspect-ratio: 4 / 5;
 
     scroll-snap-align: start;
-    scroll-snap-stop: always;
+scroll-snap-stop: normal;
 
     overflow: hidden;
 
@@ -1998,23 +1998,11 @@ if (addButton && productForm) {
 
   if (originalSlides.length < 2) return;
 
+
   /*
    * =====================================================
-   * CARROUSEL INFINI
+   * CLONES
    * =====================================================
-   *
-   * On ajoute :
-   *
-   * [dernière] [1] [2] [3] [première]
-   *
-   * L'utilisateur voit uniquement :
-   *
-   * 1 → 2 → 3 → 1 → 2...
-   *
-   * ou :
-   *
-   * 1 ← 3 ← 2 ← 1...
-   *
    */
 
   const firstClone =
@@ -2025,32 +2013,26 @@ if (addButton && productForm) {
       originalSlides.length - 1
     ].cloneNode(true);
 
-
   firstClone.dataset.carouselClone = 'first';
   lastClone.dataset.carouselClone = 'last';
 
 
-  /*
-   * DERNIER CLONE AU DÉBUT
-   */
   gallery.insertBefore(
     lastClone,
     originalSlides[0]
   );
 
-
-  /*
-   * PREMIER CLONE À LA FIN
-   */
   gallery.appendChild(
     firstClone
   );
 
 
   /*
-   * IMPORTANT :
-   * on récupère maintenant toutes les slides
+   * =====================================================
+   * TOUTES LES SLIDES
+   * =====================================================
    */
+
   const allSlides = Array.from(
     gallery.querySelectorAll(
       '[data-mobile-product-slide]'
@@ -2059,58 +2041,95 @@ if (addButton && productForm) {
 
 
   /*
-   * Position initiale :
-   *
-   * on commence sur la vraie image 1,
-   * donc à l'index 1 car le clone
-   * de la dernière image est à l'index 0.
+   * =====================================================
+   * POSITION INITIALE
+   * =====================================================
    */
-  requestAnimationFrame(() => {
 
-    gallery.scrollTo({
-      left: gallery.clientWidth,
-      behavior: 'auto'
+  function goToPosition(position) {
+
+    /*
+     * On coupe temporairement le snap
+     * pour que le repositionnement soit
+     * absolument instantané.
+     */
+
+    gallery.style.scrollSnapType = 'none';
+    gallery.style.scrollBehavior = 'auto';
+
+    gallery.scrollLeft =
+      position * gallery.clientWidth;
+
+    /*
+     * On force le navigateur à appliquer
+     * immédiatement le changement.
+     */
+
+    void gallery.offsetWidth;
+
+    /*
+     * On remet le comportement normal
+     * au frame suivant.
+     */
+
+    requestAnimationFrame(() => {
+
+      gallery.style.scrollSnapType =
+        'x mandatory';
+
+      gallery.style.scrollBehavior =
+        '';
+
     });
 
+  }
+
+
+  /*
+   * On commence sur la vraie première image.
+   *
+   * [clone dernière] [1] [2] [3] [clone première]
+   *                  ↑
+   */
+
+  requestAnimationFrame(() => {
+    goToPosition(1);
   });
 
 
+  /*
+   * =====================================================
+   * COMPTEUR
+   * =====================================================
+   */
+
   function updateCounter() {
 
-    let position =
-      Math.round(
-        gallery.scrollLeft /
-        gallery.clientWidth
-      );
+    const width =
+      gallery.clientWidth;
 
-    /*
-     * index réel :
-     *
-     * 0 = clone dernière
-     * 1 = vraie image 1
-     * 2 = vraie image 2
-     * 3 = vraie image 3
-     * ...
-     * dernier = clone première
-     */
+    if (!width) return;
+
+    const position =
+      Math.round(
+        gallery.scrollLeft / width
+      );
 
     let realIndex =
       position - 1;
 
 
-    /*
-     * Clone de la dernière image
-     */
-    if (realIndex < 0) {
+    if (
+      realIndex < 0
+    ) {
       realIndex =
         originalSlides.length - 1;
     }
 
 
-    /*
-     * Clone de la première image
-     */
-    if (realIndex >= originalSlides.length) {
+    if (
+      realIndex >= originalSlides.length
+    ) {
       realIndex = 0;
     }
 
@@ -2125,100 +2144,95 @@ if (addButton && productForm) {
 
   /*
    * =====================================================
-   * FIN DE DÉFILEMENT
+   * CARROUSEL INFINI
    * =====================================================
    */
 
-  let scrollTimer = null;
+  let ticking = false;
+
+  function handleScroll() {
+
+    if (ticking) return;
+
+    ticking = true;
+
+
+    requestAnimationFrame(() => {
+
+      ticking = false;
+
+
+      const width =
+        gallery.clientWidth;
+
+      if (!width) return;
+
+
+      const position =
+        Math.round(
+          gallery.scrollLeft / width
+        );
+
+
+      /*
+       * =================================================
+       * CLONE PREMIÈRE IMAGE
+       *
+       * [dernière] [1] [2] [1 clone]
+       *                         ↑
+       *
+       * → retour IMMÉDIAT sur la vraie 1
+       * =================================================
+       */
+
+      if (
+        position ===
+        allSlides.length - 1
+      ) {
+
+        goToPosition(1);
+
+        updateCounter();
+
+        return;
+      }
+
+
+      /*
+       * =================================================
+       * CLONE DERNIÈRE IMAGE
+       *
+       * [clone dernière] [1] [2] [dernière]
+       *        ↑
+       *
+       * → retour IMMÉDIAT sur la vraie dernière
+       * =================================================
+       */
+
+      if (
+        position === 0
+      ) {
+
+        goToPosition(
+          originalSlides.length
+        );
+
+        updateCounter();
+
+        return;
+      }
+
+
+      updateCounter();
+
+    });
+
+  }
 
 
   gallery.addEventListener(
     'scroll',
-    function () {
-
-      updateCounter();
-
-
-      clearTimeout(scrollTimer);
-
-
-      scrollTimer = setTimeout(() => {
-
-        const width =
-          gallery.clientWidth;
-
-        if (!width) return;
-
-
-        const position =
-          Math.round(
-            gallery.scrollLeft / width
-          );
-
-
-        /*
-         * ON EST SUR LE CLONE DE LA PREMIÈRE
-         *
-         * [dernière] [1] [2] [3] [première]
-         *
-         *                         ↑
-         *
-         * On revient silencieusement
-         * sur la vraie image 1.
-         */
-        if (
-          position ===
-          allSlides.length - 1
-        ) {
-
-          gallery.style.scrollBehavior =
-            'auto';
-
-          gallery.scrollLeft =
-            width;
-
-          gallery.style.scrollBehavior =
-            '';
-
-          updateCounter();
-
-          return;
-        }
-
-
-        /*
-         * ON EST SUR LE CLONE DE LA DERNIÈRE
-         *
-         * [dernière] [1] [2] [3] [première]
-         *
-         *      ↑
-         *
-         * On revient silencieusement
-         * sur la vraie dernière image.
-         */
-        if (position === 0) {
-
-          gallery.style.scrollBehavior =
-            'auto';
-
-          gallery.scrollLeft =
-            width *
-            originalSlides.length;
-
-          gallery.style.scrollBehavior =
-            '';
-
-          updateCounter();
-
-          return;
-        }
-
-
-        updateCounter();
-
-      }, 80);
-
-    },
+    handleScroll,
     {
       passive: true
     }
@@ -2227,11 +2241,48 @@ if (addButton && productForm) {
 
   /*
    * =====================================================
-   * INITIALISATION
+   * COMPTEUR INITIAL
    * =====================================================
    */
 
   updateCounter();
+
+
+  /*
+   * =====================================================
+   * RESIZE
+   * =====================================================
+   */
+
+  window.addEventListener(
+    'resize',
+    () => {
+
+      const width =
+        gallery.clientWidth;
+
+      if (!width) return;
+
+      const position =
+        Math.round(
+          gallery.scrollLeft / width
+        );
+
+      gallery.style.scrollSnapType =
+        'none';
+
+      gallery.scrollLeft =
+        position * width;
+
+      requestAnimationFrame(() => {
+
+        gallery.style.scrollSnapType =
+          'x mandatory';
+
+      });
+
+    }
+  );
 
 
 })();
