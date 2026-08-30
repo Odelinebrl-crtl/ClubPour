@@ -21,7 +21,7 @@
       value="club-privileges"
     >
 
-    {% unless form.posted_successfully? %}
+  {% unless form.posted_successfully? or request.query_string contains 'newsletter_success=true' %}
       <p class="footer-pour__heading">
         REJOIGNEZ LE CLUB PRIVILÈGE
       </p>
@@ -64,7 +64,7 @@
       </button>
     {% endunless %}
 
-  {% if form.posted_successfully? or request.query_string contains 'newsletter_success=true' %}
+ {% if form.posted_successfully? or request.query_string contains 'newsletter_success=true' %}
       <p class="footer-pour__message footer-pour__message--success">
         <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
         Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
