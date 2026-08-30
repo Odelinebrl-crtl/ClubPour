@@ -764,10 +764,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
     width: 100vw;
 
-overflow: hidden;
-touch-action: pan-y;
-scroll-snap-type: none;
-scroll-behavior: auto;
+overflow-x: auto;
+overflow-y: hidden;
+scroll-snap-type: x mandatory;
+scroll-behavior: smooth;
 -webkit-overflow-scrolling: auto;
 scrollbar-width: none;
   }
@@ -1987,76 +1987,77 @@ if (addButton && productForm) {
 
   if (!gallery) return;
 
-  const slides = Array.from(
+  const originalSlides = Array.from(
     gallery.querySelectorAll(
       '[data-mobile-product-slide]'
     )
   );
 
-  if (slides.length < 2) return;
+  if (originalSlides.length < 2) return;
 
 
   /* =====================================================
-     ÉTAT DU CARROUSEL
+     CLONES
   ===================================================== */
 
-  let currentIndex = 0;
+  const firstClone =
+    originalSlides[0].cloneNode(true);
 
-  let startX = 0;
-  let startY = 0;
+  const lastClone =
+    originalSlides[
+      originalSlides.length - 1
+    ].cloneNode(true);
 
-  let isDragging = false;
-  let isHorizontalGesture = false;
 
-  const swipeThreshold = 40;
+  firstClone.dataset.carouselClone = 'first';
+  lastClone.dataset.carouselClone = 'last';
+
+
+  gallery.insertBefore(
+    lastClone,
+    originalSlides[0]
+  );
+
+  gallery.appendChild(
+    firstClone
+  );
+
+
+  const allSlides = Array.from(
+    gallery.querySelectorAll(
+      '[data-mobile-product-slide]'
+    )
+  );
 
 
   /* =====================================================
-     CONFIGURATION
+     POSITION INITIALE
   ===================================================== */
 
-  gallery.style.overflow = 'hidden';
-  gallery.style.touchAction = 'pan-y';
+  function setPosition(position) {
 
-  gallery.style.display = 'flex';
+    gallery.style.scrollSnapType = 'none';
+    gallery.style.scrollBehavior = 'auto';
 
-  gallery.style.scrollSnapType = 'none';
-  gallery.style.scrollBehavior = 'auto';
+    gallery.scrollLeft =
+      position * gallery.clientWidth;
 
+    requestAnimationFrame(() => {
 
-  slides.forEach(function (slide) {
+      gallery.style.scrollSnapType =
+        'x mandatory';
 
-    slide.style.flex =
-      '0 0 100vw';
+      gallery.style.scrollBehavior =
+        '';
 
-    slide.style.width =
-      '100vw';
-
-    slide.style.scrollSnapAlign =
-      'none';
-
-  });
-
-
-  /* =====================================================
-     POSITION
-  ===================================================== */
-
-  function updatePosition(animate) {
-
-    gallery.style.transition =
-      animate
-        ? 'transform 0.38s cubic-bezier(.22, .61, .36, 1)'
-        : 'none';
-
-    gallery.style.transform =
-      'translate3d(' +
-      (-currentIndex * 100) +
-      'vw, 0, 0)';
-
-    updateCounter();
+    });
 
   }
+
+
+  requestAnimationFrame(() => {
+    setPosition(1);
+  });
 
 
   /* =====================================================
@@ -2065,266 +2066,153 @@ if (addButton && productForm) {
 
   function updateCounter() {
 
-    if (!counter) return;
+    const width =
+      gallery.clientWidth;
 
-    counter.textContent =
-      String(currentIndex + 1);
+    if (!width) return;
+
+    const position =
+      Math.round(
+        gallery.scrollLeft / width
+      );
+
+    let realIndex =
+      position - 1;
+
+
+    if (realIndex < 0) {
+      realIndex =
+        originalSlides.length - 1;
+    }
+
+
+    if (
+      realIndex >=
+      originalSlides.length
+    ) {
+      realIndex = 0;
+    }
+
+
+    if (counter) {
+      counter.textContent =
+        String(realIndex + 1);
+    }
 
   }
 
 
   /* =====================================================
-     CHANGEMENT D'IMAGE
+     CARROUSEL INFINI
   ===================================================== */
 
-  function goTo(index) {
+  let scrollTimer = null;
 
-    /*
-     * Boucle 1 → 2 → 1
-     */
-
-    if (index >= slides.length) {
-      index = 0;
-    }
-
-    if (index < 0) {
-      index = slides.length - 1;
-    }
-
-    currentIndex = index;
-
-    updatePosition(true);
-
-  }
-
-
-  /* =====================================================
-     TOUCH START
-  ===================================================== */
 
   gallery.addEventListener(
-    'touchstart',
-    function (event) {
-
-      if (!event.touches || !event.touches.length) {
-        return;
-      }
-
-      const touch =
-        event.touches[0];
-
-      startX = touch.clientX;
-      startY = touch.clientY;
-
-      isDragging = true;
-      isHorizontalGesture = false;
-
-      gallery.style.transition = 'none';
-
-    },
-    {
-      passive: true
-    }
-  );
-
-
-  /* =====================================================
-     TOUCH MOVE
-  ===================================================== */
-
-  gallery.addEventListener(
-    'touchmove',
-    function (event) {
-
-      if (!isDragging) return;
-
-      if (!event.touches || !event.touches.length) {
-        return;
-      }
-
-      const touch =
-        event.touches[0];
-
-      const deltaX =
-        touch.clientX - startX;
-
-      const deltaY =
-        touch.clientY - startY;
-
-
-      /*
-       * On détermine une seule fois
-       * si le geste est horizontal.
-       */
-
-      if (!isHorizontalGesture) {
-
-        if (
-          Math.abs(deltaX) < 8 &&
-          Math.abs(deltaY) < 8
-        ) {
-          return;
-        }
-
-        /*
-         * Si le mouvement est surtout vertical,
-         * on laisse Safari gérer normalement
-         * le scroll de la page.
-         */
-
-        if (
-          Math.abs(deltaY) >
-          Math.abs(deltaX)
-        ) {
-
-          isDragging = false;
-
-          gallery.style.transition =
-            'none';
-
-          return;
-
-        }
-
-        isHorizontalGesture = true;
-
-      }
-
-
-      /*
-       * À partir du moment où le geste est
-       * clairement horizontal, on empêche
-       * le navigateur de faire défiler
-       * horizontalement la page.
-       */
-
-      event.preventDefault();
-
-
-      /*
-       * Petit déplacement visuel pendant
-       * le doigt pour donner une sensation
-       * naturelle.
-       */
-
-      const width =
-        gallery.clientWidth;
-
-      if (!width) return;
-
-
-      const currentOffset =
-        -currentIndex * width;
-
-      const dragOffset =
-        deltaX;
-
-      gallery.style.transform =
-        'translate3d(' +
-        (currentOffset + dragOffset) +
-        'px, 0, 0)';
-
-    },
-    {
-      passive: false
-    }
-  );
-
-
-  /* =====================================================
-     TOUCH END
-  ===================================================== */
-
-  gallery.addEventListener(
-    'touchend',
-    function (event) {
-
-      if (!isDragging) return;
-
-      isDragging = false;
-
-      if (!isHorizontalGesture) {
-        return;
-      }
-
-      const touch =
-        event.changedTouches &&
-        event.changedTouches[0];
-
-      if (!touch) {
-        updatePosition(true);
-        return;
-      }
-
-      const deltaX =
-        touch.clientX - startX;
-
-
-      /*
-       * SWIPE VERS LA GAUCHE
-       *
-       * 1 → 2
-       * 2 → 1
-       */
-
-      if (
-        deltaX < -swipeThreshold
-      ) {
-
-        goTo(
-          currentIndex + 1
-        );
-
-        return;
-      }
-
-
-      /*
-       * SWIPE VERS LA DROITE
-       *
-       * 2 → 1
-       * 1 → 2
-       */
-
-      if (
-        deltaX > swipeThreshold
-      ) {
-
-        goTo(
-          currentIndex - 1
-        );
-
-        return;
-      }
-
-
-      /*
-       * Swipe trop faible :
-       * on revient simplement à l'image
-       * actuelle.
-       */
-
-      updatePosition(true);
-
-    },
-    {
-      passive: true
-    }
-  );
-
-
-  /* =====================================================
-     TOUCH CANCEL
-  ===================================================== */
-
-  gallery.addEventListener(
-    'touchcancel',
+    'scroll',
     function () {
 
-      isDragging = false;
-      isHorizontalGesture = false;
+      updateCounter();
 
-      updatePosition(true);
+      clearTimeout(scrollTimer);
+
+
+      scrollTimer = setTimeout(
+        function () {
+
+          const width =
+            gallery.clientWidth;
+
+          if (!width) return;
+
+
+          const position =
+            Math.round(
+              gallery.scrollLeft / width
+            );
+
+
+          /*
+           * 2 → 1
+           *
+           * On arrive sur le clone de 1.
+           * On attend simplement la fin du
+           * déplacement naturel avant de
+           * repositionner sur la vraie 1.
+           */
+
+          if (
+            position ===
+            allSlides.length - 1
+          ) {
+
+            gallery.style.scrollSnapType =
+              'none';
+
+            gallery.style.scrollBehavior =
+              'auto';
+
+            gallery.scrollLeft =
+              width;
+
+            requestAnimationFrame(
+              function () {
+
+                gallery.style.scrollSnapType =
+                  'x mandatory';
+
+                gallery.style.scrollBehavior =
+                  '';
+
+              }
+            );
+
+            updateCounter();
+
+            return;
+          }
+
+
+          /*
+           * 1 → dernière
+           */
+
+          if (position === 0) {
+
+            gallery.style.scrollSnapType =
+              'none';
+
+            gallery.style.scrollBehavior =
+              'auto';
+
+            gallery.scrollLeft =
+              width *
+              originalSlides.length;
+
+            requestAnimationFrame(
+              function () {
+
+                gallery.style.scrollSnapType =
+                  'x mandatory';
+
+                gallery.style.scrollBehavior =
+                  '';
+
+              }
+            );
+
+            updateCounter();
+
+            return;
+          }
+
+
+          updateCounter();
+
+        },
+        30
+      );
 
     },
     {
@@ -2337,9 +2225,7 @@ if (addButton && productForm) {
      INITIALISATION
   ===================================================== */
 
-  currentIndex = 0;
-
-  updatePosition(false);
+  updateCounter();
 
 
   /* =====================================================
@@ -2350,10 +2236,34 @@ if (addButton && productForm) {
     'resize',
     function () {
 
-      updatePosition(false);
+      const width =
+        gallery.clientWidth;
+
+      if (!width) return;
+
+      const position =
+        Math.round(
+          gallery.scrollLeft / width
+        );
+
+      gallery.style.scrollSnapType =
+        'none';
+
+      gallery.scrollLeft =
+        position * width;
+
+      requestAnimationFrame(
+        function () {
+
+          gallery.style.scrollSnapType =
+            'x mandatory';
+
+        }
+      );
 
     }
   );
+
 
 })();
 </script>
