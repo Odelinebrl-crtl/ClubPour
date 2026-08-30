@@ -19,13 +19,22 @@
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
-    {% if request.path contains '/challenge' %}
-      <style>
-        .shopify-challenge__container {
-          padding-top: 120px !important;
-        }
-      </style>
-    {% endif %}
+  {% if request.path contains '/challenge' %}
+  <style>
+    .shopify-challenge__container {
+      padding-top: 120px !important;
+    }
+  </style>
+{% endif %}
+
+{% if request.path contains '/policies/' %}
+  <style>
+    /* Décalage du contenu des pages légales Shopify */
+    .shopify-policy__container {
+      padding-top: 120px !important;
+    }
+  </style>
+{% endif %}
   </head>
 
   <body>
