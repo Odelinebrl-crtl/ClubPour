@@ -61,7 +61,7 @@
     {% endif %}
 
 
-{% assign club_hero_return_to = request.path | append: '#club-hero-form' %}
+{% assign club_hero_return_to = request.path | append: '?customer_posted=true#club-hero-form' %}
 {% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
  <div class="club-hero__form-fields" data-club-form-fields="hero">
   <input type="hidden" name="contact[tags]" value="club-privileges">
@@ -722,7 +722,7 @@
   </h2>
 
 
-{% assign club_final_return_to = request.path | append: '#club-final-form' %}
+{% assign club_final_return_to = request.path | append: '?customer_posted=true#club-final-form' %}
 {% form 'customer', return_to: club_final_return_to, class: 'club-final__form', id: 'club-final-form' %}
 
   <div class="club-final__form-fields" data-club-form-fields="final">
