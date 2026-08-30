@@ -1717,3 +1717,170 @@ if (quickViewForm) {
 
 })();
 
+/* ========================================================
+   FORMULAIRES CLUB POUR — GESTION CAPTCHA / RETOUR
+======================================================== */
+
+const formStateKey = 'clubPrivilegesSubmittedForm';
+const emailStateKey = 'clubPrivilegesSubmittedEmail';
+
+const customerForms = root.querySelectorAll(
+  '#club-hero-form, #club-final-form'
+);
+
+customerForms.forEach((form) => {
+
+  const formName =
+    form.id === 'club-hero-form'
+      ? 'hero'
+      : 'final';
+
+  form.addEventListener('submit', () => {
+
+    const emailInput =
+      form.querySelector('input[name="contact[email]"]');
+
+    sessionStorage.setItem(
+      formStateKey,
+      formName
+    );
+
+    if (emailInput && emailInput.value) {
+      sessionStorage.setItem(
+        emailStateKey,
+        emailInput.value
+      );
+    }
+
+  });
+
+});
+
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const submittedForm =
+  sessionStorage.getItem(formStateKey);
+
+const submittedEmail =
+  sessionStorage.getItem(emailStateKey);
+
+
+/*
+   Après le retour Shopify / CAPTCHA,
+   on sait exactement quel formulaire
+   avait été utilisé.
+*/
+
+if (submittedForm) {
+
+  const fields =
+    root.querySelector(
+      `[data-club-form-fields="${submittedForm}"]`
+    );
+
+  const success =
+    root.querySelector(
+      `[data-club-success="${submittedForm}"]`
+    );
+
+  const error =
+    root.querySelector(
+      `[data-club-form-error="${submittedForm}"]`
+    );
+
+  const already =
+    root.querySelector(
+      `[data-club-already="${submittedForm}"]`
+    );
+
+  const emailInput =
+    root.querySelector(
+      `#club-${submittedForm}-form input[name="contact[email]"]`
+    );
+
+
+  /*
+     On restaure l'email uniquement
+     si Shopify ne l'a pas déjà remis.
+  */
+
+  if (
+    emailInput &&
+    !emailInput.value &&
+    submittedEmail
+  ) {
+    emailInput.value = submittedEmail;
+  }
+
+
+  const hasEmailError =
+    error &&
+    error.textContent
+      .toLowerCase()
+      .includes('déjà inscrit');
+
+
+  /*
+     CAS 1 — EMAIL DÉJÀ INSCRIT
+  */
+
+  if (hasEmailError) {
+
+    if (fields) {
+      fields.hidden = false;
+    }
+
+    if (error) {
+      error.hidden = true;
+    }
+
+    if (already) {
+      already.hidden = false;
+    }
+
+    if (success) {
+      success.hidden = true;
+    }
+
+  }
+
+
+  /*
+     CAS 2 — INSCRIPTION VALIDÉE
+  */
+
+  else if (
+    params.get('customer_posted') === 'true'
+  ) {
+
+    if (fields) {
+      fields.hidden = true;
+    }
+
+    if (success) {
+      success.hidden = false;
+    }
+
+    if (already) {
+      already.hidden = true;
+    }
+
+  }
+
+
+  /*
+     IMPORTANT :
+     aucun scroll forcé ici.
+
+     Shopify revient directement sur
+     l'ancre du formulaire grâce à
+     return_to + #club-hero-form
+     ou
+     return_to + #club-final-form.
+  */
+
+  sessionStorage.removeItem(formStateKey);
+  sessionStorage.removeItem(emailStateKey);
+}
