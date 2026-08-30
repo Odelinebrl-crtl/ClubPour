@@ -1724,9 +1724,15 @@ if (quickViewForm) {
 const formStateKey = 'clubPrivilegesSubmittedForm';
 const emailStateKey = 'clubPrivilegesSubmittedEmail';
 
-const customerForms = root.querySelectorAll(
+
+/*
+   FORMULAIRES CONCERNÉS
+*/
+
+const customerForms = document.querySelectorAll(
   '#club-hero-form, #club-final-form'
 );
+
 
 customerForms.forEach((form) => {
 
@@ -1735,21 +1741,41 @@ customerForms.forEach((form) => {
       ? 'hero'
       : 'final';
 
+
   form.addEventListener('submit', () => {
 
     const emailInput =
-      form.querySelector('input[name="contact[email]"]');
+      form.querySelector(
+        'input[name="contact[email]"]'
+      );
+
+
+    /*
+       On mémorise le formulaire utilisé
+       avant que Shopify affiche le CAPTCHA.
+    */
 
     sessionStorage.setItem(
       formStateKey,
       formName
     );
 
-    if (emailInput && emailInput.value) {
+
+    /*
+       On mémorise également l'adresse email
+       pour pouvoir la restaurer après le CAPTCHA.
+    */
+
+    if (
+      emailInput &&
+      emailInput.value
+    ) {
+
       sessionStorage.setItem(
         emailStateKey,
         emailInput.value
       );
+
     }
 
   });
@@ -1757,53 +1783,66 @@ customerForms.forEach((form) => {
 });
 
 
+/*
+   PARAMÈTRES DE RETOUR SHOPIFY
+*/
+
 const params =
-  new URLSearchParams(window.location.search);
+  new URLSearchParams(
+    window.location.search
+  );
+
 
 const submittedForm =
-  sessionStorage.getItem(formStateKey);
+  sessionStorage.getItem(
+    formStateKey
+  );
+
 
 const submittedEmail =
-  sessionStorage.getItem(emailStateKey);
+  sessionStorage.getItem(
+    emailStateKey
+  );
 
 
 /*
-   Après le retour Shopify / CAPTCHA,
-   on sait exactement quel formulaire
-   avait été utilisé.
+   APRÈS LE RETOUR SHOPIFY / CAPTCHA
 */
 
 if (submittedForm) {
 
   const fields =
-    root.querySelector(
+    document.querySelector(
       `[data-club-form-fields="${submittedForm}"]`
     );
 
+
   const success =
-    root.querySelector(
+    document.querySelector(
       `[data-club-success="${submittedForm}"]`
     );
 
+
   const error =
-    root.querySelector(
+    document.querySelector(
       `[data-club-form-error="${submittedForm}"]`
     );
 
+
   const already =
-    root.querySelector(
+    document.querySelector(
       `[data-club-already="${submittedForm}"]`
     );
 
+
   const emailInput =
-    root.querySelector(
+    document.querySelector(
       `#club-${submittedForm}-form input[name="contact[email]"]`
     );
 
 
   /*
-     On restaure l'email uniquement
-     si Shopify ne l'a pas déjà remis.
+     RESTAURATION DE L'EMAIL
   */
 
   if (
@@ -1811,9 +1850,16 @@ if (submittedForm) {
     !emailInput.value &&
     submittedEmail
   ) {
-    emailInput.value = submittedEmail;
+
+    emailInput.value =
+      submittedEmail;
+
   }
 
+
+  /*
+     DÉTECTION — EMAIL DÉJÀ INSCRIT
+  */
 
   const hasEmailError =
     error &&
@@ -1832,13 +1878,16 @@ if (submittedForm) {
       fields.hidden = false;
     }
 
+
     if (error) {
       error.hidden = true;
     }
 
+
     if (already) {
       already.hidden = false;
     }
+
 
     if (success) {
       success.hidden = true;
@@ -1855,16 +1904,42 @@ if (submittedForm) {
     params.get('customer_posted') === 'true'
   ) {
 
+    /*
+       On masque uniquement les champs
+       du formulaire qui vient d'être envoyé.
+    */
+
     if (fields) {
       fields.hidden = true;
     }
 
+
+    /*
+       IMPORTANT :
+       on réaffiche le message de succès.
+    */
+
     if (success) {
+
       success.hidden = false;
+
+      success.style.display = '';
+
     }
+
+
+    /*
+       On s'assure que les autres messages
+       ne prennent pas sa place.
+    */
 
     if (already) {
       already.hidden = true;
+    }
+
+
+    if (error) {
+      error.hidden = true;
     }
 
   }
@@ -1874,13 +1949,22 @@ if (submittedForm) {
      IMPORTANT :
      aucun scroll forcé ici.
 
-     Shopify revient directement sur
-     l'ancre du formulaire grâce à
-     return_to + #club-hero-form
-     ou
-     return_to + #club-final-form.
+     Le système CAPTCHA reste donc exactement
+     comme il fonctionne actuellement.
   */
 
-  sessionStorage.removeItem(formStateKey);
-  sessionStorage.removeItem(emailStateKey);
+
+  /*
+     On nettoie le sessionStorage uniquement
+     après le traitement du retour Shopify.
+  */
+
+  sessionStorage.removeItem(
+    formStateKey
+  );
+
+  sessionStorage.removeItem(
+    emailStateKey
+  );
+
 }
