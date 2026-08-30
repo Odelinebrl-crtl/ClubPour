@@ -273,96 +273,160 @@
       CONÇU POUR ÊTRE PORTÉ, REPORTÉ, VÉCU.
     </div>
 
-   <div class="product-page-pour__accordions">
+  <div class="product-page-pour__accordions">
 
   <!-- DÉTAILS DU PRODUIT -->
-  <div class="product-page-pour__accordion">
-
-    <button
-      type="button"
-      class="product-page-pour__accordion-trigger"
-      data-product-accordion="details"
-      aria-expanded="false"
-    >
-      <span class="product-page-pour__accordion-icon">+</span>
-      <span>DÉTAILS DU PRODUIT</span>
-    </button>
-
-    <div
-      class="product-page-pour__accordion-content"
-      data-product-accordion-panel="details"
-    >
-      {% if section.settings.composition != blank %}
-        {{ section.settings.composition }}
-      {% else %}
-        100 % coton biologique. Coupe premium. Matière épaisse et confortable.
-      {% endif %}
-
-      {% if section.settings.care != blank %}
-        <br><br>
-        {{ section.settings.care }}
-      {% endif %}
-    </div>
-
-  </div>
+  <button
+    type="button"
+    class="product-page-pour__accordion-trigger"
+    data-product-panel-open="details"
+  >
+    <span class="product-page-pour__accordion-icon">+</span>
+    <span>DÉTAILS DU PRODUIT</span>
+  </button>
 
 
   <!-- FAQ -->
-  <div class="product-page-pour__accordion">
-
-    <button
-      type="button"
-      class="product-page-pour__accordion-trigger"
-      data-product-accordion="faq"
-      aria-expanded="false"
-    >
-      <span class="product-page-pour__accordion-icon">+</span>
-      <span>FAQ SUR LES PRODUITS</span>
-    </button>
-
-    <div
-      class="product-page-pour__accordion-content"
-      data-product-accordion-panel="faq"
-    >
-      {% if section.settings.faq != blank %}
-        {{ section.settings.faq }}
-      {% else %}
-        Une question sur ce produit ? Retrouvez ici les réponses aux questions les plus fréquentes.
-      {% endif %}
-    </div>
-
-  </div>
+  <button
+    type="button"
+    class="product-page-pour__accordion-trigger"
+    data-product-panel-open="faq"
+  >
+    <span class="product-page-pour__accordion-icon">+</span>
+    <span>FAQ SUR LES PRODUITS</span>
+  </button>
 
 
   <!-- EXPÉDITION & RETOURS -->
-  <div class="product-page-pour__accordion">
-
-    <button
-      type="button"
-      class="product-page-pour__accordion-trigger"
-      data-product-accordion="shipping"
-      aria-expanded="false"
-    >
-      <span class="product-page-pour__accordion-icon">+</span>
-      <span>EXPÉDITION & RETOURS</span>
-    </button>
-
-    <div
-      class="product-page-pour__accordion-content"
-      data-product-accordion-panel="shipping"
-    >
-      {% if section.settings.shipping != blank %}
-        {{ section.settings.shipping }}
-      {% else %}
-        Les informations concernant l’expédition et les retours seront affichées ici.
-      {% endif %}
-    </div>
-
-  </div>
+  <button
+    type="button"
+    class="product-page-pour__accordion-trigger"
+    data-product-panel-open="shipping"
+  >
+    <span class="product-page-pour__accordion-icon">+</span>
+    <span>EXPÉDITION & RETOURS</span>
+  </button>
 
 </div>
 
-  </div>
+
+<!-- =====================================================
+     PANNEAU LATÉRAL — INFORMATIONS PRODUIT
+===================================================== -->
+
+<div
+  class="product-page-pour__info-panel"
+  data-product-info-panel
+  aria-hidden="true"
+>
+
+  <!-- FOND CLIQUABLE -->
+  <button
+    type="button"
+    class="product-page-pour__info-panel-overlay"
+    data-product-panel-close
+    aria-label="Fermer"
+  ></button>
+
+
+  <!-- PANNEAU -->
+  <aside
+    class="product-page-pour__info-panel-inner"
+    aria-label="Informations produit"
+  >
+
+    <!-- HEADER -->
+    <div class="product-page-pour__info-panel-header">
+
+      <div
+        class="product-page-pour__info-panel-title"
+        data-product-panel-title
+      >
+        DÉTAILS DU PRODUIT
+      </div>
+
+      <button
+        type="button"
+        class="product-page-pour__info-panel-close"
+        data-product-panel-close
+        aria-label="Fermer"
+      ></button>
+
+    </div>
+
+
+    <!-- CONTENU DÉTAILS -->
+    <div
+      class="product-page-pour__info-panel-content"
+      data-product-panel-content="details"
+    >
+
+      {% if section.settings.composition != blank %}
+        <div class="product-page-pour__info-panel-block">
+          <div class="product-page-pour__info-panel-label">
+            COMPOSITION
+          </div>
+
+          <div class="product-page-pour__info-panel-text">
+            {{ section.settings.composition }}
+          </div>
+        </div>
+      {% endif %}
+
+
+      {% if section.settings.care != blank %}
+        <div class="product-page-pour__info-panel-block">
+
+          <div class="product-page-pour__info-panel-label">
+            ENTRETIEN
+          </div>
+
+          <div class="product-page-pour__info-panel-text">
+            {{ section.settings.care }}
+          </div>
+
+        </div>
+      {% endif %}
+
+    </div>
+
+
+    <!-- CONTENU FAQ -->
+    <div
+      class="product-page-pour__info-panel-content"
+      data-product-panel-content="faq"
+    >
+
+      <div class="product-page-pour__info-panel-text">
+        {% if section.settings.faq != blank %}
+          {{ section.settings.faq }}
+        {% else %}
+          Retrouvez ici les réponses aux questions les plus fréquentes concernant nos produits.
+        {% endif %}
+      </div>
+
+    </div>
+
+
+    <!-- CONTENU EXPÉDITION -->
+    <div
+      class="product-page-pour__info-panel-content"
+      data-product-panel-content="shipping"
+    >
+
+      <div class="product-page-pour__info-panel-text">
+        {% if section.settings.shipping != blank %}
+          {{ section.settings.shipping }}
+        {% else %}
+          Retrouvez ici toutes les informations concernant l’expédition et les retours.
+        {% endif %}
+      </div>
+
+    </div>
+
+  </aside>
+
+</div>
       </div>
 
     </div>
@@ -1912,93 +1976,303 @@ font-weight: 200;
 }
 
 /* =========================================================
-   ACCORDÉONS — DÉTAILS PRODUIT
+   INFOS PRODUIT — 3 LIENS SUR UNE SEULE LIGNE
 ========================================================= */
 
 .product-page-pour__accordions {
   width: 100%;
+
   margin-top: 55px;
-}
 
-.product-page-pour__accordion {
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
   border-top: 1px solid #111111;
-}
-
-.product-page-pour__accordion:last-child {
   border-bottom: 1px solid #111111;
 }
+
 
 .product-page-pour__accordion-trigger {
   display: flex;
   align-items: center;
-  width: 100%;
 
-  padding: 18px 0;
+  width: 100%;
+  min-width: 0;
+
+  padding: 17px 14px;
 
   border: 0;
+  border-right: 1px solid #111111;
+
   background: transparent;
   color: #111111;
 
   font-family: inherit;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 400;
+
   line-height: 1.2;
   text-align: left;
 
   cursor: pointer;
+
+  transition: opacity .25s ease;
 }
+
+
+.product-page-pour__accordion-trigger:last-child {
+  border-right: 0;
+}
+
+
+.product-page-pour__accordion-trigger:hover {
+  opacity: .55;
+}
+
 
 .product-page-pour__accordion-icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  width: 22px;
-  margin-right: 2px;
+  flex: 0 0 auto;
 
-  font-size: 17px;
+  width: 17px;
+  margin-right: 3px;
+
+  font-size: 14px;
   font-weight: 300;
   line-height: 1;
-
-  transition: transform .35s ease;
 }
 
-.product-page-pour__accordion-content {
-  display: grid;
-  grid-template-rows: 0fr;
 
-  opacity: 0;
-  overflow: hidden;
+/* =========================================================
+   PANNEAU LATÉRAL
+========================================================= */
 
-  padding-left: 24px;
+.product-page-pour__info-panel {
+  position: fixed;
 
-  font-size: 12px;
-  line-height: 1.6;
+  inset: 0;
+
+  z-index: 999998;
+
+  visibility: hidden;
+  pointer-events: none;
 
   transition:
-    grid-template-rows .45s cubic-bezier(.22,1,.36,1),
-    opacity .3s ease,
-    padding-bottom .45s cubic-bezier(.22,1,.36,1);
+    visibility .45s ease;
 }
 
-.product-page-pour__accordion-content::before {
-  content: "";
-  min-height: 0;
+
+.product-page-pour__info-panel.is-active {
+  visibility: visible;
+  pointer-events: auto;
 }
 
-.product-page-pour__accordion.is-open
-.product-page-pour__accordion-content {
-  grid-template-rows: 1fr;
 
+/* =========================================================
+   FOND
+========================================================= */
+
+.product-page-pour__info-panel-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: rgba(0, 0, 0, .12);
+
+  opacity: 0;
+
+  cursor: default;
+
+  transition: opacity .45s ease;
+}
+
+
+.product-page-pour__info-panel.is-active
+.product-page-pour__info-panel-overlay {
   opacity: 1;
-
-  padding-bottom: 24px;
 }
 
-.product-page-pour__accordion.is-open
-.product-page-pour__accordion-icon {
-  transform: rotate(45deg);
+
+/* =========================================================
+   PANNEAU BLANC À DROITE
+========================================================= */
+
+.product-page-pour__info-panel-inner {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: min(520px, 50vw);
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  color: #111111;
+
+  transform: translateX(100%);
+
+  transition:
+    transform .45s cubic-bezier(.22, 1, .36, 1);
+
+  overflow-y: auto;
+}
+
+
+.product-page-pour__info-panel.is-active
+.product-page-pour__info-panel-inner {
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   HEADER DU PANNEAU
+========================================================= */
+
+.product-page-pour__info-panel-header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 0 0 auto;
+
+  padding: 35px 38px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.product-page-pour__info-panel-title {
+  margin: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .10em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CROIX
+========================================================= */
+
+.product-page-pour__info-panel-close {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 28px;
+  height: 28px;
+
+  margin-left: 20px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.product-page-pour__info-panel-close::before,
+.product-page-pour__info-panel-close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #111111;
+}
+
+
+.product-page-pour__info-panel-close::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+}
+
+
+.product-page-pour__info-panel-close::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.product-page-pour__info-panel-content {
+  display: none;
+
+  padding: 40px 38px 70px;
+}
+
+
+.product-page-pour__info-panel-content.is-active {
+  display: block;
+}
+
+
+/* =========================================================
+   PETITS TEXTES
+========================================================= */
+
+.product-page-pour__info-panel-block {
+  margin-bottom: 32px;
+}
+
+
+.product-page-pour__info-panel-block:last-child {
+  margin-bottom: 0;
+}
+
+
+.product-page-pour__info-panel-label {
+  margin-bottom: 10px;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+}
+
+
+.product-page-pour__info-panel-text {
+  max-width: 420px;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  line-height: 1.65;
+
+  color: #444444;
 }
 
 
@@ -2009,30 +2283,52 @@ font-weight: 200;
 @media screen and (max-width: 768px) {
 
   .product-page-pour__accordions {
+    grid-template-columns: 1fr;
+
     margin-top: 55px;
   }
 
+
   .product-page-pour__accordion-trigger {
-    padding: 17px 0;
+    min-height: 48px;
 
-    font-size: 11px !important;
+    padding: 15px 0;
+
+    border-right: 0;
+    border-bottom: 1px solid #111111;
+
+    font-size: 10px !important;
   }
 
-  .product-page-pour__accordion-icon {
-    width: 20px;
-    font-size: 16px;
+
+  .product-page-pour__accordion-trigger:last-child {
+    border-bottom: 0;
   }
 
-  .product-page-pour__accordion-content {
-    padding-left: 22px;
 
-    font-size: 12px !important;
-    line-height: 1.5;
+  .product-page-pour__info-panel-inner {
+    width: 100%;
   }
 
-  .product-page-pour__accordion.is-open
-  .product-page-pour__accordion-content {
-    padding-bottom: 22px;
+
+  .product-page-pour__info-panel-header {
+    padding: 25px 20px;
+  }
+
+
+  .product-page-pour__info-panel-content {
+    padding:
+      32px
+      20px
+      50px;
+  }
+
+
+  .product-page-pour__info-panel-text {
+    max-width: none;
+
+    font-size: 10px !important;
+    line-height: 1.6;
   }
 
 }
@@ -3185,62 +3481,194 @@ if (addButton && productForm) {
 
   if (!section) return;
 
-  const accordions =
-    section.querySelectorAll(
-      '.product-page-pour__accordion'
+
+  const panel =
+    section.querySelector(
+      '[data-product-info-panel]'
     );
 
-  accordions.forEach(function (accordion) {
 
-    const trigger =
-      accordion.querySelector(
-        '.product-page-pour__accordion-trigger'
+  const triggers =
+    section.querySelectorAll(
+      '[data-product-panel-open]'
+    );
+
+
+  const closeButtons =
+    section.querySelectorAll(
+      '[data-product-panel-close]'
+    );
+
+
+  const panelContents =
+    section.querySelectorAll(
+      '[data-product-panel-content]'
+    );
+
+
+  const panelTitle =
+    section.querySelector(
+      '[data-product-panel-title]'
+    );
+
+
+  if (!panel) return;
+
+
+  /* =====================================================
+     OUVRIR UN PANNEAU
+  ===================================================== */
+
+  function openPanel(type) {
+
+    /* Masque tous les contenus */
+    panelContents.forEach(function (content) {
+
+      content.classList.remove('is-active');
+
+    });
+
+
+    /* Affiche le bon contenu */
+    const activeContent =
+      section.querySelector(
+        '[data-product-panel-content="' +
+        type +
+        '"]'
       );
 
-    if (!trigger) return;
+
+    if (activeContent) {
+
+      activeContent.classList.add(
+        'is-active'
+      );
+
+    }
+
+
+    /* Titre */
+    if (panelTitle) {
+
+      if (type === 'details') {
+
+        panelTitle.textContent =
+          'DÉTAILS DU PRODUIT';
+
+      }
+
+      if (type === 'faq') {
+
+        panelTitle.textContent =
+          'FAQ SUR LES PRODUITS';
+
+      }
+
+      if (type === 'shipping') {
+
+        panelTitle.textContent =
+          'EXPÉDITION & RETOURS';
+
+      }
+
+    }
+
+
+    /* Ouvre */
+    panel.classList.add('is-active');
+
+    panel.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+
+    /* Bloque le scroll derrière */
+    document.body.style.overflow =
+      'hidden';
+
+  }
+
+
+  /* =====================================================
+     FERMER
+  ===================================================== */
+
+  function closePanel() {
+
+    panel.classList.remove(
+      'is-active'
+    );
+
+    panel.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+
+    document.body.style.overflow =
+      '';
+
+  }
+
+
+  /* =====================================================
+     BOUTONS
+  ===================================================== */
+
+  triggers.forEach(function (trigger) {
 
     trigger.addEventListener(
       'click',
       function () {
 
-        const wasOpen =
-          accordion.classList.contains('is-open');
+        const type =
+          trigger.dataset.productPanelOpen;
 
-        /* Ferme tous les autres */
-        accordions.forEach(function (item) {
+        if (!type) return;
 
-          item.classList.remove('is-open');
-
-          const itemTrigger =
-            item.querySelector(
-              '.product-page-pour__accordion-trigger'
-            );
-
-          if (itemTrigger) {
-            itemTrigger.setAttribute(
-              'aria-expanded',
-              'false'
-            );
-          }
-
-        });
-
-        /* Ouvre celui sélectionné */
-        if (!wasOpen) {
-
-          accordion.classList.add('is-open');
-
-          trigger.setAttribute(
-            'aria-expanded',
-            'true'
-          );
-
-        }
+        openPanel(type);
 
       }
     );
 
   });
+
+
+  /* =====================================================
+     FERMETURE
+  ===================================================== */
+
+  closeButtons.forEach(function (button) {
+
+    button.addEventListener(
+      'click',
+      closePanel
+    );
+
+  });
+
+
+  /* =====================================================
+     ÉCHAP
+  ===================================================== */
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        event.key === 'Escape' &&
+        panel.classList.contains('is-active')
+      ) {
+
+        closePanel();
+
+      }
+
+    }
+  );
+
 
 })();
 </script>
