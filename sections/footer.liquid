@@ -1369,79 +1369,7 @@ padding:
 })();
 
 </script>
-<script>
-(function () {
 
-  const SUCCESS_KEY = 'pour_newsletter_success';
-
-  function initNewsletterSuccess() {
-
-    const footer = document.getElementById(
-      'FooterPour-{{ section.id }}'
-    );
-
-    if (!footer) return;
-
-    const form = footer.querySelector(
-      '.footer-pour__form'
-    );
-
-    if (!form) return;
-
-    const successMessage = footer.querySelector(
-      '.footer-pour__message--success'
-    );
-
-    /*
-     * Si Shopify nous a ramenés sur la homepage après
-     * l'inscription, on affiche le message de confirmation.
-     */
-    if (
-      sessionStorage.getItem(SUCCESS_KEY) === 'true'
-      && window.location.pathname === '/'
-    ) {
-
-      const formFields = form.querySelectorAll(
-        '.footer-pour__heading, .footer-pour__newsletter-text, .footer-pour__marketing-consent, .footer-pour__input-wrap, .footer-pour__submit'
-      );
-
-      formFields.forEach(function (element) {
-        element.style.display = 'none';
-      });
-
-      if (successMessage) {
-        successMessage.style.display = 'block';
-      }
-
-      sessionStorage.removeItem(SUCCESS_KEY);
-    }
-
-    /*
-     * On mémorise la soumission avant que Shopify
-     * déclenche éventuellement son CAPTCHA.
-     */
-    form.addEventListener('submit', function () {
-      sessionStorage.setItem(SUCCESS_KEY, 'true');
-    });
-
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener(
-      'DOMContentLoaded',
-      initNewsletterSuccess
-    );
-  } else {
-    initNewsletterSuccess();
-  }
-
-  document.addEventListener(
-    'shopify:section:load',
-    initNewsletterSuccess
-  );
-
-})();
-</script>
 {% schema %}
 {
   "name": "Footer",
