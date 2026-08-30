@@ -1810,49 +1810,42 @@ width: min(680px, 100vw);
 }
 
 .product-page-pour__related-arrow {
-  display: none;
+  position: absolute;
+  top: 50%;
+  z-index: 40;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: 1px solid rgba(17, 17, 17, 0.10);
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.96);
+  color: #111111;
+
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+  transition:
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .25s ease;
 }
 
-@media screen and (min-width: 769px) {
-
-  .product-page-pour__related-carousel.has-five-products
-  .product-page-pour__related-arrow {
-    position: absolute;
-    top: 50%;
-    z-index: 10;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    width: 44px;
-height: 44px;
-
-    padding: 0;
-
-    border: 1px solid rgba(17, 17, 17, 0.10);
-    border-radius: 50%;
-
-    background: rgba(255, 255, 255, 0.96);
-    color: #111111;
-
-    font-size: 20px;
-    font-weight: 300;
-    line-height: 1;
-
-    cursor: pointer;
-
-    transform: translateY(-50%);
-
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-
-    transition:
-      background .25s ease,
-      transform .25s ease,
-      box-shadow .25s ease;
-  }
-
-  .product-page-pour__related-arrow--prev {
+.product-page-pour__related-arrow--prev {
   left: -21px;
 }
 
@@ -1860,16 +1853,22 @@ height: 44px;
   right: -21px;
 }
 
-  .product-page-pour__related-arrow:hover {
-    background: #ffffff;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-  }
+.product-page-pour__related-arrow:hover {
+  background: #ffffff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+}
+
 .product-page-pour__related-arrow:disabled {
   opacity: 0.28;
   cursor: default;
   pointer-events: none;
   box-shadow: none;
 }
+
+@media screen and (max-width: 768px) {
+  .product-page-pour__related-arrow {
+    display: none;
+  }
 }
 
 /* SUPPRESSION DE LA BARRE — VOIR AUSSI */
