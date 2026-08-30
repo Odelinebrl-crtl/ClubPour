@@ -608,8 +608,8 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 .product-page-pour__main-media {
   position: relative;
   width: 100% !important;
-  height: calc(100vh - 100px);
-  min-height: 650px;
+  height: calc(100vh - 84px);
+  min-height: 0;
   margin-left: 0 !important;
   margin-right: 0 !important;
   overflow: hidden;
@@ -1370,6 +1370,16 @@ height: 44px;
   pointer-events: none;
   box-shadow: none;
 }
+}
+
+/* SUPPRESSION DE LA BARRE — VOIR AUSSI */
+
+.product-page-pour__related,
+.product-page-pour__related-heading,
+.product-page-pour__related-carousel {
+  border-top: none !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 </style>
 <script>
