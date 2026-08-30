@@ -1726,71 +1726,59 @@ const emailStateKey = 'clubPrivilegesSubmittedEmail';
 
 
 /*
-   FORMULAIRES CONCERNÉS
+   On mémorise uniquement le formulaire utilisé.
+   Le CAPTCHA Shopify reste entièrement natif.
 */
 
-const customerForms = document.querySelectorAll(
-  '#club-hero-form, #club-final-form'
-);
+document
+  .querySelectorAll(
+    '#club-hero-form, #club-final-form'
+  )
+  .forEach((form) => {
+
+    const formName =
+      form.id === 'club-hero-form'
+        ? 'hero'
+        : 'final';
 
 
-customerForms.forEach((form) => {
+    form.addEventListener(
+      'submit',
+      () => {
 
-  const formName =
-    form.id === 'club-hero-form'
-      ? 'hero'
-      : 'final';
-
-
-  form.addEventListener('submit', () => {
-
-    const emailInput =
-      form.querySelector(
-        'input[name="contact[email]"]'
-      );
+        const emailInput =
+          form.querySelector(
+            'input[name="contact[email]"]'
+          );
 
 
-    /*
-       On mémorise le formulaire utilisé
-       avant que Shopify affiche le CAPTCHA.
-    */
+        sessionStorage.setItem(
+          formStateKey,
+          formName
+        );
 
-    sessionStorage.setItem(
-      formStateKey,
-      formName
+
+        if (
+          emailInput &&
+          emailInput.value
+        ) {
+
+          sessionStorage.setItem(
+            emailStateKey,
+            emailInput.value
+          );
+
+        }
+
+      }
     );
-
-
-    /*
-       On mémorise l'adresse email.
-    */
-
-    if (
-      emailInput &&
-      emailInput.value
-    ) {
-
-      sessionStorage.setItem(
-        emailStateKey,
-        emailInput.value
-      );
-
-    }
 
   });
 
-});
-
 
 /*
-   PARAMÈTRES DE RETOUR SHOPIFY
+   RETOUR APRÈS CAPTCHA / SOUMISSION
 */
-
-const params =
-  new URLSearchParams(
-    window.location.search
-  );
-
 
 const submittedForm =
   sessionStorage.getItem(
@@ -1804,10 +1792,6 @@ const submittedEmail =
   );
 
 
-/*
-   APRÈS LE RETOUR SHOPIFY / CAPTCHA
-*/
-
 if (submittedForm) {
 
   const form =
@@ -1818,29 +1802,6 @@ if (submittedForm) {
 
   if (form) {
 
-    const fields =
-      form.querySelector(
-        '[data-club-form-fields]'
-      );
-
-
-    const success =
-  document.querySelector(
-    `[data-club-success="${submittedForm}"]`
-  );
-
-    const error =
-      form.querySelector(
-        '[data-club-form-error]'
-      );
-
-
-    const already =
-      form.querySelector(
-        '[data-club-already]'
-      );
-
-
     const emailInput =
       form.querySelector(
         'input[name="contact[email]"]'
@@ -1848,7 +1809,7 @@ if (submittedForm) {
 
 
     /*
-       RESTAURATION DE L'EMAIL
+       Restaure l'email si nécessaire.
     */
 
     if (
@@ -1864,103 +1825,22 @@ if (submittedForm) {
 
 
     /*
-       DÉTECTION — EMAIL DÉJÀ INSCRIT
+       IMPORTANT :
+       on ne touche PAS au scroll ici.
+       Shopify gère le retour via return_to
+       + l'ancre du formulaire.
     */
-
-    const hasEmailError =
-      error &&
-      error.textContent
-        .toLowerCase()
-        .includes('déjà inscrit');
-
-
-    /*
-       CAS 1 — EMAIL DÉJÀ INSCRIT
-    */
-
-    if (hasEmailError) {
-
-      if (fields) {
-        fields.hidden = false;
-      }
-
-
-      if (error) {
-        error.hidden = true;
-      }
-
-
-      if (already) {
-        already.hidden = false;
-      }
-
-
-      if (success) {
-        success.hidden = true;
-      }
-
-    }
-
-
-    /*
-       CAS 2 — INSCRIPTION VALIDÉE
-    */
-
-    else if (
-      params.get('customer_posted') === 'true'
-    ) {
-
-      /*
-         On masque uniquement les champs
-         du formulaire concerné.
-      */
-
-      if (fields) {
-        fields.hidden = true;
-      }
-
-
-      /*
-         On affiche le message de succès.
-      */
-
-      if (success) {
-
-        success.hidden = false;
-
-        success.style.display = '';
-
-      }
-
-
-      /*
-         On masque les autres messages.
-      */
-
-      if (already) {
-        already.hidden = true;
-      }
-
-
-      if (error) {
-        error.hidden = true;
-      }
-
-    }
 
   }
 
-
-  /*
-     On nettoie après traitement.
-  */
-
-  sessionStorage.removeItem(
-    formStateKey
-  );
-
-  sessionStorage.removeItem(
-    emailStateKey
-  );
-
 }
+
+
+/*
+   IMPORTANT :
+   On ne supprime PAS immédiatement le
+   sessionStorage.
+
+   Il doit rester disponible pendant le
+   passage CAPTCHA / retour Shopify.
+*/
