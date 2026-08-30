@@ -35,6 +35,16 @@
     }
   </style>
 {% endif %}
+
+{% if request.path contains '/tools' or request.path contains '/unsubscribe' %}
+  <style>
+    /* Décalage de la page de désabonnement du Club Privilège */
+    .shopify-email-marketing-confirmation__container,
+    .shopify-email-marketing-unsubscribe__container {
+      padding-top: 120px !important;
+    }
+  </style>
+{% endif %}
   </head>
 
   <body>
