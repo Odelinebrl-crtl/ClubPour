@@ -64,13 +64,12 @@
       </button>
     {% endunless %}
 
-<p
-  class="footer-pour__message footer-pour__message--success"
-  style="display:none;"
->
-  <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
-  Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
-</p>
+{% if form.posted_successfully? %}
+  <p class="footer-pour__message footer-pour__message--success">
+    <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
+    Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
+  </p>
+{% endif %}
 
     {% if form.errors %}
       <div class="footer-pour__message">
