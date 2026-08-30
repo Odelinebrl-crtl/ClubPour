@@ -14,11 +14,12 @@
       "settings": {
         "composition": "100 % coton biologique. Coupe premium. Matière épaisse et confortable.",
         "care": "Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux.",
-        "related_product_1": "drop-001-candy-del-mar",
-        "related_product_2": "t-shirt-japalenos",
-        "related_product_3": "cypres-italien",
-        "related_product_4": "riviera",
-        "related_product_5": ""
+        "faq": "Retrouvez ici les réponses aux questions les plus fréquentes concernant nos produits.",
+        "shipping": "Retrouvez ici toutes les informations concernant l’expédition et les retours.",
+        "style_with_product_1": "drop-001-candy-del-mar",
+        "style_with_product_2": "",
+        "style_with_product_3": "",
+        "style_with_product_4": ""
       }
     }
   },
