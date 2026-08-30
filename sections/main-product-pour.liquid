@@ -564,6 +564,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   width: 100%;
   margin: 0;
   padding: 0;
+  padding-top: 84px;
   color: #111111;
   background: #ffffff;
 }
@@ -585,8 +586,8 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 430px);
-  gap: clamp(32px, 4vw, 76px);
+  grid-template-columns: minmax(0, 1fr) minmax(340px, 390px);
+  gap: clamp(28px, 3vw, 52px);
   align-items: start;
   width: 100%;
   margin: 0;
@@ -606,7 +607,9 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__main-media {
   position: relative;
-  width: 100%;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: #f5f5f3;
@@ -717,9 +720,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__info-inner {
   width: 100%;
-  max-width: 430px;
-  padding-top: clamp(20px, 4vw, 70px);
-  padding-right: clamp(16px, 2vw, 30px);
+  max-width: 390px;
+  padding-top: clamp(20px, 3vw, 55px);
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* =========================================================
@@ -727,6 +731,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 ========================================================= */
 
 @media screen and (max-width: 768px) {
+
+  .product-page-pour {
+    padding-top: 72px;
+  }
 
   .product-page-pour__top {
     display: block;
@@ -759,6 +767,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
     scroll-behavior: smooth;
 
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-x;
 
     scrollbar-width: none;
     overscroll-behavior-x: contain;
@@ -1949,20 +1958,103 @@ if (addButton && productForm) {
   const gallery = document.querySelector('[data-mobile-product-gallery]');
   const current = document.querySelector('[data-mobile-gallery-current]');
 
-  if (!gallery || !current) return;
+  if (!gallery) return;
 
   const slides = gallery.querySelectorAll('[data-mobile-product-slide]');
+  if (!slides.length) return;
 
-  function updateCounter() {
-    if (!slides.length) return;
+  let wrapTimer = null;
 
-    const index = Math.round(gallery.scrollLeft / gallery.clientWidth);
-    current.textContent = String(Math.min(index + 1, slides.length));
+  function getIndex() {
+    if (!gallery.clientWidth) return 0;
+
+    return Math.round(
+      gallery.scrollLeft / gallery.clientWidth
+    );
   }
 
-  gallery.addEventListener('scroll', updateCounter, { passive: true });
-  window.addEventListener('resize', updateCounter);
+  function updateCounter() {
+    if (!current) return;
+
+    const index = getIndex();
+
+    current.textContent = String(
+      Math.min(
+        Math.max(index + 1, 1),
+        slides.length
+      )
+    );
+  }
+
+  function wrapToStart() {
+    gallery.scrollTo({
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
+
+  function wrapToEnd() {
+    gallery.scrollTo({
+      left: gallery.scrollWidth - gallery.clientWidth,
+      behavior: 'smooth'
+    });
+  }
+
+  gallery.addEventListener(
+    'scroll',
+    function () {
+
+      updateCounter();
+
+      clearTimeout(wrapTimer);
+
+      wrapTimer = setTimeout(
+        function () {
+
+          const maxScroll =
+            gallery.scrollWidth - gallery.clientWidth;
+
+          if (maxScroll <= 0) return;
+
+          const atEnd =
+            gallery.scrollLeft >= maxScroll - 8;
+
+          const atStart =
+            gallery.scrollLeft <= 8;
+
+          /*
+             Dernière image → retour automatique
+             à la première.
+          */
+          if (atEnd && slides.length > 1) {
+            wrapToStart();
+            return;
+          }
+
+          /*
+             Première image → possibilité de repartir
+             vers la dernière en tirant vers la gauche.
+          */
+          if (atStart && slides.length > 1) {
+            /* Rien à faire ici :
+               le retour arrière reste naturel. */
+          }
+
+        },
+        120
+      );
+
+    },
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'resize',
+    updateCounter
+  );
+
   updateCounter();
+
 })();
 </script>
 
