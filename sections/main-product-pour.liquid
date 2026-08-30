@@ -11,40 +11,84 @@
         <!-- DESKTOP : GRANDE IMAGE + MINIATURES SUPERPOSÉES -->
         <div class="product-page-pour__desktop-gallery">
 
-          <div class="product-page-pour__main-media">
-            <img
-              src="{{ product.featured_image | image_url: width: 2400 }}"
-              alt="{{ product.featured_image.alt | escape }}"
-              class="product-page-pour__main-image"
-              data-main-product-image
-              width="{{ product.featured_image.width }}"
-              height="{{ product.featured_image.height }}"
-            >
-          </div>
+         <div class="product-page-pour__main-media">
 
-          {% if product.images.size > 1 %}
-            <div class="product-page-pour__thumbs" aria-label="Galerie produit">
+  <img
+    src="{{ product.featured_image | image_url: width: 2400 }}"
+    alt="{{ product.featured_image.alt | escape }}"
+    class="product-page-pour__main-image"
+    data-main-product-image
+    width="{{ product.featured_image.width }}"
+    height="{{ product.featured_image.height }}"
+  >
 
-              {% for image in product.images %}
-                <button
-                  type="button"
-                  class="product-page-pour__thumb{% if forloop.first %} is-active{% endif %}"
-                  data-product-thumb
-                  data-image="{{ image | image_url: width: 2400 }}"
-                  aria-label="Voir l'image {{ forloop.index }}"
-                >
-                  <img
-                    src="{{ image | image_url: width: 500 }}"
-                    alt="{{ image.alt | escape }}"
-                    loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-                    width="{{ image.width }}"
-                    height="{{ image.height }}"
-                  >
-                </button>
-              {% endfor %}
+  <!-- FLÈCHE GAUCHE -->
+  <button
+    type="button"
+    class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--prev"
+    data-desktop-gallery-prev
+    aria-label="Image précédente"
+  >
+    ‹
+  </button>
 
-            </div>
+  <!-- FLÈCHE DROITE -->
+  <button
+    type="button"
+    class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--next"
+    data-desktop-gallery-next
+    aria-label="Image suivante"
+  >
+    ›
+  </button>
+
+  <!-- COMPTEUR + MANNEQUIN -->
+  {% if product.images.size > 1 %}
+    <div class="product-page-pour__media-caption">
+
+      <span class="product-page-pour__media-counter">
+        <span data-desktop-gallery-current>1</span>
+        <span>/</span>
+        <span>{{ product.images.size }}</span>
+      </span>
+
+      {% if product.metafields.custom.model_height != blank
+        or product.metafields.custom.model_weight != blank
+        or product.metafields.custom.model_size != blank
+      %}
+        <span class="product-page-pour__model-caption">
+
+          {% if product.metafields.custom.model_height != blank %}
+            Le mannequin mesure {{ product.metafields.custom.model_height.value }}
           {% endif %}
+
+          {% if product.metafields.custom.model_weight != blank %}
+            et pèse {{ product.metafields.custom.model_weight.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_size != blank %}
+            et porte une taille {{ product.metafields.custom.model_size.value }}.
+          {% endif %}
+
+        </span>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  <!-- AGRANDISSEMENT -->
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-trigger"
+    data-product-fullscreen-open
+    aria-label="Agrandir les images"
+  >
+    ⛶
+  </button>
+
+</div>
+
+         
 
         </div>
 
@@ -69,13 +113,38 @@
 
         </div>
 
-        {% if product.images.size > 1 %}
-          <div class="product-page-pour__mobile-counter" aria-hidden="true">
-            <span data-mobile-gallery-current>1</span>
-            <span>/</span>
-            <span>{{ product.images.size }}</span>
-          </div>
+       {% if product.images.size > 1 %}
+  <div class="product-page-pour__mobile-counter" aria-hidden="true">
+
+    <span class="product-page-pour__mobile-counter-number">
+      <span data-mobile-gallery-current>1</span>
+      <span>/</span>
+      <span>{{ product.images.size }}</span>
+    </span>
+
+    {% if product.metafields.custom.model_height != blank
+      or product.metafields.custom.model_weight != blank
+      or product.metafields.custom.model_size != blank
+    %}
+      <span class="product-page-pour__mobile-model">
+
+        {% if product.metafields.custom.model_height != blank %}
+          Le mannequin mesure {{ product.metafields.custom.model_height.value }}
         {% endif %}
+
+        {% if product.metafields.custom.model_weight != blank %}
+          et pèse {{ product.metafields.custom.model_weight.value }}
+        {% endif %}
+
+        {% if product.metafields.custom.model_size != blank %}
+          et porte une taille {{ product.metafields.custom.model_size.value }}.
+        {% endif %}
+
+      </span>
+    {% endif %}
+
+  </div>
+{% endif %}
 
       {% endif %}
 
@@ -244,7 +313,56 @@
     </div>
 
   </div>
+<!-- =====================================================
+     GALERIE PLEIN ÉCRAN
+===================================================== -->
 
+<div
+  class="product-page-pour__fullscreen"
+  data-product-fullscreen
+  aria-hidden="true"
+>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-close"
+    data-product-fullscreen-close
+    aria-label="Fermer"
+  ></button>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--prev"
+    data-fullscreen-prev
+    aria-label="Image précédente"
+  >
+    ‹
+  </button>
+
+  <div class="product-page-pour__fullscreen-media">
+    <img
+      src="{{ product.featured_image | image_url: width: 3000 }}"
+      alt="{{ product.featured_image.alt | escape }}"
+      data-fullscreen-image
+    >
+  </div>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--next"
+    data-fullscreen-next
+    aria-label="Image suivante"
+  >
+    ›
+  </button>
+
+  <div class="product-page-pour__fullscreen-counter">
+    <span data-fullscreen-current>1</span>
+    <span>/</span>
+    <span>{{ product.images.size }}</span>
+  </div>
+
+</div>
 <!-- =====================================================
      GUIDE DES TAILLES — PAGE PRODUIT UNIQUEMENT
 ===================================================== -->
@@ -801,25 +919,39 @@ scroll-snap-stop: normal;
   }
 
   .product-page-pour__mobile-counter {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    position: absolute;
-    right: 16px;
-    bottom: 16px;
-    z-index: 10;
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
 
-    padding: 7px 10px;
+  z-index: 10;
 
-    background: rgba(255, 255, 255, .82);
+  padding: 7px 10px;
 
-    font-size: 10px;
-    line-height: 1;
-    letter-spacing: .08em;
+  background: rgba(255, 255, 255, .42);
 
-    pointer-events: none;
-  }
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: .08em;
+
+  pointer-events: none;
+}
+
+.product-page-pour__mobile-counter-number {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.product-page-pour__mobile-model {
+  font-size: 9px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
 
   /* Informations sous la galerie */
   .product-page-pour__info {
@@ -1388,7 +1520,344 @@ height: 44px;
     margin-top: -12px !important;
   }
 }
+
+/* =========================================================
+   CARROUSEL DESKTOP — FLÈCHES
+========================================================= */
+
+.product-page-pour__gallery-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition: opacity .2s ease;
+}
+
+.product-page-pour__gallery-arrow:hover {
+  opacity: .55;
+}
+
+.product-page-pour__gallery-arrow--prev {
+  left: 18px;
+}
+
+.product-page-pour__gallery-arrow--next {
+  right: 18px;
+}
+
+
+/* =========================================================
+   COMPTEUR + MANNEQUIN
+========================================================= */
+
+.product-page-pour__media-caption {
+  position: absolute;
+
+  left: 18px;
+  bottom: 18px;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 10px;
+
+  background: rgba(255, 255, 255, .42);
+
+  color: #111111;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  pointer-events: none;
+}
+
+.product-page-pour__media-counter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+.product-page-pour__model-caption {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   AGRANDISSEMENT
+========================================================= */
+
+.product-page-pour__fullscreen-trigger {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  z-index: 10;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  opacity: .9;
+}
+
+
+/* =========================================================
+   GALERIE PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.product-page-pour__fullscreen.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-page-pour__fullscreen-media {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 80px;
+}
+
+.product-page-pour__fullscreen-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   FERMER
+========================================================= */
+
+.product-page-pour__fullscreen-close {
+  position: absolute;
+
+  top: 24px;
+  right: 28px;
+
+  z-index: 20;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.product-page-pour__fullscreen-close::before,
+.product-page-pour__fullscreen-close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 24px;
+  height: 1px;
+
+  background: #111111;
+}
+
+.product-page-pour__fullscreen-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.product-page-pour__fullscreen-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* =========================================================
+   FLÈCHES PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 20;
+
+  width: 45px;
+  height: 45px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 34px;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.product-page-pour__fullscreen-arrow--prev {
+  left: 25px;
+}
+
+.product-page-pour__fullscreen-arrow--next {
+  right: 25px;
+}
+
+
+/* =========================================================
+   COMPTEUR PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen-counter {
+  position: absolute;
+
+  left: 28px;
+  bottom: 24px;
+
+  z-index: 20;
+
+  font-size: 11px;
+  letter-spacing: .05em;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__gallery-arrow {
+    display: none;
+  }
+
+  .product-page-pour__fullscreen-trigger {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .product-page-pour__media-caption {
+    left: 14px;
+    bottom: 14px;
+
+    gap: 8px;
+
+    padding: 7px 8px;
+
+    font-size: 9px;
+  }
+
+  .product-page-pour__model-caption {
+    white-space: normal;
+  }
+
+  .product-page-pour__fullscreen-media {
+    padding: 30px 20px;
+  }
+
+  .product-page-pour__fullscreen-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 28px;
+  }
+
+  .product-page-pour__fullscreen-arrow--prev {
+    left: 8px;
+  }
+
+  .product-page-pour__fullscreen-arrow--next {
+    right: 8px;
+  }
+
+  .product-page-pour__fullscreen-close {
+    top: 18px;
+    right: 18px;
+  }
+
+}
 </style>
+
+
 <script>
 (function () {
 
@@ -2267,7 +2736,263 @@ if (addButton && productForm) {
 
 })();
 </script>
+<script>
+(function () {
 
+  const section = document.querySelector(
+    '.product-page-pour[data-product-page]'
+  );
+
+  if (!section) return;
+
+
+  /* =====================================================
+     DONNÉES DES IMAGES
+  ===================================================== */
+
+  const images = [
+    {% for image in product.images %}
+      {
+        src: {{ image | image_url: width: 3000 | json }},
+        alt: {{ image.alt | escape | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  if (!images.length) return;
+
+
+  /* =====================================================
+     DESKTOP
+  ===================================================== */
+
+  const mainImage =
+    section.querySelector('[data-main-product-image]');
+
+  const desktopCurrent =
+    section.querySelector('[data-desktop-gallery-current]');
+
+  const desktopPrev =
+    section.querySelector('[data-desktop-gallery-prev]');
+
+  const desktopNext =
+    section.querySelector('[data-desktop-gallery-next]');
+
+
+  let currentIndex = 0;
+
+
+  function showDesktopImage(index) {
+
+    if (!images.length) return;
+
+    if (index < 0) {
+      index = images.length - 1;
+    }
+
+    if (index >= images.length) {
+      index = 0;
+    }
+
+    currentIndex = index;
+
+    if (mainImage) {
+      mainImage.src = images[currentIndex].src;
+      mainImage.alt = images[currentIndex].alt || '';
+    }
+
+    if (desktopCurrent) {
+      desktopCurrent.textContent =
+        String(currentIndex + 1);
+    }
+  }
+
+
+  if (desktopPrev) {
+    desktopPrev.addEventListener(
+      'click',
+      function () {
+        showDesktopImage(currentIndex - 1);
+      }
+    );
+  }
+
+
+  if (desktopNext) {
+    desktopNext.addEventListener(
+      'click',
+      function () {
+        showDesktopImage(currentIndex + 1);
+      }
+    );
+  }
+
+
+  /* =====================================================
+     PLEIN ÉCRAN
+  ===================================================== */
+
+  const fullscreen =
+    section.querySelector('[data-product-fullscreen]');
+
+  const fullscreenImage =
+    section.querySelector('[data-fullscreen-image]');
+
+  const fullscreenCurrent =
+    section.querySelector('[data-fullscreen-current]');
+
+  const fullscreenOpen =
+    section.querySelector('[data-product-fullscreen-open]');
+
+  const fullscreenClose =
+    section.querySelector('[data-product-fullscreen-close]');
+
+  const fullscreenPrev =
+    section.querySelector('[data-fullscreen-prev]');
+
+  const fullscreenNext =
+    section.querySelector('[data-fullscreen-next]');
+
+
+  function updateFullscreen() {
+
+    if (!fullscreenImage) return;
+
+    fullscreenImage.src =
+      images[currentIndex].src;
+
+    fullscreenImage.alt =
+      images[currentIndex].alt || '';
+
+    if (fullscreenCurrent) {
+      fullscreenCurrent.textContent =
+        String(currentIndex + 1);
+    }
+  }
+
+
+  function openFullscreen() {
+
+    if (!fullscreen) return;
+
+    updateFullscreen();
+
+    fullscreen.classList.add('is-active');
+
+    fullscreen.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    document.body.style.overflow = 'hidden';
+  }
+
+
+  function closeFullscreen() {
+
+    if (!fullscreen) return;
+
+    fullscreen.classList.remove('is-active');
+
+    fullscreen.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    document.body.style.overflow = '';
+  }
+
+
+  function changeFullscreenImage(direction) {
+
+    if (direction > 0) {
+      currentIndex++;
+
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+    } else {
+      currentIndex--;
+
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      }
+    }
+
+    showDesktopImage(currentIndex);
+    updateFullscreen();
+  }
+
+
+  if (fullscreenOpen) {
+    fullscreenOpen.addEventListener(
+      'click',
+      openFullscreen
+    );
+  }
+
+
+  if (fullscreenClose) {
+    fullscreenClose.addEventListener(
+      'click',
+      closeFullscreen
+    );
+  }
+
+
+  if (fullscreenPrev) {
+    fullscreenPrev.addEventListener(
+      'click',
+      function () {
+        changeFullscreenImage(-1);
+      }
+    );
+  }
+
+
+  if (fullscreenNext) {
+    fullscreenNext.addEventListener(
+      'click',
+      function () {
+        changeFullscreenImage(1);
+      }
+    );
+  }
+
+
+  /* =====================================================
+     CLAVIER
+  ===================================================== */
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        !fullscreen ||
+        !fullscreen.classList.contains('is-active')
+      ) {
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        closeFullscreen();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        changeFullscreenImage(-1);
+      }
+
+      if (event.key === 'ArrowRight') {
+        changeFullscreenImage(1);
+      }
+
+    }
+  );
+
+
+})();
+</script>
 {% schema %}
 {
   "name": "Produit POUR",
