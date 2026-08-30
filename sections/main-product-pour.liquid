@@ -792,7 +792,6 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 <style>
 
-
 /* =========================================================
    POUR — FICHE PRODUIT / GALERIE
    Inspiration : présentation REPRESENT
@@ -1553,15 +1552,11 @@ width: min(680px, 100vw);
 ========================================================= */
 
 .product-page-pour__related {
-  width: 100vw !important;
-  max-width: none !important;
-
-  margin-left: calc(50% - 50vw) !important;
-  margin-right: calc(50% - 50vw) !important;
+  width: 100%;
 
   padding:
     90px
-    56px
+    clamp(40px, 5vw, 80px)
     130px;
 
   border-top: 1px solid #f0f0f0;
@@ -1649,6 +1644,7 @@ width: min(680px, 100vw);
   display: flex;
 
   width: 100%;
+
   gap: 24px;
 
   overflow-x: auto;
@@ -1658,9 +1654,8 @@ width: min(680px, 100vw);
   scroll-behavior: smooth;
 
   scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
 
-  justify-content: center;
+  -webkit-overflow-scrolling: touch;
 }
 
 .product-page-pour__related-grid::-webkit-scrollbar {
@@ -1675,7 +1670,6 @@ width: min(680px, 100vw);
 .product-page-pour__related-card {
   flex: 0 0 calc((100% - 72px) / 4);
 
-  width: calc((100% - 72px) / 4);
   min-width: 0;
 
   scroll-snap-align: start;
@@ -1816,42 +1810,49 @@ width: min(680px, 100vw);
 }
 
 .product-page-pour__related-arrow {
-  position: absolute;
-  top: 50%;
-  z-index: 40;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 44px;
-  height: 44px;
-
-  padding: 0;
-
-  border: 1px solid rgba(17, 17, 17, 0.10);
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.96);
-  color: #111111;
-
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1;
-
-  cursor: pointer;
-
-  transform: translateY(-50%);
-
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-
-  transition:
-    background .25s ease,
-    box-shadow .25s ease,
-    opacity .25s ease;
+  display: none;
 }
 
-.product-page-pour__related-arrow--prev {
+@media screen and (min-width: 769px) {
+
+  .product-page-pour__related-carousel.has-five-products
+  .product-page-pour__related-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+height: 44px;
+
+    padding: 0;
+
+    border: 1px solid rgba(17, 17, 17, 0.10);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.96);
+    color: #111111;
+
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transform: translateY(-50%);
+
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+
+    transition:
+      background .25s ease,
+      transform .25s ease,
+      box-shadow .25s ease;
+  }
+
+  .product-page-pour__related-arrow--prev {
   left: -21px;
 }
 
@@ -1859,88 +1860,18 @@ width: min(680px, 100vw);
   right: -21px;
 }
 
-.product-page-pour__related-arrow:hover {
-  background: #ffffff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
-}
-
+  .product-page-pour__related-arrow:hover {
+    background: #ffffff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.10);
+  }
 .product-page-pour__related-arrow:disabled {
   opacity: 0.28;
   cursor: default;
   pointer-events: none;
   box-shadow: none;
 }
-
-@media screen and (max-width: 768px) {
-  .product-page-pour__related-arrow {
-    display: none;
-  }
 }
-@media screen and (max-width: 768px) {
 
-  .product-page-pour__related {
-    width: 100vw !important;
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-
-    padding: 60px 0 90px !important;
-  }
-
-  .product-page-pour__related-heading {
-    width: 100%;
-    padding: 0 16px;
-
-    margin-bottom: 45px;
-
-    justify-content: flex-start;
-
-    font-size: 20px;
-  }
-
-  .product-page-pour__related-carousel {
-    width: 100vw;
-    overflow: visible;
-  }
-
-  .product-page-pour__related-grid {
-    width: 100vw;
-
-    display: flex;
-
-    gap: 12px;
-
-    padding: 0 12px;
-
-    overflow-x: auto;
-    overflow-y: hidden;
-
-    justify-content: flex-start;
-
-    scroll-snap-type: x mandatory;
-    scroll-padding-left: 12px;
-  }
-
-  .product-page-pour__related-card {
-    flex: 0 0 calc((100vw - 36px) / 2);
-
-    width: calc((100vw - 36px) / 2);
-
-    min-width: calc((100vw - 36px) / 2);
-
-    scroll-snap-align: start;
-  }
-
-  .product-page-pour__related-title {
-    margin-top: 10px;
-    font-size: 10px;
-  }
-
-  .product-page-pour__related-price {
-    margin-top: 5px;
-    font-size: 10px;
-  }
-
-}
 /* SUPPRESSION DE LA BARRE — VOIR AUSSI */
 
 .product-page-pour__related,
@@ -2804,9 +2735,8 @@ font-weight: 200;
   );
 
 
-/* État initial */
-grid.scrollLeft = 0;
-updateArrows();
+  /* État initial */
+  updateArrows();
 
 
 })();
