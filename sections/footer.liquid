@@ -12,6 +12,11 @@
 <div class="footer-pour__column footer-pour__newsletter">
 
   {% form 'customer', class: 'footer-pour__form' %}
+<input
+  type="hidden"
+  name="return_to"
+  value="{{ request.path }}"
+>
 
     <input
       type="hidden"
