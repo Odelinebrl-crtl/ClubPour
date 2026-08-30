@@ -769,12 +769,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
+-webkit-overflow-scrolling: touch;
 
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x;
-
-    scrollbar-width: none;
-    overscroll-behavior-x: contain;
+scrollbar-width: none;
+overscroll-behavior-x: contain;
   }
 
   .product-page-pour__mobile-gallery::-webkit-scrollbar {
@@ -801,7 +799,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
     width: 100%;
     height: 100%;
 
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
   }
 
