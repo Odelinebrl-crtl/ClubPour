@@ -1469,7 +1469,7 @@ function closeModal() {
     this.style.borderColor='#111111';
   "
 >
-  AJOUTER AU PANIER
+  PRÉCOMMANDEZ
 </button>
 
           </form>
@@ -1575,7 +1575,7 @@ if (quickViewForm) {
 
     submitButton.textContent =
       matchingVariant.available
-        ? 'AJOUTER AU PANIER'
+        ? 'PRÉCOMMANDEZ'
         : 'ÉPUISÉ';
 
   }
