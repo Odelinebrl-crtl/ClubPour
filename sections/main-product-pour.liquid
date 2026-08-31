@@ -370,23 +370,15 @@
           </div>
 
           <div class="product-page-pour__info-panel-text">
-            {{ section.settings.composition }}
+           {{ section.settings.composition
+  | replace: 'COUPE', '<strong>COUPE</strong>'
+  | replace: 'MATIÈRE', '<strong>MATIÈRE</strong>'
+  | replace: 'DÉTAILS', '<strong>DÉTAILS</strong>'
+  | replace: 'ENTRETIEN', '<strong>ENTRETIEN</strong>'
+  | newline_to_br
+  | raw
+}}
           </div>
-        </div>
-      {% endif %}
-
-
-      {% if section.settings.care != blank %}
-        <div class="product-page-pour__info-panel-block">
-
-          <div class="product-page-pour__info-panel-label">
-            ENTRETIEN
-          </div>
-
-          <div class="product-page-pour__info-panel-text">
-            {{ section.settings.care }}
-          </div>
-
         </div>
       {% endif %}
 
@@ -3749,12 +3741,6 @@ if (addButton && productForm) {
       "default": "100 % coton biologique. Coupe premium. Matière épaisse et confortable."
     },
 
-    {
-      "type": "textarea",
-      "id": "care",
-      "label": "Texte entretien",
-      "default": "Lavage à 30°C sur l’envers. Ne pas sécher en machine. Repassage doux."
-    },
 {
   "type": "textarea",
   "id": "faq",
