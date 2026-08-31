@@ -17,9 +17,13 @@
         "faq": "Retrouvez ici les réponses aux questions les plus fréquentes concernant nos produits.",
         "shipping": "Retrouvez ici toutes les informations concernant l’expédition et les retours.",
         "style_with_product_1": "drop-001-candy-del-mar",
-        "style_with_product_2": "drop-001-candy-del-mar",
+        "style_with_image_1": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
+        "style_with_product_2": "cypres-italien",
+        "style_with_image_2": "shopify://shop_images/7.png",
         "style_with_product_3": "club-pour-test",
-        "style_with_product_4": "t-shirt-japalenos"
+        "style_with_image_3": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
+        "style_with_product_4": "t-shirt-japalenos",
+        "style_with_image_4": "shopify://shop_images/20.png"
       }
     }
   },
