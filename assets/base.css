@@ -1856,7 +1856,7 @@ a {
   opacity: 1;
 
   /* AUCUNE TRANSITION */
-  transition: none !important;
+  transition: opacity .3s ease;
 }
 
 
@@ -1881,7 +1881,7 @@ a {
   pointer-events: none;
 
   /* AUCUNE TRANSITION */
-  transition: none !important;
+ transition: opacity .3s ease;
 }
 
 
