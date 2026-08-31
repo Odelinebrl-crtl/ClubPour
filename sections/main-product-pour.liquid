@@ -753,7 +753,16 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
                     alt: style_product.title
                 }}
 
-              {% endif %}
+             {% if style_product.images.size > 1 %}
+  {{
+    style_product.images[1]
+    | image_url: width: 1800
+    | image_tag:
+      class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
+      loading: 'lazy',
+      alt: style_product.title
+  }}
+{% endif %}
 
             </a>
 
