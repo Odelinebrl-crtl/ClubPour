@@ -418,7 +418,13 @@
 
       <div class="product-page-pour__info-panel-text">
         {% if section.settings.shipping != blank %}
-          {{ section.settings.shipping }}
+        {{ section.settings.shipping
+  | replace: 'EXPÉDITION', '<strong>EXPÉDITION</strong>'
+  | replace: 'PRÉCOMMANDES', '<strong>PRÉCOMMANDES</strong>'
+  | replace: 'COMMANDES COURANTES', '<strong>COMMANDES COURANTES</strong>'
+  | replace: 'RETOURS & ÉCHANGES', '<strong>RETOURS & ÉCHANGES</strong>'
+  | raw
+}}
         {% else %}
           Retrouvez ici toutes les informations concernant l’expédition et les retours.
         {% endif %}
