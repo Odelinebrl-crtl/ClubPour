@@ -2475,7 +2475,19 @@ font-weight: 200;
   object-fit: contain !important;
   object-position: center !important;
 }
+.product-page-pour__style-with-image--hover {
+  position: absolute;
+  inset: 0;
 
+  opacity: 0;
+
+  transition: opacity .35s ease;
+}
+
+.product-page-pour__style-with-media:hover
+.product-page-pour__style-with-image--hover {
+  opacity: 1;
+}
 .product-page-pour__style-with-info {
   display: flex;
 
