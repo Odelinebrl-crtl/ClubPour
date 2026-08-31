@@ -753,9 +753,9 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
                     alt: style_product.title
                 }}
 
-             {% if style_product.images.size > 1 %}
+           {% if style_hover_image != blank %}
   {{
-    style_product.images[1]
+    style_hover_image
     | image_url: width: 1800
     | image_tag:
       class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
@@ -2481,7 +2481,7 @@ font-weight: 200;
 
   opacity: 0;
 
-  transition: opacity .35s ease;
+  transition: opacity .3s ease;
 }
 
 .product-page-pour__style-with-media:hover
