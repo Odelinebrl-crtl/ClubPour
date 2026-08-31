@@ -742,18 +742,29 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
                     alt: style_product.title
                 }}
 
-              {% elsif style_product.featured_image != blank %}
+           {% elsif style_product.featured_image != blank %}
 
-                {{
-                  style_product.featured_image
-                  | image_url: width: 1800
-                  | image_tag:
-                    class: 'product-page-pour__style-with-image',
-                    loading: 'lazy',
-                    alt: style_product.title
-                }}
+  {{
+    style_product.featured_image
+    | image_url: width: 1800
+    | image_tag:
+      class: 'product-page-pour__style-with-image',
+      loading: 'lazy',
+      alt: style_product.title
+  }}
 
-              {% endif %}
+{% endif %}
+
+{% if style_hover_image != blank %}
+  {{
+    style_hover_image
+    | image_url: width: 1800
+    | image_tag:
+      class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
+      loading: 'lazy',
+      alt: style_product.title
+  }}
+{% endif %}
 
             </a>
 
