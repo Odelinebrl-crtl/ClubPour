@@ -2226,39 +2226,56 @@ font-weight: 200;
 ========================================================= */
 
 .product-page-pour__style-with {
-  width: 100%;
+  position: relative;
+
+  width: 100vw;
+  max-width: 100vw;
+
+  left: 50%;
+  transform: translateX(-50%);
+
   margin: 0;
   padding: 70px 0 0;
+
+  background: #ffffff;
 }
 
 .product-page-pour__style-with-heading {
   width: 100%;
+
   margin: 0 0 45px;
+
   text-align: center;
 
   font-size: 12px;
   font-weight: 400;
-  letter-spacing: .08em;
   line-height: 1;
+
+  letter-spacing: .08em;
 }
 
 .product-page-pour__style-with-grid {
   display: grid;
+
   grid-template-columns: repeat(4, 1fr);
+
   width: 100%;
   margin: 0;
   padding: 0;
+
   gap: 0;
 }
 
 .product-page-pour__style-with-card {
   min-width: 0;
+  width: 100%;
   margin: 0;
   padding: 0;
 }
 
 .product-page-pour__style-with-media {
   position: relative;
+
   width: 100%;
   height: 580px;
 
@@ -2267,16 +2284,18 @@ font-weight: 200;
   justify-content: center;
 
   overflow: hidden;
+
   background: #f7f7f7;
 }
 
 .product-page-pour__style-with-media-link {
-  width: 100%;
-  height: 100%;
-
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  width: 100%;
+  height: 100%;
 }
 
 .product-page-pour__style-with-image {
@@ -2285,21 +2304,21 @@ font-weight: 200;
   width: auto !important;
   height: auto !important;
 
-  max-width: 68% !important;
-  max-height: 72% !important;
+  max-width: 42% !important;
+  max-height: 62% !important;
 
   object-fit: contain;
   object-position: center;
 }
 
 .product-page-pour__style-with-info {
-  position: relative;
-
   display: flex;
+
   align-items: flex-start;
   justify-content: space-between;
 
   width: 100%;
+
   padding: 14px 16px 20px;
 
   color: #111111;
@@ -2307,9 +2326,11 @@ font-weight: 200;
 }
 
 .product-page-pour__style-with-title {
+  min-width: 0;
+
   font-size: 11px;
-  line-height: 1.25;
   font-weight: 400;
+  line-height: 1.25;
 }
 
 .product-page-pour__style-with-price {
@@ -2318,13 +2339,24 @@ font-weight: 200;
   margin-left: 12px;
 
   font-size: 11px;
-  line-height: 1.25;
   font-weight: 400;
+  line-height: 1.25;
 }
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media screen and (max-width: 768px) {
 
   .product-page-pour__style-with {
+    width: 100vw;
+    max-width: 100vw;
+
+    left: 50%;
+    transform: translateX(-50%);
+
     padding-top: 50px;
   }
 
@@ -2341,8 +2373,8 @@ font-weight: 200;
   }
 
   .product-page-pour__style-with-image {
-    max-width: 70% !important;
-    max-height: 72% !important;
+    max-width: 45% !important;
+    max-height: 62% !important;
   }
 
   .product-page-pour__style-with-info {
