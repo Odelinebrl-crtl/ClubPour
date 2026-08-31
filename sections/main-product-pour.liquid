@@ -358,31 +358,25 @@
 
 
     <!-- CONTENU DÉTAILS -->
-    <div
-      class="product-page-pour__info-panel-content"
-      data-product-panel-content="details"
-    >
-
-      {% if section.settings.composition != blank %}
-        <div class="product-page-pour__info-panel-block">
-          <div class="product-page-pour__info-panel-label">
-            COMPOSITION
-          </div>
-
-          <div class="product-page-pour__info-panel-text">
-           {{ section.settings.composition
-  | replace: 'COUPE', '<strong>COUPE</strong>'
-  | replace: 'MATIÈRE', '<strong>MATIÈRE</strong>'
-  | replace: 'DÉTAILS', '<strong>DÉTAILS</strong>'
-  | replace: 'ENTRETIEN', '<strong>ENTRETIEN</strong>'
-  | newline_to_br
-  | raw
-}}
-          </div>
-        </div>
-      {% endif %}
-
-    </div>
+<div
+  class="product-page-pour__info-panel-content"
+  data-product-panel-content="details"
+>
+  <div class="product-page-pour__info-panel-text">
+    {% if section.settings.composition != blank %}
+      {{ section.settings.composition
+        | replace: 'COUPE', '<strong>COUPE</strong>'
+        | replace: 'MATIÈRE', '<strong>MATIÈRE</strong>'
+        | replace: 'DÉTAILS', '<strong>DÉTAILS</strong>'
+        | replace: 'ENTRETIEN', '<strong>ENTRETIEN</strong>'
+        | newline_to_br
+        | raw
+      }}
+    {% else %}
+      Retrouvez ici toutes les informations concernant ce produit.
+    {% endif %}
+  </div>
+</div>
 
 
     <!-- CONTENU FAQ -->
