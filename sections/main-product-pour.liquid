@@ -739,7 +739,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
                   style_image
                   | image_url: width: 1800
                   | image_tag:
-                    class: 'product-page-pour__style-with-image',
+                    class: 'product-page-pour__style-with-image product-page-pour__style-with-image--primary',
                     loading: 'lazy',
                     alt: style_product.title
                 }}
@@ -750,7 +750,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
     style_product.featured_image
     | image_url: width: 1800
     | image_tag:
-      class: 'product-page-pour__style-with-image',
+      class: 'product-page-pour__style-with-image product-page-pour__style-with-image--primary',
       loading: 'lazy',
       alt: style_product.title
   }}
@@ -2479,13 +2479,27 @@ font-weight: 200;
   object-fit: contain !important;
   object-position: center !important;
 }
+.product-page-pour__style-with-image--primary {
+  position: relative;
+  z-index: 1;
+
+  transition: opacity .3s ease;
+}
+
 .product-page-pour__style-with-image--hover {
   position: absolute;
   inset: 0;
 
+  z-index: 2;
+
   opacity: 0;
 
   transition: opacity .3s ease;
+}
+
+.product-page-pour__style-with-media:hover
+.product-page-pour__style-with-image--primary {
+  opacity: 0;
 }
 
 .product-page-pour__style-with-media:hover
