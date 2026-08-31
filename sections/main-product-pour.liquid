@@ -2416,32 +2416,87 @@ font-weight: 200;
 @media screen and (max-width: 768px) {
 
   .product-page-pour__style-with {
-    padding-top: 50px;
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 80px 0 0 !important;
+
+    box-sizing: border-box !important;
   }
 
   .product-page-pour__style-with-heading {
-    margin-bottom: 30px;
+    width: 100%;
+
+    margin: 0 0 35px !important;
+
+    text-align: center !important;
+
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+
+    letter-spacing: 0 !important;
   }
 
   .product-page-pour__style-with-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid !important;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    gap: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .product-page-pour__style-with-card {
+    width: 100% !important;
+    min-width: 0 !important;
   }
 
   .product-page-pour__style-with-media {
+    width: 100% !important;
+
     aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+  }
+
+  .product-page-pour__style-with-image {
+    width: 100% !important;
+    height: 100% !important;
+
+    object-fit: contain !important;
+    object-position: center !important;
   }
 
   .product-page-pour__style-with-info {
-    padding:
-      12px
-      10px
-      20px;
+    display: flex !important;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100% !important;
+
+    padding: 10px 10px 20px !important;
   }
 
   .product-page-pour__style-with-title,
   .product-page-pour__style-with-price {
-    font-size: 10px;
+    font-size: 10px !important;
+    line-height: 1.25 !important;
   }
+
+  /*
+     QUICK ADD — MOBILE
+     Sur mobile il n'y a pas de hover,
+     donc le + reste visible.
+  */
 
   .product-page-pour__style-with-quick-add {
     right: 8px;
@@ -2449,14 +2504,11 @@ font-weight: 200;
 
     width: 26px;
     height: 26px;
+
+    opacity: 1 !important;
+    visibility: visible !important;
   }
-.product-page-pour__style-with-grid,
-.product-page-pour__style-with-card,
-.product-page-pour__style-with-media,
-.product-page-pour__style-with-info {
-  box-sizing: border-box !important;
-  max-width: none !important;
-}
+
 }
 
 </style>
