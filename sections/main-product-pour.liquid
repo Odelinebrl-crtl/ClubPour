@@ -929,7 +929,8 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 .product-page-pour__info-inner {
   width: 100%;
-  max-width: 500px;
+  max-width: none;
+
   padding-top: clamp(32px, 4vw, 58px);
   padding-left: clamp(36px, 5vw, 76px);
   padding-right: clamp(24px, 4vw, 64px);
@@ -1890,7 +1891,7 @@ font-weight: 200;
   width: 100%;
   min-width: 0;
 
-  padding: 17px 10px;
+  padding: 17px 4px;
 
   border: 0;
   border-right: 1px solid #111111;
@@ -1912,7 +1913,9 @@ font-weight: 200;
   transition: opacity .25s ease;
 }
 
-
+.product-page-pour__accordion-trigger span {
+  white-space: nowrap;
+}
 .product-page-pour__accordion-trigger:last-child {
   border-right: 0;
 }
@@ -2176,7 +2179,7 @@ font-weight: 200;
 @media screen and (max-width: 768px) {
 
   .product-page-pour__accordions {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
 
     margin-top: 55px;
   }
