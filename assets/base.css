@@ -1890,7 +1890,7 @@ a {
 ================================ */
 
 .pour-product:hover .pour-product__image--primary {
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 
 .pour-product:hover .pour-product__image--secondary {
