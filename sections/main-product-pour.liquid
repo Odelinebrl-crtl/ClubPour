@@ -712,13 +712,13 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   <div class="product-page-pour__style-with-grid">
 
     {% for i in (1..4) %}
+{% assign product_key = 'style_with_product_' | append: i %}
+{% assign image_key = 'style_with_image_' | append: i %}
+{% assign hover_image_key = 'style_with_hover_image_' | append: i %}
 
-      {% assign product_key = 'style_with_product_' | append: i %}
-      {% assign image_key = 'style_with_image_' | append: i %}
-
-      {% assign style_product = section.settings[product_key] %}
-      {% assign style_image = section.settings[image_key] %}
-
+{% assign style_product = section.settings[product_key] %}
+{% assign style_image = section.settings[image_key] %}
+{% assign style_hover_image = section.settings[hover_image_key] %}
       {% if style_product != blank %}
 
         <article class="product-page-pour__style-with-card">
