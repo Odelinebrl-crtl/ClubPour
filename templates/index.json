@@ -46,7 +46,7 @@
         "product_card_zJAett": {
           "type": "product_card",
           "settings": {
-            "product": "drop-001-candy-del-mar",
+            "product": "amarena",
             "image_primary": "shopify://shop_images/6_29210df8-4071-47b5-990d-a0b599671649.png",
             "image_secondary": "shopify://shop_images/5_ec8bfffa-eeaa-4377-8ad6-e1b3514ca329.png"
           }
@@ -143,7 +143,7 @@
         "look_bUp43d": {
           "type": "look",
           "settings": {
-            "product": "drop-001-candy-del-mar",
+            "product": "amarena",
             "product_image": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
             "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
             "customer_name": "@clubpour",

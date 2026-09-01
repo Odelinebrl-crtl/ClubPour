@@ -46,17 +46,6 @@
     },
     "collection_001_pour_xtFkmp": {
       "type": "collection-001-pour",
-      "blocks": {
-        "product_yn4N8b": {
-          "type": "product",
-          "settings": {
-            "product": "cypres-italien"
-          }
-        }
-      },
-      "block_order": [
-        "product_yn4N8b"
-      ],
       "name": "Collection 001",
       "settings": {
         "heading": "LA PREMIÈRE COLLECTION POUR",
@@ -65,7 +54,7 @@
         "image_1": "shopify://shop_images/8_3e9c3104-e7a5-4a1b-b95f-b3e00e7f51eb.png",
         "focus_1_product_1": "riviera",
         "focus_1_image_1": "shopify://shop_images/14_7f827561-18cc-423c-a25d-daffd177857d.png",
-        "focus_1_product_2": "drop-001-candy-del-mar",
+        "focus_1_product_2": "amarena",
         "focus_1_image_2": "shopify://shop_images/6_29210df8-4071-47b5-990d-a0b599671649.png",
         "focus_1_product_3": "t-shirt-orange",
         "focus_1_image_3": "shopify://shop_images/2_46d01fb8-b0c1-4594-9a85-c56e20580920.png",

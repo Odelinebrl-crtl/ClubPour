@@ -9,35 +9,6 @@
  */
 {
   "sections": {
-    "hero": {
-      "type": "hero-vetements",
-      "settings": {
-        "image_1": "shopify://shop_images/tyler-clemmensen-JN3DVx1S1KE-unsplash.jpg",
-        "title_1": "COLLECTION 001",
-        "subtitle_1": "DÉCOUVREZ LA COLLECTION",
-        "text_color_1": "#ffffff",
-        "link_1": "",
-        "image_2": "shopify://shop_images/Design_sans_titre_e0493888-df8c-4f1a-b437-90b896e9449d.png",
-        "title_2": "CLUB POUR",
-        "subtitle_2": "COLLECTION 001",
-        "text_color_2": "#ffffff",
-        "link_2": "",
-        "title_3": "CANDY DEL MAR",
-        "subtitle_3": "COLLECTION 001",
-        "text_color_3": "#ffffff",
-        "link_3": "",
-        "title_4": "RIVIERA",
-        "subtitle_4": "COLLECTION 001",
-        "text_color_4": "#ffffff",
-        "link_4": "",
-        "title_5": "CYPRÈS ITALIEN",
-        "subtitle_5": "COLLECTION 001",
-        "text_color_5": "#ffffff",
-        "link_5": "",
-        "autoplay": true,
-        "autoplay_speed": 5
-      }
-    },
     "vetements_grid_Aa73e7": {
       "type": "vetements-grid",
       "blocks": {
@@ -52,7 +23,7 @@
         "product_zhD6np": {
           "type": "product",
           "settings": {
-            "product": "drop-001-candy-del-mar",
+            "product": "amarena",
             "image_primary": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
             "image_hover": "shopify://shop_images/2_bb365596-178e-42a8-95eb-1b7037d6211a.png"
           }
@@ -124,7 +95,6 @@
     }
   },
   "order": [
-    "hero",
     "vetements_grid_Aa73e7"
   ]
 }
