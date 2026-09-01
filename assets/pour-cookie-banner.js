@@ -10,11 +10,6 @@
       return;
     }
 
-
-    /* =========================================================
-       ÉLÉMENTS
-    ========================================================= */
-
     const acceptButton = banner.querySelector(
       '[data-pour-cookie-accept]'
     );
@@ -53,13 +48,12 @@
 
 
     /* =========================================================
-       AFFICHER LA BANNIÈRE
+       AFFICHER
     ========================================================= */
 
     function showBanner() {
 
       banner.hidden = false;
-
       banner.removeAttribute('hidden');
 
       banner.setAttribute(
@@ -74,7 +68,7 @@
 
 
     /* =========================================================
-       CACHER LA BANNIÈRE
+       CACHER
     ========================================================= */
 
     function hideBanner() {
@@ -95,17 +89,14 @@
 
 
     /* =========================================================
-       OUVRIR LES PRÉFÉRENCES
+       PRÉFÉRENCES
     ========================================================= */
 
     function showPreferences() {
 
-      if (!preferencesPanel) {
-        return;
-      }
+      if (!preferencesPanel) return;
 
       preferencesPanel.hidden = false;
-
       preferencesPanel.removeAttribute('hidden');
 
       preferencesPanel.setAttribute(
@@ -115,15 +106,9 @@
     }
 
 
-    /* =========================================================
-       FERMER LES PRÉFÉRENCES
-    ========================================================= */
-
     function hidePreferences() {
 
-      if (!preferencesPanel) {
-        return;
-      }
+      if (!preferencesPanel) return;
 
       preferencesPanel.hidden = true;
 
@@ -135,10 +120,27 @@
 
 
     /* =========================================================
-       ACCEPTATION TOTALE
+       ATTENDRE LA CONFIRMATION SHOPIFY
     ========================================================= */
 
-    function acceptAll() {
+    document.addEventListener(
+      'visitorConsentCollected',
+      function () {
+
+        console.log(
+          'POUR COOKIE : consentement Shopify enregistré.'
+        );
+
+        hideBanner();
+      }
+    );
+
+
+    /* =========================================================
+       ENREGISTRER LE CONSENTEMENT
+    ========================================================= */
+
+    function setConsent(consent) {
 
       const privacy =
         window.Shopify &&
@@ -153,27 +155,82 @@
         return;
       }
 
-      privacy.setTrackingConsent(
-        {
-          analytics: true,
-          marketing: true,
-          preferences: true
-        },
-        function (result) {
+      if (
+        typeof privacy.setTrackingConsent !== 'function'
+      ) {
 
-          if (result && result.error) {
+        console.error(
+          'POUR COOKIE : setTrackingConsent indisponible.'
+        );
 
-            console.error(
-              'POUR COOKIE : erreur lors de l’acceptation.',
-              result.error
+        return;
+      }
+
+      console.log(
+        'POUR COOKIE : enregistrement du consentement',
+        consent
+      );
+
+
+      try {
+
+        privacy.setTrackingConsent(
+          consent,
+          function (result) {
+
+            console.log(
+              'POUR COOKIE : réponse Shopify',
+              result
             );
 
-            return;
-          }
+            /*
+             * Shopify renvoie normalement un objet vide
+             * lorsque l'enregistrement fonctionne.
+             */
 
-          hideBanner();
-        }
-      );
+            if (
+              result &&
+              result.error
+            ) {
+
+              console.error(
+                'POUR COOKIE : Shopify a retourné une erreur.',
+                result.error
+              );
+
+              return;
+            }
+
+            hideBanner();
+          }
+        );
+
+      } catch (error) {
+
+        console.error(
+          'POUR COOKIE : erreur setTrackingConsent.',
+          error
+        );
+      }
+    }
+
+
+    /* =========================================================
+       ACCEPTER
+    ========================================================= */
+
+    function acceptAll(event) {
+
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+
+      setConsent({
+        analytics: true,
+        marketing: true,
+        preferences: true
+      });
     }
 
 
@@ -181,42 +238,18 @@
        REFUSER
     ========================================================= */
 
-    function refuseAll() {
+    function refuseAll(event) {
 
-      const privacy =
-        window.Shopify &&
-        window.Shopify.customerPrivacy;
-
-      if (!privacy) {
-
-        console.error(
-          'POUR COOKIE : Customer Privacy API indisponible.'
-        );
-
-        return;
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
       }
 
-      privacy.setTrackingConsent(
-        {
-          analytics: false,
-          marketing: false,
-          preferences: false
-        },
-        function (result) {
-
-          if (result && result.error) {
-
-            console.error(
-              'POUR COOKIE : erreur lors du refus.',
-              result.error
-            );
-
-            return;
-          }
-
-          hideBanner();
-        }
-      );
+      setConsent({
+        analytics: false,
+        marketing: false,
+        preferences: false
+      });
     }
 
 
@@ -224,59 +257,31 @@
        ENREGISTRER LES PRÉFÉRENCES
     ========================================================= */
 
-    function savePreferences() {
+    function savePreferences(event) {
 
-      const privacy =
-        window.Shopify &&
-        window.Shopify.customerPrivacy;
-
-      if (!privacy) {
-
-        console.error(
-          'POUR COOKIE : Customer Privacy API indisponible.'
-        );
-
-        return;
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
       }
 
+      setConsent({
 
-      const analytics =
-        analyticsInput
-          ? analyticsInput.checked
-          : false;
+        preferences:
+          preferencesInput
+            ? preferencesInput.checked
+            : false,
 
-      const marketing =
-        marketingInput
-          ? marketingInput.checked
-          : false;
+        analytics:
+          analyticsInput
+            ? analyticsInput.checked
+            : false,
 
-      const preferences =
-        preferencesInput
-          ? preferencesInput.checked
-          : false;
+        marketing:
+          marketingInput
+            ? marketingInput.checked
+            : false
 
-
-      privacy.setTrackingConsent(
-        {
-          analytics: analytics,
-          marketing: marketing,
-          preferences: preferences
-        },
-        function (result) {
-
-          if (result && result.error) {
-
-            console.error(
-              'POUR COOKIE : erreur lors de l’enregistrement.',
-              result.error
-            );
-
-            return;
-          }
-
-          hideBanner();
-        }
-      );
+      });
     }
 
 
@@ -306,7 +311,12 @@
 
       preferencesButton.addEventListener(
         'click',
-        showPreferences
+        function (event) {
+
+          event.preventDefault();
+
+          showPreferences();
+        }
       );
     }
 
@@ -315,7 +325,12 @@
 
       closePreferencesButton.addEventListener(
         'click',
-        hidePreferences
+        function (event) {
+
+          event.preventDefault();
+
+          hidePreferences();
+        }
       );
     }
 
@@ -330,10 +345,10 @@
 
 
     /* =========================================================
-       CHARGEMENT DE L'API SHOPIFY
+       CHARGEMENT API SHOPIFY
     ========================================================= */
 
-    function startPrivacyAPI() {
+    function loadPrivacyAPI() {
 
       if (
         window.Shopify &&
@@ -371,13 +386,16 @@
           if (error) {
 
             console.error(
-              'POUR COOKIE : impossible de charger la Customer Privacy API.',
+              'POUR COOKIE : erreur chargement API.',
               error
             );
 
             return;
           }
 
+          console.log(
+            'POUR COOKIE : Customer Privacy API chargée.'
+          );
 
           checkConsent();
         }
@@ -386,7 +404,7 @@
 
 
     /* =========================================================
-       VÉRIFICATION DU CONSENTEMENT
+       VÉRIFIER LE CONSENTEMENT
     ========================================================= */
 
     function checkConsent() {
@@ -395,14 +413,7 @@
         window.Shopify &&
         window.Shopify.customerPrivacy;
 
-      if (!privacy) {
-
-        console.error(
-          'POUR COOKIE : Customer Privacy API indisponible.'
-        );
-
-        return;
-      }
+      if (!privacy) return;
 
 
       try {
@@ -411,27 +422,17 @@
           privacy.currentVisitorConsent();
 
         console.log(
-          'POUR COOKIE — consentement actuel :',
+          'POUR COOKIE : consentement actuel',
           consent
         );
 
 
-        /*
-         * Shopify renvoie une chaîne vide lorsqu'aucune
-         * décision n'a encore été enregistrée.
-         */
-
         const noDecision =
           !consent ||
           (
-            (consent.analytics === '' ||
-             typeof consent.analytics === 'undefined') &&
-
-            (consent.marketing === '' ||
-             typeof consent.marketing === 'undefined') &&
-
-            (consent.preferences === '' ||
-             typeof consent.preferences === 'undefined')
+            consent.analytics === '' &&
+            consent.marketing === '' &&
+            consent.preferences === ''
           );
 
 
@@ -442,13 +443,12 @@
         } else {
 
           hideBanner();
-
         }
 
       } catch (error) {
 
         console.error(
-          'POUR COOKIE : erreur pendant la vérification du consentement.',
+          'POUR COOKIE : erreur lecture consentement.',
           error
         );
       }
@@ -456,18 +456,16 @@
 
 
     /* =========================================================
-       LANCEMENT
+       DÉMARRAGE
     ========================================================= */
 
-    startPrivacyAPI();
+    loadPrivacyAPI();
   }
 
 
-  /* =========================================================
-     DOM READY
-  ========================================================= */
-
-  if (document.readyState === 'loading') {
+  if (
+    document.readyState === 'loading'
+  ) {
 
     document.addEventListener(
       'DOMContentLoaded',
