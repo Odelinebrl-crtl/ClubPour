@@ -1,16 +1,13 @@
 (function () {
   'use strict';
 
+  const COOKIE_CONSENT_KEY = 'pour_cookie_consent';
+
   console.log('POUR COOKIE : JS chargé');
 
   function initPourCookieBanner() {
 
     const banner = document.getElementById('PourCookieBanner');
-
-    console.log(
-      'POUR COOKIE : bannière trouvée =',
-      !!banner
-    );
 
     if (!banner) {
       console.error(
@@ -43,23 +40,30 @@
       '[data-pour-cookie-save]'
     );
 
-    console.log(
-      'POUR COOKIE : boutons accepter =',
-      acceptButtons.length
-    );
+    const preferenceInputs = {
+      preferences: banner.querySelector(
+        '[data-pour-cookie-preference="preferences"]'
+      ),
 
-    console.log(
-      'POUR COOKIE : boutons refuser =',
-      refuseButtons.length
-    );
+      analytics: banner.querySelector(
+        '[data-pour-cookie-preference="analytics"]'
+      ),
+
+      marketing: banner.querySelector(
+        '[data-pour-cookie-preference="marketing"]'
+      )
+    };
+
+    /*
+     * ==============================
+     * AFFICHER / CACHER
+     * ==============================
+     */
 
     function hideBanner() {
 
-      console.log(
-        'POUR COOKIE : EXECUTION hideBanner()'
-      );
-
       banner.hidden = true;
+
       banner.setAttribute(
         'aria-hidden',
         'true'
@@ -93,7 +97,9 @@
         'false'
       );
 
-      banner.style.removeProperty('display');
+      banner.style.removeProperty(
+        'display'
+      );
 
       document.documentElement.classList.add(
         'pour-cookie-banner-open'
@@ -102,7 +108,73 @@
       document.body.classList.add(
         'pour-cookie-banner-open'
       );
+
+      console.log(
+        'POUR COOKIE : bannière affichée'
+      );
     }
+
+    /*
+     * ==============================
+     * MÉMORISATION
+     * ==============================
+     */
+
+    function saveConsent(consent) {
+
+      try {
+
+        localStorage.setItem(
+          COOKIE_CONSENT_KEY,
+          JSON.stringify(consent)
+        );
+
+        console.log(
+          'POUR COOKIE : choix mémorisé',
+          consent
+        );
+
+      } catch (error) {
+
+        console.warn(
+          'POUR COOKIE : impossible de mémoriser le choix',
+          error
+        );
+
+      }
+    }
+
+    function getSavedConsent() {
+
+      try {
+
+        const savedConsent =
+          localStorage.getItem(
+            COOKIE_CONSENT_KEY
+          );
+
+        if (!savedConsent) {
+          return null;
+        }
+
+        return JSON.parse(savedConsent);
+
+      } catch (error) {
+
+        console.warn(
+          'POUR COOKIE : impossible de lire le choix',
+          error
+        );
+
+        return null;
+      }
+    }
+
+    /*
+     * ==============================
+     * PRÉFÉRENCES
+     * ==============================
+     */
 
     function openPreferences() {
 
@@ -115,6 +187,10 @@
       preferencesPanel.setAttribute(
         'aria-hidden',
         'false'
+      );
+
+      console.log(
+        'POUR COOKIE : préférences ouvertes'
       );
     }
 
@@ -133,7 +209,9 @@
     }
 
     /*
+     * ==============================
      * ACCEPTER
+     * ==============================
      */
 
     acceptButtons.forEach(function (button) {
@@ -149,6 +227,13 @@
             'POUR COOKIE : ACCEPTER cliqué'
           );
 
+          saveConsent({
+            necessary: true,
+            preferences: true,
+            analytics: true,
+            marketing: true
+          });
+
           hideBanner();
 
         }
@@ -157,7 +242,9 @@
     });
 
     /*
+     * ==============================
      * REFUSER
+     * ==============================
      */
 
     refuseButtons.forEach(function (button) {
@@ -173,6 +260,13 @@
             'POUR COOKIE : REFUSER cliqué'
           );
 
+          saveConsent({
+            necessary: true,
+            preferences: false,
+            analytics: false,
+            marketing: false
+          });
+
           hideBanner();
 
         }
@@ -181,7 +275,9 @@
     });
 
     /*
+     * ==============================
      * PRÉFÉRENCES
+     * ==============================
      */
 
     if (preferencesButton) {
@@ -193,10 +289,6 @@
           event.preventDefault();
           event.stopPropagation();
 
-          console.log(
-            'POUR COOKIE : PRÉFÉRENCES cliqué'
-          );
-
           openPreferences();
 
         }
@@ -205,7 +297,9 @@
     }
 
     /*
+     * ==============================
      * FERMER PRÉFÉRENCES
+     * ==============================
      */
 
     if (closePreferencesButton) {
@@ -225,7 +319,9 @@
     }
 
     /*
+     * ==============================
      * ENREGISTRER PRÉFÉRENCES
+     * ==============================
      */
 
     if (savePreferencesButton) {
@@ -237,11 +333,39 @@
           event.preventDefault();
           event.stopPropagation();
 
+          const consent = {
+
+            necessary: true,
+
+            preferences:
+              !!(
+                preferenceInputs.preferences &&
+                preferenceInputs.preferences.checked
+              ),
+
+            analytics:
+              !!(
+                preferenceInputs.analytics &&
+                preferenceInputs.analytics.checked
+              ),
+
+            marketing:
+              !!(
+                preferenceInputs.marketing &&
+                preferenceInputs.marketing.checked
+              )
+
+          };
+
           console.log(
-            'POUR COOKIE : ENREGISTRER cliqué'
+            'POUR COOKIE : préférences enregistrées',
+            consent
           );
 
+          saveConsent(consent);
+
           hideBanner();
+
           closePreferences();
 
         }
@@ -250,11 +374,27 @@
     }
 
     /*
-     * IMPORTANT :
-     * On affiche la bannière pour le test.
+     * ==============================
+     * VÉRIFIER SI UN CHOIX EXISTE
+     * ==============================
      */
 
-    showBanner();
+    const savedConsent = getSavedConsent();
+
+    if (savedConsent) {
+
+      console.log(
+        'POUR COOKIE : choix déjà enregistré',
+        savedConsent
+      );
+
+      hideBanner();
+
+    } else {
+
+      showBanner();
+
+    }
 
   }
 
