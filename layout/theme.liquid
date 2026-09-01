@@ -54,70 +54,16 @@
     <main id="MainContent">
       {{ content_for_layout }}
     </main>
+{% section 'footer' %}
 
-    {% section 'footer' %}
-   <div
-  id="PourCookieBanner"
-  style="
-    position: fixed !important;
-    inset: 0 !important;
-    z-index: 999999999 !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 24px !important;
-    box-sizing: border-box !important;
-    background: rgba(0,0,0,.76) !important;
-    color: white !important;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
-    text-align: center !important;
-  "
->
-  <div>
-    <h2 style="
-      margin: 0 0 20px !important;
-      font-size: 18px !important;
-      font-weight: 500 !important;
-    ">
-      POUR TEST 123456
-    </h2>
+{% render 'pour-cookie-banner' %}
 
-    <p style="
-      max-width: 560px !important;
-      margin: 0 auto 25px !important;
-      font-size: 14px !important;
-      line-height: 1.5 !important;
-    ">
-      Nous utilisons des cookies nécessaires au fonctionnement du site ainsi
-      que, avec votre accord, des cookies permettant d’améliorer votre
-      expérience.
-    </p>
+{{ 'pour-cookie-banner.css' | asset_url | stylesheet_tag }}
 
-    <button
-      type="button"
-      style="
-        width: 400px !important;
-        max-width: 100% !important;
-        min-height: 60px !important;
-        border: 1px solid white !important;
-        border-radius: 0 !important;
-        background: white !important;
-        color: #111 !important;
-        font-family: inherit !important;
-        cursor: pointer !important;
-      "
-    >
-      ACCEPTER & FERMER
-    </button>
-  </div>
-</div>
-
-    {{ 'pour-cookie-banner.css' | asset_url | stylesheet_tag }}
-
-    <script
-      src="{{ 'pour-cookie-banner.js' | asset_url }}"
-      defer
-    ></script>
+<script
+  src="{{ 'pour-cookie-banner.js' | asset_url }}"
+  defer
+></script>
 <!-- =========================================================
      POUR — QUICK VIEW
 ========================================================= -->
