@@ -56,7 +56,22 @@
     </main>
 
     {% section 'footer' %}
-    {% render 'pour-cookie-banner' %}
+   <div
+  style="
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 999999999 !important;
+    background: rgba(0,0,0,.85) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: white !important;
+    font-family: Arial, sans-serif !important;
+    font-size: 30px !important;
+  "
+>
+  COOKIE TEST POUR
+</div>
 
     {{ 'pour-cookie-banner.css' | asset_url | stylesheet_tag }}
 
