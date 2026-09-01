@@ -173,7 +173,48 @@
   <strong>Tailles et coupe</strong>
   <span>— {{ product.metafields.custom.fit.value }}</span>
 </div>
+{% assign color_products = product.metafields.custom.color_products.value %}
 
+{% if color_products != blank %}
+  <div class="product-page-pour__colors">
+
+    <div class="product-page-pour__colors-heading">
+      <strong>Couleur</strong>
+      <span>{{ color_products.size }}</span>
+    </div>
+
+    <div class="product-page-pour__colors-list">
+
+      {% for color_product in color_products %}
+
+        <a
+          href="{{ color_product.url }}"
+          class="product-page-pour__color"
+          aria-label="{{ color_product.metafields.custom.color_name.value }}"
+          {% if color_product.id == product.id %}
+            aria-current="page"
+          {% endif %}
+        >
+
+          {% if color_product.featured_image != blank %}
+            {{
+              color_product.featured_image
+              | image_url: width: 400
+              | image_tag:
+                loading: 'lazy',
+                class: 'product-page-pour__color-image',
+                alt: color_product.metafields.custom.color_name.value
+            }}
+          {% endif %}
+
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+{% endif %}
         {% form 'product', product, class: 'product-page-pour__form' %}
 
           <input
@@ -1232,7 +1273,93 @@ scroll-snap-stop: normal;
 .product-page-pour__fit span {
   font-weight: 400;
 }
+/* =========================================================
+   COULEURS PRODUIT
+========================================================= */
 
+.product-page-pour__colors {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.product-page-pour__colors-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  margin-bottom: 14px;
+
+  font-size: 12px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.product-page-pour__colors-heading strong {
+  font-weight: 600;
+}
+
+.product-page-pour__colors-heading span {
+  position: relative;
+  top: -4px;
+
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: none;
+  color: #777777;
+}
+
+.product-page-pour__colors-list {
+  display: flex;
+  gap: 8px;
+
+  width: 100%;
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__colors-list::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__color {
+  position: relative;
+
+  flex: 0 0 104px;
+
+  width: 104px;
+  height: 104px;
+
+  display: block;
+
+  background: #f7f7f7;
+
+  border: 1px solid transparent;
+
+  overflow: hidden;
+
+  text-decoration: none;
+}
+
+.product-page-pour__color-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.product-page-pour__color:hover
+.product-page-pour__color-image {
+  transform: scale(1.03);
+}
+
+.product-page-pour__color[aria-current="page"] {
+  border-color: #111111;
+}
 /* =========================================================
    GUIDE DES TAILLES
 ========================================================= */
