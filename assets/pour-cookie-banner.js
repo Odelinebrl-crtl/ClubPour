@@ -2,23 +2,17 @@
   'use strict';
 
   function initPourCookieBanner() {
-
     const banner = document.getElementById('PourCookieBanner');
 
     if (!banner) {
-      console.error('POUR COOKIE : bannière introuvable.');
       return;
     }
 
-    /* =========================================================
-       ÉLÉMENTS
-    ========================================================= */
-
-    const acceptButton = banner.querySelector(
+    const acceptButtons = banner.querySelectorAll(
       '[data-pour-cookie-accept]'
     );
 
-    const refuseButton = banner.querySelector(
+    const refuseButtons = banner.querySelectorAll(
       '[data-pour-cookie-refuse]'
     );
 
@@ -38,57 +32,48 @@
       '[data-pour-cookie-save]'
     );
 
-    const preferencesInput = banner.querySelector(
-      '[data-pour-cookie-preference="preferences"]'
-    );
+    const preferenceInputs = {
+      preferences: banner.querySelector(
+        '[data-pour-cookie-preference="preferences"]'
+      ),
 
-    const analyticsInput = banner.querySelector(
-      '[data-pour-cookie-preference="analytics"]'
-    );
+      analytics: banner.querySelector(
+        '[data-pour-cookie-preference="analytics"]'
+      ),
 
-    const marketingInput = banner.querySelector(
-      '[data-pour-cookie-preference="marketing"]'
-    );
+      marketing: banner.querySelector(
+        '[data-pour-cookie-preference="marketing"]'
+      )
+    };
 
 
     /* =========================================================
-       AFFICHER
+       AFFICHAGE
     ========================================================= */
 
     function showBanner() {
-
       banner.hidden = false;
-      banner.removeAttribute('hidden');
-
-      banner.setAttribute(
-        'aria-hidden',
-        'false'
-      );
-
+      banner.setAttribute('aria-hidden', 'false');
       document.documentElement.classList.add(
-        'pour-cookie-open'
+        'pour-cookie-banner-open'
+      );
+      document.body.classList.add(
+        'pour-cookie-banner-open'
       );
     }
 
 
-    /* =========================================================
-       CACHER
-    ========================================================= */
-
     function hideBanner() {
-
       banner.hidden = true;
-
-      banner.setAttribute(
-        'aria-hidden',
-        'true'
-      );
+      banner.setAttribute('aria-hidden', 'true');
 
       document.documentElement.classList.remove(
-        'pour-cookie-open'
+        'pour-cookie-banner-open'
       );
 
-      hidePreferences();
+      document.body.classList.remove(
+        'pour-cookie-banner-open'
+      );
     }
 
 
@@ -96,15 +81,12 @@
        PRÉFÉRENCES
     ========================================================= */
 
-    function showPreferences() {
-
+    function openPreferences() {
       if (!preferencesPanel) {
         return;
       }
 
       preferencesPanel.hidden = false;
-      preferencesPanel.removeAttribute('hidden');
-
       preferencesPanel.setAttribute(
         'aria-hidden',
         'false'
@@ -112,14 +94,12 @@
     }
 
 
-    function hidePreferences() {
-
+    function closePreferences() {
       if (!preferencesPanel) {
         return;
       }
 
       preferencesPanel.hidden = true;
-
       preferencesPanel.setAttribute(
         'aria-hidden',
         'true'
@@ -128,11 +108,10 @@
 
 
     /* =========================================================
-       RÉCUPÉRER L'API SHOPIFY
+       SHOPIFY CUSTOMER PRIVACY API
     ========================================================= */
 
-    function getPrivacyAPI() {
-
+    function getShopifyPrivacy() {
       if (
         window.Shopify &&
         window.Shopify.customerPrivacy
@@ -144,39 +123,36 @@
     }
 
 
-    /* =========================================================
-       ATTENDRE L'API
-    ========================================================= */
+    function setShopifyConsent(consent) {
+      const privacy = getShopifyPrivacy();
 
-    function waitForPrivacyAPI(callback, attempts) {
+      if (
+        !privacy ||
+        typeof privacy.setTrackingConsent !== 'function'
+      ) {
+        console.warn(
+          'POUR COOKIE : API Shopify non disponible'
+        );
 
-      attempts = attempts || 0;
-
-      const privacy = getPrivacyAPI();
-
-      if (privacy) {
-
-        callback(privacy);
         return;
       }
 
-      if (attempts >= 50) {
-
+      try {
+        privacy.setTrackingConsent(
+          consent,
+          function (result) {
+            console.log(
+              'POUR COOKIE : consentement Shopify enregistré',
+              result
+            );
+          }
+        );
+      } catch (error) {
         console.error(
-          'POUR COOKIE : Customer Privacy API introuvable.'
+          'POUR COOKIE : erreur API Shopify',
+          error
         );
-
-        return;
       }
-
-      setTimeout(function () {
-
-        waitForPrivacyAPI(
-          callback,
-          attempts + 1
-        );
-
-      }, 100);
     }
 
 
@@ -184,239 +160,155 @@
        ACCEPTER
     ========================================================= */
 
-    function acceptAll(event) {
-
-      if (event) {
+    acceptButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
-      }
 
-      console.log(
-        'POUR COOKIE : clic ACCEPTER'
-      );
-
-      waitForPrivacyAPI(function (privacy) {
-
-        if (
-          typeof privacy.setTrackingConsent !== 'function'
-        ) {
-
-          console.error(
-            'POUR COOKIE : setTrackingConsent indisponible.'
-          );
-
-          return;
-        }
-
-        privacy.setTrackingConsent(
-          true,
-          function (result) {
-
-            console.log(
-              'POUR COOKIE : acceptation enregistrée',
-              result
-            );
-
-            hideBanner();
-          }
+        console.log(
+          'POUR COOKIE : bouton ACCEPTER cliqué'
         );
 
+        /*
+         * IMPORTANT :
+         * On ferme immédiatement le bandeau.
+         * La sauvegarde Shopify se fait indépendamment.
+         */
+
+        hideBanner();
+
+        setShopifyConsent(true);
       });
-    }
+    });
 
 
     /* =========================================================
        REFUSER
     ========================================================= */
 
-    function refuseAll(event) {
-
-      if (event) {
+    refuseButtons.forEach(function (button) {
+      button.addEventListener('click', function (event) {
         event.preventDefault();
         event.stopPropagation();
-      }
 
-      console.log(
-        'POUR COOKIE : clic REFUSER'
-      );
-
-      waitForPrivacyAPI(function (privacy) {
-
-        if (
-          typeof privacy.setTrackingConsent !== 'function'
-        ) {
-
-          console.error(
-            'POUR COOKIE : setTrackingConsent indisponible.'
-          );
-
-          return;
-        }
-
-        privacy.setTrackingConsent(
-          false,
-          function (result) {
-
-            console.log(
-              'POUR COOKIE : refus enregistré',
-              result
-            );
-
-            hideBanner();
-          }
+        console.log(
+          'POUR COOKIE : bouton REFUSER cliqué'
         );
 
+        /*
+         * Même logique :
+         * fermeture immédiate du bandeau.
+         */
+
+        hideBanner();
+
+        setShopifyConsent(false);
       });
-    }
+    });
 
 
     /* =========================================================
-       ENREGISTRER LES PRÉFÉRENCES
+       OUVRIR PRÉFÉRENCES
     ========================================================= */
-
-    function savePreferences(event) {
-
-      if (event) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-
-      console.log(
-        'POUR COOKIE : enregistrement préférences'
-      );
-
-      waitForPrivacyAPI(function (privacy) {
-
-        if (
-          typeof privacy.setTrackingConsent !== 'function'
-        ) {
-
-          console.error(
-            'POUR COOKIE : setTrackingConsent indisponible.'
-          );
-
-          return;
-        }
-
-        const analytics =
-          analyticsInput
-            ? analyticsInput.checked
-            : false;
-
-        const marketing =
-          marketingInput
-            ? marketingInput.checked
-            : false;
-
-        const preferences =
-          preferencesInput
-            ? preferencesInput.checked
-            : false;
-
-
-        privacy.setTrackingConsent(
-          {
-            analytics: analytics,
-            marketing: marketing,
-            preferences: preferences
-          },
-          function (result) {
-
-            console.log(
-              'POUR COOKIE : préférences enregistrées',
-              result
-            );
-
-            hideBanner();
-          }
-        );
-
-      });
-    }
-
-
-    /* =========================================================
-       BOUTONS
-    ========================================================= */
-
-    if (acceptButton) {
-
-      acceptButton.addEventListener(
-        'click',
-        acceptAll
-      );
-    }
-
-
-    if (refuseButton) {
-
-      refuseButton.addEventListener(
-        'click',
-        refuseAll
-      );
-    }
-
 
     if (preferencesButton) {
-
       preferencesButton.addEventListener(
         'click',
         function (event) {
-
           event.preventDefault();
           event.stopPropagation();
 
-          showPreferences();
+          openPreferences();
         }
-      );
-    }
-
-
-    if (closePreferencesButton) {
-
-      closePreferencesButton.addEventListener(
-        'click',
-        function (event) {
-
-          event.preventDefault();
-          event.stopPropagation();
-
-          hidePreferences();
-        }
-      );
-    }
-
-
-    if (savePreferencesButton) {
-
-      savePreferencesButton.addEventListener(
-        'click',
-        savePreferences
       );
     }
 
 
     /* =========================================================
-       CHARGEMENT / VÉRIFICATION API
+       FERMER PRÉFÉRENCES
     ========================================================= */
 
-    function checkConsent() {
+    if (closePreferencesButton) {
+      closePreferencesButton.addEventListener(
+        'click',
+        function (event) {
+          event.preventDefault();
+          event.stopPropagation();
 
-      waitForPrivacyAPI(function (privacy) {
+          closePreferences();
+        }
+      );
+    }
 
-        if (
-          typeof privacy.currentVisitorConsent !== 'function'
-        ) {
 
-          console.error(
-            'POUR COOKIE : currentVisitorConsent indisponible.'
+    /* =========================================================
+       ENREGISTRER PRÉFÉRENCES
+    ========================================================= */
+
+    if (savePreferencesButton) {
+      savePreferencesButton.addEventListener(
+        'click',
+        function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          const consent = {
+            preferences:
+              !!(
+                preferenceInputs.preferences &&
+                preferenceInputs.preferences.checked
+              ),
+
+            analytics:
+              !!(
+                preferenceInputs.analytics &&
+                preferenceInputs.analytics.checked
+              ),
+
+            marketing:
+              !!(
+                preferenceInputs.marketing &&
+                preferenceInputs.marketing.checked
+              )
+          };
+
+
+          console.log(
+            'POUR COOKIE : préférences enregistrées',
+            consent
           );
 
-          return;
+
+          /*
+           * Fermeture immédiate.
+           */
+
+          hideBanner();
+          closePreferences();
+
+
+          /*
+           * Enregistrement Shopify.
+           */
+
+          setShopifyConsent(consent);
         }
+      );
+    }
 
+
+    /* =========================================================
+       ÉTAT INITIAL
+    ========================================================= */
+
+    function checkExistingConsent() {
+      const privacy = getShopifyPrivacy();
+
+      if (
+        privacy &&
+        typeof privacy.currentVisitorConsent === 'function'
+      ) {
         try {
-
           const consent =
             privacy.currentVisitorConsent();
 
@@ -425,95 +317,89 @@
             consent
           );
 
+          /*
+           * Si Shopify connaît déjà le choix,
+           * on ne montre pas le bandeau.
+           */
 
-          const noDecision =
-            !consent ||
+          if (
+            consent &&
             (
-              consent.analytics === '' &&
-              consent.marketing === '' &&
-              consent.preferences === ''
-            );
-
-
-          if (noDecision) {
-
-            showBanner();
-
-          } else {
-
+              consent.analytics === 'yes' ||
+              consent.analytics === 'no'
+            )
+          ) {
             hideBanner();
+            return;
           }
 
         } catch (error) {
-
-          console.error(
-            'POUR COOKIE : erreur lecture consentement',
+          console.warn(
+            'POUR COOKIE : impossible de lire le consentement',
             error
           );
         }
+      }
 
-      });
+      showBanner();
     }
 
 
     /* =========================================================
-       CHARGER L'API SI NÉCESSAIRE
+       INITIALISATION
     ========================================================= */
+
+    /*
+     * On initialise le bandeau immédiatement.
+     * On ne bloque surtout pas l'interface en attendant Shopify.
+     */
+
+    checkExistingConsent();
+
+
+    /*
+     * On demande quand même à Shopify de charger
+     * son API si elle n'est pas encore disponible.
+     */
 
     if (
       window.Shopify &&
       typeof window.Shopify.loadFeatures === 'function'
     ) {
-
-      window.Shopify.loadFeatures(
-        [
-          {
-            name: 'consent-tracking-api',
-            version: '0.1'
-          }
-        ],
-        function (error) {
-
-          if (error) {
-
-            console.error(
-              'POUR COOKIE : erreur chargement API',
-              error
+      try {
+        window.Shopify.loadFeatures(
+          [
+            {
+              name: 'consent-tracking-api',
+              version: '0.1'
+            }
+          ],
+          function () {
+            console.log(
+              'POUR COOKIE : API Shopify chargée'
             );
-
-            return;
           }
-
-          console.log(
-            'POUR COOKIE : API Shopify prête'
-          );
-
-          checkConsent();
-        }
-      );
-
-    } else {
-
-      checkConsent();
+        );
+      } catch (error) {
+        console.warn(
+          'POUR COOKIE : chargement API Shopify impossible',
+          error
+        );
+      }
     }
   }
 
 
   /* =========================================================
-     DOM READY
+     LANCEMENT
   ========================================================= */
 
-  if (
-    document.readyState === 'loading'
-  ) {
-
+  if (document.readyState === 'loading') {
     document.addEventListener(
       'DOMContentLoaded',
       initPourCookieBanner
     );
-
   } else {
-
     initPourCookieBanner();
   }
 
