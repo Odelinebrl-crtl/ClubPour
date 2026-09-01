@@ -405,3 +405,12 @@
     align-items: flex-start;
   }
 }
+/* =========================================================
+   TEST AFFICHAGE FORCÉ
+========================================================= */
+
+#PourCookieBanner {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
