@@ -56,6 +56,14 @@
     </main>
 
     {% section 'footer' %}
+    {% render 'pour-cookie-banner' %}
+
+    {{ 'pour-cookie-banner.css' | asset_url | stylesheet_tag }}
+
+    <script
+      src="{{ 'pour-cookie-banner.js' | asset_url }}"
+      defer
+    ></script>
 <!-- =========================================================
      POUR — QUICK VIEW
 ========================================================= -->
