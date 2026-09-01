@@ -1,376 +1,250 @@
 (function () {
   'use strict';
 
-  const banner = document.getElementById('PourCookieBanner');
+  function initPourCookieBanner() {
+    const banner = document.getElementById('PourCookieBanner');
 
-  if (!banner) {
-    console.error('POUR COOKIE: bannière introuvable.');
-    return;
-  }
+    if (!banner) {
+      console.error('POUR COOKIE : #PourCookieBanner introuvable dans la page.');
+      return;
+    }
 
-  const preferencesPanel = banner.querySelector(
-    '[data-pour-cookie-preferences-panel]'
-  );
+    console.log('POUR COOKIE : bannière trouvée.');
 
-  const acceptButton = banner.querySelector(
-    '[data-pour-cookie-accept]'
-  );
+    /* =========================================================
+       AFFICHAGE FORCÉ POUR TEST
+    ========================================================= */
 
-  const preferencesButton = banner.querySelector(
-    '[data-pour-cookie-preferences]'
-  );
-
-  const refuseButton = banner.querySelector(
-    '[data-pour-cookie-refuse]'
-  );
-
-  const closePreferencesButton = banner.querySelector(
-    '[data-pour-cookie-preferences-close]'
-  );
-
-  const savePreferencesButton = banner.querySelector(
-    '[data-pour-cookie-save]'
-  );
-
-  const preferencesInput = banner.querySelector(
-    '[data-pour-cookie-preference="preferences"]'
-  );
-
-  const analyticsInput = banner.querySelector(
-    '[data-pour-cookie-preference="analytics"]'
-  );
-
-  const marketingInput = banner.querySelector(
-    '[data-pour-cookie-preference="marketing"]'
-  );
-
-
-  /* =========================================================
-     AFFICHER LA BANNIÈRE
-  ========================================================= */
-
-  function showBanner() {
     banner.hidden = false;
+    banner.removeAttribute('hidden');
+    banner.setAttribute('aria-hidden', 'false');
 
-    banner.setAttribute(
-      'aria-hidden',
-      'false'
+    document.documentElement.classList.add('pour-cookie-open');
+
+    console.log('POUR COOKIE : bannière affichée.');
+
+    /* =========================================================
+       ÉLÉMENTS
+    ========================================================= */
+
+    const acceptButton = banner.querySelector(
+      '[data-pour-cookie-accept]'
     );
 
-    document.documentElement.classList.add(
-      'pour-cookie-open'
-    );
-  }
-
-
-  /* =========================================================
-     CACHER LA BANNIÈRE
-  ========================================================= */
-
-  function hideBanner() {
-    banner.hidden = true;
-
-    banner.setAttribute(
-      'aria-hidden',
-      'true'
+    const refuseButton = banner.querySelector(
+      '[data-pour-cookie-refuse]'
     );
 
-    document.documentElement.classList.remove(
-      'pour-cookie-open'
+    const preferencesButton = banner.querySelector(
+      '[data-pour-cookie-preferences]'
     );
 
-    hidePreferences();
-  }
-
-
-  /* =========================================================
-     AFFICHER LES PRÉFÉRENCES
-  ========================================================= */
-
-  function showPreferences() {
-    if (!preferencesPanel) return;
-
-    preferencesPanel.hidden = false;
-
-    preferencesPanel.setAttribute(
-      'aria-hidden',
-      'false'
+    const preferencesPanel = banner.querySelector(
+      '[data-pour-cookie-preferences-panel]'
     );
-  }
 
-
-  /* =========================================================
-     CACHER LES PRÉFÉRENCES
-  ========================================================= */
-
-  function hidePreferences() {
-    if (!preferencesPanel) return;
-
-    preferencesPanel.hidden = true;
-
-    preferencesPanel.setAttribute(
-      'aria-hidden',
-      'true'
+    const closePreferencesButton = banner.querySelector(
+      '[data-pour-cookie-preferences-close]'
     );
-  }
+
+    const savePreferencesButton = banner.querySelector(
+      '[data-pour-cookie-save]'
+    );
 
 
-  /* =========================================================
-     ACCEPTATION TOTALE
-  ========================================================= */
+    /* =========================================================
+       FERMER
+    ========================================================= */
 
-  function acceptAll() {
+    function hideBanner() {
+      banner.hidden = true;
+      banner.setAttribute('aria-hidden', 'true');
 
-    const privacy =
-      window.Shopify &&
-      window.Shopify.customerPrivacy;
-
-    if (!privacy) {
-      console.error(
-        'POUR COOKIE: Customer Privacy API indisponible.'
+      document.documentElement.classList.remove(
+        'pour-cookie-open'
       );
-      return;
     }
 
-    privacy.setTrackingConsent(
-      {
-        analytics: true,
-        marketing: true,
-        preferences: true
-      },
-      function () {
-        hideBanner();
-      }
-    );
-  }
 
+    /* =========================================================
+       PRÉFÉRENCES
+    ========================================================= */
 
-  /* =========================================================
-     REFUS TOTAL
-  ========================================================= */
+    function showPreferences() {
+      if (!preferencesPanel) return;
 
-  function refuseAll() {
-
-    const privacy =
-      window.Shopify &&
-      window.Shopify.customerPrivacy;
-
-    if (!privacy) {
-      console.error(
-        'POUR COOKIE: Customer Privacy API indisponible.'
+      preferencesPanel.hidden = false;
+      preferencesPanel.setAttribute(
+        'aria-hidden',
+        'false'
       );
-      return;
     }
 
-    privacy.setTrackingConsent(
-      {
-        analytics: false,
-        marketing: false,
-        preferences: false
-      },
-      function () {
-        hideBanner();
-      }
-    );
-  }
 
+    function hidePreferences() {
+      if (!preferencesPanel) return;
 
-  /* =========================================================
-     ENREGISTRER LES PRÉFÉRENCES
-  ========================================================= */
-
-  function savePreferences() {
-
-    const privacy =
-      window.Shopify &&
-      window.Shopify.customerPrivacy;
-
-    if (!privacy) {
-      console.error(
-        'POUR COOKIE: Customer Privacy API indisponible.'
+      preferencesPanel.hidden = true;
+      preferencesPanel.setAttribute(
+        'aria-hidden',
+        'true'
       );
-      return;
     }
 
-    const analytics =
-      analyticsInput
-        ? analyticsInput.checked
-        : false;
 
-    const marketing =
-      marketingInput
-        ? marketingInput.checked
-        : false;
+    /* =========================================================
+       ACCEPTER
+    ========================================================= */
 
-    const preferences =
-      preferencesInput
-        ? preferencesInput.checked
-        : false;
+    function acceptAll() {
 
-    privacy.setTrackingConsent(
-      {
-        analytics: analytics,
-        marketing: marketing,
-        preferences: preferences
-      },
-      function () {
-        hideBanner();
-      }
-    );
-  }
+      if (
+        window.Shopify &&
+        window.Shopify.customerPrivacy &&
+        typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function'
+      ) {
 
-
-  /* =========================================================
-     ÉVÉNEMENTS
-  ========================================================= */
-
-  if (acceptButton) {
-    acceptButton.addEventListener(
-      'click',
-      acceptAll
-    );
-  }
-
-  if (refuseButton) {
-    refuseButton.addEventListener(
-      'click',
-      refuseAll
-    );
-  }
-
-  if (preferencesButton) {
-    preferencesButton.addEventListener(
-      'click',
-      showPreferences
-    );
-  }
-
-  if (closePreferencesButton) {
-    closePreferencesButton.addEventListener(
-      'click',
-      hidePreferences
-    );
-  }
-
-  if (savePreferencesButton) {
-    savePreferencesButton.addEventListener(
-      'click',
-      savePreferences
-    );
-  }
-
-
-  /* =========================================================
-     INITIALISATION SHOPIFY
-  ========================================================= */
-
-  function initializePrivacyAPI() {
-
-    if (
-      window.Shopify &&
-      window.Shopify.customerPrivacy
-    ) {
-      initializeBanner();
-      return;
-    }
-
-    if (
-      window.Shopify &&
-      typeof window.Shopify.loadFeatures === 'function'
-    ) {
-
-      window.Shopify.loadFeatures(
-        [
+        window.Shopify.customerPrivacy.setTrackingConsent(
           {
-            name: 'consent-tracking-api',
-            version: '0.1'
+            analytics: true,
+            marketing: true,
+            preferences: true
+          },
+          function () {
+            hideBanner();
           }
-        ],
-        function (error) {
-
-          if (error) {
-            console.error(
-              'POUR COOKIE: impossible de charger la Customer Privacy API.',
-              error
-            );
-            return;
-          }
-
-          initializeBanner();
-        }
-      );
-
-      return;
-    }
-
-    console.error(
-      'POUR COOKIE: Shopify.loadFeatures indisponible.'
-    );
-  }
-
-
-  /* =========================================================
-     INITIALISATION DE LA BANNIÈRE
-  ========================================================= */
-
-  function initializeBanner() {
-
-    const privacy =
-      window.Shopify &&
-      window.Shopify.customerPrivacy;
-
-    if (!privacy) {
-      console.error(
-        'POUR COOKIE: Customer Privacy API indisponible.'
-      );
-      return;
-    }
-
-    try {
-
-      const consent =
-        privacy.currentVisitorConsent();
-
-      console.log(
-        'POUR COOKIE — consentement actuel:',
-        consent
-      );
-
-
-      /*
-       * Si les trois catégories sont encore vides,
-       * aucune décision n'a été prise.
-       */
-
-      const noDecision =
-        !consent ||
-        (
-          consent.analytics === '' &&
-          consent.marketing === '' &&
-          consent.preferences === ''
         );
 
+      } else {
 
-      if (noDecision) {
-        showBanner();
-        return;
+        /* Pour que le bouton fonctionne même
+           si l'API Shopify n'est pas disponible */
+
+        hideBanner();
       }
+    }
 
 
-      /*
-       * Une décision existe déjà :
-       * on laisse la bannière masquée.
-       */
+    /* =========================================================
+       REFUSER
+    ========================================================= */
 
-      hideBanner();
+    function refuseAll() {
 
-    } catch (error) {
+      if (
+        window.Shopify &&
+        window.Shopify.customerPrivacy &&
+        typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function'
+      ) {
 
-      console.error(
-        'POUR COOKIE: erreur lors de l’initialisation.',
-        error
+        window.Shopify.customerPrivacy.setTrackingConsent(
+          {
+            analytics: false,
+            marketing: false,
+            preferences: false
+          },
+          function () {
+            hideBanner();
+          }
+        );
+
+      } else {
+
+        hideBanner();
+      }
+    }
+
+
+    /* =========================================================
+       ENREGISTRER LES PRÉFÉRENCES
+    ========================================================= */
+
+    function savePreferences() {
+
+      const preferencesInput = banner.querySelector(
+        '[data-pour-cookie-preference="preferences"]'
       );
 
+      const analyticsInput = banner.querySelector(
+        '[data-pour-cookie-preference="analytics"]'
+      );
+
+      const marketingInput = banner.querySelector(
+        '[data-pour-cookie-preference="marketing"]'
+      );
+
+      const consent = {
+        preferences: preferencesInput
+          ? preferencesInput.checked
+          : false,
+
+        analytics: analyticsInput
+          ? analyticsInput.checked
+          : false,
+
+        marketing: marketingInput
+          ? marketingInput.checked
+          : false
+      };
+
+
+      if (
+        window.Shopify &&
+        window.Shopify.customerPrivacy &&
+        typeof window.Shopify.customerPrivacy.setTrackingConsent === 'function'
+      ) {
+
+        window.Shopify.customerPrivacy.setTrackingConsent(
+          consent,
+          function () {
+            hideBanner();
+          }
+        );
+
+      } else {
+
+        hideBanner();
+      }
+    }
+
+
+    /* =========================================================
+       BOUTONS
+    ========================================================= */
+
+    if (acceptButton) {
+      acceptButton.addEventListener(
+        'click',
+        acceptAll
+      );
+    }
+
+    if (refuseButton) {
+      refuseButton.addEventListener(
+        'click',
+        refuseAll
+      );
+    }
+
+    if (preferencesButton) {
+      preferencesButton.addEventListener(
+        'click',
+        showPreferences
+      );
+    }
+
+    if (closePreferencesButton) {
+      closePreferencesButton.addEventListener(
+        'click',
+        hidePreferences
+      );
+    }
+
+    if (savePreferencesButton) {
+      savePreferencesButton.addEventListener(
+        'click',
+        savePreferences
+      );
     }
   }
 
@@ -379,6 +253,17 @@
      LANCEMENT
   ========================================================= */
 
-  initializePrivacyAPI();
+  if (document.readyState === 'loading') {
+
+    document.addEventListener(
+      'DOMContentLoaded',
+      initPourCookieBanner
+    );
+
+  } else {
+
+    initPourCookieBanner();
+
+  }
 
 })();
