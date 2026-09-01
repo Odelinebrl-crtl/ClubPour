@@ -1,1 +1,186 @@
+<div
+  id="PourCookieBanner"
+  class="pour-cookie-banner"
+  hidden
+  aria-hidden="true"
+>
 
+  <div class="pour-cookie-banner__backdrop"></div>
+
+  <section
+    class="pour-cookie-banner__content"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="PourCookieBannerTitle"
+  >
+
+    <div class="pour-cookie-banner__text">
+
+      <h2 id="PourCookieBannerTitle">
+        VOTRE VIE PRIVÉE
+      </h2>
+
+      <p>
+        Nous utilisons des cookies nécessaires au fonctionnement du site ainsi
+        que, avec votre accord, des cookies permettant d’améliorer votre
+        expérience, de mesurer notre audience et de personnaliser certains
+        contenus.
+      </p>
+
+      <p>
+        Vous pouvez accepter ou gérer vos préférences à tout moment.
+      </p>
+
+      <a
+        href="/policies/privacy-policy"
+        class="pour-cookie-banner__privacy"
+      >
+        Politique de confidentialité
+      </a>
+
+    </div>
+
+
+    <div class="pour-cookie-banner__actions">
+
+      <button
+        type="button"
+        class="pour-cookie-banner__button pour-cookie-banner__button--accept"
+        data-pour-cookie-accept
+      >
+        ACCEPTER &amp; FERMER
+      </button>
+
+      <button
+        type="button"
+        class="pour-cookie-banner__button pour-cookie-banner__button--preferences"
+        data-pour-cookie-preferences
+      >
+        PRÉFÉRENCES
+      </button>
+
+      <button
+        type="button"
+        class="pour-cookie-banner__refuse"
+        data-pour-cookie-refuse
+      >
+        REFUSER
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================================================
+       PANNEAU PRÉFÉRENCES
+  ================================================= -->
+
+  <section
+    class="pour-cookie-preferences"
+    data-pour-cookie-preferences-panel
+    hidden
+    aria-hidden="true"
+    aria-labelledby="PourCookiePreferencesTitle"
+  >
+
+    <div class="pour-cookie-preferences__inner">
+
+      <button
+        type="button"
+        class="pour-cookie-preferences__close"
+        data-pour-cookie-preferences-close
+        aria-label="Fermer"
+      >
+        ×
+      </button>
+
+      <h2 id="PourCookiePreferencesTitle">
+        PRÉFÉRENCES
+      </h2>
+
+      <p class="pour-cookie-preferences__intro">
+        Choisissez les catégories de cookies que vous souhaitez autoriser.
+      </p>
+
+
+      <div class="pour-cookie-preferences__row">
+
+        <div>
+          <strong>NÉCESSAIRES</strong>
+          <p>
+            Indispensables au fonctionnement du site.
+          </p>
+        </div>
+
+        <span class="pour-cookie-preferences__always">
+          TOUJOURS ACTIFS
+        </span>
+
+      </div>
+
+
+      <label class="pour-cookie-preferences__row">
+
+        <div>
+          <strong>PRÉFÉRENCES</strong>
+          <p>
+            Permettent de mémoriser certaines préférences.
+          </p>
+        </div>
+
+        <input
+          type="checkbox"
+          data-pour-cookie-preference="preferences"
+        >
+
+      </label>
+
+
+      <label class="pour-cookie-preferences__row">
+
+        <div>
+          <strong>ANALYTIQUES</strong>
+          <p>
+            Nous aident à comprendre comment le site est utilisé.
+          </p>
+        </div>
+
+        <input
+          type="checkbox"
+          data-pour-cookie-preference="analytics"
+        >
+
+      </label>
+
+
+      <label class="pour-cookie-preferences__row">
+
+        <div>
+          <strong>MARKETING</strong>
+          <p>
+            Utilisés pour mesurer et personnaliser certaines communications.
+          </p>
+        </div>
+
+        <input
+          type="checkbox"
+          data-pour-cookie-preference="marketing"
+        >
+
+      </label>
+
+
+      <button
+        type="button"
+        class="pour-cookie-preferences__save"
+        data-pour-cookie-save
+      >
+        ENREGISTRER MES PRÉFÉRENCES
+      </button>
+
+    </div>
+
+  </section>
+
+</div>
