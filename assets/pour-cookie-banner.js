@@ -296,26 +296,43 @@
      INITIALISATION
   ======================================================= */
 
-  loadCustomerPrivacyAPI(function () {
+ loadCustomerPrivacyAPI(function () {
 
-    try {
+  try {
 
-      const shouldShow =
-        window.Shopify.customerPrivacy.shouldShowBanner();
+    console.log(
+      'POUR — Customer Privacy API:',
+      window.Shopify.customerPrivacy
+    );
 
-      if (shouldShow) {
-        showBanner();
-      }
+    const consent =
+      window.Shopify.customerPrivacy.currentVisitorConsent();
 
-    } catch (error) {
+    console.log(
+      'POUR — Consentement actuel:',
+      consent
+    );
 
-      console.error(
-        'POUR Cookie Banner:',
-        error
-      );
+    /*
+     * Affichage uniquement si aucun choix
+     * n'a encore été enregistré.
+     */
+    const hasConsent =
+      consent.analytics !== '' ||
+      consent.marketing !== '' ||
+      consent.preferences !== '';
 
+    if (!hasConsent) {
+      showBanner();
     }
 
-  });
+  } catch (error) {
 
-})();
+    console.error(
+      'POUR Cookie Banner:',
+      error
+    );
+
+  }
+
+});
