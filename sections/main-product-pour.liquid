@@ -166,8 +166,17 @@
         {% endif %}
 
         <div class="product-page-pour__price">
-          {{ product.selected_or_first_available_variant.price | money }}
-        </div>
+  {{ product.selected_or_first_available_variant.price | money }}
+</div>
+
+{% if product.metafields.custom.fit != blank %}
+  <div class="product-page-pour__fit">
+    <strong>Taille et coupe</strong>
+    <span>— {{ product.metafields.custom.fit.value }}</span>
+  </div>
+{% endif %}
+
+{% form 'product', product, class: 'product-page-pour__form' %}
 
         {% form 'product', product, class: 'product-page-pour__form' %}
 
@@ -1203,7 +1212,35 @@ scroll-snap-stop: normal;
   }
 
 }
+/* =========================================================
+   TAILLE ET COUPE
+========================================================= */
 
+.product-page-pour__fit {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+
+  margin-top: -22px;
+  margin-bottom: 30px;
+
+  font-size: 11px;
+  line-height: 1.4;
+  color: #111111;
+}
+
+.product-page-pour__fit strong {
+  font-weight: 600;
+}
+
+.product-page-pour__fit span {
+  font-weight: 400;
+}
+
+
+/* =========================================================
+   GUIDE DES TAILLES
+========================================================= */
 /* =========================================================
    GUIDE DES TAILLES
 ========================================================= */
