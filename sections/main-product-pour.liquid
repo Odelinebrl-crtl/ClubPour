@@ -165,16 +165,14 @@
           </p>
         {% endif %}
 
-        <div class="product-page-pour__price">
+      <div class="product-page-pour__price">
   {{ product.selected_or_first_available_variant.price | money }}
 </div>
 
-{% if product.metafields.custom.fit != blank %}
-  <div class="product-page-pour__fit">
-    <strong>Taille et coupe</strong>
-    <span>— {{ product.metafields.custom.fit.value }}</span>
-  </div>
-{% endif %}
+<div class="product-page-pour__fit">
+  <strong>Taille et coupe</strong>
+  <span>— {{ product.metafields.custom.fit.value }}</span>
+</div>
 
 {% form 'product', product, class: 'product-page-pour__form' %}
 
