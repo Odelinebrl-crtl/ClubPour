@@ -78,7 +78,7 @@
         "product_card_kwbHz7": {
           "type": "product_card",
           "settings": {
-            "product": "club-pour-test",
+            "product": "club-pour",
             "image_primary": "shopify://shop_images/12_37f66bac-0c81-4512-b18d-ddddb269f72e.png",
             "image_secondary": "shopify://shop_images/11_0fff1097-39b1-4631-8ab2-8bb1627c71a6.png"
           }
@@ -154,7 +154,7 @@
         "look_wmjxDy": {
           "type": "look",
           "settings": {
-            "product": "club-pour-test",
+            "product": "club-pour",
             "product_image": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
             "customer_image": "shopify://shop_images/8_75301823-3afb-4899-a5f4-0820ec3b71b3.png",
             "customer_name": "@clubpour",
