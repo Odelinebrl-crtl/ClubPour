@@ -4454,7 +4454,109 @@ if (backInStockButton) {
 
     }
   );
+  /* =====================================================
+     RETOUR EN STOCK — PANNEAU POUR
+  ===================================================== */
 
+  const backInStockPanel =
+    section.querySelector(
+      '[data-pour-back-in-stock-panel]'
+    );
+
+  const backInStockTriggers =
+    section.querySelectorAll(
+      '[data-pour-back-in-stock-open]'
+    );
+
+  const backInStockCloseButtons =
+    section.querySelectorAll(
+      '[data-pour-back-in-stock-close]'
+    );
+
+
+  if (backInStockPanel) {
+
+    function openBackInStockPanel() {
+
+      backInStockPanel.classList.add(
+        'is-active'
+      );
+
+      backInStockPanel.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+      document.body.style.overflow =
+        'hidden';
+
+    }
+
+
+    function closeBackInStockPanel() {
+
+      backInStockPanel.classList.remove(
+        'is-active'
+      );
+
+      backInStockPanel.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+      document.body.style.overflow =
+        '';
+
+    }
+
+
+    backInStockTriggers.forEach(
+      function (trigger) {
+
+        trigger.addEventListener(
+          'click',
+          function () {
+
+            openBackInStockPanel();
+
+          }
+        );
+
+      }
+    );
+
+
+    backInStockCloseButtons.forEach(
+      function (button) {
+
+        button.addEventListener(
+          'click',
+          closeBackInStockPanel
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function (event) {
+
+        if (
+          event.key === 'Escape' &&
+          backInStockPanel.classList.contains(
+            'is-active'
+          )
+        ) {
+
+          closeBackInStockPanel();
+
+        }
+
+      }
+    );
+
+  }
 
 })();
 </script>
