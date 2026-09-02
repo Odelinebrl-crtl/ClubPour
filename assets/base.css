@@ -4964,6 +4964,22 @@ color: rgba(17,17,17,.42);
   text-align: left;
   text-transform: uppercase;
 }
+
+.vetements-card__color-swatches {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+}
+
+.vetements-card__color-swatch {
+  display: block;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid #d5d5d5;
+  flex: 0 0 11px;
+}
 /* =========================================================
    TABLETTE
 ========================================================= */
