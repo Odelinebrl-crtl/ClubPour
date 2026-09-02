@@ -534,6 +534,132 @@
   </aside>
 
 </div>
+<!-- =====================================================
+     PANNEAU LATÉRAL — RETOUR EN STOCK
+===================================================== -->
+
+<div
+  class="product-page-pour__info-panel"
+  data-pour-back-in-stock-panel
+  aria-hidden="true"
+>
+
+  <!-- FOND CLIQUABLE -->
+  <button
+    type="button"
+    class="product-page-pour__info-panel-overlay"
+    data-pour-back-in-stock-close
+    aria-label="Fermer"
+  ></button>
+
+
+  <!-- PANNEAU -->
+  <aside
+    class="product-page-pour__info-panel-inner"
+    aria-label="Retour en stock"
+  >
+
+    <!-- HEADER -->
+    <div class="product-page-pour__info-panel-header">
+
+      <div class="product-page-pour__info-panel-title">
+        TAILLE EN RUPTURE DE STOCK ?
+      </div>
+
+      <button
+        type="button"
+        class="product-page-pour__info-panel-close"
+        data-pour-back-in-stock-close
+        aria-label="Fermer"
+      ></button>
+
+    </div>
+
+
+    <!-- CONTENU -->
+    <div
+      class="product-page-pour__info-panel-content is-active"
+      data-pour-back-in-stock-content
+    >
+
+      <div class="product-page-pour__back-in-stock-intro">
+
+        <p>
+          Sélectionnez votre taille souhaitée et entrez votre adresse
+          e-mail pour être averti lorsque ce produit sera de nouveau
+          en stock.
+        </p>
+
+      </div>
+
+
+      <!-- TAILLES -->
+      <div class="product-page-pour__back-in-stock-sizes">
+
+        {% for variant in product.variants %}
+
+          <button
+            type="button"
+            class="product-page-pour__back-in-stock-size"
+            data-notify-variant-id="{{ variant.id }}"
+            data-notify-variant-available="{{ variant.available }}"
+          >
+            {{ variant.title }}
+          </button>
+
+        {% endfor %}
+
+      </div>
+
+
+      <!-- FORMULAIRE -->
+      <form
+        class="product-page-pour__back-in-stock-form"
+        data-pour-back-in-stock-form
+      >
+
+        <input
+          type="email"
+          name="email"
+          class="product-page-pour__back-in-stock-input"
+          placeholder="Adresse e-mail..."
+          autocomplete="email"
+          required
+        >
+
+        <button
+          type="submit"
+          class="product-page-pour__back-in-stock-submit"
+        >
+          SOUMETTRE
+        </button>
+
+      </form>
+
+
+      <!-- MESSAGE -->
+      <div
+        class="product-page-pour__back-in-stock-message"
+        data-pour-back-in-stock-message
+        aria-live="polite"
+      ></div>
+
+
+      <!-- CONFIDENTIALITÉ -->
+      <p class="product-page-pour__back-in-stock-privacy">
+        Votre adresse e-mail sera utilisée uniquement pour vous
+        prévenir du retour en stock de cette taille.
+        Pour plus d'informations, consultez notre
+        <a href="/policies/privacy-policy">
+          politique de confidentialité
+        </a>.
+      </p>
+
+    </div>
+
+  </aside>
+
+</div>
       </div>
 
     </div>
