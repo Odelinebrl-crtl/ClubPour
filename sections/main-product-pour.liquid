@@ -598,16 +598,20 @@
 
         {% for variant in product.variants %}
 
-          <button
-            type="button"
-            class="product-page-pour__back-in-stock-size"
-            data-notify-variant-id="{{ variant.id }}"
-            data-notify-variant-available="{{ variant.available }}"
-          >
-            {{ variant.title }}
-          </button>
+  {% unless variant.available %}
 
-        {% endfor %}
+    <button
+      type="button"
+      class="product-page-pour__back-in-stock-size"
+      data-notify-variant-id="{{ variant.id }}"
+      data-notify-variant-available="false"
+    >
+      {{ variant.title }}
+    </button>
+
+  {% endunless %}
+
+{% endfor %}
 
       </div>
 
@@ -2480,7 +2484,276 @@ font-weight: 200;
   pointer-events: auto;
 }
 
+/* =========================================================
+   RETOUR EN STOCK — CONTENU
+========================================================= */
 
+.product-page-pour__back-in-stock-intro {
+  margin: 0 0 30px;
+}
+
+.product-page-pour__back-in-stock-intro p {
+  margin: 0;
+  max-width: 560px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.65;
+
+  color: #444444;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — TAILLES
+========================================================= */
+
+.product-page-pour__back-in-stock-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+
+  margin: 0 0 24px;
+}
+
+.product-page-pour__back-in-stock-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 46px;
+  height: 38px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d5d5d5;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.product-page-pour__back-in-stock-size:hover {
+  border-color: #111111;
+  background: #f7f7f7;
+}
+
+.product-page-pour__back-in-stock-size.is-selected {
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — FORMULAIRE
+========================================================= */
+
+.product-page-pour__back-in-stock-form {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+}
+
+.product-page-pour__back-in-stock-input {
+  flex: 1 1 auto;
+
+  min-width: 0;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d5d5d5;
+  border-right: 0;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  outline: none;
+}
+
+.product-page-pour__back-in-stock-input::placeholder {
+  color: #777777;
+}
+
+.product-page-pour__back-in-stock-input:focus {
+  border-color: #111111;
+}
+
+
+.product-page-pour__back-in-stock-submit {
+  flex: 0 0 auto;
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.product-page-pour__back-in-stock-submit:hover {
+  background: #ffffff;
+  color: #111111;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — MESSAGE
+========================================================= */
+
+.product-page-pour__back-in-stock-message {
+  margin-top: 16px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444444;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — CONFIDENTIALITÉ
+========================================================= */
+
+.product-page-pour__back-in-stock-privacy {
+  margin: 24px 0 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #777777;
+}
+
+.product-page-pour__back-in-stock-privacy a {
+  color: #444444;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__back-in-stock-intro {
+    margin-bottom: 26px;
+  }
+
+  .product-page-pour__back-in-stock-intro p {
+    font-size: 10px !important;
+    line-height: 1.6;
+  }
+
+  .product-page-pour__back-in-stock-sizes {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .product-page-pour__back-in-stock-size {
+    min-width: 46px;
+    height: 38px;
+
+    padding: 0 13px;
+
+    font-size: 10px !important;
+  }
+
+  .product-page-pour__back-in-stock-form {
+    display: block;
+  }
+
+  .product-page-pour__back-in-stock-input {
+    width: 100%;
+    height: 46px;
+
+    border-right: 1px solid #d5d5d5;
+  }
+
+  .product-page-pour__back-in-stock-submit {
+    width: 100%;
+    height: 48px;
+
+    margin-top: 8px;
+  }
+
+  .product-page-pour__back-in-stock-privacy {
+    font-size: 9px;
+  }
+
+}
 /* =========================================================
    FOND
 ========================================================= */
