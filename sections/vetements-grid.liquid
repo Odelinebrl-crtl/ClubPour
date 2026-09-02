@@ -154,7 +154,23 @@
     <div class="vetements-card__color-name">
       {{ featured_product.metafields.custom.color_name.value }}
     </div>
+<div class="vetements-card__color-swatches">
+  {% assign color_products = featured_product.metafields.custom.color_products.value %}
 
+  {% if color_products != blank %}
+    {% for color_product in color_products %}
+      {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+      {% if color_value != blank %}
+        <span
+          class="vetements-card__color-swatch"
+          style="background-color: {{ color_value }};"
+          aria-label="{{ color_product.metafields.custom.color_name.value }}"
+        ></span>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</div>
   </div>
 </a>
           </article>
