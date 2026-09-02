@@ -4920,38 +4920,36 @@ color: rgba(17,17,17,.42);
 
 .vetements-card__info {
   width: 100%;
+  padding-top: 18px;
+  text-align: left;
+}
 
-  padding-top: 26px;
-
-  text-align: center;
+.vetements-card__info-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .vetements-card__title {
   margin: 0;
-
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 12px;
   font-weight: 400;
-
   line-height: 1.3;
-
   letter-spacing: 0;
-
   text-transform: uppercase;
+  text-align: left;
 }
 
 .vetements-card__price {
-  margin-top: 7px;
-
+  margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
   font-size: 12px;
   font-weight: 400;
-
   line-height: 1.3;
-
-  color: #8a8a8a;
+  color: #777777;
+  text-align: right;
 }
 
 
