@@ -190,15 +190,58 @@
 
     <div class="collection001-pour__mini-info">
 
-      <p class="collection001-pour__mini-title">
-        {{ mini_product.title }}
-      </p>
+  <div class="collection001-pour__mini-info-row">
 
-      <p class="collection001-pour__mini-price">
-        {{ mini_product.price | money }}
-      </p>
+    <p class="collection001-pour__mini-title">
+      {{ mini_product.title }}
+    </p>
 
-    </div>
+    <p class="collection001-pour__mini-price">
+      {{ mini_product.price | money }}
+    </p>
+
+  </div>
+
+  {% if mini_product.metafields.custom.color_name.value != blank %}
+    <p class="collection001-pour__mini-color-name">
+      {{ mini_product.metafields.custom.color_name.value }}
+    </p>
+  {% endif %}
+
+  <div class="collection001-pour__mini-color-swatches">
+
+    {% assign current_color = mini_product.metafields.custom.couleur.value %}
+
+    {% if current_color != blank %}
+      <span
+        class="collection001-pour__mini-color-swatch is-current"
+        style="background-color: {{ current_color }};"
+        aria-label="{{ mini_product.metafields.custom.color_name.value }}"
+      ></span>
+    {% endif %}
+
+    {% assign color_products = mini_product.metafields.custom.couleurs.value %}
+
+    {% if color_products != blank %}
+      {% for color_product in color_products %}
+
+        {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+        {% if color_value != blank %}
+          <a
+            href="{{ color_product.url }}"
+            class="collection001-pour__mini-color-swatch"
+            style="background-color: {{ color_value }};"
+            aria-label="{{ color_product.metafields.custom.color_name.value }}"
+          ></a>
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+
+  </div>
+
+</div>
 
   </a>
 
@@ -292,17 +335,60 @@
     class="collection001-pour__mini-info-link"
   >
 
-    <div class="collection001-pour__mini-info">
+  <div class="collection001-pour__mini-info">
 
-      <p class="collection001-pour__mini-title">
-        {{ mini_product.title }}
-      </p>
+  <div class="collection001-pour__mini-info-row">
 
-      <p class="collection001-pour__mini-price">
-        {{ mini_product.price | money }}
-      </p>
+    <p class="collection001-pour__mini-title">
+      {{ mini_product.title }}
+    </p>
 
-    </div>
+    <p class="collection001-pour__mini-price">
+      {{ mini_product.price | money }}
+    </p>
+
+  </div>
+
+  {% if mini_product.metafields.custom.color_name.value != blank %}
+    <p class="collection001-pour__mini-color-name">
+      {{ mini_product.metafields.custom.color_name.value }}
+    </p>
+  {% endif %}
+
+  <div class="collection001-pour__mini-color-swatches">
+
+    {% assign current_color = mini_product.metafields.custom.couleur.value %}
+
+    {% if current_color != blank %}
+      <span
+        class="collection001-pour__mini-color-swatch is-current"
+        style="background-color: {{ current_color }};"
+        aria-label="{{ mini_product.metafields.custom.color_name.value }}"
+      ></span>
+    {% endif %}
+
+    {% assign color_products = mini_product.metafields.custom.couleurs.value %}
+
+    {% if color_products != blank %}
+      {% for color_product in color_products %}
+
+        {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+        {% if color_value != blank %}
+          <a
+            href="{{ color_product.url }}"
+            class="collection001-pour__mini-color-swatch"
+            style="background-color: {{ color_value }};"
+            aria-label="{{ color_product.metafields.custom.color_name.value }}"
+          ></a>
+        {% endif %}
+
+      {% endfor %}
+    {% endif %}
+
+  </div>
+
+</div>
 
   </a>
 
@@ -897,26 +983,90 @@
   padding-top: 11px;
 }
 
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-info-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+}
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__mini-title {
   margin: 0;
 
   font-size: 10px;
+  line-height: 1.25;
+
+  text-transform: uppercase;
+
+  text-align: left;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-price {
+  margin: 0;
+
+  flex: 0 0 auto;
+
+  font-size: 9px;
 
   line-height: 1.25;
+
+  color: rgba(17,17,17,.48);
+
+  text-align: right;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-color-name {
+  margin: 4px 0 0;
+
+  font-size: 9px;
+
+  line-height: 1.25;
+
+  color: rgba(17,17,17,.48);
 
   text-transform: uppercase;
 }
 
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-color-swatches {
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 7px;
+
+  min-height: 11px;
+}
 
 #Collection001Pour-{{ section.id }}
-.collection001-pour__mini-price {
-  margin: 5px 0 0;
+.collection001-pour__mini-color-swatch {
+  display: block;
 
-  font-size: 9px;
+  width: 11px;
+  height: 11px;
 
-  color: rgba(17,17,17,.48);
+  flex: 0 0 11px;
+
+  border-radius: 50%;
+
+  border: 1px solid #d5d5d5;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__mini-color-swatch.is-current {
+  border-color: #111111;
 }
 
 /* =========================================================
