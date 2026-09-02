@@ -155,44 +155,70 @@
   {{ featured_product.metafields.custom.color_name.value }}
 </div>
 
-<div style="color:red !important; font-size:14px !important; display:block !important;">
-  TEST : {{ featured_product.metafields.custom.couleur.value }}
-</div>
+<div
+  class="vetements-card__color-swatches"
+  style="
+    display: flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+    margin-top: 8px !important;
+    width: 100% !important;
+    min-height: 11px !important;
+  "
+>
 
-<div class="vetements-card__color-swatches">
+  {% assign current_color = featured_product.metafields.custom.couleur.value %}
 
-  {%- assign current_color = featured_product.metafields.custom.couleur.value -%}
-
-  {%- if current_color != blank -%}
+  {% if current_color != blank %}
     <span
       class="vetements-card__color-swatch"
-      style="background-color: {{ current_color }};"
+      style="
+        display: block !important;
+        width: 11px !important;
+        min-width: 11px !important;
+        height: 11px !important;
+        min-height: 11px !important;
+        flex: 0 0 11px !important;
+        border-radius: 50% !important;
+        border: 1px solid #d5d5d5 !important;
+        background-color: {{ current_color }} !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      "
       aria-label="{{ featured_product.metafields.custom.color_name.value }}"
     ></span>
-  {%- endif -%}
+  {% endif %}
 
-  {%- assign color_products = featured_product.metafields.custom.couleurs.value -%}
+  {% assign color_products = featured_product.metafields.custom.couleurs.value %}
 
-  {%- if color_products != blank -%}
+  {% if color_products != blank %}
+    {% for color_product in color_products %}
 
-    {%- for color_product in color_products -%}
+      {% assign color_value = color_product.metafields.custom.couleur.value %}
 
-      {%- assign color_value = color_product.metafields.custom.couleur.value -%}
-
-      {%- if color_value != blank -%}
-
+      {% if color_value != blank %}
         <a
           href="{{ color_product.url }}"
           class="vetements-card__color-swatch"
-          style="background-color: {{ color_value }};"
+          style="
+            display: block !important;
+            width: 11px !important;
+            min-width: 11px !important;
+            height: 11px !important;
+            min-height: 11px !important;
+            flex: 0 0 11px !important;
+            border-radius: 50% !important;
+            border: 1px solid #d5d5d5 !important;
+            background-color: {{ color_value }} !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+          "
           aria-label="{{ color_product.metafields.custom.color_name.value }}"
         ></a>
+      {% endif %}
 
-      {%- endif -%}
-
-    {%- endfor -%}
-
-  {%- endif -%}
+    {% endfor %}
+  {% endif %}
 
 </div>
   </div>
