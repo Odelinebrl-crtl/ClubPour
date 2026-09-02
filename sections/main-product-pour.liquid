@@ -1204,7 +1204,21 @@ scroll-snap-stop: normal;
 
     font-size: 10px !important;
   }
+.product-page-pour__option-value.is-sold-out span {
+  color: #a8a8a8 !important;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #8f8f8f;
+}
 
+.product-page-pour__option-value.is-sold-out {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.product-page-pour__option-value.is-sold-out input {
+  cursor: pointer;
+}
   .product-page-pour__description {
     max-width: 100%;
 
@@ -3236,18 +3250,107 @@ if (addButton && productForm) {
 
   const variants =
     {{ product.variants | json }};
+function updateSoldOutOptions() {
+  const optionGroups =
+    Array.from(
+      form.querySelectorAll(
+        '.product-page-pour__option'
+      )
+    );
 
+  const optionNames =
+    optionGroups.map(
+      group => {
+        const input =
+          group.querySelector(
+            'input[name^="options["]'
+          );
+
+        return input
+          ? input.name
+          : null;
+      }
+    );
+
+  optionGroups.forEach(
+    (group, optionIndex) => {
+
+      const inputs =
+        Array.from(
+          group.querySelectorAll(
+            'input[type="radio"]'
+          )
+        );
+
+      inputs.forEach(
+        input => {
+
+          const candidateValues =
+            optionNames.map(
+              (name, index) => {
+
+                if (index === optionIndex) {
+                  return input.value;
+                }
+
+                const checked =
+                  form.querySelector(
+                    `input[name="${CSS.escape(name)}"]:checked`
+                  );
+
+                return checked
+                  ? checked.value
+                  : null;
+              }
+            );
+
+          const hasAvailableVariant =
+            variants.some(
+              variant => {
+
+                if (!variant.available) {
+                  return false;
+                }
+
+                return variant.options.every(
+                  (value, index) =>
+                    candidateValues[index] == null ||
+                    value === candidateValues[index]
+                );
+              }
+            );
+
+          const label =
+            input.closest(
+              '.product-page-pour__option-value'
+            );
+
+          if (label) {
+            label.classList.toggle(
+              'is-sold-out',
+              !hasAvailableVariant
+            );
+          }
+
+        }
+      );
+
+    }
+  );
+}
 
   function updateVariant() {
 
-    const selectedOptions =
-      Array.from(
-        form.querySelectorAll(
-          'input[name^="options["]:checked'
-        )
-      ).map(
-        input => input.value
-      );
+  updateSoldOutOptions();
+
+  const selectedOptions =
+    Array.from(
+      form.querySelectorAll(
+        'input[name^="options["]:checked'
+      )
+    ).map(
+      input => input.value
+    );
 
 
     const matchingVariant =
