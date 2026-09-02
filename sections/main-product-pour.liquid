@@ -239,12 +239,21 @@
                     <label class="product-page-pour__option-value">
 
                       <input
-                        type="radio"
-                        name="options[{{ option.name | escape }}]"
-                        value="{{ value | escape }}"
-                        {% if option.selected_value == value %}checked{% endif %}
-                      >
-
+  type="radio"
+  name="options[{{ option.name | escape }}]"
+  value="{{ value | escape }}"
+  {% if option.selected_value == value %}checked{% endif %}
+  {% assign value_available = false %}
+  {% for variant in product.variants %}
+    {% if variant.available and variant.options contains value %}
+      {% assign value_available = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% unless value_available %}
+    disabled
+  {% endunless %}
+>
                       <span>
                         {{ value }}
                       </span>
