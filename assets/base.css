@@ -1901,19 +1901,29 @@ a {
    INFOS PRODUIT — CENTRÉES
 ================================ */
 
+/* ================================
+   INFOS PRODUIT
+================================ */
+
 .pour-product__info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
   width: 100%;
-
-  gap: 6px;
 
   padding-top: 14px;
 
-  text-align: center;
+  text-align: left;
+}
+
+
+/* NOM + PRIX */
+
+.pour-product__info-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
+  width: 100%;
+
+  gap: 12px;
 }
 
 
@@ -1922,7 +1932,7 @@ a {
 .pour-product__title {
   margin: 0;
 
-  width: 100%;
+  width: auto;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -1932,7 +1942,7 @@ a {
 
   letter-spacing: 0.01em;
 
-  text-align: center;
+  text-align: left;
 
   text-transform: uppercase;
 }
@@ -1943,7 +1953,9 @@ a {
 .pour-product__price {
   margin: 0;
 
-  width: 100%;
+  width: auto;
+
+  flex: 0 0 auto;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -1953,10 +1965,76 @@ a {
 
   letter-spacing: 0.01em;
 
-  text-align: center;
+  text-align: right;
 
   white-space: nowrap;
-   color: #777777;
+
+  color: #777777;
+}
+
+
+/* NOM DE LA COULEUR */
+
+.pour-product__color-name {
+  margin: 5px 0 0;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.2;
+
+  letter-spacing: 0.01em;
+
+  text-align: left;
+
+  text-transform: uppercase;
+
+  color: #777777;
+}
+
+
+/* PASTILLES DE COULEUR */
+
+.pour-product__color-swatches {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 7px;
+
+  min-height: 12px;
+}
+
+
+/* PASTILLE */
+
+.pour-product__color-swatch {
+  display: block;
+
+  width: 12px;
+  height: 12px;
+
+  flex: 0 0 12px;
+
+  padding: 0;
+
+  border-radius: 50%;
+  border: 1px solid #d5d5d5;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+
+/* PRODUIT / COULEUR ACTUELLE */
+
+.pour-product__color-swatch.is-current {
+  border-color: #111111;
 }
 
 /* PLACEHOLDER */
@@ -1990,10 +2068,22 @@ a {
     flex: 0 0 calc((100% - 8px) / 2);
   }
 
-  .pour-product__info {
+   .pour-product__info {
     display: block;
 
     padding-top: 9px;
+
+    text-align: left;
+  }
+
+  .pour-product__info-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    width: 100%;
+
+    gap: 8px;
   }
 
   .pour-product__title,
@@ -2001,8 +2091,39 @@ a {
     font-size: 11px;
   }
 
+  .pour-product__title {
+    width: auto;
+
+    text-align: left;
+  }
+
   .pour-product__price {
+    width: auto;
+
+    margin-top: 0;
+
+    text-align: right;
+  }
+
+  .pour-product__color-name {
     margin-top: 4px;
+
+    font-size: 9px;
+
+    text-align: left;
+  }
+
+  .pour-product__color-swatches {
+    gap: 5px;
+
+    margin-top: 6px;
+  }
+
+  .pour-product__color-swatch {
+    width: 11px;
+    height: 11px;
+
+    flex-basis: 11px;
   }
 
 }
