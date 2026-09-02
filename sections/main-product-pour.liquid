@@ -4797,7 +4797,42 @@ if (backInStockButton) {
 
       }
     );
+/* =====================================================
+   SÉLECTION DE LA TAILLE — RETOUR EN STOCK
+===================================================== */
 
+const backInStockSizeButtons =
+  backInStockPanel.querySelectorAll(
+    '[data-notify-variant-id]'
+  );
+
+backInStockSizeButtons.forEach(
+  function (sizeButton) {
+
+    sizeButton.addEventListener(
+      'click',
+      function () {
+
+        backInStockSizeButtons.forEach(
+          function (button) {
+            button.classList.remove(
+              'is-selected'
+            );
+          }
+        );
+
+        sizeButton.classList.add(
+          'is-selected'
+        );
+
+        backInStockPanel.dataset.selectedVariantId =
+          sizeButton.dataset.notifyVariantId;
+
+      }
+    );
+
+  }
+);
 
     backInStockCloseButtons.forEach(
       function (button) {
