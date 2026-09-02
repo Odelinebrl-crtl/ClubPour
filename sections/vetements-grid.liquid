@@ -151,9 +151,14 @@
 
     </div>
 
-    <div class="vetements-card__color-name">
-      {{ featured_product.metafields.custom.color_name.value }}
-    </div>
+   <div class="vetements-card__color-name">
+  {{ featured_product.metafields.custom.color_name.value }}
+</div>
+
+<div style="color:red !important; font-size:14px !important; display:block !important;">
+  TEST : {{ featured_product.metafields.custom.couleur.value }}
+</div>
+
 <div class="vetements-card__color-swatches">
 
   {% if featured_product.metafields.custom.couleur.value != blank %}
