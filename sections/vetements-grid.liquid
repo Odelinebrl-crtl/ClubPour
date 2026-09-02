@@ -133,21 +133,17 @@
   href="{{ featured_product.url }}"
   class="vetements-card__info-link"
 >
-<div class="vetements-card__info-row">
+  <div class="vetements-card__info">
 
-  <h3 class="vetements-card__title">
-    {{ featured_product.title }}
-  </h3>
-
-  <div class="vetements-card__price">
-    {{ featured_product.price | money }}
-  </div>
-
-</div>
+    <div class="vetements-card__info-row">
 
       <h3 class="vetements-card__title">
         {{ featured_product.title }}
       </h3>
+
+      <div class="vetements-card__price">
+        {{ featured_product.price | money }}
+      </div>
 
     </div>
 
