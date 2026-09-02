@@ -3528,10 +3528,10 @@ if (submitButton) {
       ? 'PRÉCOMMANDEZ'
       : 'ÉPUISÉ';
 
-  submitButton.style.display =
-    matchingVariant.available
-      ? 'flex'
-      : 'none';
+submitButton.style.display =
+  matchingVariant.available
+    ? ''
+    : 'none';
 }
 
 if (backInStockButton) {
