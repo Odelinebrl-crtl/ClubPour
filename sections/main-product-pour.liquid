@@ -4749,7 +4749,16 @@ if (backInStockButton) {
 
   if (backInStockPanel) {
 
-    function openBackInStockPanel() {
+  function openBackInStockPanel(trigger) {
+
+  if (trigger && trigger.dataset.variantId) {
+    backInStockPanel.dataset.selectedVariantId =
+      trigger.dataset.variantId;
+  }
+
+  backInStockPanel.classList.add(
+    'is-active'
+  );
 
       backInStockPanel.classList.add(
         'is-active'
@@ -4790,7 +4799,7 @@ if (backInStockButton) {
           'click',
           function () {
 
-            openBackInStockPanel();
+            openBackInStockPanel(trigger);
 
           }
         );
@@ -4830,7 +4839,161 @@ backInStockSizeButtons.forEach(
 
       }
     );
+/* =====================================================
+   INSCRIPTION RETOUR EN STOCK — AMP
+===================================================== */
 
+const backInStockForm =
+  backInStockPanel.querySelector(
+    '[data-pour-back-in-stock-form]'
+  );
+
+const backInStockMessage =
+  backInStockPanel.querySelector(
+    '[data-pour-back-in-stock-message]'
+  );
+
+const backInStockSubmit =
+  backInStockForm
+    ? backInStockForm.querySelector(
+        '.product-page-pour__back-in-stock-submit'
+      )
+    : null;
+
+const backInStockProductId =
+  {{ product.id | json }};
+
+if (backInStockForm) {
+
+  backInStockForm.addEventListener(
+    'submit',
+    function (event) {
+
+      event.preventDefault();
+
+      const emailInput =
+        backInStockForm.querySelector(
+          'input[type="email"]'
+        );
+
+      const email =
+        emailInput
+          ? emailInput.value.trim()
+          : '';
+
+      const variantId =
+        backInStockPanel.dataset.selectedVariantId;
+
+      if (!variantId) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            'Sélectionnez une taille.';
+        }
+
+        return;
+      }
+
+      if (!email) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            'Veuillez renseigner votre adresse e-mail.';
+        }
+
+        return;
+      }
+
+      if (
+        !window.BIS ||
+        typeof window.BIS.create !== 'function'
+      ) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            'Le service de notification est momentanément indisponible. Veuillez réessayer.';
+        }
+
+        return;
+      }
+
+      if (backInStockSubmit) {
+        backInStockSubmit.disabled = true;
+        backInStockSubmit.textContent =
+          'ENVOI...';
+      }
+
+      if (backInStockMessage) {
+        backInStockMessage.textContent = '';
+      }
+
+      window.BIS.create(
+        email,
+        Number(variantId),
+        Number(backInStockProductId)
+      ).then(
+        function (data) {
+
+          if (data.status === 'OK') {
+
+            if (backInStockMessage) {
+              backInStockMessage.textContent =
+                'C’est noté. Vous serez prévenu dès que cette taille sera de nouveau disponible.';
+            }
+
+            backInStockForm.reset();
+
+          } else {
+
+            let errorMessage =
+              'Une erreur est survenue.';
+
+            if (data.errors) {
+
+              const errors = [];
+
+              for (const key in data.errors) {
+
+                if (
+                  Array.isArray(
+                    data.errors[key]
+                  )
+                ) {
+
+                  errors.push(
+                    data.errors[key].join(' ')
+                  );
+
+                }
+
+              }
+
+              if (errors.length) {
+                errorMessage =
+                  errors.join(' ');
+              }
+            }
+
+            if (backInStockMessage) {
+              backInStockMessage.textContent =
+                errorMessage;
+            }
+
+          }
+
+          if (backInStockSubmit) {
+            backInStockSubmit.disabled = false;
+            backInStockSubmit.textContent =
+              'SOUMETTRE';
+          }
+
+        }
+      );
+
+    }
+  );
+
+}
   }
 );
 
