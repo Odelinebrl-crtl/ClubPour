@@ -1166,7 +1166,18 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   pointer-events: none;
   box-sizing: border-box;
 }
+/* MASQUER TOTALEMENT L'ENVELOPPE SUR LES TAILLES DISPONIBLES */
+.product-page-pour__option-value:not(.is-sold-out)
+.product-page-pour__option-notify {
+  display: none !important;
+  visibility: hidden !important;
+}
 
+.product-page-pour__option-value:not(.is-sold-out)
+.product-page-pour__option-notify::before {
+  display: none !important;
+  content: none !important;
+}
 /* RABAT DE L'ENVELOPPE */
 .product-page-pour__option-value.is-sold-out
 .product-page-pour__option-notify::before {
