@@ -155,7 +155,7 @@
       {{ featured_product.metafields.custom.color_name.value }}
     </div>
 <div class="vetements-card__color-swatches">
-  {% assign color_products = featured_product.metafields.custom.color_products.value %}
+ {% assign color_products = featured_product.metafields.custom.couleurs.value %}
 
   {% if color_products != blank %}
     {% for color_product in color_products %}
