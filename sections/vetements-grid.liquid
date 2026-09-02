@@ -159,8 +159,7 @@
 
   {% if color_products != blank %}
     {% for color_product in color_products %}
-      {% assign color_value = color_product.metafields.custom.couleur.value %}
-
+     {% assign color_value = color_product.metafields.custom.couleur.value.hex %}
       {% if color_value != blank %}
         <span
           class="vetements-card__color-swatch"
