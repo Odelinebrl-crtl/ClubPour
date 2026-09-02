@@ -129,26 +129,30 @@
             <!-- =========================
                  INFOS
             ========================== -->
-<a
-  href="{{ featured_product.url }}"
-  class="vetements-card__info-link"
->
-  <div class="vetements-card__info">
+            <!-- =========================
+                 INFOS
+            ========================== -->
 
-    <div class="vetements-card__info-row">
+            <a
+              href="{{ featured_product.url }}"
+              class="vetements-card__info-link"
+            >
+              <div class="vetements-card__info">
 
-      <h3 class="vetements-card__title">
-        {{ featured_product.title }}
-      </h3>
+                <div class="vetements-card__info-row">
 
-      <div class="vetements-card__price">
-        {{ featured_product.price | money }}
-      </div>
+                  <h3 class="vetements-card__title">
+                    {{ featured_product.title }}
+                  </h3>
 
-    </div>
+                  <div class="vetements-card__price">
+                    {{ featured_product.price | money }}
+                  </div>
 
-  </div>
-</a>
+                </div>
+
+              </div>
+            </a>
           </article>
 
         {% endif %}
