@@ -156,40 +156,12 @@
     </div>
 <div class="vetements-card__color-swatches">
 
-  {% assign current_color = featured_product.metafields.custom.couleur.value %}
-
-  {% if current_color != blank %}
+  {% if featured_product.metafields.custom.couleur.value != blank %}
     <span
       class="vetements-card__color-swatch"
-      style="background-color: {{ current_color }};"
+      style="background-color: {{ featured_product.metafields.custom.couleur.value }};"
       aria-label="{{ featured_product.metafields.custom.color_name.value }}"
     ></span>
-  {% endif %}
-
-
-  {% assign color_products = featured_product.metafields.custom.couleurs.value %}
-
-  {% if color_products != blank %}
-
-    {% for color_product in color_products %}
-
-      {% if color_product.id != featured_product.id %}
-
-        {% assign color_value = color_product.metafields.custom.couleur.value %}
-
-        {% if color_value != blank %}
-          <a
-            href="{{ color_product.url }}"
-            class="vetements-card__color-swatch"
-            style="background-color: {{ color_value }};"
-            aria-label="{{ color_product.metafields.custom.color_name.value }}"
-          ></a>
-        {% endif %}
-
-      {% endif %}
-
-    {% endfor %}
-
   {% endif %}
 
 </div>
