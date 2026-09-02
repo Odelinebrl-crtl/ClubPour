@@ -101,20 +101,59 @@
             01
           </p>
 
-          <h2 class="collection001-pour__focus-title">
-            {{ product_1.title }}
-          </h2>
+         <h2 class="collection001-pour__focus-title">
+  {{ product_1.title }}
+</h2>
 
-          <p class="collection001-pour__price">
-            {{ product_1.price | money }}
-          </p>
+<p class="collection001-pour__price">
+  {{ product_1.price | money }}
+</p>
 
-          <a
-            href="{{ product_1.url }}"
-            class="collection001-pour__link"
-          >
-            DÉCOUVRIR
-          </a>
+{% if product_1.metafields.custom.color_name.value != blank %}
+  <p class="collection001-pour__focus-color-name">
+    {{ product_1.metafields.custom.color_name.value }}
+  </p>
+{% endif %}
+
+<div class="collection001-pour__focus-color-swatches">
+
+  {% assign current_color = product_1.metafields.custom.couleur.value %}
+
+  {% if current_color != blank %}
+    <span
+      class="collection001-pour__focus-color-swatch is-current"
+      style="background-color: {{ current_color }};"
+      aria-label="{{ product_1.metafields.custom.color_name.value }}"
+    ></span>
+  {% endif %}
+
+  {% assign color_products = product_1.metafields.custom.couleurs.value %}
+
+  {% if color_products != blank %}
+    {% for color_product in color_products %}
+
+      {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+      {% if color_value != blank %}
+        <a
+          href="{{ color_product.url }}"
+          class="collection001-pour__focus-color-swatch"
+          style="background-color: {{ color_value }};"
+          aria-label="{{ color_product.metafields.custom.color_name.value }}"
+        ></a>
+      {% endif %}
+
+    {% endfor %}
+  {% endif %}
+
+</div>
+
+<a
+  href="{{ product_1.url }}"
+  class="collection001-pour__link"
+>
+  DÉCOUVRIR
+</a>
 
         </div>
 
@@ -411,20 +450,59 @@
             02
           </p>
 
-          <h2 class="collection001-pour__focus-title">
-            {{ product_2.title }}
-          </h2>
+         <h2 class="collection001-pour__focus-title">
+  {{ product_2.title }}
+</h2>
 
-          <p class="collection001-pour__price">
-            {{ product_2.price | money }}
-          </p>
+<p class="collection001-pour__price">
+  {{ product_2.price | money }}
+</p>
 
-          <a
-            href="{{ product_2.url }}"
-            class="collection001-pour__link"
-          >
-            DÉCOUVRIR
-          </a>
+{% if product_2.metafields.custom.color_name.value != blank %}
+  <p class="collection001-pour__focus-color-name">
+    {{ product_2.metafields.custom.color_name.value }}
+  </p>
+{% endif %}
+
+<div class="collection001-pour__focus-color-swatches">
+
+  {% assign current_color = product_2.metafields.custom.couleur.value %}
+
+  {% if current_color != blank %}
+    <span
+      class="collection001-pour__focus-color-swatch is-current"
+      style="background-color: {{ current_color }};"
+      aria-label="{{ product_2.metafields.custom.color_name.value }}"
+    ></span>
+  {% endif %}
+
+  {% assign color_products = product_2.metafields.custom.couleurs.value %}
+
+  {% if color_products != blank %}
+    {% for color_product in color_products %}
+
+      {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+      {% if color_value != blank %}
+        <a
+          href="{{ color_product.url }}"
+          class="collection001-pour__focus-color-swatch"
+          style="background-color: {{ color_value }};"
+          aria-label="{{ color_product.metafields.custom.color_name.value }}"
+        ></a>
+      {% endif %}
+
+    {% endfor %}
+  {% endif %}
+
+</div>
+
+<a
+  href="{{ product_2.url }}"
+  class="collection001-pour__link"
+>
+  DÉCOUVRIR
+</a>
 
         </div>
 
@@ -840,7 +918,55 @@
 
   color: rgba(17,17,17,.54);
 }
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus-color-name {
+  margin: 6px 0 0;
 
+  font-size: 9px;
+
+  line-height: 1.25;
+
+  color: rgba(17,17,17,.48);
+
+  text-transform: uppercase;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus-color-swatches {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  margin-top: 8px;
+
+  min-height: 12px;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus-color-swatch {
+  display: block;
+
+  width: 12px;
+  height: 12px;
+
+  flex: 0 0 12px;
+
+  border-radius: 50%;
+
+  border: 1px solid #d5d5d5;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+#Collection001Pour-{{ section.id }}
+.collection001-pour__focus-color-swatch.is-current {
+  border-color: #111111;
+}
 
 /* =========================================================
    DÉCOUVRIR
