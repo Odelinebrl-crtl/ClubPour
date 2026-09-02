@@ -155,24 +155,67 @@
                    INFORMATIONS PRODUIT
               ========================================== -->
 
-              <a
-                href="{{ featured_product.url }}"
-                class="pour-product__info-link"
-              >
+             <a
+  href="{{ featured_product.url }}"
+  class="pour-product__info-link"
+>
 
-                <div class="pour-product__info">
+  <div class="pour-product__info">
 
-                  <h3 class="pour-product__title">
-                    {{ featured_product.title }}
-                  </h3>
+    <div class="pour-product__info-row">
 
-                  <div class="pour-product__price">
-                    {{ featured_product.price | money }}
-                  </div>
+      <h3 class="pour-product__title">
+        {{ featured_product.title }}
+      </h3>
 
-                </div>
+      <div class="pour-product__price">
+        {{ featured_product.price | money }}
+      </div>
 
-              </a>
+    </div>
+
+    {% if featured_product.metafields.custom.color_name.value != blank %}
+      <p class="pour-product__color-name">
+        {{ featured_product.metafields.custom.color_name.value }}
+      </p>
+    {% endif %}
+
+    <div class="pour-product__color-swatches">
+
+      {% assign current_color = featured_product.metafields.custom.couleur.value %}
+
+      {% if current_color != blank %}
+        <span
+          class="pour-product__color-swatch is-current"
+          style="background-color: {{ current_color }};"
+          aria-label="{{ featured_product.metafields.custom.color_name.value }}"
+        ></span>
+      {% endif %}
+
+      {% assign color_products = featured_product.metafields.custom.couleurs.value %}
+
+      {% if color_products != blank %}
+        {% for color_product in color_products %}
+
+          {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+          {% if color_value != blank %}
+            <a
+              href="{{ color_product.url }}"
+              class="pour-product__color-swatch"
+              style="background-color: {{ color_value }};"
+              aria-label="{{ color_product.metafields.custom.color_name.value }}"
+            ></a>
+          {% endif %}
+
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</a>
 
             </article>
 
