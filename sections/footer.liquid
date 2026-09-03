@@ -1374,36 +1374,32 @@ function initFooterNewsletterSuccess() {
    * vers la zone du formulaire.
    */
 
-  const scrollToNewsletter = function () {
+  const scrollToNewsletterSuccess = function () {
 
-    const newsletter = document.querySelector(
-      '#footer-newsletter'
-    );
+  const successMessage = document.querySelector(
+    '[data-footer-newsletter-success]'
+  );
 
-    if (!newsletter) return;
+  if (!successMessage || successMessage.hidden) return;
 
-    window.scrollTo({
-      top: newsletter.getBoundingClientRect().top
-        + window.scrollY
-        - 40,
-      left: 0,
-      behavior: 'smooth'
-    });
+  window.scrollTo({
+    top: successMessage.getBoundingClientRect().top
+      + window.scrollY
+      - 80,
+    left: 0,
+    behavior: 'smooth'
+  });
 
-  };
+};
 
-  /*
-   * Plusieurs passages permettent de couvrir le cas où
-   * Shopify / le thème termine encore son rendu après
-   * le chargement initial.
-   */
+requestAnimationFrame(function () {
+  scrollToNewsletterSuccess();
 
-  scrollToNewsletter();
-
-  setTimeout(scrollToNewsletter, 100);
-  setTimeout(scrollToNewsletter, 500);
-  setTimeout(scrollToNewsletter, 1000);
-  setTimeout(scrollToNewsletter, 1500);
+  setTimeout(scrollToNewsletterSuccess, 100);
+  setTimeout(scrollToNewsletterSuccess, 500);
+  setTimeout(scrollToNewsletterSuccess, 1000);
+  setTimeout(scrollToNewsletterSuccess, 1500);
+});
 
 }
  function initFooter() {
