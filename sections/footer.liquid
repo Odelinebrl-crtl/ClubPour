@@ -1374,31 +1374,40 @@ function initFooterNewsletterSuccess() {
   successMessage.hidden = false;
 
   /*
-   * Shopify vient de confirmer l'inscription.
-   * On attend que le footer soit complètement rendu,
-   * puis on force le retour sur la zone de confirmation.
+   * Après la confirmation Shopify, on force le scroll
+   * vers la zone du formulaire.
    */
 
-  requestAnimationFrame(function () {
+  const scrollToNewsletter = function () {
 
-    setTimeout(function () {
+    const newsletter = document.querySelector(
+      '#footer-newsletter'
+    );
 
-      const newsletter = document.querySelector(
-        '#footer-newsletter'
-      );
+    if (!newsletter) return;
 
-      if (newsletter) {
+    window.scrollTo({
+      top: newsletter.getBoundingClientRect().top
+        + window.scrollY
+        - 40,
+      left: 0,
+      behavior: 'smooth'
+    });
 
-        newsletter.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        });
+  };
 
-      }
+  /*
+   * Plusieurs passages permettent de couvrir le cas où
+   * Shopify / le thème termine encore son rendu après
+   * le chargement initial.
+   */
 
-    }, 100);
+  scrollToNewsletter();
 
-  });
+  setTimeout(scrollToNewsletter, 100);
+  setTimeout(scrollToNewsletter, 500);
+  setTimeout(scrollToNewsletter, 1000);
+  setTimeout(scrollToNewsletter, 1500);
 
 }
  function initFooter() {
