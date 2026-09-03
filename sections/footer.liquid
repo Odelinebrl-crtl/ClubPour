@@ -11,9 +11,9 @@
 
 <div class="footer-pour__column footer-pour__newsletter">
 
-{% assign newsletter_return_url = routes.root_url | append: '?newsletter_success=true' %}
+{% assign newsletter_return_url = routes.root_url | append: '?newsletter_success=true#footer-newsletter' %}
 
-{% form 'customer', return_to: newsletter_return_url, class: 'footer-pour__form' %}
+{% form 'customer', return_to: newsletter_return_url, class: 'footer-pour__form', id: 'footer-newsletter' %}
 
     <input
       type="hidden"
@@ -78,7 +78,15 @@
     {% endif %}
 
   {% endform %}
-
+<div
+  class="footer-pour__message footer-pour__message--success"
+  data-footer-newsletter-success
+  hidden
+>
+  <strong>INSCRIPTION CONFIRMÉE</strong><br><br>
+  Votre inscription au Club POUR a bien été prise en compte.<br>
+  Surveillez votre boîte mail pour découvrir les prochains accès privés.
+</div>
       <!-- RÉSEAUX SOCIAUX -->
 
       <div class="footer-pour__socials">
