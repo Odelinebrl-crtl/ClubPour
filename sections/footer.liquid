@@ -1320,33 +1320,32 @@ padding:
 
     form.dataset.clubCaptchaReady = 'true';
 
-    function scrollToTop() {
-      window.scrollTo({
-        top: 0,
-        left: 0,
-        behavior: 'smooth'
-      });
-    }
-
     form.addEventListener(
-      'submit',
-      function () {
+  'submit',
+  function () {
 
-        /*
-         * Shopify peut afficher son CAPTCHA après le déclenchement
-         * de la soumission. On remonte donc immédiatement en haut,
-         * puis à nouveau quelques instants après pour que le CAPTCHA
-         * soit visible même s'il est injecté dynamiquement.
-         */
+    /*
+     * On laisse Shopify gérer entièrement le CAPTCHA.
+     * Après le retour sur la page, l'URL contient
+     * #footer-newsletter : on revient donc directement
+     * sur le formulaire / message de confirmation.
+     */
 
-        scrollToTop();
+    setTimeout(function () {
 
-        setTimeout(scrollToTop, 250);
-        setTimeout(scrollToTop, 750);
-        setTimeout(scrollToTop, 1500);
+      const newsletter = document.querySelector('#footer-newsletter');
 
+      if (newsletter) {
+        newsletter.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
       }
-    );
+
+    }, 2000);
+
+  }
+);
 
   }
 
