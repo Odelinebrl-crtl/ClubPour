@@ -901,10 +901,14 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 </div>
 <!-- =====================================================
-     STYLE AVEC — 4 PRODUITS
+     TU AIMERAIS PEUT-ÊTRE AUSSI — RECOMMANDATIONS
 ===================================================== -->
 
-<div class="product-page-pour__style-with">
+<div
+  class="product-page-pour__style-with"
+  data-product-recommendations
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+>
 
   <div class="product-page-pour__style-with-heading">
     TU AIMERAIS PEUT-ÊTRE AUSSI
@@ -912,17 +916,9 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
   <div class="product-page-pour__style-with-grid">
 
-    {% for i in (1..4) %}
+    {% if recommendations.performed? and recommendations.products_count > 0 %}
 
-  {% assign product_key = 'style_with_product_' | append: i %}
-  {% assign image_key = 'style_with_image_' | append: i %}
-  {% assign hover_image_key = 'style_with_hover_image_' | append: i %}
-
-  {% assign style_product = section.settings[product_key] %}
-  {% assign style_image = section.settings[image_key] %}
-  {% assign style_hover_image = section.settings[hover_image_key] %}
-
-  {% if style_product != blank %}
+      {% for style_product in recommendations.products limit: 4 %}
 
         <article class="product-page-pour__style-with-card">
 
@@ -934,10 +930,10 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
               aria-label="{{ style_product.title }}"
             >
 
-              {% if style_image != blank %}
+              {% if style_product.featured_image != blank %}
 
                 {{
-                  style_image
+                  style_product.featured_image
                   | image_url: width: 1800
                   | image_tag:
                     class: 'product-page-pour__style-with-image product-page-pour__style-with-image--primary',
@@ -945,29 +941,20 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
                     alt: style_product.title
                 }}
 
-           {% elsif style_product.featured_image != blank %}
+              {% endif %}
 
-  {{
-    style_product.featured_image
-    | image_url: width: 1800
-    | image_tag:
-      class: 'product-page-pour__style-with-image product-page-pour__style-with-image--primary',
-      loading: 'lazy',
-      alt: style_product.title
-  }}
+              {% if style_product.images.size > 1 %}
 
-{% endif %}
+                {{
+                  style_product.images[1]
+                  | image_url: width: 1800
+                  | image_tag:
+                    class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
+                    loading: 'lazy',
+                    alt: style_product.title
+                }}
 
-{% if style_hover_image != blank %}
-  {{
-    style_hover_image
-    | image_url: width: 1800
-    | image_tag:
-      class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
-      loading: 'lazy',
-      alt: style_product.title
-  }}
-{% endif %}
+              {% endif %}
 
             </a>
 
@@ -983,70 +970,76 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
           </div>
 
-        <a
-  href="{{ style_product.url }}"
-  class="product-page-pour__style-with-info"
->
+          <a
+            href="{{ style_product.url }}"
+            class="product-page-pour__style-with-info"
+          >
 
-  <div class="product-page-pour__style-with-details">
+            <div class="product-page-pour__style-with-details">
 
-    <div class="product-page-pour__style-with-info-row">
+              <div class="product-page-pour__style-with-info-row">
 
-      <div class="product-page-pour__style-with-title">
-        {{ style_product.title }}
-      </div>
+                <div class="product-page-pour__style-with-title">
+                  {{ style_product.title }}
+                </div>
 
-      <div class="product-page-pour__style-with-price">
-        {{ style_product.price | money }}
-      </div>
+                <div class="product-page-pour__style-with-price">
+                  {{ style_product.price | money }}
+                </div>
 
-    </div>
+              </div>
 
-    <div class="product-page-pour__style-with-color-name">
-      {{ style_product.metafields.custom.color_name.value }}
-    </div>
+              <div class="product-page-pour__style-with-color-name">
+                {{ style_product.metafields.custom.color_name.value }}
+              </div>
 
-    <div class="product-page-pour__style-with-swatches">
+              <div class="product-page-pour__style-with-swatches">
 
-      {% assign current_color = style_product.metafields.custom.couleur.value %}
+                {% assign current_color = style_product.metafields.custom.couleur.value %}
 
-      {% if current_color != blank %}
-        <span
-          class="product-page-pour__style-with-swatch"
-          style="background-color: {{ current_color }};"
-          aria-label="{{ style_product.metafields.custom.color_name.value }}"
-        ></span>
-      {% endif %}
+                {% if current_color != blank %}
 
-      {% assign color_products = style_product.metafields.custom.couleurs.value %}
+                  <span
+                    class="product-page-pour__style-with-swatch"
+                    style="background-color: {{ current_color }};"
+                    aria-label="{{ style_product.metafields.custom.color_name.value }}"
+                  ></span>
 
-      {% if color_products != blank %}
-        {% for color_product in color_products %}
+                {% endif %}
 
-          {% assign color_value = color_product.metafields.custom.couleur.value %}
+                {% assign color_products = style_product.metafields.custom.couleurs.value %}
 
-          {% if color_value != blank %}
-            <span
-              class="product-page-pour__style-with-swatch"
-              style="background-color: {{ color_value }};"
-              aria-label="{{ color_product.metafields.custom.color_name.value }}"
-            ></span>
-          {% endif %}
+                {% if color_products != blank %}
 
-        {% endfor %}
-      {% endif %}
+                  {% for color_product in color_products %}
 
-    </div>
+                    {% assign color_value = color_product.metafields.custom.couleur.value %}
 
-  </div>
+                    {% if color_value != blank %}
 
-</a>
+                      <span
+                        class="product-page-pour__style-with-swatch"
+                        style="background-color: {{ color_value }};"
+                        aria-label="{{ color_product.metafields.custom.color_name.value }}"
+                      ></span>
+
+                    {% endif %}
+
+                  {% endfor %}
+
+                {% endif %}
+
+              </div>
+
+            </div>
+
+          </a>
 
         </article>
 
-      {% endif %}
+      {% endfor %}
 
-    {% endfor %}
+    {% endif %}
 
   </div>
 
@@ -5143,6 +5136,61 @@ if (backInStockForm) {
 
 })();
 </script>
+  }
+  }
+);
+
+
+  // ⬇️ SCRIPT RECOMMANDATIONS À METTRE ICI
+  (function () {
+    const recommendationsSection =
+      document.querySelector('[data-product-recommendations]');
+
+    if (!recommendationsSection) return;
+
+    const url = recommendationsSection.dataset.url;
+
+    if (!url) return;
+
+    fetch(url)
+      .then(response => response.text())
+      .then(text => {
+        const html = document.createElement('div');
+        html.innerHTML = text;
+
+        const recommendations =
+          html.querySelector('[data-product-recommendations]');
+
+        if (!recommendations) return;
+
+        const grid =
+          recommendations.querySelector(
+            '.product-page-pour__style-with-grid'
+          );
+
+        if (!grid || !grid.innerHTML.trim()) return;
+
+        const currentGrid =
+          recommendationsSection.querySelector(
+            '.product-page-pour__style-with-grid'
+          );
+
+        if (currentGrid) {
+          currentGrid.innerHTML = grid.innerHTML;
+        }
+      })
+      .catch(error => {
+        console.error(
+          'Erreur lors du chargement des recommandations produit :',
+          error
+        );
+      });
+  })();
+
+
+</script>
+
+{% schema %}
 {% schema %}
 {
   "name": "Produit POUR",
