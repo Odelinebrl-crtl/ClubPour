@@ -66,7 +66,7 @@
 
 {% if form.posted_successfully? %}
   <p class="footer-pour__message footer-pour__message--success">
-    <strong>BIENVENUE DANS LE CLUB POUR.</strong><br><br>
+    <strong>Votre inscription au Club POUR a bien été prise en compte.</strong><br><br>
     Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
   </p>
 {% endif %}
@@ -1350,23 +1350,56 @@ padding:
   }
 
 function initFooterNewsletterSuccess() {
+
   const successMessage = document.querySelector(
     '[data-footer-newsletter-success]'
   );
 
   if (!successMessage) return;
 
-  const params = new URLSearchParams(window.location.search);
+  const params = new URLSearchParams(
+    window.location.search
+  );
 
   if (params.get('newsletter_success') !== 'true') return;
 
-  const form = document.querySelector('.footer-pour__form');
+  const form = document.querySelector(
+    '.footer-pour__form'
+  );
 
   if (form) {
     form.hidden = true;
   }
 
   successMessage.hidden = false;
+
+  /*
+   * Shopify vient de confirmer l'inscription.
+   * On attend que le footer soit complètement rendu,
+   * puis on force le retour sur la zone de confirmation.
+   */
+
+  requestAnimationFrame(function () {
+
+    setTimeout(function () {
+
+      const newsletter = document.querySelector(
+        '#footer-newsletter'
+      );
+
+      if (newsletter) {
+
+        newsletter.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+
+      }
+
+    }, 100);
+
+  });
+
 }
  function initFooter() {
   initFooterLocalization();
