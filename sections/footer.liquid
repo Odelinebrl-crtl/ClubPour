@@ -1186,6 +1186,8 @@ padding:
 
 </style>
 <script>
+
+
 (function () {
 
   function initFooterLocalization() {
@@ -1348,11 +1350,30 @@ padding:
 
   }
 
+function initFooterNewsletterSuccess() {
+  const successMessage = document.querySelector(
+    '[data-footer-newsletter-success]'
+  );
 
-  function initFooter() {
-    initFooterLocalization();
-    initFooterClubCaptcha();
+  if (!successMessage) return;
+
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get('newsletter_success') !== 'true') return;
+
+  const form = document.querySelector('.footer-pour__form');
+
+  if (form) {
+    form.hidden = true;
   }
+
+  successMessage.hidden = false;
+}
+ function initFooter() {
+  initFooterLocalization();
+  initFooterClubCaptcha();
+  initFooterNewsletterSuccess();
+}
 
 
   if (document.readyState === 'loading') {
