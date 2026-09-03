@@ -983,20 +983,64 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
           </div>
 
-          <a
-            href="{{ style_product.url }}"
-            class="product-page-pour__style-with-info"
-          >
+        <a
+  href="{{ style_product.url }}"
+  class="product-page-pour__style-with-info"
+>
 
-            <div class="product-page-pour__style-with-title">
-              {{ style_product.title }}
-            </div>
+  <div class="product-page-pour__style-with-details">
 
-            <div class="product-page-pour__style-with-price">
-              {{ style_product.price | money }}
-            </div>
+    <div class="product-page-pour__style-with-info-row">
 
-          </a>
+      <div class="product-page-pour__style-with-title">
+        {{ style_product.title }}
+      </div>
+
+      <div class="product-page-pour__style-with-price">
+        {{ style_product.price | money }}
+      </div>
+
+    </div>
+
+    <div class="product-page-pour__style-with-color-name">
+      {{ style_product.metafields.custom.color_name.value }}
+    </div>
+
+    <div class="product-page-pour__style-with-swatches">
+
+      {% assign current_color = style_product.metafields.custom.couleur.value %}
+
+      {% if current_color != blank %}
+        <span
+          class="product-page-pour__style-with-swatch"
+          style="background-color: {{ current_color }};"
+          aria-label="{{ style_product.metafields.custom.color_name.value }}"
+        ></span>
+      {% endif %}
+
+      {% assign color_products = style_product.metafields.custom.couleurs.value %}
+
+      {% if color_products != blank %}
+        {% for color_product in color_products %}
+
+          {% assign color_value = color_product.metafields.custom.couleur.value %}
+
+          {% if color_value != blank %}
+            <span
+              class="product-page-pour__style-with-swatch"
+              style="background-color: {{ color_value }};"
+              aria-label="{{ color_product.metafields.custom.color_name.value }}"
+            ></span>
+          {% endif %}
+
+        {% endfor %}
+      {% endif %}
+
+    </div>
+
+  </div>
+
+</a>
 
         </article>
 
@@ -3244,7 +3288,73 @@ font-weight: 200;
   color: #111111;
   text-decoration: none;
 }
+.product-page-pour__style-with-details {
+  width: 100%;
+}
 
+.product-page-pour__style-with-info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-page-pour__style-with-title {
+  min-width: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.product-page-pour__style-with-price {
+  flex: 0 0 auto;
+
+  margin-left: 12px;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  white-space: nowrap;
+}
+
+.product-page-pour__style-with-color-name {
+  margin-top: 6px;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  color: #111111;
+}
+
+.product-page-pour__style-with-swatches {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 8px;
+
+  width: 100%;
+  min-height: 11px;
+}
+
+.product-page-pour__style-with-swatch {
+  display: block;
+
+  width: 11px;
+  min-width: 11px;
+
+  height: 11px;
+  min-height: 11px;
+
+  flex: 0 0 11px;
+
+  border-radius: 50%;
+
+  border: 1px solid #d5d5d5;
+}
 .product-page-pour__style-with-title {
   min-width: 0;
 
