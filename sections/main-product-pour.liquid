@@ -907,142 +907,14 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 <div
   class="product-page-pour__style-with"
   data-product-recommendations
-  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&limit=4&intent=related"
+  data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations&product_id={{ product.id }}&limit=4&intent=related"
 >
-
   <div class="product-page-pour__style-with-heading">
     TU AIMERAIS PEUT-ÊTRE AUSSI
   </div>
 
   <div class="product-page-pour__style-with-grid">
-
-    {% if recommendations.performed? and recommendations.products_count > 0 %}
-
-      {% for style_product in recommendations.products limit: 4 %}
-
-        <article class="product-page-pour__style-with-card">
-
-          <div class="product-page-pour__style-with-media">
-
-            <a
-              href="{{ style_product.url }}"
-              class="product-page-pour__style-with-media-link"
-              aria-label="{{ style_product.title }}"
-            >
-
-              {% if style_product.featured_image != blank %}
-
-                {{
-                  style_product.featured_image
-                  | image_url: width: 1800
-                  | image_tag:
-                    class: 'product-page-pour__style-with-image product-page-pour__style-with-image--primary',
-                    loading: 'lazy',
-                    alt: style_product.title
-                }}
-
-              {% endif %}
-
-              {% if style_product.images.size > 1 %}
-
-                {{
-                  style_product.images[1]
-                  | image_url: width: 1800
-                  | image_tag:
-                    class: 'product-page-pour__style-with-image product-page-pour__style-with-image--hover',
-                    loading: 'lazy',
-                    alt: style_product.title
-                }}
-
-              {% endif %}
-
-            </a>
-
-            <!-- QUICK ADD + -->
-
-            <button
-              type="button"
-              class="product-page-pour__style-with-quick-add"
-              data-quick-add
-              data-product-handle="{{ style_product.handle }}"
-              aria-label="Ajouter rapidement {{ style_product.title }}"
-            ></button>
-
-          </div>
-
-          <a
-            href="{{ style_product.url }}"
-            class="product-page-pour__style-with-info"
-          >
-
-            <div class="product-page-pour__style-with-details">
-
-              <div class="product-page-pour__style-with-info-row">
-
-                <div class="product-page-pour__style-with-title">
-                  {{ style_product.title }}
-                </div>
-
-                <div class="product-page-pour__style-with-price">
-                  {{ style_product.price | money }}
-                </div>
-
-              </div>
-
-              <div class="product-page-pour__style-with-color-name">
-                {{ style_product.metafields.custom.color_name.value }}
-              </div>
-
-              <div class="product-page-pour__style-with-swatches">
-
-                {% assign current_color = style_product.metafields.custom.couleur.value %}
-
-                {% if current_color != blank %}
-
-                  <span
-                    class="product-page-pour__style-with-swatch"
-                    style="background-color: {{ current_color }};"
-                    aria-label="{{ style_product.metafields.custom.color_name.value }}"
-                  ></span>
-
-                {% endif %}
-
-                {% assign color_products = style_product.metafields.custom.couleurs.value %}
-
-                {% if color_products != blank %}
-
-                  {% for color_product in color_products %}
-
-                    {% assign color_value = color_product.metafields.custom.couleur.value %}
-
-                    {% if color_value != blank %}
-
-                      <span
-                        class="product-page-pour__style-with-swatch"
-                        style="background-color: {{ color_value }};"
-                        aria-label="{{ color_product.metafields.custom.color_name.value }}"
-                      ></span>
-
-                    {% endif %}
-
-                  {% endfor %}
-
-                {% endif %}
-
-              </div>
-
-            </div>
-
-          </a>
-
-        </article>
-
-      {% endfor %}
-
-    {% endif %}
-
   </div>
-
 </div>
 <style>
 
@@ -5135,62 +5007,73 @@ if (backInStockForm) {
   }
 
 })();
-</script>
-  }
-  }
-);
+/* =====================================================
+   RECOMMANDATIONS PRODUIT
+===================================================== */
 
+(function () {
 
-  // ⬇️ SCRIPT RECOMMANDATIONS À METTRE ICI
-  (function () {
-    const recommendationsSection =
-      document.querySelector('[data-product-recommendations]');
+  const recommendationsSection =
+    document.querySelector(
+      '[data-product-recommendations]'
+    );
 
-    if (!recommendationsSection) return;
+  if (!recommendationsSection) return;
 
-    const url = recommendationsSection.dataset.url;
+  const url =
+    recommendationsSection.dataset.url;
 
-    if (!url) return;
+  if (!url) return;
 
-    fetch(url)
-      .then(response => response.text())
-      .then(text => {
-        const html = document.createElement('div');
-        html.innerHTML = text;
+  fetch(url)
+    .then(response => response.text())
+    .then(text => {
 
-        const recommendations =
-          html.querySelector('[data-product-recommendations]');
+      const html =
+        document.createElement('div');
 
-        if (!recommendations) return;
+      html.innerHTML = text;
 
-        const grid =
-          recommendations.querySelector(
-            '.product-page-pour__style-with-grid'
-          );
-
-        if (!grid || !grid.innerHTML.trim()) return;
-
-        const currentGrid =
-          recommendationsSection.querySelector(
-            '.product-page-pour__style-with-grid'
-          );
-
-        if (currentGrid) {
-          currentGrid.innerHTML = grid.innerHTML;
-        }
-      })
-      .catch(error => {
-        console.error(
-          'Erreur lors du chargement des recommandations produit :',
-          error
+      const recommendations =
+        html.querySelector(
+          '[data-product-recommendations]'
         );
-      });
-  })();
 
+      if (!recommendations) return;
+
+      const currentGrid =
+        recommendationsSection.querySelector(
+          '.product-page-pour__style-with-grid'
+        );
+
+      const newGrid =
+        recommendations.querySelector(
+          '.product-page-pour__style-with-grid'
+        );
+
+      if (
+        currentGrid &&
+        newGrid &&
+        newGrid.innerHTML.trim()
+      ) {
+        currentGrid.innerHTML =
+          newGrid.innerHTML;
+      }
+
+    })
+    .catch(error => {
+
+      console.error(
+        'Erreur lors du chargement des recommandations produit :',
+        error
+      );
+
+    });
+
+})();
 
 </script>
 
-{% schema %}
 {% schema %}
 {
   "name": "Produit POUR",
@@ -5204,96 +5087,13 @@ if (backInStockForm) {
       "default": "100 % coton biologique. Coupe premium. Matière épaisse et confortable."
     },
 
-{
-  "type": "textarea",
-  "id": "shipping",
-  "label": "Expédition & retours",
-  "default": "Retrouvez ici toutes les informations concernant l’expédition et les retours."
-},
-{
-  "type": "header",
-  "content": "Style avec — Produit 01"
-},
+    {
+      "type": "textarea",
+      "id": "shipping",
+      "label": "Expédition & retours",
+      "default": "Retrouvez ici toutes les informations concernant l’expédition et les retours."
+    }
 
-{
-  "type": "product",
-  "id": "style_with_product_1",
-  "label": "Produit 01"
-},
-
-{
-  "type": "image_picker",
-  "id": "style_with_image_1",
-  "label": "Image personnalisée 01"
-},
-{
-  "type": "image_picker",
-  "id": "style_with_hover_image_1",
-  "label": "Image au survol 01"
-},
-{
-  "type": "header",
-  "content": "Style avec — Produit 02"
-},
-
-{
-  "type": "product",
-  "id": "style_with_product_2",
-  "label": "Produit 02"
-},
-
-{
-  "type": "image_picker",
-  "id": "style_with_image_2",
-  "label": "Image personnalisée 02"
-},
-{
-  "type": "image_picker",
-  "id": "style_with_hover_image_2",
-  "label": "Image au survol 02"
-},
-{
-  "type": "header",
-  "content": "Style avec — Produit 03"
-},
-
-{
-  "type": "product",
-  "id": "style_with_product_3",
-  "label": "Produit 03"
-},
-
-{
-  "type": "image_picker",
-  "id": "style_with_image_3",
-  "label": "Image personnalisée 03"
-},
-{
-  "type": "image_picker",
-  "id": "style_with_hover_image_3",
-  "label": "Image au survol 03"
-},
-{
-  "type": "header",
-  "content": "Style avec — Produit 04"
-},
-
-{
-  "type": "product",
-  "id": "style_with_product_4",
-  "label": "Produit 04"
-},
-
-{
-  "type": "image_picker",
-  "id": "style_with_image_4",
-  "label": "Image personnalisée 04"
-},
-{
-  "type": "image_picker",
-  "id": "style_with_hover_image_4",
-  "label": "Image au survol 04"
-}
   ]
 }
 {% endschema %}
