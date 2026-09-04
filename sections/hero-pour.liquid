@@ -73,7 +73,9 @@
 
 </div>
 </section>
-
+<div class="pour-hero-banner">
+  <span>{{ section.settings.prelaunch_banner }}</span>
+</div>
 {% schema %}
 {
   "name": "Hero POUR",
@@ -111,6 +113,12 @@
   "id": "launch_text",
   "label": "Texte lancement",
   "default": "LANCEMENT OFFICIEL 01/12/2026"
+},
+{
+  "type": "text",
+  "id": "prelaunch_banner",
+  "label": "Bandeau pré-lancement",
+  "default": "AVANT-PREMIÈRE — -10 % SUR VOTRE PROCHAINE COMMANDE À L’OUVERTURE"
 },
     {
       "type": "select",
