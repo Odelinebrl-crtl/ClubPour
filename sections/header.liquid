@@ -29,6 +29,82 @@
 
       </div>
 
+<!-- =============================================
+                 NAVIGATION MEGA MENU
+            ============================================== -->
+
+            <div class="site-header__mega-navigation">
+
+              <div class="site-header__mega-column">
+
+                <p class="site-header__mega-heading">
+                  VÊTEMENTS
+                </p>
+
+
+                <a
+                  href="/pages/collection-001"
+                  class="site-header__mega-collection site-header__mega-link"
+                >
+                  COLLECTION 001
+                </a>
+
+
+                <div class="site-header__mega-links">
+
+                  {% if section.settings.all_link != blank %}
+
+                    <a
+                      href="{{ section.settings.all_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Tous
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.tshirts_link != blank %}
+
+                    <a
+                      href="{{ section.settings.tshirts_link }}"
+                      class="site-header__mega-link"
+                    >
+                      T-Shirts
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.hoodies_link != blank %}
+
+                    <a
+                      href="{{ section.settings.hoodies_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Hoodies
+                    </a>
+
+                  {% endif %}
+
+
+                  {% if section.settings.sweatshirts_link != blank %}
+
+                    <a
+                      href="{{ section.settings.sweatshirts_link }}"
+                      class="site-header__mega-link"
+                    >
+                      Sweatshirts
+                    </a>
+
+                  {% endif %}
+
+                </div>
+
+              </div>
+
+            </div>
+
 
       <!-- =================================================
            CLUB PRIVILÈGES
