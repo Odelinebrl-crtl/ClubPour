@@ -1,0 +1,721 @@
+<style>
+  .faq-pour {
+    --faq-black: #111111;
+    --faq-grey: #666666;
+    --faq-line: #e5e5e5;
+    --faq-white: #ffffff;
+    background: var(--faq-white);
+    color: var(--faq-black);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+
+  .faq-pour__intro {
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+    padding: 90px 0 70px;
+    border-bottom: 1px solid var(--faq-black);
+  }
+
+  .faq-pour__eyebrow {
+    margin: 0 0 22px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .faq-pour__title {
+    margin: 0;
+    font-size: clamp(42px, 7vw, 92px);
+    font-weight: 400;
+    line-height: .95;
+    letter-spacing: -.045em;
+  }
+
+  .faq-pour__lead {
+    max-width: 600px;
+    margin: 28px 0 0;
+    color: var(--faq-grey);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .faq-pour__layout {
+    width: min(100% - 48px, 1180px);
+    margin: 0 auto;
+    padding: 55px 0 120px;
+    display: grid;
+    grid-template-columns: 190px minmax(0, 760px);
+    gap: 80px;
+    align-items: start;
+  }
+
+  .faq-pour__categories {
+    position: sticky;
+    top: 30px;
+  }
+
+  .faq-pour__categories-title {
+    margin: 0 0 18px;
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .faq-pour__category-link {
+    display: block;
+    padding: 7px 0;
+    color: var(--faq-black);
+    font-size: 10px;
+    line-height: 1.35;
+    text-decoration: none;
+    transition: opacity .2s ease;
+  }
+
+  .faq-pour__category-link:hover {
+    opacity: .45;
+  }
+
+  .faq-pour__category {
+    scroll-margin-top: 35px;
+  }
+
+  .faq-pour__category + .faq-pour__category {
+    margin-top: 70px;
+  }
+
+  .faq-pour__category-title {
+    margin: 0 0 18px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .faq-pour__item {
+    margin: 0;
+    border-top: 1px solid var(--faq-line);
+  }
+
+  .faq-pour__item:last-child {
+    border-bottom: 1px solid var(--faq-line);
+  }
+
+  .faq-pour__question {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    padding: 22px 0;
+    color: var(--faq-black);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.45;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-pour__question::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-pour__question::after,
+  .faq-pour__question::before {
+    content: "";
+    flex: 0 0 auto;
+    width: 13px;
+    height: 1px;
+    background: var(--faq-black);
+    transition: transform .25s ease;
+  }
+
+  .faq-pour__question::before {
+    position: absolute;
+    right: 0;
+  }
+
+  .faq-pour__question::after {
+    transform: rotate(90deg);
+  }
+
+  .faq-pour__item[open] .faq-pour__question::after {
+    transform: rotate(0deg);
+  }
+
+  .faq-pour__answer {
+    max-width: 650px;
+    padding: 0 45px 25px 0;
+    color: var(--faq-grey);
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+
+  .faq-pour__answer p {
+    margin: 0;
+  }
+
+  .faq-pour__answer p + p {
+    margin-top: 10px;
+  }
+
+  .faq-pour__answer a {
+    color: var(--faq-black);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .faq-pour__contact {
+    margin-top: 90px;
+    padding-top: 28px;
+    border-top: 1px solid var(--faq-black);
+  }
+
+  .faq-pour__contact-label {
+    margin: 0 0 12px;
+    font-size: 9px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .faq-pour__contact-text {
+    max-width: 600px;
+    margin: 0;
+    color: var(--faq-grey);
+    font-size: 11px;
+    line-height: 1.7;
+  }
+
+  .faq-pour__contact-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--faq-black);
+    font-size: 10px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid var(--faq-black);
+    padding-bottom: 4px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .faq-pour__intro {
+      width: min(100% - 40px, 1180px);
+      padding: 55px 0 45px;
+    }
+
+    .faq-pour__title {
+      font-size: clamp(42px, 15vw, 68px);
+    }
+
+    .faq-pour__lead {
+      margin-top: 22px;
+      font-size: 11px;
+    }
+
+    .faq-pour__layout {
+      width: min(100% - 40px, 1180px);
+      padding: 35px 0 80px;
+      display: block;
+    }
+
+    .faq-pour__categories {
+      position: static;
+      display: flex;
+      gap: 14px;
+      overflow-x: auto;
+      margin-bottom: 55px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--faq-line);
+      scrollbar-width: none;
+    }
+
+    .faq-pour__categories::-webkit-scrollbar {
+      display: none;
+    }
+
+    .faq-pour__categories-title {
+      display: none;
+    }
+
+    .faq-pour__category-link {
+      flex: 0 0 auto;
+      padding: 0;
+      font-size: 9px;
+      white-space: nowrap;
+    }
+
+    .faq-pour__category + .faq-pour__category {
+      margin-top: 55px;
+    }
+
+    .faq-pour__category-title {
+      margin-bottom: 14px;
+      font-size: 9px;
+    }
+
+    .faq-pour__question {
+      padding: 18px 0;
+      font-size: 11px;
+    }
+
+    .faq-pour__answer {
+      padding: 0 35px 22px 0;
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .faq-pour__contact {
+      margin-top: 65px;
+    }
+  }
+</style>
+
+<section class="faq-pour" id="faq-pour">
+  <div class="faq-pour__intro">
+    <p class="faq-pour__eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1 class="faq-pour__title">{{ section.settings.title }}</h1>
+    <p class="faq-pour__lead">{{ section.settings.intro }}</p>
+  </div>
+
+  <div class="faq-pour__layout">
+    <nav class="faq-pour__categories" aria-label="Catégories de la FAQ">
+      <p class="faq-pour__categories-title">Navigation</p>
+      <a class="faq-pour__category-link" href="#commandes">Commandes</a>
+      <a class="faq-pour__category-link" href="#livraison">Livraison</a>
+      <a class="faq-pour__category-link" href="#retours">Retours & remboursements</a>
+      <a class="faq-pour__category-link" href="#produits">Produits & tailles</a>
+      <a class="faq-pour__category-link" href="#entretien">Entretien</a>
+      <a class="faq-pour__category-link" href="#paiement">Paiement</a>
+      <a class="faq-pour__category-link" href="#compte">Compte client</a>
+      <a class="faq-pour__category-link" href="#club-pour">Club POUR</a>
+      <a class="faq-pour__category-link" href="#fabrication">POUR & fabrication</a>
+      <a class="faq-pour__category-link" href="#promotions">Promotions</a>
+      <a class="faq-pour__category-link" href="#problemes">Problèmes de commande</a>
+    </nav>
+
+    <main>
+      <section class="faq-pour__category" id="commandes">
+        <h2 class="faq-pour__category-title">01 — Commandes</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je commander sans créer de compte ?</summary>
+          <div class="faq-pour__answer"><p>Oui. La création d’un compte client n’est pas obligatoire pour passer commande sur POUR.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je créer un compte après avoir passé une commande ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Vous pouvez créer votre compte client afin de retrouver vos commandes et gérer vos informations personnelles.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je annuler ma commande ?</summary>
+          <div class="faq-pour__answer"><p>Oui, tant que votre commande n’a pas encore été traitée. Une fois son traitement commencé, son annulation n’est plus possible.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je modifier ma commande après l’avoir passée ?</summary>
+          <div class="faq-pour__answer"><p>Non. Une commande ne peut pas être modifiée après validation. Si elle n’a pas encore été traitée, vous pouvez demander son annulation puis passer une nouvelle commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment savoir si ma commande a bien été enregistrée ?</summary>
+          <div class="faq-pour__answer"><p>Un e-mail de confirmation vous est automatiquement envoyé après la validation de votre commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Vais-je recevoir un e-mail lorsque ma commande est expédiée ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Vous recevez un e-mail d’expédition contenant les informations de suivi de votre colis.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Où puis-je retrouver mes commandes ?</summary>
+          <div class="faq-pour__answer"><p>Si vous disposez d’un compte client, vos commandes sont accessibles depuis votre espace personnel.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="livraison">
+        <h2 class="faq-pour__category-title">02 — Livraison</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Dans quels pays livrez-vous ?</summary>
+          <div class="faq-pour__answer"><p>Nous livrons en France, en Europe, dans les DOM-TOM, au Canada, en Suisse et aux États-Unis.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quels transporteurs utilisez-vous ?</summary>
+          <div class="faq-pour__answer"><p>Nous travaillons avec Colissimo et Chronopost. Les options disponibles dépendent de la destination et sont affichées lors du paiement.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Combien de temps faut-il pour préparer ma commande ?</summary>
+          <div class="faq-pour__answer"><p>Les commandes sont généralement préparées sous 1 à 2 jours avant leur expédition.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quels sont les délais de livraison ?</summary>
+          <div class="faq-pour__answer"><p>Les délais varient selon le pays de destination et le service de livraison sélectionné. Le délai estimé vous est indiqué au moment du paiement, avant la validation de la commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">La livraison est-elle gratuite ?</summary>
+          <div class="faq-pour__answer"><p>En France, la livraison est offerte à partir de 150 € de commande avec Colissimo standard ou en point retrait.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Combien coûte la livraison ?</summary>
+          <div class="faq-pour__answer"><p>Les frais de livraison sont calculés selon le poids du colis, le pays de destination et le mode de livraison choisi. Leur montant est affiché au moment du paiement.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment suivre mon colis ?</summary>
+          <div class="faq-pour__answer"><p>Un lien de suivi vous est envoyé par e-mail lorsque votre commande est expédiée.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon colis est indiqué comme livré mais je ne l’ai pas reçu. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via notre formulaire de contact en indiquant votre numéro de commande. Nous vous accompagnerons dans les démarches auprès du service de livraison concerné.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="retours">
+        <h2 class="faq-pour__category-title">03 — Retours & remboursements</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quel est le délai pour effectuer un retour ?</summary>
+          <div class="faq-pour__answer"><p>Vous disposez de 14 jours à compter de la réception de votre commande pour demander un retour.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quelles sont les conditions pour qu’un article soit accepté en retour ?</summary>
+          <div class="faq-pour__answer"><p>L’article doit être non porté, non lavé et conserver son étiquette. L’emballage d’origine n’est pas obligatoire.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je retourner un article soldé ou acheté avec une promotion ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Les articles soldés ou bénéficiant d’une promotion peuvent également être retournés dans le délai de 14 jours et selon les conditions de retour applicables.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je retourner un article simplement parce que j’ai changé d’avis ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Le retour est possible dans le délai de 14 jours, sous réserve que l’article respecte les conditions de retour.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Proposez-vous des échanges ?</summary>
+          <div class="faq-pour__answer"><p>Nous ne proposons pas d’échanges classiques. Si vous souhaitez une autre taille ou un autre article, vous pouvez effectuer un retour puis passer une nouvelle commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Qui prend en charge les frais de retour ?</summary>
+          <div class="faq-pour__answer"><p>Les frais de retour sont à la charge du client, sauf lorsqu’une erreur de notre part est à l’origine du retour.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment demander un retour ?</summary>
+          <div class="faq-pour__answer"><p>La demande de retour s’effectue depuis notre formulaire de contact. Indiquez votre numéro de commande ainsi que les informations nécessaires au traitement de votre demande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment suivre mon retour ?</summary>
+          <div class="faq-pour__answer"><p>Lorsque votre retour est expédié, conservez les informations de suivi de votre colis. Elles peuvent être nécessaires au suivi de son acheminement.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quand serai-je remboursé ?</summary>
+          <div class="faq-pour__answer"><p>Le remboursement est traité au plus vite après réception et vérification du retour, avec un délai maximal de 10 jours. Le délai d’apparition du remboursement sur votre compte peut ensuite dépendre de votre établissement bancaire.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment serai-je remboursé ?</summary>
+          <div class="faq-pour__answer"><p>Le remboursement est effectué sur le moyen de paiement utilisé lors de la commande.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="produits">
+        <h2 class="faq-pour__category-title">04 — Produits & tailles</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quelles tailles sont disponibles ?</summary>
+          <div class="faq-pour__answer"><p>Pour notre première collection, les tailles disponibles vont du XXS au L. La gamme de tailles pourra évoluer au fil des collections, notamment jusqu’au XL.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment choisir ma taille ?</summary>
+          <div class="faq-pour__answer"><p>Consultez le guide des tailles disponible directement sur chaque fiche produit. Il vous permet de choisir la taille la plus adaptée à la coupe de la pièce.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Toutes les pièces ont-elles la même coupe ?</summary>
+          <div class="faq-pour__answer"><p>Non. Les coupes peuvent varier d’une pièce à l’autre. Les informations propres à chaque modèle sont indiquées sur sa fiche produit.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Les produits sont-ils en coton biologique ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Le coton biologique fait partie des matières privilégiées par POUR pour ses pièces.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Les couleurs visibles sur le site correspondent-elles aux produits réels ?</summary>
+          <div class="faq-pour__answer"><p>Nous photographions les pièces dans leurs coloris réels afin de restituer au mieux leur apparence sur le site.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Où puis-je trouver les informations détaillées sur un produit ?</summary>
+          <div class="faq-pour__answer"><p>Chaque fiche produit présente les informations essentielles concernant la pièce, sa coupe, ses caractéristiques et son entretien.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="entretien">
+        <h2 class="faq-pour__category-title">05 — Entretien</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">À quelle température laver mon vêtement POUR ?</summary>
+          <div class="faq-pour__answer"><p>Nous recommandons un lavage à 30 °C.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Dois-je laver mon vêtement à l’envers ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Lavez votre vêtement à l’envers, de préférence avec un programme délicat.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je mettre mon vêtement au sèche-linge ?</summary>
+          <div class="faq-pour__answer"><p>Non. Nous recommandons de ne pas utiliser de sèche-linge afin de préserver au mieux la pièce et son marquage.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment repasser mon vêtement ?</summary>
+          <div class="faq-pour__answer"><p>Repassez le vêtement à l’envers et ne repassez jamais directement sur le marquage.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment préserver le marquage au fil du temps ?</summary>
+          <div class="faq-pour__answer"><p>Privilégiez un lavage à 30 °C, à l’envers et en programme délicat. Évitez le sèche-linge et tout contact direct du fer avec le marquage.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="paiement">
+        <h2 class="faq-pour__category-title">06 — Paiement</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quels moyens de paiement acceptez-vous ?</summary>
+          <div class="faq-pour__answer"><p>Nous acceptons les cartes bancaires, Visa, Mastercard, American Express, Apple Pay et PayPal.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quand mon paiement est-il encaissé ?</summary>
+          <div class="faq-pour__answer"><p>Le paiement est encaissé directement lors de la validation de la commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Le paiement est-il sécurisé ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Le paiement est effectué via le système de paiement sécurisé de la boutique et les informations de paiement sont traitées de manière sécurisée.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je payer avec Apple Pay ?</summary>
+          <div class="faq-pour__answer"><p>Oui, Apple Pay fait partie des moyens de paiement disponibles lorsque l’option est proposée sur votre appareil et dans votre parcours de paiement.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je payer avec PayPal ?</summary>
+          <div class="faq-pour__answer"><p>Oui, PayPal est accepté sur la boutique.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Pourquoi mon paiement peut-il être refusé ?</summary>
+          <div class="faq-pour__answer"><p>Un paiement peut être refusé pour différentes raisons liées au moyen de paiement utilisé. Vérifiez vos informations de paiement ou contactez votre établissement bancaire. Si le problème persiste, contactez-nous.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="compte">
+        <h2 class="faq-pour__category-title">07 — Compte client</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">À quoi sert mon compte client ?</summary>
+          <div class="faq-pour__answer"><p>Votre compte vous permet notamment de consulter vos commandes, suivre leur statut, gérer vos informations personnelles et vos adresses, et accéder aux fonctionnalités liées au Club POUR.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je commander sans compte ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Un compte client n’est pas nécessaire pour commander.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je retrouver une commande passée sans compte ?</summary>
+          <div class="faq-pour__answer"><p>Les informations de commande sont également accessibles depuis les e-mails envoyés après votre achat. La création d’un compte vous permet ensuite de centraliser vos commandes dans votre espace personnel.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je modifier mes informations personnelles depuis mon compte ?</summary>
+          <div class="faq-pour__answer"><p>Oui. Votre espace client vous permet de gérer vos informations et vos adresses enregistrées.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="club-pour">
+        <h2 class="faq-pour__category-title">08 — Club POUR</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Qu’est-ce que le Club POUR ?</summary>
+          <div class="faq-pour__answer"><p>Le Club POUR est l’espace dédié aux avantages et à la fidélité de notre communauté. Les fonctionnalités disponibles sont accessibles depuis votre compte client.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment accéder au Club POUR ?</summary>
+          <div class="faq-pour__answer"><p>Le Club POUR est accessible depuis votre espace client lorsque votre compte est connecté.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Où puis-je consulter mes avantages Club POUR ?</summary>
+          <div class="faq-pour__answer"><p>Vos informations liées au Club POUR sont consultables depuis votre espace client.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="fabrication">
+        <h2 class="faq-pour__category-title">09 — POUR & fabrication</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Où les pièces POUR sont-elles imprimées ?</summary>
+          <div class="faq-pour__answer"><p>Les pièces POUR sont imprimées dans une usine située à Montpellier, en France.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quelle technique d’impression utilisez-vous ?</summary>
+          <div class="faq-pour__answer"><p>Nous utilisons notamment la sérigraphie indexée afin de reproduire nos créations avec précision.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Pourquoi privilégier le coton biologique ?</summary>
+          <div class="faq-pour__answer"><p>Le coton biologique répond à une volonté de privilégier une matière plus responsable dans la conception de nos pièces, tout en recherchant le confort et la qualité attendus d’un vêtement POUR.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Comment sont imaginés les designs POUR ?</summary>
+          <div class="faq-pour__answer"><p>Nos designs partent de différentes inspirations que nous retravaillons et réinterprétons avec notre propre univers et notre imagination.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Quels outils utilisez-vous pour créer vos designs ?</summary>
+          <div class="faq-pour__answer"><p>Nous travaillons notamment avec les outils de la suite Adobe, comme Photoshop et Illustrator, pour développer et retravailler nos créations.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Pourquoi les collections évoluent-elles ?</summary>
+          <div class="faq-pour__answer"><p>POUR évolue au fil des collections afin de proposer de nouvelles créations, de nouvelles coupes et de nouveaux univers graphiques.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="promotions">
+        <h2 class="faq-pour__category-title">10 — Promotions & codes</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je utiliser un code promotionnel ?</summary>
+          <div class="faq-pour__answer"><p>Oui, lorsqu’un code promotionnel est disponible et applicable à votre commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Puis-je utiliser plusieurs codes promo sur une même commande ?</summary>
+          <div class="faq-pour__answer"><p>Non. Un seul code promotionnel peut être utilisé par commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Les codes promo sont-ils cumulables avec les promotions en cours ?</summary>
+          <div class="faq-pour__answer"><p>Non. Les codes promotionnels ne sont pas cumulables avec les promotions déjà appliquées sur la boutique.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon code promo ne fonctionne pas. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous par e-mail à <a href="mailto:contact@clubpour.fr">contact@clubpour.fr</a>. Notre équipe vous répondra sous 24 à 48 heures ouvrées.</p></div>
+        </details>
+      </section>
+
+      <section class="faq-pour__category" id="problemes">
+        <h2 class="faq-pour__category-title">11 — Problèmes de commande</h2>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Je n’ai pas reçu mon e-mail de confirmation. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via notre formulaire de contact en indiquant, si possible, l’adresse e-mail utilisée lors de la commande.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Ma commande est en retard. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via notre formulaire de contact avec votre numéro de commande afin que nous puissions vérifier son statut.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon colis est indiqué comme livré mais je ne l’ai pas reçu. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via le formulaire de contact avec votre numéro de commande. Nous vous aiderons à effectuer les démarches nécessaires auprès du transporteur.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Il manque un article dans ma commande. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via le formulaire de contact avec votre numéro de commande et indiquez l’article manquant. Nous vérifierons votre commande et vous accompagnerons.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">J’ai reçu le mauvais article. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via le formulaire de contact. Si l’erreur vient de notre part, nous prenons en charge les frais de retour ainsi que les nouveaux frais d’envoi si vous souhaitez recevoir le bon article.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon article est arrivé endommagé. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous rapidement via le formulaire de contact en indiquant votre numéro de commande et en joignant des photos permettant de constater l’état de l’article et du colis.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon article présente un défaut. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Contactez-nous via le formulaire de contact avec votre numéro de commande et des photos du défaut. Nous étudierons votre demande et vous indiquerons la marche à suivre.</p></div>
+        </details>
+
+        <details class="faq-pour__item">
+          <summary class="faq-pour__question">Mon numéro de suivi ne fonctionne pas. Que faire ?</summary>
+          <div class="faq-pour__answer"><p>Si votre numéro de suivi ne fonctionne pas ou ne se met pas à jour, contactez-nous via le formulaire de contact avec votre numéro de commande afin que nous puissions vérifier les informations d’expédition.</p></div>
+        </details>
+      </section>
+
+      <div class="faq-pour__contact">
+        <p class="faq-pour__contact-label">Besoin d’aide supplémentaire ?</p>
+        <p class="faq-pour__contact-text">Notre équipe est disponible pour répondre à vos questions. Contactez-nous à <a href="mailto:contact@clubpour.fr">contact@clubpour.fr</a> ou utilisez notre formulaire de contact. Nous répondons sous 24 à 48 heures ouvrées.</p>
+        <a class="faq-pour__contact-link" href="/pages/contact">Nous contacter</a>
+      </div>
+    </main>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ globale POUR",
+  "tag": "section",
+  "class": "faq-globale-pour",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Sur-titre",
+      "default": "AIDE & INFORMATIONS"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre",
+      "default": "FAQ"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Retrouvez ici les réponses aux questions les plus fréquentes concernant vos commandes, la livraison, les retours, les produits, le paiement et l’univers POUR."
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ globale POUR"
+    }
+  ]
+}
+{% endschema %}
