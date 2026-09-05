@@ -367,90 +367,6 @@
   <span>FAQ SUR LES PRODUITS</span>
 </button>
 
- <!-- CONTENU FAQ -->
-<div
-  class="product-page-pour__info-panel-content"
-  data-product-panel-content="faq"
->
-  <div class="product-page-pour__faq">
-
-    {% if product.metafields.custom.product_faq != blank %}
-
-      {% assign faq_blocks = product.metafields.custom.product_faq.value | split: "\n\n" %}
-
-      {% for faq_block in faq_blocks %}
-
-        {% assign faq_lines = faq_block | split: "\n" %}
-        {% assign faq_question = faq_lines[0] %}
-        {% assign faq_answer = faq_lines[1] %}
-
-        {% if faq_question != blank and faq_answer != blank %}
-
-          <details class="product-page-pour__faq-item">
-            <summary class="product-page-pour__faq-question">
-              <span>{{ faq_question }}</span>
-              <span class="product-page-pour__faq-icon"></span>
-            </summary>
-
-            <div class="product-page-pour__faq-answer">
-              {{ faq_answer }}
-            </div>
-          </details>
-
-        {% endif %}
-
-      {% endfor %}
-
-    {% else %}
-
-      <details class="product-page-pour__faq-item">
-        <summary class="product-page-pour__faq-question">
-          <span>COMMENT TAILLE LE T-SHIRT POUR ?</span>
-          <span class="product-page-pour__faq-icon"></span>
-        </summary>
-
-        <div class="product-page-pour__faq-answer">
-          Le t-shirt POUR adopte une coupe oversized, pensée pour offrir une silhouette ample et contemporaine. Pour un porté plus ajusté, nous recommandons de choisir une taille en dessous de votre taille habituelle.
-        </div>
-      </details>
-
-      <details class="product-page-pour__faq-item">
-        <summary class="product-page-pour__faq-question">
-          <span>DE QUELLE MATIÈRE EST COMPOSÉ LE T-SHIRT POUR ?</span>
-          <span class="product-page-pour__faq-icon"></span>
-        </summary>
-
-        <div class="product-page-pour__faq-answer">
-          Notre t-shirt est confectionné en 100 % coton biologique filé et peigné, avec un grammage de 200 GSM. Son tissu lavé offre un toucher souple et un rendu naturellement structuré.
-        </div>
-      </details>
-
-      <details class="product-page-pour__faq-item">
-        <summary class="product-page-pour__faq-question">
-          <span>COMMENT ENTRETENIR MON T-SHIRT POUR ?</span>
-          <span class="product-page-pour__faq-icon"></span>
-        </summary>
-
-        <div class="product-page-pour__faq-answer">
-          Nous vous recommandons de laver le t-shirt avec des couleurs similaires, sur l’envers, afin de préserver au mieux sa matière et son imprimé.
-        </div>
-      </details>
-
-      <details class="product-page-pour__faq-item">
-        <summary class="product-page-pour__faq-question">
-          <span>PUIS-JE METTRE MON T-SHIRT POUR AU SÈCHE-LINGE ?</span>
-          <span class="product-page-pour__faq-icon"></span>
-        </summary>
-
-        <div class="product-page-pour__faq-answer">
-          Nous vous recommandons de ne pas utiliser de sèche-linge. Privilégiez un séchage à l’air libre afin de préserver la matière et la tenue du t-shirt.
-        </div>
-      </details>
-
-    {% endif %}
-
-  </div>
-</div>
 
   <!-- EXPÉDITION & RETOURS -->
   <button
@@ -527,63 +443,70 @@
 </div>
 
 
- <!-- CONTENU FAQ -->
+<!-- CONTENU FAQ -->
 <div
   class="product-page-pour__info-panel-content"
   data-product-panel-content="faq"
 >
-
   <div class="product-page-pour__faq">
 
-    <details class="product-page-pour__faq-item">
-      <summary class="product-page-pour__faq-question">
-        <span>COMMENT TAILLE LE T-SHIRT POUR ?</span>
-        <span class="product-page-pour__faq-icon"></span>
-      </summary>
+    {% if product.metafields.custom.product_faq.value != blank %}
 
-      <div class="product-page-pour__faq-answer">
-        Le t-shirt POUR adopte une coupe oversized, pensée pour offrir une silhouette ample et contemporaine. Pour un porté plus ajusté, nous recommandons de choisir une taille en dessous de votre taille habituelle.
-      </div>
-    </details>
+      {% assign faq_text = product.metafields.custom.product_faq.value %}
+      {% assign faq_lines = faq_text | split: "\n" %}
+      {% assign faq_question = blank %}
+      {% assign faq_answer = blank %}
+      {% assign faq_step = 0 %}
 
+      {% for faq_line in faq_lines %}
 
-    <details class="product-page-pour__faq-item">
-      <summary class="product-page-pour__faq-question">
-        <span>DE QUELLE MATIÈRE EST COMPOSÉ LE T-SHIRT POUR ?</span>
-        <span class="product-page-pour__faq-icon"></span>
-      </summary>
+        {% assign faq_line_clean = faq_line | strip %}
 
-      <div class="product-page-pour__faq-answer">
-        Notre t-shirt est confectionné en 100 % coton biologique filé et peigné, avec un grammage de 200 GSM. Son tissu lavé offre un toucher souple et un rendu naturellement structuré.
-      </div>
-    </details>
+        {% if faq_line_clean != blank %}
 
+          {% assign faq_mod = faq_step | modulo: 2 %}
 
-    <details class="product-page-pour__faq-item">
-      <summary class="product-page-pour__faq-question">
-        <span>COMMENT ENTRETENIR MON T-SHIRT POUR ?</span>
-        <span class="product-page-pour__faq-icon"></span>
-      </summary>
+          {% if faq_mod == 0 %}
 
-      <div class="product-page-pour__faq-answer">
-        Nous vous recommandons de laver le t-shirt avec des couleurs similaires, sur l’envers, afin de préserver au mieux sa matière et son imprimé.
-      </div>
-    </details>
+            {% assign faq_question = faq_line_clean %}
 
+          {% else %}
 
-    <details class="product-page-pour__faq-item">
-      <summary class="product-page-pour__faq-question">
-        <span>PUIS-JE METTRE MON T-SHIRT POUR AU SÈCHE-LINGE ?</span>
-        <span class="product-page-pour__faq-icon"></span>
-      </summary>
+            {% assign faq_answer = faq_line_clean %}
 
-      <div class="product-page-pour__faq-answer">
-        Nous vous recommandons de ne pas utiliser de sèche-linge. Privilégiez un séchage à l’air libre afin de préserver la matière et la tenue du t-shirt.
-      </div>
-    </details>
+            <details class="product-page-pour__faq-item">
+
+              <summary class="product-page-pour__faq-question">
+                <span>{{ faq_question }}</span>
+                <span class="product-page-pour__faq-icon"></span>
+              </summary>
+
+              <div class="product-page-pour__faq-answer">
+                {{ faq_answer }}
+              </div>
+
+            </details>
+
+            {% assign faq_question = blank %}
+            {% assign faq_answer = blank %}
+
+          {% endif %}
+
+          {% assign faq_step = faq_step | plus: 1 %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    {% else %}
+
+      <p>
+        FAQ prochainement disponible.
+      </p>
+
+    {% endif %}
 
   </div>
-
 </div>
 
 
