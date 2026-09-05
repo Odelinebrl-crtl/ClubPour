@@ -434,17 +434,13 @@
   data-product-panel-content="details"
 >
   <div class="product-page-pour__info-panel-text">
-    {% if section.settings.composition != blank %}
-      {{ section.settings.composition
-        | replace: 'COUPE', '<strong>COUPE</strong>'
-        | replace: 'MATIÈRE', '<strong>MATIÈRE</strong>'
-        | replace: 'DÉTAILS', '<strong>DÉTAILS</strong>'
-        | replace: 'ENTRETIEN', '<strong>ENTRETIEN</strong>'
-        | raw
-      }}
+
+    {% if product.metafields.custom.product_details != blank %}
+      {{ product.metafields.custom.product_details | metafield_tag }}
     {% else %}
       Retrouvez ici toutes les informations concernant ce produit.
     {% endif %}
+
   </div>
 </div>
 
