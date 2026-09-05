@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "faq-global",
+      "settings": {
+        "eyebrow": "AIDE & INFORMATIONS",
+        "title": "FAQ",
+        "intro": "Retrouvez ici les réponses aux questions les plus fréquentes concernant vos commandes, la livraison, les retours, les produits, le paiement et l’univers POUR."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
