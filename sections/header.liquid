@@ -1,5 +1,3 @@
-<div class="site-header-wrapper">
-
 <header class="site-header">
 
   <div class="site-header__inner">
@@ -24,112 +22,6 @@
           BOUTIQUE
         </a>
 
-
-
-
-      </div>
-
-      <!-- =================================================
-           CLUB PRIVILÈGES
-      ================================================== -->
-
-      <a
-        href="/pages/club-privileges"
-        class="site-header__link"
-      >
-        CLUB PRIVILÈGES
-      </a>
-
-
-      <!-- =================================================
-           CONTACT
-      ================================================== -->
-
-      <a
-        href="/pages/contact"
-        class="site-header__link"
-      >
-        CONTACT
-      </a>
-
-    </nav>
-
-
-    <!-- =====================================================
-         LOGO CENTRE
-    ====================================================== -->
-
-    <a
-      href="{{ routes.root_url }}"
-      class="site-header__logo"
-    >
-
-      {% if section.settings.logo != blank %}
-
-        {{
-          section.settings.logo
-          | image_url: width: 600
-          | image_tag:
-            class: 'site-header__logo-image',
-            loading: 'eager',
-            alt: shop.name
-        }}
-
-      {% else %}
-
-        POUR
-
-      {% endif %}
-
-    </a>
-
-
-    <!-- =====================================================
-         ACTIONS DROITE
-    ====================================================== -->
-
-    <div class="site-header__actions">
-
-  <!-- DESKTOP -->
-
-  <div class="site-header__desktop-actions">
-
-    <a
-      href="{{ routes.account_url }}"
-      class="site-header__link"
-    >
-      COMPTE
-    </a>
-
-    <button
-  type="button"
-  class="site-header__cart"
-  data-cart-drawer-open
->
-  PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
-</button>
-
-  </div>
-
-
-  <!-- MOBILE BURGER -->
-
-  <button
-    type="button"
-    class="site-header__burger"
-    data-mobile-menu-open
-    aria-label="Ouvrir le menu"
-    aria-expanded="false"
-  >
-    <span></span>
-    <span></span>
-  </button>
-
-</div>
-
-  </div>
-
-</header>
 
         <div class="site-header__dropdown">
 
@@ -321,7 +213,111 @@
 
         </div>
 
+      </div>
+
+
+      <!-- =================================================
+           CLUB PRIVILÈGES
+      ================================================== -->
+
+      <a
+        href="/pages/club-privileges"
+        class="site-header__link"
+      >
+        CLUB PRIVILÈGES
+      </a>
+
+
+      <!-- =================================================
+           CONTACT
+      ================================================== -->
+
+      <a
+        href="/pages/contact"
+        class="site-header__link"
+      >
+        CONTACT
+      </a>
+
+    </nav>
+
+
+    <!-- =====================================================
+         LOGO CENTRE
+    ====================================================== -->
+
+    <a
+      href="{{ routes.root_url }}"
+      class="site-header__logo"
+    >
+
+      {% if section.settings.logo != blank %}
+
+        {{
+          section.settings.logo
+          | image_url: width: 600
+          | image_tag:
+            class: 'site-header__logo-image',
+            loading: 'eager',
+            alt: shop.name
+        }}
+
+      {% else %}
+
+        POUR
+
+      {% endif %}
+
+    </a>
+
+
+    <!-- =====================================================
+         ACTIONS DROITE
+    ====================================================== -->
+
+    <div class="site-header__actions">
+
+  <!-- DESKTOP -->
+
+  <div class="site-header__desktop-actions">
+
+    <a
+      href="{{ routes.account_url }}"
+      class="site-header__link"
+    >
+      COMPTE
+    </a>
+
+    <button
+  type="button"
+  class="site-header__cart"
+  data-cart-drawer-open
+>
+  PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+</button>
+
+  </div>
+
+
+  <!-- MOBILE BURGER -->
+
+  <button
+    type="button"
+    class="site-header__burger"
+    data-mobile-menu-open
+    aria-label="Ouvrir le menu"
+    aria-expanded="false"
+  >
+    <span></span>
+    <span></span>
+  </button>
+
 </div>
+
+  </div>
+
+</header>
+
 <div
   class="mobile-menu"
   data-mobile-menu
