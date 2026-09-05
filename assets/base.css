@@ -211,12 +211,11 @@ a {
   visibility: hidden;
   pointer-events: none;
 
-  transform: translateY(-6px);
+  transform: translateY(0);
 
-  transition:
-    opacity 0.24s ease,
-    transform 0.34s cubic-bezier(.22, 1, .36, 1),
-    visibility 0.24s ease;
+transition:
+  opacity 0.24s ease,
+  visibility 0.24s ease;
 }
 
 /* =========================================================
