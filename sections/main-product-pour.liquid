@@ -443,59 +443,67 @@
 </div>
 
 
-{% if product.metafields.custom.product_faq.value != blank %}
+<!-- CONTENU FAQ -->
+<div
+  class="product-page-pour__info-panel-content"
+  data-product-panel-content="faq"
+>
 
-  {% assign faq_text = product.metafields.custom.product_faq.value | newline_to_br %}
-  {% assign faq_lines = faq_text | split: '<br />' %}
-  {% assign faq_question = blank %}
-  {% assign faq_answer = blank %}
-  {% assign faq_step = 0 %}
+  {% if product.metafields.custom.product_faq.value != blank %}
 
-  {% for faq_line in faq_lines %}
+    {% assign faq_text = product.metafields.custom.product_faq.value | newline_to_br %}
+    {% assign faq_lines = faq_text | split: '<br />' %}
+    {% assign faq_question = blank %}
+    {% assign faq_answer = blank %}
+    {% assign faq_step = 0 %}
 
-    {% assign faq_line_clean = faq_line | strip %}
+    {% for faq_line in faq_lines %}
 
-    {% if faq_line_clean != blank %}
+      {% assign faq_line_clean = faq_line | strip %}
 
-      {% assign faq_mod = faq_step | modulo: 2 %}
+      {% if faq_line_clean != blank %}
 
-      {% if faq_mod == 0 %}
+        {% assign faq_mod = faq_step | modulo: 2 %}
 
-        {% assign faq_question = faq_line_clean %}
+        {% if faq_mod == 0 %}
 
-      {% else %}
+          {% assign faq_question = faq_line_clean %}
 
-        {% assign faq_answer = faq_line_clean %}
+        {% else %}
 
-        <details class="product-page-pour__faq-item">
+          {% assign faq_answer = faq_line_clean %}
 
-          <summary class="product-page-pour__faq-question">
-            <span>{{ faq_question }}</span>
-            <span class="product-page-pour__faq-icon"></span>
-          </summary>
+          <details class="product-page-pour__faq-item">
 
-          <div class="product-page-pour__faq-answer">
-            {{ faq_answer }}
-          </div>
+            <summary class="product-page-pour__faq-question">
+              <span>{{ faq_question }}</span>
+              <span class="product-page-pour__faq-icon"></span>
+            </summary>
 
-        </details>
+            <div class="product-page-pour__faq-answer">
+              {{ faq_answer }}
+            </div>
 
-        {% assign faq_question = blank %}
-        {% assign faq_answer = blank %}
+          </details>
+
+          {% assign faq_question = blank %}
+          {% assign faq_answer = blank %}
+
+        {% endif %}
+
+        {% assign faq_step = faq_step | plus: 1 %}
 
       {% endif %}
 
-      {% assign faq_step = faq_step | plus: 1 %}
+    {% endfor %}
 
-    {% endif %}
+  {% else %}
 
-  {% endfor %}
+    <p>FAQ prochainement disponible.</p>
 
-{% else %}
+  {% endif %}
 
-  <p>FAQ prochainement disponible.</p>
-
-{% endif %}
+</div>
 
 
     <!-- CONTENU EXPÉDITION -->
