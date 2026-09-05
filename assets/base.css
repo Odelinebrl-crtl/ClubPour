@@ -226,13 +226,11 @@ a {
 
 .site-header__item--dropdown:hover
 .site-header__dropdown {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-
-  transform: translateY(0);
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) !important;
 }
-
 
 /* =========================================================
    STRUCTURE
