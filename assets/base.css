@@ -212,7 +212,7 @@ a {
   visibility: hidden;
   pointer-events: none;
 
-  transform: translateY(-6px);
+  transform: translateY(0);
 
   transition:
     opacity 0.24s ease,
