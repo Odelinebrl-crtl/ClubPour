@@ -1046,11 +1046,11 @@ a {
 
   justify-self: center;
 
-    display: flex;
+  display: flex;
 
-    align-items: center;
-    justify-content: flex-start;
-  }
+  align-items: center;
+  justify-content: center;
+}
 
 
   .site-header__logo-image {
@@ -1085,8 +1085,9 @@ a {
   /* TRÈS IMPORTANT :
      COMPTE + PANIER DESKTOP DISPARAISSENT */
 
- .site-header__desktop-actions {
+.site-header__desktop-actions {
   display: flex !important;
+
   align-items: center;
   gap: 12px;
 }
@@ -1096,12 +1097,15 @@ a {
      BURGER
   ======================================================= */
 
-  .site-header__burger {
-  grid-column: 1;
-  justify-self: start;
-  position: relative;
-     
-    display: block !important;
+ .site-header__burger {
+  position: absolute;
+
+  left: 18px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  display: block !important;
 
     width: 28px !important;
     height: 22px !important;
@@ -1698,7 +1702,79 @@ a {
   .site-footer__legal {
     text-align: left;
   }
+/* =======================================================
+   COMPTE + PANIER — ICÔNES MOBILE
+   ======================================================= */
 
+.site-header__mobile-icon {
+  display: none;
+}
+
+.site-header__mobile-icon {
+  width: 25px;
+  height: 25px;
+
+  fill: none;
+  stroke: #111111;
+  stroke-width: 1.6;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-header__cart-icon {
+  width: 27px;
+  height: 27px;
+}
+
+
+/* MOBILE UNIQUEMENT */
+
+@media screen and (max-width: 768px) {
+
+  .site-header__desktop-label {
+    display: none !important;
+  }
+
+  .site-header__mobile-icon {
+    display: block !important;
+  }
+
+  .site-header__desktop-actions {
+    display: flex !important;
+
+    align-items: center;
+    gap: 16px;
+  }
+
+  .site-header__link,
+  .site-header__cart {
+    display: flex !important;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 26px;
+    height: 28px;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    font-size: 0 !important;
+
+    border: 0;
+    background: transparent;
+
+    color: #111111;
+  }
+
+  .site-header__link::after,
+  .site-header__cart::after {
+    display: none !important;
+    content: none !important;
+  }
+
+}
 }
 /* ================================
    PRODUCT GRID — POUR
