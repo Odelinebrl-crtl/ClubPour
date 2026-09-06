@@ -2068,8 +2068,8 @@ input:checked + span {
       <div class="collection-mini-qv__options">
 
         <p class="collection-mini-qv__option-label">
-          Taille :
-        </p>
+  {{ 'pour_products.size' | t }} :
+</p>
 
         <div class="collection-mini-qv__variants">
 
@@ -2126,7 +2126,7 @@ input:checked + span {
 
     content.innerHTML = `
       <div class="collection-mini-qv__loading">
-        CHARGEMENT
+       {{ 'pour_products.loading' | t }}
       </div>
     `;
 
@@ -2209,7 +2209,7 @@ input:checked + span {
               type="submit"
               class="collection-mini-qv__submit"
             >
-              PRÉCOMANDEZ
+             {{ 'pour_products.preorder' | t }}
             </button>
 
           </form>
@@ -2219,7 +2219,7 @@ input:checked + span {
             href="${escapeHTML(product.url)}"
             class="collection-mini-qv__details"
           >
-            VOIR LE PRODUIT
+           {{ 'pour_common.view_product' | t }}
           </a>
 
         </div>
@@ -2230,7 +2230,7 @@ input:checked + span {
 
       content.innerHTML = `
         <div class="collection-mini-qv__loading">
-          PRODUIT INDISPONIBLE
+          {{ 'pour_products.unavailable' | t }}
         </div>
       `;
 
