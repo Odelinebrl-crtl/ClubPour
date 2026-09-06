@@ -176,6 +176,20 @@
   },
   "pour_products": {
   "quick_add_aria": "Quick add",
+  "previous": "Previous products",
+  "next": "Next products",
+  "close": "Close",
+  "size": "Size",
+  "loading": "Loading",
+  "preorder": "Pre-order",
+  "unavailable": "Product unavailable"
+},
+"pour_recommendations": {
+  "heading": "YOU MAY ALSO LIKE",
+  "quick_add_aria": "Quick add"
+},
+  "pour_products": {
+  "quick_add_aria": "Quick add",
   "close": "Close",
   "size": "Size",
   "loading": "Loading",
@@ -184,5 +198,59 @@
 },
   "pour_common": {
   "view_product": "VIEW PRODUCT"
+},
+  "pour_product": {
+    "gallery_previous": "Previous image",
+    "gallery_next": "Next image",
+    "gallery_enlarge": "Enlarge images",
+    "fit_title": "Size & fit",
+    "color": "Color",
+    "preorder": "PRE-ORDER",
+    "sold_out": "SOLD OUT",
+    "notify_me": "NOTIFY ME",
+    "preorder_note": "Pre-order — shipping from October 20.",
+    "size_guide": "SIZE GUIDE",
+    "details_motto": "DESIGNED TO BE WORN, REWORN, LIVED IN.",
+    "details_title": "PRODUCT DETAILS",
+    "faq_title": "PRODUCT FAQ",
+    "shipping_returns": "SHIPPING & RETURNS",
+    "close": "Close",
+    "product_information": "Product information",
+    "details_fallback": "Find all product information here.",
+    "faq_unavailable": "FAQ coming soon.",
+    "shipping_fallback": "Find all shipping and returns information here.",
+    "back_in_stock_title": "SIZE OUT OF STOCK?",
+    "back_in_stock": "Back in stock",
+    "back_in_stock_intro": "Select your desired size and enter your email address to be notified when this product is back in stock.",
+    "email_placeholder": "Email address...",
+    "submit": "SUBMIT",
+    "privacy_text": "Your email address will only be used to notify you when this size is back in stock. For more information, see our",
+    "privacy_link": "privacy policy",
+    "measurements": "GARMENT MEASUREMENTS",
+    "chest": "CHEST",
+    "length": "LENGTH",
+    "sleeve": "SLEEVE",
+    "select_size": "SELECT A SIZE",
+    "size_guide_unavailable": "Size guide coming soon.",
+    "fit_advice": "Oversized fit. For a more fitted look, choose one size below your usual size.",
+    "model_title": "THE MODEL",
+    "model_height": "The model is %{height}",
+    "model_weight": "and weighs %{weight}",
+    "model_size": "and wears size %{size}.",
+    "close_size_guide": "Close size guide",
+    "size_sold_out": "SIZE SOLD OUT",
+    "preorder_with_price": "PRE-ORDER — %{price}",
+    "back_in_stock_size_selection": "SELECT A SIZE — BACK IN STOCK",
+    "select_size_error": "Select a size.",
+    "email_required": "Please enter your email address.",
+    "notification_unavailable": "The notification service is temporarily unavailable. Please try again.",
+    "sending": "SENDING...",
+    "back_in_stock_success": "Noted. You’ll be notified when this size is back in stock.",
+    "generic_error": "Something went wrong."
+  },
+  "pour_recommendations": {
+    "heading": "YOU MAY ALSO LIKE",
+    "quick_add_aria": "Quick add"
+  }
 }
-}
+
