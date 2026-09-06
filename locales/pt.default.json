@@ -87,3 +87,46 @@
     "small": "ACESSO GRATUITO — RESERVADO A MEMBROS REGISTADOS"
   }
 }
+"header": {
+  "navigation": {
+    "shop": "LOJA",
+    "clothing": "VESTUÁRIO",
+    "collection_001": "COLEÇÃO 001",
+    "all": "TODOS",
+    "tshirts": "T-SHIRTS",
+    "hoodies": "SWEATSHIRTS COM CAPUZ",
+    "sweatshirts": "SWEATSHIRTS",
+    "club_privileges": "CLUBE DE PRIVILÉGIOS",
+    "brand": "A MARCA",
+    "contact": "CONTACTO"
+  },
+  "account": "CONTA",
+  "cart": "CARRINHO",
+  "mobile": {
+    "open_menu": "Abrir menu",
+    "close_menu": "Fechar menu",
+    "open_shop": "Abrir loja"
+  },
+  "cart_drawer": {
+    "close": "Fechar carrinho",
+    "decrease_quantity": "Diminuir quantidade",
+    "increase_quantity": "Aumentar quantidade",
+    "remove": "REMOVER",
+    "subtotal": "SUBTOTAL",
+    "shipping_taxes": "Portes e impostos calculados no passo seguinte.",
+    "checkout": "AVANÇAR PARA PAGAMENTO",
+    "view_cart": "VER CARRINHO",
+    "empty": "O SEU CARRINHO ESTÁ VAZIO.",
+    "discover_creations": "DESCOBRIR AS NOSSAS CRIAÇÕES",
+    "discover_products": "DESCOBRIR OS NOSSOS PRODUTOS"
+  },
+  "errors": {
+    "load_cart": "Não foi possível carregar o carrinho.",
+    "update_cart": "Não foi possível atualizar o carrinho.",
+    "add_product": "Não foi possível adicionar este produto.",
+    "unexpected": "Ocorreu um erro.",
+    "no_variant": "POUR: nenhuma variante selecionada.",
+    "cart_prefix": "POUR Cart:",
+    "add_cart_prefix": "POUR — adicionar ao carrinho:"
+  }
+}
