@@ -87,3 +87,46 @@
     "small": "KOSTENLOSER ZUGANG — NUR FÜR REGISTRIERTE MITGLIEDER"
   }
 }
+"header": {
+  "navigation": {
+    "shop": "SHOP",
+    "clothing": "BEKLEIDUNG",
+    "collection_001": "KOLLEKTION 001",
+    "all": "ALLE",
+    "tshirts": "T-SHIRTS",
+    "hoodies": "HOODIES",
+    "sweatshirts": "SWEATSHIRTS",
+    "club_privileges": "CLUB PRIVILEGES",
+    "brand": "DIE MARKE",
+    "contact": "KONTAKT"
+  },
+  "account": "KONTO",
+  "cart": "WARENKORB",
+  "mobile": {
+    "open_menu": "Menü öffnen",
+    "close_menu": "Menü schließen",
+    "open_shop": "Shop öffnen"
+  },
+  "cart_drawer": {
+    "close": "Warenkorb schließen",
+    "decrease_quantity": "Menge verringern",
+    "increase_quantity": "Menge erhöhen",
+    "remove": "ENTFERNEN",
+    "subtotal": "ZWISCHENSUMME",
+    "shipping_taxes": "Versand und Steuern werden im nächsten Schritt berechnet.",
+    "checkout": "ZUR KASSE",
+    "view_cart": "WARENKORB ANSEHEN",
+    "empty": "DEIN WARENKORB IST LEER.",
+    "discover_creations": "UNSERE KREATIONEN ENTDECKEN",
+    "discover_products": "UNSERE PRODUKTE ENTDECKEN"
+  },
+  "errors": {
+    "load_cart": "Der Warenkorb konnte nicht geladen werden.",
+    "update_cart": "Der Warenkorb konnte nicht aktualisiert werden.",
+    "add_product": "Dieses Produkt konnte nicht hinzugefügt werden.",
+    "unexpected": "Ein Fehler ist aufgetreten.",
+    "no_variant": "POUR: Keine Variante ausgewählt.",
+    "cart_prefix": "POUR Cart:",
+    "add_cart_prefix": "POUR — zum Warenkorb hinzufügen:"
+  }
+}
