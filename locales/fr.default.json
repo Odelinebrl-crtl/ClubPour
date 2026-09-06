@@ -83,6 +83,9 @@
       "home": "Retour à l'accueil"
     }
   },
+  "pour_common": {
+  "view_product": "VOIR LE PRODUIT"
+},
   "pour_products": {
   "quick_add_aria": "Ajouter rapidement",
   "close": "Fermer",
