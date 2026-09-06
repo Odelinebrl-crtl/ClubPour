@@ -1783,6 +1783,9 @@ a {
   }
 
 }
+   .site-header__cart-icon {
+  transform: translateY(2px);
+}
 }
 /* ================================
    PRODUCT GRID — POUR
