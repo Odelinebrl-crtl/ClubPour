@@ -86,6 +86,16 @@
   "pour_common": {
   "view_product": "VOIR LE PRODUIT"
 },
+"pour_products": {
+  "quick_add_aria": "Ajouter rapidement",
+  "previous": "Produits précédents",
+  "next": "Produits suivants",
+  "close": "Fermer",
+  "size": "Taille",
+  "loading": "Chargement",
+  "preorder": "Précommandez",
+  "unavailable": "Produit indisponible"
+},
   "pour_products": {
   "quick_add_aria": "Ajouter rapidement",
   "close": "Fermer",
