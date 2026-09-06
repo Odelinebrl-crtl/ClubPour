@@ -149,16 +149,5 @@
     "sending": "ENVOI...",
     "back_in_stock_success": "C’est noté. Vous serez prévenu dès que cette taille sera de nouveau disponible.",
     "generic_error": "Une erreur est survenue."
-  },
-  "pour_products": {
-  "quick_add_aria": "Ajouter rapidement",
-  "previous": "Produits précédents",
-  "next": "Produits suivants",
-  "close": "Fermer",
-  "color": "Couleur",
-  "size": "Taille",
-  "loading": "Chargement",
-  "preorder": "Précommandez",
-  "unavailable": "Produit indisponible"
-}
+  }
 }
