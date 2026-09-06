@@ -1,0 +1,1397 @@
+{% comment %}
+  ============================================================
+  POUR — PAGE À PROPOS / STORYTELLING
+  File: sections/pour-about.liquid
+  ============================================================
+{% endcomment %}
+
+<div id="PourAbout-{{ section.id }}" class="pour-about">
+
+  <!-- =========================================================
+       HERO
+  ========================================================= -->
+  <section
+    class="pour-about__hero pour-about__scroll-section"
+    data-pour-about-hero
+    data-pour-about-reveal
+  >
+    <div class="pour-about__hero-media">
+      {% if section.settings.hero_image != blank %}
+        {{
+          section.settings.hero_image
+          | image_url: width: 3000
+          | image_tag:
+            class: 'pour-about__hero-image',
+            loading: 'eager'
+        }}
+      {% else %}
+        <div class="pour-about__placeholder">
+          {{ 'lifestyle-2' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pour-about__hero-overlay"></div>
+
+    <div class="pour-about__hero-content">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.hero_eyebrow }}
+      </p>
+
+      <h1 class="pour-about__hero-title pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.hero_title }}
+      </h1>
+
+      <p class="pour-about__hero-text pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.hero_text }}
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       01 — MANIFESTE
+  ========================================================= -->
+  <section class="pour-about__manifesto pour-about__scroll-section" data-pour-about-reveal>
+    <div class="pour-about__manifesto-inner">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.manifesto_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.manifesto_title }}
+      </h2>
+
+      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.manifesto_text }}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       02 — ORIGINE / IMAGE + TEXTE
+  ========================================================= -->
+  <section class="pour-about__origin pour-about__scroll-section" data-pour-about-reveal>
+    <div class="pour-about__origin-media pour-about__reveal-item" data-reveal-delay="0">
+      {% if section.settings.origin_image != blank %}
+        {{
+          section.settings.origin_image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'pour-about__image',
+            loading: 'lazy'
+        }}
+      {% else %}
+        <div class="pour-about__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pour-about__origin-content">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="80">
+        {{ section.settings.origin_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="150">
+        {{ section.settings.origin_title }}
+      </h2>
+
+      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="230">
+        {{ section.settings.origin_text }}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       03 — UNIVERS / FULL WIDTH PARALLAX
+  ========================================================= -->
+  <section
+    class="pour-about__editorial pour-about__scroll-section"
+    data-pour-about-reveal
+    data-pour-about-parallax
+  >
+    <div class="pour-about__editorial-media">
+      {% if section.settings.editorial_image != blank %}
+        {{
+          section.settings.editorial_image
+          | image_url: width: 3000
+          | image_tag:
+            class: 'pour-about__editorial-image',
+            loading: 'lazy'
+        }}
+      {% else %}
+        <div class="pour-about__placeholder">
+          {{ 'lifestyle-2' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pour-about__editorial-overlay"></div>
+
+    <div class="pour-about__editorial-content">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.editorial_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__editorial-title pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.editorial_title }}
+      </h2>
+
+      <p class="pour-about__editorial-text pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.editorial_text }}
+      </p>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       04 — VISION
+  ========================================================= -->
+  <section class="pour-about__vision pour-about__scroll-section" data-pour-about-reveal>
+    <div class="pour-about__vision-head">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.vision_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.vision_title }}
+      </h2>
+    </div>
+
+    <div class="pour-about__principles">
+      {% for i in (1..4) %}
+        {% assign number_key = 'principle_' | append: i | append: '_number' %}
+        {% assign title_key = 'principle_' | append: i | append: '_title' %}
+        {% assign text_key = 'principle_' | append: i | append: '_text' %}
+
+        <article class="pour-about__principle pour-about__reveal-item" data-reveal-delay="{{ forloop.index0 | times: 80 }}">
+          <span class="pour-about__principle-number">
+            {{ section.settings[number_key] }}
+          </span>
+
+          <div class="pour-about__principle-content">
+            <h3>{{ section.settings[title_key] }}</h3>
+            <p>{{ section.settings[text_key] }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       05 — PIÈCES / IMAGE + TEXTE
+  ========================================================= -->
+  <section class="pour-about__pieces pour-about__scroll-section" data-pour-about-reveal>
+    <div class="pour-about__pieces-content">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.pieces_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.pieces_title }}
+      </h2>
+
+      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.pieces_text }}
+      </div>
+    </div>
+
+    <div class="pour-about__pieces-media pour-about__reveal-item" data-reveal-delay="100">
+      {% if section.settings.pieces_image != blank %}
+        {{
+          section.settings.pieces_image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'pour-about__image',
+            loading: 'lazy'
+        }}
+      {% else %}
+        <div class="pour-about__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       06 — DROPS
+  ========================================================= -->
+  <section class="pour-about__drops pour-about__scroll-section" data-pour-about-reveal>
+    <div class="pour-about__drops-inner">
+      <div class="pour-about__drops-head">
+        <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+          {{ section.settings.drops_eyebrow }}
+        </p>
+
+        <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
+          {{ section.settings.drops_title }}
+        </h2>
+      </div>
+
+      <div class="pour-about__drops-copy pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.drops_text }}
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       07 — FINAL PARALLAX
+  ========================================================= -->
+  <section
+    class="pour-about__final-media pour-about__scroll-section"
+    data-pour-about-reveal
+    data-pour-about-parallax
+  >
+    <div class="pour-about__final-media-inner">
+      {% if section.settings.final_image != blank %}
+        {{
+          section.settings.final_image
+          | image_url: width: 3000
+          | image_tag:
+            class: 'pour-about__final-image',
+            loading: 'lazy'
+        }}
+      {% else %}
+        <div class="pour-about__placeholder">
+          {{ 'lifestyle-2' | placeholder_svg_tag }}
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="pour-about__final-overlay"></div>
+
+    <div class="pour-about__final-content">
+      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+        {{ section.settings.final_eyebrow }}
+      </p>
+
+      <h2 class="pour-about__final-title pour-about__reveal-item" data-reveal-delay="90">
+        {{ section.settings.final_title }}
+      </h2>
+
+      <p class="pour-about__final-text pour-about__reveal-item" data-reveal-delay="180">
+        {{ section.settings.final_text }}
+      </p>
+
+      {% if section.settings.final_link != blank %}
+        <a
+          class="pour-about__final-link pour-about__reveal-item"
+          data-reveal-delay="250"
+          href="{{ section.settings.final_link }}"
+        >
+          {{ section.settings.final_link_label }}
+          <span aria-hidden="true">→</span>
+        </a>
+      {% endif %}
+    </div>
+  </section>
+
+</div>
+
+
+<style>
+  #PourAbout-{{ section.id }} {
+    --pour-black: #111111;
+    --pour-white: #ffffff;
+    --pour-cream: #faf9f6;
+    --pour-grey: #666666;
+    --pour-border: rgba(17,17,17,.13);
+    margin: 0;
+    padding: 0;
+    color: var(--pour-black);
+    background: var(--pour-white);
+  }
+
+  #PourAbout-{{ section.id }} *,
+  #PourAbout-{{ section.id }} *::before,
+  #PourAbout-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__scroll-section {
+    position: relative;
+    overflow: hidden;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__kicker {
+    margin: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: .19em;
+    text-transform: uppercase;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__display,
+  #PourAbout-{{ section.id }} .pour-about__section-title,
+  #PourAbout-{{ section.id }} .pour-about__hero-title,
+  #PourAbout-{{ section.id }} .pour-about__editorial-title,
+  #PourAbout-{{ section.id }} .pour-about__final-title {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--pour-grey);
+  }
+
+  /* =========================================================
+     REVEAL — même logique que Club Privilèges
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__reveal-item {
+    opacity: 0;
+    transform: translate3d(0, 55px, 0);
+    transition:
+      opacity .75s ease,
+      transform 1s cubic-bezier(.22,1,.36,1);
+    will-change: opacity, transform;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__reveal-item.is-from-above {
+    transform: translate3d(0, -55px, 0);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__reveal-item.is-from-below {
+    transform: translate3d(0, 55px, 0);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__reveal-item.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  /* =========================================================
+     HERO
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__hero {
+    height: 100svh;
+    min-height: 100svh;
+    background: var(--pour-black);
+    color: var(--pour-white);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-media,
+  #PourAbout-{{ section.id }} .pour-about__hero-overlay {
+    position: absolute;
+    inset: 0;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-media {
+    overflow: hidden;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-image {
+    position: absolute;
+    top: -7%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 114%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    transform: translate3d(0,0,0) scale(1.08);
+    will-change: transform;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-overlay {
+    z-index: 1;
+    background: rgba(0,0,0,.26);
+    pointer-events: none;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-content {
+    position: absolute;
+    left: 50%;
+    bottom: 36px;
+    z-index: 2;
+    width: min(100%, 1200px);
+    padding: 40px;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-title {
+    margin: 28px 0 0;
+    font-size: clamp(54px, 9vw, 145px);
+    line-height: .79;
+    letter-spacing: -.075em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__hero-text {
+    max-width: 520px;
+    margin: 25px auto 0;
+    font-size: 11px;
+    line-height: 1.6;
+    letter-spacing: .04em;
+  }
+
+  /* =========================================================
+     MANIFESTE
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__manifesto {
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 32px;
+    background: var(--pour-white);
+    text-align: center;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__manifesto-inner {
+    width: min(100%, 1250px);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__manifesto .pour-about__display {
+    margin: 50px auto 42px;
+    max-width: 1100px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__display {
+    font-size: clamp(58px, 7.6vw, 125px);
+    line-height: .84;
+    letter-spacing: -.075em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__manifesto .pour-about__body {
+    width: min(100%, 570px);
+    margin: 0 auto;
+  }
+
+  /* =========================================================
+     ORIGIN
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__origin {
+    min-height: 95vh;
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    background: var(--pour-cream);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__origin-media,
+  #PourAbout-{{ section.id }} .pour-about__pieces-media {
+    position: relative;
+    min-height: 95vh;
+    overflow: hidden;
+    background: #e9e7e2;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__image {
+    position: absolute;
+    inset: -6% 0;
+    width: 100%;
+    height: 112%;
+    max-width: none;
+    display: block;
+    object-fit: cover;
+    transform: translate3d(0,0,0) scale(1.04);
+    will-change: transform;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__origin-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 9vw 6vw;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__section-title {
+    margin: 50px 0 42px;
+    font-size: clamp(52px, 5.7vw, 96px);
+    line-height: .86;
+    letter-spacing: -.07em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__origin .pour-about__body {
+    max-width: 470px;
+  }
+
+  /* =========================================================
+     EDITORIAL PARALLAX
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__editorial {
+    height: 90vh;
+    min-height: 700px;
+    background: var(--pour-black);
+    color: var(--pour-white);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-image {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    max-width: none;
+    object-fit: cover;
+    transform: translate3d(0,0,0) scale(1.08);
+    will-change: transform;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.27);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-content {
+    position: absolute;
+    left: 35px;
+    bottom: 40px;
+    z-index: 2;
+    max-width: 1000px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-title {
+    margin: 34px 0 0;
+    font-size: clamp(72px, 10vw, 175px);
+    line-height: .72;
+    letter-spacing: -.08em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__editorial-text {
+    margin: 42px 0 0;
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  /* =========================================================
+     VISION / PRINCIPES
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__vision {
+    padding: 145px 32px 160px;
+    background: var(--pour-white);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__vision-head {
+    width: min(100%, 1250px);
+    margin: 0 auto 90px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__vision-head .pour-about__display {
+    max-width: 1050px;
+    margin: 45px 0 0;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__principles {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    width: min(100%, 1250px);
+    margin: 0 auto;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__principle {
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 28px;
+    border: 1px solid var(--pour-border);
+    background: rgba(250,249,246,.52);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__principle-number {
+    font-size: 9px;
+    color: #777;
+    letter-spacing: .1em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__principle-content h3 {
+    margin: 0 0 22px;
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 400;
+    line-height: .88;
+    letter-spacing: -.06em;
+    text-transform: uppercase;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__principle-content p {
+    width: min(100%, 360px);
+    margin: 0;
+    color: var(--pour-grey);
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  /* =========================================================
+     PIECES
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__pieces {
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    background: var(--pour-cream);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__pieces-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 9vw 6vw;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__pieces-content .pour-about__section-title {
+    margin: 50px 0 42px;
+  }
+
+  /* =========================================================
+     DROPS
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__drops {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    background: var(--pour-white);
+    padding: 130px 32px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__drops-inner {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 80px;
+    align-items: end;
+    width: min(100%, 1250px);
+    margin: 0 auto;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__drops-head .pour-about__display {
+    margin: 45px 0 0;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__drops-copy {
+    max-width: 430px;
+    color: var(--pour-grey);
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  /* =========================================================
+     FINAL
+  ========================================================= */
+
+  #PourAbout-{{ section.id }} .pour-about__final-media {
+    height: 90vh;
+    min-height: 680px;
+    background: var(--pour-black);
+    color: var(--pour-white);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-media-inner {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-image {
+    position: absolute;
+    top: -10%;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    max-width: none;
+    object-fit: cover;
+    transform: translate3d(0,0,0) scale(1.08);
+    will-change: transform;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: rgba(0,0,0,.28);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-content {
+    position: absolute;
+    left: 50%;
+    bottom: 45px;
+    z-index: 2;
+    width: min(100%, 1100px);
+    padding: 30px;
+    text-align: center;
+    transform: translateX(-50%);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-title {
+    margin: 32px 0 0;
+    font-size: clamp(70px, 11vw, 185px);
+    line-height: .72;
+    letter-spacing: -.085em;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-text {
+    max-width: 520px;
+    margin: 32px auto 0;
+    font-size: 10px;
+    line-height: 1.5;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 32px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid rgba(255,255,255,.65);
+    color: #fff;
+    font-size: 10px;
+    letter-spacing: .12em;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-link span {
+    font-size: 15px;
+    line-height: 1;
+    transition: transform .35s ease;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__final-link:hover span {
+    transform: translateX(5px);
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__placeholder,
+  #PourAbout-{{ section.id }} .pour-about__placeholder svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* =========================================================
+     MOBILE
+  ========================================================= */
+
+  @media screen and (max-width: 768px) {
+    #PourAbout-{{ section.id }} .pour-about__hero-content {
+      bottom: 22px;
+      width: 100%;
+      padding: 20px 16px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__hero-title {
+      font-size: clamp(50px, 16vw, 84px);
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__hero-text {
+      max-width: 330px;
+      font-size: 10px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__manifesto {
+      min-height: auto;
+      padding: 115px 20px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__manifesto .pour-about__display {
+      margin: 38px 0 30px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__display {
+      font-size: clamp(48px, 14vw, 78px);
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__origin,
+    #PourAbout-{{ section.id }} .pour-about__pieces {
+      grid-template-columns: 1fr;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__origin-media,
+    #PourAbout-{{ section.id }} .pour-about__pieces-media {
+      min-height: 64vh;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__origin-content,
+    #PourAbout-{{ section.id }} .pour-about__pieces-content {
+      padding: 90px 20px 105px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__section-title {
+      margin: 40px 0 30px;
+      font-size: clamp(48px, 13vw, 76px);
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__editorial {
+      height: 82vh;
+      min-height: 620px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__editorial-content {
+      left: 20px;
+      right: 20px;
+      bottom: 28px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__editorial-title {
+      font-size: clamp(68px, 20vw, 116px);
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__vision {
+      padding: 110px 16px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__vision-head {
+      margin-bottom: 55px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__vision-head .pour-about__display {
+      margin-top: 30px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__principles {
+      grid-template-columns: 1fr;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__principle {
+      min-height: 350px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__drops {
+      min-height: auto;
+      padding: 110px 20px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__drops-inner {
+      grid-template-columns: 1fr;
+      gap: 50px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__final-media {
+      height: 82vh;
+      min-height: 620px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__final-content {
+      bottom: 25px;
+      padding: 20px 16px;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__final-title {
+      font-size: clamp(68px, 20vw, 118px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #PourAbout-{{ section.id }} .pour-about__reveal-item {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    #PourAbout-{{ section.id }} .pour-about__hero-image,
+    #PourAbout-{{ section.id }} .pour-about__editorial-image,
+    #PourAbout-{{ section.id }} .pour-about__final-image {
+      transform: none !important;
+    }
+  }
+</style>
+
+
+<script>
+(() => {
+  const root = document.querySelector('#PourAbout-{{ section.id }}');
+  if (!root) return;
+
+  let lastScrollY = window.scrollY;
+  let scrollDirection = 'down';
+  let parallaxTicking = false;
+
+  function updateScrollDirection() {
+    const currentY = window.scrollY;
+
+    if (currentY > lastScrollY + 2) {
+      scrollDirection = 'down';
+    } else if (currentY < lastScrollY - 2) {
+      scrollDirection = 'up';
+    }
+
+    lastScrollY = currentY;
+  }
+
+  window.addEventListener('scroll', updateScrollDirection, { passive: true });
+
+  /* ========================================================
+     SCROLL REVEAL
+     Même logique que Club Privilèges :
+     - apparition à l'entrée
+     - direction différente en remontant
+     - reset uniquement quand on remonte au-dessus
+  ======================================================== */
+
+  const revealSections = root.querySelectorAll('[data-pour-about-reveal]');
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const section = entry.target;
+        const items = section.querySelectorAll('.pour-about__reveal-item');
+
+        if (entry.isIntersecting) {
+          items.forEach((item) => {
+            item.classList.remove(
+              'is-visible',
+              'is-from-above',
+              'is-from-below'
+            );
+
+            if (scrollDirection === 'up') {
+              item.classList.add('is-from-above');
+            } else {
+              item.classList.add('is-from-below');
+            }
+
+            const delay = Number(item.dataset.revealDelay || 0);
+            item.style.transitionDelay = `${delay}ms`;
+          });
+
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              items.forEach((item) => {
+                item.classList.add('is-visible');
+              });
+            });
+          });
+        } else {
+          if (
+            scrollDirection === 'up' &&
+            entry.boundingClientRect.top > 0
+          ) {
+            items.forEach((item) => {
+              item.classList.remove(
+                'is-visible',
+                'is-from-above',
+                'is-from-below'
+              );
+              item.style.transitionDelay = '0ms';
+            });
+          }
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: '-5% 0px -5% 0px'
+    }
+  );
+
+  revealSections.forEach((section) => revealObserver.observe(section));
+
+  /* ========================================================
+     PARALLAX
+  ======================================================== */
+
+  const parallaxTargets = [
+    {
+      section: root.querySelector('[data-pour-about-hero]'),
+      image: root.querySelector('.pour-about__hero-image'),
+      amount: 0.12,
+      max: 95
+    },
+    {
+      section: root.querySelector('[data-pour-about-parallax]'),
+      image: root.querySelector('.pour-about__editorial-image'),
+      amount: 0.10,
+      max: 90
+    },
+    {
+      section: root.querySelectorAll('[data-pour-about-parallax]')[1],
+      image: root.querySelector('.pour-about__final-image'),
+      amount: 0.10,
+      max: 90
+    }
+  ];
+
+  function updateParallax() {
+    parallaxTargets.forEach((target) => {
+      if (!target.section || !target.image) return;
+
+      const rect = target.section.getBoundingClientRect();
+
+      if (
+        rect.bottom <= 0 ||
+        rect.top >= window.innerHeight
+      ) {
+        return;
+      }
+
+      const viewportCenter = window.innerHeight / 2;
+      const sectionCenter = rect.top + rect.height / 2;
+      const distance = sectionCenter - viewportCenter;
+
+      let offset = -distance * target.amount;
+      offset = Math.max(
+        -target.max,
+        Math.min(target.max, offset)
+      );
+
+      target.image.style.transform =
+        `translate3d(0, ${offset}px, 0) scale(1.08)`;
+    });
+  }
+
+  function requestParallaxUpdate() {
+    if (parallaxTicking) return;
+
+    parallaxTicking = true;
+
+    requestAnimationFrame(() => {
+      updateParallax();
+      parallaxTicking = false;
+    });
+  }
+
+  window.addEventListener('scroll', requestParallaxUpdate, {
+    passive: true
+  });
+
+  window.addEventListener('resize', requestParallaxUpdate);
+
+  requestParallaxUpdate();
+
+  /* ========================================================
+     SHOPIFY THEME EDITOR
+  ======================================================== */
+
+  document.addEventListener('shopify:section:load', (event) => {
+    if (event.detail && event.detail.sectionId === '{{ section.id }}') {
+      requestParallaxUpdate();
+    }
+  });
+})();
+</script>
+
+
+{% schema %}
+{
+  "name": "POUR — À propos",
+  "tag": "section",
+  "class": "pour-about-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "01 — Hero"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image du hero"
+    },
+    {
+      "type": "text",
+      "id": "hero_eyebrow",
+      "label": "Petit texte",
+      "default": "POUR"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_title",
+      "label": "Titre",
+      "default": "MORE THAN A PIECE. A STATE OF MIND."
+    },
+    {
+      "type": "textarea",
+      "id": "hero_text",
+      "label": "Texte",
+      "default": "Une marque née du mouvement, de la passion et de l'envie de créer autrement."
+    },
+
+    {
+      "type": "header",
+      "content": "02 — Manifeste"
+    },
+    {
+      "type": "text",
+      "id": "manifesto_eyebrow",
+      "label": "Petit texte",
+      "default": "POUR"
+    },
+    {
+      "type": "textarea",
+      "id": "manifesto_title",
+      "label": "Titre",
+      "default": "NOT MADE TO BLEND IN."
+    },
+    {
+      "type": "richtext",
+      "id": "manifesto_text",
+      "label": "Texte",
+      "default": "<p>POUR est une marque pensée pour ceux qui avancent à leur manière.<br>Nous croyons aux pièces qui racontent quelque chose. Aux détails que l'on remarque. Aux silhouettes qui restent.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "03 — Origine"
+    },
+    {
+      "type": "image_picker",
+      "id": "origin_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "origin_eyebrow",
+      "label": "Petit texte",
+      "default": "THE BEGINNING"
+    },
+    {
+      "type": "textarea",
+      "id": "origin_title",
+      "label": "Titre",
+      "default": "EVERYTHING STARTS WITH A FEELING."
+    },
+    {
+      "type": "richtext",
+      "id": "origin_text",
+      "label": "Texte",
+      "default": "<p>Une image. Une voiture. Une route. Une époque. Une sensation.<br><br>POUR puise son inspiration dans cet univers où le design, la vitesse et la culture se rencontrent.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "04 — Univers / Parallax"
+    },
+    {
+      "type": "image_picker",
+      "id": "editorial_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "editorial_eyebrow",
+      "label": "Petit texte",
+      "default": "OUR WORLD"
+    },
+    {
+      "type": "textarea",
+      "id": "editorial_title",
+      "label": "Titre",
+      "default": "BETWEEN THE ROAD & THE CITY."
+    },
+    {
+      "type": "text",
+      "id": "editorial_text",
+      "label": "Texte",
+      "default": "L'automobile fait partie de notre langage."
+    },
+
+    {
+      "type": "header",
+      "content": "05 — Vision"
+    },
+    {
+      "type": "text",
+      "id": "vision_eyebrow",
+      "label": "Petit texte",
+      "default": "OUR VISION"
+    },
+    {
+      "type": "textarea",
+      "id": "vision_title",
+      "label": "Titre",
+      "default": "WE DON'T FOLLOW THE ROAD. WE CHOOSE IT."
+    },
+
+    {
+      "type": "text",
+      "id": "principle_1_number",
+      "label": "Principe 01 — numéro",
+      "default": "01"
+    },
+    {
+      "type": "text",
+      "id": "principle_1_title",
+      "label": "Principe 01 — titre",
+      "default": "ATTITUDE"
+    },
+    {
+      "type": "textarea",
+      "id": "principle_1_text",
+      "label": "Principe 01 — texte",
+      "default": "Ne pas attendre la permission. Choisir. Assumer. Avancer."
+    },
+
+    {
+      "type": "text",
+      "id": "principle_2_number",
+      "label": "Principe 02 — numéro",
+      "default": "02"
+    },
+    {
+      "type": "text",
+      "id": "principle_2_title",
+      "label": "Principe 02 — titre",
+      "default": "AUTOMOTIVE"
+    },
+    {
+      "type": "textarea",
+      "id": "principle_2_text",
+      "label": "Principe 02 — texte",
+      "default": "Les lignes, les proportions, les matières et l'histoire comme langage visuel."
+    },
+
+    {
+      "type": "text",
+      "id": "principle_3_number",
+      "label": "Principe 03 — numéro",
+      "default": "03"
+    },
+    {
+      "type": "text",
+      "id": "principle_3_title",
+      "label": "Principe 03 — titre",
+      "default": "CRAFT"
+    },
+    {
+      "type": "textarea",
+      "id": "principle_3_text",
+      "label": "Principe 03 — texte",
+      "default": "Chaque coupe, chaque visuel et chaque détail doit avoir une raison d'être."
+    },
+
+    {
+      "type": "text",
+      "id": "principle_4_number",
+      "label": "Principe 04 — numéro",
+      "default": "04"
+    },
+    {
+      "type": "text",
+      "id": "principle_4_title",
+      "label": "Principe 04 — titre",
+      "default": "FREEDOM"
+    },
+    {
+      "type": "textarea",
+      "id": "principle_4_text",
+      "label": "Principe 04 — texte",
+      "default": "La liberté de partir, de créer et de construire son propre chemin."
+    },
+
+    {
+      "type": "header",
+      "content": "06 — Les pièces"
+    },
+    {
+      "type": "image_picker",
+      "id": "pieces_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "pieces_eyebrow",
+      "label": "Petit texte",
+      "default": "THE PIECES"
+    },
+    {
+      "type": "textarea",
+      "id": "pieces_title",
+      "label": "Titre",
+      "default": "LESS NOISE. MORE MEANING."
+    },
+    {
+      "type": "richtext",
+      "id": "pieces_text",
+      "label": "Texte",
+      "default": "<p>Chaque pièce est pensée comme une partie d'un ensemble.<br><br>Une coupe. Un visuel. Une matière. Un détail.<br><br>Rien n'est là par hasard.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "07 — Les drops"
+    },
+    {
+      "type": "text",
+      "id": "drops_eyebrow",
+      "label": "Petit texte",
+      "default": "THE DROPS"
+    },
+    {
+      "type": "textarea",
+      "id": "drops_title",
+      "label": "Titre",
+      "default": "NOT EVERYTHING NEEDS TO LAST FOREVER."
+    },
+    {
+      "type": "richtext",
+      "id": "drops_text",
+      "label": "Texte",
+      "default": "<p>POUR fonctionne par drops. Des séries pensées comme des chapitres.<br><br>Certaines pièces apparaissent. Puis disparaissent.<br><br>Chaque drop possède son propre univers, son propre rythme, son propre moment.</p>"
+    },
+
+    {
+      "type": "header",
+      "content": "08 — Final"
+    },
+    {
+      "type": "image_picker",
+      "id": "final_image",
+      "label": "Image finale"
+    },
+    {
+      "type": "text",
+      "id": "final_eyebrow",
+      "label": "Petit texte",
+      "default": "THIS IS POUR."
+    },
+    {
+      "type": "text",
+      "id": "final_title",
+      "label": "Titre",
+      "default": "KEEP MOVING."
+    },
+    {
+      "type": "text",
+      "id": "final_text",
+      "label": "Texte",
+      "default": "Une marque. Un univers. Une manière de voir les choses."
+    },
+    {
+      "type": "text",
+      "id": "final_link_label",
+      "label": "Texte du bouton",
+      "default": "DISCOVER THE COLLECTION"
+    },
+    {
+      "type": "url",
+      "id": "final_link",
+      "label": "Lien du bouton"
+    }
+  ],
+  "presets": [
+    {
+      "name": "POUR — À propos"
+    }
+  ]
+}
+{% endschema %}
