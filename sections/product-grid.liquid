@@ -41,7 +41,7 @@
         type="button"
         class="pour-products__arrow pour-products__arrow--prev"
         data-pour-products-prev
-        aria-label="Produits précédents"
+        aria-label="{{ 'pour_products.previous' | t }}"
       >
         ‹
       </button>
@@ -145,7 +145,7 @@
                   class="pour-product__quick-add"
                  data-quick-add
                   data-product-handle="{{ featured_product.handle }}"
-                  aria-label="Ajouter rapidement {{ featured_product.title }}"
+                  aria-label="{{ 'pour_products.quick_add_aria' | t }} {{ featured_product.title }}"
                 ></button>
 
               </div>
@@ -232,7 +232,7 @@
         type="button"
         class="pour-products__arrow pour-products__arrow--next"
         data-pour-products-next
-        aria-label="Produits suivants"
+        aria-label="{{ 'pour_products.next' | t }}"
       >
         ›
       </button>
