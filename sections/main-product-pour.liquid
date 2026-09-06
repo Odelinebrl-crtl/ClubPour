@@ -304,7 +304,7 @@
   {% endunless %}
 >
   {% if product.selected_or_first_available_variant.available %}
-    PRÉCOMMANDEZ
+    {{ 'pour_product.preorder' | t }}
   {% else %}
     ÉPUISÉ
   {% endif %}
@@ -343,7 +343,7 @@
   <div class="product-page-pour__details">
 
     <div class="product-page-pour__details-title">
-      CONÇU POUR ÊTRE PORTÉ, REPORTÉ, VÉCU.
+      {{ 'pour_product.details_motto' | t }}
     </div>
 
   <div class="product-page-pour__accordions">
