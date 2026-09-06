@@ -87,3 +87,46 @@
     "small": "ACCESO GRATUITO — RESERVADO A MIEMBROS REGISTRADOS"
   }
 }
+"header": {
+  "navigation": {
+    "shop": "TIENDA",
+    "clothing": "PRENDAS",
+    "collection_001": "COLECCIÓN 001",
+    "all": "TODOS",
+    "tshirts": "CAMISETAS",
+    "hoodies": "SUDADERAS CON CAPUCHA",
+    "sweatshirts": "SUDADERAS",
+    "club_privileges": "CLUB DE PRIVILEGIOS",
+    "brand": "LA MARCA",
+    "contact": "CONTACTO"
+  },
+  "account": "CUENTA",
+  "cart": "CESTA",
+  "mobile": {
+    "open_menu": "Abrir menú",
+    "close_menu": "Cerrar menú",
+    "open_shop": "Abrir tienda"
+  },
+  "cart_drawer": {
+    "close": "Cerrar cesta",
+    "decrease_quantity": "Reducir cantidad",
+    "increase_quantity": "Aumentar cantidad",
+    "remove": "ELIMINAR",
+    "subtotal": "SUBTOTAL",
+    "shipping_taxes": "Envío e impuestos calculados en el siguiente paso.",
+    "checkout": "FINALIZAR COMPRA",
+    "view_cart": "VER LA CESTA",
+    "empty": "TU CESTA ESTÁ VACÍA.",
+    "discover_creations": "DESCUBRIR NUESTRAS CREACIONES",
+    "discover_products": "DESCUBRIR NUESTROS PRODUCTOS"
+  },
+  "errors": {
+    "load_cart": "No se ha podido cargar la cesta.",
+    "update_cart": "No se ha podido actualizar la cesta.",
+    "add_product": "No se ha podido añadir este producto.",
+    "unexpected": "Se ha producido un error.",
+    "no_variant": "POUR: no se ha seleccionado ninguna variante.",
+    "cart_prefix": "POUR Cart:",
+    "add_cart_prefix": "POUR — añadir al carrito:"
+  }
+}
