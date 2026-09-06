@@ -21,16 +21,13 @@
       "brand": "LA MARQUE",
       "contact": "CONTACT"
     },
-
     "account": "COMPTE",
     "cart": "PANIER",
-
     "mobile": {
       "open_menu": "Ouvrir le menu",
       "close_menu": "Fermer le menu",
       "open_shop": "Ouvrir Boutique"
     },
-
     "cart_drawer": {
       "close": "Fermer le panier",
       "decrease_quantity": "Réduire la quantité",
@@ -44,7 +41,6 @@
       "discover_creations": "DÉCOUVRIR NOS CRÉATIONS",
       "discover_products": "DÉCOUVRIR NOS PRODUITS"
     },
-
     "errors": {
       "load_cart": "Impossible de charger le panier.",
       "update_cart": "Impossible de modifier le panier.",
@@ -53,6 +49,38 @@
       "no_variant": "POUR : aucune variante sélectionnée.",
       "cart_prefix": "POUR Cart:",
       "add_cart_prefix": "POUR — ajout panier :"
+    }
+  },
+
+  "pour_footer": {
+    "newsletter": {
+      "heading": "REJOIGNEZ LE CLUB PRIVILÈGE",
+      "text": "Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.",
+      "consent": "J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.",
+      "email_placeholder": "E-mail",
+      "submit": "REJOINDRE LE CLUB",
+      "success_line_1": "Votre inscription au Club POUR a bien été prise en compte.",
+      "success_line_2": "Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.",
+      "confirmed": "INSCRIPTION CONFIRMÉE"
+    },
+    "headings": {
+      "help": "AIDE",
+      "shop": "BOUTIQUE",
+      "legal": "LÉGAL"
+    },
+    "links": {
+      "contact": "Contact",
+      "faq": "FAQ",
+      "collection_001": "Collection 001",
+      "shopping": "Shopping",
+      "legal_notice": "Mentions légales",
+      "terms_of_sale": "Conditions générales de vente",
+      "privacy_policy": "Politique de confidentialité",
+      "refund_policy": "Politique de retour et de remboursement",
+      "shipping_policy": "Politique d'expédition"
+    },
+    "accessibility": {
+      "home": "Retour à l'accueil"
     }
   }
 }
