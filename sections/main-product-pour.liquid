@@ -729,8 +729,8 @@
   <div class="pour-size-guide__header">
 
     <h2 class="pour-size-guide__title">
-      GUIDE DES TAILLES
-    </h2>
+  {{ 'pour_product.size_guide' | t }}
+</h2>
 
     <button
       type="button"
@@ -745,8 +745,8 @@
   <div class="pour-size-guide__body">
 
     <p class="pour-size-guide__eyebrow">
-      MESURES DU VÊTEMENT
-    </p>
+  {{ 'pour_product.measurements' | t }}
+</p>
 
 
     {% if product.metafields.custom.size_labels != blank %}
@@ -867,9 +867,9 @@
 
       <div class="pour-size-guide__model">
 
-        <p class="pour-size-guide__model-title">
-          LE MODÈLE
-        </p>
+       <p class="pour-size-guide__model-title">
+  {{ 'pour_product.model_title' | t }}
+</p>
 
         <p class="pour-size-guide__model-text">
 
