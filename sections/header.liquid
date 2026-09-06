@@ -16,7 +16,7 @@
       <div class="site-header__item site-header__item--dropdown">
 
         <a
-          href="{{ routes.root_url }}pages/boutique"
+          href="{{ pages['boutique'].url }}"
           class="site-header__link"
         >
           {{ 'pour_header.navigation.shop' | t }}
@@ -42,7 +42,7 @@
 
 
                 <a
-                  href="{{ routes.root_url }}pages/collection-001"
+                  href="{{ pages['collection-001'].url }}"
                   class="site-header__mega-collection site-header__mega-link"
                 >
                   {{ 'pour_header.navigation.collection_001' | t }}
@@ -221,7 +221,7 @@
       ================================================== -->
 
       <a
-        href="{{ routes.root_url }}pages/club-privileges"
+        href="{{ pages['club-privileges'].url }}"
         class="site-header__link"
       >
         {{ 'pour_header.navigation.club_privileges' | t }}
@@ -233,7 +233,7 @@
       ================================================== -->
 
       <a
-        href="{{ routes.root_url }}pages/la-marque"
+        href="{{ pages['la-marque'].url }}"
         class="site-header__link"
       >
         {{ 'pour_header.navigation.brand' | t }}
@@ -244,7 +244,7 @@
       ================================================== -->
 
       <a
-        href="{{ routes.root_url }}pages/contact"
+        href="{{ pages['contact'].url }}"
         class="site-header__link"
       >
         {{ 'pour_header.navigation.contact' | t }}
@@ -395,7 +395,7 @@
   <div class="mobile-menu__submenu-head">
 
     <a
-      href="{{ routes.root_url }}pages/boutique"
+      href="{{ pages['boutique'].url }}"
       class="mobile-menu__main-link"
       data-mobile-boutique-link
     >
@@ -426,7 +426,7 @@
     </span>
 
     <a
-      href="{{ routes.root_url }}pages/collection-001"
+      href="{{ pages['collection-001'].url }}"
       class="mobile-menu__sublink"
     >
       {{ 'pour_header.navigation.collection_001' | t }}
@@ -440,7 +440,7 @@
   <!-- CLUB PRIVILÈGES -->
 
   <a
-    href="{{ routes.root_url }}pages/club-privileges"
+    href="{{ pages['club-privileges'].url }}"
     class="mobile-menu__main-link"
   >
     {{ 'pour_header.navigation.club_privileges' | t }}
@@ -449,7 +449,7 @@
 <!-- LA MARQUE -->
 
   <a
-    href="{{ routes.root_url }}pages/la-marque"
+    href="{{ pages['la-marque'].url }}"
     class="mobile-menu__main-link"
   >
     {{ 'pour_header.navigation.brand' | t }}
@@ -458,7 +458,7 @@
   <!-- CONTACT -->
 
   <a
-    href="{{ routes.root_url }}pages/contact"
+    href="{{ pages['contact'].url }}"
     class="mobile-menu__main-link"
   >
     {{ 'pour_header.navigation.contact' | t }}
@@ -730,7 +730,7 @@
       </p>
 
 
-      <a href="{{ routes.root_url }}pages/boutique?view=vetements">
+      <a href="{{ pages['boutique'].url }}?view=vetements">
         {{ 'pour_header.cart_drawer.discover_creations' | t }}
       </a>
 
@@ -1805,7 +1805,7 @@ document.body.classList.remove(
             {{ 'pour_header.cart_drawer.empty' | t }}
           </p>
 
-          <a href="{{ routes.root_url }}pages/boutique?view=vetements">
+          <a href="{{ pages['boutique'].url }}?view=vetements">
             {{ 'pour_header.cart_drawer.discover_products' | t }}
           </a>
 
