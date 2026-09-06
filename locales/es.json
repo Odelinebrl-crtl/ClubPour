@@ -1,0 +1,146 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "form": {
+    "email_placeholder": "TU EMAIL",
+    "email_label": "Tu email",
+    "join": "ÚNETE AL CLUB",
+    "already_registered": "YA ESTÁS REGISTRADO",
+    "already_registered_club": "YA ESTÁS REGISTRADO EN CLUB POUR.",
+    "confirmed_title": "INSCRIPCIÓN CONFIRMADA",
+    "confirmed_line_1": "Tu inscripción al Club POUR ha sido confirmada.",
+    "confirmed_line_2": "Revisa tu bandeja de entrada para descubrir los próximos accesos privados."
+  },
+  "manifesto": {
+    "kicker": "CLUB POUR",
+    "title_line_1": "MÁS QUE UN ACCESO.",
+    "title_line_2": "UNA LONGITUD DE VENTAJA.",
+    "text": "El Club POUR te abre las puertas de nuestro universo antes que a nadie. Colecciones en primicia, series exclusivas y privilegios reservados a nuestros miembros."
+  },
+  "benefits": {
+    "kicker": "CLUB PRIVILEGIOS",
+    "heading_line_1": "PARA QUIENES",
+    "heading_line_2": "QUIEREN PASAR",
+    "heading_line_3": "PRIMERO.",
+    "card_1_label": "ACCESO ANTICIPADO",
+    "card_1_title_line_1": "PRIMERA",
+    "card_1_title_line_2": "MANO",
+    "card_1_text": "Descubre y compra nuestros nuevos drops antes de su lanzamiento oficial.",
+    "card_2_label": "SOLO MIEMBROS",
+    "card_2_title_line_1": "CLUB",
+    "card_2_title_line_2": "EXCLUSIVOS",
+    "card_2_text": "Series limitadas creadas exclusivamente para los miembros del Club POUR.",
+    "card_3_label": "VENTAS PRIVADAS",
+    "card_3_title_line_1": "VENTAS",
+    "card_3_title_line_2": "PRIVADAS",
+    "card_3_text": "Accede a ofertas y periodos de rebajas reservados exclusivamente al Club.",
+    "card_4_label": "PRIORIDAD",
+    "card_4_title_line_1": "ACCESO",
+    "card_4_title_line_2": "PRIORITARIO",
+    "card_4_text": "Disfruta de prioridad en determinadas piezas, reposiciones y cantidades limitadas."
+  },
+  "exclusive": {
+    "kicker": "CLUB EXCLUSIVE — 001",
+    "title_line_1": "ALGUNAS PIEZAS",
+    "title_line_2": "NUNCA",
+    "title_line_3": "ESTARÁN A LA VENTA.",
+    "text": "Series producidas en cantidades limitadas, creadas exclusivamente para los miembros del Club POUR.",
+    "signature": "SOLO MIEMBROS"
+  },
+  "stats": {
+    "kicker": "EL CLUB",
+    "intro_line_1": "LA VENTAJA DE",
+    "intro_line_2": "IR SIEMPRE POR DELANTE.",
+    "stat_1_label_line_1": "DE ACCESO",
+    "stat_1_label_line_2": "ANTICIPADO",
+    "stat_2_label_line_1": "SERIES RESERVADAS",
+    "stat_2_label_line_2": "AL CLUB",
+    "stat_3_label_line_1": "OFERTAS &",
+    "stat_3_label_line_2": "VENTAS PRIVADAS"
+  },
+  "editorial": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "ANTES",
+    "title_line_2": "QUE TODOS",
+    "title_line_3": "LOS DEMÁS.",
+    "text": "LOS MIEMBROS DEL CLUB SIEMPRE VAN PRIMERO."
+  },
+  "how": {
+    "kicker": "EL CLUB",
+    "heading_line_1": "¿CÓMO",
+    "heading_line_2": "FUNCIONA?",
+    "card_1_eyebrow": "ÚNETE",
+    "card_1_title_line_1": "ÚNETE",
+    "card_1_title_line_2": "AL CLUB",
+    "card_1_text": "Regístrate fácilmente con tu dirección de email.",
+    "card_2_eyebrow": "DESCUBRE",
+    "card_2_title_line_1": "RECIBE",
+    "card_2_title_line_2": "TU ACCESO",
+    "card_2_text": "Te avisaremos cuando haya un nuevo acceso privado disponible.",
+    "card_3_eyebrow": "DISFRUTA",
+    "card_3_title_line_1": "DISFRUTA DE",
+    "card_3_title_line_2": "LOS PRIVILEGIOS",
+    "card_3_text": "Primicias, exclusividades, ventas privadas y acceso prioritario."
+  },
+    "final": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "TOMA UNA",
+    "title_line_2": "LONGITUD DE VENTAJA.",
+    "small": "ACCESO GRATUITO — RESERVADO A MIEMBROS REGISTRADOS"
+  },
+
+  "pour_header": {
+    "navigation": {
+      "shop": "TIENDA",
+      "clothing": "PRENDAS",
+      "collection_001": "COLECCIÓN 001",
+      "all": "TODOS",
+      "tshirts": "CAMISETAS",
+      "hoodies": "SUDADERAS CON CAPUCHA",
+      "sweatshirts": "SUDADERAS",
+      "club_privileges": "CLUB DE PRIVILEGIOS",
+      "brand": "LA MARCA",
+      "contact": "CONTACTO"
+    },
+
+    "account": "CUENTA",
+    "cart": "CESTA",
+
+    "mobile": {
+      "open_menu": "Abrir menú",
+      "close_menu": "Cerrar menú",
+      "open_shop": "Abrir tienda"
+    },
+
+    "cart_drawer": {
+      "close": "Cerrar cesta",
+      "decrease_quantity": "Reducir cantidad",
+      "increase_quantity": "Aumentar cantidad",
+      "remove": "ELIMINAR",
+      "subtotal": "SUBTOTAL",
+      "shipping_taxes": "Envío e impuestos calculados en el siguiente paso.",
+      "checkout": "FINALIZAR COMPRA",
+      "view_cart": "VER LA CESTA",
+      "empty": "TU CESTA ESTÁ VACÍA.",
+      "discover_creations": "DESCUBRIR NUESTRAS CREACIONES",
+      "discover_products": "DESCUBRIR NUESTROS PRODUCTOS"
+    },
+
+    "errors": {
+      "load_cart": "No se ha podido cargar la cesta.",
+      "update_cart": "No se ha podido actualizar la cesta.",
+      "add_product": "No se ha podido añadir este producto.",
+      "unexpected": "Se ha producido un error.",
+      "no_variant": "POUR: no se ha seleccionado ninguna variante.",
+      "cart_prefix": "POUR Cart:",
+      "add_cart_prefix": "POUR — añadir al carrito:"
+    }
+  }
+}
