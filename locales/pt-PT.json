@@ -183,6 +183,16 @@
   },
   "pour_products": {
   "quick_add_aria": "Adicionar rapidamente",
+  "previous": "Produtos anteriores",
+  "next": "Produtos seguintes",
+  "close": "Fechar",
+  "size": "Tamanho",
+  "loading": "A carregar",
+  "preorder": "Pré-encomendar",
+  "unavailable": "Produto indisponível"
+},
+  "pour_products": {
+  "quick_add_aria": "Adicionar rapidamente",
   "close": "Fechar",
   "size": "Tamanho",
   "loading": "A carregar",

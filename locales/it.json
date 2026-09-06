@@ -183,6 +183,16 @@
   },
   "pour_products": {
   "quick_add_aria": "Aggiunta rapida",
+  "previous": "Prodotti precedenti",
+  "next": "Prodotti successivi",
+  "close": "Chiudi",
+  "size": "Taglia",
+  "loading": "Caricamento",
+  "preorder": "Preordina",
+  "unavailable": "Prodotto non disponibile"
+},
+  "pour_products": {
+  "quick_add_aria": "Aggiunta rapida",
   "close": "Chiudi",
   "size": "Taglia",
   "loading": "Caricamento",
