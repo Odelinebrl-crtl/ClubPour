@@ -916,21 +916,25 @@
     }
   }
 @media screen and (max-width: 768px) {
-  .pour-about__final-content {
+  #PourAbout-{{ section.id }} .pour-about__final-content {
+    left: 50%;
+    right: auto;
     width: 100%;
     max-width: 100%;
-    padding-left: 0;
-    padding-right: 70px;
-    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
     text-align: center;
+    transform: translateX(-50%);
   }
 
-  .pour-about__final-title {
+  #PourAbout-{{ section.id }} .pour-about__final-title {
     width: 100%;
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    font-size: clamp(52px, 17vw, 100px);
+    letter-spacing: -0.07em;
     white-space: normal;
   }
 }
