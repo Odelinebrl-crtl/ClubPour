@@ -181,6 +181,14 @@
       "home": "Torna alla home"
     }
   },
+  "pour_products": {
+  "quick_add_aria": "Aggiunta rapida",
+  "close": "Chiudi",
+  "size": "Taglia",
+  "loading": "Caricamento",
+  "preorder": "Preordina",
+  "unavailable": "Prodotto non disponibile"
+},
   "pour_common": {
   "view_product": "VEDI IL PRODOTTO"
 }
