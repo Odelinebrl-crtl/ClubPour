@@ -191,6 +191,10 @@
   "preorder": "Pré-encomendar",
   "unavailable": "Produto indisponível"
 },
+"pour_recommendations": {
+  "heading": "TAMBÉM PODERÁS GOSTAR",
+  "quick_add_aria": "Adicionar rapidamente"
+},
   "pour_products": {
   "quick_add_aria": "Adicionar rapidamente",
   "close": "Fechar",
@@ -201,5 +205,58 @@
 },
   "pour_common": {
   "view_product": "VER O PRODUTO"
-}
+},
+  "pour_product": {
+    "gallery_previous": "Imagem anterior",
+    "gallery_next": "Imagem seguinte",
+    "gallery_enlarge": "Ampliar imagens",
+    "fit_title": "Tamanho e corte",
+    "color": "Cor",
+    "preorder": "PRÉ-ENCOMENDAR",
+    "sold_out": "ESGOTADO",
+    "notify_me": "AVISA-ME",
+    "preorder_note": "Pré-encomenda — expedição a partir de 20 de outubro.",
+    "size_guide": "GUIA DE TAMANHOS",
+    "details_motto": "CONCEBIDO PARA SER USADO, REUSADO, VIVIDO.",
+    "details_title": "DETALHES DO PRODUTO",
+    "faq_title": "FAQ DO PRODUTO",
+    "shipping_returns": "ENVIO E DEVOLUÇÕES",
+    "close": "Fechar",
+    "product_information": "Informações do produto",
+    "details_fallback": "Encontra aqui todas as informações sobre este produto.",
+    "faq_unavailable": "FAQ disponível em breve.",
+    "shipping_fallback": "Encontra aqui todas as informações sobre envios e devoluções.",
+    "back_in_stock_title": "TAMANHO ESGOTADO?",
+    "back_in_stock": "Voltar a estar disponível",
+    "back_in_stock_intro": "Seleciona o tamanho pretendido e introduz o teu endereço de e-mail para seres avisado quando este produto voltar a estar disponível.",
+    "email_placeholder": "Endereço de e-mail...",
+    "submit": "ENVIAR",
+    "privacy_text": "O teu endereço de e-mail será utilizado apenas para te avisar quando este tamanho voltar a estar disponível. Para mais informações, consulta a nossa",
+    "privacy_link": "política de privacidade",
+    "measurements": "MEDIDAS DA PEÇA",
+    "chest": "PEITO",
+    "length": "COMPRIMENTO",
+    "sleeve": "MANGA",
+    "select_size": "SELECIONA UM TAMANHO",
+    "size_guide_unavailable": "Guia de tamanhos disponível em breve.",
+    "fit_advice": "Corte oversized. Para um ajuste mais justo, escolhe um tamanho abaixo do teu tamanho habitual.",
+    "model_title": "A MODELO",
+    "model_height": "A modelo mede %{height}",
+    "model_weight": "e pesa %{weight}",
+    "model_size": "e veste o tamanho %{size}.",
+    "close_size_guide": "Fechar guia de tamanhos",
+    "size_sold_out": "TAMANHO ESGOTADO",
+    "preorder_with_price": "PRÉ-ENCOMENDAR — %{price}",
+    "back_in_stock_size_selection": "SELECIONA UM TAMANHO — AVISO DE REPOSIÇÃO",
+    "select_size_error": "Seleciona um tamanho.",
+    "email_required": "Introduz o teu endereço de e-mail.",
+    "notification_unavailable": "O serviço de notificações está temporariamente indisponível. Tenta novamente.",
+    "sending": "A ENVIAR...",
+    "back_in_stock_success": "Feito. Serás avisado quando este tamanho voltar a estar disponível.",
+    "generic_error": "Ocorreu um erro."
+  },
+  "pour_recommendations": {
+    "heading": "TAMBÉM PODERÁS GOSTAR",
+    "quick_add_aria": "Adicionar rapidamente"
+  }
 }
