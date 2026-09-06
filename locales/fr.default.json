@@ -152,7 +152,10 @@
   },
   "pour_products": {
   "quick_add_aria": "Ajouter rapidement",
+  "previous": "Produits précédents",
+  "next": "Produits suivants",
   "close": "Fermer",
+  "color": "Couleur",
   "size": "Taille",
   "loading": "Chargement",
   "preorder": "Précommandez",
