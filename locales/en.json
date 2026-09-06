@@ -173,5 +173,8 @@
     "accessibility": {
       "home": "Back to home"
     }
-  }
+  },
+  "pour_common": {
+  "view_product": "VIEW PRODUCT"
+}
 }
