@@ -87,3 +87,46 @@
     "small": "FREE ACCESS — FOR REGISTERED MEMBERS ONLY"
   }
 }
+"header": {
+  "navigation": {
+    "shop": "SHOP",
+    "clothing": "CLOTHING",
+    "collection_001": "COLLECTION 001",
+    "all": "ALL",
+    "tshirts": "T-SHIRTS",
+    "hoodies": "HOODIES",
+    "sweatshirts": "SWEATSHIRTS",
+    "club_privileges": "CLUB PRIVILEGES",
+    "brand": "THE BRAND",
+    "contact": "CONTACT"
+  },
+  "account": "ACCOUNT",
+  "cart": "CART",
+  "mobile": {
+    "open_menu": "Open menu",
+    "close_menu": "Close menu",
+    "open_shop": "Open Shop"
+  },
+  "cart_drawer": {
+    "close": "Close cart",
+    "decrease_quantity": "Decrease quantity",
+    "increase_quantity": "Increase quantity",
+    "remove": "REMOVE",
+    "subtotal": "SUBTOTAL",
+    "shipping_taxes": "Shipping and taxes calculated at the next step.",
+    "checkout": "CHECKOUT",
+    "view_cart": "VIEW CART",
+    "empty": "YOUR CART IS EMPTY.",
+    "discover_creations": "DISCOVER OUR CREATIONS",
+    "discover_products": "DISCOVER OUR PRODUCTS"
+  },
+  "errors": {
+    "load_cart": "Unable to load cart.",
+    "update_cart": "Unable to update cart.",
+    "add_product": "Unable to add this product.",
+    "unexpected": "An error occurred.",
+    "no_variant": "POUR: no variant selected.",
+    "cart_prefix": "POUR Cart:",
+    "add_cart_prefix": "POUR — add to cart:"
+  }
+}
