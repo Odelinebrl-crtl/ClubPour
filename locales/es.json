@@ -111,7 +111,7 @@
     },
 
     "account": "CUENTA",
-    "cart": "CESTA",
+    "cart": "CARRITO ",
 
     "mobile": {
       "open_menu": "Abrir menú",
@@ -120,7 +120,7 @@
     },
 
     "cart_drawer": {
-      "close": "Cerrar cesta",
+      "close": "Cerrar carrito ",
       "decrease_quantity": "Reducir cantidad",
       "increase_quantity": "Aumentar cantidad",
       "remove": "ELIMINAR",
