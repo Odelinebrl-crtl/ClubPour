@@ -188,20 +188,20 @@
     }
   },
 
-  "pour_common": {
-    "view_product": "PRODUKT ANSEHEN"
-  },
-
-  "pour_products": {
-    "quick_add_aria": "Schnell hinzufügen",
-    "previous": "Vorherige Produkte",
-    "next": "Nächste Produkte",
-    "close": "Schließen",
-    "size": "Größe",
-    "loading": "Wird geladen",
-    "preorder": "Vorbestellen",
-    "unavailable": "Produkt nicht verfügbar"
-  },
+ "pour_products": {
+  "quick_add_aria": "Schnell hinzufügen",
+  "previous": "Vorherige Produkte",
+  "next": "Nächste Produkte",
+  "close": "Schließen",
+  "color": "Farbe",
+  "size": "Größe",
+  "loading": "Wird geladen",
+  "preorder": "Vorbestellen",
+  "unavailable": "Produkt nicht verfügbar"
+},
+"pour_common": {
+  "view_product": "PRODUKT ANSEHEN"
+},
 
   "pour_recommendations": {
     "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
