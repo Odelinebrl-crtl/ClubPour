@@ -6,7 +6,7 @@
   {% if recommendations.performed? and recommendations.products_count > 0 %}
 
     <div class="product-page-pour__style-with-heading">
-      TU AIMERAIS PEUT-ÊTRE AUSSI
+      {{ 'pour_recommendations.heading' | t }}
     </div>
 
     <div class="product-page-pour__style-with-grid">
@@ -58,7 +58,7 @@
               class="product-page-pour__style-with-quick-add"
               data-quick-add
               data-product-handle="{{ style_product.handle }}"
-              aria-label="Ajouter rapidement {{ style_product.title }}"
+              aria-label="{{ 'pour_recommendations.quick_add_aria' | t }} {{ style_product.title }}"
             ></button>
 
           </div>
