@@ -275,9 +275,9 @@
          ACTIONS DROITE
     ====================================================== -->
 
-    <div class="site-header__actions">
+  <div class="site-header__actions">
 
-  <!-- DESKTOP -->
+  <!-- COMPTE + PANIER -->
 
   <div class="site-header__desktop-actions">
 
@@ -285,16 +285,52 @@
       href="{{ routes.account_url }}"
       class="site-header__link"
     >
-      COMPTE
+
+      <span class="site-header__desktop-label">
+        COMPTE
+      </span>
+
+      <svg
+        class="site-header__mobile-icon site-header__account-icon"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <circle
+          cx="12"
+          cy="7"
+          r="3.2"
+        ></circle>
+
+        <path
+          d="M5.5 20c.7-3.2 3.1-5 6.5-5s5.8 1.8 6.5 5"
+        ></path>
+      </svg>
+
     </a>
 
+
     <button
-  type="button"
-  class="site-header__cart"
-  data-cart-drawer-open
->
-  PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
-</button>
+      type="button"
+      class="site-header__cart"
+      data-cart-drawer-open
+    >
+
+      <span class="site-header__desktop-label">
+        PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+      </span>
+
+      <svg
+        class="site-header__mobile-icon site-header__cart-icon"
+        viewBox="0 0 28 28"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M6.5 9.5h15v14h-15z"></path>
+        <path d="M10 9.5V7a4 4 0 0 1 8 0v2.5"></path>
+      </svg>
+
+    </button>
 
   </div>
 
