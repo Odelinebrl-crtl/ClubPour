@@ -174,5 +174,8 @@
     "accessibility": {
       "home": "Volver al inicio"
     }
-  }
+  },
+  "pour_common": {
+  "view_product": "VER EL PRODUCTO"
+}
 }
