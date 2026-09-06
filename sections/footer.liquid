@@ -23,11 +23,11 @@
 
   {% unless form.posted_successfully? %}
       <p class="footer-pour__heading">
-        REJOIGNEZ LE CLUB PRIVILÈGE
+        {{ 'pour_footer.newsletter.heading' | t }}
       </p>
 
       <p class="footer-pour__newsletter-text">
-        Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.
+        {{ 'pour_footer.newsletter.text' | t }}
       </p>
 
       <label class="footer-pour__marketing-consent">
@@ -39,7 +39,7 @@
         >
 
         <span>
-          J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.
+          {{ 'pour_footer.newsletter.consent' | t }}
         </span>
       </label>
 
@@ -49,7 +49,7 @@
           type="email"
           name="contact[email]"
           class="footer-pour__input"
-          placeholder="E-mail"
+          placeholder="{{ 'pour_footer.newsletter.email_placeholder' | t }}"
           required
           autocomplete="email"
         >
@@ -60,14 +60,14 @@
         type="submit"
         class="footer-pour__submit"
       >
-        REJOINDRE LE CLUB
+        {{ 'pour_footer.newsletter.submit' | t }}
       </button>
     {% endunless %}
 
 {% if form.posted_successfully? %}
   <p class="footer-pour__message footer-pour__message--success">
-    <strong>Votre inscription au Club POUR a bien été prise en compte.</strong><br><br>
-    Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
+    <strong>{{ 'pour_footer.newsletter.success_line_1' | t }}</strong><br><br>
+    {{ 'pour_footer.newsletter.success_line_2' | t }}
   </p>
 {% endif %}
 
@@ -83,9 +83,9 @@
   data-footer-newsletter-success
   hidden
 >
-  <strong>INSCRIPTION CONFIRMÉE</strong><br><br>
-  Votre inscription au Club POUR a bien été prise en compte.<br>
-  Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.
+  <strong>{{ 'pour_footer.newsletter.confirmed' | t }}</strong><br><br>
+  {{ 'pour_footer.newsletter.success_line_1' | t }}<br>
+  {{ 'pour_footer.newsletter.success_line_2' | t }}
 </div>
       <!-- RÉSEAUX SOCIAUX -->
 
@@ -127,23 +127,23 @@
 
 
     <!-- =====================================================
-         AIDE
+         {{ 'pour_footer.headings.help' | t }}
     ====================================================== -->
 
     <div class="footer-pour__column">
 
       <p class="footer-pour__heading">
-        AIDE
+        {{ 'pour_footer.headings.help' | t }}
       </p>
 
       <nav class="footer-pour__links">
 
         <a href="/pages/contact">
-          Contact
+          {{ 'pour_footer.links.contact' | t }}
         </a>
 
         <a href="/pages/faq">
-          FAQ
+          {{ 'pour_footer.links.faq' | t }}
         </a>
 
       </nav>
@@ -158,17 +158,17 @@
     <div class="footer-pour__column">
 
       <p class="footer-pour__heading">
-        BOUTIQUE
+        {{ 'pour_footer.headings.shop' | t }}
       </p>
 
       <nav class="footer-pour__links">
 
         <a href="/pages/collection-001">
-          Collection 001
+          {{ 'pour_footer.links.collection_001' | t }}
         </a>
 
         <a href="/pages/boutique">
-          Shopping
+          {{ 'pour_footer.links.shopping' | t }}
         </a>
 
       </nav>
@@ -177,35 +177,35 @@
 
 
     <!-- =====================================================
-         LÉGAL
+         {{ 'pour_footer.headings.legal' | t }}
     ====================================================== -->
 
     <div class="footer-pour__column">
 
       <p class="footer-pour__heading">
-        LÉGAL
+        {{ 'pour_footer.headings.legal' | t }}
       </p>
 
       <nav class="footer-pour__links">
 
         <a href="/policies/legal-notice">
-          Mentions légales
+          {{ 'pour_footer.links.legal_notice' | t }}
         </a>
 
         <a href="/policies/terms-of-sale">
-          Conditions générales de vente
+          {{ 'pour_footer.links.terms_of_sale' | t }}
         </a>
 
         <a href="/policies/privacy-policy">
-          Politique de confidentialité
+          {{ 'pour_footer.links.privacy_policy' | t }}
         </a>
 
         <a href="/policies/refund-policy">
-          Politique de retour et de remboursement
+          {{ 'pour_footer.links.refund_policy' | t }}
         </a>
 
         <a href="/policies/shipping-policy">
-          Politique d'expédition
+          {{ 'pour_footer.links.shipping_policy' | t }}
         </a>
 
       </nav>
@@ -228,7 +228,7 @@
    <a
   href="{{ routes.root_url }}"
   class="footer-pour__logo"
-  aria-label="Retour à l'accueil"
+  aria-label="{{ 'pour_footer.accessibility.home' | t }}"
 >
   {% if section.settings.footer_logo != blank %}
     {{
