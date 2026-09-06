@@ -1235,9 +1235,9 @@ function closeModal() {
 
     <div class="pour-quickview__options">
 
-      <p class="pour-quickview__option-label">
-        TAILLE :
-      </p>
+     <p class="pour-quickview__option-label">
+  ${window.PourTranslations?.size || 'TAILLE'} :
+</p>
 
       <div class="pour-quickview__variants">
 
