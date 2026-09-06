@@ -1,0 +1,89 @@
+{
+  "form": {
+    "email_placeholder": "YOUR EMAIL",
+    "email_label": "Your email",
+    "join": "JOIN THE CLUB",
+    "already_registered": "YOU ARE ALREADY REGISTERED",
+    "already_registered_club": "YOU ARE ALREADY REGISTERED WITH CLUB POUR.",
+    "confirmed_title": "REGISTRATION CONFIRMED",
+    "confirmed_line_1": "Your Club POUR registration has been confirmed.",
+    "confirmed_line_2": "Check your inbox to discover upcoming private access."
+  },
+  "manifesto": {
+    "kicker": "CLUB POUR",
+    "title_line_1": "MORE THAN ACCESS.",
+    "title_line_2": "A HEAD START.",
+    "text": "Club POUR opens the doors to our world before everyone else. Early collections, exclusive series and privileges reserved for our members."
+  },
+  "benefits": {
+    "kicker": "CLUB PRIVILEGES",
+    "heading_line_1": "FOR THOSE WHO",
+    "heading_line_2": "WANT TO BE",
+    "heading_line_3": "FIRST.",
+    "card_1_label": "EARLY ACCESS",
+    "card_1_title_line_1": "EARLY",
+    "card_1_title_line_2": "ACCESS",
+    "card_1_text": "Discover and order our new drops before their official launch.",
+    "card_2_label": "MEMBERS ONLY",
+    "card_2_title_line_1": "CLUB",
+    "card_2_title_line_2": "EXCLUSIVES",
+    "card_2_text": "Limited series imagined exclusively for Club POUR members.",
+    "card_3_label": "PRIVATE SALES",
+    "card_3_title_line_1": "PRIVATE",
+    "card_3_title_line_2": "SALES",
+    "card_3_text": "Access offers and sale periods reserved exclusively for the Club.",
+    "card_4_label": "PRIORITY",
+    "card_4_title_line_1": "PRIORITY",
+    "card_4_title_line_2": "ACCESS",
+    "card_4_text": "Get priority access to selected pieces, restocks and limited quantities."
+  },
+  "exclusive": {
+    "kicker": "CLUB EXCLUSIVE — 001",
+    "title_line_1": "SOME PIECES",
+    "title_line_2": "WILL NEVER",
+    "title_line_3": "BE SOLD.",
+    "text": "Limited series produced in small quantities, imagined exclusively for Club POUR members.",
+    "signature": "MEMBERS ONLY"
+  },
+  "stats": {
+    "kicker": "THE CLUB",
+    "intro_line_1": "THE ADVANTAGE OF",
+    "intro_line_2": "ALWAYS BEING AHEAD.",
+    "stat_1_label_line_1": "OF EARLY",
+    "stat_1_label_line_2": "ACCESS",
+    "stat_2_label_line_1": "SERIES RESERVED",
+    "stat_2_label_line_2": "FOR THE CLUB",
+    "stat_3_label_line_1": "OFFERS &",
+    "stat_3_label_line_2": "PRIVATE SALES"
+  },
+  "editorial": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "BEFORE",
+    "title_line_2": "EVERYONE",
+    "title_line_3": "ELSE.",
+    "text": "CLUB MEMBERS ALWAYS GO FIRST."
+  },
+  "how": {
+    "kicker": "THE CLUB",
+    "heading_line_1": "HOW",
+    "heading_line_2": "DOES IT WORK?",
+    "card_1_eyebrow": "JOIN",
+    "card_1_title_line_1": "JOIN",
+    "card_1_title_line_2": "THE CLUB",
+    "card_1_text": "Simply sign up with your email address.",
+    "card_2_eyebrow": "DISCOVER",
+    "card_2_title_line_1": "RECEIVE",
+    "card_2_title_line_2": "YOUR ACCESS",
+    "card_2_text": "We will let you know as soon as a new private access is available.",
+    "card_3_eyebrow": "ENJOY",
+    "card_3_title_line_1": "ENJOY THE",
+    "card_3_title_line_2": "PRIVILEGES",
+    "card_3_text": "Early access, exclusives, private sales and priority access."
+  },
+  "final": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "GET A",
+    "title_line_2": "HEAD START.",
+    "small": "FREE ACCESS — FOR REGISTERED MEMBERS ONLY"
+  }
+}
