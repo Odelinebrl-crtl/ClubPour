@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "form": {
+    "email_placeholder": "O TEU EMAIL",
+    "email_label": "O teu email",
+    "join": "JUNTA-TE AO CLUBE",
+    "already_registered": "JÁ ESTÁS REGISTADO",
+    "already_registered_club": "JÁ ESTÁS REGISTADO NO CLUB POUR.",
+    "confirmed_title": "INSCRIÇÃO CONFIRMADA",
+    "confirmed_line_1": "A tua inscrição no Club POUR foi confirmada.",
+    "confirmed_line_2": "Verifica a tua caixa de entrada para descobrires os próximos acessos privados."
+  },
+
+  "manifesto": {
+    "kicker": "CLUB POUR",
+    "title_line_1": "MAIS DO QUE ACESSO.",
+    "title_line_2": "UMA VANTAGEM.",
+    "text": "O Club POUR abre-te as portas do nosso universo antes de todos. Coleções em primeira mão, séries exclusivas e privilégios reservados aos nossos membros."
+  },
+
+  "benefits": {
+    "kicker": "CLUB PRIVILÉGIOS",
+    "heading_line_1": "PARA QUEM",
+    "heading_line_2": "QUER PASSAR",
+    "heading_line_3": "PRIMEIRO.",
+    "card_1_label": "ACESSO ANTECIPADO",
+    "card_1_title_line_1": "EM",
+    "card_1_title_line_2": "PRIMEIRA MÃO",
+    "card_1_text": "Descobre e encomenda os nossos novos drops antes do lançamento oficial.",
+    "card_2_label": "SÓ MEMBROS",
+    "card_2_title_line_1": "CLUB",
+    "card_2_title_line_2": "EXCLUSIVOS",
+    "card_2_text": "Séries limitadas criadas exclusivamente para os membros do Club POUR.",
+    "card_3_label": "VENDAS PRIVADAS",
+    "card_3_title_line_1": "VENDAS",
+    "card_3_title_line_2": "PRIVADAS",
+    "card_3_text": "Acede a ofertas e períodos de saldos reservados exclusivamente ao Club.",
+    "card_4_label": "PRIORIDADE",
+    "card_4_title_line_1": "ACESSO",
+    "card_4_title_line_2": "PRIORITÁRIO",
+    "card_4_text": "Tem prioridade em determinadas peças, reposições e quantidades limitadas."
+  },
+
+  "exclusive": {
+    "kicker": "CLUB EXCLUSIVE — 001",
+    "title_line_1": "ALGUMAS PEÇAS",
+    "title_line_2": "NUNCA SERÃO",
+    "title_line_3": "COLOCADAS À VENDA.",
+    "text": "Séries produzidas em quantidades limitadas, criadas exclusivamente para os membros do Club POUR.",
+    "signature": "SÓ MEMBROS"
+  },
+
+  "stats": {
+    "kicker": "O CLUB",
+    "intro_line_1": "A VANTAGEM DE",
+    "intro_line_2": "ESTAR SEMPRE UM PASSO À FRENTE.",
+    "stat_1_label_line_1": "DE ACESSO",
+    "stat_1_label_line_2": "ANTECIPADO",
+    "stat_2_label_line_1": "SÉRIES RESERVADAS",
+    "stat_2_label_line_2": "AO CLUB",
+    "stat_3_label_line_1": "OFERTAS &",
+    "stat_3_label_line_2": "VENDAS PRIVADAS"
+  },
+
+  "editorial": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "ANTES",
+    "title_line_2": "DE TODOS",
+    "title_line_3": "OS OUTROS.",
+    "text": "OS MEMBROS DO CLUB PASSAM SEMPRE PRIMEIRO."
+  },
+
+  "how": {
+    "kicker": "O CLUB",
+    "heading_line_1": "COMO",
+    "heading_line_2": "FUNCIONA?",
+    "card_1_eyebrow": "JUNTA-TE",
+    "card_1_title_line_1": "JUNTA-TE",
+    "card_1_title_line_2": "AO CLUB",
+    "card_1_text": "Inscreve-te simplesmente com o teu endereço de email.",
+    "card_2_eyebrow": "DESCOBRE",
+    "card_2_title_line_1": "RECEBE",
+    "card_2_title_line_2": "O TEU ACESSO",
+    "card_2_text": "Avisamos-te assim que um novo acesso privado estiver disponível.",
+    "card_3_eyebrow": "DESFRUTA",
+    "card_3_title_line_1": "DESFRUTA DOS",
+    "card_3_title_line_2": "PRIVILÉGIOS",
+    "card_3_text": "Acessos antecipados, exclusividades, vendas privadas e acessos prioritários."
+  },
+
+  "final": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "GANHA UMA",
+    "title_line_2": "VANTAGEM.",
+    "small": "ACESSO GRATUITO — RESERVADO A MEMBROS REGISTADOS"
+  },
+
+  "pour_header": {
+    "navigation": {
+      "shop": "LOJA",
+      "clothing": "VESTUÁRIO",
+      "collection_001": "COLEÇÃO 001",
+      "all": "TODOS",
+      "tshirts": "T-SHIRTS",
+      "hoodies": "SWEATSHIRTS COM CAPUZ",
+      "sweatshirts": "SWEATSHIRTS",
+      "club_privileges": "CLUBE DE PRIVILÉGIOS",
+      "brand": "A MARCA",
+      "contact": "CONTACTO"
+    },
+
+    "account": "CONTA",
+    "cart": "CARRINHO",
+
+    "mobile": {
+      "open_menu": "Abrir menu",
+      "close_menu": "Fechar menu",
+      "open_shop": "Abrir loja"
+    },
+
+    "cart_drawer": {
+      "close": "Fechar carrinho",
+      "decrease_quantity": "Diminuir quantidade",
+      "increase_quantity": "Aumentar quantidade",
+      "remove": "REMOVER",
+      "subtotal": "SUBTOTAL",
+      "shipping_taxes": "Portes e impostos calculados no passo seguinte.",
+      "checkout": "AVANÇAR PARA PAGAMENTO",
+      "view_cart": "VER CARRINHO",
+      "empty": "O SEU CARRINHO ESTÁ VAZIO.",
+      "discover_creations": "DESCOBRIR AS NOSSAS CRIAÇÕES",
+      "discover_products": "DESCOBRIR OS NOSSOS PRODUTOS"
+    },
+
+    "errors": {
+      "load_cart": "Não foi possível carregar o carrinho.",
+      "update_cart": "Não foi possível atualizar o carrinho.",
+      "add_product": "Não foi possível adicionar este produto.",
+      "unexpected": "Ocorreu um erro.",
+      "no_variant": "POUR: nenhuma variante selecionada.",
+      "cart_prefix": "POUR Cart:",
+      "add_cart_prefix": "POUR — adicionar ao carrinho:"
+    }
+  }
+}
