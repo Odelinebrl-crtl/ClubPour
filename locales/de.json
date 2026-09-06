@@ -180,6 +180,20 @@
   },
   "pour_products": {
   "quick_add_aria": "Schnell hinzufügen",
+  "previous": "Vorherige Produkte",
+  "next": "Nächste Produkte",
+  "close": "Schließen",
+  "size": "Größe",
+  "loading": "Wird geladen",
+  "preorder": "Vorbestellen",
+  "unavailable": "Produkt nicht verfügbar"
+},
+"pour_recommendations": {
+  "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
+  "quick_add_aria": "Schnell hinzufügen"
+},
+  "pour_products": {
+  "quick_add_aria": "Schnell hinzufügen",
   "close": "Schließen",
   "size": "Größe",
   "loading": "Wird geladen",
