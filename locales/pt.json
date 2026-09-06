@@ -149,5 +149,36 @@
       "cart_prefix": "POUR Cart:",
       "add_cart_prefix": "POUR — adicionar ao carrinho:"
     }
+  },
+  "pour_footer": {
+    "newsletter": {
+      "heading": "JUNTA-TE AO CLUBE",
+      "text": "Inscreve-te no Club POUR para receber as nossas próximas coleções e novidades POUR, além de um desconto de 10%.",
+      "consent": "Aceito receber por e-mail as novidades, coleções e ofertas do Club POUR.",
+      "email_placeholder": "E-mail",
+      "submit": "JUNTA-TE AO CLUBE",
+      "success_line_1": "A tua inscrição no Club POUR foi registada com sucesso.",
+      "success_line_2": "Acabaste de receber um e-mail com o teu desconto de 10%.",
+      "confirmed": "INSCRIÇÃO CONFIRMADA"
+    },
+    "headings": {
+      "help": "AJUDA",
+      "shop": "LOJA",
+      "legal": "LEGAL"
+    },
+    "links": {
+      "contact": "Contacto",
+      "faq": "FAQ",
+      "collection_001": "Coleção 001",
+      "shopping": "Loja",
+      "legal_notice": "Informações legais",
+      "terms_of_sale": "Condições Gerais de Venda",
+      "privacy_policy": "Política de privacidade",
+      "refund_policy": "Política de devoluções e reembolsos",
+      "shipping_policy": "Política de envio"
+    },
+    "accessibility": {
+      "home": "Voltar à página inicial"
+    }
   }
 }
