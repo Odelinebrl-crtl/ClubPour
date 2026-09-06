@@ -128,14 +128,14 @@
       "shipping_taxes": "Envío e impuestos calculados en el siguiente paso.",
       "checkout": "FINALIZAR COMPRA",
       "view_cart": "VER LA CARRITO ",
-      "empty": "TU CESTA ESTÁ VACÍA.",
+      "empty": "TU CARRITO  ESTÁ VACÍA.",
       "discover_creations": "DESCUBRIR NUESTRAS CREACIONES",
       "discover_products": "DESCUBRIR NUESTROS PRODUCTOS"
     },
 
     "errors": {
-      "load_cart": "No se ha podido cargar la cesta.",
-      "update_cart": "No se ha podido actualizar la cesta.",
+      "load_cart": "No se ha podido cargar la carrito .",
+      "update_cart": "No se ha podido actualizar la carrito .",
       "add_product": "No se ha podido añadir este producto.",
       "unexpected": "Se ha producido un error.",
       "no_variant": "POUR: no se ha seleccionado ninguna variante.",
