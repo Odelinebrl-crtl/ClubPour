@@ -5304,34 +5304,7 @@ html {
   border-color: #111111 !important;
 }
 /* =========================================================
-   POUR — QUICK VIEW GLOBALE
-========================================================= */
-
-.pour-quickview-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 99998;
-
-  background: rgba(0, 0, 0, 0.38);
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition:
-    opacity .25s ease,
-    visibility .25s ease;
-}
-
-.pour-quickview-overlay.is-active {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-
-/* =========================================================
-   FENÊTRE
+   QUICK VIEW GLOBAL — MÊME DESIGN QUE COLLECTION 001
 ========================================================= */
 
 .pour-quickview {
@@ -5342,8 +5315,11 @@ html {
 
   z-index: 99999;
 
-  width: min(1110px, calc(100vw - 80px));
-  max-height: calc(100vh - 80px);
+  width: min(960px, calc(100vw - 80px));
+  max-height: calc(100vh - 70px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
 
   background: #ffffff;
 
@@ -5351,15 +5327,12 @@ html {
   visibility: hidden;
   pointer-events: none;
 
-  transform: translate(-50%, -48%);
-
-  overflow-y: auto;
-  overflow-x: hidden;
+  transform: translate(-50%, -47%);
 
   transition:
-    opacity .25s ease,
-    visibility .25s ease,
-    transform .35s cubic-bezier(.22,1,.36,1);
+    opacity .3s ease,
+    visibility .3s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
 }
 
 .pour-quickview.is-active {
@@ -5379,18 +5352,14 @@ html {
   display: grid;
 
   grid-template-columns:
-    minmax(0, 0.95fr)
-    minmax(0, 1.05fr);
+    minmax(0,1fr)
+    minmax(320px,.9fr);
 
   align-items: center;
 
-  gap: 75px;
+  min-height: 570px;
 
-  width: 100%;
-
-  padding:
-    74px
-    80px;
+  padding: 65px 70px;
 }
 
 
@@ -5399,20 +5368,20 @@ html {
 ========================================================= */
 
 .pour-quickview__media {
-  width: 100%;
-  min-width: 0;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
 }
 
 .pour-quickview__image {
   display: block;
 
   width: 100%;
-  height: auto;
-
-  max-height: 545px;
+  max-width: 430px;
+  max-height: 470px;
 
   object-fit: contain;
-  object-position: center;
 }
 
 
@@ -5421,25 +5390,16 @@ html {
 ========================================================= */
 
 .pour-quickview__info {
-  width: 100%;
-  min-width: 0;
+  padding-left: 50px;
 }
 
 .pour-quickview__title {
-  margin: 0 0 14px;
+  margin: 0;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 400;
 
-  line-height: 1.15;
-
-  letter-spacing: .06em;
+  letter-spacing: .1em;
 
   text-transform: uppercase;
 
@@ -5447,33 +5407,28 @@ html {
 }
 
 .pour-quickview__price {
-  margin: 0 0 38px;
+  margin-top: 15px;
 
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
 
-  color: #777777;
+  color: rgba(17,17,17,.55);
 }
 
 
 /* =========================================================
-   OPTIONS
+   TAILLES
 ========================================================= */
 
 .pour-quickview__options {
-  margin-bottom: 30px;
+  margin-top: 32px;
+  margin-bottom: 0;
 }
 
 .pour-quickview__option-label {
   margin: 0 0 12px;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
 
   color: #111111;
@@ -5503,29 +5458,25 @@ html {
   align-items: center;
   justify-content: center;
 
-  min-width: 54px;
-  height: 48px;
+  min-width: 46px;
+  height: 42px;
 
-  padding: 0 16px;
+  padding: 0 13px;
 
-  border: 1px solid #d8d8d8;
+  border: 1px solid rgba(17,17,17,.18);
 
   background: #ffffff;
   color: #111111;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 400;
 
   cursor: pointer;
-
-  transition:
-    border-color .2s ease,
-    background .2s ease,
-    color .2s ease;
 }
 
 .pour-quickview__variant input:checked + span {
-  border-color: #111111;
+  border: 1px solid #111111;
+  box-shadow: none;
 }
 
 .pour-quickview__variant.is-disabled {
@@ -5534,7 +5485,7 @@ html {
 
 
 /* =========================================================
-   AJOUTER AU PANIER
+   AJOUTER
 ========================================================= */
 
 .pour-quickview__submit {
@@ -5544,10 +5495,9 @@ html {
   justify-content: center;
 
   width: 100%;
-  height: 58px;
+  height: 50px;
 
-  margin: 0;
-  padding: 0 25px;
+  margin-top: 30px;
 
   border: 1px solid #111111;
 
@@ -5560,10 +5510,10 @@ html {
     Arial,
     sans-serif;
 
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 400;
 
-  letter-spacing: .18em;
+  letter-spacing: .15em;
 
   text-transform: uppercase;
 
@@ -5578,17 +5528,18 @@ html {
 .pour-quickview__details {
   display: inline-block;
 
-  margin-top: 25px;
+  margin-top: 22px;
 
   padding-bottom: 4px;
 
-  border-bottom: 1px solid #111111;
+  border-bottom: 1px solid currentColor;
 
   color: #111111;
 
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 400;
 
+  text-decoration: none;
   text-transform: uppercase;
 }
 
@@ -5600,8 +5551,8 @@ html {
 .pour-quickview__close {
   position: absolute;
 
-  top: 28px;
-  right: 30px;
+  top: 24px;
+  right: 24px;
 
   z-index: 20;
 
@@ -5612,7 +5563,6 @@ html {
   margin: 0;
 
   border: 0;
-
   background: transparent;
 
   cursor: pointer;
@@ -5630,7 +5580,7 @@ html {
   top: 50%;
   left: 50%;
 
-  width: 20px;
+  width: 18px;
   height: 1px;
 
   background: #111111;
@@ -5656,13 +5606,16 @@ html {
 .pour-quickview__loading {
   grid-column: 1 / -1;
 
-  padding: 100px 30px;
+  display: flex;
 
-  text-align: center;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 11px;
+  min-height: 440px;
 
-  letter-spacing: .16em;
+  font-size: 9px;
+
+  letter-spacing: .15em;
 
   text-transform: uppercase;
 }
@@ -5672,90 +5625,23 @@ html {
    MOBILE
 ========================================================= */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
 
   .pour-quickview {
     width: calc(100vw - 24px);
-
-    max-height: calc(100svh - 24px);
+    max-height: calc(100vh - 24px);
   }
 
   .pour-quickview__content {
-    display: block;
+    grid-template-columns: 1fr;
 
-    padding:
-      52px
-      20px
-      30px;
+    min-height: 0;
+
+    padding: 60px 22px 35px;
   }
 
-  .pour-quickview__media {
-    width: 100%;
-
-    margin-bottom: 26px;
+  .pour-quickview__info {
+    padding: 30px 0 0;
   }
 
-  .pour-quickview__image {
-    width: 100%;
-
-    max-height: 46svh;
-
-    object-fit: contain;
-  }
-
-  .pour-quickview__title {
-    font-size: 16px;
-  }
-
-  .pour-quickview__price {
-    margin-bottom: 25px;
-
-    font-size: 13px;
-  }
-
-  .pour-quickview__options {
-    margin-bottom: 22px;
-  }
-
-  .pour-quickview__variants {
-    gap: 6px;
-  }
-
-  .pour-quickview__variant span {
-    min-width: 46px;
-    height: 42px;
-
-    padding: 0 12px;
-
-    font-size: 11px;
-  }
-
-  .pour-quickview__submit {
-    height: 52px;
-  }
-
-  .pour-quickview__close {
-    top: 16px;
-    right: 16px;
-  }
-
-}
-
-}
-.footer-pour__success {
-  max-width: 360px;
-}
-
-.footer-pour__success-title {
-  margin: 0 0 12px;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.02em;
-}
-
-.footer-pour__success-text {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-  color: #666666;
 }
