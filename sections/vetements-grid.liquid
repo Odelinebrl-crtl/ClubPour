@@ -120,7 +120,7 @@
                 class="vetements-card__quick-add"
                 data-vetements-quick-add
                 data-product-handle="{{ featured_product.handle }}"
-                aria-label="Ajouter rapidement {{ featured_product.title }}"
+                aria-label="{{ 'pour_products.quick_add_aria' | t }} {{ featured_product.title }}"
               ></button>
 
             </div>
@@ -258,7 +258,7 @@
       type="button"
       class="vetements-qv__close"
       data-vetements-qv-close
-      aria-label="Fermer"
+      aria-label="{{ 'pour_products.close' | t }}"
     ></button>
 
     <div
@@ -994,7 +994,7 @@ input:checked + span {
       <div class="vetements-qv__options">
 
         <p class="vetements-qv__option-label">
-          Taille :
+          {{ 'pour_products.size' | t }} :
         </p>
 
         <div class="vetements-qv__variants">
@@ -1053,7 +1053,7 @@ input:checked + span {
     content.innerHTML = `
 
       <div class="vetements-qv__loading">
-        CHARGEMENT
+        {{ 'pour_products.loading' | t }}
       </div>
 
     `;
@@ -1141,7 +1141,7 @@ input:checked + span {
               type="submit"
               class="vetements-qv__submit"
             >
-              PRÉCOMMANDEZ
+              {{ 'pour_products.preorder' | t }}
             </button>
 
           </form>
@@ -1151,7 +1151,7 @@ input:checked + span {
             href="${escapeHTML(product.url)}"
             class="vetements-qv__details"
           >
-            VOIR LE PRODUIT
+            {{ 'pour_common.view_product' | t }}
           </a>
 
         </div>
@@ -1163,7 +1163,7 @@ input:checked + span {
       content.innerHTML = `
 
         <div class="vetements-qv__loading">
-          PRODUIT INDISPONIBLE
+          {{ 'pour_products.unavailable' | t }}
         </div>
 
       `;
