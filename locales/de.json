@@ -116,16 +116,13 @@
       "brand": "DIE MARKE",
       "contact": "KONTAKT"
     },
-
     "account": "KONTO",
     "cart": "WARENKORB",
-
     "mobile": {
       "open_menu": "Menü öffnen",
       "close_menu": "Menü schließen",
       "open_shop": "Shop öffnen"
     },
-
     "cart_drawer": {
       "close": "Warenkorb schließen",
       "decrease_quantity": "Menge verringern",
@@ -139,7 +136,6 @@
       "discover_creations": "UNSERE KREATIONEN ENTDECKEN",
       "discover_products": "UNSERE PRODUKTE ENTDECKEN"
     },
-
     "errors": {
       "load_cart": "Der Warenkorb konnte nicht geladen werden.",
       "update_cart": "Der Warenkorb konnte nicht aktualisiert werden.",
@@ -148,6 +144,38 @@
       "no_variant": "POUR: Keine Variante ausgewählt.",
       "cart_prefix": "POUR Cart:",
       "add_cart_prefix": "POUR — zum Warenkorb hinzufügen:"
+    }
+  },
+
+  "pour_footer": {
+    "newsletter": {
+      "heading": "DEM CLUB PRIVILEGE BEITRETEN",
+      "text": "Melde dich beim Club Privilege von POUR an, um unsere kommenden Kollektionen und POUR-News zu erhalten – sowie 10 % Rabatt.",
+      "consent": "Ich akzeptiere den Erhalt von News, Kollektionen und Angeboten des Club POUR per E-Mail.",
+      "email_placeholder": "E-Mail",
+      "submit": "DEM CLUB BEITRETEN",
+      "success_line_1": "Deine Anmeldung beim Club POUR wurde erfolgreich registriert.",
+      "success_line_2": "Du hast soeben eine E-Mail mit deinem 10-%-Rabatt erhalten.",
+      "confirmed": "REGISTRIERUNG BESTÄTIGT"
+    },
+    "headings": {
+      "help": "HILFE",
+      "shop": "SHOP",
+      "legal": "RECHTLICHES"
+    },
+    "links": {
+      "contact": "Kontakt",
+      "faq": "FAQ",
+      "collection_001": "Collection 001",
+      "shopping": "Shoppen",
+      "legal_notice": "Impressum",
+      "terms_of_sale": "Allgemeine Verkaufsbedingungen",
+      "privacy_policy": "Datenschutzerklärung",
+      "refund_policy": "Rückgabe- und Erstattungsrichtlinie",
+      "shipping_policy": "Versandrichtlinie"
+    },
+    "accessibility": {
+      "home": "Zur Startseite"
     }
   }
 }
