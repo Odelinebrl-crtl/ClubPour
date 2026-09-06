@@ -7,6 +7,15 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "form": {
     "email_placeholder": "DEINE E-MAIL-ADRESSE",
@@ -178,16 +187,27 @@
       "home": "Zur Startseite"
     }
   },
+
+  "pour_common": {
+    "view_product": "PRODUKT ANSEHEN"
+  },
+
   "pour_products": {
-  "quick_add_aria": "Schnell hinzufügen",
-  "previous": "Vorherige Produkte",
-  "next": "Nächste Produkte",
-  "close": "Schließen",
-  "size": "Größe",
-  "loading": "Wird geladen",
-  "preorder": "Vorbestellen",
-  "unavailable": "Produkt nicht verfügbar"
-},
+    "quick_add_aria": "Schnell hinzufügen",
+    "previous": "Vorherige Produkte",
+    "next": "Nächste Produkte",
+    "close": "Schließen",
+    "size": "Größe",
+    "loading": "Wird geladen",
+    "preorder": "Vorbestellen",
+    "unavailable": "Produkt nicht verfügbar"
+  },
+
+  "pour_recommendations": {
+    "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
+    "quick_add_aria": "Schnell hinzufügen"
+  },
+
   "pour_product": {
     "gallery_previous": "Vorheriges Bild",
     "gallery_next": "Nächstes Bild",
@@ -236,9 +256,5 @@
     "sending": "SENDEN...",
     "back_in_stock_success": "Notiert. Du wirst benachrichtigt, sobald diese Größe wieder verfügbar ist.",
     "generic_error": "Ein Fehler ist aufgetreten."
-  },
-  "pour_recommendations": {
-    "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
-    "quick_add_aria": "Schnell hinzufügen"
   }
 }
