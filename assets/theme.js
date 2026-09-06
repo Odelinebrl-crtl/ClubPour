@@ -1205,12 +1205,10 @@ function closeModal() {
   const variants =
     product.variants || [];
 
-
   if (
     variants.length === 1 &&
     variants[0].title === 'Default Title'
   ) {
-
     return `
       <input
         type="hidden"
@@ -1219,60 +1217,12 @@ function closeModal() {
         data-quickview-variant-id
       >
     `;
-
   }
-
 
   const firstAvailable =
     variants.find(
       variant => variant.available
     ) || variants[0];
-
-
-  const parsedVariants =
-    variants.map(variant => {
-
-      const parts =
-        variant.title
-          .split(' / ')
-          .map(value => value.trim());
-
-      return {
-        variant,
-        color: parts[0] || '',
-        size: parts[1] || ''
-      };
-
-    });
-
-
-  const colors =
-    [
-      ...new Set(
-        parsedVariants
-          .map(item => item.color)
-          .filter(Boolean)
-      )
-    ];
-
-
-  const sizes =
-    [
-      ...new Set(
-        parsedVariants
-          .map(item => item.size)
-          .filter(Boolean)
-      )
-    ];
-
-
-  const firstParsed =
-    parsedVariants.find(
-      item =>
-        item.variant.id ===
-        firstAvailable.id
-    ) || parsedVariants[0];
-
 
   return `
 
@@ -1283,62 +1233,35 @@ function closeModal() {
       data-quickview-variant-id
     >
 
-
     <div class="pour-quickview__options">
 
       <p class="pour-quickview__option-label">
-        COULEUR
+        TAILLE :
       </p>
 
       <div class="pour-quickview__variants">
 
-        ${colors.map(color => `
+        ${variants.map(variant => `
 
-          <label class="pour-quickview__variant">
-
-            <input
-              type="radio"
-              name="quickview-color"
-              value="${escapeHTML(color)}"
-              data-quickview-color
-              ${color === firstParsed.color ? 'checked' : ''}
-            >
-
-            <span>
-              ${escapeHTML(color)}
-            </span>
-
-          </label>
-
-        `).join('')}
-
-      </div>
-
-    </div>
-
-
-    <div class="pour-quickview__options">
-
-      <p class="pour-quickview__option-label">
-        TAILLE
-      </p>
-
-      <div class="pour-quickview__variants">
-
-        ${sizes.map(size => `
-
-          <label class="pour-quickview__variant">
+          <label
+            class="
+              pour-quickview__variant
+              ${variant.available ? '' : 'is-disabled'}
+            "
+          >
 
             <input
               type="radio"
               name="quickview-size"
-              value="${escapeHTML(size)}"
+              value="${escapeHTML(variant.title)}"
               data-quickview-size
-              ${size === firstParsed.size ? 'checked' : ''}
+              data-variant-id="${variant.id}"
+              ${variant.id === firstAvailable.id ? 'checked' : ''}
+              ${variant.available ? '' : 'disabled'}
             >
 
             <span>
-              ${escapeHTML(size)}
+              ${escapeHTML(variant.title)}
             </span>
 
           </label>
@@ -1350,7 +1273,6 @@ function closeModal() {
     </div>
 
   `;
-
 }
 
 
