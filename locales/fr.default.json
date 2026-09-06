@@ -82,5 +82,13 @@
     "accessibility": {
       "home": "Retour à l'accueil"
     }
-  }
+  },
+  "pour_products": {
+  "quick_add_aria": "Ajouter rapidement",
+  "close": "Fermer",
+  "size": "Taille",
+  "loading": "Chargement",
+  "preorder": "Précommandez",
+  "unavailable": "Produit indisponible"
+}
 }
