@@ -1,0 +1,89 @@
+{
+  "form": {
+    "email_placeholder": "LA TUA EMAIL",
+    "email_label": "La tua email",
+    "join": "UNISCITI AL CLUB",
+    "already_registered": "SEI GIÀ REGISTRATO",
+    "already_registered_club": "SEI GIÀ REGISTRATO AL CLUB POUR.",
+    "confirmed_title": "ISCRIZIONE CONFERMATA",
+    "confirmed_line_1": "La tua iscrizione al Club POUR è stata confermata.",
+    "confirmed_line_2": "Controlla la tua casella email per scoprire i prossimi accessi privati."
+  },
+  "manifesto": {
+    "kicker": "CLUB POUR",
+    "title_line_1": "PIÙ DI UN ACCESSO.",
+    "title_line_2": "UN PASSO AVANTI.",
+    "text": "Il Club POUR ti apre le porte del nostro universo prima di tutti. Collezioni in anteprima, serie esclusive e privilegi riservati ai nostri membri."
+  },
+  "benefits": {
+    "kicker": "CLUB PRIVILEGI",
+    "heading_line_1": "PER CHI",
+    "heading_line_2": "VUOLE ESSERE",
+    "heading_line_3": "IL PRIMO.",
+    "card_1_label": "ACCESSO ANTICIPATO",
+    "card_1_title_line_1": "IN",
+    "card_1_title_line_2": "ANTEPRIMA",
+    "card_1_text": "Scopri e ordina i nostri nuovi drop prima del lancio ufficiale.",
+    "card_2_label": "SOLO MEMBRI",
+    "card_2_title_line_1": "CLUB",
+    "card_2_title_line_2": "ESCLUSIVE",
+    "card_2_text": "Serie limitate create esclusivamente per i membri del Club POUR.",
+    "card_3_label": "VENDITE PRIVATE",
+    "card_3_title_line_1": "VENDITE",
+    "card_3_title_line_2": "PRIVATE",
+    "card_3_text": "Accedi a offerte e periodi di saldi riservati esclusivamente al Club.",
+    "card_4_label": "PRIORITÀ",
+    "card_4_title_line_1": "ACCESSO",
+    "card_4_title_line_2": "PRIORITARIO",
+    "card_4_text": "Priorità su determinati capi, restock e quantità limitate."
+  },
+  "exclusive": {
+    "kicker": "CLUB EXCLUSIVE — 001",
+    "title_line_1": "ALCUNI CAPI",
+    "title_line_2": "NON SARANNO MAI",
+    "title_line_3": "MESSI IN VENDITA.",
+    "text": "Serie prodotte in quantità limitate, create esclusivamente per i membri del Club POUR.",
+    "signature": "SOLO MEMBRI"
+  },
+  "stats": {
+    "kicker": "IL CLUB",
+    "intro_line_1": "IL VANTAGGIO DI",
+    "intro_line_2": "ESSERE SEMPRE UN PASSO AVANTI.",
+    "stat_1_label_line_1": "DI ACCESSO",
+    "stat_1_label_line_2": "IN ANTEPRIMA",
+    "stat_2_label_line_1": "SERIE RISERVATE",
+    "stat_2_label_line_2": "AL CLUB",
+    "stat_3_label_line_1": "OFFERTE &",
+    "stat_3_label_line_2": "VENDITE PRIVATE"
+  },
+  "editorial": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "PRIMA",
+    "title_line_2": "DI TUTTI",
+    "title_line_3": "GLI ALTRI.",
+    "text": "I MEMBRI DEL CLUB PASSANO SEMPRE PER PRIMI."
+  },
+  "how": {
+    "kicker": "IL CLUB",
+    "heading_line_1": "COME",
+    "heading_line_2": "FUNZIONA?",
+    "card_1_eyebrow": "UNISCITI",
+    "card_1_title_line_1": "UNISCITI",
+    "card_1_title_line_2": "AL CLUB",
+    "card_1_text": "Iscriviti semplicemente con il tuo indirizzo email.",
+    "card_2_eyebrow": "SCOPRI",
+    "card_2_title_line_1": "RICEVI",
+    "card_2_title_line_2": "IL TUO ACCESSO",
+    "card_2_text": "Ti avviseremo quando sarà disponibile un nuovo accesso privato.",
+    "card_3_eyebrow": "VIVI",
+    "card_3_title_line_1": "VIVI I",
+    "card_3_title_line_2": "PRIVILEGI",
+    "card_3_text": "Anteprime, esclusive, vendite private e accessi prioritari."
+  },
+  "final": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "PRENDI UN",
+    "title_line_2": "PASSO AVANTI.",
+    "small": "ACCESSO GRATUITO — RISERVATO AGLI ISCRITTI"
+  }
+}
