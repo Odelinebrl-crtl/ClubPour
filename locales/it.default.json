@@ -87,3 +87,46 @@
     "small": "ACCESSO GRATUITO — RISERVATO AGLI ISCRITTI"
   }
 }
+"header": {
+  "navigation": {
+    "shop": "SHOP",
+    "clothing": "ABBIGLIAMENTO",
+    "collection_001": "COLLEZIONE 001",
+    "all": "TUTTI",
+    "tshirts": "T-SHIRT",
+    "hoodies": "FELPE CON CAPPUCCIO",
+    "sweatshirts": "FELPE",
+    "club_privileges": "CLUB PRIVILEGI",
+    "brand": "IL BRAND",
+    "contact": "CONTATTI"
+  },
+  "account": "ACCOUNT",
+  "cart": "CARRELLO",
+  "mobile": {
+    "open_menu": "Apri il menu",
+    "close_menu": "Chiudi il menu",
+    "open_shop": "Apri lo shop"
+  },
+  "cart_drawer": {
+    "close": "Chiudi il carrello",
+    "decrease_quantity": "Diminuisci quantità",
+    "increase_quantity": "Aumenta quantità",
+    "remove": "RIMUOVI",
+    "subtotal": "SUBTOTALE",
+    "shipping_taxes": "Spedizione e tasse calcolate al passaggio successivo.",
+    "checkout": "PROCEDI AL PAGAMENTO",
+    "view_cart": "VEDI IL CARRELLO",
+    "empty": "IL TUO CARRELLO È VUOTO.",
+    "discover_creations": "SCOPRI LE NOSTRE CREAZIONI",
+    "discover_products": "SCOPRI I NOSTRI PRODOTTI"
+  },
+  "errors": {
+    "load_cart": "Impossibile caricare il carrello.",
+    "update_cart": "Impossibile aggiornare il carrello.",
+    "add_product": "Impossibile aggiungere questo prodotto.",
+    "unexpected": "Si è verificato un errore.",
+    "no_variant": "POUR: nessuna variante selezionata.",
+    "cart_prefix": "POUR Cart:",
+    "add_cart_prefix": "POUR — aggiungi al carrello:"
+  }
+}
