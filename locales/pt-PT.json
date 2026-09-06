@@ -180,5 +180,8 @@
     "accessibility": {
       "home": "Voltar à página inicial"
     }
-  }
+  },
+  "pour_common": {
+  "view_product": "VER O PRODUTO"
+}
 }
