@@ -1707,7 +1707,7 @@ a {
    ======================================================= */
 
 .site-header__mobile-icon {
-  display: none;
+  display: none !important;
 }
 
 .site-header__mobile-icon {
@@ -1774,7 +1774,6 @@ a {
     content: none !important;
   }
 
-}
 }
 /* ================================
    PRODUCT GRID — POUR
