@@ -27,7 +27,7 @@
     type="button"
     class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--prev"
     data-desktop-gallery-prev
-    aria-label="Image précédente"
+    aria-label="{{ 'pour_product.gallery_previous' | t }}"
   >
     ‹
   </button>
@@ -37,7 +37,7 @@
     type="button"
     class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--next"
     data-desktop-gallery-next
-    aria-label="Image suivante"
+    aria-label="{{ 'pour_product.gallery_next' | t }}"
   >
     ›
   </button>
@@ -59,15 +59,15 @@
         <span class="product-page-pour__model-caption">
 
           {% if product.metafields.custom.model_height != blank %}
-            Le mannequin mesure {{ product.metafields.custom.model_height.value }}
+            {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
           {% endif %}
 
           {% if product.metafields.custom.model_weight != blank %}
-            et pèse {{ product.metafields.custom.model_weight.value }}
+            {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
           {% endif %}
 
           {% if product.metafields.custom.model_size != blank %}
-            et porte une taille {{ product.metafields.custom.model_size.value }}.
+            {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
           {% endif %}
 
         </span>
@@ -81,7 +81,7 @@
     type="button"
     class="product-page-pour__fullscreen-trigger"
     data-product-fullscreen-open
-    aria-label="Agrandir les images"
+    aria-label="{{ 'pour_product.gallery_enlarge' | t }}"
   >
     ⛶
   </button>
@@ -129,15 +129,15 @@
       <span class="product-page-pour__mobile-model">
 
         {% if product.metafields.custom.model_height != blank %}
-          Le mannequin mesure {{ product.metafields.custom.model_height.value }}
+          {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
         {% endif %}
 
         {% if product.metafields.custom.model_weight != blank %}
-          et pèse {{ product.metafields.custom.model_weight.value }}
+          {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
         {% endif %}
 
         {% if product.metafields.custom.model_size != blank %}
-          et porte une taille {{ product.metafields.custom.model_size.value }}.
+          {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
         {% endif %}
 
       </span>
@@ -170,7 +170,7 @@
 </div>
 
 <div class="product-page-pour__fit">
-  <strong>Tailles et coupe</strong>
+  <strong>{{ 'pour_product.fit_title' | t }}</strong>
   <span>— {{ product.metafields.custom.fit.value }}</span>
 </div>
 {% assign color_products = product.metafields.custom.color_products.value %}
@@ -179,7 +179,7 @@
   <div class="product-page-pour__colors">
 
     <div class="product-page-pour__colors-heading">
-      <strong>Couleur</strong>
+      <strong>{{ 'pour_product.color' | t }}</strong>
       <span>{{ color_products.size }}</span>
     </div>
 
@@ -322,7 +322,7 @@
 
           </div>
 <p class="product-page-pour__preorder-note">
-  Précommande — expédition à partir du 20 octobre.
+  {{ 'pour_product.preorder_note' | t }}
 </p>
         {% endform %}
 <div class="product-page-pour__size-guide-row">
@@ -355,7 +355,7 @@
     data-product-panel-open="details"
   >
     <span class="product-page-pour__accordion-icon">+</span>
-    <span>DÉTAILS DU PRODUIT</span>
+    <span>{{ 'pour_product.details_title' | t }}</span>
   </button>
 <!-- FAQ -->
 <button
@@ -364,7 +364,7 @@
   data-product-panel-open="faq"
 >
   <span class="product-page-pour__accordion-icon">+</span>
-  <span>FAQ SUR LES PRODUITS</span>
+  <span>{{ 'pour_product.faq_title' | t }}</span>
 </button>
 
 
@@ -375,7 +375,7 @@
     data-product-panel-open="shipping"
   >
     <span class="product-page-pour__accordion-icon">+</span>
-    <span>EXPÉDITION & RETOURS</span>
+    <span>{{ 'pour_product.shipping_returns' | t }}</span>
   </button>
 
 </div>
@@ -396,14 +396,14 @@
     type="button"
     class="product-page-pour__info-panel-overlay"
     data-product-panel-close
-    aria-label="Fermer"
+    aria-label="{{ 'pour_product.close' | t }}"
   ></button>
 
 
   <!-- PANNEAU -->
   <aside
     class="product-page-pour__info-panel-inner"
-    aria-label="Informations produit"
+    aria-label="{{ 'pour_product.product_information' | t }}"
   >
 
     <!-- HEADER -->
@@ -420,7 +420,7 @@
         type="button"
         class="product-page-pour__info-panel-close"
         data-product-panel-close
-        aria-label="Fermer"
+        aria-label="{{ 'pour_product.close' | t }}"
       ></button>
 
     </div>
@@ -436,7 +436,7 @@
     {% if product.metafields.custom.product_details != blank %}
       {{ product.metafields.custom.product_details | metafield_tag }}
     {% else %}
-      Retrouvez ici toutes les informations concernant ce produit.
+      {{ 'pour_product.details_fallback' | t }}
     {% endif %}
 
   </div>
@@ -499,7 +499,7 @@
 
   {% else %}
 
-    <p>FAQ prochainement disponible.</p>
+    <p>{{ 'pour_product.faq_unavailable' | t }}</p>
 
   {% endif %}
 
@@ -522,7 +522,7 @@
   | raw
 }}
         {% else %}
-          Retrouvez ici toutes les informations concernant l’expédition et les retours.
+          {{ 'pour_product.shipping_fallback' | t }}
         {% endif %}
       </div>
 
@@ -546,28 +546,28 @@
     type="button"
     class="product-page-pour__info-panel-overlay"
     data-pour-back-in-stock-close
-    aria-label="Fermer"
+    aria-label="{{ 'pour_product.close' | t }}"
   ></button>
 
 
   <!-- PANNEAU -->
   <aside
     class="product-page-pour__info-panel-inner"
-    aria-label="Retour en stock"
+    aria-label="{{ 'pour_product.back_in_stock' | t }}"
   >
 
     <!-- HEADER -->
     <div class="product-page-pour__info-panel-header">
 
       <div class="product-page-pour__info-panel-title">
-        TAILLE EN RUPTURE DE STOCK ?
+        {{ 'pour_product.back_in_stock_title' | t }}
       </div>
 
       <button
         type="button"
         class="product-page-pour__info-panel-close"
         data-pour-back-in-stock-close
-        aria-label="Fermer"
+        aria-label="{{ 'pour_product.close' | t }}"
       ></button>
 
     </div>
@@ -623,7 +623,7 @@
           type="email"
           name="email"
           class="product-page-pour__back-in-stock-input"
-          placeholder="Adresse e-mail..."
+          placeholder="{{ 'pour_product.email_placeholder' | t }}"
           autocomplete="email"
           required
         >
@@ -680,14 +680,14 @@
     type="button"
     class="product-page-pour__fullscreen-close"
     data-product-fullscreen-close
-    aria-label="Fermer"
+    aria-label="{{ 'pour_product.close' | t }}"
   ></button>
 
   <button
     type="button"
     class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--prev"
     data-fullscreen-prev
-    aria-label="Image précédente"
+    aria-label="{{ 'pour_product.gallery_previous' | t }}"
   >
     ‹
   </button>
@@ -704,7 +704,7 @@
     type="button"
     class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--next"
     data-fullscreen-next
-    aria-label="Image suivante"
+    aria-label="{{ 'pour_product.gallery_next' | t }}"
   >
     ›
   </button>
@@ -736,7 +736,7 @@
       type="button"
       class="pour-size-guide__close"
       data-pour-size-guide-close
-      aria-label="Fermer le guide des tailles"
+      aria-label="{{ 'pour_product.close_size_guide' | t }}"
     ></button>
 
   </div>
@@ -790,7 +790,7 @@
 
             {% if product.metafields.custom.size_chest != blank %}
               <tr>
-                <th>POITRINE</th>
+                <th>{{ 'pour_product.chest' | t }}</th>
 
               {% for value in pour_chest %}
   <td
@@ -805,7 +805,7 @@
 
             {% if product.metafields.custom.size_length != blank %}
               <tr>
-                <th>LONGUEUR</th>
+                <th>{{ 'pour_product.length' | t }}</th>
 
                 {% for value in pour_length %}
   <td
@@ -820,7 +820,7 @@
 
             {% if product.metafields.custom.size_sleeve != blank %}
               <tr>
-                <th>MANCHE</th>
+                <th>{{ 'pour_product.sleeve' | t }}</th>
 
                {% for value in pour_sleeve %}
   <td
@@ -844,20 +844,20 @@
   disabled
 >
   <span data-size-guide-add-text>
-    SÉLECTIONNEZ UNE TAILLE
+    {{ 'pour_product.select_size' | t }}
   </span>
 </button>
     {% else %}
 
       <p class="pour-size-guide__empty">
-        Guide des tailles prochainement disponible.
+        {{ 'pour_product.size_guide_unavailable' | t }}
       </p>
 
     {% endif %}
 
 <div class="pour-size-guide__fit-advice">
   <p>
-Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de votre taille habituelle.
+{{ 'pour_product.fit_advice' | t }}
  </p>
 </div>
     {% if product.metafields.custom.model_height != blank
@@ -874,18 +874,15 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
         <p class="pour-size-guide__model-text">
 
           {% if product.metafields.custom.model_height != blank %}
-            Le mannequin mesure
-            {{ product.metafields.custom.model_height.value }}
+            {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
           {% endif %}
 
           {% if product.metafields.custom.model_weight != blank %}
-          et pèse
-            {{ product.metafields.custom.model_weight.value }}
+          {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
           {% endif %}
 
           {% if product.metafields.custom.model_size != blank %}
-            et porte une taille
-            {{ product.metafields.custom.model_size.value }}.
+            {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
           {% endif %}
 
         </p>
@@ -898,7 +895,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
 
 </div>
 <!-- =====================================================
-     TU AIMERAIS PEUT-ÊTRE AUSSI — RECOMMANDATIONS
+     {{ 'pour_recommendations.heading' | t }} — RECOMMANDATIONS
 ===================================================== -->
 
 <div
@@ -907,7 +904,7 @@ Coupe oversize. Pour un porté plus ajusté, choisissez une taille en dessous de
   data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations&product_id={{ product.id }}&limit=4&intent=related"
 >
   <div class="product-page-pour__style-with-heading">
-    TU AIMERAIS PEUT-ÊTRE AUSSI
+    {{ 'pour_recommendations.heading' | t }}
   </div>
 
   <div class="product-page-pour__style-with-grid">
@@ -4591,21 +4588,21 @@ if (backInStockButton) {
       if (type === 'details') {
 
         panelTitle.textContent =
-          'DÉTAILS DU PRODUIT';
+          '{{ 'pour_product.details_title' | t }}';
 
       }
 
       if (type === 'faq') {
 
         panelTitle.textContent =
-          'FAQ SUR LES PRODUITS';
+          '{{ 'pour_product.faq_title' | t }}';
 
       }
 
       if (type === 'shipping') {
 
         panelTitle.textContent =
-          'EXPÉDITION & RETOURS';
+          '{{ 'pour_product.shipping_returns' | t }}';
 
       }
 
@@ -4867,7 +4864,7 @@ if (backInStockForm) {
 
         if (backInStockMessage) {
           backInStockMessage.textContent =
-            'Sélectionnez une taille.';
+            '{{ 'pour_product.select_size_error' | t }}';
         }
 
         return;
@@ -4877,7 +4874,7 @@ if (backInStockForm) {
 
         if (backInStockMessage) {
           backInStockMessage.textContent =
-            'Veuillez renseigner votre adresse e-mail.';
+            '{{ 'pour_product.email_required' | t }}';
         }
 
         return;
@@ -4890,7 +4887,7 @@ if (backInStockForm) {
 
         if (backInStockMessage) {
           backInStockMessage.textContent =
-            'Le service de notification est momentanément indisponible. Veuillez réessayer.';
+            '{{ 'pour_product.notification_unavailable' | t }}';
         }
 
         return;
@@ -4899,7 +4896,7 @@ if (backInStockForm) {
       if (backInStockSubmit) {
         backInStockSubmit.disabled = true;
         backInStockSubmit.textContent =
-          'ENVOI...';
+          '{{ 'pour_product.sending' | t }}';
       }
 
       if (backInStockMessage) {
@@ -4917,7 +4914,7 @@ if (backInStockForm) {
 
             if (backInStockMessage) {
               backInStockMessage.textContent =
-                'C’est noté. Vous serez prévenu dès que cette taille sera de nouveau disponible.';
+                '{{ 'pour_product.back_in_stock_success' | t }}';
             }
 
             backInStockForm.reset();
@@ -4925,7 +4922,7 @@ if (backInStockForm) {
           } else {
 
             let errorMessage =
-              'Une erreur est survenue.';
+              '{{ 'pour_product.generic_error' | t }}';
 
             if (data.errors) {
 
@@ -5093,7 +5090,7 @@ if (backInStockForm) {
       "type": "textarea",
       "id": "shipping",
       "label": "Expédition & retours",
-      "default": "Retrouvez ici toutes les informations concernant l’expédition et les retours."
+      "default": "{{ 'pour_product.shipping_fallback' | t }}"
     }
 
   ]
