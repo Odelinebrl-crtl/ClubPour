@@ -1,0 +1,153 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "form": {
+    "email_placeholder": "DEINE E-MAIL-ADRESSE",
+    "email_label": "Deine E-Mail-Adresse",
+    "join": "DEM CLUB BEITRETEN",
+    "already_registered": "DU BIST BEREITS REGISTRIERT",
+    "already_registered_club": "DU BIST BEREITS BEI CLUB POUR REGISTRIERT.",
+    "confirmed_title": "REGISTRIERUNG BESTÄTIGT",
+    "confirmed_line_1": "Deine Anmeldung bei Club POUR wurde bestätigt.",
+    "confirmed_line_2": "Überprüfe deinen Posteingang, um die nächsten privaten Zugänge zu entdecken."
+  },
+
+  "manifesto": {
+    "kicker": "CLUB POUR",
+    "title_line_1": "MEHR ALS ZUGANG.",
+    "title_line_2": "EINEN VORSPRUNG.",
+    "text": "Club POUR öffnet dir die Türen zu unserer Welt, bevor alle anderen Zugang erhalten. Kollektionen im Vorverkauf, exklusive Serien und Privilegien, die unseren Mitgliedern vorbehalten sind."
+  },
+
+  "benefits": {
+    "kicker": "CLUB PRIVILEGIEN",
+    "heading_line_1": "FÜR ALLE, DIE",
+    "heading_line_2": "IMMER",
+    "heading_line_3": "ZUERST DA SEIN WOLLEN.",
+    "card_1_label": "FRÜHER ZUGANG",
+    "card_1_title_line_1": "FRÜHER",
+    "card_1_title_line_2": "ZUGANG",
+    "card_1_text": "Entdecke und bestelle unsere neuen Drops vor dem offiziellen Launch.",
+    "card_2_label": "NUR FÜR MITGLIEDER",
+    "card_2_title_line_1": "CLUB",
+    "card_2_title_line_2": "EXKLUSIVES",
+    "card_2_text": "Limitierte Serien, die exklusiv für die Mitglieder von Club POUR entwickelt wurden.",
+    "card_3_label": "PRIVATE SALES",
+    "card_3_title_line_1": "PRIVATE",
+    "card_3_title_line_2": "SALES",
+    "card_3_text": "Zugriff auf Angebote und Sale-Zeiträume, die ausschließlich dem Club vorbehalten sind.",
+    "card_4_label": "PRIORITÄT",
+    "card_4_title_line_1": "PRIORITÄRER",
+    "card_4_title_line_2": "ZUGANG",
+    "card_4_text": "Priorisierter Zugang zu ausgewählten Pieces, Restocks und limitierten Stückzahlen."
+  },
+
+  "exclusive": {
+    "kicker": "CLUB EXCLUSIVE — 001",
+    "title_line_1": "MANCHE PIECES",
+    "title_line_2": "WERDEN NIEMALS",
+    "title_line_3": "VERKAUFT.",
+    "text": "Limitierte Serien, die in kleinen Stückzahlen produziert und exklusiv für die Mitglieder von Club POUR entwickelt wurden.",
+    "signature": "NUR FÜR MITGLIEDER"
+  },
+
+  "stats": {
+    "kicker": "DER CLUB",
+    "intro_line_1": "DER VORTEIL,",
+    "intro_line_2": "IMMER EINEN SCHRITT VORAUS ZU SEIN.",
+    "stat_1_label_line_1": "FRÜHER",
+    "stat_1_label_line_2": "ZUGANG",
+    "stat_2_label_line_1": "SERIEN, DIE",
+    "stat_2_label_line_2": "DEM CLUB VORBEHALTEN SIND",
+    "stat_3_label_line_1": "ANGEBOTE &",
+    "stat_3_label_line_2": "PRIVATE SALES"
+  },
+
+  "editorial": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "VOR",
+    "title_line_2": "ALLEN",
+    "title_line_3": "ANDEREN.",
+    "text": "CLUB-MITGLIEDER SIND IMMER ZUERST DABEI."
+  },
+
+  "how": {
+    "kicker": "DER CLUB",
+    "heading_line_1": "WIE",
+    "heading_line_2": "FUNKTIONIERT DAS?",
+    "card_1_eyebrow": "BEITRETEN",
+    "card_1_title_line_1": "TRITT",
+    "card_1_title_line_2": "DEM CLUB BEI",
+    "card_1_text": "Melde dich einfach mit deiner E-Mail-Adresse an.",
+    "card_2_eyebrow": "ENTDECKEN",
+    "card_2_title_line_1": "ERHALTE",
+    "card_2_title_line_2": "DEINEN ZUGANG",
+    "card_2_text": "Wir informieren dich, sobald ein neuer privater Zugang verfügbar ist.",
+    "card_3_eyebrow": "GENIESSEN",
+    "card_3_title_line_1": "GENIESSE DIE",
+    "card_3_title_line_2": "PRIVILEGIEN",
+    "card_3_text": "Früher Zugang, Exklusives, Private Sales und priorisierter Zugang."
+  },
+
+  "final": {
+    "eyebrow": "CLUB POUR",
+    "title_line_1": "SICHERE DIR",
+    "title_line_2": "EINEN VORSPRUNG.",
+    "small": "KOSTENLOSER ZUGANG — NUR FÜR REGISTRIERTE MITGLIEDER"
+  },
+
+  "pour_header": {
+    "navigation": {
+      "shop": "SHOP",
+      "clothing": "BEKLEIDUNG",
+      "collection_001": "KOLLEKTION 001",
+      "all": "ALLE",
+      "tshirts": "T-SHIRTS",
+      "hoodies": "HOODIES",
+      "sweatshirts": "SWEATSHIRTS",
+      "club_privileges": "CLUB PRIVILEGIEN",
+      "brand": "DIE MARKE",
+      "contact": "KONTAKT"
+    },
+
+    "account": "KONTO",
+    "cart": "WARENKORB",
+
+    "mobile": {
+      "open_menu": "Menü öffnen",
+      "close_menu": "Menü schließen",
+      "open_shop": "Shop öffnen"
+    },
+
+    "cart_drawer": {
+      "close": "Warenkorb schließen",
+      "decrease_quantity": "Menge verringern",
+      "increase_quantity": "Menge erhöhen",
+      "remove": "ENTFERNEN",
+      "subtotal": "ZWISCHENSUMME",
+      "shipping_taxes": "Versand und Steuern werden im nächsten Schritt berechnet.",
+      "checkout": "ZUR KASSE",
+      "view_cart": "WARENKORB ANSEHEN",
+      "empty": "DEIN WARENKORB IST LEER.",
+      "discover_creations": "UNSERE KREATIONEN ENTDECKEN",
+      "discover_products": "UNSERE PRODUKTE ENTDECKEN"
+    },
+
+    "errors": {
+      "load_cart": "Der Warenkorb konnte nicht geladen werden.",
+      "update_cart": "Der Warenkorb konnte nicht aktualisiert werden.",
+      "add_product": "Dieses Produkt konnte nicht hinzugefügt werden.",
+      "unexpected": "Ein Fehler ist aufgetreten.",
+      "no_variant": "POUR: Keine Variante ausgewählt.",
+      "cart_prefix": "POUR Cart:",
+      "add_cart_prefix": "POUR — zum Warenkorb hinzufügen:"
+    }
+  }
+}
