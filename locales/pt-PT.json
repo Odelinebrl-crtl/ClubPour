@@ -181,6 +181,14 @@
       "home": "Voltar à página inicial"
     }
   },
+  "pour_products": {
+  "quick_add_aria": "Adicionar rapidamente",
+  "close": "Fechar",
+  "size": "Tamanho",
+  "loading": "A carregar",
+  "preorder": "Pré-encomendar",
+  "unavailable": "Produto indisponível"
+},
   "pour_common": {
   "view_product": "VER O PRODUTO"
 }
