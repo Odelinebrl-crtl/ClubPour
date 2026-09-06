@@ -1,8 +1,55 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "pour-about",
-      "settings": {}
+      "settings": {
+        "hero_eyebrow": "POUR",
+        "hero_title": "PLUS QU’UNE PIÈCE. UN ÉTAT D’ESPRIT.",
+        "hero_text": "Une marque née du mouvement, de la passion et de l'envie de créer autrement.",
+        "manifesto_eyebrow": "POUR",
+        "manifesto_title": "PAS FAIT POUR SE FONDRE DANS LA MASSE.",
+        "manifesto_text": "<p>POUR est une marque pensée pour ceux qui avancent à leur manière.<br/>Nous croyons aux pièces qui racontent quelque chose. Aux détails que l'on remarque. Aux silhouettes qui restent.</p>",
+        "origin_eyebrow": "L’ORIGINE",
+        "origin_title": "TOUT COMMENCE PAR UNE SENSATION.",
+        "origin_text": "<p>Une image. Une voiture. Une route. Une époque. Une sensation.<br/><br/>POUR puise son inspiration dans cet univers où le design, la vitesse et la culture se rencontrent.</p>",
+        "editorial_eyebrow": "NOTRE UNIVERS",
+        "editorial_title": "ENTRE LA ROUTE & LA VILLE.",
+        "editorial_text": "L'automobile fait partie de notre langage.",
+        "vision_eyebrow": "NOTRE VISION",
+        "vision_title": "NOUS NE SUIVONS PAS LA ROUTE. NOUS LA CHOISISSONS.",
+        "principle_1_number": "01",
+        "principle_1_title": "ATTITUDE",
+        "principle_1_text": "Ne pas attendre la permission. Choisir. Assumer. Avancer.",
+        "principle_2_number": "02",
+        "principle_2_title": "AUTOMOBILE",
+        "principle_2_text": "Les lignes, les proportions, les matières et l'histoire comme langage visuel.",
+        "principle_3_number": "03",
+        "principle_3_title": "SAVOIR-FAIRE",
+        "principle_3_text": "Chaque coupe, chaque visuel et chaque détail doit avoir une raison d'être.",
+        "principle_4_number": "04",
+        "principle_4_title": "LIBERTÉ",
+        "principle_4_text": "La liberté de partir, de créer et de construire son propre chemin.",
+        "pieces_eyebrow": "LES PIÈCES",
+        "pieces_title": "MOINS DE BRUIT. PLUS DE SENS.",
+        "pieces_text": "<p>Chaque pièce est pensée comme une partie d'un ensemble.<br/><br/>Une coupe. Un visuel. Une matière. Un détail.<br/><br/>Rien n'est là par hasard.</p>",
+        "drops_eyebrow": "LES COLLECTIONS",
+        "drops_title": "TOUT N’A PAS BESOIN DE DURER POUR TOUJOURS.",
+        "drops_text": "<p>POUR fonctionne par collection. Des séries pensées comme des chapitres.<br/><br/>Certaines pièces apparaissent. Puis disparaissent.<br/><br/>Chaque collection possède son propre univers, son propre rythme, son propre moment.</p>",
+        "final_eyebrow": "C'EST POUR.",
+        "final_title": "CONTINUEZ D’AVANCER.",
+        "final_text": "Une marque. Un univers. Une manière de voir les choses.",
+        "final_link_label": "DÉCOUVRIR LA COLLECTION",
+        "final_link": ""
+      }
     }
   },
   "order": [
