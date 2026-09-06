@@ -96,6 +96,10 @@
   "preorder": "Précommandez",
   "unavailable": "Produit indisponible"
 },
+"pour_recommendations": {
+  "heading": "TU AIMERAIS PEUT-ÊTRE AUSSI",
+  "quick_add_aria": "Ajouter rapidement"
+},
   "pour_products": {
   "quick_add_aria": "Ajouter rapidement",
   "close": "Fermer",
