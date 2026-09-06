@@ -1680,11 +1680,16 @@ document.body.classList.remove(
       )
       .forEach((button) => {
 
-        button.textContent =
-          cart.item_count > 0
-            ? `PANIER (${cart.item_count})`
-            : 'PANIER';
+        const label = button.querySelector(
+  '.site-header__desktop-label'
+);
 
+if (label) {
+  label.textContent =
+    cart.item_count > 0
+      ? `PANIER (${cart.item_count})`
+      : 'PANIER';
+}
       });
 
   }
