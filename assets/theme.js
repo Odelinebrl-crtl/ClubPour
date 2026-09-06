@@ -1329,9 +1329,9 @@ function closeModal() {
 
     content.innerHTML = `
 
-      <div class="pour-quickview__loading">
-        CHARGEMENT
-      </div>
+     <div class="pour-quickview__loading">
+  ${window.PourTranslations?.loading || 'CHARGEMENT'}
+</div>
 
     `;
 
@@ -1440,7 +1440,7 @@ function closeModal() {
     this.style.borderColor='#111111';
   "
 >
-  PRÉCOMMANDEZ
+ ${window.PourTranslations?.preorder || 'PRÉCOMMANDEZ'}
 </button>
 
           </form>
@@ -1450,7 +1450,7 @@ function closeModal() {
             href="${escapeHTML(product.url)}"
             class="pour-quickview__details"
           >
-            VOIR LE PRODUIT
+           ${window.PourTranslations?.view_product || 'VOIR LE PRODUIT'}
           </a>
 
         </div>
@@ -1503,7 +1503,7 @@ if (quickViewForm) {
   if (!matchingVariant) {
     submitButton.disabled = true;
     submitButton.textContent =
-      'INDISPONIBLE';
+  window.PourTranslations?.unavailable || 'INDISPONIBLE';
     return;
   }
 
@@ -1514,9 +1514,9 @@ if (quickViewForm) {
     !matchingVariant.available;
 
   submitButton.textContent =
-    matchingVariant.available
-      ? 'PRÉCOMMANDEZ'
-      : 'ÉPUISÉ';
+  matchingVariant.available
+    ? (window.PourTranslations?.preorder || 'PRÉCOMMANDEZ')
+    : (window.PourTranslations?.sold_out || 'ÉPUISÉ');
 
 }
 
@@ -1554,9 +1554,9 @@ if (quickViewForm) {
 
       content.innerHTML = `
 
-        <div class="pour-quickview__loading">
-          PRODUIT INDISPONIBLE
-        </div>
+      <div class="pour-quickview__loading">
+  ${window.PourTranslations?.unavailable || 'INDISPONIBLE'}
+</div>
 
       `;
 
