@@ -188,19 +188,57 @@
   "preorder": "Vorbestellen",
   "unavailable": "Produkt nicht verfügbar"
 },
-"pour_recommendations": {
-  "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
-  "quick_add_aria": "Schnell hinzufügen"
-},
-  "pour_products": {
-  "quick_add_aria": "Schnell hinzufügen",
-  "close": "Schließen",
-  "size": "Größe",
-  "loading": "Wird geladen",
-  "preorder": "Vorbestellen",
-  "unavailable": "Produkt nicht verfügbar"
-},
-  "pour_common": {
-  "view_product": "PRODUKT ANSEHEN"
-}
+  "pour_product": {
+    "gallery_previous": "Vorheriges Bild",
+    "gallery_next": "Nächstes Bild",
+    "gallery_enlarge": "Bilder vergrößern",
+    "fit_title": "Größe & Passform",
+    "color": "Farbe",
+    "preorder": "VORBESTELLEN",
+    "sold_out": "AUSVERKAUFT",
+    "notify_me": "BENACHRICHTIGEN",
+    "preorder_note": "Vorbestellung — Versand ab dem 20. Oktober.",
+    "size_guide": "GRÖSSENRATGEBER",
+    "details_motto": "ENTWICKELT ZUM TRAGEN, WIEDERTRAGEN, ERLEBEN.",
+    "details_title": "PRODUKTDETAILS",
+    "faq_title": "PRODUKT-FAQ",
+    "shipping_returns": "VERSAND & RÜCKGABEN",
+    "close": "Schließen",
+    "product_information": "Produktinformationen",
+    "details_fallback": "Hier findest du alle Informationen zu diesem Produkt.",
+    "faq_unavailable": "FAQ bald verfügbar.",
+    "shipping_fallback": "Hier findest du alle Informationen zu Versand und Rückgaben.",
+    "back_in_stock_title": "GRÖSSE NICHT VERFÜGBAR?",
+    "back_in_stock": "Wieder verfügbar",
+    "back_in_stock_intro": "Wähle deine gewünschte Größe und gib deine E-Mail-Adresse ein, um benachrichtigt zu werden, sobald dieses Produkt wieder verfügbar ist.",
+    "email_placeholder": "E-Mail-Adresse...",
+    "submit": "ABSENDEN",
+    "privacy_text": "Deine E-Mail-Adresse wird ausschließlich verwendet, um dich über die Verfügbarkeit dieser Größe zu informieren. Weitere Informationen findest du in unserer",
+    "privacy_link": "Datenschutzerklärung",
+    "measurements": "MASSE DES KLEIDUNGSSTÜCKS",
+    "chest": "BRUST",
+    "length": "LÄNGE",
+    "sleeve": "ÄRMEL",
+    "select_size": "GRÖSSE AUSWÄHLEN",
+    "size_guide_unavailable": "Größenratgeber bald verfügbar.",
+    "fit_advice": "Oversized-Passform. Für einen körperbetonteren Look wähle eine Größe kleiner als gewöhnlich.",
+    "model_title": "DAS MODEL",
+    "model_height": "Das Model ist %{height} groß",
+    "model_weight": "und wiegt %{weight}",
+    "model_size": "und trägt Größe %{size}.",
+    "close_size_guide": "Größenratgeber schließen",
+    "size_sold_out": "GRÖSSE AUSVERKAUFT",
+    "preorder_with_price": "VORBESTELLEN — %{price}",
+    "back_in_stock_size_selection": "GRÖSSE AUSWÄHLEN — WIEDER VERFÜGBAR",
+    "select_size_error": "Bitte wähle eine Größe.",
+    "email_required": "Bitte gib deine E-Mail-Adresse ein.",
+    "notification_unavailable": "Der Benachrichtigungsdienst ist vorübergehend nicht verfügbar. Bitte versuche es erneut.",
+    "sending": "SENDEN...",
+    "back_in_stock_success": "Notiert. Du wirst benachrichtigt, sobald diese Größe wieder verfügbar ist.",
+    "generic_error": "Ein Fehler ist aufgetreten."
+  },
+  "pour_recommendations": {
+    "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
+    "quick_add_aria": "Schnell hinzufügen"
+  }
 }
