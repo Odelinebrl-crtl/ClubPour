@@ -177,5 +177,16 @@
     "accessibility": {
       "home": "Zur Startseite"
     }
-  }
+  },
+  "pour_products": {
+  "quick_add_aria": "Schnell hinzufügen",
+  "close": "Schließen",
+  "size": "Größe",
+  "loading": "Wird geladen",
+  "preorder": "Vorbestellen",
+  "unavailable": "Produkt nicht verfügbar"
+},
+  "pour_common": {
+  "view_product": "PRODUKT ANSEHEN"
+}
 }
