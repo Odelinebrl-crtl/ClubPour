@@ -177,6 +177,16 @@
   },
   "pour_products": {
   "quick_add_aria": "Añadir rápidamente",
+  "previous": "Productos anteriores",
+  "next": "Productos siguientes",
+  "close": "Cerrar",
+  "size": "Talla",
+  "loading": "Cargando",
+  "preorder": "Precomprar",
+  "unavailable": "Producto no disponible"
+},
+  "pour_products": {
+  "quick_add_aria": "Añadir rápidamente",
   "close": "Cerrar",
   "size": "Talla",
   "loading": "Cargando",
