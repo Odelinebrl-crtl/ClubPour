@@ -83,18 +83,19 @@
       "home": "Retour à l'accueil"
     }
   },
-  "pour_common": {
-  "view_product": "VOIR LE PRODUIT"
-},
-"pour_products": {
+ "pour_products": {
   "quick_add_aria": "Ajouter rapidement",
   "previous": "Produits précédents",
   "next": "Produits suivants",
   "close": "Fermer",
+  "color": "Couleur",
   "size": "Taille",
   "loading": "Chargement",
   "preorder": "Précommandez",
   "unavailable": "Produit indisponible"
+},
+"pour_common": {
+  "view_product": "VOIR LE PRODUIT"
 },
 "pour_recommendations": {
   "heading": "TU AIMERAIS PEUT-ÊTRE AUSSI",
