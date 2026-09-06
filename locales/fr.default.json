@@ -1,48 +1,49 @@
 {
   "pour_header": {
-  "navigation": {
-    "shop": "BOUTIQUE",
-    "clothing": "VÊTEMENTS",
-    "collection_001": "COLLECTION 001",
-    "all": "TOUS",
-    "tshirts": "T-SHIRTS",
-    "hoodies": "HOODIES",
-    "sweatshirts": "SWEATSHIRTS",
-    "club_privileges": "CLUB PRIVILÈGES",
-    "brand": "LA MARQUE",
-    "contact": "CONTACT"
-  },
+    "navigation": {
+      "shop": "BOUTIQUE",
+      "clothing": "VÊTEMENTS",
+      "collection_001": "COLLECTION 001",
+      "all": "TOUS",
+      "tshirts": "T-SHIRTS",
+      "hoodies": "HOODIES",
+      "sweatshirts": "SWEATSHIRTS",
+      "club_privileges": "CLUB PRIVILÈGES",
+      "brand": "LA MARQUE",
+      "contact": "CONTACT"
+    },
 
-  "account": "COMPTE",
-  "cart": "PANIER",
+    "account": "COMPTE",
+    "cart": "PANIER",
 
-  "mobile": {
-    "open_menu": "Ouvrir le menu",
-    "close_menu": "Fermer le menu",
-    "open_shop": "Ouvrir Boutique"
-  },
+    "mobile": {
+      "open_menu": "Ouvrir le menu",
+      "close_menu": "Fermer le menu",
+      "open_shop": "Ouvrir Boutique"
+    },
 
-  "cart_drawer": {
-    "close": "Fermer le panier",
-    "decrease_quantity": "Réduire la quantité",
-    "increase_quantity": "Augmenter la quantité",
-    "remove": "SUPPRIMER",
-    "subtotal": "SOUS-TOTAL",
-    "shipping_taxes": "Livraison et taxes calculées à l’étape suivante.",
-    "checkout": "PASSER AU PAIEMENT",
-    "view_cart": "VOIR LE PANIER",
-    "empty": "VOTRE PANIER EST VIDE.",
-    "discover_creations": "DÉCOUVRIR NOS CRÉATIONS",
-    "discover_products": "DÉCOUVRIR NOS PRODUITS"
-  },
+    "cart_drawer": {
+      "close": "Fermer le panier",
+      "decrease_quantity": "Réduire la quantité",
+      "increase_quantity": "Augmenter la quantité",
+      "remove": "SUPPRIMER",
+      "subtotal": "SOUS-TOTAL",
+      "shipping_taxes": "Livraison et taxes calculées à l’étape suivante.",
+      "checkout": "PASSER AU PAIEMENT",
+      "view_cart": "VOIR LE PANIER",
+      "empty": "VOTRE PANIER EST VIDE.",
+      "discover_creations": "DÉCOUVRIR NOS CRÉATIONS",
+      "discover_products": "DÉCOUVRIR NOS PRODUITS"
+    },
 
-  "errors": {
-    "load_cart": "Impossible de charger le panier.",
-    "update_cart": "Impossible de modifier le panier.",
-    "add_product": "Impossible d’ajouter ce produit.",
-    "unexpected": "Une erreur est survenue.",
-    "no_variant": "POUR : aucune variante sélectionnée.",
-    "cart_prefix": "POUR Cart:",
-    "add_cart_prefix": "POUR — ajout panier :"
+    "errors": {
+      "load_cart": "Impossible de charger le panier.",
+      "update_cart": "Impossible de modifier le panier.",
+      "add_product": "Impossible d’ajouter ce produit.",
+      "unexpected": "Une erreur est survenue.",
+      "no_variant": "POUR : aucune variante sélectionnée.",
+      "cart_prefix": "POUR Cart:",
+      "add_cart_prefix": "POUR — ajout panier :"
+    }
   }
 }
