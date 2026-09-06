@@ -1,4 +1,4 @@
-"header": {
+"pour_header": {
   "navigation": {
     "shop": "BOUTIQUE",
     "clothing": "VÊTEMENTS",
@@ -11,13 +11,16 @@
     "brand": "LA MARQUE",
     "contact": "CONTACT"
   },
+
   "account": "COMPTE",
   "cart": "PANIER",
+
   "mobile": {
     "open_menu": "Ouvrir le menu",
     "close_menu": "Fermer le menu",
     "open_shop": "Ouvrir Boutique"
   },
+
   "cart_drawer": {
     "close": "Fermer le panier",
     "decrease_quantity": "Réduire la quantité",
@@ -31,6 +34,7 @@
     "discover_creations": "DÉCOUVRIR NOS CRÉATIONS",
     "discover_products": "DÉCOUVRIR NOS PRODUITS"
   },
+
   "errors": {
     "load_cart": "Impossible de charger le panier.",
     "update_cart": "Impossible de modifier le panier.",
