@@ -191,6 +191,10 @@
   "preorder": "Preordina",
   "unavailable": "Prodotto non disponibile"
 },
+"pour_recommendations": {
+  "heading": "POTREBBE PIACERTI ANCHE",
+  "quick_add_aria": "Aggiunta rapida"
+},
   "pour_products": {
   "quick_add_aria": "Aggiunta rapida",
   "close": "Chiudi",
