@@ -10,16 +10,16 @@
 
 
       <!-- =================================================
-           BOUTIQUE + MEGA MENU
+           {{ 'header.navigation.shop' | t }} + MEGA MENU
       ================================================== -->
 
       <div class="site-header__item site-header__item--dropdown">
 
         <a
-          href="/pages/boutique"
+          href="{{ routes.root_url }}pages/boutique"
           class="site-header__link"
         >
-          BOUTIQUE
+          {{ 'header.navigation.shop' | t }}
         </a>
 
 
@@ -37,15 +37,15 @@
               <div class="site-header__mega-column">
 
                 <p class="site-header__mega-heading">
-                  VÊTEMENTS
+                  {{ 'header.navigation.clothing' | t }}
                 </p>
 
 
                 <a
-                  href="/pages/collection-001"
+                  href="{{ routes.root_url }}pages/collection-001"
                   class="site-header__mega-collection site-header__mega-link"
                 >
-                  COLLECTION 001
+                  {{ 'header.navigation.collection_001' | t }}
                 </a>
 
 
@@ -57,7 +57,7 @@
                       href="{{ section.settings.all_link }}"
                       class="site-header__mega-link"
                     >
-                      Tous
+                      {{ 'header.navigation.all' | t }}
                     </a>
 
                   {% endif %}
@@ -69,7 +69,7 @@
                       href="{{ section.settings.tshirts_link }}"
                       class="site-header__mega-link"
                     >
-                      T-Shirts
+                      {{ 'header.navigation.tshirts' | t }}
                     </a>
 
                   {% endif %}
@@ -81,7 +81,7 @@
                       href="{{ section.settings.hoodies_link }}"
                       class="site-header__mega-link"
                     >
-                      Hoodies
+                      {{ 'header.navigation.hoodies' | t }}
                     </a>
 
                   {% endif %}
@@ -93,7 +93,7 @@
                       href="{{ section.settings.sweatshirts_link }}"
                       class="site-header__mega-link"
                     >
-                      Sweatshirts
+                      {{ 'header.navigation.sweatshirts' | t }}
                     </a>
 
                   {% endif %}
@@ -217,37 +217,37 @@
 
 
       <!-- =================================================
-           CLUB PRIVILÈGES
+           {{ 'header.navigation.club_privileges' | t }}
       ================================================== -->
 
       <a
-        href="/pages/club-privileges"
+        href="{{ routes.root_url }}pages/club-privileges"
         class="site-header__link"
       >
-        CLUB PRIVILÈGES
+        {{ 'header.navigation.club_privileges' | t }}
       </a>
 
 
       <!-- =================================================
-           LA MARQUE
+           {{ 'header.navigation.brand' | t }}
       ================================================== -->
 
       <a
-        href="/pages/la-marque"
+        href="{{ routes.root_url }}pages/la-marque"
         class="site-header__link"
       >
-        LA MARQUE
+        {{ 'header.navigation.brand' | t }}
       </a>
 
  <!-- =================================================
-           CONTACT
+           {{ 'header.navigation.contact' | t }}
       ================================================== -->
 
       <a
-        href="/pages/contact"
+        href="{{ routes.root_url }}pages/contact"
         class="site-header__link"
       >
-        CONTACT
+        {{ 'header.navigation.contact' | t }}
       </a>
     </nav>
 
@@ -297,7 +297,7 @@
     >
 
       <span class="site-header__desktop-label">
-        COMPTE
+        {{ 'header.account' | t }}
       </span>
 
       <svg
@@ -327,7 +327,7 @@
     >
 
       <span class="site-header__desktop-label">
-        PANIER{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+        {{ 'header.cart' | t }}{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
       </span>
 
       <svg
@@ -352,7 +352,7 @@
     type="button"
     class="site-header__burger"
     data-mobile-menu-open
-    aria-label="Ouvrir le menu"
+    aria-label="{{ 'header.mobile.open_menu' | t }}"
     aria-expanded="false"
   >
     <span></span>
@@ -374,7 +374,7 @@
       type="button"
       class="mobile-menu__close"
       data-mobile-menu-close
-      aria-label="Fermer le menu"
+      aria-label="{{ 'header.mobile.close_menu' | t }}"
     >
       <span></span>
       <span></span>
@@ -395,18 +395,18 @@
   <div class="mobile-menu__submenu-head">
 
     <a
-      href="/pages/boutique"
+      href="{{ routes.root_url }}pages/boutique"
       class="mobile-menu__main-link"
       data-mobile-boutique-link
     >
-      BOUTIQUE
+      {{ 'header.navigation.shop' | t }}
     </a>
 
     <button
       type="button"
       class="mobile-menu__plus"
       data-mobile-submenu-button
-      aria-label="Ouvrir Boutique"
+      aria-label="{{ 'header.mobile.open_shop' | t }}"
       aria-expanded="false"
     >
       <span></span>
@@ -422,14 +422,14 @@
   >
 
     <span class="mobile-menu__subheading">
-      VÊTEMENTS
+      {{ 'header.navigation.clothing' | t }}
     </span>
 
     <a
-      href="/pages/collection-001"
+      href="{{ routes.root_url }}pages/collection-001"
       class="mobile-menu__sublink"
     >
-      COLLECTION 001
+      {{ 'header.navigation.collection_001' | t }}
     </a>
 
   </div>
@@ -440,28 +440,28 @@
   <!-- CLUB PRIVILÈGES -->
 
   <a
-    href="/pages/club-privileges"
+    href="{{ routes.root_url }}pages/club-privileges"
     class="mobile-menu__main-link"
   >
-    CLUB PRIVILÈGES
+    {{ 'header.navigation.club_privileges' | t }}
   </a>
 
 <!-- LA MARQUE -->
 
   <a
-    href="/pages/la-marque"
+    href="{{ routes.root_url }}pages/la-marque"
     class="mobile-menu__main-link"
   >
-    LA MARQUE
+    {{ 'header.navigation.brand' | t }}
   </a>
 
   <!-- CONTACT -->
 
   <a
-    href="/pages/contact"
+    href="{{ routes.root_url }}pages/contact"
     class="mobile-menu__main-link"
   >
-    CONTACT
+    {{ 'header.navigation.contact' | t }}
   </a>
 
 </nav>
@@ -470,7 +470,7 @@
   <div class="mobile-menu__bottom">
 
     <a href="{{ routes.account_url }}">
-      COMPTE
+      {{ 'header.account' | t }}
     </a>
 
     <button
@@ -511,7 +511,7 @@
   <div class="cart-drawer__header">
 
     <p class="cart-drawer__title">
-      PANIER
+      {{ 'header.cart' | t }}
     </p>
 
 
@@ -519,7 +519,7 @@
       type="button"
       class="cart-drawer__close"
       data-cart-drawer-close
-      aria-label="Fermer le panier"
+      aria-label="{{ 'header.cart_drawer.close' | t }}"
     >
       ×
     </button>
@@ -616,7 +616,7 @@
   data-cart-change
   data-key="{{ item.key }}"
   data-quantity="{{ item.quantity | minus: 1 }}"
-  aria-label="Réduire la quantité"
+  aria-label="{{ 'header.cart_drawer.decrease_quantity' | t }}"
 >
   −
 </button>
@@ -630,7 +630,7 @@
   data-cart-change
   data-key="{{ item.key }}"
   data-quantity="{{ item.quantity | plus: 1 }}"
-  aria-label="Augmenter la quantité"
+  aria-label="{{ 'header.cart_drawer.increase_quantity' | t }}"
 >
   +
 </button>
@@ -644,7 +644,7 @@
   data-key="{{ item.key }}"
   data-quantity="0"
 >
-  SUPPRIMER
+  {{ 'header.cart_drawer.remove' | t }}
 </button>
 
             </div>
@@ -667,7 +667,7 @@
       <div class="cart-drawer__total">
 
         <span>
-          SOUS-TOTAL
+          {{ 'header.cart_drawer.subtotal' | t }}
         </span>
 
        <span data-cart-total>
@@ -678,7 +678,7 @@
 
 
       <p class="cart-drawer__shipping">
-        Livraison et taxes calculées à l’étape suivante.
+        {{ 'header.cart_drawer.shipping_taxes' | t }}
       </p>
 
 
@@ -694,7 +694,7 @@
         >
 
           <span>
-            PASSER AU PAIEMENT
+            {{ 'header.cart_drawer.checkout' | t }}
           </span>
 
           <span aria-hidden="true">
@@ -710,7 +710,7 @@
         href="{{ routes.cart_url }}"
         class="cart-drawer__view-cart"
       >
-        VOIR LE PANIER
+        {{ 'header.cart_drawer.view_cart' | t }}
       </a>
 
     </div>
@@ -726,12 +726,12 @@
     <div class="cart-drawer__empty">
 
       <p>
-        VOTRE PANIER EST VIDE.
+        {{ 'header.cart_drawer.empty' | t }}
       </p>
 
 
-      <a href="/pages/boutique?view=vetements">
-        DÉCOUVRIR NOS CRÉATIONS
+      <a href="{{ routes.root_url }}pages/boutique?view=vetements">
+        {{ 'header.cart_drawer.discover_creations' | t }}
       </a>
 
     </div>
@@ -1184,7 +1184,7 @@ z-index: 99999;
 
 
 /* =========================================================
-   SUPPRIMER
+   {{ 'header.cart_drawer.remove' | t }}
 ========================================================= */
 
 .cart-drawer__remove {
@@ -1359,7 +1359,7 @@ z-index: 99999;
 
 
 /* =========================================================
-   VOIR LE PANIER
+   {{ 'header.cart_drawer.view_cart' | t }}
 ========================================================= */
 
 .cart-drawer__view-cart {
@@ -1541,7 +1541,13 @@ z-index: 99999;
     try {
 
       return new Intl.NumberFormat(
-        'fr-FR',
+        '{{ request.locale.iso_code }}' === 'fr'
+          ? 'fr-FR'
+          : '{{ request.locale.iso_code }}' === 'pt'
+            ? 'pt-PT'
+            : '{{ request.locale.iso_code }}' === 'en'
+              ? 'en-US'
+              : '{{ request.locale.iso_code }}-{{ request.locale.iso_code | upcase }}',
         {
           style: 'currency',
           currency: getCurrency()
@@ -1710,8 +1716,8 @@ document.body.classList.remove(
 
         button.textContent =
           cart.item_count > 0
-            ? `PANIER (${cart.item_count})`
-            : 'PANIER';
+            ? `{{ 'header.cart' | t }} (${cart.item_count})`
+            : '{{ 'header.cart' | t }}';
 
       });
 
@@ -1743,7 +1749,7 @@ document.body.classList.remove(
 
     if (!response.ok) {
       throw new Error(
-        'Impossible de charger le panier.'
+        '{{ 'header.errors.load_cart' | t }}'
       );
     }
 
@@ -1778,14 +1784,14 @@ document.body.classList.remove(
         <div class="cart-drawer__header">
 
           <p class="cart-drawer__title">
-            PANIER
+            {{ 'header.cart' | t }}
           </p>
 
           <button
             type="button"
             class="cart-drawer__close"
             data-cart-drawer-close
-            aria-label="Fermer le panier"
+            aria-label="{{ 'header.cart_drawer.close' | t }}"
           >
             ×
           </button>
@@ -1796,11 +1802,11 @@ document.body.classList.remove(
         <div class="cart-drawer__empty">
 
           <p>
-            VOTRE PANIER EST VIDE.
+            {{ 'header.cart_drawer.empty' | t }}
           </p>
 
-          <a href="/pages/boutique?view=vetements">
-            DÉCOUVRIR NOS PRODUITS
+          <a href="{{ routes.root_url }}pages/boutique?view=vetements">
+            {{ 'header.cart_drawer.discover_products' | t }}
           </a>
 
         </div>
@@ -1891,7 +1897,7 @@ document.body.classList.remove(
             data-cart-change
             data-key="${escapeHTML(item.key)}"
             data-quantity="${Math.max(0, item.quantity - 1)}"
-            aria-label="Réduire la quantité"
+            aria-label="{{ 'header.cart_drawer.decrease_quantity' | t }}"
           >
             −
           </button>
@@ -1907,7 +1913,7 @@ document.body.classList.remove(
             data-cart-change
             data-key="${escapeHTML(item.key)}"
             data-quantity="${item.quantity + 1}"
-            aria-label="Augmenter la quantité"
+            aria-label="{{ 'header.cart_drawer.increase_quantity' | t }}"
           >
             +
           </button>
@@ -1922,7 +1928,7 @@ document.body.classList.remove(
           data-key="${escapeHTML(item.key)}"
           data-quantity="0"
         >
-          SUPPRIMER
+          {{ 'header.cart_drawer.remove' | t }}
         </button>
 
       </div>
@@ -1943,7 +1949,7 @@ document.body.classList.remove(
       <div class="cart-drawer__header">
 
         <p class="cart-drawer__title">
-          PANIER
+          {{ 'header.cart' | t }}
         </p>
 
 
@@ -1951,7 +1957,7 @@ document.body.classList.remove(
           type="button"
           class="cart-drawer__close"
           data-cart-drawer-close
-          aria-label="Fermer le panier"
+          aria-label="{{ 'header.cart_drawer.close' | t }}"
         >
           ×
         </button>
@@ -1969,7 +1975,7 @@ document.body.classList.remove(
         <div class="cart-drawer__total">
 
           <span>
-            SOUS-TOTAL
+            {{ 'header.cart_drawer.subtotal' | t }}
           </span>
 
           <span data-cart-total>
@@ -1980,7 +1986,7 @@ document.body.classList.remove(
 
 
         <p class="cart-drawer__shipping">
-          Livraison et taxes calculées à l’étape suivante.
+          {{ 'header.cart_drawer.shipping_taxes' | t }}
         </p>
 
 
@@ -1996,7 +2002,7 @@ document.body.classList.remove(
           >
 
             <span>
-              PASSER AU PAIEMENT
+              {{ 'header.cart_drawer.checkout' | t }}
             </span>
 
             <span aria-hidden="true">
@@ -2012,7 +2018,7 @@ document.body.classList.remove(
           href="${root}cart"
           class="cart-drawer__view-cart"
         >
-          VOIR LE PANIER
+          {{ 'header.cart_drawer.view_cart' | t }}
         </a>
 
       </div>
@@ -2228,7 +2234,7 @@ if (changeButton) {
 
 
   /*
-    SUPPRIMER :
+    {{ 'header.cart_drawer.remove' | t }} :
     on ne détruit pas immédiatement le HTML,
     mais on atténue légèrement le produit pendant
     la requête pour garder quelque chose de fluide.
@@ -2274,7 +2280,7 @@ if (changeButton) {
     if (!response.ok) {
 
       throw new Error(
-        'Impossible de modifier le panier.'
+        '{{ 'header.errors.update_cart' | t }}'
       );
 
     }
@@ -2339,7 +2345,7 @@ if (changeButton) {
   } catch (error) {
 
     console.error(
-      'POUR Cart:',
+      '{{ 'header.errors.cart_prefix' | t }}',
       error
     );
 
@@ -2435,7 +2441,7 @@ document.addEventListener(
 
     if (!variantId) {
       console.error(
-        'POUR : aucune variante sélectionnée.'
+        '{{ 'header.errors.no_variant' | t }}'
       );
       return;
     }
@@ -2476,7 +2482,7 @@ document.addEventListener(
         throw new Error(
           result.description ||
           result.message ||
-          'Impossible d’ajouter ce produit.'
+          '{{ 'header.errors.add_product' | t }}'
         );
 
       }
@@ -2537,13 +2543,13 @@ document.addEventListener(
     } catch (error) {
 
       console.error(
-        'POUR — ajout panier :',
+        '{{ 'header.errors.add_cart_prefix' | t }}',
         error
       );
 
       alert(
         error.message ||
-        'Une erreur est survenue.'
+        '{{ 'header.errors.unexpected' | t }}'
       );
 
 
