@@ -549,5 +549,29 @@
     "contact_label": "Precisa de mais ajuda?",
     "contact_text": "A nossa equipa está disponível para responder às suas questões. Contacte-nos através de contact@clubpour.fr ou utilize o nosso formulário de contacto. Respondemos no prazo de 24 a 48 horas úteis.",
     "contact_link": "Contacte-nos"
+  },
+    "cart_pour": {
+    "eyebrow": "POUR",
+    "title": "CARRINHO",
+    "products": "PRODUTOS",
+    "article_singular": "ARTIGO",
+    "article_plural": "ARTIGOS",
+    "decrease": "Reduzir quantidade",
+    "increase": "Aumentar quantidade",
+    "remove": "REMOVER",
+    "continue": "← CONTINUAR AS COMPRAS",
+    "summary": "RESUMO",
+    "subtotal": "SUBTOTAL",
+    "shipping_note": "Os custos de envio são calculados no passo seguinte.",
+    "checkout": "AVANÇAR PARA PAGAMENTO",
+    "payment_label": "PAGAMENTO",
+    "secure_payment": "Pagamento seguro",
+    "delivery_label": "ENTREGA",
+    "tracking_available": "Acompanhamento da encomenda disponível",
+    "returns_label": "DEVOLUÇÕES",
+    "return_policy": "Consulte a nossa política de devoluções",
+    "empty_title": "O SEU CARRINHO ESTÁ VAZIO.",
+    "empty_text": "Descubra a Coleção 001 e encontre a próxima peça que o acompanhará.",
+    "empty_button": "DESCOBRIR AS NOSSAS CRIAÇÕES"
   }
 }
