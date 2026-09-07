@@ -199,6 +199,76 @@
   "pour_common": {
   "view_product": "VIEW PRODUCT"
 },
+"club_privileges": {
+  "hero_eyebrow": "CLUB POUR",
+  "hero_heading": "PRIVILEGE CLUB",
+  "hero_email_placeholder": "YOUR EMAIL",
+  "join": "JOIN THE CLUB",
+  "already_registered": "YOU ARE ALREADY REGISTERED",
+  "already_registered_error": "YOU ARE ALREADY REGISTERED WITH CLUB POUR.",
+  "signup_confirmed": "REGISTRATION CONFIRMED",
+  "signup_success": "Your Club POUR registration has been confirmed.<br>Keep an eye on your inbox for the next private access.",
+  "hero_launch": "PRIVILEGED ACCESS TO THE POUR UNIVERSE",
+
+  "manifesto_kicker": "CLUB POUR",
+  "manifesto_heading": "MORE THAN ACCESS.<br>A HEAD START.",
+  "manifesto_text": "The Club POUR opens the doors to our universe before everyone else. Early collections, exclusive series and privileges reserved for members.",
+
+  "benefits_kicker": "PRIVILEGE CLUB",
+  "benefits_heading": "FOR THOSE WHO<br>WANT TO GO<br>FIRST.",
+
+  "benefit_1_label": "EARLY ACCESS",
+  "benefit_1_title": "EARLY<br>RELEASE",
+  "benefit_1_text": "Discover and order our new drops before their official launch.",
+
+  "benefit_2_label": "MEMBERS ONLY",
+  "benefit_2_title": "CLUB<br>EXCLUSIVES",
+  "benefit_2_text": "Limited series created exclusively for Club POUR members.",
+
+  "benefit_3_label": "PRIVATE SALES",
+  "benefit_3_title": "PRIVATE<br>SALES",
+  "benefit_3_text": "Access offers and sale periods reserved exclusively for the Club.",
+
+  "benefit_4_label": "PRIORITY",
+  "benefit_4_title": "PRIORITY<br>ACCESS",
+  "benefit_4_text": "Get priority access to selected pieces, restocks and limited quantities.",
+
+  "exclusive_kicker": "CLUB EXCLUSIVE — 001",
+  "exclusive_heading": "SOME PIECES<br>WILL NEVER<br>BE SOLD.",
+  "exclusive_text": "Limited series produced in small quantities, created exclusively for Club POUR members.",
+  "exclusive_signature": "MEMBERS ONLY",
+
+  "stats_kicker": "THE CLUB",
+  "stats_intro": "THE ADVANTAGE OF<br>ALWAYS BEING ONE STEP AHEAD.",
+  "stat_1": "OF EARLY<br>ACCESS",
+  "stat_2": "SERIES RESERVED<br>FOR THE CLUB",
+  "stat_3": "OFFERS &<br>PRIVATE SALES",
+  "limited": "LIMITED",
+  "private": "PRIVATE",
+
+  "editorial_eyebrow": "CLUB POUR",
+  "editorial_heading": "BEFORE<br>EVERYONE<br>ELSE.",
+  "editorial_text": "CLUB MEMBERS GO FIRST.",
+
+  "how_kicker": "THE CLUB",
+  "how_heading": "HOW<br>DOES IT WORK?",
+
+  "how_join": "JOIN",
+  "how_join_title": "JOIN<br>THE CLUB",
+  "how_join_text": "Sign up simply with your email address.",
+
+  "how_discover": "DISCOVER",
+  "how_discover_title": "RECEIVE<br>YOUR ACCESS",
+  "how_discover_text": "We’ll let you know whenever new private access becomes available.",
+
+  "how_enjoy": "ENJOY",
+  "how_enjoy_title": "ENJOY THE<br>PRIVILEGES",
+  "how_enjoy_text": "Early access, exclusives, private sales and priority access.",
+
+  "final_eyebrow": "CLUB POUR",
+  "final_heading": "GET A<br>HEAD START.",
+  "final_small": "FREE ACCESS — RESERVED FOR REGISTERED MEMBERS"
+},
   "pour_product": {
     "gallery_previous": "Previous image",
     "gallery_next": "Next image",
