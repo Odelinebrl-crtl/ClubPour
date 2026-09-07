@@ -10,16 +10,15 @@
   <div class="contact-pour__intro">
 
     <p class="contact-pour__eyebrow">
-      POUR — SERVICE CLIENT
+      {{ 'contact_pour.eyebrow' | t }}
     </p>
 
     <h1 class="contact-pour__title">
-      CONTACT
+      {{ 'contact_pour.title' | t }}
     </h1>
 
     <p class="contact-pour__lead">
-      Une question sur une commande, un produit ou un retour ?
-      Notre équipe est là pour vous répondre.
+      {{ 'contact_pour.lead' | t }}
     </p>
 
   </div>
@@ -41,7 +40,7 @@
       <div class="contact-pour__info-block">
 
         <p class="contact-pour__label">
-          EMAIL
+          {{ 'contact_pour.email_label' | t }}
         </p>
 
         <a
@@ -59,7 +58,7 @@
         <div class="contact-pour__info-block">
 
           <p class="contact-pour__label">
-            TÉLÉPHONE
+            {{ 'contact_pour.phone_label' | t }}
           </p>
 
           <a
@@ -77,11 +76,11 @@
       <div class="contact-pour__info-block">
 
         <p class="contact-pour__label">
-          HORAIRES
+          {{ 'contact_pour.hours_label' | t }}
         </p>
 
         <p class="contact-pour__info-text">
-          {{ section.settings.hours }}
+          {{ 'contact_pour.hours_value' | t }}
         </p>
 
       </div>
@@ -90,11 +89,11 @@
       <div class="contact-pour__info-block">
 
         <p class="contact-pour__label">
-          DÉLAI DE RÉPONSE
+          {{ 'contact_pour.response_time_label' | t }}
         </p>
 
         <p class="contact-pour__info-text">
-          {{ section.settings.response_time }}
+          {{ 'contact_pour.response_time_value' | t }}
         </p>
 
       </div>
@@ -105,7 +104,7 @@
         <div class="contact-pour__info-block">
 
           <p class="contact-pour__label">
-            ADRESSE
+            {{ 'contact_pour.address_label' | t }}
           </p>
 
           <p class="contact-pour__info-text">
@@ -131,7 +130,7 @@
         {% if form.posted_successfully? %}
 
           <div class="contact-pour__success">
-            Votre demande a bien été envoyée. Nous reviendrons vers vous rapidement.
+            {{ 'contact_pour.success' | t }}
           </div>
 
         {% endif %}
@@ -147,7 +146,7 @@
           <div class="contact-pour__field">
 
             <label for="ContactFirstName-{{ section.id }}">
-              PRÉNOM
+              {{ 'contact_pour.first_name' | t }}
             </label>
 
             <input
@@ -164,7 +163,7 @@
           <div class="contact-pour__field">
 
             <label for="ContactLastName-{{ section.id }}">
-              NOM
+              {{ 'contact_pour.last_name' | t }}
             </label>
 
             <input
@@ -188,7 +187,7 @@
           <div class="contact-pour__field">
 
             <label for="ContactEmail-{{ section.id }}">
-              EMAIL
+              {{ 'contact_pour.email_label' | t }}
             </label>
 
             <input
@@ -205,7 +204,7 @@
           <div class="contact-pour__field">
 
             <label for="ContactPhone-{{ section.id }}">
-              TÉLÉPHONE
+              {{ 'contact_pour.phone_label' | t }}
             </label>
 
             <input
@@ -226,7 +225,7 @@
         <div class="contact-pour__field">
 
           <label for="ContactReason-{{ section.id }}">
-            MOTIF DE LA DEMANDE
+            {{ 'contact_pour.reason_label' | t }}
           </label>
 
           <select
@@ -236,35 +235,35 @@
             required
           >
             <option value="">
-              Sélectionnez une option
+              {{ 'contact_pour.reason_placeholder' | t }}
             </option>
 
-            <option value="Question générale">
-              Question générale
+            <option value="general">
+              {{ 'contact_pour.reason_general' | t }}
             </option>
 
-            <option value="Question produit">
-              Question produit
+            <option value="product">
+              {{ 'contact_pour.reason_product' | t }}
             </option>
 
-            <option value="Suivi de commande">
-              Suivi de commande
+            <option value="order_tracking">
+              {{ 'contact_pour.reason_order_tracking' | t }}
             </option>
 
-            <option value="Retour">
-              Retour
+            <option value="return">
+              {{ 'contact_pour.reason_return' | t }}
             </option>
 
-            <option value="Échange">
-              Échange
+            <option value="exchange">
+              {{ 'contact_pour.reason_exchange' | t }}
             </option>
 
-            <option value="Problème de livraison">
-              Problème de livraison
+            <option value="delivery_issue">
+              {{ 'contact_pour.reason_delivery_issue' | t }}
             </option>
 
-            <option value="Autre">
-              Autre
+            <option value="other">
+              {{ 'contact_pour.reason_other' | t }}
             </option>
           </select>
 
@@ -280,7 +279,7 @@
         >
 
           <label for="ContactOrder-{{ section.id }}">
-            NUMÉRO DE COMMANDE
+            {{ 'contact_pour.order_number' | t }}
           </label>
 
           <input
@@ -299,7 +298,7 @@
         <div class="contact-pour__field">
 
           <label for="ContactMessage-{{ section.id }}">
-            MESSAGE
+            {{ 'contact_pour.message' | t }}
           </label>
 
           <textarea
@@ -320,7 +319,7 @@
           class="contact-pour__submit"
         >
           <span>
-            ENVOYER
+            {{ 'contact_pour.submit' | t }}
           </span>
 
           <span aria-hidden="true">
@@ -345,11 +344,11 @@
     <div class="contact-pour__help-header">
 
       <p class="contact-pour__eyebrow">
-        BESOIN D’AIDE ?
+        {{ 'contact_pour.help_kicker' | t }}
       </p>
 
       <h2 class="contact-pour__help-title">
-        LES DEMANDES LES PLUS COURANTES.
+        {{ 'contact_pour.help_title' | t }}
       </h2>
 
     </div>
@@ -365,12 +364,11 @@
         </span>
 
         <h3>
-          SUIVI DE COMMANDE
+          {{ 'contact_pour.help_order_title' | t }}
         </h3>
 
         <p>
-          Retrouvez les informations concernant la préparation,
-          l’expédition et la livraison de votre commande.
+          {{ 'contact_pour.help_order_text' | t }}
         </p>
 
       </div>
@@ -383,12 +381,11 @@
         </span>
 
         <h3>
-          RETOURS & ÉCHANGES
+          {{ 'contact_pour.help_returns_title' | t }}
         </h3>
 
         <p>
-          Une taille ne convient pas ou vous souhaitez effectuer
-          un retour ? Sélectionnez directement la demande dans le formulaire.
+          {{ 'contact_pour.help_returns_text' | t }}
         </p>
 
       </div>
@@ -401,12 +398,11 @@
         </span>
 
         <h3>
-          PRODUITS
+          {{ 'contact_pour.help_products_title' | t }}
         </h3>
 
         <p>
-          Coupe, taille, entretien ou disponibilité :
-          contactez-nous pour toute question liée à nos pièces.
+          {{ 'contact_pour.help_products_text' | t }}
         </p>
 
       </div>
@@ -419,12 +415,11 @@
         </span>
 
         <h3>
-          LIVRAISON
+          {{ 'contact_pour.help_delivery_title' | t }}
         </h3>
 
         <p>
-          Une question sur les délais, les pays desservis
-          ou votre colis ? Notre équipe peut vous accompagner.
+          {{ 'contact_pour.help_delivery_text' | t }}
         </p>
 
       </div>
@@ -1039,10 +1034,10 @@ body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
 
       const needsOrderNumber =
         [
-          'Suivi de commande',
-          'Retour',
-          'Échange',
-          'Problème de livraison'
+          'order_tracking',
+          'return',
+          'exchange',
+          'delivery_issue'
         ].includes(value);
 
 
