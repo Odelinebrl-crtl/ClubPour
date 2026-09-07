@@ -347,6 +347,42 @@
   "pour_recommendations": {
     "heading": "YOU MAY ALSO LIKE",
     "quick_add_aria": "Quick add"
+  },
+  "contact_pour": {
+    "eyebrow": "POUR — CUSTOMER SERVICE",
+    "title": "CONTACT",
+    "lead": "Have a question about an order, a product or a return? Our team is here to help.",
+    "email_label": "EMAIL",
+    "phone_label": "PHONE",
+    "hours_label": "OPENING HOURS",
+    "response_time_label": "RESPONSE TIME",
+    "address_label": "ADDRESS",
+    "success": "Your request has been sent successfully. We’ll get back to you shortly.",
+    "first_name": "FIRST NAME",
+    "last_name": "LAST NAME",
+    "reason_label": "REASON FOR CONTACT",
+    "reason_placeholder": "Select an option",
+    "reason_general": "General question",
+    "reason_product": "Product question",
+    "reason_order_tracking": "Order tracking",
+    "reason_return": "Return",
+    "reason_exchange": "Exchange",
+    "reason_delivery_issue": "Delivery issue",
+    "reason_other": "Other",
+    "order_number": "ORDER NUMBER",
+    "message": "MESSAGE",
+    "submit": "SEND",
+    "help_kicker": "NEED HELP?",
+    "help_title": "THE MOST COMMON REQUESTS.",
+    "help_order_title": "ORDER TRACKING",
+    "help_order_text": "Find information about the preparation, dispatch and delivery of your order.",
+    "help_returns_title": "RETURNS & EXCHANGES",
+    "help_returns_text": "Does a size not fit or would you like to make a return? Select the relevant request directly in the form.",
+    "help_products_title": "PRODUCTS",
+    "help_products_text": "Fit, sizing, care or availability: contact us with any question about our pieces.",
+    "help_delivery_title": "DELIVERY",
+    "help_delivery_text": "Questions about delivery times, available countries or your parcel? Our team is here to help.",
+    "hours_value": "Monday — Friday · 9 AM — 6 PM",
+    "response_time_value": "Within 24 to 48 business hours"
   }
 }
-
