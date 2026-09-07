@@ -5654,8 +5654,9 @@ html {
 @media screen and (max-width: 750px) {
 
   .pour-quickview {
-    width: calc(100vw - 24px);
-    max-height: calc(100vh - 24px);
+    width: calc(100vw - 28px);
+    max-height: calc(100svh - 32px);
+    overflow-y: auto;
   }
 
   .pour-quickview__content {
@@ -5663,11 +5664,40 @@ html {
 
     min-height: 0;
 
-    padding: 60px 22px 35px;
+    padding: 42px 18px 24px;
+  }
+
+  .pour-quickview__media {
+    padding: 0;
+  }
+
+  .pour-quickview__image {
+    width: auto;
+    max-width: 68%;
+    max-height: 30svh;
   }
 
   .pour-quickview__info {
-    padding: 30px 0 0;
+    padding: 22px 0 0;
+  }
+
+  .pour-quickview__options {
+    margin-top: 22px;
+  }
+
+  .pour-quickview__submit {
+    height: 44px;
+    margin-top: 22px;
+  }
+
+  .pour-quickview__details {
+    margin-top: 16px;
+    padding-bottom: 3px;
+  }
+
+  .pour-quickview__close {
+    top: 14px;
+    right: 14px;
   }
 
 }
