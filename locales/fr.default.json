@@ -101,6 +101,76 @@
   "heading": "TU AIMERAIS PEUT-ÊTRE AUSSI",
   "quick_add_aria": "Ajouter rapidement"
 },
+"club_privileges": {
+  "hero_eyebrow": "CLUB POUR",
+  "hero_heading": "CLUB PRIVILÈGES",
+  "hero_email_placeholder": "VOTRE EMAIL",
+  "join": "REJOIGNEZ LE CLUB",
+  "already_registered": "VOUS ÊTES DÉJÀ INSCRIT",
+  "already_registered_error": "VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.",
+  "signup_confirmed": "INSCRIPTION CONFIRMÉE",
+  "signup_success": "Votre inscription au Club POUR a bien été prise en compte.<br>Surveillez votre boîte mail pour découvrir les prochains accès privés.",
+  "hero_launch": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR",
+
+  "manifesto_kicker": "CLUB POUR",
+  "manifesto_heading": "PLUS QU’UN ACCÈS.<br>UNE LONGUEUR D’AVANCE.",
+  "manifesto_text": "Le Club POUR vous ouvre les portes de notre univers avant tout le monde. Collections en avant-première, séries exclusives et privilèges réservés à nos membres.",
+
+  "benefits_kicker": "CLUB PRIVILÈGES",
+  "benefits_heading": "POUR CEUX QUI<br>VEULENT PASSER<br>EN PREMIER.",
+
+  "benefit_1_label": "ACCÈS ANTICIPÉ",
+  "benefit_1_title": "AVANT-<br>PREMIÈRE",
+  "benefit_1_text": "Découvrez et commandez nos nouveaux drops avant leur lancement officiel.",
+
+  "benefit_2_label": "RÉSERVÉ AUX MEMBRES",
+  "benefit_2_title": "EXCLUSIVITÉS<br>DU CLUB",
+  "benefit_2_text": "Des séries limitées imaginées uniquement pour les membres du Club POUR.",
+
+  "benefit_3_label": "VENTES PRIVÉES",
+  "benefit_3_title": "VENTES<br>PRIVÉES",
+  "benefit_3_text": "Accédez à des offres et périodes de soldes exclusivement réservées au Club.",
+
+  "benefit_4_label": "PRIORITÉ",
+  "benefit_4_title": "ACCÈS<br>PRIORITAIRE",
+  "benefit_4_text": "Soyez prioritaire sur certaines pièces, réassorts et quantités limitées.",
+
+  "exclusive_kicker": "CLUB EXCLUSIVE — 001",
+  "exclusive_heading": "CERTAINES PIÈCES<br>NE SERONT JAMAIS<br>MISES EN VENTE.",
+  "exclusive_text": "Des séries produites en quantités limitées, imaginées exclusivement pour les membres du Club POUR.",
+  "exclusive_signature": "RÉSERVÉ AUX MEMBRES",
+
+  "stats_kicker": "LE CLUB",
+  "stats_intro": "L’AVANTAGE D’AVOIR<br>TOUJOURS UN TEMPS D’AVANCE.",
+  "stat_1": "D’ACCÈS EN<br>AVANT-PREMIÈRE",
+  "stat_2": "SÉRIES RÉSERVÉES<br>AU CLUB",
+  "stat_3": "OFFRES &<br>VENTES PRIVÉES",
+  "limited": "LIMITÉ",
+  "private": "PRIVÉ",
+
+  "editorial_eyebrow": "CLUB POUR",
+  "editorial_heading": "AVANT<br>TOUT LE MONDE<br>AUTRE.",
+  "editorial_text": "LES MEMBRES DU CLUB PASSENT EN PREMIER.",
+
+  "how_kicker": "LE CLUB",
+  "how_heading": "COMMENT<br>ÇA MARCHE ?",
+
+  "how_join": "REJOINDRE",
+  "how_join_title": "REJOIGNEZ<br>LE CLUB",
+  "how_join_text": "Inscrivez-vous simplement avec votre adresse email.",
+
+  "how_discover": "DÉCOUVRIR",
+  "how_discover_title": "RECEVEZ<br>VOTRE ACCÈS",
+  "how_discover_text": "Nous vous prévenons dès qu’un nouvel accès privé est disponible.",
+
+  "how_enjoy": "PROFITER",
+  "how_enjoy_title": "PROFITEZ DES<br>PRIVILÈGES",
+  "how_enjoy_text": "Avant-premières, exclusivités, ventes privées et accès prioritaires.",
+
+  "final_eyebrow": "CLUB POUR",
+  "final_heading": "PRENEZ UNE<br>LONGUEUR D’AVANCE.",
+  "final_small": "ACCÈS GRATUIT — RÉSERVÉ AUX MEMBRES INSCRITS"
+},
   "pour_product": {
     "gallery_previous": "Image précédente",
     "gallery_next": "Image suivante",
