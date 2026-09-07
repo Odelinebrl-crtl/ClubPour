@@ -390,6 +390,9 @@
     "hours_value": "Montag — Freitag · 9 — 18 Uhr",
     "response_time_value": "Innerhalb von 24 bis 48 Werktagen"
   },
+  "hero": {
+  "prelaunch_banner": "PRE-LAUNCH — 10 % RABATT AUF DEINE NÄCHSTE BESTELLUNG AB DER OFFIZIELLEN ERÖFFNUNG"
+},
   "faq_pour": {
     "eyebrow": "HILFE & INFORMATIONEN",
     "title": "FAQ",
