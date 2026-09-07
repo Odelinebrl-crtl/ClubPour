@@ -206,6 +206,76 @@
   "pour_common": {
   "view_product": "VEDI IL PRODOTTO"
 },
+"club_privileges": {
+  "hero_eyebrow": "CLUB POUR",
+  "hero_heading": "CLUB PRIVILEGI",
+  "hero_email_placeholder": "LA TUA EMAIL",
+  "join": "UNISCITI AL CLUB",
+  "already_registered": "SEI GIÀ ISCRITTO",
+  "already_registered_error": "SEI GIÀ ISCRITTO AL CLUB POUR.",
+  "signup_confirmed": "ISCRIZIONE CONFERMATA",
+  "signup_success": "La tua iscrizione al Club POUR è stata confermata.<br>Controlla la tua casella email per scoprire i prossimi accessi privati.",
+  "hero_launch": "ACCESSO PRIVILEGIATO AL MONDO POUR",
+
+  "manifesto_kicker": "CLUB POUR",
+  "manifesto_heading": "PIÙ DI UN ACCESSO.<br>UN PASSO AVANTI.",
+  "manifesto_text": "Il Club POUR ti apre le porte del nostro universo prima di tutti. Collezioni in anteprima, serie esclusive e privilegi riservati ai membri.",
+
+  "benefits_kicker": "CLUB PRIVILEGI",
+  "benefits_heading": "PER CHI<br>VUOLE ESSERE<br>IL PRIMO.",
+
+  "benefit_1_label": "ACCESSO ANTICIPATO",
+  "benefit_1_title": "ANTE-<br>PRIMA",
+  "benefit_1_text": "Scopri e ordina i nostri nuovi drop prima del lancio ufficiale.",
+
+  "benefit_2_label": "SOLO PER MEMBRI",
+  "benefit_2_title": "ESCLUSIVE<br>DEL CLUB",
+  "benefit_2_text": "Serie limitate create esclusivamente per i membri del Club POUR.",
+
+  "benefit_3_label": "VENDITE PRIVATE",
+  "benefit_3_title": "VENDITE<br>PRIVATE",
+  "benefit_3_text": "Accedi a offerte e periodi di saldi riservati esclusivamente al Club.",
+
+  "benefit_4_label": "PRIORITÀ",
+  "benefit_4_title": "ACCESSO<br>PRIORITARIO",
+  "benefit_4_text": "Accesso prioritario a determinati capi, restock e quantità limitate.",
+
+  "exclusive_kicker": "CLUB EXCLUSIVE — 001",
+  "exclusive_heading": "ALCUNI CAPI<br>NON SARANNO MAI<br>MESSI IN VENDITA.",
+  "exclusive_text": "Serie prodotte in quantità limitate, create esclusivamente per i membri del Club POUR.",
+  "exclusive_signature": "SOLO PER MEMBRI",
+
+  "stats_kicker": "IL CLUB",
+  "stats_intro": "IL VANTAGGIO DI<br>ESSERE SEMPRE UN PASSO AVANTI.",
+  "stat_1": "DI ACCESSO<br>IN ANTEPRIMA",
+  "stat_2": "SERIE RISERVATE<br>AL CLUB",
+  "stat_3": "OFFERTE &<br>VENDITE PRIVATE",
+  "limited": "LIMITATO",
+  "private": "PRIVATO",
+
+  "editorial_eyebrow": "CLUB POUR",
+  "editorial_heading": "PRIMA<br>DI TUTTI<br>GLI ALTRI.",
+  "editorial_text": "I MEMBRI DEL CLUB PASSANO PER PRIMI.",
+
+  "how_kicker": "IL CLUB",
+  "how_heading": "COME<br>FUNZIONA?",
+
+  "how_join": "UNISCITI",
+  "how_join_title": "UNISCITI<br>AL CLUB",
+  "how_join_text": "Registrati semplicemente con il tuo indirizzo email.",
+
+  "how_discover": "SCOPRI",
+  "how_discover_title": "RICEVI<br>IL TUO ACCESSO",
+  "how_discover_text": "Ti avviseremo quando sarà disponibile un nuovo accesso privato.",
+
+  "how_enjoy": "APPROFITTA",
+  "how_enjoy_title": "APPROFITTA DEI<br>PRIVILEGI",
+  "how_enjoy_text": "Anteprime, esclusività, vendite private e accesso prioritario.",
+
+  "final_eyebrow": "CLUB POUR",
+  "final_heading": "PRENDI UN<br>PASSO AVANTI.",
+  "final_small": "ACCESSO GRATUITO — RISERVATO AI MEMBRI REGISTRATI"
+},
   "pour_product": {
     "gallery_previous": "Immagine precedente",
     "gallery_next": "Immagine successiva",
