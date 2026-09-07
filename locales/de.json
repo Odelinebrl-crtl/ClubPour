@@ -207,6 +207,76 @@
     "heading": "DAS KÖNNTE DIR AUCH GEFALLEN",
     "quick_add_aria": "Schnell hinzufügen"
   },
+  "club_privileges": {
+  "hero_eyebrow": "CLUB POUR",
+  "hero_heading": "VORTEILSCLUB",
+  "hero_email_placeholder": "DEINE E-MAIL",
+  "join": "DEM CLUB BEITRETEN",
+  "already_registered": "DU BIST BEREITS ANGEMELDET",
+  "already_registered_error": "DU BIST BEREITS BEI CLUB POUR ANGEMELDET.",
+  "signup_confirmed": "ANMELDUNG BESTÄTIGT",
+  "signup_success": "Deine Anmeldung beim Club POUR wurde bestätigt.<br>Behalte dein Postfach im Blick, um die nächsten privaten Zugänge zu entdecken.",
+  "hero_launch": "PRIVILEGIERTER ZUGANG ZUR POUR WELT",
+
+  "manifesto_kicker": "CLUB POUR",
+  "manifesto_heading": "MEHR ALS ZUGANG.<br>EINEN SCHRITT VORAUS.",
+  "manifesto_text": "Der Club POUR öffnet dir die Türen zu unserer Welt vor allen anderen. Vorab-Kollektionen, exklusive Serien und Privilegien nur für Mitglieder.",
+
+  "benefits_kicker": "VORTEILSCLUB",
+  "benefits_heading": "FÜR ALLE, DIE<br>ALS ERSTE<br>DABEI SEIN WOLLEN.",
+
+  "benefit_1_label": "FRÜHZUGANG",
+  "benefit_1_title": "VORAB-<br>ZUGANG",
+  "benefit_1_text": "Entdecke und bestelle unsere neuen Drops vor dem offiziellen Launch.",
+
+  "benefit_2_label": "NUR FÜR MITGLIEDER",
+  "benefit_2_title": "CLUB-<br>EXKLUSIVES",
+  "benefit_2_text": "Limitierte Serien, die ausschließlich für Mitglieder des Club POUR entwickelt werden.",
+
+  "benefit_3_label": "PRIVATVERKÄUFE",
+  "benefit_3_title": "PRIVATE<br>VERKÄUFE",
+  "benefit_3_text": "Zugang zu Angeboten und Sale-Zeiträumen, die ausschließlich dem Club vorbehalten sind.",
+
+  "benefit_4_label": "PRIORITÄT",
+  "benefit_4_title": "PRIORITÄTS-<br>ZUGANG",
+  "benefit_4_text": "Prioritärer Zugang zu ausgewählten Pieces, Restocks und limitierten Mengen.",
+
+  "exclusive_kicker": "CLUB EXCLUSIVE — 001",
+  "exclusive_heading": "EINIGE PIECES<br>WERDEN NIE<br>VERKAUFT.",
+  "exclusive_text": "Limitierte Serien in kleinen Stückzahlen, exklusiv für Mitglieder des Club POUR entwickelt.",
+  "exclusive_signature": "NUR FÜR MITGLIEDER",
+
+  "stats_kicker": "DER CLUB",
+  "stats_intro": "DER VORTEIL,<br>IMMER EINEN SCHRITT VORAUS ZU SEIN.",
+  "stat_1": "VORAB-<br>ZUGANG",
+  "stat_2": "SERIEN VORBEHALTEN<br>FÜR DEN CLUB",
+  "stat_3": "ANGEBOTE &<br>PRIVATVERKÄUFE",
+  "limited": "LIMITIERT",
+  "private": "PRIVAT",
+
+  "editorial_eyebrow": "CLUB POUR",
+  "editorial_heading": "VOR<br>ALLEN<br>ANDEREN.",
+  "editorial_text": "MITGLIEDER DES CLUBS KOMMEN ZUERST.",
+
+  "how_kicker": "DER CLUB",
+  "how_heading": "WIE<br>FUNKTIONIERT ES?",
+
+  "how_join": "BEITRETEN",
+  "how_join_title": "DEM CLUB<br>BEITRETEN",
+  "how_join_text": "Melde dich ganz einfach mit deiner E-Mail-Adresse an.",
+
+  "how_discover": "ENTDECKEN",
+  "how_discover_title": "DEINEN ZUGANG<br>ERHALTEN",
+  "how_discover_text": "Wir informieren dich, sobald ein neuer privater Zugang verfügbar ist.",
+
+  "how_enjoy": "GENIESSEN",
+  "how_enjoy_title": "GENIESSE DIE<br>VORTEILE",
+  "how_enjoy_text": "Vorab-Zugang, Exklusives, Privatverkäufe und Prioritätszugang.",
+
+  "final_eyebrow": "CLUB POUR",
+  "final_heading": "SICHERE DIR<br>EINEN VORSPRUNG.",
+  "final_small": "KOSTENLOSER ZUGANG — NUR FÜR REGISTRIERTE MITGLIEDER"
+},
 
   "pour_product": {
     "gallery_previous": "Vorheriges Bild",
