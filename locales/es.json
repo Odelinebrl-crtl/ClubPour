@@ -302,7 +302,7 @@
     "gallery_enlarge": "Ampliar imágenes",
     "fit_title": "Talla y corte",
     "color": "Color",
-    "preorder": "RESERVAR",
+    "preorder": "PRECOMPRAR",
     "sold_out": "AGOTADO",
     "notify_me": "AVÍSAME",
     "preorder_note": "Preventa — envío a partir del 20 de octubre.",
@@ -386,6 +386,9 @@
     "hours_value": "Lunes — Viernes · 9:00 — 18:00",
     "response_time_value": "En un plazo de 24 a 48 horas laborables"
   },
+  "hero": {
+  "prelaunch_banner": "PRELANZAMIENTO — 10 % DE DESCUENTO EN TU PRÓXIMO PEDIDO DESDE LA APERTURA OFICIAL"
+},
    "faq_pour": {
     "eyebrow": "AYUDA E INFORMACIÓN",
     "title": "FAQ",
