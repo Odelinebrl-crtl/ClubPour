@@ -47,18 +47,14 @@
 
   <div class="club-hero__content">
 
-    {% if section.settings.eyebrow != blank %}
-      <p class="club-hero__eyebrow">
-        {{ section.settings.eyebrow }}
-      </p>
-    {% endif %}
+    <p class="club-hero__eyebrow">
+      {{ 'club_privileges.hero_eyebrow' | t }}
+    </p>
 
 
-    {% if section.settings.heading != blank %}
-      <h1 class="club-hero__heading">
-        {{ section.settings.heading }}
-      </h1>
-    {% endif %}
+    <h1 class="club-hero__heading">
+      {{ 'club_privileges.hero_heading' | t }}
+    </h1>
 
 
 {% assign club_hero_return_to = request.path | append: '?customer_posted=true#club-hero-form' %}
@@ -71,16 +67,16 @@
       type="email"
       name="contact[email]"
       class="club-hero__email"
-      placeholder="VOTRE EMAIL"
+      placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
       value="{{ form.email }}"
       required
       autocomplete="email"
-      aria-label="Votre email"
+     aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
     >
   </div>
 
   <button type="submit" class="club-hero__submit">
-    <span>REJOIGNEZ LE CLUB</span>
+   <span>{{ 'club_privileges.join' | t }}</span>
     <span aria-hidden="true">→</span>
   </button>
 </div>
@@ -90,18 +86,19 @@
   data-club-already="hero"
   hidden
 >
-  VOUS ÊTES DÉJÀ INSCRIT
+ {{ 'club_privileges.already_registered' | t }}
 </div>
 
  <div
   class="club-form-error"
   data-club-form-error="hero"
+  data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
   role="alert"
   {% unless form.errors %}hidden{% endunless %}
 >
   {% if form.errors %}
     {% if form.errors contains 'email' %}
-      VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.
+      {{ 'club_privileges.already_registered_error' | t }}
     {% else %}
       {{ form.errors | default_errors }}
     {% endif %}
@@ -110,16 +107,16 @@
 
 {% endform %}
 
-{% if section.settings.launch_text != blank %}
-  <p class="club-hero__launch">{{ section.settings.launch_text }}</p>
-{% endif %}
+<p class="club-hero__launch">{{ 'club_privileges.hero_launch' | t }}</p>
 
 <div class="club-form-success" data-club-success="hero" role="status" aria-live="polite" hidden>
-  <p class="club-form-success__title">INSCRIPTION CONFIRMÉE</p>
-  <p class="club-form-success__text">
-    Votre inscription au Club POUR a bien été prise en compte.<br>
-    Surveillez votre boîte mail pour découvrir les prochains accès privés.
-  </p>
+ <p class="club-form-success__title">
+  {{ 'club_privileges.signup_confirmed' | t }}
+</p>
+
+<p class="club-form-success__text">
+  {{ 'club_privileges.signup_success' | t }}
+</p>
 </div>
 
 </section>
@@ -141,28 +138,24 @@
       class="club-kicker club-reveal-item"
       data-reveal-delay="0"
     >
-      CLUB POUR
+      {{ 'club_privileges.manifesto_kicker' | t }}
     </p>
 
 
-    <h2
-      class="club-manifesto__title club-reveal-item"
-      data-reveal-delay="80"
-    >
-      PLUS QU’UN ACCÈS.<br>
-      UNE LONGUEUR D’AVANCE.
-    </h2>
+   <h2
+  class="club-manifesto__title club-reveal-item"
+  data-reveal-delay="80"
+>
+  {{ 'club_privileges.manifesto_heading' | t }}
+</h2>
 
 
-    <p
-      class="club-manifesto__text club-reveal-item"
-      data-reveal-delay="160"
-    >
-      Le Club POUR vous ouvre les portes de notre univers avant tout le monde.
-      Collections en avant-première, séries exclusives et privilèges
-      réservés à nos membres.
-    </p>
-
+   <p
+  class="club-manifesto__text club-reveal-item"
+  data-reveal-delay="160"
+>
+  {{ 'club_privileges.manifesto_text' | t }}
+</p>
   </div>
 
 </section>
@@ -180,18 +173,16 @@
 
   <div class="club-benefits__intro">
 
-    <p class="club-kicker club-reveal-item">
-      CLUB PRIVILÈGES
-    </p>
+   <p class="club-kicker club-reveal-item">
+  {{ 'club_privileges.benefits_kicker' | t }}
+</p>
 
-    <h2
-      class="club-benefits__heading club-reveal-item"
-      data-reveal-delay="80"
-    >
-      POUR CEUX QUI<br>
-      VEULENT PASSER<br>
-      EN PREMIER.
-    </h2>
+   <h2
+  class="club-benefits__heading club-reveal-item"
+  data-reveal-delay="80"
+>
+  {{ 'club_privileges.benefits_heading' | t }}
+</h2>
 
   </div>
 
@@ -208,20 +199,18 @@
 
       <div class="club-benefit-card__top">
         <span>01</span>
-        <span>EARLY ACCESS</span>
+        <span>{{ 'club_privileges.benefit_1_label' | t }}</span>
       </div>
 
       <div class="club-benefit-card__bottom">
 
         <h3>
-          AVANT-<br>
-          PREMIÈRE
-        </h3>
+  {{ 'club_privileges.benefit_1_title' | t }}
+</h3>
 
-        <p>
-          Découvrez et commandez nos nouveaux drops avant leur lancement
-          officiel.
-        </p>
+       <p>
+  {{ 'club_privileges.benefit_1_text' | t }}
+</p>
 
       </div>
 
@@ -237,19 +226,17 @@
 
       <div class="club-benefit-card__top">
         <span>02</span>
-        <span>MEMBERS ONLY</span>
+        <span>{{ 'club_privileges.benefit_2_label' | t }}</span>
       </div>
 
       <div class="club-benefit-card__bottom">
 
         <h3>
-          CLUB<br>
-          EXCLUSIVES
+          {{ 'club_privileges.benefit_2_title' | t }}
         </h3>
 
         <p>
-          Des séries limitées imaginées uniquement pour les membres du
-          Club POUR.
+          {{ 'club_privileges.benefit_2_text' | t }}
         </p>
 
       </div>
@@ -266,19 +253,17 @@
 
       <div class="club-benefit-card__top">
         <span>03</span>
-        <span>PRIVATE SALES</span>
+        <span>{{ 'club_privileges.benefit_3_label' | t }}</span>
       </div>
 
       <div class="club-benefit-card__bottom">
 
         <h3>
-          VENTES<br>
-          PRIVÉES
+          {{ 'club_privileges.benefit_3_title' | t }}
         </h3>
 
         <p>
-          Accédez à des offres et périodes de soldes exclusivement
-          réservées au Club.
+          {{ 'club_privileges.benefit_3_text' | t }}
         </p>
 
       </div>
@@ -295,19 +280,17 @@
 
       <div class="club-benefit-card__top">
         <span>04</span>
-        <span>PRIORITY</span>
+        <span>{{ 'club_privileges.benefit_4_label' | t }}</span>
       </div>
 
       <div class="club-benefit-card__bottom">
 
         <h3>
-          ACCÈS<br>
-          PRIORITAIRE
+          {{ 'club_privileges.benefit_4_title' | t }}
         </h3>
 
         <p>
-          Soyez prioritaire sur certaines pièces, restocks et quantités
-          limitées.
+          {{ 'club_privileges.benefit_4_text' | t }}
         </p>
 
       </div>
@@ -375,7 +358,7 @@
       class="club-kicker club-reveal-item"
       data-reveal-delay="70"
     >
-      CLUB EXCLUSIVE — 001
+      {{ 'club_privileges.exclusive_kicker' | t }}
     </p>
 
 
@@ -383,9 +366,7 @@
       class="club-exclusive__title club-reveal-item"
       data-reveal-delay="140"
     >
-      CERTAINES PIÈCES<br>
-      NE SERONT JAMAIS<br>
-      MISES EN VENTE.
+      {{ 'club_privileges.exclusive_heading' | t }}
     </h2>
 
 
@@ -393,8 +374,7 @@
       class="club-exclusive__text club-reveal-item"
       data-reveal-delay="210"
     >
-      Des séries produites en quantités limitées, imaginées exclusivement
-      pour les membres du Club POUR.
+      {{ 'club_privileges.exclusive_text' | t }}
     </p>
 
 
@@ -402,7 +382,7 @@
       class="club-exclusive__signature club-reveal-item"
       data-reveal-delay="280"
     >
-      MEMBERS ONLY
+      {{ 'club_privileges.exclusive_signature' | t }}
     </p>
 
   </div>
@@ -423,15 +403,14 @@
   <div class="club-stats__header">
 
     <p class="club-kicker club-reveal-item">
-      THE CLUB
+      {{ 'club_privileges.stats_kicker' | t }}
     </p>
 
     <p
       class="club-stats__intro club-reveal-item"
       data-reveal-delay="80"
     >
-      L'AVANTAGE D'AVOIR<br>
-      TOUJOURS UN TEMPS D'AVANCE.
+      {{ 'club_privileges.stats_intro' | t }}
     </p>
 
   </div>
@@ -453,8 +432,7 @@
         <span>01</span>
 
         <p>
-          D’ACCÈS EN<br>
-          AVANT-PREMIÈRE
+          {{ 'club_privileges.stat_1' | t }}
         </p>
       </div>
 
@@ -467,15 +445,14 @@
     >
 
       <p class="club-stat__value club-stat__value--word">
-        LIMITED
+        {{ 'club_privileges.limited' | t }}
       </p>
 
       <div>
         <span>02</span>
 
         <p>
-          SÉRIES RÉSERVÉES<br>
-          AU CLUB
+          {{ 'club_privileges.stat_2' | t }}
         </p>
       </div>
 
@@ -488,15 +465,14 @@
     >
 
       <p class="club-stat__value club-stat__value--word">
-        PRIVATE
+        {{ 'club_privileges.private' | t }}
       </p>
 
       <div>
         <span>03</span>
 
         <p>
-          OFFRES &<br>
-          VENTES PRIVÉES
+          {{ 'club_privileges.stat_3' | t }}
         </p>
       </div>
 
@@ -548,7 +524,7 @@
   <div class="club-editorial__content">
 
     <p class="club-editorial__eyebrow club-reveal-item">
-      CLUB POUR
+      {{ 'club_privileges.editorial_eyebrow' | t }}
     </p>
 
 
@@ -556,9 +532,7 @@
       class="club-editorial__title club-reveal-item"
       data-reveal-delay="100"
     >
-      BEFORE<br>
-      EVERYONE<br>
-      ELSE.
+      {{ 'club_privileges.editorial_heading' | t }}
     </h2>
 
 
@@ -566,7 +540,7 @@
       class="club-editorial__text club-reveal-item"
       data-reveal-delay="200"
     >
-      LES MEMBRES DU CLUB PASSENT EN PREMIER.
+      {{ 'club_privileges.editorial_text' | t }}
     </p>
 
   </div>
@@ -587,7 +561,7 @@
   <div class="club-how__intro">
 
     <p class="club-kicker club-reveal-item">
-      LE CLUB
+      {{ 'club_privileges.how_kicker' | t }}
     </p>
 
 
@@ -595,8 +569,7 @@
       class="club-how__heading club-reveal-item"
       data-reveal-delay="80"
     >
-      COMMENT<br>
-      ÇA MARCHE ?
+      {{ 'club_privileges.how_heading' | t }}
     </h2>
 
   </div>
@@ -617,16 +590,15 @@
       <div class="club-how-card__content">
 
         <p class="club-how-card__eyebrow">
-          JOIN
+          {{ 'club_privileges.how_join' | t }}
         </p>
 
         <h3>
-          REJOIGNEZ<br>
-          LE CLUB
+          {{ 'club_privileges.how_join_title' | t }}
         </h3>
 
         <p>
-          Inscrivez-vous simplement avec votre adresse email.
+          {{ 'club_privileges.how_join_text' | t }}
         </p>
 
       </div>
@@ -646,16 +618,15 @@
       <div class="club-how-card__content">
 
         <p class="club-how-card__eyebrow">
-          DISCOVER
+          {{ 'club_privileges.how_discover' | t }}
         </p>
 
         <h3>
-          RECEVEZ<br>
-          VOTRE ACCÈS
+          {{ 'club_privileges.how_discover_title' | t }}
         </h3>
 
         <p>
-          Nous vous prévenons dès qu’un nouvel accès privé est disponible.
+          {{ 'club_privileges.how_discover_text' | t }}
         </p>
 
       </div>
@@ -675,16 +646,15 @@
       <div class="club-how-card__content">
 
         <p class="club-how-card__eyebrow">
-          ENJOY
+          {{ 'club_privileges.how_enjoy' | t }}
         </p>
 
         <h3>
-          PROFITEZ DES<br>
-          PRIVILÈGES
+          {{ 'club_privileges.how_enjoy_title' | t }}
         </h3>
 
         <p>
-          Avant-premières, exclusivités, ventes privées et accès prioritaires.
+          {{ 'club_privileges.how_enjoy_text' | t }}
         </p>
 
       </div>
@@ -709,7 +679,7 @@
 >
 
   <p class="club-final__eyebrow club-reveal-item">
-    CLUB POUR
+    {{ 'club_privileges.final_eyebrow' | t }}
   </p>
 
 
@@ -717,8 +687,7 @@
     class="club-final__title club-reveal-item"
     data-reveal-delay="80"
   >
-    PRENEZ UNE<br>
-    LONGUEUR D’AVANCE.
+    {{ 'club_privileges.final_heading' | t }}
   </h2>
 
 
@@ -733,11 +702,11 @@
     type="email"
     name="contact[email]"
     class="club-final__email"
-    placeholder="VOTRE EMAIL"
+    placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
     value="{{ form.email }}"
     required
     autocomplete="email"
-    aria-label="Votre email"
+    aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
   >
 </div>
 
@@ -745,7 +714,7 @@
       type="submit"
       class="club-final__submit"
     >
-      <span>REJOIGNEZ LE CLUB</span>
+      <span>{{ 'club_privileges.join' | t }}</span>
       <span aria-hidden="true">→</span>
     </button>
   </div>
@@ -753,12 +722,13 @@
    <div
     class="club-form-error"
     data-club-form-error="final"
+    data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
     role="alert"
     {% unless form.errors %}hidden{% endunless %}
   >
     {% if form.errors %}
       {% if form.errors contains 'email' %}
-        VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.
+       {{ 'club_privileges.already_registered_error' | t }}
       {% else %}
         {{ form.errors | default_errors }}
       {% endif %}
@@ -770,16 +740,17 @@
     data-club-already="final"
     hidden
   >
-    VOUS ÊTES DÉJÀ INSCRIT
+   {{ 'club_privileges.already_registered' | t }}
   </div>
 
 {% endform %}
 
 <div class="club-form-success club-form-success--final" data-club-success="final" role="status" aria-live="polite" hidden>
-  <p class="club-form-success__title">INSCRIPTION CONFIRMÉE</p>
+  <p class="club-form-success__title">
+    {{ 'club_privileges.signup_confirmed' | t }}
+  </p>
   <p class="club-form-success__text">
-    Votre inscription au Club POUR a bien été prise en compte.<br>
-    Surveillez votre boîte mail pour découvrir les prochains accès privés.
+    {{ 'club_privileges.signup_success' | t }}
   </p>
 </div>
 
@@ -788,7 +759,7 @@
     class="club-final__small club-reveal-item"
     data-reveal-delay="220"
   >
-    ACCÈS GRATUIT — RÉSERVÉ AUX MEMBRES INSCRITS
+    {{ 'club_privileges.final_small' | t }}
   </p>
 
 </section>
@@ -2254,7 +2225,7 @@ if (submittedForm) {
 
   const hasEmailError =
     error &&
-    error.textContent.toLowerCase().includes('déjà inscrit');
+    error.dataset.emailError === 'true';
 
   if (hasEmailError) {
 
@@ -2786,27 +2757,6 @@ sessionStorage.removeItem(formStateKey);
       "type": "image_picker",
       "id": "image",
       "label": "Image du Hero"
-    },
-
-    {
-      "type": "text",
-      "id": "eyebrow",
-      "label": "Petit titre Hero",
-      "default": "CLUB POUR"
-    },
-
-    {
-      "type": "text",
-      "id": "heading",
-      "label": "Titre Hero",
-      "default": "CLUB PRIVILÈGES"
-    },
-
-    {
-      "type": "text",
-      "id": "launch_text",
-      "label": "Texte sous le formulaire",
-      "default": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR"
     },
 
     {
