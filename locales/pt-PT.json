@@ -392,6 +392,9 @@
     "hours_value": "Segunda — Sexta · 9h — 18h",
     "response_time_value": "No prazo de 24 a 48 horas úteis"
   },
+  "hero": {
+  "prelaunch_banner": "PRÉ-LANÇAMENTO — 10% DE DESCONTO NA SUA PRÓXIMA ENCOMENDA A PARTIR DA ABERTURA OFICIAL"
+},
   "faq_pour": {
     "eyebrow": "AJUDA & INFORMAÇÕES",
     "title": "FAQ",
