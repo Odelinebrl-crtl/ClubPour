@@ -282,6 +282,9 @@
     "hours_value": "Lundi — Vendredi · 9h — 18h",
     "response_time_value": "Sous 24 à 48 heures ouvrées"
   },
+  "hero": {
+  "prelaunch_banner": "PRÉ-LANCEMENT — VOTRE PROCHAINE COMMANDE À -10 % DÈS L’OUVERTURE OFFICIELLE"
+},
   "faq_pour": {
     "eyebrow": "AIDE & INFORMATIONS",
     "title": "FAQ",
