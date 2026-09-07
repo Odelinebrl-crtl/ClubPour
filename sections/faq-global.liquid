@@ -615,7 +615,12 @@
       <div class="faq-pour__contact">
         <p class="faq-pour__contact-label">{{ 'faq_pour.contact_label' | t }}</p>
         <p class="faq-pour__contact-text">{{ 'faq_pour.contact_text' | t }}</p>
-        <a class="faq-pour__contact-link" href="/pages/contact">{{ 'faq_pour.contact_link' | t }}</a>
+        <a
+  class="faq-pour__contact-link"
+  href="{{ pages['contact'].url }}"
+>
+  {{ 'faq_pour.contact_link' | t }}
+</a>
       </div>
     </main>
   </div>
