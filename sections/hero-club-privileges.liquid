@@ -146,9 +146,7 @@
   class="club-manifesto__title club-reveal-item"
   data-reveal-delay="80"
 >
-  {% assign club_line_text = 'club_privileges.manifesto_heading' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+  {{ 'club_privileges.manifesto_heading' | t }}
 </h2>
 
 
@@ -207,9 +205,7 @@
       <div class="club-benefit-card__bottom">
 
         <h3>
-  {% assign club_line_text = 'club_privileges.benefit_1_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+  {{ 'club_privileges.benefit_1_title' | t }}
 </h3>
 
        <p>
@@ -236,9 +232,7 @@
       <div class="club-benefit-card__bottom">
 
         <h3>
-          {% assign club_line_text = 'club_privileges.benefit_2_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.benefit_2_title' | t }}
         </h3>
 
         <p>
@@ -265,9 +259,7 @@
       <div class="club-benefit-card__bottom">
 
         <h3>
-          {% assign club_line_text = 'club_privileges.benefit_3_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.benefit_3_title' | t }}
         </h3>
 
         <p>
@@ -294,9 +286,7 @@
       <div class="club-benefit-card__bottom">
 
         <h3>
-          {% assign club_line_text = 'club_privileges.benefit_4_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.benefit_4_title' | t }}
         </h3>
 
         <p>
@@ -376,9 +366,7 @@
       class="club-exclusive__title club-reveal-item"
       data-reveal-delay="140"
     >
-      {% assign club_line_text = 'club_privileges.exclusive_heading' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+      {{ 'club_privileges.exclusive_heading' | t }}
     </h2>
 
 
@@ -422,9 +410,7 @@
       class="club-stats__intro club-reveal-item"
       data-reveal-delay="80"
     >
-      {% assign club_line_text = 'club_privileges.stats_intro' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+      {{ 'club_privileges.stats_intro' | t }}
     </p>
 
   </div>
@@ -446,9 +432,7 @@
         <span>01</span>
 
         <p>
-          {% assign club_line_text = 'club_privileges.stat_1' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.stat_1' | t }}
         </p>
       </div>
 
@@ -468,9 +452,7 @@
         <span>02</span>
 
         <p>
-          {% assign club_line_text = 'club_privileges.stat_2' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.stat_2' | t }}
         </p>
       </div>
 
@@ -490,9 +472,7 @@
         <span>03</span>
 
         <p>
-          {% assign club_line_text = 'club_privileges.stat_3' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.stat_3' | t }}
         </p>
       </div>
 
@@ -552,9 +532,7 @@
       class="club-editorial__title club-reveal-item"
       data-reveal-delay="100"
     >
-      {% assign club_line_text = 'club_privileges.editorial_heading' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+      {{ 'club_privileges.editorial_heading' | t }}
     </h2>
 
 
@@ -591,9 +569,7 @@
       class="club-how__heading club-reveal-item"
       data-reveal-delay="80"
     >
-      {% assign club_line_text = 'club_privileges.how_heading' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+      {{ 'club_privileges.how_heading' | t }}
     </h2>
 
   </div>
@@ -618,9 +594,7 @@
         </p>
 
         <h3>
-          {% assign club_line_text = 'club_privileges.how_join_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.how_join_title' | t }}
         </h3>
 
         <p>
@@ -648,9 +622,7 @@
         </p>
 
         <h3>
-          {% assign club_line_text = 'club_privileges.how_discover_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.how_discover_title' | t }}
         </h3>
 
         <p>
@@ -678,9 +650,7 @@
         </p>
 
         <h3>
-          {% assign club_line_text = 'club_privileges.how_enjoy_title' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+          {{ 'club_privileges.how_enjoy_title' | t }}
         </h3>
 
         <p>
@@ -717,9 +687,7 @@
     class="club-final__title club-reveal-item"
     data-reveal-delay="80"
   >
-    {% assign club_line_text = 'club_privileges.final_heading' | t %}
-{% assign club_line_parts = club_line_text | split: '<br>' %}
-{% for club_line in club_line_parts %}{{ club_line }}{% unless forloop.last %}<br>{% endunless %}{% endfor %}
+    {{ 'club_privileges.final_heading' | t }}
   </h2>
 
 
