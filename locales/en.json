@@ -385,6 +385,9 @@
     "hours_value": "Monday — Friday · 9 AM — 6 PM",
     "response_time_value": "Within 24 to 48 business hours"
   },
+  "hero": {
+  "prelaunch_banner": "PRE-LAUNCH — GET 10% OFF YOUR NEXT ORDER AS SOON AS WE OFFICIALLY OPEN"
+},
   "faq_pour": {
     "eyebrow": "HELP & INFORMATION",
     "title": "FAQ",
