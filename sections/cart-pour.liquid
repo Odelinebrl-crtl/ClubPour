@@ -5,22 +5,15 @@
 
   <div class="cart-pour__inner">
 
-    <!-- =====================================================
-         TITRE
-    ====================================================== -->
-
     <div class="cart-pour__header">
-
       <p class="cart-pour__eyebrow">
-        POUR
+        {{ 'cart_pour.eyebrow' | t }}
       </p>
 
       <h1 class="cart-pour__title">
-        PANIER
+        {{ 'cart_pour.title' | t }}
       </h1>
-
     </div>
-
 
     {% if cart.item_count > 0 %}
 
@@ -31,43 +24,31 @@
         novalidate
       >
 
-        <!-- =================================================
-             PRODUITS
-        ================================================== -->
-
         <div class="cart-pour__products">
 
           <div class="cart-pour__products-head">
-
             <span>
-              PRODUITS
+              {{ 'cart_pour.products' | t }}
             </span>
 
             <span>
               {{ cart.item_count }}
               {% if cart.item_count > 1 %}
-                ARTICLES
+                {{ 'cart_pour.article_plural' | t }}
               {% else %}
-                ARTICLE
+                {{ 'cart_pour.article_singular' | t }}
               {% endif %}
             </span>
-
           </div>
 
-
           {% for item in cart.items %}
-
             <article class="cart-pour__item">
-
-              <!-- IMAGE -->
 
               <a
                 href="{{ item.url }}"
                 class="cart-pour__item-media"
               >
-
                 {% if item.image != blank %}
-
                   {{
                     item.image
                     | image_url: width: 900
@@ -76,20 +57,13 @@
                       loading: 'lazy',
                       alt: item.product.title
                   }}
-
                 {% endif %}
-
               </a>
-
-
-              <!-- INFOS -->
 
               <div class="cart-pour__item-content">
 
                 <div class="cart-pour__item-top">
-
                   <div>
-
                     <a
                       href="{{ item.url }}"
                       class="cart-pour__item-title"
@@ -97,62 +71,41 @@
                       {{ item.product.title }}
                     </a>
 
-
                     {% unless item.product.has_only_default_variant %}
-
                       <div class="cart-pour__variants">
-
                         {% for option in item.options_with_values %}
-
                           <p>
                             <span>
                               {{ option.name }} :
                             </span>
-
                             {{ option.value }}
                           </p>
-
                         {% endfor %}
-
                       </div>
-
                     {% endunless %}
-
                   </div>
 
-
                   <div class="cart-pour__item-price">
-
                     {% if item.original_line_price != item.final_line_price %}
-
                       <s>
                         {{ item.original_line_price | money }}
                       </s>
-
                     {% endif %}
 
                     <span>
                       {{ item.final_line_price | money }}
                     </span>
-
                   </div>
-
                 </div>
-
-
-                <!-- BAS PRODUIT -->
 
                 <div class="cart-pour__item-bottom">
 
                   <div class="cart-pour__quantity">
-
                     <a
                       href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | minus: 1 }}"
                       class="cart-pour__quantity-button"
-                      aria-label="Réduire la quantité"
-                    >
-                      −
-                    </a>
+                      aria-label="{{ 'cart_pour.decrease' | t }}"
+                    >−</a>
 
                     <span class="cart-pour__quantity-value">
                       {{ item.quantity }}
@@ -161,182 +114,115 @@
                     <a
                       href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity={{ item.quantity | plus: 1 }}"
                       class="cart-pour__quantity-button"
-                      aria-label="Augmenter la quantité"
-                    >
-                      +
-                    </a>
-
+                      aria-label="{{ 'cart_pour.increase' | t }}"
+                    >+</a>
                   </div>
-
 
                   <a
                     href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
                     class="cart-pour__remove"
                   >
-                    SUPPRIMER
+                    {{ 'cart_pour.remove' | t }}
                   </a>
-
                 </div>
 
               </div>
-
             </article>
-
           {% endfor %}
 
-
-          <!-- CONTINUER -->
-
           <div class="cart-pour__continue">
-
-            <a href="/pages/boutique">
-              ← CONTINUER MES ACHATS
+            <a href="{{ routes.root_url }}pages/boutique">
+              {{ 'cart_pour.continue' | t }}
             </a>
-
           </div>
 
         </div>
 
-
-        <!-- =================================================
-             RÉCAPITULATIF
-        ================================================== -->
-
         <aside class="cart-pour__summary">
 
           <p class="cart-pour__summary-eyebrow">
-            RÉCAPITULATIF
+            {{ 'cart_pour.summary' | t }}
           </p>
 
-
           <div class="cart-pour__summary-line">
-
             <span>
-              SOUS-TOTAL
+              {{ 'cart_pour.subtotal' | t }}
             </span>
 
             <span>
               {{ cart.total_price | money }}
             </span>
-
           </div>
 
-
           {% if cart.cart_level_discount_applications.size > 0 %}
-
             <div class="cart-pour__discount">
-
               {% for discount in cart.cart_level_discount_applications %}
-
                 <div class="cart-pour__summary-line">
-
-                  <span>
-                    {{ discount.title }}
-                  </span>
-
-                  <span>
-                    -{{ discount.total_allocated_amount | money }}
-                  </span>
-
+                  <span>{{ discount.title }}</span>
+                  <span>-{{ discount.total_allocated_amount | money }}</span>
                 </div>
-
               {% endfor %}
-
             </div>
-
           {% endif %}
 
-
           <p class="cart-pour__shipping">
-            Les frais de livraison sont calculés à l’étape suivante.
+            {{ 'cart_pour.shipping_note' | t }}
           </p>
-
 
           <button
             type="submit"
             name="checkout"
             class="cart-pour__checkout"
           >
-            <span>
-              PASSER AU PAIEMENT
-            </span>
-
-            <span aria-hidden="true">
-              →
-            </span>
+            <span>{{ 'cart_pour.checkout' | t }}</span>
+            <span aria-hidden="true">→</span>
           </button>
 
-
-          <!-- RASSURANCE -->
-
           <div class="cart-pour__reassurance">
-
             <div>
               <span class="cart-pour__reassurance-label">
-                PAIEMENT
+                {{ 'cart_pour.payment_label' | t }}
               </span>
-
-              <span>
-                Paiement sécurisé
-              </span>
+              <span>{{ 'cart_pour.secure_payment' | t }}</span>
             </div>
 
             <div>
               <span class="cart-pour__reassurance-label">
-                LIVRAISON
+                {{ 'cart_pour.delivery_label' | t }}
               </span>
-
-              <span>
-                Suivi de commande disponible
-              </span>
+              <span>{{ 'cart_pour.tracking_available' | t }}</span>
             </div>
 
             <div>
               <span class="cart-pour__reassurance-label">
-                RETOURS
+                {{ 'cart_pour.returns_label' | t }}
               </span>
-
-              <span>
-                Consultez notre politique de retour
-              </span>
+              <span>{{ 'cart_pour.return_policy' | t }}</span>
             </div>
-
           </div>
 
         </aside>
 
       </form>
 
-
     {% else %}
 
-      <!-- =================================================
-           PANIER VIDE
-      ================================================== -->
-
       <div class="cart-pour__empty">
-
         <p class="cart-pour__empty-title">
-          VOTRE PANIER EST VIDE.
+          {{ 'cart_pour.empty_title' | t }}
         </p>
 
         <p class="cart-pour__empty-text">
-          Découvrez la Collection 001 et trouvez la prochaine pièce à vous accompagner.
+          {{ 'cart_pour.empty_text' | t }}
         </p>
 
         <a
-          href="/pages/boutique"
+          href="{{ routes.root_url }}pages/boutique"
           class="cart-pour__empty-button"
         >
-          <span>
-            DÉCOUVRIR NOS CRÉATIONS
-          </span>
-
-          <span aria-hidden="true">
-            →
-          </span>
+          <span>{{ 'cart_pour.empty_button' | t }}</span>
+          <span aria-hidden="true">→</span>
         </a>
-
       </div>
 
     {% endif %}
@@ -344,7 +230,6 @@
   </div>
 
 </section>
-
 
 <style>
 
@@ -1132,10 +1017,10 @@
 
 </style>
 
-
 {% schema %}
 {
   "name": "Panier POUR",
   "settings": []
 }
 {% endschema %}
+
