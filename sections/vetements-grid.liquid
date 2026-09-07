@@ -806,17 +806,16 @@ input:checked + span {
 
 
 /* =========================================================
-   MOBILE
+   MOBILE — QUICK VIEW COMPACT
 ========================================================= */
 
 @media screen and (max-width: 750px) {
 
   #VetementsGrid-{{ section.id }}
   .vetements-qv {
-    width: calc(100vw - 24px);
-
-    max-height:
-      calc(100vh - 24px);
+    width: calc(100vw - 28px);
+    max-height: calc(100svh - 32px);
+    overflow-y: auto;
   }
 
   #VetementsGrid-{{ section.id }}
@@ -825,20 +824,47 @@ input:checked + span {
 
     min-height: 0;
 
-    padding:
-      60px
-      22px
-      35px;
+    padding: 42px 18px 24px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__media {
+    padding: 0;
   }
 
   #VetementsGrid-{{ section.id }}
   .vetements-qv__image {
-    max-height: 300px;
+    width: auto;
+    max-width: 68%;
+    max-height: 30svh;
   }
 
   #VetementsGrid-{{ section.id }}
   .vetements-qv__info {
-    padding: 30px 0 0;
+    padding: 22px 0 0;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__options {
+    margin-top: 22px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__submit {
+    height: 44px;
+    margin-top: 22px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__details {
+    margin-top: 16px;
+    padding-bottom: 3px;
+  }
+
+  #VetementsGrid-{{ section.id }}
+  .vetements-qv__close {
+    top: 14px;
+    right: 14px;
   }
 
 }
