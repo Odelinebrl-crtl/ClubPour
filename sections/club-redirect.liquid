@@ -1,0 +1,16 @@
+{% assign club_redirect_url = routes.root_url | append: 'apps/club' %}
+
+<script>
+  window.location.replace({{ club_redirect_url | json }});
+</script>
+
+<noscript>
+  <meta http-equiv="refresh" content="0;url={{ club_redirect_url }}">
+</noscript>
+
+{% schema %}
+{
+  "name": "Club Redirect",
+  "settings": []
+}
+{% endschema %}
