@@ -9,12 +9,12 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
+    "club_redirect": {
+      "type": "club-redirect",
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "club_redirect"
   ]
 }
