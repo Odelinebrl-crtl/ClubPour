@@ -1,11 +1,26 @@
-{% assign club_redirect_url = routes.root_url | append: 'apps/club' %}
+{% assign club_redirect_path = '/apps/club' %}
+
+{% case localization.language.iso_code %}
+  {% when 'es' %}
+    {% assign club_redirect_path = '/es/apps/club' %}
+  {% when 'en' %}
+    {% assign club_redirect_path = '/en/apps/club' %}
+  {% when 'de' %}
+    {% assign club_redirect_path = '/de/apps/club' %}
+  {% when 'it' %}
+    {% assign club_redirect_path = '/it/apps/club' %}
+  {% when 'pt' %}
+    {% assign club_redirect_path = '/pt/apps/club' %}
+  {% when 'nl' %}
+    {% assign club_redirect_path = '/nl/apps/club' %}
+{% endcase %}
 
 <script>
-  window.location.replace({{ club_redirect_url | json }});
+  window.location.replace({{ club_redirect_path | json }});
 </script>
 
 <noscript>
-  <meta http-equiv="refresh" content="0;url={{ club_redirect_url }}">
+  <meta http-equiv="refresh" content="0;url={{ club_redirect_path }}">
 </noscript>
 
 {% schema %}
