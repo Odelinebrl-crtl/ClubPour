@@ -59,8 +59,10 @@
       "email_placeholder": "E-mail",
       "submit": "REJOINDRE LE CLUB",
       "success_line_1": "Votre inscription au Club POUR a bien été prise en compte.",
-      "success_line_2": "Vous venez de recevoir un e-mail sur votre boîte mail avec votre réduction de 10 %.",
-      "confirmed": "INSCRIPTION CONFIRMÉE"
+"success_line_2_before_link": "Votre réduction de 10 % est désormais disponible. Retrouvez votre code dans votre espace ",
+"success_line_2_link": "Club Privilège",
+"success_line_2_after_link": " ou directement dans l’e-mail qui vous a été envoyé.",
+"confirmed": "INSCRIPTION CONFIRMÉE"
     },
     "headings": {
       "help": "AIDE",
