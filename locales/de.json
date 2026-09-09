@@ -579,6 +579,7 @@
   "password_page": {
   "eyebrow": "KOLLEKTION 001",
   "title": "DER CLUB KOMMT",
+    "language": "SPRACHE",
   "text": "Collection 001 erscheint bald. Melden Sie sich an, um über die Eröffnung der Website informiert zu werden und die erste POUR-Kollektion zu entdecken.",
   "email_placeholder": "IHRE E-MAIL-ADRESSE",
   "consent": "Ich stimme zu, Mitteilungen von POUR per E-Mail zu erhalten.",
