@@ -61,8 +61,6 @@
 {% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
  <div class="club-hero__form-fields" data-club-form-fields="hero">
   <input type="hidden" name="contact[tags]" value="club-privileges">
-<input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
-  <input type="hidden" name="contact[accepts_marketing]" value="true">
 
   <div class="club-hero__email-wrap">
     <input
@@ -698,9 +696,6 @@
 
   <div class="club-final__form-fields" data-club-form-fields="final">
     <input type="hidden" name="contact[tags]" value="club-privileges">
-    <input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
-
-  <input type="hidden" name="contact[accepts_marketing]" value="true">
 
     <div class="club-final__email-wrap">
   <input
@@ -2174,26 +2169,7 @@ background: #FFFFFF;
     );
 
   if (!root) return;
-  const isClubCustomer = {{ customer.id | default: 0 | json }};
-  
-  const clubAppPath = (() => {
-    switch ("{{ localization.language.iso_code }}") {
-      case "es":
-        return "/es/apps/club";
-      case "en":
-        return "/en/apps/club";
-      case "de":
-        return "/de/apps/club";
-      case "it":
-        return "/it/apps/club";
-      case "pt":
-        return "/pt/apps/club";
-      case "nl":
-        return "/nl/apps/club";
-      default:
-        return "/apps/club";
-    }
-  })();
+
 
   /* ========================================================
      FORMULAIRES — ISOLATION DES DEUX INSCRIPTIONS
@@ -2205,60 +2181,11 @@ background: #FFFFFF;
   ======================================================== */
 
   const formStateKey = 'clubPrivilegesSubmittedForm';
-    const customerForms = root.querySelectorAll(
+  const customerForms = root.querySelectorAll(
     '#club-hero-form, #club-final-form'
   );
 
   customerForms.forEach((form) => {
-
-    const formName =
-      form.id === 'club-hero-form'
-        ? 'hero'
-        : 'final';
-
-    form.addEventListener('submit', (event) => {
-
-      if (isClubCustomer) {
-        event.preventDefault();
-
-        window.location.href = clubAppPath;
-
-        return;
-      }
-
-      sessionStorage.setItem(
-        formStateKey,
-        formName
-      );
-
-    });
-
-    const submitButton =
-      form.querySelector(
-        'button[type="submit"]'
-      );
-
-    if (submitButton) {
-
-      submitButton.addEventListener(
-        'click',
-        () => {
-
-          if (isClubCustomer) {
-            return;
-          }
-
-          sessionStorage.setItem(
-            formStateKey,
-            formName
-          );
-
-        }
-      );
-
-    }
-
-  });
     const formName = form.id === 'club-hero-form' ? 'hero' : 'final';
 
     form.addEventListener('submit', () => {
