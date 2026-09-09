@@ -556,6 +556,7 @@
   },
   "password_page": {
   "eyebrow": "COLEÇÃO 001",
+    "language": "IDIOMA"
   "title": "O CLUBE ESTÁ A CHEGAR",
   "text": "A Collection 001 chega em breve. Registe-se para ser informado quando o site abrir e descubra a primeira coleção POUR.",
   "email_placeholder": "O SEU ENDEREÇO DE E-MAIL",
