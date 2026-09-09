@@ -549,6 +549,7 @@
   },
   "password_page": {
   "eyebrow": "COLLECTION 001",
+    "language": "LANGUAGE"
   "title": "THE CLUB IS COMING",
   "text": "Collection 001 is coming soon. Sign up to be notified when the site opens and discover the first POUR collection.",
   "email_placeholder": "YOUR EMAIL ADDRESS",
