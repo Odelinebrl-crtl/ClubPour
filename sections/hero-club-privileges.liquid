@@ -57,99 +57,57 @@
     </h1>
 
 
-{% if customer %}
+{% assign club_hero_return_to = request.path | append: '?customer_posted=true#club-hero-form' %}
+{% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
+ <div class="club-hero__form-fields" data-club-form-fields="hero">
+  <input type="hidden" name="contact[tags]" value="club-privileges">
+<input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
+  <input type="hidden" name="contact[accepts_marketing]" value="true">
 
-  {% assign club_app_path = '/apps/club' %}
-
-  {% case localization.language.iso_code %}
-    {% when 'es' %}
-      {% assign club_app_path = '/es/apps/club' %}
-    {% when 'en' %}
-      {% assign club_app_path = '/en/apps/club' %}
-    {% when 'de' %}
-      {% assign club_app_path = '/de/apps/club' %}
-    {% when 'it' %}
-      {% assign club_app_path = '/it/apps/club' %}
-    {% when 'pt' %}
-      {% assign club_app_path = '/pt/apps/club' %}
-    {% when 'nl' %}
-      {% assign club_app_path = '/nl/apps/club' %}
-  {% endcase %}
-
-  <form
-    method="post"
-    action="{{ club_app_path }}"
-    class="club-hero__form"
-    id="club-hero-form"
-  >
-    <div class="club-hero__form-fields" data-club-form-fields="hero">
-
-      <button type="submit" class="club-hero__submit">
-        <span>{{ 'club_privileges.join' | t }}</span>
-        <span aria-hidden="true">→</span>
-      </button>
-
-    </div>
-  </form>
-
-{% else %}
-
-  {% assign club_hero_return_to = request.path | append: '?customer_posted=true#club-hero-form' %}
-  {% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
-
-    <div class="club-hero__form-fields" data-club-form-fields="hero">
-
-      <input type="hidden" name="contact[tags]" value="club-privileges">
-      <input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
-      <input type="hidden" name="contact[accepts_marketing]" value="true">
-
-      <div class="club-hero__email-wrap">
-        <input
-          type="email"
-          name="contact[email]"
-          class="club-hero__email"
-          placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
-          value="{{ form.email }}"
-          required
-          autocomplete="email"
-          aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
-        >
-      </div>
-
-      <button type="submit" class="club-hero__submit">
-        <span>{{ 'club_privileges.join' | t }}</span>
-        <span aria-hidden="true">→</span>
-      </button>
-
-    </div>
-
-    <div
-      class="club-form-already"
-      data-club-already="hero"
-      hidden
+  <div class="club-hero__email-wrap">
+    <input
+      type="email"
+      name="contact[email]"
+      class="club-hero__email"
+      placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
+      value="{{ form.email }}"
+      required
+      autocomplete="email"
+     aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
     >
-      {{ 'club_privileges.already_registered' | t }}
-    </div>
+  </div>
 
-    <div
-      class="club-form-error"
-      data-club-form-error="hero"
-      data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
-      role="alert"
-      {% unless form.errors %}hidden{% endunless %}
-    >
-      {% if form.errors %}
-        {% if form.errors contains 'email' %}
-          {{ 'club_privileges.already_registered_error' | t }}
-        {% else %}
-          {{ form.errors | default_errors }}
-        {% endif %}
-      {% endif %}
-    </div>
+  <button type="submit" class="club-hero__submit">
+   <span>{{ 'club_privileges.join' | t }}</span>
+    <span aria-hidden="true">→</span>
+  </button>
+</div>
 
-  {% endform %}
+<div
+  class="club-form-already"
+  data-club-already="hero"
+  hidden
+>
+ {{ 'club_privileges.already_registered' | t }}
+</div>
 
-{% endif %}
+ <div
+  class="club-form-error"
+  data-club-form-error="hero"
+  data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
+  role="alert"
+  {% unless form.errors %}hidden{% endunless %}
+>
+  {% if form.errors %}
+    {% if form.errors contains 'email' %}
+      {{ 'club_privileges.already_registered_error' | t }}
+    {% else %}
+      {{ form.errors | default_errors }}
+    {% endif %}
+  {% endif %}
+</div>
+
+{% endform %}
 
 <p class="club-hero__launch">{{ 'club_privileges.hero_launch' | t }}</p>
 
@@ -735,99 +693,62 @@
   </h2>
 
 
-{% if customer %}
+{% assign club_final_return_to = request.path | append: '?customer_posted=true#club-final-form' %}
+{% form 'customer', return_to: club_final_return_to, class: 'club-final__form', id: 'club-final-form' %}
 
-  {% assign club_app_path = '/apps/club' %}
+  <div class="club-final__form-fields" data-club-form-fields="final">
+    <input type="hidden" name="contact[tags]" value="club-privileges">
+    <input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
 
-  {% case localization.language.iso_code %}
-    {% when 'es' %}
-      {% assign club_app_path = '/es/apps/club' %}
-    {% when 'en' %}
-      {% assign club_app_path = '/en/apps/club' %}
-    {% when 'de' %}
-      {% assign club_app_path = '/de/apps/club' %}
-    {% when 'it' %}
-      {% assign club_app_path = '/it/apps/club' %}
-    {% when 'pt' %}
-      {% assign club_app_path = '/pt/apps/club' %}
-    {% when 'nl' %}
-      {% assign club_app_path = '/nl/apps/club' %}
-  {% endcase %}
+  <input type="hidden" name="contact[accepts_marketing]" value="true">
 
-  <form
-    method="post"
-    action="{{ club_app_path }}"
-    class="club-hero__form"
-    id="club-hero-form"
+    <div class="club-final__email-wrap">
+  <input
+    type="email"
+    name="contact[email]"
+    class="club-final__email"
+    placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
+    value="{{ form.email }}"
+    required
+    autocomplete="email"
+    aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
   >
-    <div class="club-hero__form-fields" data-club-form-fields="hero">
+</div>
 
-      <button type="submit" class="club-hero__submit">
-        <span>{{ 'club_privileges.join' | t }}</span>
-        <span aria-hidden="true">→</span>
-      </button>
-
-    </div>
-  </form>
-
-{% else %}
-
-  {% assign club_hero_return_to = request.path | append: '?customer_posted=true#club-hero-form' %}
-  {% form 'customer', return_to: club_hero_return_to, class: 'club-hero__form', id: 'club-hero-form' %}
-
-    <div class="club-hero__form-fields" data-club-form-fields="hero">
-
-      <input type="hidden" name="contact[tags]" value="club-privileges">
-      <input type="hidden" name="contact[tags]" value="club-language-{{ localization.language.iso_code }}">
-      <input type="hidden" name="contact[accepts_marketing]" value="true">
-
-      <div class="club-hero__email-wrap">
-        <input
-          type="email"
-          name="contact[email]"
-          class="club-hero__email"
-          placeholder="{{ 'club_privileges.hero_email_placeholder' | t }}"
-          value="{{ form.email }}"
-          required
-          autocomplete="email"
-          aria-label="{{ 'club_privileges.hero_email_placeholder' | t }}"
-        >
-      </div>
-
-      <button type="submit" class="club-hero__submit">
-        <span>{{ 'club_privileges.join' | t }}</span>
-        <span aria-hidden="true">→</span>
-      </button>
-
-    </div>
-
-    <div
-      class="club-form-already"
-      data-club-already="hero"
-      hidden
+    <button
+      type="submit"
+      class="club-final__submit"
     >
-      {{ 'club_privileges.already_registered' | t }}
-    </div>
+      <span>{{ 'club_privileges.join' | t }}</span>
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
 
-    <div
-      class="club-form-error"
-      data-club-form-error="hero"
-      data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
-      role="alert"
-      {% unless form.errors %}hidden{% endunless %}
-    >
-      {% if form.errors %}
-        {% if form.errors contains 'email' %}
-          {{ 'club_privileges.already_registered_error' | t }}
-        {% else %}
-          {{ form.errors | default_errors }}
-        {% endif %}
+   <div
+    class="club-form-error"
+    data-club-form-error="final"
+    data-email-error="{% if form.errors contains 'email' %}true{% else %}false{% endif %}"
+    role="alert"
+    {% unless form.errors %}hidden{% endunless %}
+  >
+    {% if form.errors %}
+      {% if form.errors contains 'email' %}
+       {{ 'club_privileges.already_registered_error' | t }}
+      {% else %}
+        {{ form.errors | default_errors }}
       {% endif %}
-    </div>
+    {% endif %}
+  </div>
 
-  {% endform %}
+  <div
+    class="club-form-already club-form-already--final"
+    data-club-already="final"
+    hidden
+  >
+   {{ 'club_privileges.already_registered' | t }}
+  </div>
 
-{% endif %}
+{% endform %}
 
 <div class="club-form-success club-form-success--final" data-club-success="final" role="status" aria-live="polite" hidden>
   <p class="club-form-success__title">
