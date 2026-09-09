@@ -391,6 +391,18 @@
   "hero": {
   "prelaunch_banner": "PRELANZAMIENTO — 10 % DE DESCUENTO EN TU PRÓXIMO PEDIDO DESDE LA APERTURA OFICIAL"
 },
+  "password_page": {
+  "eyebrow": "COLECCIÓN 001",
+  "title": "EL CLUB LLEGA",
+  "text": "La Colección 001 llegará próximamente. Regístrate para recibir una notificación cuando el sitio abra y descubrir la primera colección POUR.",
+  "email_placeholder": "TU DIRECCIÓN DE E-MAIL",
+  "consent": "Acepto recibir comunicaciones de POUR por correo electrónico.",
+  "submit": "AVÍSAME CUANDO ABRA EL SITIO",
+  "success": "Gracias. Te avisaremos en cuanto el sitio abra.",
+  "private_access": "ACCESO PRIVADO",
+  "password_placeholder": "CONTRASEÑA",
+  "password_submit": "ENTRAR"
+},
    "faq_pour": {
     "eyebrow": "AYUDA E INFORMACIÓN",
     "title": "FAQ",
