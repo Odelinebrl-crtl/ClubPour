@@ -58,9 +58,11 @@
       "consent": "Ik accepteer dat ik per e-mail nieuws, collecties en aanbiedingen van Club POUR ontvang.",
       "email_placeholder": "E-mail",
       "submit": "LID WORDEN VAN DE CLUB",
-      "success_line_1": "Je inschrijving voor Club POUR is succesvol geregistreerd.",
-      "success_line_2": "Je hebt zojuist een e-mail met je 10% korting ontvangen.",
-      "confirmed": "INSCHRIJVING BEVESTIGD"
+     "success_line_1": "Je inschrijving voor Club POUR is succesvol geregistreerd.",
+"success_line_2_before_link": "Je korting van 10% is nu beschikbaar. Je vindt je code in je ",
+"success_line_2_link": "Club Privilège",
+"success_line_2_after_link": " of rechtstreeks in de e-mail die we je hebben gestuurd.",
+"confirmed": "INSCHRIJVING BEVESTIGD"
     },
     "headings": {
       "help": "HULP",
