@@ -444,6 +444,18 @@
     "contact_text": "Notre équipe est disponible pour répondre à vos questions. Contactez-nous à contact@clubpour.fr ou utilisez notre formulaire de contact. Nous répondons sous 24 à 48 heures ouvrées.",
     "contact_link": "Nous contacter"
   },
+  "password_page": {
+  "eyebrow": "COLLECTION 001",
+  "title": "LE CLUB ARRIVE",
+  "text": "Collection 001 arrive prochainement. Inscrivez-vous pour être informé de l’ouverture du site et découvrir la première collection POUR.",
+  "email_placeholder": "VOTRE ADRESSE E-MAIL",
+  "consent": "J’accepte de recevoir les communications de POUR par e-mail.",
+  "submit": "TENEZ-MOI AU COURANT DE L’OUVERTURE DU SITE",
+  "success": "Merci. Vous serez informé(e) dès l’ouverture du site.",
+  "private_access": "ACCÈS PRIVÉ",
+  "password_placeholder": "MOT DE PASSE",
+  "password_submit": "ENTRER"
+},
     "cart_pour": {
     "eyebrow": "POUR",
     "title": "PANIER",
