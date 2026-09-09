@@ -110,7 +110,9 @@
   "already_registered_error": "VOUS ÊTES DÉJÀ INSCRIT AU CLUB POUR.",
   "signup_confirmed": "INSCRIPTION CONFIRMÉE",
   "signup_success_line_1": "Votre inscription au Club POUR a bien été prise en compte.",
-  "signup_success_line_2": "Surveillez votre boîte mail pour découvrir les prochains accès privés.",
+  "signup_success_line_2_before_link": "Votre réduction de 10 % est désormais disponible. Retrouvez votre code dans votre espace ",
+"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_after_link": " ou directement dans l’e-mail qui vous a été envoyé.",
   "hero_launch": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR",
 
   "manifesto_kicker": "CLUB POUR",
