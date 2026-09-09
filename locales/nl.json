@@ -425,6 +425,18 @@
     "contact_text": "Ons team staat klaar om je vragen te beantwoorden. Neem contact met ons op via contact@clubpour.fr of gebruik ons contactformulier. We antwoorden binnen 24 tot 48 werkuren.",
     "contact_link": "CONTACT OPNEMEN"
   },
+  "password_page": {
+  "eyebrow": "COLLECTIE 001",
+  "title": "DE CLUB KOMT ERAAN",
+  "text": "Collection 001 komt binnenkort. Schrijf je in om op de hoogte te worden gebracht wanneer de website opent en ontdek de eerste POUR-collectie.",
+  "email_placeholder": "JOUW E-MAILADRES",
+  "consent": "Ik ga ermee akkoord om communicatie van POUR per e-mail te ontvangen.",
+  "submit": "HOUD MIJ OP DE HOOGTE VAN DE OPENING",
+  "success": "Bedankt. We laten je weten zodra de website opent.",
+  "private_access": "PRIVÉTOEGANG",
+  "password_placeholder": "WACHTWOORD",
+  "password_submit": "BINNENGAAN"
+},
   "cart_pour": {
     "eyebrow": "POUR",
     "title": "WINKELMAND",
