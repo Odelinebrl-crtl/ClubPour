@@ -115,7 +115,12 @@
 </p>
 
 <p class="club-form-success__text">
-  {{ 'club_privileges.signup_success_line_1' | t }}<br>{{ 'club_privileges.signup_success_line_2' | t }}
+  {{ 'club_privileges.signup_success_line_1' | t }}<br>
+  {{ 'club_privileges.signup_success_line_2_before_link' | t }}
+  <a href="/account" class="club-form-success__link">
+    {{ 'club_privileges.signup_success_line_2_link' | t }}
+  </a>
+  {{ 'club_privileges.signup_success_line_2_after_link' | t }}
 </p>
 </div>
 
@@ -750,8 +755,13 @@
     {{ 'club_privileges.signup_confirmed' | t }}
   </p>
   <p class="club-form-success__text">
-    {{ 'club_privileges.signup_success_line_1' | t }}<br>{{ 'club_privileges.signup_success_line_2' | t }}
-  </p>
+  {{ 'club_privileges.signup_success_line_1' | t }}<br>
+  {{ 'club_privileges.signup_success_line_2_before_link' | t }}
+  <a href="/account" class="club-form-success__link">
+    {{ 'club_privileges.signup_success_line_2_link' | t }}
+  </a>
+  {{ 'club_privileges.signup_success_line_2_after_link' | t }}
+</p>
 </div>
 
 
