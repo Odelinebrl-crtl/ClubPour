@@ -157,9 +157,11 @@
       "consent": "Accetto di ricevere via e-mail novità, collezioni e offerte del Club POUR.",
       "email_placeholder": "E-mail",
       "submit": "UNISCITI AL CLUB",
-      "success_line_1": "La tua iscrizione al Club POUR è stata registrata correttamente.",
-      "success_line_2": "Hai appena ricevuto un'e-mail con il tuo sconto del 10%.",
-      "confirmed": "ISCRIZIONE CONFERMATA"
+     "success_line_1": "La tua iscrizione al Club POUR è stata registrata correttamente.",
+"success_line_2_before_link": "Il tuo sconto del 10% è ora disponibile. Trova il tuo codice nella tua area ",
+"success_line_2_link": "Club Privilège",
+"success_line_2_after_link": " o direttamente nell'e-mail che ti abbiamo inviato.",
+"confirmed": "ISCRIZIONE CONFERMATA"
     },
     "headings": {
       "help": "ASSISTENZA",
