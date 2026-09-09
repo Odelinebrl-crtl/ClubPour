@@ -2174,7 +2174,26 @@ background: #FFFFFF;
     );
 
   if (!root) return;
-
+  const isClubCustomer = {{ customer.id | default: 0 | json }};
+  
+  const clubAppPath = (() => {
+    switch ("{{ localization.language.iso_code }}") {
+      case "es":
+        return "/es/apps/club";
+      case "en":
+        return "/en/apps/club";
+      case "de":
+        return "/de/apps/club";
+      case "it":
+        return "/it/apps/club";
+      case "pt":
+        return "/pt/apps/club";
+      case "nl":
+        return "/nl/apps/club";
+      default:
+        return "/apps/club";
+    }
+  })();
 
   /* ========================================================
      FORMULAIRES — ISOLATION DES DEUX INSCRIPTIONS
@@ -2186,11 +2205,60 @@ background: #FFFFFF;
   ======================================================== */
 
   const formStateKey = 'clubPrivilegesSubmittedForm';
-  const customerForms = root.querySelectorAll(
+    const customerForms = root.querySelectorAll(
     '#club-hero-form, #club-final-form'
   );
 
   customerForms.forEach((form) => {
+
+    const formName =
+      form.id === 'club-hero-form'
+        ? 'hero'
+        : 'final';
+
+    form.addEventListener('submit', (event) => {
+
+      if (isClubCustomer) {
+        event.preventDefault();
+
+        window.location.href = clubAppPath;
+
+        return;
+      }
+
+      sessionStorage.setItem(
+        formStateKey,
+        formName
+      );
+
+    });
+
+    const submitButton =
+      form.querySelector(
+        'button[type="submit"]'
+      );
+
+    if (submitButton) {
+
+      submitButton.addEventListener(
+        'click',
+        () => {
+
+          if (isClubCustomer) {
+            return;
+          }
+
+          sessionStorage.setItem(
+            formStateKey,
+            formName
+          );
+
+        }
+      );
+
+    }
+
+  });
     const formName = form.id === 'club-hero-form' ? 'hero' : 'final';
 
     form.addEventListener('submit', () => {
