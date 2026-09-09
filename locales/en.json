@@ -209,7 +209,9 @@
   "already_registered_error": "YOU ARE ALREADY REGISTERED WITH CLUB POUR.",
   "signup_confirmed": "REGISTRATION CONFIRMED",
   "signup_success_line_1": "Your Club POUR registration has been confirmed.",
-  "signup_success_line_2": "Keep an eye on your inbox for the next private access.",
+  "signup_success_line_2_before_link": "Your 10% discount is now available. Find your code in your ",
+"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_after_link": " area or directly in the email we sent you.",
   "hero_launch": "PRIVILEGED ACCESS TO THE POUR UNIVERSE",
 
   "manifesto_kicker": "CLUB POUR",
