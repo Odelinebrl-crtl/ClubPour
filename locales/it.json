@@ -216,7 +216,9 @@
   "already_registered_error": "SEI GIÀ ISCRITTO AL CLUB POUR.",
   "signup_confirmed": "ISCRIZIONE CONFERMATA",
   "signup_success_line_1": "La tua iscrizione al Club POUR è stata confermata.",
-  "signup_success_line_2": "Controlla la tua casella email per scoprire i prossimi accessi privati.",
+  "signup_success_line_2_before_link": "Il tuo sconto del 10% è ora disponibile. Trova il tuo codice nella tua area ",
+"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_after_link": " o direttamente nell'e-mail che ti abbiamo inviato.",
   "hero_launch": "ACCESSO PRIVILEGIATO AL MONDO POUR",
 
   "manifesto_kicker": "CLUB POUR",
@@ -392,6 +394,9 @@
     "hours_value": "Lunedì — Venerdì · 9:00 — 18:00",
     "response_time_value": "Entro 24-48 ore lavorative"
   },
+  "hero": {
+  "prelaunch_banner": "PRE-LANCIO — 10% DI SCONTO SUL TUO PROSSIMO ORDINE DALL’APERTURA UFFICIALE"
+},
   "faq_pour": {
     "eyebrow": "AIUTO & INFORMAZIONI",
     "title": "FAQ",
@@ -546,5 +551,29 @@
     "contact_label": "Hai bisogno di ulteriore aiuto?",
     "contact_text": "Il nostro team è disponibile per rispondere alle tue domande. Contattaci all’indirizzo contact@clubpour.fr oppure usa il nostro modulo di contatto. Rispondiamo entro 24-48 ore lavorative.",
     "contact_link": "Contattaci"
+  },
+    "cart_pour": {
+    "eyebrow": "POUR",
+    "title": "CARRELLO",
+    "products": "PRODOTTI",
+    "article_singular": "ARTICOLO",
+    "article_plural": "ARTICOLI",
+    "decrease": "Diminuisci quantità",
+    "increase": "Aumenta quantità",
+    "remove": "RIMUOVI",
+    "continue": "← CONTINUA GLI ACQUISTI",
+    "summary": "RIEPILOGO",
+    "subtotal": "SUBTOTALE",
+    "shipping_note": "Le spese di spedizione vengono calcolate al passaggio successivo.",
+    "checkout": "PROCEDI AL PAGAMENTO",
+    "payment_label": "PAGAMENTO",
+    "secure_payment": "Pagamento sicuro",
+    "delivery_label": "SPEDIZIONE",
+    "tracking_available": "Tracciamento dell’ordine disponibile",
+    "returns_label": "RESI",
+    "return_policy": "Consulta la nostra politica di reso",
+    "empty_title": "IL TUO CARRELLO È VUOTO.",
+    "empty_text": "Scopri la Collection 001 e trova il tuo prossimo capo.",
+    "empty_button": "SCOPRI LE NOSTRE CREAZIONI"
   }
 }
