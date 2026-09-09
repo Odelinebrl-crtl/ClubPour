@@ -547,6 +547,18 @@
     "contact_text": "Our team is available to answer your questions. Contact us at contact@clubpour.fr or use our contact form. We reply within 24 to 48 business hours.",
     "contact_link": "Contact us"
   },
+  "password_page": {
+  "eyebrow": "COLLECTION 001",
+  "title": "THE CLUB IS COMING",
+  "text": "Collection 001 is coming soon. Sign up to be notified when the site opens and discover the first POUR collection.",
+  "email_placeholder": "YOUR EMAIL ADDRESS",
+  "consent": "I agree to receive communications from POUR by email.",
+  "submit": "KEEP ME UPDATED WHEN THE SITE OPENS",
+  "success": "Thank you. You’ll be notified as soon as the site opens.",
+  "private_access": "PRIVATE ACCESS",
+  "password_placeholder": "PASSWORD",
+  "password_submit": "ENTER"
+},
     "cart_pour": {
     "eyebrow": "POUR",
     "title": "CART",
