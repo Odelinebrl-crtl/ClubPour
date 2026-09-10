@@ -98,6 +98,9 @@
 "pour_common": {
   "view_product": "VOIR LE PRODUIT"
 },
+"collection_001": {
+  "discover": "DÉCOUVRIR"
+},
 "pour_recommendations": {
   "heading": "TU AIMERAIS PEUT-ÊTRE AUSSI",
   "quick_add_aria": "Ajouter rapidement"
