@@ -587,7 +587,11 @@
   "success": "Vielen Dank. Wir informieren Sie, sobald die Website eröffnet wird.",
   "private_access": "PRIVATER ZUGANG",
   "password_placeholder": "PASSWORT",
-  "password_submit": "EINTRETEN"
+  "password_submit": "EINTRETEN",
+    "countdown_days": "Tage",
+"countdown_hours": "Stunden",
+"countdown_minutes": "Minuten",
+"countdown_seconds": "Sekunden"
 },
   "cart_pour": {
     "eyebrow": "POUR",
