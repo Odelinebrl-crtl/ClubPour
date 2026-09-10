@@ -436,11 +436,7 @@
   "success": "Bedankt. We laten je weten zodra de website opent.",
   "private_access": "PRIVÉTOEGANG",
   "password_placeholder": "WACHTWOORD",
-  "password_submit": "BINNENGAAN",
-    "countdown_days": "Dagen",
-"countdown_hours": "Uren",
-"countdown_minutes": "Minuten",
-"countdown_seconds": "Seconden"
+  "password_submit": "BINNENGAAN"
 },
   "cart_pour": {
     "eyebrow": "POUR",

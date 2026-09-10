@@ -565,11 +565,7 @@
   "success": "Obrigado. Será informado assim que o site abrir.",
   "private_access": "ACESSO PRIVADO",
   "password_placeholder": "PALAVRA-PASSE",
-  "password_submit": "ENTRAR",
-    "countdown_days": "Dias",
-"countdown_hours": "Horas",
-"countdown_minutes": "Minutos",
-"countdown_seconds": "Segundos"
+  "password_submit": "ENTRAR"
 },
     "cart_pour": {
     "eyebrow": "POUR",
