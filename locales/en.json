@@ -558,7 +558,11 @@
   "success": "Thank you. You’ll be notified as soon as the site opens.",
   "private_access": "PRIVATE ACCESS",
   "password_placeholder": "PASSWORD",
-  "password_submit": "ENTER"
+  "password_submit": "ENTER",
+    "countdown_days": "Days",
+"countdown_hours": "Hours",
+"countdown_minutes": "Minutes",
+"countdown_seconds": "Seconds"
 },
     "cart_pour": {
     "eyebrow": "POUR",
