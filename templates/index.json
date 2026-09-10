@@ -39,7 +39,7 @@
         "product_card_NHQ6tT": {
           "type": "product_card",
           "settings": {
-            "product": "cypres-italien",
+            "product": "t-shirt-cypres-italien",
             "image_primary": "shopify://shop_images/8_3e9c3104-e7a5-4a1b-b95f-b3e00e7f51eb.png",
             "image_secondary": "shopify://shop_images/7_69f4de69-3cf7-4fec-ba09-73fff8a058a9.png"
           }
@@ -166,7 +166,7 @@
         "look_aJzNbw": {
           "type": "look",
           "settings": {
-            "product": "cypres-italien",
+            "product": "t-shirt-cypres-italien",
             "product_image": "shopify://shop_images/7.png",
             "customer_image": "shopify://shop_images/2_113637b5-c7b9-480c-a5d2-59ef8c1ab045.png",
             "customer_name": "@clubpour",
