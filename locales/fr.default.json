@@ -455,7 +455,11 @@
   "success": "Merci. Vous serez informé(e) dès l’ouverture du site.",
   "private_access": "ACCÈS PRIVÉ",
   "password_placeholder": "MOT DE PASSE",
-  "password_submit": "ENTRER"
+  "password_submit": "ENTRER",
+    "countdown_days": "Jours",
+"countdown_hours": "Heures",
+"countdown_minutes": "Minutes",
+"countdown_seconds": "Secondes"
 },
     "cart_pour": {
     "eyebrow": "POUR",
