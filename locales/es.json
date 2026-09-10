@@ -401,7 +401,11 @@
   "success": "Gracias. Te avisaremos en cuanto el sitio abra.",
   "private_access": "ACCESO PRIVADO",
   "password_placeholder": "CONTRASEÑA",
-  "password_submit": "ENTRAR"
+  "password_submit": "ENTRAR",
+    "countdown_days": "Días",
+"countdown_hours": "Horas",
+"countdown_minutes": "Minutos",
+"countdown_seconds": "Segundos"
 },
    "faq_pour": {
     "eyebrow": "AYUDA E INFORMACIÓN",
