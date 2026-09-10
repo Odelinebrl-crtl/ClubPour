@@ -31,7 +31,7 @@
         "product_card_CgHeQ3": {
           "type": "product_card",
           "settings": {
-            "product": "riviera",
+            "product": "t-shirt-riviera",
             "image_primary": "shopify://shop_images/14_7f827561-18cc-423c-a25d-daffd177857d.png",
             "image_secondary": "shopify://shop_images/13_3aa1a95e-dc40-42d9-afa8-407963a9ac3d.png"
           }
@@ -177,7 +177,7 @@
         "look_HrrkXy": {
           "type": "look",
           "settings": {
-            "product": "riviera",
+            "product": "t-shirt-riviera",
             "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
             "customer_image": "shopify://shop_images/3_6b1015c3-e832-4e03-b2d5-19334878df88.png",
             "customer_name": "@clubpour",
