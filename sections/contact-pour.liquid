@@ -127,13 +127,6 @@
 
       {% form 'contact', id: 'ContactPourForm' %}
 
-        {% if form.posted_successfully? %}
-
-          <div class="contact-pour__success">
-            {{ 'contact_pour.success' | t }}
-          </div>
-
-        {% endif %}
 
 
         {{ form.errors | default_errors }}
@@ -314,20 +307,26 @@
 
         <!-- BOUTON -->
 
-        <button
-          type="submit"
-          class="contact-pour__submit"
-        >
-          <span>
-            {{ 'contact_pour.submit' | t }}
-          </span>
+       <button
+  type="submit"
+  class="contact-pour__submit"
+>
+  <span>
+    {{ 'contact_pour.submit' | t }}
+  </span>
 
-          <span aria-hidden="true">
-            →
-          </span>
-        </button>
+  <span aria-hidden="true">
+    →
+  </span>
+</button>
 
-      {% endform %}
+{% if form.posted_successfully? %}
+  <div class="contact-pour__success">
+    {{ 'contact_pour.success' | t }}
+  </div>
+{% endif %}
+
+{% endform %}
 
     </div>
 
@@ -803,6 +802,7 @@ body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
 #ContactPour-{{ section.id }}
 .contact-pour__success {
   margin-bottom: 28px;
+  margin-top: 24px;
 
   padding: 16px 18px;
 
