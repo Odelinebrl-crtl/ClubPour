@@ -665,56 +665,57 @@ href="{{ routes.account_login_url }}"
     <div class="cart-drawer__footer">
 
   {% assign free_shipping_threshold = 15000 %}
-  {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
-  {% assign free_shipping_percentage = cart.total_price
-    | times: 100
-    | divided_by: free_shipping_threshold
-  %}
+{% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
+{% assign free_shipping_percentage = cart.total_price
+  | times: 100
+  | divided_by: free_shipping_threshold
+%}
 
-  {% if free_shipping_percentage > 100 %}
-    {% assign free_shipping_percentage = 100 %}
+{% if free_shipping_percentage > 100 %}
+  {% assign free_shipping_percentage = 100 %}
+{% endif %}
+
+<div
+  class="cart-drawer__free-shipping"
+  data-free-shipping
+  {% if cart.total_price <= 0 %}
+    hidden
   {% endif %}
+>
 
-  <div
-    class="cart-drawer__free-shipping"
-    data-free-shipping
-    {% if cart.total_price <= 0 %}
-      hidden
+  <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
+
+    {% if cart.total_price >= free_shipping_threshold %}
+
+      Livraison offerte !
+
+    {% else %}
+
+      Plus que {{ free_shipping_remaining | money }} pour la livraison offerte
+
     {% endif %}
-  >
 
-    <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
+  </p>
 
-      {% if cart.total_price >= free_shipping_threshold %}
+  <div class="cart-drawer__free-shipping-track">
 
-        {{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}
-
-      {% else %}
-
-        {{ 'pour_header.cart_drawer.free_shipping_remaining'
-          | t: amount: free_shipping_remaining
-          | money
-        }}
-
-      {% endif %}
-
-    </p>
-
-    <div class="cart-drawer__free-shipping-track">
-
-      <div
-        class="cart-drawer__free-shipping-progress"
-        data-free-shipping-progress
-        style="width: {{ free_shipping_percentage }}%;"
-      ></div>
-
-    </div>
-
-    <p class="cart-drawer__free-shipping-caption">
-      {{ 'pour_header.cart_drawer.free_shipping_progress' | t }}
-    </p>
+    <div
+      class="cart-drawer__free-shipping-progress"
+      data-free-shipping-progress
+      style="width: {{ free_shipping_percentage }}%;"
+    ></div>
 
   </div>
+
+  <div class="cart-drawer__free-shipping-labels">
+
+    <span>0 €</span>
+
+    <span>150 €</span>
+
+  </div>
+
+</div>
 
   <div class="cart-drawer__total">
 
@@ -1317,7 +1318,7 @@ z-index: 99999;
   margin: 0 0 10px !important;
   font-size: 10px !important;
   line-height: 1.5 !important;
-  letter-spacing: .04em !important;
+  letter-spacing: .02em !important;
   text-align: center !important;
   color: #111111 !important;
 }
@@ -1325,29 +1326,40 @@ z-index: 99999;
 .cart-drawer__free-shipping-track {
   display: block !important;
   width: 100% !important;
-  height: 4px !important;
+  height: 5px !important;
   overflow: hidden !important;
   background: #e5e5e5 !important;
+  border-radius: 10px !important;
 }
 
 .cart-drawer__free-shipping-progress {
   display: block !important;
-  height: 4px !important;
-  min-width: 2px;
-  background-color: #111111 !important;
-  background: #111111 !important;
-  transition: width .4s ease;
+  height: 5px !important;
+  min-width: 0 !important;
+  background: linear-gradient(
+    90deg,
+    #25f58b 0%,
+    #00d9ff 45%,
+    #0066ff 100%
+  ) !important;
+  border-radius: 10px !important;
+  transition: width .4s ease !important;
 }
 
-.cart-drawer__free-shipping-caption {
-  display: block !important;
-  margin: 8px 0 0 !important;
+.cart-drawer__free-shipping-labels {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  margin-top: 8px !important;
   font-size: 8px !important;
-  line-height: 1.4 !important;
-  letter-spacing: .08em !important;
-  text-align: center !important;
-  text-transform: uppercase;
-  color: rgba(17,17,17,.5) !important;
+  line-height: 1 !important;
+  letter-spacing: .02em !important;
+  color: rgba(17,17,17,.45) !important;
+}
+
+.cart-drawer__free-shipping-labels span {
+  display: block !important;
 }
 
 /* =========================================================
@@ -2086,8 +2098,8 @@ document.body.classList.remove(
     >
       ${
         cart.total_price >= 15000
-          ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
-          : 'Plus que ' + money(15000 - cart.total_price) + ' pour bénéficier de la livraison offerte.'
+          ? 'Livraison offerte !'
+          : 'Plus que ' + money(15000 - cart.total_price) + ' pour la livraison offerte'
       }
     </p>
 
@@ -2101,9 +2113,13 @@ document.body.classList.remove(
 
     </div>
 
-    <p class="cart-drawer__free-shipping-caption">
-      Livraison offerte dès 150 € en France
-    </p>
+    <div class="cart-drawer__free-shipping-labels">
+
+      <span>0 €</span>
+
+      <span>150 €</span>
+
+    </div>
 
   </div>
 
