@@ -664,7 +664,35 @@ href="{{ routes.account_login_url }}"
 
     <div class="cart-drawer__footer">
 
-      <div class="cart-drawer__total">
+  <div class="cart-drawer__free-shipping" data-free-shipping>
+
+    <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
+      ${
+        cart.total_price >= 15000
+          ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
+          : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+              .replace(
+                '%{amount}',
+                money(15000 - cart.total_price)
+              )
+      }
+    </p>
+
+    <div class="cart-drawer__free-shipping-track">
+      <div
+        class="cart-drawer__free-shipping-progress"
+        data-free-shipping-progress
+        style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
+      ></div>
+    </div>
+
+    <p class="cart-drawer__free-shipping-caption">
+      {{ 'pour_header.cart_drawer.free_shipping_progress' | t }}
+    </p>
+
+  </div>
+
+  <div class="cart-drawer__total">
 
         <span>
           {{ 'pour_header.cart_drawer.subtotal' | t }}
@@ -1246,7 +1274,45 @@ z-index: 99999;
   transform: scaleX(.4);
 }
 
+/* =========================================================
+   JAUGE LIVRAISON OFFERTE
+========================================================= */
 
+.cart-drawer__free-shipping {
+  margin-bottom: 24px;
+}
+
+.cart-drawer__free-shipping-text {
+  margin: 0 0 10px;
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+.cart-drawer__free-shipping-track {
+  width: 100%;
+  height: 4px;
+  overflow: hidden;
+  background: rgba(17,17,17,.12);
+}
+
+.cart-drawer__free-shipping-progress {
+  height: 100%;
+  width: 0;
+  background: #111111;
+  transition: width .4s ease;
+}
+
+.cart-drawer__free-shipping-caption {
+  margin: 8px 0 0;
+  font-size: 8px;
+  line-height: 1.4;
+  letter-spacing: .08em;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(17,17,17,.5);
+}
 
 /* =========================================================
    FOOTER DRAWER
