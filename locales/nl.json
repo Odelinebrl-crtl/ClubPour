@@ -39,8 +39,12 @@
       "view_cart": "WINKELMAND BEKIJKEN",
       "empty": "JE WINKELMAND IS LEEG.",
       "discover_creations": "ONZE CREATIES ONTDEKKEN",
-      "discover_products": "ONZE PRODUCTEN ONTDEKKEN"
+      "discover_products": "ONZE PRODUCTEN ONTDEKKEN",
+      "free_shipping_remaining": "Nog maar %{amount} tot gratis verzending, alleen in Frankrijk",
+"free_shipping_unlocked": "Gratis verzending ontgrendeld",
+"free_shipping_progress": "Gratis verzending vanaf € 150 in Frankrijk"
     },
+
     "errors": {
       "load_cart": "De winkelmand kon niet worden geladen.",
       "update_cart": "De winkelmand kon niet worden bijgewerkt.",
@@ -463,6 +467,8 @@
     "return_policy": "Bekijk ons retourbeleid",
     "empty_title": "JE WINKELMAND IS LEEG.",
     "empty_text": "Ontdek Collection 001 en vind je volgende favoriete item.",
-    "empty_button": "ONZE CREATIES ONTDEKKEN"
+    "empty_button": "ONZE CREATIES ONTDEKKEN",
+    "free_shipping_remaining": "Nog maar %{amount} tot gratis verzending, alleen in Frankrijk",
+"free_shipping_unlocked": "Gratis verzending ontgrendeld"
   }
 }
