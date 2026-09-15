@@ -187,6 +187,16 @@
 
 {% endif %}
 
+<div class="cart-pour__summary-line">
+  <span>
+    {{ 'cart_pour.subtotal' | t }}
+  </span>
+
+  <span>
+    {{ cart.total_price | money }}
+  </span>
+</div>
+
           <p class="cart-pour__shipping">
             {{ 'cart_pour.shipping_note' | t }}
           </p>
