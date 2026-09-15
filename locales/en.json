@@ -130,7 +130,10 @@
       "view_cart": "VIEW CART",
       "empty": "YOUR CART IS EMPTY.",
       "discover_creations": "DISCOVER OUR CREATIONS",
-      "discover_products": "DISCOVER OUR PRODUCTS"
+      "discover_products": "DISCOVER OUR PRODUCTS",
+      "free_shipping_remaining": "Only %{amount} left for free shipping, France only",
+"free_shipping_unlocked": "Free shipping unlocked",
+"free_shipping_progress": "Free shipping on orders over €150 in France"
     },
 
     "errors": {
@@ -554,7 +557,7 @@
   "eyebrow": "COLLECTION 001",
     "language": "LANGUAGE",
   "title": "THE CLUB IS COMING",
-  "text": "The 001 collection is coming soon. Sign up to receive the official POUR launch announcement and discover an exclusive surprise in your inbox when our website goes live.",
+  "text": "The 001 collection is coming soon. Sign up to be notified when the website launches and to discover the first POUR collection.",
   "email_placeholder": "YOUR EMAIL ADDRESS",
   "consent": "I agree to receive communications from POUR by email.",
   "submit": "KEEP ME UPDATED WHEN THE SITE OPENS",
@@ -585,6 +588,8 @@
     "return_policy": "See our return policy",
     "empty_title": "YOUR CART IS EMPTY.",
     "empty_text": "Discover Collection 001 and find your next piece.",
-    "empty_button": "DISCOVER OUR CREATIONS"
+    "empty_button": "DISCOVER OUR CREATIONS",
+    "free_shipping_remaining": "Only %{amount} left for free shipping, France only",
+"free_shipping_unlocked": "Free shipping unlocked"
   }
 }
