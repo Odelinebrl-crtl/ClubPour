@@ -581,7 +581,7 @@ href="{{ routes.account_login_url }}"
 
 
             <p class="cart-drawer__item-price">
-              {{ item.final_line_price | money }}
+             {{ item.final_line_price | money_without_currency | append: ' €' }}
             </p>
 
 
@@ -727,7 +727,7 @@ href="{{ routes.account_login_url }}"
         </span>
 
        <span data-cart-total>
-  {{ cart.total_price | money }}
+  {{ cart.total_price | money_without_currency | append: ' €' }}
 </span>
 
       </div>
