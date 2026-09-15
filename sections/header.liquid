@@ -688,14 +688,15 @@ href="{{ routes.account_login_url }}"
 
     {% if cart.total_price >= free_shipping_threshold %}
 
-     Livraison offerte !
+  {{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}
 
-    {% else %}
+{% else %}
 
-      {{ 'pour_header.cart_drawer.free_shipping_remaining'
-  | t: amount: free_shipping_remaining_formatted
-}}
-    {% endif %}
+  {{ 'pour_header.cart_drawer.free_shipping_remaining'
+    | t: amount: free_shipping_remaining_formatted
+  }}
+
+{% endif %}
 
   </p>
 
