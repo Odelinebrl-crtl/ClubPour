@@ -2178,7 +2178,7 @@ function updateFreeShippingProgress(cart) {
       '%{amount}',
       ((15000 - cart.total_price) / 100)
   .toFixed(2)
-  .replace('.', ',')'
+  .replace('.', ',')+ ' €'
     )
 }
     </p>
