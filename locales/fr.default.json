@@ -489,6 +489,8 @@
     "return_policy": "Consultez notre politique de retour",
     "empty_title": "VOTRE PANIER EST VIDE.",
     "empty_text": "Découvrez la Collection 001 et trouvez la prochaine pièce à vous accompagner.",
-    "empty_button": "DÉCOUVRIR NOS CRÉATIONS"
+    "empty_button": "DÉCOUVRIR NOS CRÉATIONS",
+    "free_shipping_remaining": "Plus que %{amount} pour la livraison offerte",
+"free_shipping_unlocked": "Livraison offerte débloquée"
   }
 }
