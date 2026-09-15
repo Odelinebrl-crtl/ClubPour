@@ -668,19 +668,19 @@ href="{{ routes.account_login_url }}"
   <div class="cart-drawer__free-shipping" data-free-shipping>
 
   <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
-    ${
-      cart.total_price >= 15000
-        ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
-        : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
-            .replace('%{amount}', money(15000 - cart.total_price))
-    }
+    {% if cart.total_price >= 15000 %}
+      {{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}
+    {% else %}
+      {% assign remaining = 15000 | minus: cart.total_price %}
+      {{ 'pour_header.cart_drawer.free_shipping_remaining' | t: amount: remaining | money }}
+    {% endif %}
   </p>
 
   <div class="cart-drawer__free-shipping-track">
     <div
       class="cart-drawer__free-shipping-progress"
       data-free-shipping-progress
-      style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
+      style="width: {{ cart.total_price | times: 100.0 | divided_by: 15000 | at_most: 100 }}%;"
     ></div>
   </div>
 
