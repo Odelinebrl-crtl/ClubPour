@@ -1837,7 +1837,67 @@ document.body.classList.remove(
 
   }
 
+/* =========================================================
+   MISE À JOUR DE LA JAUGE LIVRAISON OFFERTE
+========================================================= */
 
+function updateFreeShippingProgress(cart) {
+  const threshold = 15000;
+
+  const progressElement =
+    document.querySelector(
+      '[data-free-shipping-progress]'
+    );
+
+  const textElement =
+    document.querySelector(
+      '[data-free-shipping-text]'
+    );
+
+  const freeShippingElement =
+    document.querySelector(
+      '[data-free-shipping]'
+    );
+
+  if (
+    !progressElement ||
+    !textElement ||
+    !freeShippingElement
+  ) {
+    return;
+  }
+
+  const percentage =
+    Math.min(
+      100,
+      Math.max(
+        0,
+        (cart.total_price / threshold) * 100
+      )
+    );
+
+  const remaining =
+    Math.max(
+      0,
+      threshold - cart.total_price
+    );
+
+  if (cart.total_price >= threshold) {
+    textElement.textContent =
+      'Livraison offerte !';
+  } else {
+    textElement.textContent =
+      'Plus que ' +
+      money(remaining) +
+      ' pour la livraison offerte';
+  }
+
+  progressElement.style.width =
+    percentage + '%';
+
+  freeShippingElement.hidden =
+    cart.total_price <= 0;
+}
 
   /* =========================================================
      RECONSTRUCTION DU DRAWER
