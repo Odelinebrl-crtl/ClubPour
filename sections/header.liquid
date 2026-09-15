@@ -675,7 +675,7 @@ href="{{ routes.account_login_url }}"
 {% if free_shipping_percentage > 100 %}
   {% assign free_shipping_percentage = 100 %}
 {% endif %}
-
+{% if localization.country.iso_code == 'FR' %}
 <div
   class="cart-drawer__free-shipping"
   data-free-shipping
@@ -730,7 +730,7 @@ href="{{ routes.account_login_url }}"
 </span>
 
       </div>
-
+{% endif %}
 
       <p class="cart-drawer__shipping">
         {{ 'pour_header.cart_drawer.shipping_taxes' | t }}
