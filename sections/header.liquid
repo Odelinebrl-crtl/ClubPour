@@ -1683,7 +1683,7 @@ function freeShippingMoney(cents) {
   return new Intl.NumberFormat('fr-FR', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2
-  }).format(cents / 100) ;
+  }).format(cents / 100) + ' €';
 }
 
   function escapeHTML(value) {
@@ -1894,13 +1894,11 @@ function updateFreeShippingProgress(cart) {
       '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}';
   } else {
     textElement.textContent =
-      '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
-        .replace(
-          '%{amount}',
-          (remaining / 100)
-            .toFixed(2)
-            .replace('.', ',') + ' €'
-        );
+  '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+    .replace(
+      '%{amount}',
+      freeShippingMoney(remaining)
+    );
   }
 
   progressElement.style.width =
@@ -2176,9 +2174,7 @@ function updateFreeShippingProgress(cart) {
     : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
     .replace(
       '%{amount}',
-      ((15000 - cart.total_price) / 100)
-  .toFixed(2)
-  .replace('.', ',')+ ' €'
+      freeShippingMoney(15000 - cart.total_price)
     )
 }
     </p>
