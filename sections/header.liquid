@@ -1972,17 +1972,56 @@ document.body.classList.remove(
 
       <div class="cart-drawer__footer">
 
-        <div class="cart-drawer__total">
+  {% assign free_shipping_threshold = 15000 %}
 
-          <span>
-            {{ 'pour_header.cart_drawer.subtotal' | t }}
-          </span>
+  <div
+    class="cart-drawer__free-shipping"
+    data-free-shipping
+    {% unless cart.total_price > 0 %}
+      hidden
+    {% endunless %}
+  >
 
-          <span data-cart-total>
-  ${money(cart.total_price)}
-</span>
+    <p
+      class="cart-drawer__free-shipping-text"
+      data-free-shipping-text
+    >
+      ${
+        cart.total_price >= 15000
+          ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
+          : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+              .replace(
+                '%{amount}',
+                money(15000 - cart.total_price)
+              )
+      }
+    </p>
 
-        </div>
+    <div class="cart-drawer__free-shipping-track">
+      <div
+        class="cart-drawer__free-shipping-progress"
+        data-free-shipping-progress
+        style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
+      ></div>
+    </div>
+
+    <p class="cart-drawer__free-shipping-caption">
+      {{ 'pour_header.cart_drawer.free_shipping_progress' | t }}
+    </p>
+
+  </div>
+
+  <div class="cart-drawer__total">
+
+    <span>
+      {{ 'pour_header.cart_drawer.subtotal' | t }}
+    </span>
+
+    <span data-cart-total>
+      ${money(cart.total_price)}
+    </span>
+
+  </div>
 
 
         <p class="cart-drawer__shipping">
