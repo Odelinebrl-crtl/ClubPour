@@ -2466,17 +2466,7 @@ if (changeButton) {
        TOTAL
     ===================================================== */
 
-    const totalElement =
-      document.querySelector(
-        '[data-cart-total]'
-      );
-
-
-    if (totalElement) {
-
-      totalElement.textContent =
-        money(cart.total_price);
-
+    await refreshDrawer();
     }
 
 
