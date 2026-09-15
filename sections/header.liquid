@@ -691,8 +691,9 @@ href="{{ routes.account_login_url }}"
 
     {% else %}
 
-      Plus que {{ free_shipping_remaining | money }} pour la livraison offerte
-
+      {{ 'pour_header.cart_drawer.free_shipping_remaining'
+  | t: amount: free_shipping_remaining
+}}
     {% endif %}
 
   </p>
@@ -1883,14 +1884,16 @@ function updateFreeShippingProgress(cart) {
     );
 
   if (cart.total_price >= threshold) {
-    textElement.textContent =
-      'Livraison offerte !';
-  } else {
-    textElement.textContent =
-      'Plus que ' +
-      money(remaining) +
-      ' pour la livraison offerte';
-  }
+  textElement.textContent =
+    '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}';
+} else {
+  textElement.textContent =
+    '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+      .replace(
+        '%{amount}',
+        money(remaining)
+      );
+}
 
   progressElement.style.width =
     percentage + '%';
