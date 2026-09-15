@@ -143,7 +143,10 @@
       "view_cart": "WARENKORB ANSEHEN",
       "empty": "DEIN WARENKORB IST LEER.",
       "discover_creations": "UNSERE KREATIONEN ENTDECKEN",
-      "discover_products": "UNSERE PRODUKTE ENTDECKEN"
+      "discover_products": "UNSERE PRODUKTE ENTDECKEN",
+      "free_shipping_remaining": "Nur noch %{amount} bis zum kostenlosen Versand, nur in Frankreich",
+"free_shipping_unlocked": "Kostenloser Versand freigeschaltet",
+"free_shipping_progress": "Kostenloser Versand ab 150 € in Frankreich"
     },
     "errors": {
       "load_cart": "Der Warenkorb konnte nicht geladen werden.",
@@ -583,7 +586,7 @@
   "eyebrow": "KOLLEKTION 001",
   "title": "DER CLUB KOMMT",
     "language": "SPRACHE",
-  "text": "Die Kollektion 001 erscheint in Kürze. Melde dich an, um die offizielle Ankündigung des POUR-Launches zu erhalten, und entdecke bei der Eröffnung unserer Website eine exklusive Überraschung in deinem Postfach.",
+  "text": "Die Kollektion 001 erscheint in Kürze. Melden Sie sich an, um über den Start der Website informiert zu werden und die erste POUR-Kollektion zu entdecken.",
   "email_placeholder": "IHRE E-MAIL-ADRESSE",
   "consent": "Ich stimme zu, Mitteilungen von POUR per E-Mail zu erhalten.",
   "submit": "BEI DER ERÖFFNUNG INFORMIERT WERDEN",
@@ -618,6 +621,8 @@
     "return_policy": "Unsere Rückgaberichtlinie ansehen",
     "empty_title": "DEIN WARENKORB IST LEER.",
     "empty_text": "Entdecke Collection 001 und finde dein nächstes Piece.",
-    "empty_button": "UNSERE KREATIONEN ENTDECKEN"
+    "empty_button": "UNSERE KREATIONEN ENTDECKEN",
+    "free_shipping_remaining": "Nur noch %{amount} bis zum kostenlosen Versand, nur in Frankreich",
+"free_shipping_unlocked": "Kostenloser Versand freigeschaltet"
   }
 }
