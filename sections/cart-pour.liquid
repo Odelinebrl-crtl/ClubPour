@@ -145,51 +145,47 @@
           </p>
 {% if localization.language.iso_code == 'fr' and localization.country.iso_code == 'FR' %}
 
+  {% assign free_shipping_threshold = 15000 %}
+  {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
+  {% assign free_shipping_progress = cart.total_price | times: 100.0 | divided_by: free_shipping_threshold | at_most: 100 %}
+  {% assign free_shipping_remaining_money = free_shipping_remaining | money %}
+
   <div class="cart-pour__free-shipping">
 
     <p class="cart-pour__free-shipping-text">
-      {% if cart.total_price >= 15000 %}
+
+      {% if cart.total_price >= free_shipping_threshold %}
+
         {{ 'cart_pour.free_shipping_unlocked' | t }}
+
       {% else %}
-        {% assign remaining = 15000 | minus: cart.total_price %}
-        {{ 'cart_pour.free_shipping_remaining' | t: amount: remaining | money }}
+
+        {{ 'cart_pour.free_shipping_remaining' | t: amount: free_shipping_remaining_money }}
+
       {% endif %}
+
     </p>
 
     <div class="cart-pour__free-shipping-track">
+
       <div
         class="cart-pour__free-shipping-progress"
-        style="width: {{ cart.total_price | times: 100.0 | divided_by: 15000 | at_most: 100 }}%;"
+        style="width: {{ free_shipping_progress }}%;"
       ></div>
+
     </div>
 
-    <p class="cart-pour__free-shipping-caption">
-      {{ 'cart_pour.free_shipping_progress' | t }}
-    </p>
+    <div class="cart-pour__free-shipping-labels">
+
+      <span>0 €</span>
+
+      <span>150 €</span>
+
+    </div>
 
   </div>
 
 {% endif %}
-          <div class="cart-pour__summary-line">
-            <span>
-              {{ 'cart_pour.subtotal' | t }}
-            </span>
-
-            <span>
-              {{ cart.total_price | money }}
-            </span>
-          </div>
-
-          {% if cart.cart_level_discount_applications.size > 0 %}
-            <div class="cart-pour__discount">
-              {% for discount in cart.cart_level_discount_applications %}
-                <div class="cart-pour__summary-line">
-                  <span>{{ discount.title }}</span>
-                  <span>-{{ discount.total_allocated_amount | money }}</span>
-                </div>
-              {% endfor %}
-            </div>
-          {% endif %}
 
           <p class="cart-pour__shipping">
             {{ 'cart_pour.shipping_note' | t }}
@@ -796,19 +792,25 @@
   transition:
     width .5s ease;
 }
-
+/* =========================================================
+   LABELS JAUGE LIVRAISON OFFERTE
+========================================================= */
 
 #CartPour-{{ section.id }}
-.cart-pour__free-shipping-caption {
-  margin: 10px 0 0;
+.cart-pour__free-shipping-labels {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 8px;
 
   font-size: 9px;
 
-  line-height: 1.5;
+  line-height: 1;
 
-  color: rgba(17,17,17,.48);
+  color: rgba(17,17,17,.55);
 }
-
 #CartPour-{{ section.id }}
 .cart-pour__summary-line {
   display: flex;
