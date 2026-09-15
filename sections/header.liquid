@@ -670,8 +670,9 @@ href="{{ routes.account_login_url }}"
   <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
     ${
       cart.total_price >= 15000
-        ? 'Livraison offerte !'
-        : `Plus que ${money(15000 - cart.total_price)} pour la livraison offerte`
+        ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
+        : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+            .replace('%{amount}', money(15000 - cart.total_price))
     }
   </p>
 
