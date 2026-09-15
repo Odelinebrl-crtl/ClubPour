@@ -147,6 +147,32 @@
     }
   },
 
+  "cart_pour": {
+  "eyebrow": "POUR",
+  "title": "CESTA",
+  "products": "PRODUCTOS",
+  "article_singular": "ARTÍCULO",
+  "article_plural": "ARTÍCULOS",
+  "decrease": "Reducir la cantidad",
+  "increase": "Aumentar la cantidad",
+  "remove": "ELIMINAR",
+  "continue": "← CONTINUAR COMPRANDO",
+  "summary": "RESUMEN",
+  "subtotal": "SUBTOTAL",
+  "shipping_note": "Los gastos de envío se calculan en el siguiente paso.",
+  "checkout": "PROCEDER AL PAGO",
+  "payment_label": "PAGO",
+  "secure_payment": "Pago seguro",
+  "delivery_label": "ENVÍO",
+  "tracking_available": "Seguimiento del pedido disponible",
+  "returns_label": "DEVOLUCIONES",
+  "return_policy": "Consulta nuestra política de devoluciones",
+  "empty_title": "TU CESTA ESTÁ VACÍA.",
+  "empty_text": "Descubre la Colección 001 y encuentra la próxima pieza que te acompañará.",
+  "empty_button": "DESCUBRIR NUESTRAS CREACIONES",
+  "free_shipping_remaining": "Solo faltan %{amount} para conseguir el envío gratuito, únicamente en Francia",
+  "free_shipping_unlocked": "Envío gratuito desbloqueado"
+},
   "pour_footer": {
     "newsletter": {
       "heading": "ÚNETE AL CLUB",
