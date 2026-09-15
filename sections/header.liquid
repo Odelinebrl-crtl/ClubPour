@@ -1654,32 +1654,27 @@ z-index: 99999;
 
 
   function money(cents) {
+  try {
+    const locale =
+      '{{ request.locale.iso_code }}' === 'fr'
+        ? 'fr-FR'
+        : '{{ request.locale.iso_code }}' === 'pt'
+          ? 'pt-PT'
+          : '{{ request.locale.iso_code }}' === 'en'
+            ? 'en-US'
+            : '{{ request.locale.iso_code }}-{{ request.locale.iso_code | upcase }}';
 
-    try {
+    return new Intl.NumberFormat(locale, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(cents / 100) + ' €';
 
-      return new Intl.NumberFormat(
-        '{{ request.locale.iso_code }}' === 'fr'
-          ? 'fr-FR'
-          : '{{ request.locale.iso_code }}' === 'pt'
-            ? 'pt-PT'
-            : '{{ request.locale.iso_code }}' === 'en'
-              ? 'en-US'
-              : '{{ request.locale.iso_code }}-{{ request.locale.iso_code | upcase }}',
-        {
-          style: 'currency',
-          currency: getCurrency()
-        }
-      ).format(cents / 100);
-
-    } catch (error) {
-
-      return (cents / 100)
-        .toFixed(2)
-        .replace('.', ',');
-
-    }
-
+  } catch (error) {
+    return (cents / 100)
+      .toFixed(2)
+      .replace('.', ',') + ' €';
   }
+}
 function freeShippingMoney(cents) {
   return new Intl.NumberFormat('fr-FR', {
     minimumFractionDigits: 2,
