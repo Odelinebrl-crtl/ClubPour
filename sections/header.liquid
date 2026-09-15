@@ -2159,7 +2159,7 @@ function updateFreeShippingProgress(cart) {
 
 
       <div class="cart-drawer__footer">
-
+{% if localization.country.iso_code == 'FR' %}
   <div
     class="cart-drawer__free-shipping"
     data-free-shipping
@@ -2202,7 +2202,7 @@ function updateFreeShippingProgress(cart) {
 </div>
 
   </div>
-
+{% endif %}
   <div class="cart-drawer__total">
 
     <span>
