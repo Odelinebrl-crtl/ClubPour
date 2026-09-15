@@ -2121,8 +2121,12 @@ async function refreshDrawer() {
   <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
     ${
       cart.total_price >= 15000
-        ? 'Livraison offerte !'
-        : `Plus que ${money(15000 - cart.total_price)} pour la livraison offerte`
+        ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
+        : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
+          .replace(
+            '%{amount}',
+            money(15000 - cart.total_price)
+          )
     }
   </p>
 
@@ -2132,11 +2136,6 @@ async function refreshDrawer() {
       data-free-shipping-progress
       style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
     ></div>
-  </div>
-
-  <div class="cart-drawer__free-shipping-labels">
-    <span>0 €</span>
-    <span>150 €</span>
   </div>
 
 </div>
