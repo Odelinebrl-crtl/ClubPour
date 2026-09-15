@@ -143,7 +143,33 @@
           <p class="cart-pour__summary-eyebrow">
             {{ 'cart_pour.summary' | t }}
           </p>
+{% if localization.language.iso_code == 'fr' and localization.country.iso_code == 'FR' %}
 
+  <div class="cart-pour__free-shipping">
+
+    <p class="cart-pour__free-shipping-text">
+      {% if cart.total_price >= 15000 %}
+        {{ 'cart_pour.free_shipping_unlocked' | t }}
+      {% else %}
+        {% assign remaining = 15000 | minus: cart.total_price %}
+        {{ 'cart_pour.free_shipping_remaining' | t: amount: remaining | money }}
+      {% endif %}
+    </p>
+
+    <div class="cart-pour__free-shipping-track">
+      <div
+        class="cart-pour__free-shipping-progress"
+        style="width: {{ cart.total_price | times: 100.0 | divided_by: 15000 | at_most: 100 }}%;"
+      ></div>
+    </div>
+
+    <p class="cart-pour__free-shipping-caption">
+      {{ 'cart_pour.free_shipping_progress' | t }}
+    </p>
+
+  </div>
+
+{% endif %}
           <div class="cart-pour__summary-line">
             <span>
               {{ 'cart_pour.subtotal' | t }}
