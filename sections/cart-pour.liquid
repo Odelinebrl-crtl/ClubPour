@@ -93,7 +93,7 @@
                     {% endif %}
 
                     <span>
-                      {{ item.final_line_price | money }}
+                      {{ item.final_line_price | money_without_currency | append: ' €' }}
                     </span>
                   </div>
                 </div>
@@ -193,7 +193,7 @@
   </span>
 
   <span>
-    {{ cart.total_price | money }}
+   {{ cart.total_price | money_without_currency | append: ' €' }}
   </span>
 </div>
 
