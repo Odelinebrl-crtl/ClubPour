@@ -664,26 +664,50 @@ href="{{ routes.account_login_url }}"
 
     <div class="cart-drawer__footer">
 
-  <div class="cart-drawer__free-shipping" data-free-shipping>
+  {% assign free_shipping_threshold = 15000 %}
+  {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
+  {% assign free_shipping_percentage = cart.total_price
+    | times: 100
+    | divided_by: free_shipping_threshold
+  %}
+
+  {% if free_shipping_percentage > 100 %}
+    {% assign free_shipping_percentage = 100 %}
+  {% endif %}
+
+  <div
+    class="cart-drawer__free-shipping"
+    data-free-shipping
+    {% if cart.total_price <= 0 %}
+      hidden
+    {% endif %}
+  >
 
     <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
-      ${
-        cart.total_price >= 15000
-          ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
-          : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
-              .replace(
-                '%{amount}',
-                money(15000 - cart.total_price)
-              )
-      }
+
+      {% if cart.total_price >= free_shipping_threshold %}
+
+        {{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}
+
+      {% else %}
+
+        {{ 'pour_header.cart_drawer.free_shipping_remaining'
+          | t: amount: free_shipping_remaining
+          | money
+        }}
+
+      {% endif %}
+
     </p>
 
     <div class="cart-drawer__free-shipping-track">
+
       <div
         class="cart-drawer__free-shipping-progress"
         data-free-shipping-progress
-        style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
+        style="width: {{ free_shipping_percentage }}%;"
       ></div>
+
     </div>
 
     <p class="cart-drawer__free-shipping-caption">
@@ -1279,39 +1303,51 @@ z-index: 99999;
 ========================================================= */
 
 .cart-drawer__free-shipping {
-  margin-bottom: 24px;
+  display: block !important;
+  width: 100%;
+  margin: 0 0 24px;
+}
+
+.cart-drawer__free-shipping[hidden] {
+  display: none !important;
 }
 
 .cart-drawer__free-shipping-text {
-  margin: 0 0 10px;
-  font-size: 10px;
-  line-height: 1.5;
-  letter-spacing: .04em;
-  text-align: center;
+  display: block !important;
+  margin: 0 0 10px !important;
+  font-size: 10px !important;
+  line-height: 1.5 !important;
+  letter-spacing: .04em !important;
+  text-align: center !important;
+  color: #111111 !important;
 }
 
 .cart-drawer__free-shipping-track {
-  width: 100%;
-  height: 4px;
-  overflow: hidden;
-  background: rgba(17,17,17,.12);
+  display: block !important;
+  width: 100% !important;
+  height: 4px !important;
+  overflow: hidden !important;
+  background: #e5e5e5 !important;
 }
 
 .cart-drawer__free-shipping-progress {
-  height: 100%;
-  width: 0;
-  background: #111111;
+  display: block !important;
+  height: 4px !important;
+  min-width: 2px;
+  background-color: #111111 !important;
+  background: #111111 !important;
   transition: width .4s ease;
 }
 
 .cart-drawer__free-shipping-caption {
-  margin: 8px 0 0;
-  font-size: 8px;
-  line-height: 1.4;
-  letter-spacing: .08em;
-  text-align: center;
+  display: block !important;
+  margin: 8px 0 0 !important;
+  font-size: 8px !important;
+  line-height: 1.4 !important;
+  letter-spacing: .08em !important;
+  text-align: center !important;
   text-transform: uppercase;
-  color: rgba(17,17,17,.5);
+  color: rgba(17,17,17,.5) !important;
 }
 
 /* =========================================================
@@ -2038,14 +2074,10 @@ document.body.classList.remove(
 
       <div class="cart-drawer__footer">
 
-  {% assign free_shipping_threshold = 15000 %}
-
   <div
     class="cart-drawer__free-shipping"
     data-free-shipping
-    {% unless cart.total_price > 0 %}
-      hidden
-    {% endunless %}
+    ${cart.total_price <= 0 ? 'hidden' : ''}
   >
 
     <p
@@ -2055,24 +2087,22 @@ document.body.classList.remove(
       ${
         cart.total_price >= 15000
           ? '{{ 'pour_header.cart_drawer.free_shipping_unlocked' | t }}'
-          : '{{ 'pour_header.cart_drawer.free_shipping_remaining' | t }}'
-              .replace(
-                '%{amount}',
-                money(15000 - cart.total_price)
-              )
+          : 'Plus que ' + money(15000 - cart.total_price) + ' pour bénéficier de la livraison offerte.'
       }
     </p>
 
     <div class="cart-drawer__free-shipping-track">
+
       <div
         class="cart-drawer__free-shipping-progress"
         data-free-shipping-progress
         style="width: ${Math.min(100, (cart.total_price / 15000) * 100)}%;"
       ></div>
+
     </div>
 
     <p class="cart-drawer__free-shipping-caption">
-      {{ 'pour_header.cart_drawer.free_shipping_progress' | t }}
+      Livraison offerte dès 150 € en France
     </p>
 
   </div>
