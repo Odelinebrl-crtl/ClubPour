@@ -130,7 +130,10 @@
       "view_cart": "VER LA CARRITO ",
       "empty": "TU CARRITO  ESTÁ VACÍA.",
       "discover_creations": "DESCUBRIR NUESTRAS CREACIONES",
-      "discover_products": "DESCUBRIR NUESTROS PRODUCTOS"
+      "discover_products": "DESCUBRIR NUESTROS PRODUCTOS",
+      "free_shipping_remaining": "Solo faltan %{amount} para conseguir el envío gratuito, únicamente en Francia",
+"free_shipping_unlocked": "Envío gratuito desbloqueado",
+"free_shipping_progress": "Envío gratuito a partir de 150 € en Francia"
     },
 
     "errors": {
@@ -406,6 +409,7 @@
   "password_placeholder": "CONTRASEÑA",
   "password_submit": "ENTRAR"
 },
+
    "faq_pour": {
     "eyebrow": "AYUDA E INFORMACIÓN",
     "title": "FAQ",
