@@ -40,7 +40,7 @@
       "empty": "VOTRE PANIER EST VIDE.",
       "discover_creations": "DÉCOUVRIR NOS CRÉATIONS",
       "discover_products": "DÉCOUVRIR NOS PRODUITS",
-      "free_shipping_remaining": "Plus que %{amount} pour la livraison offerte",
+      "free_shipping_remaining": "Plus que %{amount} pour la livraison offerte en France uniquement",
 "free_shipping_unlocked": "Livraison offerte débloquée",
 "free_shipping_progress": "Livraison offerte dès 150 € en France"
     },
