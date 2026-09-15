@@ -137,7 +137,10 @@
       "view_cart": "VER CARRINHO",
       "empty": "O SEU CARRINHO ESTÁ VAZIO.",
       "discover_creations": "DESCOBRIR AS NOSSAS CRIAÇÕES",
-      "discover_products": "DESCOBRIR OS NOSSOS PRODUTOS"
+      "discover_products": "DESCOBRIR OS NOSSOS PRODUTOS",
+      "free_shipping_remaining": "Faltam apenas %{amount} para obter portes grátis, apenas em França",
+"free_shipping_unlocked": "Portes grátis desbloqueados",
+"free_shipping_progress": "Portes grátis a partir de 150 € em França"
     },
 
     "errors": {
@@ -561,7 +564,7 @@
   "eyebrow": "COLEÇÃO 001",
     "language": "IDIOMA",
   "title": "O CLUBE ESTÁ A CHEGAR",
-  "text": "A coleção 001 estará disponível em breve. Inscreve-te para receber o anúncio oficial do lançamento da POUR e descobre uma surpresa exclusiva na tua caixa de entrada quando abrirmos o nosso site.",
+  "text": "A coleção 001 estará disponível em breve. Inscreva-se para ser informado sobre o lançamento do site e descobrir a primeira coleção POUR.",
   "email_placeholder": "O SEU ENDEREÇO DE E-MAIL",
   "consent": "Aceito receber comunicações da POUR por e-mail.",
   "submit": "AVISEM-ME QUANDO O SITE ABRIR",
@@ -592,6 +595,8 @@
     "return_policy": "Consulte a nossa política de devoluções",
     "empty_title": "O SEU CARRINHO ESTÁ VAZIO.",
     "empty_text": "Descubra a Coleção 001 e encontre a próxima peça que o acompanhará.",
-    "empty_button": "DESCOBRIR AS NOSSAS CRIAÇÕES"
+    "empty_button": "DESCOBRIR AS NOSSAS CRIAÇÕES",
+    "free_shipping_remaining": "Faltam apenas %{amount} para obter portes grátis, apenas em França",
+"free_shipping_unlocked": "Portes grátis desbloqueados"
   }
 }
