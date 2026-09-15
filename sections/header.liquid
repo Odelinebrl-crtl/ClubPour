@@ -2519,10 +2519,10 @@ if (itemElement && newQuantity > 0) {
     (item) => item.key === key
   );
 
-  const linePriceElement =
-    itemElement.querySelector(
-      '[data-cart-line-price]'
-    );
+ const linePriceElement =
+  itemElement.querySelector(
+    '.cart-drawer__item-price'
+  );
 
   if (
     updatedItem &&
