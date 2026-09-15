@@ -693,6 +693,7 @@ href="{{ routes.account_login_url }}"
 
       {{ 'pour_header.cart_drawer.free_shipping_remaining'
   | t: amount: free_shipping_remaining
+  | replace: free_shipping_remaining, free_shipping_remaining
 }}
     {% endif %}
 
