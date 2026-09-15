@@ -1679,7 +1679,12 @@ z-index: 99999;
     }
 
   }
-
+function freeShippingMoney(cents) {
+  return new Intl.NumberFormat('fr-FR', {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(cents / 100) + ' €';
+}
 
   function escapeHTML(value) {
 
