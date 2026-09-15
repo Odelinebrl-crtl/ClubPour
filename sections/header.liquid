@@ -2054,9 +2054,12 @@ function updateFreeShippingProgress(cart) {
       </a>
 
 
-      <p class="cart-drawer__item-price">
-        ${money(item.final_line_price)}
-      </p>
+      <p
+  class="cart-drawer__item-price"
+  data-cart-line-price
+>
+  ${money(item.final_line_price)}
+</p>
 
 
       ${variantHTML}
@@ -2507,7 +2510,28 @@ if (changeButton) {
 
     updateHeaderCartCount(cart);
 updateFreeShippingProgress(cart);
+/* =====================================================
+   MISE À JOUR DU PRIX DU PRODUIT
+===================================================== */
 
+if (itemElement && newQuantity > 0) {
+  const updatedItem = cart.items.find(
+    (item) => item.key === key
+  );
+
+  const linePriceElement =
+    itemElement.querySelector(
+      '[data-cart-line-price]'
+    );
+
+  if (
+    updatedItem &&
+    linePriceElement
+  ) {
+    linePriceElement.textContent =
+      money(updatedItem.final_line_price);
+  }
+}
     /* =====================================================
        SUPPRESSION CONFIRMÉE
     ===================================================== */
