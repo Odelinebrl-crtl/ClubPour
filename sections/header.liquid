@@ -2112,8 +2112,15 @@ async function refreshDrawer() {
       </div>
 
 
-      <div class="cart-drawer__footer">
-<div class="cart-drawer__free-shipping" data-free-shipping>
+      {% assign show_free_shipping = false %}
+
+{% if localization.language.iso_code == 'fr' and localization.country.iso_code == 'FR' %}
+  {% assign show_free_shipping = true %}
+{% endif %}
+
+<script>
+  const showFreeShipping = {{ show_free_shipping | json }};
+</script>
 
   <p class="cart-drawer__free-shipping-text" data-free-shipping-text>
     ${
