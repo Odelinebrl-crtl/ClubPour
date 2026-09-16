@@ -366,11 +366,12 @@
   }
 
   #PourAbout-{{ section.id }} .pour-about__body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 13px;
-    line-height: 1.75;
-    color: var(--pour-grey);
-  }
+  width: 100%;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.75;
+  color: var(--pour-grey);
+}
 #PourAbout-{{ section.id }} .pour-about__body p {
   margin: 0;
 }
@@ -502,10 +503,11 @@
     letter-spacing: -.075em;
   }
 
-  #PourAbout-{{ section.id }} .pour-about__manifesto .pour-about__body {
-    width: min(100%, 570px);
-    margin: 0 auto;
-  }
+ #PourAbout-{{ section.id }} .pour-about__manifesto .pour-about__body {
+  width: min(100%, 900px);
+  max-width: 900px;
+  margin: 0 auto;
+}
 
   /* =========================================================
      ORIGIN
