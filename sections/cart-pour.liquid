@@ -93,7 +93,11 @@
                     {% endif %}
 
                     <span>
-                      {{ item.final_line_price | money }}
+                      {% if cart.currency.iso_code == 'EUR' %}
+  {{ item.final_line_price | money_without_currency | append: ' €' }}
+{% else %}
+  {{ item.final_line_price | money }}
+{% endif %}
                     </span>
                   </div>
                 </div>

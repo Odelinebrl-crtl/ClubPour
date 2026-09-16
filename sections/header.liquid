@@ -581,7 +581,11 @@ href="{{ routes.account_login_url }}"
 
 
             <p class="cart-drawer__item-price">
-             {{ item.final_line_price | money }}
+             {% if cart.currency.iso_code == 'EUR' %}
+  {{ item.final_line_price | money_without_currency | append: ' €' }}
+{% else %}
+  {{ item.final_line_price | money }}
+{% endif %}
             </p>
 
 
@@ -727,7 +731,11 @@ href="{{ routes.account_login_url }}"
         </span>
 
        <span data-cart-total>
+  {% if cart.currency.iso_code == 'EUR' %}
+  {{ cart.total_price | money_without_currency | append: ' €' }}
+{% else %}
   {{ cart.total_price | money }}
+{% endif %}
 </span>
 
       </div>
@@ -1655,7 +1663,9 @@ z-index: 99999;
 
   function money(cents) {
   try {
-    const locale = 
+    const currency = getCurrency();
+
+    const locale =
       '{{ request.locale.iso_code }}' === 'fr'
         ? 'fr-FR'
         : '{{ request.locale.iso_code }}' === 'pt'
@@ -1664,15 +1674,32 @@ z-index: 99999;
             ? 'en-US'
             : '{{ request.locale.iso_code }}-{{ request.locale.iso_code | upcase }}';
 
+    const amount = cents / 100;
+
+    /*
+     * Pour toutes les devises en euro :
+     * montant + espace + €
+     */
+    if (currency === 'EUR') {
+      return new Intl.NumberFormat(locale, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount) + ' €';
+    }
+
+    /*
+     * Pour les autres devises :
+     * format monétaire normal selon le pays
+     */
     return new Intl.NumberFormat(locale, {
       style: 'currency',
-      currency: getCurrency()
-    }).format(cents / 100);
+      currency: currency
+    }).format(amount);
 
   } catch (error) {
     return (cents / 100)
       .toFixed(2)
-      .replace('.', ',');
+      .replace('.', ',') + ' €';
   }
 }
 function freeShippingMoney(cents) {
