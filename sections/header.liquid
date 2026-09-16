@@ -2230,11 +2230,7 @@ function updateFreeShippingProgress(cart) {
     </span>
 
     <span data-cart-total>
-  {% if cart.currency.iso_code == 'EUR' %}
-    {{ cart.total_price | money_without_currency | append: ' €' }}
-  {% else %}
-    {{ cart.total_price | money }}
-  {% endif %}
+  ${money(cart.total_price)}
 </span>
 
   </div>
