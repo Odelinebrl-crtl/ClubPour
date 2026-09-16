@@ -55,15 +55,15 @@
   <section class="pour-about__manifesto pour-about__scroll-section" data-pour-about-reveal>
     <div class="pour-about__manifesto-inner">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ section.settings.manifesto_eyebrow }}
+        {{ 'pour_about.manifesto_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-        {{ section.settings.manifesto_title }}
+        {{ 'pour_about.manifesto_title' | t }}
       </h2>
 
       <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
-        {{ section.settings.manifesto_text }}
+        {{ 'pour_about.manifesto_text' | t }}
       </div>
     </div>
   </section>
@@ -91,15 +91,15 @@
 
     <div class="pour-about__origin-content">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="80">
-        {{ section.settings.origin_eyebrow }}
+        {{ 'pour_about.origin_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="150">
-        {{ section.settings.origin_title }}
+        {{ 'pour_about.origin_title' | t }}
       </h2>
 
       <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="230">
-        {{ section.settings.origin_text }}
+        {{ 'pour_about.origin_text' | t }}
       </div>
     </div>
   </section>
@@ -133,15 +133,15 @@
 
     <div class="pour-about__editorial-content">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ section.settings.editorial_eyebrow }}
+        {{ 'pour_about.editorial_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__editorial-title pour-about__reveal-item" data-reveal-delay="90">
-        {{ section.settings.editorial_title }}
+        {{ 'pour_about.editorial_title' | t }}
       </h2>
 
       <p class="pour-about__editorial-text pour-about__reveal-item" data-reveal-delay="180">
-        {{ section.settings.editorial_text }}
+        {{ 'pour_about.editorial_text' | t }}
       </p>
     </div>
   </section>
@@ -153,19 +153,38 @@
   <section class="pour-about__vision pour-about__scroll-section" data-pour-about-reveal>
     <div class="pour-about__vision-head">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ section.settings.vision_eyebrow }}
+        {{ 'pour_about.vision_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-        {{ section.settings.vision_title }}
+        {{ 'pour_about.vision_title' | t }}
       </h2>
     </div>
 
     <div class="pour-about__principles">
       {% for i in (1..4) %}
-        {% assign number_key = 'principle_' | append: i | append: '_number' %}
-        {% assign title_key = 'principle_' | append: i | append: '_title' %}
-        {% assign text_key = 'principle_' | append: i | append: '_text' %}
+        <div class="pour-about__principles">
+  {% for i in (1..4) %}
+    <article
+      class="pour-about__principle pour-about__reveal-item"
+      data-reveal-delay="{{ forloop.index0 | times: 80 }}"
+    >
+      <span class="pour-about__principle-number">
+        {{ 'pour_about.principle_' | append: i | append: '_number' | t }}
+      </span>
+
+      <div class="pour-about__principle-content">
+        <h3>
+          {{ 'pour_about.principle_' | append: i | append: '_title' | t }}
+        </h3>
+
+        <p>
+          {{ 'pour_about.principle_' | append: i | append: '_text' | t }}
+        </p>
+      </div>
+    </article>
+  {% endfor %}
+</div>
 
         <article class="pour-about__principle pour-about__reveal-item" data-reveal-delay="{{ forloop.index0 | times: 80 }}">
           <span class="pour-about__principle-number">
@@ -188,15 +207,15 @@
   <section class="pour-about__pieces pour-about__scroll-section" data-pour-about-reveal>
     <div class="pour-about__pieces-content">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ section.settings.pieces_eyebrow }}
+        {{ 'pour_about.pieces_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="90">
-        {{ section.settings.pieces_title }}
+        {{ 'pour_about.pieces_title' | t }}
       </h2>
 
       <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
-        {{ section.settings.pieces_text }}
+        {{ 'pour_about.pieces_text' | t }}
       </div>
     </div>
 
@@ -225,16 +244,16 @@
     <div class="pour-about__drops-inner">
       <div class="pour-about__drops-head">
         <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-          {{ section.settings.drops_eyebrow }}
+          {{ 'pour_about.drops_eyebrow' | t }}
         </p>
 
         <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-          {{ section.settings.drops_title }}
+          {{ 'pour_about.drops_title' | t }}
         </h2>
       </div>
 
       <div class="pour-about__drops-copy pour-about__reveal-item" data-reveal-delay="180">
-        {{ section.settings.drops_text }}
+        {{ 'pour_about.drops_text' | t }}
       </div>
     </div>
   </section>
@@ -268,15 +287,15 @@
 
     <div class="pour-about__final-content">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ section.settings.final_eyebrow }}
+        {{ 'pour_about.final_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__final-title pour-about__reveal-item" data-reveal-delay="90">
-        {{ section.settings.final_title }}
+        {{ 'pour_about.final_title' | t }}
       </h2>
 
       <p class="pour-about__final-text pour-about__reveal-item" data-reveal-delay="180">
-        {{ section.settings.final_text }}
+        {{ 'pour_about.final_text' | t }}
       </p>
 
       {% if section.settings.final_link != blank %}
@@ -285,7 +304,7 @@
           data-reveal-delay="250"
           href="{{ section.settings.final_link }}"
         >
-          {{ section.settings.final_link_label }}
+          {{ 'pour_about.final_link_label' | t }}
           <span aria-hidden="true">→</span>
         </a>
       {% endif %}
@@ -1130,46 +1149,10 @@
       "id": "hero_image",
       "label": "Image du hero"
     },
-    {
-      "type": "text",
-      "id": "hero_eyebrow",
-      "label": "Petit texte",
-      "default": "POUR"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_title",
-      "label": "Titre",
-      "default": "MORE THAN A PIECE. A STATE OF MIND."
-    },
-    {
-      "type": "textarea",
-      "id": "hero_text",
-      "label": "Texte",
-      "default": "Une marque née du mouvement, de la passion et de l'envie de créer autrement."
-    },
 
     {
       "type": "header",
       "content": "02 — Manifeste"
-    },
-    {
-      "type": "text",
-      "id": "manifesto_eyebrow",
-      "label": "Petit texte",
-      "default": "POUR"
-    },
-    {
-      "type": "textarea",
-      "id": "manifesto_title",
-      "label": "Titre",
-      "default": "NOT MADE TO BLEND IN."
-    },
-    {
-      "type": "richtext",
-      "id": "manifesto_text",
-      "label": "Texte",
-      "default": "<p>POUR est une marque pensée pour ceux qui avancent à leur manière.<br>Nous croyons aux pièces qui racontent quelque chose. Aux détails que l'on remarque. Aux silhouettes qui restent.</p>"
     },
 
     {
@@ -1179,25 +1162,7 @@
     {
       "type": "image_picker",
       "id": "origin_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "origin_eyebrow",
-      "label": "Petit texte",
-      "default": "THE BEGINNING"
-    },
-    {
-      "type": "textarea",
-      "id": "origin_title",
-      "label": "Titre",
-      "default": "EVERYTHING STARTS WITH A FEELING."
-    },
-    {
-      "type": "richtext",
-      "id": "origin_text",
-      "label": "Texte",
-      "default": "<p>Une image. Une voiture. Une route. Une époque. Une sensation.<br><br>POUR puise son inspiration dans cet univers où le design, la vitesse et la culture se rencontrent.</p>"
+      "label": "Image origine"
     },
 
     {
@@ -1207,118 +1172,12 @@
     {
       "type": "image_picker",
       "id": "editorial_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "editorial_eyebrow",
-      "label": "Petit texte",
-      "default": "OUR WORLD"
-    },
-    {
-      "type": "textarea",
-      "id": "editorial_title",
-      "label": "Titre",
-      "default": "BETWEEN THE ROAD & THE CITY."
-    },
-    {
-      "type": "text",
-      "id": "editorial_text",
-      "label": "Texte",
-      "default": "L'automobile fait partie de notre langage."
+      "label": "Image univers"
     },
 
     {
       "type": "header",
       "content": "05 — Vision"
-    },
-    {
-      "type": "text",
-      "id": "vision_eyebrow",
-      "label": "Petit texte",
-      "default": "OUR VISION"
-    },
-    {
-      "type": "textarea",
-      "id": "vision_title",
-      "label": "Titre",
-      "default": "WE DON'T FOLLOW THE ROAD. WE CHOOSE IT."
-    },
-
-    {
-      "type": "text",
-      "id": "principle_1_number",
-      "label": "Principe 01 — numéro",
-      "default": "01"
-    },
-    {
-      "type": "text",
-      "id": "principle_1_title",
-      "label": "Principe 01 — titre",
-      "default": "ATTITUDE"
-    },
-    {
-      "type": "textarea",
-      "id": "principle_1_text",
-      "label": "Principe 01 — texte",
-      "default": "Ne pas attendre la permission. Choisir. Assumer. Avancer."
-    },
-
-    {
-      "type": "text",
-      "id": "principle_2_number",
-      "label": "Principe 02 — numéro",
-      "default": "02"
-    },
-    {
-      "type": "text",
-      "id": "principle_2_title",
-      "label": "Principe 02 — titre",
-      "default": "AUTOMOTIVE"
-    },
-    {
-      "type": "textarea",
-      "id": "principle_2_text",
-      "label": "Principe 02 — texte",
-      "default": "Les lignes, les proportions, les matières et l'histoire comme langage visuel."
-    },
-
-    {
-      "type": "text",
-      "id": "principle_3_number",
-      "label": "Principe 03 — numéro",
-      "default": "03"
-    },
-    {
-      "type": "text",
-      "id": "principle_3_title",
-      "label": "Principe 03 — titre",
-      "default": "CRAFT"
-    },
-    {
-      "type": "textarea",
-      "id": "principle_3_text",
-      "label": "Principe 03 — texte",
-      "default": "Chaque coupe, chaque visuel et chaque détail doit avoir une raison d'être."
-    },
-
-    {
-      "type": "text",
-      "id": "principle_4_number",
-      "label": "Principe 04 — numéro",
-      "default": "04"
-    },
-    {
-      "type": "text",
-      "id": "principle_4_title",
-      "label": "Principe 04 — titre",
-      "default": "FREEDOM"
-    },
-    {
-      "type": "textarea",
-      "id": "principle_4_text",
-      "label": "Principe 04 — texte",
-      "default": "La liberté de partir, de créer et de construire son propre chemin."
     },
 
     {
@@ -1328,48 +1187,12 @@
     {
       "type": "image_picker",
       "id": "pieces_image",
-      "label": "Image"
-    },
-    {
-      "type": "text",
-      "id": "pieces_eyebrow",
-      "label": "Petit texte",
-      "default": "THE PIECES"
-    },
-    {
-      "type": "textarea",
-      "id": "pieces_title",
-      "label": "Titre",
-      "default": "LESS NOISE. MORE MEANING."
-    },
-    {
-      "type": "richtext",
-      "id": "pieces_text",
-      "label": "Texte",
-      "default": "<p>Chaque pièce est pensée comme une partie d'un ensemble.<br><br>Une coupe. Un visuel. Une matière. Un détail.<br><br>Rien n'est là par hasard.</p>"
+      "label": "Image pièces"
     },
 
     {
       "type": "header",
       "content": "07 — Les drops"
-    },
-    {
-      "type": "text",
-      "id": "drops_eyebrow",
-      "label": "Petit texte",
-      "default": "THE DROPS"
-    },
-    {
-      "type": "textarea",
-      "id": "drops_title",
-      "label": "Titre",
-      "default": "NOT EVERYTHING NEEDS TO LAST FOREVER."
-    },
-    {
-      "type": "richtext",
-      "id": "drops_text",
-      "label": "Texte",
-      "default": "<p>POUR fonctionne par drops. Des séries pensées comme des chapitres.<br><br>Certaines pièces apparaissent. Puis disparaissent.<br><br>Chaque drop possède son propre univers, son propre rythme, son propre moment.</p>"
     },
 
     {
@@ -1382,33 +1205,9 @@
       "label": "Image finale"
     },
     {
-      "type": "text",
-      "id": "final_eyebrow",
-      "label": "Petit texte",
-      "default": "THIS IS POUR."
-    },
-    {
-      "type": "text",
-      "id": "final_title",
-      "label": "Titre",
-      "default": "KEEP MOVING."
-    },
-    {
-      "type": "text",
-      "id": "final_text",
-      "label": "Texte",
-      "default": "Une marque. Un univers. Une manière de voir les choses."
-    },
-    {
-      "type": "text",
-      "id": "final_link_label",
-      "label": "Texte du bouton",
-      "default": "DISCOVER THE COLLECTION"
-    },
-    {
       "type": "url",
       "id": "final_link",
-      "label": "Lien du bouton"
+      "label": "Lien du bouton final"
     }
   ],
   "presets": [
