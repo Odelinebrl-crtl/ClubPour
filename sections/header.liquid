@@ -2591,12 +2591,15 @@ if (itemElement && newQuantity > 0) {
        TOTAL
     ===================================================== */
 
-    document
-  .querySelectorAll('[data-cart-total]')
-  .forEach((totalElement) => {
-    totalElement.textContent =
-      money(cart.total_price);
-  });
+  const totalElement =
+  document.querySelector(
+    '[data-cart-total]'
+  );
+
+if (totalElement) {
+  totalElement.textContent =
+    money(cart.total_price);
+}
 
 
     /* =====================================================
