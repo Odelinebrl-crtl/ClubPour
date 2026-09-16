@@ -493,53 +493,53 @@
     "free_shipping_remaining": "Plus que %{amount} pour la livraison offerte, en France uniquement",
 "free_shipping_unlocked": "Livraison offerte débloquée"
   },
-  "pour_about": {
-    "hero_eyebrow": "POUR",
-    "hero_title": "PLUS QU'UNE PIÈCE. UN ÉTAT D'ESPRIT.",
-    "hero_text": "Une marque française née de deux années de réflexion, de création et d'envie de proposer une autre manière de s'habiller.",
+ "pour_about": {
+  "hero_eyebrow": "POUR",
+  "hero_title": "PLUS QU'UNE PIÈCE. UN ÉTAT D'ESPRIT.",
+  "hero_text": "Une marque française née de deux années de réflexion, de création et d'envie de proposer une autre manière de s'habiller.",
 
-    "manifesto_eyebrow": "NOTRE MANIFESTE",
-    "manifesto_title": "POUR CEUX QUI CHOISISSENT LEUR PROPRE ROUTE.",
-    "manifesto_text": "<p>POUR est née d'une envie simple : créer des vêtements que nous aurions nous-mêmes envie de porter chaque jour.<br><br>Des pièces pensées dans les détails, avec une attention particulière portée aux coupes, aux matières, aux visuels et à l'équilibre de chaque élément.<br><br>Nous ne cherchons pas à suivre un mouvement. Nous préférons construire un univers, partager une vision et laisser chacun y trouver sa propre place.</p>",
+  "manifesto_eyebrow": "NOTRE MANIFESTE",
+  "manifesto_title": "POUR CEUX QUI CHOISISSENT LEUR PROPRE ROUTE.",
+  "manifesto_text": "<p>POUR est née d'une envie simple : <strong>créer des vêtements que nous aurions nous-mêmes envie de porter chaque jour.</strong><br><br>Des pièces pensées dans les détails, avec une attention particulière portée aux coupes, aux matières, aux visuels et à l'équilibre de chaque élément.<br><br>Nous ne cherchons pas à suivre un mouvement. Nous préférons construire un univers, partager une vision et laisser chacun y trouver sa propre place.</p>",
 
-    "origin_eyebrow": "À L'ORIGINE",
-    "origin_title": "TOUT COMMENCE PAR UNE ENVIE.",
-    "origin_text": "<p>POUR a été imaginée à deux, autour d'une passion commune pour le vêtement, le design et les univers qui possèdent une véritable identité.<br><br>Pendant deux années, nous avons travaillé chaque détail : le logo, l'identité visuelle, les coupes, les matières, les fournisseurs, les designs, les couleurs et les techniques d'impression.<br><br>L'automobile a été notre point de départ. Ses lignes, ses proportions, ses silhouettes et cette sensation de mouvement ont naturellement nourri notre regard.<br><br>Mais POUR ne se limite pas à un seul univers. Les prochaines collections continueront d'explorer d'autres inspirations, d'autres formes et d'autres histoires.</p>",
+  "origin_eyebrow": "À L'ORIGINE",
+  "origin_title": "TOUT COMMENCE PAR UNE ENVIE.",
+  "origin_text": "<p>POUR a été imaginée à deux, autour d'une passion commune pour le vêtement, le design et les univers qui possèdent une véritable identité.<br><br>Pendant deux années, nous avons travaillé chaque détail : <strong>le logo, l'identité visuelle, les coupes, les matières, les fournisseurs, les designs, les couleurs et les techniques d'impression.</strong><br><br>L'automobile a été notre point de départ. Ses lignes, ses proportions, ses silhouettes et cette sensation de mouvement ont naturellement nourri notre regard.<br><br>Mais POUR ne se limite pas à un seul univers. Les prochaines collections continueront d'explorer d'autres inspirations, d'autres formes et d'autres histoires.</p>",
 
-    "editorial_eyebrow": "NOTRE UNIVERS",
-    "editorial_title": "ENTRE LA ROUTE ET LA VILLE.",
-    "editorial_text": "L'automobile fait partie de notre langage. Le mouvement, les lignes et la liberté nourrissent notre regard.",
+  "editorial_eyebrow": "NOTRE UNIVERS",
+  "editorial_title": "ENTRE LA ROUTE ET LA VILLE.",
+  "editorial_text": "L'automobile fait partie de notre langage. Le mouvement, les lignes et la liberté nourrissent notre regard.",
 
-    "vision_eyebrow": "NOTRE VISION",
-    "vision_title": "NOUS NE SUIVONS PAS LA ROUTE. NOUS LA CHOISISSONS.",
+  "vision_eyebrow": "NOTRE VISION",
+  "vision_title": "NOUS NE SUIVONS PAS LA ROUTE. NOUS LA CHOISISSONS.",
 
-    "principle_1_number": "01",
-    "principle_1_title": "ATTITUDE",
-    "principle_1_text": "Créer sans attendre la permission. Choisir son chemin, l'assumer et avancer à son propre rythme.",
+  "principle_1_number": "01",
+  "principle_1_title": "ATTITUDE",
+  "principle_1_text": "Créer sans attendre la permission. Choisir son chemin, l'assumer et avancer à son propre rythme.",
 
-    "principle_2_number": "02",
-    "principle_2_title": "INSPIRATION",
-    "principle_2_text": "Les lignes, les proportions, les matières et les histoires deviennent un langage visuel en constante évolution.",
+  "principle_2_number": "02",
+  "principle_2_title": "INSPIRATION",
+  "principle_2_text": "Les lignes, les proportions, les matières et les histoires deviennent un langage visuel en constante évolution.",
 
-    "principle_3_number": "03",
-    "principle_3_title": "PRÉCISION",
-    "principle_3_text": "Chaque coupe, chaque visuel, chaque matière et chaque détail est choisi pour une raison.",
+  "principle_3_number": "03",
+  "principle_3_title": "PRÉCISION",
+  "principle_3_text": "Chaque coupe, chaque visuel, chaque matière et chaque détail est choisi pour une raison.",
 
-    "principle_4_number": "04",
-    "principle_4_title": "LIBERTÉ",
-    "principle_4_text": "La liberté de créer, de partir, de ralentir et de choisir les routes qui nous ressemblent.",
+  "principle_4_number": "04",
+  "principle_4_title": "LIBERTÉ",
+  "principle_4_text": "La liberté de créer, de partir, de ralentir et de choisir les routes qui nous ressemblent.",
 
-    "pieces_eyebrow": "LES PIÈCES",
-    "pieces_title": "MOINS DE BRUIT. PLUS DE SENS.",
-    "pieces_text": "<p>Chaque pièce est pensée comme une partie d'un ensemble.<br><br>Une coupe. Un visuel. Une matière. Un détail.<br><br>Nous recherchons l'équilibre entre une silhouette actuelle, une identité forte et une simplicité durable.<br><br>Rien n'est ajouté par hasard. Rien n'est laissé au hasard.</p>",
+  "pieces_eyebrow": "LES PIÈCES",
+  "pieces_title": "MOINS DE BRUIT. PLUS DE SENS.",
+  "pieces_text": "<p>Chaque pièce est pensée comme une partie d'un ensemble.<br><br><strong>Une coupe. Un visuel. Une matière. Un détail.</strong><br><br>Nous recherchons l'équilibre entre une silhouette actuelle, une identité forte et une simplicité durable.<br><br>Rien n'est ajouté par hasard. Rien n'est laissé au hasard.</p>",
 
-    "drops_eyebrow": "LES DROPS",
-    "drops_title": "CHAQUE CHAPITRE A SON PROPRE RYTHME.",
-    "drops_text": "<p>POUR fonctionne par drops : des séries pensées comme des chapitres de notre univers.<br><br>Chaque lancement possède son propre langage, ses propres inspirations et son propre moment.<br><br>Certaines pièces apparaissent pour un temps limité. D'autres deviennent les bases d'une histoire plus longue.<br><br>À travers ces collections, nous continuons à construire POUR, une pièce après l'autre.</p>",
+  "drops_eyebrow": "LES DROPS",
+  "drops_title": "CHAQUE CHAPITRE A SON PROPRE RYTHME.",
+  "drops_text": "<p>POUR fonctionne par drops : des séries pensées comme des chapitres de notre univers.<br><br>Chaque lancement possède son propre langage, ses propres inspirations et son propre moment.<br><br>Certaines pièces apparaissent pour un temps limité. D'autres deviennent les bases d'une histoire plus longue.<br><br>À travers ces collections, nous continuons à construire <strong>POUR, une pièce après l'autre.</strong></p>",
 
-    "final_eyebrow": "C'EST POUR",
-    "final_title": "CONTINUEZ D'AVANCER.",
-    "final_text": "Une marque. Un univers. Une manière de regarder les choses. Pour ceux qui préfèrent les routes qui longent la mer à celles qui font gagner du temps.",
-    "final_link_label": "DÉCOUVRIR LA COLLECTION"
-  }
+  "final_eyebrow": "C'EST POUR",
+  "final_title": "CONTINUEZ D'AVANCER.",
+  "final_text": "Une marque. Un univers. Une manière de regarder les choses. Pour ceux qui préfèrent les routes qui longent la mer à celles qui font gagner du temps.",
+  "final_link_label": "DÉCOUVRIR LA COLLECTION"
+}
 }
