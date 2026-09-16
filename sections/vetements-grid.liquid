@@ -1174,7 +1174,7 @@ input:checked + span {
 
 
           <a
-  href="${escapeHTML('{{ routes.root_url }}' + product.url.replace(/^\/+/, ''))}"
+    href="${escapeHTML(window.Shopify.routes.root + 'products/' + product.handle)}"
   class="vetements-qv__details"
 >
   {{ 'pour_common.view_product' | t }}
