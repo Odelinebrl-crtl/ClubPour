@@ -1446,12 +1446,12 @@ function closeModal() {
           </form>
 
 
-          <a
-            href="${escapeHTML(product.url)}"
-            class="pour-quickview__details"
-          >
-           ${window.PourTranslations?.view_product || 'VOIR LE PRODUIT'}
-          </a>
+         <a
+  href="${escapeHTML(window.Shopify.routes.root + 'products/' + product.handle)}"
+  class="pour-quickview__details"
+>
+  ${window.PourTranslations?.view_product || 'VOIR LE PRODUIT'}
+</a>
 
         </div>
       `;
