@@ -2255,7 +2255,7 @@ input:checked + span {
 
 
           <a
-  href="${escapeHTML('{{ localization.language.root_url }}products/' + product.handle)}"
+  href="${escapeHTML(window.Shopify.routes.root + 'products/' + product.handle)}"
   class="collection-mini-qv__details"
 >
   {{ 'pour_common.view_product' | t }}
