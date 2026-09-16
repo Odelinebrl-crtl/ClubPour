@@ -197,7 +197,11 @@
   </span>
 
   <span>
-   {{ cart.total_price | money }}
+   {% if cart.currency.iso_code == 'EUR' %}
+  {{ cart.total_price | money_without_currency | append: ' €' }}
+{% else %}
+  {{ cart.total_price | money }}
+{% endif %}
   </span>
 </div>
 
