@@ -135,10 +135,12 @@
           {% endfor %}
 
           <div class="cart-pour__continue">
-            <a href="{{ routes.root_url }}pages/boutique">
-              {{ 'cart_pour.continue' | t }}
-            </a>
-          </div>
+  <a
+    href="{% if request.locale.iso_code == 'fr' %}/pages/boutique{% else %}/{{ request.locale.iso_code }}/pages/boutique{% endif %}"
+  >
+    {{ 'cart_pour.continue' | t }}
+  </a>
+</div>
 
         </div>
 
