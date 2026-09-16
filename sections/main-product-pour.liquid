@@ -901,7 +901,7 @@
 <div
   class="product-page-pour__style-with"
   data-product-recommendations
-  data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations&product_id={{ product.id }}&limit=4&intent=related"
+  data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations&product_id={{ product.id }}&limit=8&intent=related"
 >
   <div class="product-page-pour__style-with-heading">
     {{ 'pour_recommendations.heading' | t }}
@@ -5046,18 +5046,24 @@ if (backInStockForm) {
         );
 
       const newGrid =
-        recommendations.querySelector(
-          '.product-page-pour__style-with-grid'
-        );
+  recommendations.querySelector(
+    '.product-page-pour__style-with-grid'
+  );
 
-      if (
-        currentGrid &&
-        newGrid &&
-        newGrid.innerHTML.trim()
-      ) {
-        currentGrid.innerHTML =
-          newGrid.innerHTML;
-      }
+if (
+  currentGrid &&
+  newGrid &&
+  newGrid.innerHTML.trim()
+) {
+  const products =
+    Array.from(
+      newGrid.children
+    ).slice(0, 4);
+
+  currentGrid.replaceChildren(
+    ...products
+  );
+}
 
     })
     .catch(error => {
