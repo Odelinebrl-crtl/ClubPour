@@ -2255,11 +2255,11 @@ input:checked + span {
 
 
           <a
-            href="${escapeHTML(product.url)}"
-            class="collection-mini-qv__details"
-          >
-           {{ 'pour_common.view_product' | t }}
-          </a>
+  href="${escapeHTML('{{ routes.root_url }}' + product.url.replace(/^\/+/, ''))}"
+  class="collection-mini-qv__details"
+>
+  {{ 'pour_common.view_product' | t }}
+</a>
 
         </div>
       `;
