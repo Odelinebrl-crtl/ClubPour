@@ -581,7 +581,7 @@ href="{{ routes.account_login_url }}"
 
 
             <p class="cart-drawer__item-price">
-             {{ item.final_line_price | money_without_currency | append: ' €' }}
+             {{ item.final_line_price | money }}
             </p>
 
 
@@ -727,7 +727,7 @@ href="{{ routes.account_login_url }}"
         </span>
 
        <span data-cart-total>
-  {{ cart.total_price | money_without_currency | append: ' €' }}
+  {{ cart.total_price | money }}
 </span>
 
       </div>
@@ -1655,7 +1655,7 @@ z-index: 99999;
 
   function money(cents) {
   try {
-    const locale =
+    const locale = 
       '{{ request.locale.iso_code }}' === 'fr'
         ? 'fr-FR'
         : '{{ request.locale.iso_code }}' === 'pt'
@@ -1665,14 +1665,14 @@ z-index: 99999;
             : '{{ request.locale.iso_code }}-{{ request.locale.iso_code | upcase }}';
 
     return new Intl.NumberFormat(locale, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    }).format(cents / 100) + ' €';
+      style: 'currency',
+      currency: getCurrency()
+    }).format(cents / 100);
 
   } catch (error) {
     return (cents / 100)
       .toFixed(2)
-      .replace('.', ',') + ' €';
+      .replace('.', ',');
   }
 }
 function freeShippingMoney(cents) {
