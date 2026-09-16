@@ -49,61 +49,71 @@
   </section>
 
 
+ <!-- =========================================================
+     01 — MANIFESTE
+========================================================= -->
+<section class="pour-about__manifesto pour-about__scroll-section" data-pour-about-reveal>
+  <div class="pour-about__manifesto-inner">
+    <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+      {{ 'pour_about.manifesto_eyebrow' | t }}
+    </p>
+
+    <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
+      {{ 'pour_about.manifesto_title' | t }}
+    </h2>
+
+    <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
+      {{
+        'pour_about.manifesto_text'
+        | t
+        | replace: '&lt;', '<'
+        | replace: '&gt;', '>'
+        | replace: '&quot;', '"'
+      }}
+    </div>
+  </div>
+</section>
+
   <!-- =========================================================
-       01 — MANIFESTE
-  ========================================================= -->
-  <section class="pour-about__manifesto pour-about__scroll-section" data-pour-about-reveal>
-    <div class="pour-about__manifesto-inner">
-      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ 'pour_about.manifesto_eyebrow' | t }}
-      </p>
-
-      <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-        {{ 'pour_about.manifesto_title' | t }}
-      </h2>
-
-      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
-        {{ 'pour_about.manifesto_text' | t }}
+     02 — ORIGINE / IMAGE + TEXTE
+========================================================= -->
+<section class="pour-about__origin pour-about__scroll-section" data-pour-about-reveal>
+  <div class="pour-about__origin-media pour-about__reveal-item" data-reveal-delay="0">
+    {% if section.settings.origin_image != blank %}
+      {{
+        section.settings.origin_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'pour-about__image',
+          loading: 'lazy'
+      }}
+    {% else %}
+      <div class="pour-about__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
       </div>
+    {% endif %}
+  </div>
+
+  <div class="pour-about__origin-content">
+    <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="80">
+      {{ 'pour_about.origin_eyebrow' | t }}
+    </p>
+
+    <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="150">
+      {{ 'pour_about.origin_title' | t }}
+    </h2>
+
+    <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="230">
+      {{
+        'pour_about.origin_text'
+        | t
+        | replace: '&lt;', '<'
+        | replace: '&gt;', '>'
+        | replace: '&quot;', '"'
+      }}
     </div>
-  </section>
-
-
-  <!-- =========================================================
-       02 — ORIGINE / IMAGE + TEXTE
-  ========================================================= -->
-  <section class="pour-about__origin pour-about__scroll-section" data-pour-about-reveal>
-    <div class="pour-about__origin-media pour-about__reveal-item" data-reveal-delay="0">
-      {% if section.settings.origin_image != blank %}
-        {{
-          section.settings.origin_image
-          | image_url: width: 2400
-          | image_tag:
-            class: 'pour-about__image',
-            loading: 'lazy'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        </div>
-      {% endif %}
-    </div>
-
-    <div class="pour-about__origin-content">
-      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="80">
-        {{ 'pour_about.origin_eyebrow' | t }}
-      </p>
-
-      <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="150">
-        {{ 'pour_about.origin_title' | t }}
-      </h2>
-
-      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="230">
-        {{ 'pour_about.origin_text' | t }}
-      </div>
-    </div>
-  </section>
-
+  </div>
+</section>
 
   <!-- =========================================================
        03 — UNIVERS / FULL WIDTH PARALLAX
@@ -148,115 +158,112 @@
 
 
   <!-- =========================================================
-       04 — VISION
-  ========================================================= -->
-  <section class="pour-about__vision pour-about__scroll-section" data-pour-about-reveal>
-    <div class="pour-about__vision-head">
+     04 — VISION
+========================================================= -->
+<section class="pour-about__vision pour-about__scroll-section" data-pour-about-reveal>
+  <div class="pour-about__vision-head">
+    <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+      {{ 'pour_about.vision_eyebrow' | t }}
+    </p>
+
+    <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
+      {{ 'pour_about.vision_title' | t }}
+    </h2>
+  </div>
+
+  <div class="pour-about__principles">
+    {% for i in (1..4) %}
+      <article
+        class="pour-about__principle pour-about__reveal-item"
+        data-reveal-delay="{{ forloop.index0 | times: 80 }}"
+      >
+        <span class="pour-about__principle-number">
+          {{ 'pour_about.principle_' | append: i | append: '_number' | t }}
+        </span>
+
+        <div class="pour-about__principle-content">
+          <h3>
+            {{ 'pour_about.principle_' | append: i | append: '_title' | t }}
+          </h3>
+
+          <p>
+            {{ 'pour_about.principle_' | append: i | append: '_text' | t }}
+          </p>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+
+  <!-- =========================================================
+     05 — PIÈCES / IMAGE + TEXTE
+========================================================= -->
+<section class="pour-about__pieces pour-about__scroll-section" data-pour-about-reveal>
+  <div class="pour-about__pieces-content">
+    <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
+      {{ 'pour_about.pieces_eyebrow' | t }}
+    </p>
+
+    <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="90">
+      {{ 'pour_about.pieces_title' | t }}
+    </h2>
+
+    <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
+      {{
+        'pour_about.pieces_text'
+        | t
+        | replace: '&lt;', '<'
+        | replace: '&gt;', '>'
+        | replace: '&quot;', '"'
+      }}
+    </div>
+  </div>
+
+  <div class="pour-about__pieces-media pour-about__reveal-item" data-reveal-delay="100">
+    {% if section.settings.pieces_image != blank %}
+      {{
+        section.settings.pieces_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'pour-about__image',
+          loading: 'lazy'
+      }}
+    {% else %}
+      <div class="pour-about__placeholder">
+        {{ 'lifestyle-1' | placeholder_svg_tag }}
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+
+  <!-- =========================================================
+     06 — DROPS
+========================================================= -->
+<section class="pour-about__drops pour-about__scroll-section" data-pour-about-reveal>
+  <div class="pour-about__drops-inner">
+    <div class="pour-about__drops-head">
       <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ 'pour_about.vision_eyebrow' | t }}
+        {{ 'pour_about.drops_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-        {{ 'pour_about.vision_title' | t }}
+        {{ 'pour_about.drops_title' | t }}
       </h2>
     </div>
 
-    <div class="pour-about__principles">
-      {% for i in (1..4) %}
-        <div class="pour-about__principles">
-  {% for i in (1..4) %}
-    <article
-      class="pour-about__principle pour-about__reveal-item"
-      data-reveal-delay="{{ forloop.index0 | times: 80 }}"
-    >
-      <span class="pour-about__principle-number">
-        {{ 'pour_about.principle_' | append: i | append: '_number' | t }}
-      </span>
-
-      <div class="pour-about__principle-content">
-        <h3>
-          {{ 'pour_about.principle_' | append: i | append: '_title' | t }}
-        </h3>
-
-        <p>
-          {{ 'pour_about.principle_' | append: i | append: '_text' | t }}
-        </p>
-      </div>
-    </article>
-  {% endfor %}
-</div>
-
-        <article class="pour-about__principle pour-about__reveal-item" data-reveal-delay="{{ forloop.index0 | times: 80 }}">
-          <span class="pour-about__principle-number">
-            {{ section.settings[number_key] }}
-          </span>
-
-          <div class="pour-about__principle-content">
-            <h3>{{ section.settings[title_key] }}</h3>
-            <p>{{ section.settings[text_key] }}</p>
-          </div>
-        </article>
-      {% endfor %}
+    <div class="pour-about__drops-copy pour-about__reveal-item" data-reveal-delay="180">
+      {{
+        'pour_about.drops_text'
+        | t
+        | replace: '&lt;', '<'
+        | replace: '&gt;', '>'
+        | replace: '&quot;', '"'
+      }}
     </div>
-  </section>
-
-
-  <!-- =========================================================
-       05 — PIÈCES / IMAGE + TEXTE
-  ========================================================= -->
-  <section class="pour-about__pieces pour-about__scroll-section" data-pour-about-reveal>
-    <div class="pour-about__pieces-content">
-      <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-        {{ 'pour_about.pieces_eyebrow' | t }}
-      </p>
-
-      <h2 class="pour-about__section-title pour-about__reveal-item" data-reveal-delay="90">
-        {{ 'pour_about.pieces_title' | t }}
-      </h2>
-
-      <div class="pour-about__body pour-about__reveal-item" data-reveal-delay="180">
-        {{ 'pour_about.pieces_text' | t }}
-      </div>
-    </div>
-
-    <div class="pour-about__pieces-media pour-about__reveal-item" data-reveal-delay="100">
-      {% if section.settings.pieces_image != blank %}
-        {{
-          section.settings.pieces_image
-          | image_url: width: 2400
-          | image_tag:
-            class: 'pour-about__image',
-            loading: 'lazy'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        </div>
-      {% endif %}
-    </div>
-  </section>
-
-
-  <!-- =========================================================
-       06 — DROPS
-  ========================================================= -->
-  <section class="pour-about__drops pour-about__scroll-section" data-pour-about-reveal>
-    <div class="pour-about__drops-inner">
-      <div class="pour-about__drops-head">
-        <p class="pour-about__kicker pour-about__reveal-item" data-reveal-delay="0">
-          {{ 'pour_about.drops_eyebrow' | t }}
-        </p>
-
-        <h2 class="pour-about__display pour-about__reveal-item" data-reveal-delay="90">
-          {{ 'pour_about.drops_title' | t }}
-        </h2>
-      </div>
-
-      <div class="pour-about__drops-copy pour-about__reveal-item" data-reveal-delay="180">
-        {{ 'pour_about.drops_text' | t }}
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
 
   <!-- =========================================================
