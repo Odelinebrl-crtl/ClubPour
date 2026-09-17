@@ -3410,83 +3410,81 @@ font-weight: 200;
     visibility: visible !important;
   }
 /* =========================================================
-   TABLETTE PORTRAIT — STRUCTURE IDENTIQUE AU MOBILE
+   TABLETTE PORTRAIT — PAGE PRODUIT VERTICALE
 ========================================================= */
 
-@media screen and (orientation: portrait) and (min-width: 769px) and (max-width: 1024px) {
+@media screen and (orientation: portrait) and (min-width: 769px) and (max-width: 1200px) {
 
-  /* Structure verticale */
+  /* Conteneur principal : une seule colonne */
   .product-page-pour__top {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+
     width: 100% !important;
+    max-width: 100% !important;
+
     margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* Galerie pleine largeur */
+  /* Galerie en premier */
   .product-page-pour__gallery {
+    order: 1 !important;
+
+    display: block !important;
+
     width: 100vw !important;
     max-width: 100vw !important;
 
-    margin-left: calc(50% - 50vw) !important;
-    margin-right: calc(50% - 50vw) !important;
-
-    margin-top: 0 !important;
+    margin: 0 !important;
     padding: 0 !important;
   }
 
-  /* On masque totalement la galerie desktop */
+  /* Galerie desktop transformée en galerie pleine largeur */
   .product-page-pour__desktop-gallery {
-    display: none !important;
-  }
+    display: grid !important;
 
-  /* On affiche la galerie mobile */
-  .product-page-pour__mobile-gallery {
-    display: flex !important;
+    grid-template-columns: 1fr !important;
 
     width: 100vw !important;
     max-width: 100vw !important;
 
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
 
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-  }
-
-  .product-page-pour__mobile-gallery::-webkit-scrollbar {
-    display: none;
+    gap: 0 !important;
   }
 
   /* Chaque image prend toute la largeur */
-  .product-page-pour__mobile-slide {
-    flex: 0 0 100vw !important;
+  .product-page-pour__desktop-gallery > * {
+    width: 100% !important;
+    max-width: 100% !important;
 
-    width: 100vw !important;
-    max-width: 100vw !important;
-
-    aspect-ratio: 4 / 5 !important;
-
-    min-height: 0 !important;
-
-    overflow: hidden;
-    scroll-snap-align: start;
-
-    background: #f5f5f3;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
-  .product-page-pour__mobile-slide img {
+  .product-page-pour__desktop-gallery img {
     display: block !important;
 
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important;
+
+    max-width: 100% !important;
 
     object-fit: contain !important;
     object-position: center !important;
   }
 
-  /* Informations sous la photo */
+  /* On masque uniquement la galerie mobile */
+  .product-page-pour__mobile-gallery {
+    display: none !important;
+  }
+
+  /* Informations sous les photos */
   .product-page-pour__info {
+    order: 2 !important;
+
     display: block !important;
 
     width: 100% !important;
@@ -3501,86 +3499,45 @@ font-weight: 200;
     max-width: none !important;
 
     margin: 0 !important;
-
-    padding: 42px 32px 0 !important;
+    padding: 45px 32px 0 !important;
   }
 
-  /* Taille des textes adaptée à la tablette */
+  /* Titre */
   .product-page-pour__title {
-    margin-bottom: 18px !important;
-
     font-size: 30px !important;
     line-height: 1.05 !important;
+    margin-bottom: 18px !important;
   }
 
-  .product-page-pour__subtitle {
-    max-width: 100% !important;
-
-    margin-bottom: 22px !important;
-
-    font-size: 13px !important;
-    line-height: 1.4 !important;
-  }
-
+  /* Prix */
   .product-page-pour__price {
-    margin-bottom: 34px !important;
-
     font-size: 25px !important;
     line-height: 1 !important;
+    margin-bottom: 35px !important;
   }
 
-  .product-page-pour__option {
-    margin-bottom: 30px !important;
-  }
-
-  .product-page-pour__option-label {
-    margin-bottom: 12px !important;
-
-    font-size: 12px !important;
-  }
-
-  .product-page-pour__option-text {
-    min-width: 54px !important;
-    height: 44px !important;
-
-    padding: 0 16px !important;
-
-    font-size: 12px !important;
-  }
-
+  /* Textes */
+  .product-page-pour__subtitle,
   .product-page-pour__description {
     max-width: 100% !important;
-
-    margin-top: 48px !important;
-
-    font-size: 14px !important;
-    line-height: 1.55 !important;
   }
 
+  /* FAQ lisible sous les informations */
   .product-page-pour__details {
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
 
     margin-top: 75px !important;
     padding-bottom: 80px !important;
   }
 
-  .product-page-pour__details-title {
-    font-size: 32px !important;
-    line-height: 1.05 !important;
-  }
-
-  /* FAQ lisible sur tablette portrait */
   .product-page-pour__accordions {
     display: block !important;
 
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
 
     margin-top: 45px !important;
-
-    border-top: 1px solid #111111;
-    border-bottom: 1px solid #111111;
   }
 
   .product-page-pour__accordion-trigger {
@@ -3589,15 +3546,15 @@ font-weight: 200;
     justify-content: flex-start !important;
 
     width: 100% !important;
-    min-height: 58px !important;
+    min-height: 60px !important;
 
-    padding: 18px 0 !important;
+    padding: 20px 0 !important;
 
     border-right: 0 !important;
     border-bottom: 1px solid #111111 !important;
 
     font-size: 12px !important;
-    line-height: 1.4 !important;
+    line-height: 1.5 !important;
 
     text-align: left !important;
     white-space: normal !important;
@@ -3611,12 +3568,6 @@ font-weight: 200;
     border-bottom: 0 !important;
   }
 
-  .product-page-pour__accordion-icon {
-    flex: 0 0 auto !important;
-
-    width: 20px !important;
-    margin-right: 10px !important;
-  }
 }
 
 </style>
