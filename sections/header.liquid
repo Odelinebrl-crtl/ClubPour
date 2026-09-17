@@ -2006,7 +2006,54 @@ z-index: 99999;
 
     cursor: pointer !important;
   }
+/* CROIX DE FERMETURE — TABLETTE */
 
+.mobile-menu__close {
+  position: absolute !important;
+  top: 32px !important;
+  right: 32px !important;
+
+  display: block !important;
+
+  width: 36px !important;
+  height: 36px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  background: transparent !important;
+  border: 0 !important;
+
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  z-index: 10002 !important;
+}
+
+/* On masque les éventuels anciens traits */
+
+.mobile-menu__close span {
+  position: absolute !important;
+
+  top: 17px !important;
+  left: 3px !important;
+
+  display: block !important;
+
+  width: 30px !important;
+  height: 1.5px !important;
+
+  background: #111111 !important;
+}
+
+/* Création de la croix */
+
+.mobile-menu__close span:first-child {
+  transform: rotate(45deg) !important;
+}
+
+.mobile-menu__close span:last-child {
+  transform: rotate(-45deg) !important;
+}
 }
 /* =========================================================
    MOBILE
