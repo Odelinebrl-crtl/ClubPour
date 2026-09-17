@@ -1816,13 +1816,6 @@ z-index: 99999;
     cursor: pointer;
   }
 
-
-  /* ÉVITE QUE LE CONTENU PASSE SOUS LE HEADER */
-
-  body {
-    padding-top: 76px;
-  }
-
 }
 /* =========================================================
    MOBILE
@@ -1869,25 +1862,79 @@ z-index: 99999;
       28px;
   }
 /* =========================================================
-   MENU MOBILE — COMPTE + PANIER EN BAS À GAUCHE
+   POUR — MENU BURGER MOBILE ET TABLETTE
+   Menu plein écran, sans voir la page derrière
 ========================================================= */
 
 @media screen and (max-width: 1024px) {
 
-  /* Le menu prend toute la hauteur disponible */
+  /* Le menu couvre toute la page */
 
   .mobile-menu {
+    position: fixed !important;
+
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+
     display: flex !important;
     flex-direction: column !important;
 
-    height: calc(100dvh - 76px) !important;
-    min-height: calc(100dvh - 76px) !important;
+    box-sizing: border-box !important;
 
-    overflow-y: auto;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    background: #ffffff !important;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    z-index: 99999 !important;
+
+    transform: translateY(-10px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
   }
 
 
-  /* Bloc du bas */
+  /* Menu ouvert */
+
+  .mobile-menu.is-open {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+
+    transform: translateY(0);
+  }
+
+
+  /* Contenu du menu */
+
+  .mobile-menu__inner {
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: 100% !important;
+    min-height: 100dvh !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* Rubriques principales */
+
+  .mobile-menu__nav {
+    flex: 1 1 auto !important;
+  }
+
+
+  /* Bloc Compte + Panier tout en bas */
 
   .mobile-menu__bottom {
     display: flex !important;
@@ -1899,23 +1946,22 @@ z-index: 99999;
     width: 100% !important;
 
     margin-top: auto !important;
-    margin-right: 0 !important;
     margin-bottom: 0 !important;
-    margin-left: 0 !important;
 
     padding: 28px 0 34px 40px !important;
 
+    box-sizing: border-box !important;
+
     border-top: 1px solid rgba(17, 17, 17, 0.15);
 
-    flex-shrink: 0;
+    flex-shrink: 0 !important;
   }
 
 
-  /* COMPTE + PANIER */
+  /* Compte et panier */
 
-  .mobile-menu__bottom .mobile-menu__account,
-  .mobile-menu__bottom .mobile-menu__cart {
-
+  .mobile-menu__account,
+  .mobile-menu__cart {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -1936,11 +1982,34 @@ z-index: 99999;
     color: #111111 !important;
     text-decoration: none !important;
 
+    white-space: nowrap !important;
+
     background: transparent !important;
     border: 0 !important;
 
-    white-space: nowrap !important;
     cursor: pointer;
+  }
+
+
+  /* Bouton fermer */
+
+  .mobile-menu__close {
+    position: absolute !important;
+
+    top: 32px !important;
+    right: 40px !important;
+
+    z-index: 2 !important;
+  }
+
+
+  /* Le bouton burger reste cliquable */
+
+  .site-header__burger {
+    position: relative !important;
+    z-index: 100000 !important;
+
+    pointer-events: auto !important;
   }
 
 }
