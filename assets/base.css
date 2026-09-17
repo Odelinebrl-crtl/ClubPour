@@ -3563,6 +3563,7 @@ color: #ffffff;
 .pour-quote {
   padding-left: 25px !important;
   padding-right: 25px !important;
+  padding: 35px 10px 70px !important;
 }
   .product-page-pour__main-media {
     max-width: none;
