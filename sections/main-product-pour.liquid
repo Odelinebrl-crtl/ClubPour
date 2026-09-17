@@ -3408,6 +3408,29 @@ font-weight: 200;
     opacity: 1 !important;
     visibility: visible !important;
   }
+  body::before {
+  content: "TEST TABLETTE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999;
+  padding: 10px;
+  background: red;
+  color: white;
+  font-size: 16px;
+}
+@media screen and (max-width: 1200px) {
+  body::after {
+    content: "ÉCRAN INFÉRIEUR À 1200PX";
+    position: fixed;
+    top: 50px;
+    left: 0;
+    z-index: 999999999;
+    padding: 10px;
+    background: blue;
+    color: white;
+    font-size: 16px;
+  }
 }
 
 </style>
