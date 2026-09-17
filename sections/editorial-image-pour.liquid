@@ -5,66 +5,64 @@
 
   <div class="editorial-image-pour__inner">
 
-
     <!-- =====================================================
          IMAGE GAUCHE
     ====================================================== -->
 
     <div class="editorial-image-pour__media">
 
-     {% if section.settings.image != blank %}
+      {% if section.settings.image != blank %}
 
-  {{
-    section.settings.image
-    | image_url: width: 1800
-    | image_tag:
-      class: 'editorial-image-pour__image editorial-image-pour__image--desktop',
-      loading: 'lazy'
-  }}
+        <picture class="editorial-image-pour__picture">
 
-{% endif %}
-{% if section.settings.image_tablet != blank %}
+          <!-- TÉLÉPHONE -->
+          {% if section.settings.image_mobile != blank %}
+            <source
+              media="(max-width: 768px)"
+              srcset="{{ section.settings.image_mobile | image_url: width: 1400 }}"
+            >
+          {% endif %}
 
-  {{
-    section.settings.image_tablet
-    | image_url: width: 2000
-    | image_tag:
-      class: 'editorial-image-pour__image editorial-image-pour__image--tablet',
-      loading: 'lazy'
-  }}
+          <!-- TABLETTE PORTRAIT -->
+          {% if section.settings.image_tablet != blank %}
+            <source
+              media="(min-width: 769px) and (max-width: 900px) and (orientation: portrait)"
+              srcset="{{ section.settings.image_tablet | image_url: width: 2000 }}"
+            >
+          {% endif %}
 
-{% endif %}
+          <!-- ORDINATEUR -->
+          {{
+            section.settings.image
+            | image_url: width: 2400
+            | image_tag:
+              class: 'editorial-image-pour__image',
+              loading: 'lazy'
+          }}
 
-{% if section.settings.image_mobile != blank %}
+        </picture>
 
-  {{
-    section.settings.image_mobile
-    | image_url: width: 1400
-    | image_tag:
-      class: 'editorial-image-pour__image editorial-image-pour__image--mobile',
-      loading: 'lazy'
-  }}
+      {% elsif section.settings.image_mobile != blank %}
 
-{% elsif section.settings.image != blank %}
+        <picture class="editorial-image-pour__picture">
 
-  {{
-    section.settings.image
-    | image_url: width: 1400
-    | image_tag:
-      class: 'editorial-image-pour__image editorial-image-pour__image--mobile',
-      loading: 'lazy'
-  }}
+          {{
+            section.settings.image_mobile
+            | image_url: width: 1400
+            | image_tag:
+              class: 'editorial-image-pour__image',
+              loading: 'lazy'
+          }}
 
-{% endif %}
+        </picture>
 
+      {% else %}
 
-{% if section.settings.image == blank and section.settings.image_mobile == blank %}
+        <div class="editorial-image-pour__placeholder">
+          {{ 'lifestyle-1' | placeholder_svg_tag }}
+        </div>
 
-  <div class="editorial-image-pour__placeholder">
-    {{ 'lifestyle-1' | placeholder_svg_tag }}
-  </div>
-
-{% endif %}
+      {% endif %}
 
     </div>
 
@@ -74,7 +72,6 @@
     ====================================================== -->
 
     <div class="editorial-image-pour__content">
-
 
       {% if section.settings.eyebrow != blank %}
 
@@ -145,17 +142,15 @@
 
 #EditorialImagePour-{{ section.id }} {
   width: 100%;
-
   margin: 0;
   padding: 0;
-
   background: #FFFFFF;
   color: #111111;
 }
 
 
 /* =========================================================
-   STRUCTURE
+   STRUCTURE DESKTOP
 ========================================================= */
 
 #EditorialImagePour-{{ section.id }}
@@ -171,9 +166,9 @@
 
   width: 100%;
   margin: 0;
-
   padding: 0;
 }
+
 
 /* =========================================================
    IMAGE
@@ -187,7 +182,14 @@
   margin: 0;
   padding: 0;
 
-  overflow: visible;
+  overflow: hidden;
+}
+
+#EditorialImagePour-{{ section.id }}
+.editorial-image-pour__picture {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 #EditorialImagePour-{{ section.id }}
@@ -203,10 +205,12 @@
   object-fit: contain;
   object-position: left center;
 }
-#EditorialImagePour-{{ section.id }}
-.editorial-image-pour__image--mobile {
-  display: none;
-}
+
+
+/* =========================================================
+   PLACEHOLDER
+========================================================= */
+
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__placeholder,
 #EditorialImagePour-{{ section.id }}
@@ -234,7 +238,10 @@
   box-sizing: border-box;
 }
 
-/* PETIT TITRE */
+
+/* =========================================================
+   PETIT TITRE
+========================================================= */
 
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__eyebrow {
@@ -259,7 +266,9 @@
 }
 
 
-/* GRAND TITRE */
+/* =========================================================
+   GRAND TITRE
+========================================================= */
 
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__heading {
@@ -290,7 +299,9 @@
 }
 
 
-/* TEXTE */
+/* =========================================================
+   TEXTE
+========================================================= */
 
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__text {
@@ -311,7 +322,6 @@
 
   color: rgba(17,17,17,.68);
 }
-
 
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__text p {
@@ -363,7 +373,6 @@
     border-color .65s cubic-bezier(.22,1,.36,1);
 }
 
-
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__button:hover {
   background-color: #ffffff;
@@ -373,7 +382,7 @@
 
 
 /* =========================================================
-   REVEAL AU SCROLL — TEXTE UNIQUEMENT
+   REVEAL AU SCROLL
 ========================================================= */
 
 #EditorialImagePour-{{ section.id }}
@@ -394,15 +403,15 @@
     transform;
 }
 
-
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__reveal.is-visible {
   opacity: 1;
-
   transform: translateY(0);
 }
+
+
 /* =========================================================
-   BOUTON — HOVER FLUIDE + REVEAL
+   BOUTON — HOVER + REVEAL
 ========================================================= */
 
 #EditorialImagePour-{{ section.id }}
@@ -415,15 +424,16 @@
     border-color .55s cubic-bezier(.22,1,.36,1) 0ms;
 }
 
-
 #EditorialImagePour-{{ section.id }}
 .editorial-image-pour__button.editorial-image-pour__reveal:hover {
   background-color: #ffffff;
   color: #111111;
   border-color: #111111;
 }
+
+
 /* =========================================================
-   TABLETTE PORTRAIT — BLOC IMAGE ÉDITORIAL
+   TABLETTE PORTRAIT
 ========================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
@@ -435,6 +445,7 @@
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__inner {
     grid-template-columns: 1fr;
+
     gap: 50px;
 
     width: 100%;
@@ -448,30 +459,20 @@
   }
 
   #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--desktop {
-    display: none;
-  }
-
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--mobile {
-    display: block;
-
+  .editorial-image-pour__image {
     width: 100%;
     height: 100%;
 
     object-fit: cover;
     object-position: center;
   }
-  #EditorialImagePour-{{ section.id }}
-.editorial-image-pour__image--tablet {
-  display: none;
-}
 
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__content {
     max-width: none;
     padding: 0;
   }
+
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__heading {
     font-size: clamp(38px, 6vw, 56px);
@@ -479,66 +480,12 @@
 
 }
 
-/* =========================================================
-   TABLETTE PORTRAIT — IMAGE DÉDIÉE
-========================================================= */
 
-@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
-
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--desktop,
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--mobile {
-    display: none;
-  }
-
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--tablet {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-    object-position: center;
-  }
-
-}
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media screen and (max-width: 768px) {
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--desktop {
-    display: none;
-  }
-
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--mobile {
-    display: block;
-
-    width: 100%;
-    height: auto;
-
-    object-fit: cover;
-    object-position: center;
-  }
-#EditorialImagePour-{{ section.id }}
-.editorial-image-pour__image--tablet {
-  display: none;
-}
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__media {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-  }
-
-  #EditorialImagePour-{{ section.id }}
-  .editorial-image-pour__image--mobile {
-    width: 100%;
-    height: 100%;
-  }
 
   #EditorialImagePour-{{ section.id }} {
     padding:
@@ -546,7 +493,6 @@
       16px
       80px;
   }
-
 
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__inner {
@@ -557,19 +503,30 @@
     width: 100%;
   }
 
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__media {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
 
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__content {
     max-width: none;
   }
 
-
- 
   #EditorialImagePour-{{ section.id }}
-.editorial-image-pour__heading {
-  font-size: 24px;
-}
-
+  .editorial-image-pour__heading {
+    font-size: 24px;
+  }
 
   #EditorialImagePour-{{ section.id }}
   .editorial-image-pour__button {
@@ -594,12 +551,10 @@
 
     if (!section) return;
 
-
     const elements =
       section.querySelectorAll(
         '.editorial-image-pour__reveal'
       );
-
 
     elements.forEach((element) => {
 
@@ -608,14 +563,12 @@
           'data-delay'
         ) || 0;
 
-
       element.style.setProperty(
         '--editorial-delay',
         delay + 'ms'
       );
 
     });
-
 
     const observer =
       new IntersectionObserver(
@@ -646,7 +599,6 @@
             '0px 0px -8% 0px'
         }
       );
-
 
     elements.forEach((element) => {
 
@@ -694,16 +646,18 @@
       "id": "image",
       "label": "Image gauche"
     },
-{
-  "type": "image_picker",
-  "id": "image_mobile",
-  "label": "Image mobile"
-},
-{
-  "type": "image_picker",
-  "id": "image_tablet",
-  "label": "Image tablette portrait"
-},
+
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Image mobile"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image_tablet",
+      "label": "Image tablette portrait"
+    },
 
     {
       "type": "text",
