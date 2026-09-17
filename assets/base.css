@@ -5854,6 +5854,45 @@ html {
     top: 14px;
     right: 14px;
   }
+/* =========================================================
+   CORRECTION — HEADER AU-DESSUS DU HERO
+========================================================= */
 
+.site-header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  margin: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+
+  z-index: 9999 !important;
+}
+
+.pour-hero,
+.clothing-hero,
+.pour-video-hero {
+  position: relative !important;
+
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+
+  border-top: 0 !important;
+}
+
+/* Le média doit commencer exactement au bord supérieur */
+
+.pour-hero__media,
+.pour-hero__media picture,
+.clothing-hero__slides,
+.clothing-hero__slide,
+.clothing-hero__image-wrap,
+.pour-video-hero__media {
+  top: 0 !important;
+  margin-top: 0 !important;
+  border-top: 0 !important;
+}
 }
 
