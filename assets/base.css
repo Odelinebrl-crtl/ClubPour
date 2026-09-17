@@ -555,7 +555,7 @@ a {
 .pour-hero__image {
   position: absolute;
 
-  top: 0;
+  top: 5;
   left: 0;
 
   display: block;
@@ -581,9 +581,7 @@ a {
 .pour-hero__placeholder svg {
   object-fit: cover;
 }
-.pour-prelaunch-banner {
-  transform: translateY(3px);
-}
+
 
 /* =========================================================
    HERO — OVERLAY
