@@ -468,10 +468,20 @@
 
 
   <div class="mobile-menu__bottom">
-href="{{ routes.account_login_url }}"
-    <a >
-      {{ 'pour_header.account' | t }}
-    </a>
+
+  <a href="{{ routes.account_login_url }}">
+    {{ 'pour_header.account' | t }}
+  </a>
+
+  <button
+    type="button"
+    class="mobile-menu__cart"
+    data-cart-drawer-open
+  >
+    {{ 'pour_header.cart' | t }}{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
+  </button>
+
+</div>
 
     <button
       type="button"
