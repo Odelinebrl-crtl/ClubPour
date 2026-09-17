@@ -925,6 +925,19 @@ body::after {
   padding: 20px !important;
   font-size: 25px !important;
 }
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+  body::after {
+    content: "TABLETTE PORTRAIT ACTIVE";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999999999 !important;
+    background: green !important;
+    color: white !important;
+    padding: 20px !important;
+    font-size: 25px !important;
+  }
+}
 
 
 /* =========================================================
@@ -3421,6 +3434,31 @@ font-weight: 200;
 
     opacity: 1 !important;
     visibility: visible !important;
+  }
+  @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  .product-page-pour__top {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .product-page-pour__desktop-gallery {
+    display: none !important;
+  }
+
+  .product-page-pour__mobile-gallery {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .product-page-pour__info {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .product-page-pour__info-inner {
+    width: 100% !important;
+    max-width: none !important;
   }
 }
 
