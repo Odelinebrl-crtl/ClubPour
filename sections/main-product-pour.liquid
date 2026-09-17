@@ -913,22 +913,18 @@
 <style>
 <style>
 
-/* TEST ABSOLU */
-html,
-body {
-  background: red !important;
-}
-
-body::before {
-  content: "CSS CHARGE";
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999999999 !important;
-  background: blue !important;
-  color: white !important;
-  padding: 20px !important;
-  font-size: 30px !important;
+@media screen and (max-width: 1400px) {
+  body::after {
+    content: "MEDIA 1400 ACTIVE";
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 999999999 !important;
+    background: green !important;
+    color: white !important;
+    padding: 20px !important;
+    font-size: 25px !important;
+  }
 }
 
 
