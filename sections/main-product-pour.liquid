@@ -3409,41 +3409,61 @@ font-weight: 200;
     visibility: visible !important;
   }
   /* =========================================================
-   TABLETTE PORTRAIT — COMPORTEMENT MOBILE
-   Largeur détectée : 820 px
+   TABLETTE PORTRAIT 769–900 PX = VERSION MOBILE
 ========================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
 
-  /* Structure principale en une seule colonne */
-  .product-page-pour__top {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    gap: 0 !important;
+  .product-page-pour {
+    padding-top: 72px !important;
   }
 
-  /* Galerie desktop masquée */
+  .product-page-pour__top {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .product-page-pour__gallery {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: -12px !important;
+  }
+
   .product-page-pour__desktop-gallery {
     display: none !important;
-    visibility: hidden !important;
   }
 
-  /* Galerie mobile affichée */
   .product-page-pour__mobile-gallery {
-    display: block !important;
-    visibility: visible !important;
-    width: 100% !important;
-    max-width: 100% !important;
+    display: flex !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
   }
 
-  /* Informations produit sous la galerie */
+  .product-page-pour__mobile-gallery::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  .product-page-pour__mobile-slide {
+    flex: 0 0 100vw !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    scroll-snap-align: start !important;
+  }
+
   .product-page-pour__info {
     display: block !important;
     width: 100% !important;
     max-width: 100% !important;
     min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .product-page-pour__info-inner {
@@ -3452,10 +3472,9 @@ font-weight: 200;
     margin: 0 !important;
   }
 
-  /* Évite qu'une règle desktop impose deux colonnes */
-  .product-page-pour__top > * {
-    grid-column: auto !important;
-    grid-row: auto !important;
+  .product-page-pour__gallery-arrow,
+  .product-page-pour__mobile-counter {
+    display: none !important;
   }
 }
 
