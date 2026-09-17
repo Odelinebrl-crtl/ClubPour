@@ -469,7 +469,10 @@
 
   <div class="mobile-menu__bottom">
 
-  <a href="{{ routes.account_login_url }}">
+  <a
+    href="{{ routes.account_login_url }}"
+    class="mobile-menu__account"
+  >
     {{ 'pour_header.account' | t }}
   </a>
 
@@ -480,6 +483,8 @@
   >
     {{ 'pour_header.cart' | t }}{% if cart.item_count > 0 %} ({{ cart.item_count }}){% endif %}
   </button>
+
+</div>
 
 </div>
 
@@ -1864,13 +1869,48 @@ z-index: 99999;
       28px;
   }
 /* =========================================================
-   MOBILE — SUPPRIMER LE PANIER EN DOUBLE DANS LE MENU
+   MENU MOBILE — COMPTE + PANIER CÔTE À CÔTE
 ========================================================= */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1024px) {
 
-  .mobile-menu__bottom .mobile-menu__cart {
-    display: none !important;
+  .mobile-menu__bottom {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 34px;
+
+    width: 100%;
+    margin-top: auto;
+    padding: 28px 40px 34px;
+
+    border-top: 1px solid rgba(17, 17, 17, 0.15);
+  }
+
+  .mobile-menu__account,
+  .mobile-menu__cart {
+    display: inline-flex !important;
+    align-items: center;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    white-space: nowrap;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.08em;
+
+    color: #111111;
+    text-decoration: none;
+
+    background: transparent;
+    border: 0;
+
+    cursor: pointer;
   }
 
 }
