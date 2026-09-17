@@ -5113,59 +5113,7 @@ color: rgba(17,17,17,.42);
 .clothing-hero__discover-arrow {
   transform: translateY(5px);
 }
-/* =========================================================
-   TABLETTE PORTRAIT — HERO COLLECTION 001
-========================================================= */
 
-@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
-
-  .clothing-hero {
-    height: 100svh;
-    margin-top: -18px;
-  }
-
-  .clothing-hero__content {
-    top: auto;
-    right: 32px;
-    bottom: 120px;
-    left: 32px;
-
-    width: auto;
-    max-width: none;
-  }
-
-  .clothing-hero__heading {
-    font-size: clamp(42px, 6vw, 58px);
-    line-height: 0.94;
-  }
-
-  .clothing-hero__subtitle {
-    max-width: 520px;
-    font-size: 13px;
-    line-height: 1.3;
-  }
-
-  .clothing-hero__link {
-    margin-top: 18px;
-    font-size: 12px;
-  }
-
-  .clothing-hero__breadcrumb {
-    top: 24px;
-    left: 32px;
-  }
-
-  .clothing-hero__pagination {
-    right: 32px;
-    bottom: 34px;
-    gap: 20px;
-  }
-
-  .clothing-hero__pagination-item {
-    font-size: 13px;
-  }
-
-}
 /* =========================================================
    MOBILE
 ========================================================= */
