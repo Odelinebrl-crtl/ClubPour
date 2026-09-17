@@ -1569,7 +1569,185 @@ z-index: 99999;
 }
 
 
+/* =========================================================
+   POUR — TABLETTE PORTRAIT
+   Même structure que le header mobile
+   Uniquement de 601px à 1024px
+========================================================= */
 
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  /* =======================================================
+     STRUCTURE DU HEADER
+  ======================================================= */
+
+  .site-header {
+    position: relative;
+    z-index: 100;
+  }
+
+  .site-header__inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 86px;
+    padding: 0 24px;
+  }
+
+
+  /* =======================================================
+     NAVIGATION DESKTOP MASQUÉE
+     Boutique / Club / La marque / Contact
+  ======================================================= */
+
+  .site-header__nav--left {
+    display: none !important;
+  }
+
+
+  /* =======================================================
+     LOGO PARFAITEMENT CENTRÉ
+  ======================================================= */
+
+  .site-header__logo {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translate(-50%, -50%) !important;
+    z-index: 3;
+  }
+
+  .site-header__logo-image {
+    display: block !important;
+    width: auto !important;
+    max-width: 105px !important;
+    height: auto !important;
+  }
+
+
+  /* =======================================================
+     ACTIONS À DROITE
+     Compte + panier
+  ======================================================= */
+
+  .site-header__actions {
+    position: absolute !important;
+    top: 50%;
+    right: 24px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translateY(-50%);
+    z-index: 4;
+  }
+
+  .site-header__desktop-actions {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+  }
+
+
+  /* =======================================================
+     COMPTE + PANIER EN ICÔNES
+  ======================================================= */
+
+  .site-header__desktop-label {
+    display: none !important;
+  }
+
+  .site-header__mobile-icon {
+    display: block !important;
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .site-header__account-icon,
+  .site-header__cart-icon {
+    width: 22px !important;
+    height: 22px !important;
+  }
+
+  .site-header__actions .site-header__link,
+  .site-header__actions .site-header__cart {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+  }
+
+
+  /* =======================================================
+     BURGER À GAUCHE
+  ======================================================= */
+
+  .site-header__burger {
+    position: absolute !important;
+    top: 50%;
+    left: 24px;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 6px;
+
+    background: transparent !important;
+    border: 0 !important;
+
+    transform: translateY(-50%);
+    z-index: 4;
+  }
+
+  .site-header__burger span {
+    display: block !important;
+
+    width: 24px;
+    height: 1px;
+
+    background: #111111;
+  }
+
+
+  /* =======================================================
+     EMPÊCHE LES STYLES DESKTOP DE REVENIR
+  ======================================================= */
+
+  .site-header__nav,
+  .site-header__actions,
+  .site-header__desktop-actions {
+    min-width: 0 !important;
+  }
+
+}
 /* =========================================================
    MOBILE
 ========================================================= */
