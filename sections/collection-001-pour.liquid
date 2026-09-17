@@ -1711,40 +1711,329 @@ input:checked + span {
 
 }
 /* =========================================================
-   TABLETTE
+   TABLETTE — COLLECTION 001
+   769px à 1200px
 ========================================================= */
 
-@media screen and (max-width: 1200px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+  /* =========================================================
+     STRUCTURE DES FOCUS
+  ========================================================= */
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--left,
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--right {
-    grid-template-columns: 1fr;
 
-    gap: 55px;
+    display: grid !important;
+
+    grid-template-columns: minmax(0, 1fr) !important;
+
+    gap: 42px !important;
+
+    padding: 55px 42px 100px !important;
+
+    box-sizing: border-box !important;
+
+    width: 100% !important;
+
+    overflow: hidden !important;
+  }
+
+
+  /* =========================================================
+     GROS FOCUS — IMAGE + TEXTE
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus-main {
+
+    display: grid !important;
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      220px !important;
+
+    align-items: center !important;
+
+    gap: 28px !important;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
+
+    margin: 0 !important;
+
+    justify-self: stretch !important;
+  }
+
+
+  /* =========================================================
+     FOCUS 02 — IMAGE À DROITE / TEXTE À GAUCHE
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__focus-main {
+
+    grid-template-columns:
+      220px
+      minmax(0, 1fr) !important;
+
+    width: 100% !important;
+
+    margin: 0 !important;
+
+    justify-self: stretch !important;
+  }
+
+
+  /* =========================================================
+     GRANDES IMAGES
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus-media {
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    min-width: 0 !important;
+
+    overflow: hidden !important;
+
+    justify-self: stretch !important;
   }
 
 
   #Collection001Pour-{{ section.id }}
-  .collection001-pour__mini-grid {
-    grid-template-columns:
-      repeat(4, 160px);
+  .collection001-pour__focus-image {
 
-    width: auto;
+    display: block !important;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    max-width: 100% !important;
+
+    object-fit: contain !important;
+  }
+
+
+  /* =========================================================
+     TEXTES — ÉVITE LE ROGNAGE À DROITE
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus-content {
+
+    width: 100% !important;
+
+    max-width: 220px !important;
+
+    min-width: 0 !important;
+
+    text-align: left !important;
+
+    justify-self: start !important;
+
+    overflow-wrap: break-word !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__focus-content {
+
+    text-align: right !important;
+
+    justify-self: end !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__title {
+
+    max-width: 100% !important;
+
+    font-size: clamp(34px, 4.2vw, 54px) !important;
+
+    line-height: .96 !important;
+
+    letter-spacing: -.045em !important;
+
+    overflow-wrap: break-word !important;
+  }
+
+
+  /* =========================================================
+     MINIATURES — TOUJOURS SOUS LE GROS FOCUS
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-grid {
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    gap: 24px !important;
+
+    width: 100% !important;
+
+    max-width: 100% !important;
+
+    margin: 0 !important;
+
+    justify-self: stretch !important;
+
+    align-items: start !important;
   }
 
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__mini-card {
-    width: 160px;
+
+    width: 100% !important;
+
+    min-width: 0 !important;
   }
 
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__mini-media {
-    width: 160px;
-    height: 205px;
+
+    width: 100% !important;
+
+    height: auto !important;
+
+    aspect-ratio: 4 / 5 !important;
+
+    overflow: hidden !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-image {
+
+    width: 100% !important;
+
+    height: 100% !important;
+
+    object-fit: cover !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-info-row {
+
+    gap: 8px !important;
+
+    flex-wrap: wrap !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-title {
+
+    font-size: 9px !important;
+
+    line-height: 1.25 !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-price {
+
+    font-size: 9px !important;
+  }
+
+
+  /* =========================================================
+     FOCUS 01 — MINIATURES À DROITE
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--left
+  .collection001-pour__mini-grid {
+
+    justify-self: end !important;
+
+    margin-left: auto !important;
+
+    margin-right: 0 !important;
+  }
+
+
+  /* =========================================================
+     FOCUS 02 — MINIATURES SOUS LE GROS FOCUS
+  ========================================================= */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__mini-grid {
+
+    justify-self: end !important;
+
+    margin-left: auto !important;
+
+    margin-right: 0 !important;
+  }
+
+}
+
+
+/* =========================================================
+   TABLETTE PAYSAGE
+   1025px à 1200px
+========================================================= */
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--left,
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right {
+
+    padding-left: 54px !important;
+
+    padding-right: 54px !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus-main {
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      235px !important;
+
+    gap: 34px !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__focus-main {
+
+    grid-template-columns:
+      235px
+      minmax(0, 1fr) !important;
+  }
+
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__mini-grid {
+
+    width: 75% !important;
+
+    margin-left: auto !important;
+
+    margin-right: 0 !important;
   }
 
 }
