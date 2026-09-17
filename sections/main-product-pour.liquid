@@ -913,16 +913,17 @@
 <style>
 <style>
 
-body::before {
-  content: "LARGEUR : " attr(data-width);
+/* TEST PORTRAIT */
+body::after {
+  content: "ORIENTATION : " !important;
   position: fixed;
-  top: 0;
+  bottom: 0;
   left: 0;
   z-index: 999999999 !important;
-  background: blue !important;
+  background: green !important;
   color: white !important;
   padding: 20px !important;
-  font-size: 30px !important;
+  font-size: 25px !important;
 }
 
 
@@ -3426,10 +3427,6 @@ font-weight: 200;
 </style>
 
 <script>
-  document.body.setAttribute('data-width', window.innerWidth);
-</script>
-
-<script>
 (function () {
 
   const guide =
@@ -5091,7 +5088,42 @@ if (
 })();
 
 </script>
+<script>
+(function () {
+  function testTablet() {
+    var old = document.getElementById('pour-tablet-test');
 
+    if (old) old.remove();
+
+    var box = document.createElement('div');
+    box.id = 'pour-tablet-test';
+
+    box.textContent =
+      'Largeur : ' + window.innerWidth +
+      'px | Hauteur : ' + window.innerHeight +
+      'px | Orientation : ' +
+      (window.innerWidth > window.innerHeight ? 'PAYSAGE' : 'PORTRAIT');
+
+    box.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999999999;
+      background: red;
+      color: white;
+      padding: 20px;
+      font-size: 22px;
+      font-family: Arial, sans-serif;
+    `;
+
+    document.body.appendChild(box);
+  }
+
+  testTablet();
+  window.addEventListener('resize', testTablet);
+  window.addEventListener('orientationchange', testTablet);
+})();
+</script>
 {% schema %}
 {
   "name": "Produit POUR",
