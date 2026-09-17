@@ -1869,10 +1869,25 @@ z-index: 99999;
       28px;
   }
 /* =========================================================
-   MENU MOBILE — COMPTE + PANIER
+   MENU MOBILE — COMPTE + PANIER EN BAS À GAUCHE
 ========================================================= */
 
 @media screen and (max-width: 1024px) {
+
+  /* Le menu prend toute la hauteur disponible */
+
+  .mobile-menu {
+    display: flex !important;
+    flex-direction: column !important;
+
+    height: calc(100dvh - 76px) !important;
+    min-height: calc(100dvh - 76px) !important;
+
+    overflow-y: auto;
+  }
+
+
+  /* Bloc du bas */
 
   .mobile-menu__bottom {
     display: flex !important;
@@ -1882,14 +1897,25 @@ z-index: 99999;
     gap: 24px !important;
 
     width: 100% !important;
-    margin: 0 !important;
+
+    margin-top: auto !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+
     padding: 28px 0 34px 40px !important;
 
     border-top: 1px solid rgba(17, 17, 17, 0.15);
+
+    flex-shrink: 0;
   }
+
+
+  /* COMPTE + PANIER */
 
   .mobile-menu__bottom .mobile-menu__account,
   .mobile-menu__bottom .mobile-menu__cart {
+
     display: inline-flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -1902,7 +1928,7 @@ z-index: 99999;
     padding: 0 !important;
 
     font-family: inherit !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
     font-weight: 400 !important;
     line-height: 1 !important;
     letter-spacing: 0.08em !important;
