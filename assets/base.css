@@ -530,6 +530,8 @@ a {
   min-height: 100svh;
   max-height: none;
 
+  margin-top: -24px;
+
   overflow: hidden;
 
   background: #111111;
