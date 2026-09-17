@@ -1571,39 +1571,51 @@ z-index: 99999;
 
 /* =========================================================
    POUR — TABLETTE PORTRAIT
-   Même structure que le header mobile
-   Uniquement de 601px à 1024px
+   Header mobile sur tablette
+   601px à 1024px uniquement
 ========================================================= */
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
   /* =======================================================
-     STRUCTURE DU HEADER
+     HEADER FIXE
   ======================================================= */
 
   .site-header {
-  position: fixed !important;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 9999;
-  background: #ffffff;
-}
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: 76px;
+
+    background: #ffffff !important;
+    z-index: 9999;
+  }
+
+
+  /* =======================================================
+     STRUCTURE
+  ======================================================= */
+
   .site-header__inner {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  min-height: 86px;
-  padding: 8px 24px 0;
-}
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 76px;
+    min-height: 76px;
+
+    padding: 0 24px !important;
+  }
 
 
   /* =======================================================
      NAVIGATION DESKTOP MASQUÉE
-     Boutique / Club / La marque / Contact
   ======================================================= */
 
   .site-header__nav--left {
@@ -1612,11 +1624,12 @@ z-index: 99999;
 
 
   /* =======================================================
-     LOGO PARFAITEMENT CENTRÉ
+     LOGO — PLUS PETIT ET PARFAITEMENT CENTRÉ
   ======================================================= */
 
   .site-header__logo {
     position: absolute !important;
+
     top: 50%;
     left: 50%;
 
@@ -1624,53 +1637,58 @@ z-index: 99999;
     align-items: center;
     justify-content: center;
 
+    width: auto !important;
+    height: auto !important;
+
     margin: 0 !important;
     padding: 0 !important;
 
     transform: translate(-50%, -50%) !important;
+
     z-index: 3;
   }
 
- .site-header__logo-image {
-  display: block !important;
-  width: auto !important;
-  max-width: 82px !important;
-  height: auto !important;
-}
+  .site-header__logo-image {
+    display: block !important;
+
+    width: auto !important;
+    max-width: 64px !important;
+    height: auto !important;
+  }
 
 
   /* =======================================================
-     ACTIONS À DROITE
-     Compte + panier
+     COMPTE + PANIER — À DROITE ET CENTRÉS
   ======================================================= */
 
   .site-header__actions {
     position: absolute !important;
-    top: 45%;
+
+    top: 50%;
     right: 24px;
 
     display: flex !important;
     align-items: center;
     justify-content: flex-end;
 
+    height: 30px;
+
     margin: 0 !important;
     padding: 0 !important;
 
     transform: translateY(-50%);
-    z-index: 4;
+
+    z-index: 10001;
   }
 
   .site-header__desktop-actions {
     display: flex !important;
     align-items: center;
     justify-content: flex-end;
+
     gap: 18px;
+    height: 30px;
   }
-
-
-  /* =======================================================
-     COMPTE + PANIER EN ICÔNES
-  ======================================================= */
 
   .site-header__desktop-label {
     display: none !important;
@@ -1678,14 +1696,9 @@ z-index: 99999;
 
   .site-header__mobile-icon {
     display: block !important;
-    width: 22px !important;
-    height: 22px !important;
-  }
 
-  .site-header__account-icon,
-  .site-header__cart-icon {
-    width: 22px !important;
-    height: 22px !important;
+    width: 20px !important;
+    height: 20px !important;
   }
 
   .site-header__actions .site-header__link,
@@ -1694,20 +1707,26 @@ z-index: 99999;
     align-items: center;
     justify-content: center;
 
+    width: 24px;
+    height: 30px;
+
     margin: 0 !important;
     padding: 0 !important;
 
-    background: transparent !important;
     border: 0 !important;
+    background: transparent !important;
+
+    cursor: pointer;
   }
 
 
   /* =======================================================
-     BURGER À GAUCHE
+     BURGER — À GAUCHE ET PARFAITEMENT CENTRÉ
   ======================================================= */
 
   .site-header__burger {
     position: absolute !important;
+
     top: 50%;
     left: 24px;
 
@@ -1716,19 +1735,23 @@ z-index: 99999;
     align-items: flex-start;
     justify-content: center;
 
-    width: 28px !important;
-    height: 28px !important;
+    width: 30px !important;
+    height: 30px !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
     gap: 6px;
 
-    background: transparent !important;
     border: 0 !important;
+    background: transparent !important;
 
     transform: translateY(-50%);
-    z-index: 4;
+
+    cursor: pointer;
+    pointer-events: auto !important;
+
+    z-index: 10002;
   }
 
   .site-header__burger span {
@@ -1738,17 +1761,44 @@ z-index: 99999;
     height: 1px;
 
     background: #111111;
+
+    pointer-events: none;
   }
 
 
   /* =======================================================
-     EMPÊCHE LES STYLES DESKTOP DE REVENIR
+     MENU MOBILE SUR TABLETTE
   ======================================================= */
 
-  .site-header__nav,
-  .site-header__actions,
-  .site-header__desktop-actions {
-    min-width: 0 !important;
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu.is-open {
+    display: block !important;
+
+    position: fixed;
+    top: 76px;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    max-height: calc(100vh - 76px);
+
+    overflow-y: auto;
+
+    background: #ffffff;
+
+    z-index: 9998;
+  }
+
+
+  /* =======================================================
+     ÉVITE QUE LE CONTENU PASSE SOUS LE HEADER
+  ======================================================= */
+
+  body {
+    padding-top: 76px;
   }
 
 }
