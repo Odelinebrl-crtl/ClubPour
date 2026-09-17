@@ -3432,6 +3432,25 @@ font-weight: 200;
     height: auto !important;
     object-fit: contain !important;
   }
+  /* FAQ pleine largeur sur tablette portrait */
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  .product-page-pour__accordions {
+    width: 100% !important;
+    max-width: none !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  .product-page-pour__faq {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .product-page-pour__faq-item,
+  .product-page-pour__faq-question {
+    width: 100% !important;
+    max-width: none !important;
+  }
 }
 
 </style>
