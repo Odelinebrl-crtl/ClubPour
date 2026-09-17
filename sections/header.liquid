@@ -1582,19 +1582,23 @@ z-index: 99999;
   ======================================================= */
 
   .site-header {
-    position: relative;
-    z-index: 100;
-  }
-
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #ffffff;
+}
   .site-header__inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-height: 86px;
-    padding: 0 24px;
-  }
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 86px;
+  padding: 8px 24px 0;
+}
 
 
   /* =======================================================
@@ -1627,12 +1631,12 @@ z-index: 99999;
     z-index: 3;
   }
 
-  .site-header__logo-image {
-    display: block !important;
-    width: auto !important;
-    max-width: 105px !important;
-    height: auto !important;
-  }
+ .site-header__logo-image {
+  display: block !important;
+  width: auto !important;
+  max-width: 82px !important;
+  height: auto !important;
+}
 
 
   /* =======================================================
@@ -1642,7 +1646,7 @@ z-index: 99999;
 
   .site-header__actions {
     position: absolute !important;
-    top: 50%;
+    top: 45%;
     right: 24px;
 
     display: flex !important;
