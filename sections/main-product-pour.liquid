@@ -3410,53 +3410,24 @@ font-weight: 200;
     visibility: visible !important;
   }
 /* =========================================================
-   TABLETTE PORTRAIT — PAGE PRODUIT VERTICALE
+   TABLETTE PORTRAIT — MÊME STRUCTURE QUE MOBILE
 ========================================================= */
 
-@media screen and (orientation: portrait) and (min-width: 769px) and (max-width: 1200px) {
+@media screen and (min-width: 769px) and (max-width: 1200px) and (orientation: portrait) {
 
-  /* Conteneur principal : une seule colonne */
   .product-page-pour__top {
-    display: flex !important;
-    flex-direction: column !important;
+    display: block !important;
 
     width: 100% !important;
     max-width: 100% !important;
 
     margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 0 60px !important;
   }
 
-  /* Galerie en premier */
   .product-page-pour__gallery {
-    order: 1 !important;
-
     display: block !important;
 
-    width: 100vw !important;
-    max-width: 100vw !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-  }
-
-  /* Galerie desktop transformée en galerie pleine largeur */
-  .product-page-pour__desktop-gallery {
-    display: grid !important;
-
-    grid-template-columns: 1fr !important;
-
-    width: 100vw !important;
-    max-width: 100vw !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    gap: 0 !important;
-  }
-
-  /* Chaque image prend toute la largeur */
-  .product-page-pour__desktop-gallery > * {
     width: 100% !important;
     max-width: 100% !important;
 
@@ -3464,27 +3435,46 @@ font-weight: 200;
     padding: 0 !important;
   }
 
-  .product-page-pour__desktop-gallery img {
-    display: block !important;
-
+  .product-page-pour__main-media {
     width: 100% !important;
-    height: auto !important;
+    max-width: none !important;
 
-    max-width: 100% !important;
+    aspect-ratio: 4 / 5 !important;
+
+    margin: 0 !important;
+  }
+
+  .product-page-pour__main-image {
+    width: 100% !important;
+    height: 100% !important;
 
     object-fit: contain !important;
     object-position: center !important;
   }
 
-  /* On masque uniquement la galerie mobile */
-  .product-page-pour__mobile-gallery {
-    display: none !important;
+  .product-page-pour__thumbs {
+    display: flex !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 8px 0 0 !important;
+    padding: 0 16px !important;
+
+    gap: 8px !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
   }
 
-  /* Informations sous les photos */
-  .product-page-pour__info {
-    order: 2 !important;
+  .product-page-pour__thumb {
+    flex: 0 0 110px !important;
 
+    width: 110px !important;
+    height: 135px !important;
+  }
+
+  .product-page-pour__info {
     display: block !important;
 
     width: 100% !important;
@@ -3498,46 +3488,32 @@ font-weight: 200;
     width: 100% !important;
     max-width: none !important;
 
-    margin: 0 !important;
     padding: 45px 32px 0 !important;
   }
 
-  /* Titre */
   .product-page-pour__title {
     font-size: 30px !important;
     line-height: 1.05 !important;
-    margin-bottom: 18px !important;
   }
 
-  /* Prix */
   .product-page-pour__price {
     font-size: 25px !important;
-    line-height: 1 !important;
-    margin-bottom: 35px !important;
   }
 
-  /* Textes */
-  .product-page-pour__subtitle,
-  .product-page-pour__description {
-    max-width: 100% !important;
-  }
-
-  /* FAQ lisible sous les informations */
   .product-page-pour__details {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
 
-    margin-top: 75px !important;
-    padding-bottom: 80px !important;
+    margin-top: 70px !important;
   }
 
   .product-page-pour__accordions {
     display: block !important;
 
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
 
-    margin-top: 45px !important;
+    margin-top: 40px !important;
   }
 
   .product-page-pour__accordion-trigger {
@@ -3546,7 +3522,7 @@ font-weight: 200;
     justify-content: flex-start !important;
 
     width: 100% !important;
-    min-height: 60px !important;
+    min-height: 58px !important;
 
     padding: 20px 0 !important;
 
@@ -3567,7 +3543,6 @@ font-weight: 200;
   .product-page-pour__accordion-trigger:last-child {
     border-bottom: 0 !important;
   }
-
 }
 
 </style>
