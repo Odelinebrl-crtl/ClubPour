@@ -555,7 +555,7 @@ a {
 .pour-hero__image {
   position: absolute;
 
-  top: 5;
+  top: -5;
   left: 0;
 
   display: block;
