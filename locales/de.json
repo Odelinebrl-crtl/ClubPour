@@ -401,7 +401,7 @@
     "response_time_value": "Innerhalb von 24 bis 48 Werktagen"
   },
   "hero": {
-  "prelaunch_banner": "PRE-LAUNCH — 10 % RABATT AUF DEINE NÄCHSTE BESTELLUNG AB DER OFFIZIELLEN ERÖFFNUNG"
+  "prelaunch_banner": "WIEDERAUFNAHME — DER VERSAND BEGINNT AB DEM [DATUM]."
 },
 "cart_pour": {
     "eyebrow": "POUR",
@@ -586,7 +586,7 @@
   "eyebrow": "KOLLEKTION 001",
   "title": "DER CLUB KOMMT",
     "language": "SPRACHE",
-  "text": "Die Kollektion 001 erscheint demnächst. Melden Sie sich an, um die Welt von POUR zu entdecken und von einem exklusiven Einführungsvorteil von 15 % Rabatt zu profitieren, der ausschließlich während unserer Vorbestellungsphase gültig ist.",
+  "text": "Die Kollektion 001 erscheint in Kürze. Melden Sie sich an, um über den Start der Website informiert zu werden und die erste POUR-Kollektion zu entdecken.",
   "email_placeholder": "IHRE E-MAIL-ADRESSE",
   "consent": "Ich stimme zu, Mitteilungen von POUR per E-Mail zu erhalten.",
   "submit": "BEI DER ERÖFFNUNG INFORMIERT WERDEN",
