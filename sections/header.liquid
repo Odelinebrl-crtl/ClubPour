@@ -467,7 +467,7 @@
 </nav>
 
 
-  <div class="mobile-menu__bottom">
+ <div class="mobile-menu__bottom">
 
   <a
     href="{{ routes.account_login_url }}"
@@ -485,7 +485,6 @@
   </button>
 
 </div>
-
 </div>
 
     <button
@@ -1752,68 +1751,260 @@ z-index: 99999;
   }
 
 
-  /* MENU MOBILE : ON CONSERVE SON FONCTIONNEMENT ORIGINAL */
+  /* =========================================================
+   POUR — TABLETTE PORTRAIT
+   Même présentation que le mobile
+   601px à 1024px uniquement
+========================================================= */
 
-  .mobile-menu {
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  /* HEADER */
+
+  .site-header {
     position: fixed !important;
-
-    top: 76px !important;
+    top: 0 !important;
     left: 0 !important;
     right: 0 !important;
 
     width: 100% !important;
-    height: calc(100vh - 76px) !important;
-    height: calc(100dvh - 76px) !important;
+    height: 76px !important;
 
-    overflow-y: auto;
-
-    background: rgba(255, 255, 255, 0.96) !important;
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    z-index: 9998;
-
-    visibility: hidden;
-    opacity: 0;
-    pointer-events: none;
-
-    transform: translateY(-12px);
-
-    transition:
-      opacity .35s ease,
-      visibility .35s ease,
-      transform .35s ease;
+    z-index: 9999 !important;
   }
 
-  .mobile-menu.is-open {
-    display: block !important;
 
+  /* MENU BURGER PLEIN ÉCRAN */
+
+  .mobile-menu {
+    position: fixed !important;
+
+    top: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    left: 0 !important;
+
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    box-sizing: border-box !important;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    background: #ffffff !important;
+
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+
+    transform: translateY(-8px);
+
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease,
+      transform 0.3s ease;
+
+    z-index: 10000 !important;
+  }
+
+
+  /* MENU OUVERT */
+
+  .mobile-menu.is-open {
     visibility: visible !important;
     opacity: 1 !important;
     pointer-events: auto !important;
 
-    transform: translateY(0);
+    transform: translateY(0) !important;
   }
 
 
-  /* BOUTON FERMER */
+  /* PARTIE SUPÉRIEURE */
+
+  .mobile-menu__top {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    width: 100% !important;
+    height: 110px !important;
+
+    padding: 0 40px !important;
+
+    box-sizing: border-box !important;
+
+    flex-shrink: 0 !important;
+  }
+
+
+  /* CROIX */
 
   .mobile-menu__close {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    position: relative !important;
 
-    width: 32px !important;
-    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 34px !important;
+    height: 34px !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
-    border: 0 !important;
     background: transparent !important;
+    border: 0 !important;
 
-    cursor: pointer;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+
+    z-index: 10001 !important;
+  }
+
+
+  /* NAVIGATION */
+
+  .mobile-menu__nav {
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: 100% !important;
+
+    padding: 55px 40px 0 !important;
+
+    box-sizing: border-box !important;
+
+    flex: 1 1 auto !important;
+  }
+
+
+  /* RUBRIQUES PRINCIPALES */
+
+  .mobile-menu__main-link,
+  .mobile-menu__submenu-head {
+    width: 100% !important;
+
+    margin: 0 0 44px !important;
+    padding: 0 !important;
+  }
+
+
+  .mobile-menu__main-link {
+    display: block !important;
+
+    font-family: inherit !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 1.2 !important;
+    letter-spacing: 0.08em !important;
+
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
+
+
+  /* BOUTIQUE + PLUS */
+
+  .mobile-menu__submenu-head {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .mobile-menu__submenu-head .mobile-menu__main-link {
+    margin: 0 !important;
+  }
+
+  .mobile-menu__plus {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 28px !important;
+    height: 28px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: transparent !important;
+    border: 0 !important;
+
+    cursor: pointer !important;
+  }
+
+
+  /* SOUS-MENU */
+
+  .mobile-menu__submenu {
+    display: none;
+  }
+
+  .mobile-menu__item.is-open .mobile-menu__submenu {
+    display: flex !important;
+    flex-direction: column !important;
+
+    margin-top: -20px !important;
+    margin-bottom: 30px !important;
+  }
+
+
+  /* COMPTE + PANIER EN BAS */
+
+  .mobile-menu__bottom {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 24px !important;
+
+    width: 100% !important;
+
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+
+    padding: 28px 40px 34px !important;
+
+    box-sizing: border-box !important;
+
+    border-top: 1px solid rgba(17, 17, 17, 0.15);
+
+    flex-shrink: 0 !important;
+  }
+
+
+  .mobile-menu__account,
+  .mobile-menu__cart {
+    display: inline-flex !important;
+    align-items: center !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: inherit !important;
+    font-size: 12px !important;
+    font-weight: 400 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.08em !important;
+
+    color: #111111 !important;
+    text-decoration: none !important;
+
+    white-space: nowrap !important;
+
+    background: transparent !important;
+    border: 0 !important;
+
+    cursor: pointer !important;
   }
 
 }
