@@ -2460,6 +2460,40 @@ z-index: 99999;
 
     pointer-events: auto !important;
   }
+  /* =========================================================
+   CORRECTION — TRAIT BLANC SOUS LE HEADER
+   DESKTOP + TABLETTE + MOBILE
+========================================================= */
+
+.site-header {
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+.site-header__inner {
+  margin: 0 !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Supprime l'espace éventuel entre le header et la première section */
+
+main > .shopify-section:first-child,
+main > section:first-child,
+.template-index main > .shopify-section:first-child {
+  margin-top: 0 !important;
+  border-top: 0 !important;
+}
+
+/* Évite qu'une bordure ou une ombre crée une ligne blanche */
+
+.shopify-section:first-child {
+  border-top: 0 !important;
+  box-shadow: none !important;
+}
 
 }
 
