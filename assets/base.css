@@ -525,12 +525,12 @@ a {
   position: relative;
 
   width: 100%;
-  height: calc(100svh + 68px);
+  height: 100svh;
 
   min-height: calc(100svh + 68px);
   max-height: none;
 
-  margin-top: 0;
+  margin-top: -24px;
 
   overflow: hidden;
 
