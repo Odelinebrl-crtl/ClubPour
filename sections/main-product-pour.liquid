@@ -3408,6 +3408,170 @@ font-weight: 200;
     opacity: 1 !important;
     visibility: visible !important;
   }
+  /* =========================================================
+   IPAD PORTRAIT — MÊME STRUCTURE QUE MOBILE
+   iPad classique A16 — largeur portrait environ 820px
+   ========================================================= */
+
+@media screen
+  and (min-width: 769px)
+  and (max-width: 1024px)
+  and (orientation: portrait) {
+
+  .product-page-pour {
+    padding-top: 72px;
+  }
+
+  /* Structure verticale comme sur mobile */
+  .product-page-pour__top {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Galerie pleine largeur */
+  .product-page-pour__gallery {
+    width: 100vw !important;
+    margin-left: calc(50% - 50vw) !important;
+    margin-right: calc(50% - 50vw) !important;
+  }
+
+  /* On masque la galerie desktop */
+  .product-page-pour__desktop-gallery {
+    display: none !important;
+  }
+
+  /* On affiche le carrousel mobile */
+  .product-page-pour__mobile-gallery {
+    display: flex !important;
+    width: 100vw !important;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .product-page-pour__mobile-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-page-pour__mobile-slide {
+    flex: 0 0 100vw !important;
+    width: 100vw !important;
+    aspect-ratio: 4 / 5;
+    scroll-snap-align: start;
+    overflow: hidden;
+    background: #f5f5f3;
+  }
+
+  .product-page-pour__mobile-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  /* Compteur du carrousel */
+  .product-page-pour__mobile-counter {
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    z-index: 10;
+    padding: 7px 10px;
+    background: rgba(255, 255, 255, .42);
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: .08em;
+    pointer-events: none;
+  }
+
+  /* Informations sous la galerie */
+  .product-page-pour__info {
+    width: 100% !important;
+  }
+
+  .product-page-pour__info-inner {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 34px 24px 0 !important;
+  }
+
+  /* Typographie identique au mobile */
+  .product-page-pour__title {
+    margin-bottom: 16px;
+    font-size: 23px !important;
+    line-height: 1.05;
+    letter-spacing: -.025em;
+  }
+
+  .product-page-pour__subtitle {
+    margin-bottom: 20px;
+    max-width: 100%;
+    font-size: 11px !important;
+    line-height: 1.35;
+  }
+
+  .product-page-pour__price {
+    margin-bottom: 30px;
+    font-size: 20px !important;
+    line-height: 1;
+  }
+
+  .product-page-pour__option {
+    margin-bottom: 26px;
+  }
+
+  .product-page-pour__option-label {
+    margin-bottom: 10px;
+    font-size: 10px !important;
+    letter-spacing: .08em;
+  }
+
+  .product-page-pour__option-text {
+    min-width: 46px;
+    height: 38px;
+    padding: 0 13px;
+    font-size: 10px !important;
+  }
+
+  .product-page-pour__description {
+    max-width: 100%;
+    margin-top: 42px;
+    font-size: 12px !important;
+    line-height: 1.45;
+  }
+
+  .product-page-pour__details {
+    width: 100%;
+    max-width: none;
+    margin-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .product-page-pour__details-title {
+    font-size: 26px !important;
+    line-height: 1.05;
+  }
+
+  .product-page-pour__fit {
+    margin-top: 15px !important;
+  }
+
+  .product-page-pour__tab {
+    font-size: 11px !important;
+  }
+
+  .product-page-pour__tab-content {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
 }
 
 </style>
