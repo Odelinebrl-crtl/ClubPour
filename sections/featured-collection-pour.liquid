@@ -301,7 +301,62 @@
   color: #111111;
   border-color: #111111;
 }
+/* =========================================================
+   TABLETTE PORTRAIT — FEATURED COLLECTION
+========================================================= */
 
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  #FeaturedPour-{{ section.id }} {
+    padding: 70px 32px 85px;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__inner {
+    grid-template-columns: 1fr;
+    gap: 55px;
+
+    width: 100%;
+    max-width: none;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__visual {
+    aspect-ratio: 4 / 5;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__image--desktop {
+    display: none;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__image--mobile {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__content {
+    max-width: none;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__eyebrow {
+    margin-bottom: 22px;
+  }
+
+  #FeaturedPour-{{ section.id }}
+  .featured-pour__heading {
+    font-size: 30px;
+  }
+
+}
 
 /* =========================================================
    MOBILE
