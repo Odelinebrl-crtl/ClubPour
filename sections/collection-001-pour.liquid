@@ -2036,6 +2036,45 @@ input:checked + span {
     margin-right: 0 !important;
   }
 
+/* =========================================================
+   FOCUS 02 — MINIATURES SOUS LE GROS FOCUS
+   TABLETTE PORTRAIT + PAYSAGE
+========================================================= */
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 45px !important;
+  }
+
+  /* Gros focus 02 en premier */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__focus-main {
+    order: 1 !important;
+  }
+
+  /* Miniatures du focus 02 en dessous */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__mini-grid {
+    order: 2 !important;
+
+    width: 100% !important;
+
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+
+    gap: 20px !important;
+
+    justify-self: stretch !important;
+  }
+
 }
 
 
