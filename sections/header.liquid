@@ -1571,15 +1571,13 @@ z-index: 99999;
 
 /* =========================================================
    POUR — TABLETTE PORTRAIT
-   Header mobile sur tablette
+   Même header que le mobile
    601px à 1024px uniquement
 ========================================================= */
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
-  /* =======================================================
-     HEADER FIXE
-  ======================================================= */
+  /* HEADER FIXE AVEC EFFET TRANSPARENT + FLOU */
 
   .site-header {
     position: fixed !important;
@@ -1590,14 +1588,16 @@ z-index: 99999;
     width: 100%;
     height: 76px;
 
-    background: #ffffff !important;
+    background: rgba(255, 255, 255, 0.82) !important;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
     z-index: 9999;
   }
 
 
-  /* =======================================================
-     STRUCTURE
-  ======================================================= */
+  /* STRUCTURE DU HEADER */
 
   .site-header__inner {
     position: relative;
@@ -1614,18 +1614,14 @@ z-index: 99999;
   }
 
 
-  /* =======================================================
-     NAVIGATION DESKTOP MASQUÉE
-  ======================================================= */
+  /* MASQUE LA NAVIGATION DESKTOP */
 
   .site-header__nav--left {
     display: none !important;
   }
 
 
-  /* =======================================================
-     LOGO — PLUS PETIT ET PARFAITEMENT CENTRÉ
-  ======================================================= */
+  /* LOGO CENTRÉ */
 
   .site-header__logo {
     position: absolute !important;
@@ -1637,29 +1633,68 @@ z-index: 99999;
     align-items: center;
     justify-content: center;
 
-    width: auto !important;
-    height: auto !important;
-
     margin: 0 !important;
     padding: 0 !important;
 
     transform: translate(-50%, -50%) !important;
 
-    z-index: 3;
+    z-index: 10;
   }
 
   .site-header__logo-image {
     display: block !important;
 
     width: auto !important;
-    max-width: 64px !important;
+    max-width: 58px !important;
     height: auto !important;
   }
 
 
-  /* =======================================================
-     COMPTE + PANIER — À DROITE ET CENTRÉS
-  ======================================================= */
+  /* BURGER À GAUCHE */
+
+  .site-header__burger {
+    position: absolute !important;
+
+    top: 50%;
+    left: 24px;
+
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 32px !important;
+    height: 32px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 6px;
+
+    border: 0 !important;
+    background: transparent !important;
+
+    transform: translateY(-50%);
+
+    cursor: pointer;
+    pointer-events: auto !important;
+
+    z-index: 10001;
+  }
+
+  .site-header__burger span {
+    display: block !important;
+
+    width: 28px;
+    height: 1px;
+
+    background: #111111;
+
+    pointer-events: none;
+  }
+
+
+  /* COMPTE + PANIER À DROITE */
 
   .site-header__actions {
     position: absolute !important;
@@ -1671,7 +1706,7 @@ z-index: 99999;
     align-items: center;
     justify-content: flex-end;
 
-    height: 30px;
+    height: 32px;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -1687,7 +1722,7 @@ z-index: 99999;
     justify-content: flex-end;
 
     gap: 18px;
-    height: 30px;
+    height: 32px;
   }
 
   .site-header__desktop-label {
@@ -1701,101 +1736,73 @@ z-index: 99999;
     height: 20px !important;
   }
 
-  .site-header__actions .site-header__link,
-  .site-header__actions .site-header__cart {
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
 
-    width: 24px;
-    height: 30px;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    border: 0 !important;
-    background: transparent !important;
-
-    cursor: pointer;
-  }
-
-
-  /* =======================================================
-     BURGER — À GAUCHE ET PARFAITEMENT CENTRÉ
-  ======================================================= */
-
-  .site-header__burger {
-    position: absolute !important;
-
-    top: 50%;
-    left: 24px;
-
-    display: flex !important;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    width: 30px !important;
-    height: 30px !important;
-
-    margin: 0 !important;
-    padding: 0 !important;
-
-    gap: 6px;
-
-    border: 0 !important;
-    background: transparent !important;
-
-    transform: translateY(-50%);
-
-    cursor: pointer;
-    pointer-events: auto !important;
-
-    z-index: 10002;
-  }
-
-  .site-header__burger span {
-    display: block !important;
-
-    width: 24px;
-    height: 1px;
-
-    background: #111111;
-
-    pointer-events: none;
-  }
-
-
-  /* =======================================================
-     MENU MOBILE SUR TABLETTE
-  ======================================================= */
+  /* MENU MOBILE : ON CONSERVE SON FONCTIONNEMENT ORIGINAL */
 
   .mobile-menu {
-    display: none;
+    position: fixed !important;
+
+    top: 76px !important;
+    left: 0 !important;
+    right: 0 !important;
+
+    width: 100% !important;
+    height: calc(100vh - 76px) !important;
+    height: calc(100dvh - 76px) !important;
+
+    overflow-y: auto;
+
+    background: rgba(255, 255, 255, 0.96) !important;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    z-index: 9998;
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(-12px);
+
+    transition:
+      opacity .35s ease,
+      visibility .35s ease,
+      transform .35s ease;
   }
 
   .mobile-menu.is-open {
     display: block !important;
 
-    position: fixed;
-    top: 76px;
-    left: 0;
-    right: 0;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
 
-    width: 100%;
-    max-height: calc(100vh - 76px);
-
-    overflow-y: auto;
-
-    background: #ffffff;
-
-    z-index: 9998;
+    transform: translateY(0);
   }
 
 
-  /* =======================================================
-     ÉVITE QUE LE CONTENU PASSE SOUS LE HEADER
-  ======================================================= */
+  /* BOUTON FERMER */
+
+  .mobile-menu__close {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px !important;
+    height: 32px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border: 0 !important;
+    background: transparent !important;
+
+    cursor: pointer;
+  }
+
+
+  /* ÉVITE QUE LE CONTENU PASSE SOUS LE HEADER */
 
   body {
     padding-top: 76px;
