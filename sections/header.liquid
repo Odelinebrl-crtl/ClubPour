@@ -1578,99 +1578,145 @@ z-index: 99999;
    601px à 1024px
 ========================================================= */
 
+/* =========================================================
+   POUR — TABLETTE PORTRAIT
+   Menus à gauche / logo centré / compte-panier à droite
+   601px à 1024px
+========================================================= */
+
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
-  /* HEADER PRINCIPAL */
+  /* STRUCTURE PRINCIPALE DU HEADER */
 
   .site-header__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
     padding-left: 24px;
     padding-right: 24px;
   }
 
-  /* NAVIGATION GAUCHE */
+
+  /* =======================================================
+     NAVIGATION GAUCHE
+  ======================================================= */
 
   .site-header__nav--left {
-    display: none !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 18px;
+    min-width: 0;
+    grid-column: 1;
+    grid-row: 1;
   }
 
-  /* LOGO */
+  .site-header__nav--left .site-header__item {
+    white-space: nowrap;
+  }
+
+  .site-header__nav--left .site-header__link {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+
+  /* =======================================================
+     LOGO CENTRÉ
+  ======================================================= */
 
   .site-header__logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0;
+    transform: none;
   }
 
   .site-header__logo-image {
+    display: block;
+    width: auto;
     max-width: 120px;
     height: auto;
   }
 
-  /* ACTIONS DROITE */
+
+  /* =======================================================
+     COMPTE + PANIER À DROITE
+  ======================================================= */
 
   .site-header__actions {
-    margin-left: auto;
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 18px;
+    min-width: 0;
+    margin: 0;
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .site-header__desktop-actions {
-    display: flex;
+    display: flex !important;
     align-items: center;
+    justify-content: flex-end;
     gap: 18px;
+    margin: 0;
   }
 
-  /* BURGER */
+  .site-header__actions .site-header__link {
+    white-space: nowrap;
+    font-size: 12px;
+  }
+
+
+  /* =======================================================
+     BURGER CACHÉ SUR TABLETTE
+  ======================================================= */
 
   .site-header__burger {
-    display: flex !important;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-
-    width: 32px;
-    height: 32px;
-
-    padding: 0;
-    margin-left: 18px;
-
-    border: 0;
-    background: transparent;
-
-    cursor: pointer;
-  }
-
-  .site-header__burger span {
-    display: block;
-
-    width: 22px;
-    height: 1px;
-
-    background: #111111;
-  }
-
-  /* ICÔNES COMPTE + PANIER */
-
-  .site-header__desktop-label {
     display: none !important;
   }
 
+
+  /* =======================================================
+     ICÔNES
+  ======================================================= */
+
   .site-header__mobile-icon {
-    display: block;
-    width: 22px;
-    height: 22px;
+    display: none !important;
   }
 
-  /* MENU MOBILE */
-
-  .mobile-menu {
-    display: none;
+  .site-header__desktop-label {
+    display: inline !important;
   }
 
-  .mobile-menu.is-open {
-    display: block;
+
+  /* =======================================================
+     ÉVITE LES DÉBORDEMENTS
+  ======================================================= */
+
+  .site-header__nav,
+  .site-header__actions {
+    min-width: 0;
+  }
+
+  .site-header__nav--left,
+  .site-header__actions {
+    overflow: visible;
   }
 
 }
+
+/* =======================================================
+MOBILE
+======================================================= */
 @media screen and (max-width: 600px) {
 
   .cart-drawer {
