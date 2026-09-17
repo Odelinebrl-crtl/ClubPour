@@ -911,33 +911,6 @@
   </div>
 </div>
 <style>
-<style>
-
-/* TEST PORTRAIT */
-body::after {
-  content: "ORIENTATION : " !important;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 999999999 !important;
-  background: green !important;
-  color: white !important;
-  padding: 20px !important;
-  font-size: 25px !important;
-}
-@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
-  body::after {
-    content: "TABLETTE PORTRAIT ACTIVE";
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999999999 !important;
-    background: green !important;
-    color: white !important;
-    padding: 20px !important;
-    font-size: 25px !important;
-  }
-}
 
 
 /* =========================================================
@@ -3435,30 +3408,54 @@ font-weight: 200;
     opacity: 1 !important;
     visibility: visible !important;
   }
-  @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+  /* =========================================================
+   TABLETTE PORTRAIT — COMPORTEMENT MOBILE
+   Largeur détectée : 820 px
+========================================================= */
 
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  /* Structure principale en une seule colonne */
   .product-page-pour__top {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
     width: 100% !important;
+    max-width: 100% !important;
+    gap: 0 !important;
   }
 
+  /* Galerie desktop masquée */
   .product-page-pour__desktop-gallery {
     display: none !important;
+    visibility: hidden !important;
   }
 
+  /* Galerie mobile affichée */
   .product-page-pour__mobile-gallery {
     display: block !important;
+    visibility: visible !important;
     width: 100% !important;
+    max-width: 100% !important;
   }
 
+  /* Informations produit sous la galerie */
   .product-page-pour__info {
+    display: block !important;
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
   .product-page-pour__info-inner {
     width: 100% !important;
-    max-width: none !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Évite qu'une règle desktop impose deux colonnes */
+  .product-page-pour__top > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 }
 
@@ -5126,42 +5123,7 @@ if (
 })();
 
 </script>
-<script>
-(function () {
-  function testTablet() {
-    var old = document.getElementById('pour-tablet-test');
 
-    if (old) old.remove();
-
-    var box = document.createElement('div');
-    box.id = 'pour-tablet-test';
-
-    box.textContent =
-      'Largeur : ' + window.innerWidth +
-      'px | Hauteur : ' + window.innerHeight +
-      'px | Orientation : ' +
-      (window.innerWidth > window.innerHeight ? 'PAYSAGE' : 'PORTRAIT');
-
-    box.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 999999999;
-      background: red;
-      color: white;
-      padding: 20px;
-      font-size: 22px;
-      font-family: Arial, sans-serif;
-    `;
-
-    document.body.appendChild(box);
-  }
-
-  testTablet();
-  window.addEventListener('resize', testTablet);
-  window.addEventListener('orientationchange', testTablet);
-})();
-</script>
 {% schema %}
 {
   "name": "Produit POUR",
