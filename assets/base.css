@@ -3556,6 +3556,14 @@ color: #ffffff;
   width: 100% !important;
   letter-spacing: -0.04em;
 }
+.pour-quote__inner {
+  width: 100% !important;
+}
+
+.pour-quote {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
   .product-page-pour__main-media {
     max-width: none;
   }
