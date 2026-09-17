@@ -3410,38 +3410,45 @@ font-weight: 200;
     visibility: visible !important;
   }
 /* =========================================================
-   TABLETTE PORTRAIT — MÊME STRUCTURE QUE MOBILE
+   TABLETTE PORTRAIT — STRUCTURE MOBILE
+   769px à 1024px uniquement
 ========================================================= */
 
-@media screen and (min-width: 769px) and (max-width: 1200px) and (orientation: portrait) {
+@media screen and (min-width: 769px) and (max-width: 1024px) {
 
+  /* Structure verticale : image puis informations */
   .product-page-pour__top {
     display: block !important;
 
     width: 100% !important;
-    max-width: 100% !important;
 
     margin: 0 !important;
-    padding: 0 0 60px !important;
+    padding: 0 0 80px !important;
   }
 
+  /* Galerie en pleine largeur */
   .product-page-pour__gallery {
     display: block !important;
 
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: none !important;
 
     margin: 0 !important;
     padding: 0 !important;
+
+    transform: none !important;
   }
 
+  /* Grande image */
   .product-page-pour__main-media {
     width: 100% !important;
     max-width: none !important;
 
+    margin: 0 !important;
+
     aspect-ratio: 4 / 5 !important;
 
-    margin: 0 !important;
+    overflow: hidden !important;
   }
 
   .product-page-pour__main-image {
@@ -3450,21 +3457,31 @@ font-weight: 200;
 
     object-fit: contain !important;
     object-position: center !important;
+
+    transform: none !important;
   }
 
+  /* Miniatures sous la grande image */
   .product-page-pour__thumbs {
     display: flex !important;
 
     width: 100% !important;
     max-width: none !important;
 
-    margin: 8px 0 0 !important;
-    padding: 0 16px !important;
-
     gap: 8px !important;
+
+    margin: 8px 0 0 !important;
+
+    padding: 0 16px !important;
 
     overflow-x: auto !important;
     overflow-y: hidden !important;
+
+    scrollbar-width: none;
+  }
+
+  .product-page-pour__thumbs::-webkit-scrollbar {
+    display: none;
   }
 
   .product-page-pour__thumb {
@@ -3474,11 +3491,11 @@ font-weight: 200;
     height: 135px !important;
   }
 
+  /* Informations sous la photo */
   .product-page-pour__info {
     display: block !important;
 
     width: 100% !important;
-    max-width: 100% !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -3488,18 +3505,13 @@ font-weight: 200;
     width: 100% !important;
     max-width: none !important;
 
-    padding: 45px 32px 0 !important;
+    padding:
+      45px
+      32px
+      0 !important;
   }
 
-  .product-page-pour__title {
-    font-size: 30px !important;
-    line-height: 1.05 !important;
-  }
-
-  .product-page-pour__price {
-    font-size: 25px !important;
-  }
-
+  /* FAQ et détails sous les informations */
   .product-page-pour__details {
     width: 100% !important;
     max-width: none !important;
@@ -3508,12 +3520,12 @@ font-weight: 200;
   }
 
   .product-page-pour__accordions {
-    display: block !important;
-
     width: 100% !important;
     max-width: none !important;
 
-    margin-top: 40px !important;
+    display: block !important;
+
+    margin-top: 35px !important;
   }
 
   .product-page-pour__accordion-trigger {
@@ -3524,16 +3536,15 @@ font-weight: 200;
     width: 100% !important;
     min-height: 58px !important;
 
-    padding: 20px 0 !important;
+    padding: 18px 0 !important;
 
     border-right: 0 !important;
     border-bottom: 1px solid #111111 !important;
 
     font-size: 12px !important;
-    line-height: 1.5 !important;
 
-    text-align: left !important;
     white-space: normal !important;
+    text-align: left !important;
   }
 
   .product-page-pour__accordion-trigger span {
@@ -3543,6 +3554,7 @@ font-weight: 200;
   .product-page-pour__accordion-trigger:last-child {
     border-bottom: 0 !important;
   }
+
 }
 
 </style>
