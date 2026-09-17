@@ -275,7 +275,7 @@
     "response_time_value": "Binnen 24 tot 48 werkuren"
   },
   "hero": {
-    "prelaunch_banner": "PRE-LANCERING — 10% KORTING OP JE VOLGENDE BESTELLING VANAF DE OFFICIËLE OPENING"
+    "prelaunch_banner": "PRE-LANCERING — DE VERZENDINGEN BEGINNEN VANAF [DATUM]."
   },
   "faq_pour": {
     "eyebrow": "HULP & INFORMATIE",
@@ -436,7 +436,7 @@
   "eyebrow": "COLLECTIE 001",
     "language": "TAAL",
   "title": "DE CLUB KOMT ERAAN",
-  "text": "Collectie 001 komt binnenkort. Schrijf je in om de wereld van POUR te ontdekken en te profiteren van een exclusief lanceringsvoordeel van 15% korting, uitsluitend geldig tijdens onze pre-orderperiode.",
+  "text": "De collectie 001 komt binnenkort uit. Schrijf je in om de officiële aankondiging van de lancering van POUR te ontvangen en ontdek bij de opening van onze website een exclusieve verrassing in je inbox.",
   "email_placeholder": "JOUW E-MAILADRES",
   "consent": "Ik ga ermee akkoord om communicatie van POUR per e-mail te ontvangen.",
   "submit": "HOUD MIJ OP DE HOOGTE VAN DE OPENING",
