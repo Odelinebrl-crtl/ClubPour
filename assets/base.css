@@ -525,9 +525,9 @@ a {
   position: relative;
 
   width: 100%;
-  height: 100svh;
+  height: calc(100svh + 68px);
 
-  min-height: 100svh;
+  min-height: calc(100svh + 68px);
   max-height: none;
 
   margin-top: -24px;
