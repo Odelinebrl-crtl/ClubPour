@@ -1573,7 +1573,104 @@ z-index: 99999;
 /* =========================================================
    MOBILE
 ========================================================= */
+/* =========================================================
+   POUR — TABLETTE PORTRAIT
+   601px à 1024px
+========================================================= */
 
+@media screen and (min-width: 601px) and (max-width: 1024px) {
+
+  /* HEADER PRINCIPAL */
+
+  .site-header__inner {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  /* NAVIGATION GAUCHE */
+
+  .site-header__nav--left {
+    display: none !important;
+  }
+
+  /* LOGO */
+
+  .site-header__logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .site-header__logo-image {
+    max-width: 120px;
+    height: auto;
+  }
+
+  /* ACTIONS DROITE */
+
+  .site-header__actions {
+    margin-left: auto;
+  }
+
+  .site-header__desktop-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  /* BURGER */
+
+  .site-header__burger {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    width: 32px;
+    height: 32px;
+
+    padding: 0;
+    margin-left: 18px;
+
+    border: 0;
+    background: transparent;
+
+    cursor: pointer;
+  }
+
+  .site-header__burger span {
+    display: block;
+
+    width: 22px;
+    height: 1px;
+
+    background: #111111;
+  }
+
+  /* ICÔNES COMPTE + PANIER */
+
+  .site-header__desktop-label {
+    display: none !important;
+  }
+
+  .site-header__mobile-icon {
+    display: block;
+    width: 22px;
+    height: 22px;
+  }
+
+  /* MENU MOBILE */
+
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu.is-open {
+    display: block;
+  }
+
+}
 @media screen and (max-width: 600px) {
 
   .cart-drawer {
