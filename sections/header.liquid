@@ -1753,13 +1753,15 @@ z-index: 99999;
 
   /* =========================================================
    POUR — TABLETTE PORTRAIT
-   Même présentation que le mobile
+   Même header que le mobile
    601px à 1024px uniquement
 ========================================================= */
 
 @media screen and (min-width: 601px) and (max-width: 1024px) {
 
-  /* HEADER */
+  /* =========================================================
+     HEADER FIXE AVEC EFFET TRANSPARENT + FLOU
+  ========================================================= */
 
   .site-header {
     position: fixed !important;
@@ -1770,19 +1772,172 @@ z-index: 99999;
     width: 100% !important;
     height: 76px !important;
 
+    background: rgba(255, 255, 255, 0.82) !important;
+
+    backdrop-filter: blur(18px) !important;
+    -webkit-backdrop-filter: blur(18px) !important;
+
     z-index: 9999 !important;
   }
 
 
-  /* MENU BURGER PLEIN ÉCRAN */
+  .site-header__inner {
+    position: relative !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    width: 100% !important;
+    height: 76px !important;
+    min-height: 76px !important;
+
+    padding: 0 24px !important;
+  }
+
+
+  /* Navigation desktop masquée */
+
+  .site-header__nav--left {
+    display: none !important;
+  }
+
+
+  /* =========================================================
+     LOGO CENTRÉ
+  ========================================================= */
+
+  .site-header__logo {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 50% !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translate(-50%, -50%) !important;
+
+    z-index: 10 !important;
+  }
+
+
+  .site-header__logo-image {
+    display: block !important;
+
+    width: auto !important;
+    max-width: 58px !important;
+    height: auto !important;
+  }
+
+
+  /* =========================================================
+     BURGER À GAUCHE
+  ========================================================= */
+
+  .site-header__burger {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 24px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+
+    width: 32px !important;
+    height: 32px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    gap: 6px !important;
+
+    background: transparent !important;
+    border: 0 !important;
+
+    transform: translateY(-50%) !important;
+
+    cursor: pointer !important;
+    pointer-events: auto !important;
+
+    z-index: 10001 !important;
+  }
+
+
+  .site-header__burger span {
+    display: block !important;
+
+    width: 28px !important;
+    height: 1px !important;
+
+    background: #111111 !important;
+
+    pointer-events: none !important;
+  }
+
+
+  /* =========================================================
+     COMPTE + PANIER À DROITE
+  ========================================================= */
+
+  .site-header__actions {
+    position: absolute !important;
+
+    top: 50% !important;
+    right: 24px !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    height: 32px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    transform: translateY(-50%) !important;
+
+    z-index: 10001 !important;
+  }
+
+
+  .site-header__desktop-actions {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+
+    gap: 18px !important;
+    height: 32px !important;
+  }
+
+
+  .site-header__desktop-label {
+    display: none !important;
+  }
+
+
+  .site-header__mobile-icon {
+    display: block !important;
+
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+
+  /* =========================================================
+     MENU BURGER TABLETTE PLEIN ÉCRAN
+  ========================================================= */
 
   .mobile-menu {
     position: fixed !important;
 
-    top: 0 !important;
-    right: 0 !important;
-    bottom: 0 !important;
-    left: 0 !important;
+    inset: 0 !important;
 
     width: 100vw !important;
     height: 100dvh !important;
@@ -1798,33 +1953,44 @@ z-index: 99999;
 
     background: #ffffff !important;
 
-    visibility: hidden !important;
     opacity: 0 !important;
+    visibility: hidden !important;
     pointer-events: none !important;
 
-    transform: translateY(-8px);
+    transform: translateY(-10px) !important;
 
     transition:
       opacity 0.3s ease,
       visibility 0.3s ease,
-      transform 0.3s ease;
+      transform 0.3s ease !important;
 
-    z-index: 10000 !important;
+    z-index: 99999 !important;
   }
 
 
-  /* MENU OUVERT */
-
   .mobile-menu.is-open {
-    visibility: visible !important;
     opacity: 1 !important;
+    visibility: visible !important;
     pointer-events: auto !important;
 
     transform: translateY(0) !important;
   }
 
 
-  /* PARTIE SUPÉRIEURE */
+  .mobile-menu__inner {
+    display: flex !important;
+    flex-direction: column !important;
+
+    width: 100% !important;
+    min-height: 100dvh !important;
+
+    box-sizing: border-box !important;
+  }
+
+
+  /* =========================================================
+     PARTIE SUPÉRIEURE + CROIX
+  ========================================================= */
 
   .mobile-menu__top {
     position: relative !important;
@@ -1836,7 +2002,7 @@ z-index: 99999;
     width: 100% !important;
     height: 110px !important;
 
-    padding: 0 40px !important;
+    padding: 0 32px !important;
 
     box-sizing: border-box !important;
 
@@ -1844,17 +2010,18 @@ z-index: 99999;
   }
 
 
-  /* CROIX */
-
   .mobile-menu__close {
-    position: relative !important;
+    position: absolute !important;
+
+    top: 32px !important;
+    right: 20px !important;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    width: 34px !important;
-    height: 34px !important;
+    width: 36px !important;
+    height: 36px !important;
 
     margin: 0 !important;
     padding: 0 !important;
@@ -1865,11 +2032,38 @@ z-index: 99999;
     cursor: pointer !important;
     pointer-events: auto !important;
 
-    z-index: 10001 !important;
+    z-index: 10002 !important;
   }
 
 
-  /* NAVIGATION */
+  .mobile-menu__close span {
+    position: absolute !important;
+
+    top: 17px !important;
+    left: 3px !important;
+
+    display: block !important;
+
+    width: 30px !important;
+    height: 1.5px !important;
+
+    background: #111111 !important;
+  }
+
+
+  .mobile-menu__close span:first-child {
+    transform: rotate(45deg) !important;
+  }
+
+
+  .mobile-menu__close span:last-child {
+    transform: rotate(-45deg) !important;
+  }
+
+
+  /* =========================================================
+     NAVIGATION
+  ========================================================= */
 
   .mobile-menu__nav {
     display: flex !important;
@@ -1885,19 +2079,13 @@ z-index: 99999;
   }
 
 
-  /* RUBRIQUES PRINCIPALES */
+  .mobile-menu__main-link {
+    display: block !important;
 
-  .mobile-menu__main-link,
-  .mobile-menu__submenu-head {
     width: 100% !important;
 
     margin: 0 0 44px !important;
     padding: 0 !important;
-  }
-
-
-  .mobile-menu__main-link {
-    display: block !important;
 
     font-family: inherit !important;
     font-size: 18px !important;
@@ -1910,19 +2098,30 @@ z-index: 99999;
   }
 
 
-  /* BOUTIQUE + PLUS */
+  /* =========================================================
+     BOUTIQUE + PETIT PLUS
+  ========================================================= */
 
   .mobile-menu__submenu-head {
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
+
+    width: 100% !important;
+
+    margin: 0 0 44px !important;
+    padding: 0 !important;
   }
+
 
   .mobile-menu__submenu-head .mobile-menu__main-link {
     margin: 0 !important;
   }
 
+
   .mobile-menu__plus {
+    position: relative !important;
+
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -1940,22 +2139,71 @@ z-index: 99999;
   }
 
 
-  /* SOUS-MENU */
+  .mobile-menu__plus::before,
+  .mobile-menu__plus::after {
+    content: "" !important;
+
+    position: absolute !important;
+
+    width: 22px !important;
+    height: 1.5px !important;
+
+    background: #111111 !important;
+  }
+
+
+  .mobile-menu__plus::after {
+    transform: rotate(90deg) !important;
+  }
+
+
+  .mobile-menu__item.is-open .mobile-menu__plus::after {
+    transform: rotate(0deg) !important;
+  }
+
+
+  /* =========================================================
+     SOUS-MENU
+  ========================================================= */
 
   .mobile-menu__submenu {
-    display: none;
+    display: none !important;
+
+    width: 100% !important;
+
+    margin: -20px 0 34px !important;
+    padding: 0 !important;
   }
+
 
   .mobile-menu__item.is-open .mobile-menu__submenu {
     display: flex !important;
     flex-direction: column !important;
 
-    margin-top: -20px !important;
-    margin-bottom: 30px !important;
+    gap: 18px !important;
   }
 
 
-  /* COMPTE + PANIER EN BAS */
+  .mobile-menu__submenu a {
+    display: block !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    font-family: inherit !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.3 !important;
+    letter-spacing: 0.06em !important;
+
+    color: #111111 !important;
+    text-decoration: none !important;
+  }
+
+
+  /* =========================================================
+     COMPTE + PANIER EN BAS À GAUCHE
+  ========================================================= */
 
   .mobile-menu__bottom {
     display: flex !important;
@@ -1969,11 +2217,11 @@ z-index: 99999;
     margin-top: auto !important;
     margin-bottom: 0 !important;
 
-    padding: 28px 40px 34px !important;
+    padding: 28px 0 34px 40px !important;
 
     box-sizing: border-box !important;
 
-    border-top: 1px solid rgba(17, 17, 17, 0.15);
+    border-top: 1px solid rgba(17, 17, 17, 0.15) !important;
 
     flex-shrink: 0 !important;
   }
@@ -1983,15 +2231,17 @@ z-index: 99999;
   .mobile-menu__cart {
     display: inline-flex !important;
     align-items: center !important;
+    justify-content: flex-start !important;
 
     width: auto !important;
+    min-width: 0 !important;
     height: auto !important;
 
     margin: 0 !important;
     padding: 0 !important;
 
     font-family: inherit !important;
-    font-size: 12px !important;
+    font-size: 10px !important;
     font-weight: 400 !important;
     line-height: 1 !important;
     letter-spacing: 0.08em !important;
@@ -2006,54 +2256,7 @@ z-index: 99999;
 
     cursor: pointer !important;
   }
-/* CROIX DE FERMETURE — TABLETTE */
 
-.mobile-menu__close {
-  position: absolute !important;
-  top: 32px !important;
-  right: 32px !important;
-
-  display: block !important;
-
-  width: 36px !important;
-  height: 36px !important;
-
-  margin: 0 !important;
-  padding: 0 !important;
-
-  background: transparent !important;
-  border: 0 !important;
-
-  cursor: pointer !important;
-  pointer-events: auto !important;
-  z-index: 10002 !important;
-}
-
-/* On masque les éventuels anciens traits */
-
-.mobile-menu__close span {
-  position: absolute !important;
-
-  top: 17px !important;
-  left: 3px !important;
-
-  display: block !important;
-
-  width: 30px !important;
-  height: 1.5px !important;
-
-  background: #111111 !important;
-}
-
-/* Création de la croix */
-
-.mobile-menu__close span:first-child {
-  transform: rotate(45deg) !important;
-}
-
-.mobile-menu__close span:last-child {
-  transform: rotate(-45deg) !important;
-}
 }
 /* =========================================================
    MOBILE
