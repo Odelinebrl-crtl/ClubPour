@@ -189,17 +189,20 @@
 
   overflow: visible;
 }
-
 #EditorialImagePour-{{ section.id }}
-.editorial-image-pour__image {
-  display: block;
-
+.editorial-image-pour__media {
   width: 100%;
   height: auto;
-
   margin: 0;
   padding: 0;
+  overflow: hidden;
+}
 
+#EditorialImagePour-{{ section.id }}
+.editorial-image-pour__image--desktop {
+  display: block;
+  width: 100%;
+  height: auto;
   object-fit: contain;
   object-position: left center;
 }
