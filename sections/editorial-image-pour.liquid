@@ -412,7 +412,59 @@
   color: #111111;
   border-color: #111111;
 }
+/* =========================================================
+   TABLETTE PORTRAIT — BLOC IMAGE ÉDITORIAL
+========================================================= */
 
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  #EditorialImagePour-{{ section.id }} {
+    padding: 65px 32px 80px;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__inner {
+    grid-template-columns: 1fr;
+    gap: 50px;
+
+    width: 100%;
+    max-width: none;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__media {
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__image--desktop {
+    display: none;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__image--mobile {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__content {
+    max-width: none;
+    padding: 0;
+  }
+
+  #EditorialImagePour-{{ section.id }}
+  .editorial-image-pour__heading {
+    font-size: clamp(38px, 6vw, 56px);
+  }
+
+}
 /* =========================================================
    MOBILE
 ========================================================= */
