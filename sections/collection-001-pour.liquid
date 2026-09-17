@@ -2000,7 +2000,6 @@ input:checked + span {
   .collection001-pour__focus--right {
 
     padding-left: 54px !important;
-
     padding-right: 54px !important;
   }
 
@@ -2032,47 +2031,112 @@ input:checked + span {
     width: 75% !important;
 
     margin-left: auto !important;
-
     margin-right: 0 !important;
   }
 
+}
+
+
 /* =========================================================
    FOCUS 02 — MINIATURES SOUS LE GROS FOCUS
-   TABLETTE PORTRAIT + PAYSAGE
+   TABLETTE PORTRAIT
 ========================================================= */
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--right {
+
     display: flex !important;
     flex-direction: column !important;
+
     gap: 45px !important;
   }
 
-  /* Gros focus 02 en premier */
+
+  /* GROS FOCUS 02 EN PREMIER */
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--right
   .collection001-pour__focus-main {
+
     order: 1 !important;
+
+    width: 100% !important;
   }
 
-  /* Miniatures du focus 02 en dessous */
+
+  /* MINIATURES SOUS LE GROS FOCUS 02 */
 
   #Collection001Pour-{{ section.id }}
   .collection001-pour__focus--right
   .collection001-pour__mini-grid {
+
     order: 2 !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
 
     width: 100% !important;
 
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    margin: 0 !important;
 
     gap: 20px !important;
+  }
 
-    justify-self: stretch !important;
+}
+
+
+/* =========================================================
+   FOCUS 02 — MINIATURES SOUS LE GROS FOCUS
+   TABLETTE PAYSAGE
+========================================================= */
+
+@media screen and (min-width: 1025px) and (max-width: 1200px) {
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right {
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 45px !important;
+  }
+
+
+  /* GROS FOCUS 02 EN PREMIER */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__focus-main {
+
+    order: 1 !important;
+
+    width: 100% !important;
+  }
+
+
+  /* MINIATURES SOUS LE GROS FOCUS 02 */
+
+  #Collection001Pour-{{ section.id }}
+  .collection001-pour__focus--right
+  .collection001-pour__mini-grid {
+
+    order: 2 !important;
+
+    display: grid !important;
+
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr)) !important;
+
+    width: 75% !important;
+
+    margin-left: auto !important;
+    margin-right: 0 !important;
+
+    gap: 20px !important;
   }
 
 }
