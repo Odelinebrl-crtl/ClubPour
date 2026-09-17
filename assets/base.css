@@ -3551,7 +3551,10 @@ color: #ffffff;
     padding: 16px 16px 60px;
   }
 .pour-quote__text {
-  font-size: 24px !important;
+  font-size: 20px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  letter-spacing: -0.04em;
 }
   .product-page-pour__main-media {
     max-width: none;
