@@ -2022,7 +2022,8 @@ width: min(680px, 100vw);
   }
 }
 
-@media screen and (max-width: 768px), {
+@media screen and (max-width: 768px),
+       screen and (min-width: 769px) and (max-width: 1024px) and (orientation: portrait) {
   .product-page-pour__gallery {
     margin-top: 0 !important;
   }
