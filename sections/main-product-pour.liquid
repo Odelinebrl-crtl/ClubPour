@@ -911,6 +911,25 @@
   </div>
 </div>
 <style>
+<style>
+
+/* TEST ABSOLU */
+html,
+body {
+  background: red !important;
+}
+
+body::before {
+  content: "CSS CHARGE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999 !important;
+  background: blue !important;
+  color: white !important;
+  padding: 20px !important;
+  font-size: 30px !important;
+}
 
 
 /* =========================================================
