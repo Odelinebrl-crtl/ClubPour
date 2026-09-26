@@ -530,7 +530,7 @@ a {
   min-height: calc(100svh + 10px);
   max-height: none;
 
-  margin-top: -5px;
+  margin-top: 0px;
 
   overflow: hidden;
 
