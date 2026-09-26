@@ -145,9 +145,9 @@
         "look_bUp43d": {
           "type": "look",
           "settings": {
-            "product": "t-shirt-amarena",
-            "product_image": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
-            "customer_image": "shopify://shop_images/4_6f567a02-ab54-4a4f-af1e-dfcebc372da2.png",
+            "product": "peperoncino",
+            "product_image": "shopify://shop_images/20.png",
+            "customer_image": "shopify://shop_images/IMG_6808.jpg",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
