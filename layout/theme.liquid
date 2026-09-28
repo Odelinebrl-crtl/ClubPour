@@ -1,5 +1,65 @@
 <!doctype html>
 <html lang="{{ request.locale.iso_code }}">
+  <script>
+(function () {
+  const LANGUAGE_KEY = 'pour_language_selected';
+
+  // Langue actuellement affichée par Shopify
+  const currentLanguage = {{ localization.language.iso_code | json }};
+
+  // Vérifie si une langue a déjà été choisie manuellement
+  const manualLanguage = sessionStorage.getItem(LANGUAGE_KEY);
+
+  /*
+   * PREMIÈRE VISITE DE LA SESSION
+   *
+   * Si Shopify arrive directement sur une langue autre que FR,
+   * on revient en français.
+   */
+  if (!manualLanguage && currentLanguage !== 'fr') {
+    const path = window.location.pathname;
+
+    const localizedPath = path.replace(
+      /^\/(en|de|es|it|nl|pt)(?=\/|$)/,
+      ''
+    ) || '/';
+
+    window.location.replace(
+      localizedPath +
+      window.location.search +
+      window.location.hash
+    );
+
+    return;
+  }
+
+  /*
+   * DÉTECTION DU CHOIX MANUEL
+   *
+   * On écoute uniquement le sélecteur Shopify.
+   */
+  document.addEventListener('change', function (event) {
+
+    const select = event.target.closest(
+      'select[name="language_code"]'
+    );
+
+    if (!select) return;
+
+    /*
+     * IMPORTANT :
+     * On enregistre le choix AVANT que Shopify
+     * recharge la page.
+     */
+    sessionStorage.setItem(
+      LANGUAGE_KEY,
+      select.value
+    );
+
+  }, true);
+
+})();
+</script>
   <head>
     <meta charset="utf-8">
 
