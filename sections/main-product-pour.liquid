@@ -646,13 +646,11 @@
 
       <!-- CONFIDENTIALITÉ -->
       <p class="product-page-pour__back-in-stock-privacy">
-        Votre adresse e-mail sera utilisée uniquement pour vous
-        prévenir du retour en stock de cette taille.
-        Pour plus d'informations, consultez notre
-        <a href="/policies/privacy-policy">
-          politique de confidentialité
-        </a>.
-      </p>
+  {{ 'pour_product.privacy_text' | t }}
+  <a href="/policies/privacy-policy">
+    {{ 'pour_product.privacy_link' | t }}
+  </a>.
+</p>
 
     </div>
 
