@@ -306,7 +306,7 @@
   {% if product.selected_or_first_available_variant.available %}
     {{ 'pour_product.preorder' | t }}
   {% else %}
-    ÉPUISÉ
+    {{ 'pour_product.sold_out' | t }}
   {% endif %}
 </button>
 
