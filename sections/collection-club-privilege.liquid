@@ -1673,6 +1673,57 @@ input:checked + span {
   );
 
 })();
+  /* =====================================================
+     PARALLAX — IMAGE CLUB PRIVILÈGE
+  ====================================================== */
+
+  const heroImage =
+    section.querySelector(
+      '.club-privilege-grid__hero-image'
+    );
+
+  if (heroImage && window.matchMedia('(min-width: 751px)').matches) {
+
+    function updateHeroParallax() {
+
+      const rect =
+        heroImage.parentElement.getBoundingClientRect();
+
+      const windowHeight =
+        window.innerHeight;
+
+      const progress =
+        (windowHeight - rect.top) /
+        (windowHeight + rect.height);
+
+      const clampedProgress =
+        Math.max(
+          0,
+          Math.min(1, progress)
+        );
+
+      const movement =
+        (clampedProgress - 0.5) * 18;
+
+      heroImage.style.transform =
+        `translateY(${movement}%)`;
+
+    }
+
+    window.addEventListener(
+      'scroll',
+      updateHeroParallax,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      'resize',
+      updateHeroParallax
+    );
+
+    updateHeroParallax();
+
+  }
 </script>
 
 
