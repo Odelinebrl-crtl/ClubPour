@@ -2461,30 +2461,30 @@ z-index: 99999;
   }
   
 
-}/* =========================================================
-   CLUB PRIVILÈGE — HEADER NOIR
-   UNIQUEMENT SUR /pages/collection-club-privilege
+}
+
+/* =========================================================
+   CLUB PRIVILÈGE — HEADER
+   UNIQUEMENT SUR LA PAGE COLLECTION CLUB PRIVILÈGE
    ========================================================= */
 
-/* ---------- DESKTOP ---------- */
-
-.page-collection-club-privilege .site-header {
+.site-header--club-privilege {
   background: #000000 !important;
 }
 
-.page-collection-club-privilege .site-header__link {
+.site-header--club-privilege .site-header__link {
   color: #ffffff !important;
 }
 
-.page-collection-club-privilege .site-header__desktop-label {
+.site-header--club-privilege .site-header__desktop-label {
   color: #ffffff !important;
 }
 
-.page-collection-club-privilege .site-header__cart {
+.site-header--club-privilege .site-header__cart {
   color: #ffffff !important;
 }
 
-.page-collection-club-privilege .site-header__mobile-icon {
+.site-header--club-privilege .site-header__mobile-icon {
   color: #ffffff !important;
   stroke: #ffffff !important;
 }
@@ -2492,20 +2492,19 @@ z-index: 99999;
 
 /* =========================================================
    TABLETTE + MOBILE
-   Même structure que ton header actuel
    ========================================================= */
 
 @media screen and (max-width: 1024px) {
 
-  .page-collection-club-privilege .site-header {
+  .site-header--club-privilege {
     background: rgba(0, 0, 0, 0.82) !important;
   }
 
-  .page-collection-club-privilege .site-header__burger span {
+  .site-header--club-privilege .site-header__burger span {
     background: #ffffff !important;
   }
 
-  .page-collection-club-privilege .site-header__mobile-icon {
+  .site-header--club-privilege .site-header__mobile-icon {
     color: #ffffff !important;
     stroke: #ffffff !important;
   }
@@ -2519,31 +2518,28 @@ z-index: 99999;
 
 @media screen and (max-width: 1024px) {
 
-  .page-collection-club-privilege .mobile-menu {
+  .site-header--club-privilege + .mobile-menu {
     background: #000000 !important;
   }
 
-  .page-collection-club-privilege .mobile-menu__main-link,
-  .page-collection-club-privilege .mobile-menu__sublink,
-  .page-collection-club-privilege .mobile-menu__subheading {
+  .site-header--club-privilege + .mobile-menu .mobile-menu__main-link,
+  .site-header--club-privilege + .mobile-menu .mobile-menu__sublink,
+  .site-header--club-privilege + .mobile-menu .mobile-menu__subheading,
+  .site-header--club-privilege + .mobile-menu .mobile-menu__account,
+  .site-header--club-privilege + .mobile-menu .mobile-menu__cart {
     color: #ffffff !important;
   }
 
-  .page-collection-club-privilege .mobile-menu__account,
-  .page-collection-club-privilege .mobile-menu__cart {
-    color: #ffffff !important;
-  }
-
-  .page-collection-club-privilege .mobile-menu__close span {
+  .site-header--club-privilege + .mobile-menu .mobile-menu__close span {
     background: #ffffff !important;
   }
 
-  .page-collection-club-privilege .mobile-menu__plus::before,
-  .page-collection-club-privilege .mobile-menu__plus::after {
+  .site-header--club-privilege + .mobile-menu .mobile-menu__plus::before,
+  .site-header--club-privilege + .mobile-menu .mobile-menu__plus::after {
     background: #ffffff !important;
   }
 
-  .page-collection-club-privilege .mobile-menu__bottom {
+  .site-header--club-privilege + .mobile-menu .mobile-menu__bottom {
     border-top-color: rgba(255, 255, 255, 0.20) !important;
   }
 
