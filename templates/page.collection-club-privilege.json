@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "main": {
+      "type": "club-privilege-grid"
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
