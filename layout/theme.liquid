@@ -53,7 +53,7 @@
 >
   </head>
 
-  <body>
+  <body{% if template.name == 'page' and template.suffix == 'collection-club-privilege' %} class="page-collection-club-privilege"{% endif %}>
 
     {% section 'header' %}
 
