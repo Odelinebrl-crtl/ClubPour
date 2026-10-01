@@ -35,6 +35,23 @@
          PRODUITS
     ========================== -->
 
+        <!-- =========================
+         IMAGE CLUB PRIVILÈGE
+    ========================== -->
+
+    {% if section.settings.club_image != blank %}
+      <div class="club-privilege-grid__hero">
+        {{
+          section.settings.club_image
+          | image_url: width: 2400
+          | image_tag:
+            class: 'club-privilege-grid__hero-image',
+            loading: 'lazy',
+            alt: section.settings.heading
+        }}
+      </div>
+    {% endif %}
+    
     <div class="club-privilege-grid__products">
 
       {% for block in section.blocks %}
