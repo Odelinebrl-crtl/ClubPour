@@ -11,40 +11,6 @@
   "sections": {
     "main": {
       "type": "collection-club-privilege",
-      "blocks": {
-        "product_qRJXae": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-riviera",
-            "image_primary": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
-            "image_hover": "shopify://shop_images/15_61eed951-acef-4ed5-a7e8-87d476c4c158.png"
-          }
-        },
-        "product_VDRfy7": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-amarena"
-          }
-        },
-        "product_NBQkGa": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-pegasus"
-          }
-        },
-        "product_HLTwyz": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-cypres-italien"
-          }
-        }
-      },
-      "block_order": [
-        "product_qRJXae",
-        "product_VDRfy7",
-        "product_NBQkGa",
-        "product_HLTwyz"
-      ],
       "settings": {
         "eyebrow": "CLUB PRIVILÈGE",
         "heading": "VENTES PRIVÉES"
