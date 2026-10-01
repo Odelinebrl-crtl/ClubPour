@@ -18,10 +18,15 @@
       {% endif %}
 
       {% if section.settings.heading != blank %}
-        <h2 class="club-privilege-grid__heading">
-          {{ section.settings.heading }}
-        </h2>
-      {% endif %}
+  <h2 class="club-privilege-grid__heading">
+    {{ section.settings.heading }}
+  </h2>
+{% endif %}
+
+<p class="club-privilege-grid__intro">
+  De nouvelles pièces arrivent bientôt.<br>
+  Le Club Privilège s'enrichira prochainement de nouvelles pièces exclusives.
+</p>
 
     </div>
 
@@ -355,7 +360,19 @@
   color: #111111;
 }
 
+#ClubPrivilegeGrid-{{ section.id }}
+.club-privilege-grid__intro {
+  margin: 14px 0 0;
 
+  font-size: 11px;
+  line-height: 1.5;
+
+  font-weight: 400;
+
+  letter-spacing: .02em;
+
+  color: rgba(17,17,17,.55);
+}
 /* =========================================================
    GRILLE PRODUITS
    4 PRODUITS PAR LIGNE
