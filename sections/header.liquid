@@ -261,23 +261,33 @@
       class="site-header__logo"
     >
 
-      {% if section.settings.logo != blank %}
+      {% if template.name == 'page' and template.suffix == 'collection-club-privilege' and section.settings.logo_club_privilege != blank %}
 
-        {{
-          section.settings.logo
-          | image_url: width: 600
-          | image_tag:
-            class: 'site-header__logo-image',
-            loading: 'eager',
-            alt: shop.name
-        }}
+  {{
+    section.settings.logo_club_privilege
+    | image_url: width: 600
+    | image_tag:
+      class: 'site-header__logo-image',
+      loading: 'eager',
+      alt: shop.name
+  }}
 
-      {% else %}
+{% elsif section.settings.logo != blank %}
 
-        POUR
+  {{
+    section.settings.logo
+    | image_url: width: 600
+    | image_tag:
+      class: 'site-header__logo-image',
+      loading: 'eager',
+      alt: shop.name
+  }}
 
-      {% endif %}
+{% else %}
 
+  POUR
+
+{% endif %}
     </a>
 
 
@@ -3939,7 +3949,11 @@ document.addEventListener(
       "id": "logo",
       "label": "Logo"
     },
-
+{
+  "type": "image_picker",
+  "id": "logo_club_privilege",
+  "label": "Logo blanc — Club Privilège"
+},
 
     {
       "type": "header",
