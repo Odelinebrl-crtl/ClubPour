@@ -1674,57 +1674,55 @@ input:checked + span {
   );
 
 })();
-  /* =====================================================
-     PARALLAX — IMAGE CLUB PRIVILÈGE
-  ====================================================== */
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
 
-  const heroImage =
-    section.querySelector(
-      '.club-privilege-grid__hero-image'
-    );
+  const hero = document.querySelector(
+    '#ClubPrivilegeGrid-{{ section.id }} .club-privilege-grid__hero'
+  );
 
-  if (heroImage && window.matchMedia('(min-width: 751px)').matches) {
+  const image = document.querySelector(
+    '#ClubPrivilegeGrid-{{ section.id }} .club-privilege-grid__hero-image'
+  );
 
-    function updateHeroParallax() {
+  if (!hero || !image) return;
 
-      const rect =
-        heroImage.parentElement.getBoundingClientRect();
+  if (window.matchMedia('(max-width: 750px)').matches) return;
 
-      const windowHeight =
-        window.innerHeight;
+  function parallax() {
 
-      const progress =
-        (windowHeight - rect.top) /
-        (windowHeight + rect.height);
+    const rect = hero.getBoundingClientRect();
 
-      const clampedProgress =
-        Math.max(
-          0,
-          Math.min(1, progress)
-        );
+    const distance =
+      window.innerHeight - rect.top;
 
-      const movement =
-        (clampedProgress - 0.5) * 18;
+    const progress =
+      distance /
+      (window.innerHeight + rect.height);
 
-      heroImage.style.transform =
-        `translateY(${movement}%)`;
+    const movement =
+      (progress - 0.5) * 16;
 
-    }
-
-    window.addEventListener(
-      'scroll',
-      updateHeroParallax,
-      { passive: true }
-    );
-
-    window.addEventListener(
-      'resize',
-      updateHeroParallax
-    );
-
-    updateHeroParallax();
+    image.style.transform =
+      `translate3d(0, ${movement}%, 0)`;
 
   }
+
+  window.addEventListener(
+    'scroll',
+    parallax,
+    { passive: true }
+  );
+
+  window.addEventListener(
+    'resize',
+    parallax
+  );
+
+  parallax();
+
+});
+</script>
 </script>
 
 
