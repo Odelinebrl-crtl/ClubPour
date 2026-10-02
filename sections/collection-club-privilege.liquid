@@ -1846,7 +1846,7 @@ document.addEventListener('DOMContentLoaded', function () {
           opacity: .55;
         "
       >
-        CLUB PRIVILÈGE
+        {{ 'pour_club.locked.eyebrow' | t }}
       </p>
 <h1
   style="
@@ -1858,9 +1858,7 @@ document.addEventListener('DOMContentLoaded', function () {
     font-weight: 500;
   "
 >
-  Accès réservé<br>
-  aux membres<br>
-  éligibles.
+ {{ 'pour_club.eligible.title' | t }}
 </h1>
 
       <p
@@ -1873,7 +1871,7 @@ document.addEventListener('DOMContentLoaded', function () {
     opacity: 0.65;
   "
 >
-  Cumulez 100 € d’achats chez POUR pour débloquer les éditions privées du Club Privilège.
+ {{ 'pour_club.eligible.text' | t }}
 </p>
 
     {% endunless %}
