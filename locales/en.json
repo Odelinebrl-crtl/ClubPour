@@ -593,5 +593,27 @@
     "empty_button": "DISCOVER OUR CREATIONS",
     "free_shipping_remaining": "Only %{amount} left for free shipping, France only",
 "free_shipping_unlocked": "Free shipping unlocked"
+  },
+"pour_club": {
+  "collection": {
+    "eyebrow": "PRIVILEGES CLUB",
+    "title": "POUR PRIVATE EDITIONS",
+    "intro": "New pieces are coming soon. The Privileges Club will soon be enriched with new exclusive pieces."
+  },
+  "login": {
+    "eyebrow": "PRIVILEGES CLUB",
+    "title": "Log in to your account.",
+    "text": "This selection is exclusively reserved for eligible Privileges Club members.",
+    "button": "LOG IN"
+  },
+  "locked": {
+    "eyebrow": "PRIVILEGES CLUB",
+    "title": "ACCESS RESERVED FOR MEMBERS.",
+    "text": "This selection is exclusively reserved for Privileges Club members."
+  },
+  "eligible": {
+    "title": "ACCESS RESERVED FOR ELIGIBLE MEMBERS.",
+    "text": "Accumulate €100 in purchases at POUR to unlock the private editions of the Privileges Club."
   }
+}
 }
