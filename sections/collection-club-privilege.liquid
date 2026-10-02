@@ -1729,6 +1729,17 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 {% else %}
+  {{ customer.email }}
+
+<br>
+
+Club member :
+{{ customer.metafields.custom.club_member.value }}
+
+<br>
+
+Accès privilège :
+{{ customer.metafields.custom.club_privilege_access.value }}
 <section
   style="
     min-height: 70vh;
