@@ -480,17 +480,17 @@
   },
   "login": {
     "eyebrow": "PRIVILEGECLUB",
-    "title": "Log in<br>op uw account.",
+    "title": "Log in op uw account.",
     "text": "Deze selectie is exclusief gereserveerd voor in aanmerking komende leden van de Privilegeclub.",
     "button": "INLOGGEN"
   },
   "locked": {
     "eyebrow": "PRIVILEGECLUB",
-    "title": "TOEGANG VOORBEHOUDEN<br>AAN LEDEN.",
+    "title": "TOEGANG VOORBEHOUDEN AAN LEDEN.",
     "text": "Deze selectie is exclusief gereserveerd voor leden van de Privilegeclub."
   },
   "eligible": {
-    "title": "TOEGANG VOORBEHOUDEN<br>AAN IN AANMERKING<br>KOMENDE LEDEN.",
+    "title": "TOEGANG VOORBEHOUDEN AAN IN AANMERKING KOMENDE LEDEN.",
     "text": "Verzamel €100 aan aankopen bij POUR om de privé-edities van de Privilegeclub te ontgrendelen."
   }
 }
