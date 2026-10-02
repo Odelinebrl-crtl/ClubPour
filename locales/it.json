@@ -599,5 +599,27 @@
     "empty_button": "SCOPRI LE NOSTRE CREAZIONI",
     "free_shipping_remaining": "Mancano solo %{amount} per la spedizione gratuita, solo in Francia",
 "free_shipping_unlocked": "Spedizione gratuita sbloccata"
+  },
+"pour_club": {
+  "collection": {
+    "eyebrow": "CLUB PRIVILEGI",
+    "title": "LE EDIZIONI PRIVATE DI POUR",
+    "intro": "Nuovi pezzi arriveranno presto. Il Club Privilegi si arricchirà presto di nuovi pezzi esclusivi."
+  },
+  "login": {
+    "eyebrow": "CLUB PRIVILEGI",
+    "title": "Accedi al tuo account.",
+    "text": "Questa selezione è riservata esclusivamente ai membri idonei del Club Privilegi.",
+    "button": "ACCEDI"
+  },
+  "locked": {
+    "eyebrow": "CLUB PRIVILEGI",
+    "title": "ACCESSO RISERVATO AI MEMBRI.",
+    "text": "Questa selezione è riservata esclusivamente ai membri del Club Privilegi."
+  },
+  "eligible": {
+    "title": "ACCESSO RISERVATO AI MEMBRI IDONEI.",
+    "text": "Accumula 100 € di acquisti presso POUR per sbloccare le edizioni private del Club Privilegi."
   }
+}
 }
