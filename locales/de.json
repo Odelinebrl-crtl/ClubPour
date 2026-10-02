@@ -625,5 +625,27 @@
     "empty_button": "UNSERE KREATIONEN ENTDECKEN",
     "free_shipping_remaining": "Nur noch %{amount} bis zum kostenlosen Versand, nur in Frankreich",
 "free_shipping_unlocked": "Kostenloser Versand freigeschaltet"
+  },
+"pour_club": {
+  "collection": {
+    "eyebrow": "PRIVILEGIEN CLUB",
+    "title": "DIE PRIVATEN EDITIONEN VON POUR",
+    "intro": "Neue Stücke kommen bald. Der Privilegien Club wird schon bald um neue exklusive Stücke erweitert."
+  },
+  "login": {
+    "eyebrow": "PRIVILEGIEN CLUB",
+    "title": "Melden Sie sich bei Ihrem Konto an.",
+    "text": "Diese Auswahl ist ausschließlich für berechtigte Mitglieder des Privilegien Clubs reserviert.",
+    "button": "ANMELDEN"
+  },
+  "locked": {
+    "eyebrow": "PRIVILEGIEN CLUB",
+    "title": "ZUGANG VORBEHALTEN FÜR MITGLIEDER.",
+    "text": "Diese Auswahl ist ausschließlich den Mitgliedern des Privilegien Clubs vorbehalten."
+  },
+  "eligible": {
+    "title": "ZUGANG VORBEHALTEN FÜR BERECHTIGTE MITGLIEDER.",
+    "text": "Sammeln Sie 100 € an Einkäufen bei POUR, um die privaten Editionen des Privilegien Clubs freizuschalten."
   }
+}
 }
