@@ -1784,23 +1784,25 @@ document.addEventListener('DOMContentLoaded', function () {
       </p>
 
       <a
-        href="{{ routes.account_login_url }}"
-        style="
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          margin-top: 35px;
-          padding: 15px 28px;
-          background: #FAF9F6;
-          color: #111111;
-          text-decoration: none;
-          font-size: 10px;
-          letter-spacing: .14em;
-          text-transform: uppercase;
-        "
-      >
-        Se connecter
-      </a>
+  href="{{ routes.account_login_url }}"
+  style="
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 16px 30px;
+    background: #111111;
+    color: #ffffff;
+    border: 1px solid #111111;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    text-decoration: none;
+  "
+>
+  SE CONNECTER
+</a>
 
     {% elsif customer.metafields.custom.club_member.value != true %}
 
