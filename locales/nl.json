@@ -471,5 +471,27 @@
     "empty_button": "ONZE CREATIES ONTDEKKEN",
     "free_shipping_remaining": "Nog maar %{amount} tot gratis verzending, alleen in Frankrijk",
 "free_shipping_unlocked": "Gratis verzending ontgrendeld"
+  },
+"pour_club": {
+  "collection": {
+    "eyebrow": "PRIVILEGECLUB",
+    "title": "DE PRIVÉ-EDITS VAN POUR",
+    "intro": "Nieuwe items komen binnenkort. De Privilegeclub wordt binnenkort uitgebreid met nieuwe exclusieve items."
+  },
+  "login": {
+    "eyebrow": "PRIVILEGECLUB",
+    "title": "Log in<br>op uw account.",
+    "text": "Deze selectie is exclusief gereserveerd voor in aanmerking komende leden van de Privilegeclub.",
+    "button": "INLOGGEN"
+  },
+  "locked": {
+    "eyebrow": "PRIVILEGECLUB",
+    "title": "TOEGANG VOORBEHOUDEN<br>AAN LEDEN.",
+    "text": "Deze selectie is exclusief gereserveerd voor leden van de Privilegeclub."
+  },
+  "eligible": {
+    "title": "TOEGANG VOORBEHOUDEN<br>AAN IN AANMERKING<br>KOMENDE LEDEN.",
+    "text": "Verzamel €100 aan aankopen bij POUR om de privé-edities van de Privilegeclub te ontgrendelen."
   }
+}
 }
