@@ -145,9 +145,9 @@
         "look_bUp43d": {
           "type": "look",
           "settings": {
-            "product": "peperoncino",
-            "product_image": "shopify://shop_images/20.png",
-            "customer_image": "shopify://shop_images/IMG_6808.jpg",
+            "product": "t-shirt-cypres-italien",
+            "product_image": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png",
+            "customer_image": "shopify://shop_images/IMG_0067.jpg",
             "customer_name": "@clubpour",
             "hotspot_x": 50,
             "hotspot_y": 50
