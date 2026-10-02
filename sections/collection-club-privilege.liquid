@@ -13,21 +13,16 @@
 
     <div class="club-privilege-grid__header">
 
-      {% if section.settings.eyebrow != blank %}
-        <p class="club-privilege-grid__eyebrow">
-          {{ section.settings.eyebrow }}
-        </p>
-      {% endif %}
+     <p class="club-privilege-grid__eyebrow">
+  {{ 'pour_club.collection.eyebrow' | t }}
+</p>
 
-      {% if section.settings.heading != blank %}
-  <h2 class="club-privilege-grid__heading">
-    {{ section.settings.heading }}
-  </h2>
-{% endif %}
+<h2 class="club-privilege-grid__heading">
+  {{ 'pour_club.collection.title' | t }}
+</h2>
 
 <p class="club-privilege-grid__intro">
-  De nouvelles pièces arrivent bientôt.<br>
-  Le Club Privilèges s'enrichira prochainement de nouvelles pièces exclusives.
+  {{ 'pour_club.collection.intro' | t }}
 </p>
 
     </div>
@@ -1754,7 +1749,7 @@ document.addEventListener('DOMContentLoaded', function () {
           opacity: .55;
         "
       >
-        CLUB PRIVILÈGE
+        {{ 'pour_club.login.eyebrow' | t }}
       </p>
 
       <h1
@@ -1766,8 +1761,7 @@ document.addEventListener('DOMContentLoaded', function () {
           letter-spacing: -.04em;
         "
       >
-        Connectez-vous<br>
-        à votre compte.
+      {{ 'pour_club.login.title' | t }}
       </h1>
 
       <p
