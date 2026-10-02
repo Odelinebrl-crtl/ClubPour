@@ -591,5 +591,27 @@
     "contact_label": "¿Necesitas más ayuda?",
     "contact_text": "Nuestro equipo está disponible para responder a tus preguntas. Contáctanos en contact@clubpour.fr o utiliza nuestro formulario de contacto. Respondemos en un plazo de 24 a 48 horas laborables.",
     "contact_link": "Contactarnos"
+  },
+"pour_club": {
+  "collection": {
+    "eyebrow": "CLUB DE PRIVILEGIOS",
+    "title": "LAS EDICIONES PRIVADAS DE POUR",
+    "intro": "Nuevas piezas llegarán próximamente. El Club de Privilegios se enriquecerá próximamente con nuevas piezas exclusivas."
+  },
+  "login": {
+    "eyebrow": "CLUB DE PRIVILEGIOS",
+    "title": "Inicia sesión en tu cuenta.",
+    "text": "Esta selección está reservada exclusivamente a los miembros elegibles del Club de Privilegios.",
+    "button": "INICIAR SESIÓN"
+  },
+  "locked": {
+    "eyebrow": "CLUB DE PRIVILEGIOS",
+    "title": "ACCESO RESERVADO A LOS MIEMBROS.",
+    "text": "Esta selección está reservada exclusivamente a los miembros del Club de Privilegios."
+  },
+  "eligible": {
+    "title": "ACCESO RESERVADO A LOS MIEMBROS ELEGIBLES.",
+    "text": "Acumula 100 € en compras en POUR para desbloquear las ediciones privadas del Club de Privilegios."
   }
+}
 }
