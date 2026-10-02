@@ -11,41 +11,10 @@
   "sections": {
     "main": {
       "type": "collection-club-privilege",
-      "blocks": {
-        "product_nj7DFR": {
-          "type": "product",
-          "settings": {
-            "product": "peperoncino"
-          }
-        },
-        "product_HM4Whn": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-monaco-94"
-          }
-        },
-        "product_K4ijQd": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-club-pour"
-          }
-        },
-        "product_bbmVrJ": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-cypres-italien"
-          }
-        }
-      },
-      "block_order": [
-        "product_nj7DFR",
-        "product_HM4Whn",
-        "product_K4ijQd",
-        "product_bbmVrJ"
-      ],
       "settings": {
         "eyebrow": "CLUB PRIVILÈGE",
-        "heading": "LES ÉDITIONS PRIVÉES DE POUR"
+        "heading": "LES ÉDITIONS PRIVÉES DE POUR",
+        "club_image": "shopify://shop_images/3_d7992582-7a5b-4fa0-b52d-d16f844cf2db.png"
       }
     }
   },
