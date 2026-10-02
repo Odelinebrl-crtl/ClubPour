@@ -1808,7 +1808,7 @@ document.addEventListener('DOMContentLoaded', function () {
           opacity: .55;
         "
       >
-        CLUB PRIVILÈGE
+        {{ 'pour_club.locked.eyebrow' | t }}
       </p>
 
       <h1
@@ -1820,8 +1820,7 @@ document.addEventListener('DOMContentLoaded', function () {
           letter-spacing: -.04em;
         "
       >
-        Accès réservé<br>
-        aux membres.
+       {{ 'pour_club.locked.title' | t }}
       </h1>
 
       <p
@@ -1833,7 +1832,7 @@ document.addEventListener('DOMContentLoaded', function () {
           opacity: .65;
         "
       >
-        {{ 'pour_club.login.text' | t }}
+        {{ 'pour_club.locked.text' | t }}
       </p>
 
     {% else %}
