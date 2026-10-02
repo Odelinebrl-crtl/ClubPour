@@ -1,3 +1,5 @@
+{% if customer and customer.metafields.custom.club_privilege_access.value == true %}
+
 <section
   id="ClubPrivilegeGrid-{{ section.id }}"
   class="club-privilege-grid"
@@ -1725,6 +1727,167 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 </script>
+
+{% else %}
+
+<section
+  style="
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 30px;
+    text-align: center;
+    background: #111111;
+    color: #FAF9F6;
+  "
+>
+  <div style="max-width: 600px;">
+
+    {% unless customer %}
+      <p
+        style="
+          margin: 0 0 20px;
+          font-size: 10px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          opacity: .55;
+        "
+      >
+        CLUB PRIVILÈGE
+      </p>
+
+      <h1
+        style="
+          margin: 0;
+          font-size: clamp(36px, 6vw, 64px);
+          line-height: .95;
+          font-weight: 400;
+          letter-spacing: -.04em;
+        "
+      >
+        Connectez-vous<br>
+        à votre compte.
+      </h1>
+
+      <p
+        style="
+          margin: 28px auto 0;
+          max-width: 460px;
+          font-size: 13px;
+          line-height: 1.6;
+          opacity: .65;
+        "
+      >
+        Cette sélection est exclusivement réservée aux membres
+        éligibles du Club Privilège.
+      </p>
+
+      <a
+        href="{{ routes.account_login_url }}"
+        style="
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 35px;
+          padding: 15px 28px;
+          background: #FAF9F6;
+          color: #111111;
+          text-decoration: none;
+          font-size: 10px;
+          letter-spacing: .14em;
+          text-transform: uppercase;
+        "
+      >
+        Se connecter
+      </a>
+
+    {% elsif customer.metafields.custom.club_member.value != true %}
+
+      <p
+        style="
+          margin: 0 0 20px;
+          font-size: 10px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          opacity: .55;
+        "
+      >
+        CLUB PRIVILÈGE
+      </p>
+
+      <h1
+        style="
+          margin: 0;
+          font-size: clamp(36px, 6vw, 64px);
+          line-height: .95;
+          font-weight: 400;
+          letter-spacing: -.04em;
+        "
+      >
+        Accès réservé<br>
+        aux membres.
+      </h1>
+
+      <p
+        style="
+          margin: 28px auto 0;
+          max-width: 460px;
+          font-size: 13px;
+          line-height: 1.6;
+          opacity: .65;
+        "
+      >
+        Cette sélection est exclusivement réservée aux membres
+        du Club Privilège.
+      </p>
+
+    {% else %}
+
+      <p
+        style="
+          margin: 0 0 20px;
+          font-size: 10px;
+          letter-spacing: .18em;
+          text-transform: uppercase;
+          opacity: .55;
+        "
+      >
+        CLUB PRIVILÈGE
+      </p>
+
+      <h1
+        style="
+          margin: 0;
+          font-size: clamp(36px, 6vw, 64px);
+          line-height: .95;
+          font-weight: 400;
+          letter-spacing: -.04em;
+        "
+      >
+        Accès réservé<br>
+        aux membres éligibles.
+      </h1>
+
+      <p
+        style="
+          margin: 28px auto 0;
+          max-width: 460px;
+          font-size: 13px;
+          line-height: 1.6;
+          opacity: .65;
+        "
+      >
+        Cumulez 100 € d'achats chez POUR pour débloquer
+        les éditions privées du Club Privilège.
+      </p>
+
+    {% endunless %}
+
+  </div>
+</section>
+
+{% endif %}
 
 {% schema %}
 {
