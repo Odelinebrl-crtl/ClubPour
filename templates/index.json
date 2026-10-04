@@ -142,6 +142,17 @@
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
+        "look_tCYkbV": {
+          "type": "look",
+          "settings": {
+            "product": "t-shirt-cypres-italien",
+            "product_image": "shopify://shop_images/7.png",
+            "customer_image": "shopify://shop_images/IMG_0067_2.jpg",
+            "customer_name": "@clubpour",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        },
         "look_4qifP7": {
           "type": "look",
           "settings": {
@@ -166,6 +177,7 @@
         }
       },
       "block_order": [
+        "look_tCYkbV",
         "look_4qifP7",
         "look_fCCCP9"
       ],
