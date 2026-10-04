@@ -1459,15 +1459,17 @@
   }
 
  /* =========================================================
-   MOBILE — VALEURS SUR UNE SEULE LIGNE
+   MOBILE — VALEURS
+   Espacement parfaitement régulier
 ========================================================= */
 
 #PourAbout-{{ section.id }} .pour-about__values {
 
-  display: grid;
+  display: flex;
 
-  grid-template-columns:
-    repeat(4, 1fr);
+  align-items: center;
+
+  justify-content: space-between;
 
   width: 100%;
 
@@ -1477,30 +1479,30 @@
 
   gap: 0;
 
-  align-items: center;
-
 }
 
 
 #PourAbout-{{ section.id }} .pour-about__values span {
 
   width: auto;
+
   min-width: 0;
 
-  padding:
-    17px 0;
+  flex: 0 0 auto;
 
   margin: 0;
+
+  padding: 17px 0;
 
   text-align: center;
 
   white-space: nowrap;
 
-  font-size: 6.5px;
+  font-size: 6px;
 
   line-height: 1.2;
 
-  letter-spacing: .065em;
+  letter-spacing: .055em;
 
 }
 /* =========================================================
