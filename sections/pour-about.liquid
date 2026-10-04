@@ -1356,8 +1356,17 @@
   }
 
 
-  #PourAbout-{{ section.id }} .pour-about__future-title {
-  font-size: clamp(52px, 16vw, 94px);
+ #PourAbout-{{ section.id }} .pour-about__future-title {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: clamp(42px, 12vw, 72px);
+  line-height: .80;
+  letter-spacing: -.065em;
+
+  text-align: center;
 }
 
 
