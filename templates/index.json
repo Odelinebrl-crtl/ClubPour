@@ -142,56 +142,20 @@
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
-        "look_bUp43d": {
+        "look_4qifP7": {
           "type": "look",
           "settings": {
-            "product": "t-shirt-cypres-italien",
-            "product_image": "shopify://shop_images/6_4ef0fb48-ac59-4f36-831d-430ed1acc3c1.png",
-            "customer_image": "shopify://shop_images/IMG_0067_6d7b95d3-f792-443f-a867-ddbca5b58cec.jpg",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_wmjxDy": {
-          "type": "look",
-          "settings": {
-            "product": "t-shirt-club-pour",
-            "product_image": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
-            "customer_image": "shopify://shop_images/8_75301823-3afb-4899-a5f4-0820ec3b71b3.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_aJzNbw": {
-          "type": "look",
-          "settings": {
-            "product": "t-shirt-cypres-italien",
-            "product_image": "shopify://shop_images/7.png",
-            "customer_image": "shopify://shop_images/2_113637b5-c7b9-480c-a5d2-59ef8c1ab045.png",
-            "customer_name": "@clubpour",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_HrrkXy": {
-          "type": "look",
-          "settings": {
-            "product": "t-shirt-riviera",
-            "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
-            "customer_image": "shopify://shop_images/3_6b1015c3-e832-4e03-b2d5-19334878df88.png",
-            "customer_name": "@clubpour",
+            "product": "peperoncino",
+            "product_image": "shopify://shop_images/20.png",
+            "customer_image": "shopify://shop_images/IMG_0502.jpg",
+            "customer_name": "@_lisaalili_",
             "hotspot_x": 50,
             "hotspot_y": 50
           }
         }
       },
       "block_order": [
-        "look_bUp43d",
-        "look_wmjxDy",
-        "look_aJzNbw",
-        "look_HrrkXy"
+        "look_4qifP7"
       ],
       "name": "Porté par vous",
       "settings": {
