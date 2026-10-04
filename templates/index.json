@@ -174,12 +174,24 @@
             "hotspot_x": 50,
             "hotspot_y": 50
           }
+        },
+        "look_qeE8L8": {
+          "type": "look",
+          "settings": {
+            "product": "t-shirt-riviera",
+            "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
+            "customer_image": "shopify://shop_images/IMG_0129_2.jpg",
+            "customer_name": "@droo.alejandro",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
         }
       },
       "block_order": [
         "look_4qifP7",
         "look_fCCCP9",
-        "look_tCYkbV"
+        "look_tCYkbV",
+        "look_qeE8L8"
       ],
       "name": "Porté par vous",
       "settings": {
