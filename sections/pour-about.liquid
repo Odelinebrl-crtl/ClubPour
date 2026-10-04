@@ -1458,52 +1458,49 @@
     width: 100%;
   }
 
+ /* =========================================================
+   MOBILE — VALEURS SUR UNE SEULE LIGNE
+========================================================= */
 
-  /* -------------------------------------------------------
-     VALEURS
-     4 éléments sur UNE SEULE LIGNE
-  ------------------------------------------------------- */
+#PourAbout-{{ section.id }} .pour-about__values {
 
-  #PourAbout-{{ section.id }} .pour-about__values {
+  display: grid;
 
-    display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
 
-    grid-template-columns:
-      repeat(4, minmax(0, 1fr));
+  width: 100%;
 
-    width: 100%;
+  margin-top: 55px;
 
-    margin-top: 55px;
+  padding: 0;
 
-    gap: 0;
+  gap: 0;
 
-    align-items: center;
+  align-items: center;
 
-    justify-content: stretch;
-
-  }
+}
 
 
-  #PourAbout-{{ section.id }} .pour-about__values span {
+#PourAbout-{{ section.id }} .pour-about__values span {
 
-    width: auto;
+  width: auto;
+  min-width: 0;
 
-    min-width: 0;
+  padding:
+    17px 0;
 
-    padding:
-      17px 2px;
+  margin: 0;
 
-    text-align: center;
+  text-align: center;
 
-    white-space: nowrap;
+  white-space: nowrap;
 
-    font-size: 7px;
+  font-size: 6.5px;
 
-    line-height: 1.2;
+  line-height: 1.2;
 
-    letter-spacing: .10em;
-
-  }
+  letter-spacing: .065em;
 
 }
 /* =========================================================
