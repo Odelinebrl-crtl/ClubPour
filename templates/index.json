@@ -142,6 +142,17 @@
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
+        "look_fCCCP9": {
+          "type": "look",
+          "settings": {
+            "product": "t-shirt-club-pour",
+            "product_image": "shopify://shop_images/11_03462cef-576b-40db-b560-f3c94dbb4ac1.png",
+            "customer_image": "shopify://shop_images/IMG_4951.heic",
+            "customer_name": "@poweredbycbs",
+            "hotspot_x": 50,
+            "hotspot_y": 50
+          }
+        },
         "look_4qifP7": {
           "type": "look",
           "settings": {
@@ -155,6 +166,7 @@
         }
       },
       "block_order": [
+        "look_fCCCP9",
         "look_4qifP7"
       ],
       "name": "Porté par vous",
