@@ -1372,7 +1372,131 @@
 
 }
 
+/* =========================================================
+   MOBILE — CORRECTIONS FULL BLEED / ALIGNEMENT
+========================================================= */
 
+@media screen and (max-width: 768px) {
+
+  /* -------------------------------------------------------
+     NOTRE HISTOIRE
+     Image véritablement pleine largeur
+  ------------------------------------------------------- */
+
+  #PourAbout-{{ section.id }} .pour-about__story-media {
+    width: calc(100% + 2px);
+    margin-left: -1px;
+    min-height: 62vh;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__story-media .pour-about__image {
+    left: 0;
+    width: 100%;
+  }
+
+
+  /* -------------------------------------------------------
+     INSPIRATION
+     On annule le translateX(-50%) du desktop
+  ------------------------------------------------------- */
+
+  #PourAbout-{{ section.id }} .pour-about__inspiration-content {
+    left: 0;
+    right: 0;
+    bottom: 25px;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 20px;
+
+    transform: none;
+  }
+
+
+  /* -------------------------------------------------------
+     LA SUITE
+     Même correction que pour Inspiration
+  ------------------------------------------------------- */
+
+  #PourAbout-{{ section.id }} .pour-about__future-content {
+    left: 0;
+    right: 0;
+    bottom: 24px;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 20px 16px;
+
+    transform: none;
+  }
+
+
+  /* -------------------------------------------------------
+     IMAGES FULL BLEED
+     Suppression des éventuelles micro-bordures
+  ------------------------------------------------------- */
+
+  #PourAbout-{{ section.id }} .pour-about__inspiration-media,
+  #PourAbout-{{ section.id }} .pour-about__future-media {
+    width: 100%;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__inspiration-image,
+  #PourAbout-{{ section.id }} .pour-about__future-image {
+    left: 0;
+    width: 100%;
+  }
+
+
+  /* -------------------------------------------------------
+     VALEURS
+     4 éléments sur UNE SEULE LIGNE
+  ------------------------------------------------------- */
+
+  #PourAbout-{{ section.id }} .pour-about__values {
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    width: 100%;
+
+    margin-top: 55px;
+
+    gap: 0;
+
+    align-items: center;
+
+    justify-content: stretch;
+
+  }
+
+
+  #PourAbout-{{ section.id }} .pour-about__values span {
+
+    width: auto;
+
+    min-width: 0;
+
+    padding:
+      17px 2px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    font-size: 7px;
+
+    line-height: 1.2;
+
+    letter-spacing: .10em;
+
+  }
+
+}
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
