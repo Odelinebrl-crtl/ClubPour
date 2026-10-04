@@ -396,27 +396,47 @@
 ========================================================= */
 
 #PourAbout-{{ section.id }} .reveal {
-
   opacity: 0;
 
   transform:
     translate3d(0, 45px, 0);
 
   transition:
-
     opacity .8s ease,
-
     transform 1s cubic-bezier(.22,1,.36,1);
 
+  will-change:
+    opacity,
+    transform;
 }
 
+
+/* Descente de la page :
+   élément arrive depuis le bas */
+
+#PourAbout-{{ section.id }} .reveal.is-from-bottom {
+  transform:
+    translate3d(0, 45px, 0);
+}
+
+
+/* Remontée de la page :
+   élément arrive depuis le haut */
+
+#PourAbout-{{ section.id }} .reveal.is-from-top {
+  transform:
+    translate3d(0, -45px, 0);
+}
+
+
+/* Position finale */
 
 #PourAbout-{{ section.id }} .reveal.is-visible {
 
   opacity: 1;
 
   transform:
-    translate3d(0,0,0);
+    translate3d(0, 0, 0);
 
 }
 
