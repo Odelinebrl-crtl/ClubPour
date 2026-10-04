@@ -1381,59 +1381,119 @@
 
 
 <script>
-
 (() => {
 
-  const root =
-    document.querySelector(
-      '#PourAbout-{{ section.id }}'
-    );
+  const root = document.querySelector('#PourAbout-{{ section.id }}');
 
   if (!root) return;
 
 
   /* =======================================================
-     SCROLL REVEAL
+     SCROLL DIRECTION
+  ======================================================= */
+
+  let lastScrollY = window.scrollY;
+  let scrollDirection = 'down';
+
+  window.addEventListener(
+    'scroll',
+    () => {
+
+      const currentY = window.scrollY;
+
+      if (currentY > lastScrollY + 2) {
+        scrollDirection = 'down';
+      }
+
+      if (currentY < lastScrollY - 2) {
+        scrollDirection = 'up';
+      }
+
+      lastScrollY = currentY;
+
+    },
+    { passive: true }
+  );
+
+
+  /* =======================================================
+     REVEAL BIDIRECTIONNEL
   ======================================================= */
 
   const revealItems =
     root.querySelectorAll('.reveal');
 
 
-  const observer =
+  const revealObserver =
     new IntersectionObserver(
 
       (entries) => {
 
         entries.forEach((entry) => {
 
-          if (!entry.isIntersecting) return;
+          const item = entry.target;
 
 
-          const item =
-            entry.target;
+          if (entry.isIntersecting) {
 
+            /*
+             * On prépare la direction
+             */
 
-          const delay =
-            Number(
-              item.dataset.delay || 0
-            );
-
-
-          item.style.transitionDelay =
-            `${delay}ms`;
-
-
-          requestAnimationFrame(() => {
-
-            item.classList.add(
+            item.classList.remove(
+              'is-from-top',
+              'is-from-bottom',
               'is-visible'
             );
 
-          });
+
+            if (scrollDirection === 'up') {
+
+              item.classList.add(
+                'is-from-top'
+              );
+
+            } else {
+
+              item.classList.add(
+                'is-from-bottom'
+              );
+
+            }
 
 
-          observer.unobserve(item);
+            /*
+             * On laisse le navigateur
+             * appliquer la position initiale
+             */
+
+            requestAnimationFrame(() => {
+
+              requestAnimationFrame(() => {
+
+                item.classList.add(
+                  'is-visible'
+                );
+
+              });
+
+            });
+
+          }
+
+          else {
+
+            /*
+             * Quand l'élément quitte l'écran,
+             * on le remet invisible afin que
+             * l'animation puisse se rejouer.
+             */
+
+            item.classList.remove(
+              'is-visible'
+            );
+
+          }
 
         });
 
@@ -1441,27 +1501,29 @@
 
       {
         threshold: 0.12,
+
         rootMargin:
-          '0px 0px -5% 0px'
+          '-5% 0px -5% 0px'
+
       }
 
     );
 
 
-  revealItems.forEach((item) => {
-
-    observer.observe(item);
-
-  });
+  revealItems.forEach(
+    (item) => revealObserver.observe(item)
+  );
 
 
   /* =======================================================
-     SIMPLE PARALLAX
+     PARALLAX
   ======================================================= */
 
   const parallaxImages =
     root.querySelectorAll(
-      '.pour-about__hero-image, .pour-about__inspiration-image, .pour-about__future-image'
+      '.pour-about__hero-image, \
+       .pour-about__inspiration-image, \
+       .pour-about__future-image'
     );
 
 
@@ -1474,7 +1536,9 @@
 
       const section =
         image.closest(
-          '.pour-about__hero, .pour-about__inspiration, .pour-about__future'
+          '.pour-about__hero, \
+           .pour-about__inspiration, \
+           .pour-about__future'
         );
 
 
@@ -1489,11 +1553,13 @@
         rect.bottom < 0 ||
         rect.top > window.innerHeight
       ) {
+
         return;
+
       }
 
 
-      const center =
+      const viewportCenter =
         window.innerHeight / 2;
 
 
@@ -1502,7 +1568,7 @@
 
 
       const distance =
-        sectionCenter - center;
+        sectionCenter - viewportCenter;
 
 
       const offset =
@@ -1530,9 +1596,7 @@
 
     if (ticking) return;
 
-
     ticking = true;
-
 
     requestAnimationFrame(
       updateParallax
@@ -1558,7 +1622,6 @@
 
 
 })();
-
 </script>
 
 
