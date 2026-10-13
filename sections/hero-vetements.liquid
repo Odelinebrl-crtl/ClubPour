@@ -10,13 +10,16 @@
 
     {% for i in (1..5) %}
 
-      {% assign image_key = 'image_' | append: i %}
-      {% assign title_key = 'title_' | append: i %}
+    
+{% assign image_key = 'image_' | append: i %}
+{% assign mobile_image_key = 'mobile_image_' | append: i %}
+{% assign title_key = 'title_' | append: i %}
       {% assign subtitle_key = 'subtitle_' | append: i %}
       {% assign link_key = 'link_' | append: i %}
       {% assign color_key = 'text_color_' | append: i %}
 
       {% assign slide_image = section.settings[image_key] %}
+      {% assign slide_mobile_image = section.settings[mobile_image_key] %}
       {% assign slide_title = section.settings[title_key] %}
       {% assign slide_subtitle = section.settings[subtitle_key] %}
       {% assign slide_link = section.settings[link_key] %}
@@ -29,17 +32,30 @@
           data-clothing-slide
         >
 
-          <div class="clothing-hero__image-wrap">
+          
+<div class="clothing-hero__image-wrap">
 
-            {{
-              slide_image
-              | image_url: width: 2800
-              | image_tag:
-                class: 'clothing-hero__image',
-                loading: 'eager'
-            }}
+  <picture class="clothing-hero__picture">
 
-          </div>
+    {% if slide_mobile_image != blank %}
+      <source
+        media="(max-width: 749px)"
+        srcset="{{ slide_mobile_image | image_url: width: 1200 }}"
+      >
+    {% endif %}
+
+    {{
+      slide_image
+      | image_url: width: 2800
+      | image_tag:
+        class: 'clothing-hero__image',
+        loading: 'eager'
+    }}
+
+  </picture>
+
+</div>
+
 
 
           <div
@@ -130,15 +146,22 @@
 
   "settings": [
 
-    {
-      "type": "header",
-      "content": "Visuel 01"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Image 01"
-    },
+    
+{
+  "type": "header",
+  "content": "Visuel 01"
+},
+{
+  "type": "image_picker",
+  "id": "image_1",
+  "label": "Image ordinateur 01"
+},
+{
+  "type": "image_picker",
+  "id": "mobile_image_1",
+  "label": "Image mobile 01"
+},
+
     {
       "type": "text",
       "id": "title_1",
@@ -164,15 +187,22 @@
     },
 
 
-    {
-      "type": "header",
-      "content": "Visuel 02"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Image 02"
-    },
+    
+{
+  "type": "header",
+  "content": "Visuel 02"
+},
+{
+  "type": "image_picker",
+  "id": "image_2",
+  "label": "Image ordinateur 02"
+},
+{
+  "type": "image_picker",
+  "id": "mobile_image_2",
+  "label": "Image mobile 02"
+},
+
     {
       "type": "text",
       "id": "title_2",
@@ -198,15 +228,22 @@
     },
 
 
-    {
-      "type": "header",
-      "content": "Visuel 03"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_3",
-      "label": "Image 03"
-    },
+    
+{
+  "type": "header",
+  "content": "Visuel 03"
+},
+{
+  "type": "image_picker",
+  "id": "image_3",
+  "label": "Image ordinateur 03"
+},
+{
+  "type": "image_picker",
+  "id": "mobile_image_3",
+  "label": "Image mobile 03"
+},
+
     {
       "type": "text",
       "id": "title_3",
@@ -232,15 +269,22 @@
     },
 
 
-    {
-      "type": "header",
-      "content": "Visuel 04"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_4",
-      "label": "Image 04"
-    },
+    
+{
+  "type": "header",
+  "content": "Visuel 04"
+},
+{
+  "type": "image_picker",
+  "id": "image_4",
+  "label": "Image ordinateur 04"
+},
+{
+  "type": "image_picker",
+  "id": "mobile_image_4",
+  "label": "Image mobile 04"
+},
+
     {
       "type": "text",
       "id": "title_4",
