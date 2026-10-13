@@ -4826,7 +4826,7 @@ color: rgba(17,17,17,.42);
 
   width: min(400px, 30vw);
 
-  color: var(--slide-text-color, #000000);
+  color: var(--slide-text-color, #111111);
 
   text-align: left;
 
