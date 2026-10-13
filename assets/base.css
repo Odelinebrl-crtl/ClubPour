@@ -5843,8 +5843,9 @@ html {
 }
 
 
+
 /* =========================================================
-   MOBILE
+   MOBILE — QUICK VIEW
 ========================================================= */
 
 @media screen and (max-width: 750px) {
@@ -5853,43 +5854,94 @@ html {
     width: calc(100vw - 28px);
     max-height: calc(100svh - 32px);
     overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
+
+  /* CONTENU */
 
   .pour-quickview__content {
-    grid-template-columns: 1fr;
-
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
     min-height: 0;
-
-    padding: 42px 18px 24px;
+    padding: 0 0 24px;
   }
+
+  /* ZONE IMAGE */
 
   .pour-quickview__media {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
     padding: 0;
+    margin: 0;
+    overflow: hidden;
+    box-sizing: border-box;
   }
+
+  /* LIEN IMAGE, SI PRÉSENT */
+
+  .pour-quickview__media a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* IMAGE PLEINE LARGEUR */
 
   .pour-quickview__image {
-    width: auto;
-    max-width: 68%;
-    max-height: 30svh;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    object-position: center center !important;
   }
 
+  /* INFORMATIONS */
+
   .pour-quickview__info {
-    padding: 22px 0 0;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 22px 18px 0;
+    margin: 0;
+    align-self: start;
   }
+
+  .pour-quickview__title,
+  .pour-quickview__price,
+  .pour-quickview__options,
+  .pour-quickview__details {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* TAILLES */
 
   .pour-quickview__options {
     margin-top: 22px;
   }
+
+  /* BOUTON */
 
   .pour-quickview__submit {
     height: 44px;
     margin-top: 22px;
   }
 
+  /* LIEN PRODUIT */
+
   .pour-quickview__details {
     margin-top: 16px;
     padding-bottom: 3px;
   }
+
+  /* CROIX */
 
   .pour-quickview__close {
     top: 14px;
@@ -5897,4 +5949,3 @@ html {
   }
 
 }
-
