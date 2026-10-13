@@ -41,7 +41,7 @@
     <div class="pour-about__hero-content">
 
       <p class="pour-about__eyebrow reveal" data-delay="0">
-        {{ section.settings.hero_eyebrow }}
+       {{ 'pour_about.hero_eyebrow' | t }}
       </p>
 
       <h1 class="pour-about__hero-title reveal" data-delay="100">
@@ -49,7 +49,7 @@
       </h1>
 
       <p class="pour-about__hero-text reveal" data-delay="200">
-        {{ section.settings.hero_text }}
+       {{ 'pour_about.hero_text' | t }}
       </p>
 
     </div>
@@ -82,15 +82,15 @@
     <div class="pour-about__story-content">
 
       <p class="pour-about__eyebrow reveal" data-delay="80">
-        {{ section.settings.story_eyebrow }}
+        {{ 'pour_about.story_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__title reveal" data-delay="140">
-        {{ section.settings.story_title }}
+        {{ 'pour_about.story_title' | t }}
       </h2>
 
       <div class="pour-about__text reveal" data-delay="220">
-        {{ section.settings.story_text }}
+        {{ 'pour_about.story_text' | t }}
       </div>
 
     </div>
@@ -127,15 +127,15 @@
     <div class="pour-about__inspiration-content">
 
       <p class="pour-about__eyebrow reveal" data-delay="0">
-        {{ section.settings.inspiration_eyebrow }}
+        {{ 'pour_about.inspiration_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__inspiration-title reveal" data-delay="100">
-        {{ section.settings.inspiration_title }}
+        {{ 'pour_about.inspiration_title' | t }}
       </h2>
 
       <div class="pour-about__inspiration-text reveal" data-delay="200">
-        {{ section.settings.inspiration_text }}
+        {{ 'pour_about.inspiration_text' | t }}
       </div>
 
     </div>
@@ -152,11 +152,11 @@
     <div class="pour-about__vision-header">
 
       <p class="pour-about__eyebrow reveal" data-delay="0">
-        {{ section.settings.vision_eyebrow }}
+        {{ 'pour_about.vision_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__vision-title reveal" data-delay="100">
-        {{ section.settings.vision_title }}
+        {{ 'pour_about.vision_title' | t }}
       </h2>
 
     </div>
@@ -170,8 +170,8 @@
         <span class="pour-about__vision-number">01</span>
 
         <div>
-          <h3>{{ section.settings.vision_1_title }}</h3>
-          <p>{{ section.settings.vision_1_text }}</p>
+          <h3>{{ 'pour_about.vision_1_title' | t }}</h3>
+<p>{{ 'pour_about.vision_1_text' | t }}</p>
         </div>
 
       </article>
@@ -183,8 +183,8 @@
         <span class="pour-about__vision-number">02</span>
 
         <div>
-          <h3>{{ section.settings.vision_2_title }}</h3>
-          <p>{{ section.settings.vision_2_text }}</p>
+         <h3>{{ 'pour_about.vision_2_title' | t }}</h3>
+<p>{{ 'pour_about.vision_2_text' | t }}</p>
         </div>
 
       </article>
@@ -196,8 +196,8 @@
         <span class="pour-about__vision-number">03</span>
 
         <div>
-          <h3>{{ section.settings.vision_3_title }}</h3>
-          <p>{{ section.settings.vision_3_text }}</p>
+          <h3>{{ 'pour_about.vision_3_title' | t }}</h3>
+<p>{{ 'pour_about.vision_3_text' | t }}</p>
         </div>
 
       </article>
@@ -209,8 +209,8 @@
         <span class="pour-about__vision-number">04</span>
 
         <div>
-          <h3>{{ section.settings.vision_4_title }}</h3>
-          <p>{{ section.settings.vision_4_text }}</p>
+        <h3>{{ 'pour_about.vision_4_title' | t }}</h3>
+<p>{{ 'pour_about.vision_4_text' | t }}</p>
         </div>
 
       </article>
@@ -220,14 +220,15 @@
 
     <!-- ENGAGEMENTS COURTS -->
 
-    <div class="pour-about__values reveal" data-delay="100">
+     <div class="pour-about__values reveal" data-delay="100">
 
-      <span>100 % COTON</span>
-      <span>VEGAN</span>
-      <span>IMPRESSION EN FRANCE</span>
-      <span>PRODUCTIONS MAÎTRISÉES</span>
+  <span>{{ 'pour_about.value_1' | t }}</span>
+  <span>{{ 'pour_about.value_2' | t }}</span>
+  <span>{{ 'pour_about.value_3' | t }}</span>
+  <span>{{ 'pour_about.value_4' | t }}</span>
 
-    </div>
+</div>
+
 
   </section>
 
@@ -261,15 +262,15 @@
     <div class="pour-about__future-content">
 
       <p class="pour-about__eyebrow reveal" data-delay="0">
-        {{ section.settings.future_eyebrow }}
+        {{ 'pour_about.future_eyebrow' | t }}
       </p>
 
       <h2 class="pour-about__future-title reveal" data-delay="100">
-        {{ section.settings.future_title }}
+        {{ 'pour_about.future_title' | t }}
       </h2>
 
       <div class="pour-about__future-text reveal" data-delay="200">
-        {{ section.settings.future_text }}
+        {{ 'pour_about.future_text' | t }}
       </div>
 
       {% if section.settings.final_link != blank %}
@@ -279,7 +280,7 @@
           class="pour-about__final-link reveal"
           data-delay="280"
         >
-          {{ section.settings.final_link_label }}
+          {{ 'pour_about.final_link_label' | t }}
           <span>→</span>
         </a>
 
