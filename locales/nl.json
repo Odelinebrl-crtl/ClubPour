@@ -493,5 +493,33 @@
     "title": "TOEGANG VOORBEHOUDEN AAN IN AANMERKING KOMENDE LEDEN.",
     "text": "Verzamel €100 aan aankopen bij POUR om de privé-edities van de Privilegeclub te ontgrendelen."
   }
-}
+},
+  "pour_about": {
+    "hero_eyebrow": "Het verhaal van POUR",
+    "hero_text": "WE VONDEN NIET WAT WE ZOCHTEN, DUS HEBBEN WE HET ZELF GEMAAKT.",
+    "story_eyebrow": "Ons verhaal",
+    "story_title": "Maken wat we zelf graag hadden willen zien bestaan.",
+    "story_text": "<p>POUR ontstond vanuit een eenvoudig idee: kleding maken die we zelf graag wilden dragen, maar nergens konden vinden.</p><p>Pasvormen waarin je je goed voelt. Items die je zowel overdag als 's avonds kunt dragen, zonder ooit te hoeven kiezen tussen stijl en comfort.</p><p>Achter POUR staan twee mensen, een koppel en een project dat met geduld, passie en veel werk wordt opgebouwd.</p><p>Al maanden werken we samen aan elk detail: prototypes, overleg met ateliers, verplaatsingen, ontwerpen, fotoshoots en de ontwikkeling van de website.</p><p>POUR is niet simpelweg ontstaan uit de wens om een merk op te richten. Het is ontstaan uit de wens om iets te creëren dat echt bij ons past.</p>",
+    "inspiration_eyebrow": "POUR, jullie, wij.",
+    "inspiration_title": "Zonder onszelf te beperken.",
+    "inspiration_text": "<p>Wat we juist zo mooi vinden aan POUR, is wat het voor iedereen kan betekenen.</p><p>Voor jullie. Voor ons. Voor wat jullie graag zien. Voor wat jullie inspireert.</p><p>De autowereld neemt een bijzondere plaats in ons verhaal in. Auto's, hun geschiedenis, hun lijnen, hun prestaties, hun materialen en al die details die bepaalde modellen tijdloos maken, maken deel uit van onze wereld.</p><p>Die passie komt vanzelf terug in onze eerste creaties. Maar POUR draait niet alleen om auto's. Ze vormen vandaag een bron van inspiratie, zonder de grenzen te bepalen van wat we willen creëren.</p>",
+    "vision_eyebrow": "Onze visie",
+    "vision_title": "Items ontworpen om lang mee te gaan.",
+    "vision_1_title": "Tijdloos",
+    "vision_1_text": "We willen trends niet achterna lopen. We maken items die je wilt bewaren en steeds opnieuw wilt dragen.",
+    "vision_2_title": "Oog voor detail",
+    "vision_2_text": "Doordachte pasvormen, aandacht voor details en bijzondere zorg voor de kwaliteit van onze creaties.",
+    "vision_3_title": "Beheerste productie",
+    "vision_3_text": "We kiezen voor productie in gecontroleerde hoeveelheden, ver weg van de logica van fast fashion en overproductie.",
+    "vision_4_title": "Verantwoord",
+    "vision_4_text": "We hechten belang aan materialen, productieomstandigheden en een manier van creëren die aansluit bij onze waarden.",
+    "value_1": "100% KATOEN",
+    "value_2": "VEGAN",
+    "value_3": "BEDRUKT IN FRANKRIJK",
+    "value_4": "BEHEERSTE PRODUCTIE",
+    "future_eyebrow": "En dit is nog maar het begin.",
+    "future_title": "Laten we samen bouwen aan wat volgt.",
+    "future_text": "<p>POUR zal zich in de loop van de tijd verder ontwikkelen. Nieuwe kledingstukken, accessoires, nieuwe inspiratiebronnen en ervaringen die we willen delen met iedereen die deel uitmaakt van dit avontuur.</p><p>Want POUR draait om meer dan alleen het kopen van een kledingstuk. Het gaat erom deel uit te maken van een verhaal dat we samen schrijven.</p>",
+    "final_link_label": "Ontdek de collectie"
+  }
 }
