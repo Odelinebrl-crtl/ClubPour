@@ -1444,38 +1444,42 @@
 
 /* CONTENU */
 
+
+/* CONTENU QUICK VIEW */
+
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__inner {
   display: grid;
-
-  grid-template-columns:
-    minmax(0,1fr)
-    minmax(320px,.9fr);
-
-  align-items: center;
-
+  grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
+  align-items: stretch;
   min-height: 570px;
-
-  padding: 65px 70px;
+  padding: 0;
 }
+
+/* ZONE IMAGE */
 
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__media {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
+  min-width: 0;
+  overflow: hidden;
 }
+
+/* IMAGE */
 
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__image {
   display: block;
-
   width: 100%;
-  max-width: 430px;
-  max-height: 470px;
-
-  object-fit: contain;
+  max-width: none;
+  height: 100%;
+  max-height: 570px;
+  object-fit: cover;
+  object-position: center;
 }
+
 
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__info {
