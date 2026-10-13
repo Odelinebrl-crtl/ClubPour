@@ -36,20 +36,20 @@
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
           }
         },
-        "product_card_NHQ6tT": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-cypres-italien",
-            "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
-          }
-        },
         "product_card_zJAett": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-amarena",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_048.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg"
+          }
+        },
+        "product_card_NHQ6tT": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-cypres-italien",
+            "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
           }
         },
         "product_card_BVhk8w": {
@@ -95,8 +95,8 @@
       },
       "block_order": [
         "product_card_CgHeQ3",
-        "product_card_NHQ6tT",
         "product_card_zJAett",
+        "product_card_NHQ6tT",
         "product_card_BVhk8w",
         "product_card_Jt7Npe",
         "product_card_97K8cp",
