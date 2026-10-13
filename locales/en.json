@@ -614,8 +614,9 @@
   "eligible": {
     "title": "ACCESS RESERVED FOR ELIGIBLE MEMBERS.",
     "text": "Accumulate €100 in purchases at POUR to unlock the private editions of the Privileges Club."
-  },
-  "pour_about": {
+  }
+},
+"pour_about": {
     "hero_eyebrow": "The story of POUR",
     "hero_text": "WE COULDN'T FIND WHAT WE WERE LOOKING FOR, SO WE CREATED IT.",
     "story_eyebrow": "Our story",
@@ -643,5 +644,4 @@
     "future_text": "POUR will evolve over time. New clothing, accessories, new sources of inspiration, as well as experiences we want to share with those who become part of the journey. Because POUR is about more than buying a piece of clothing. It's about joining a story we're writing together.",
     "final_link_label": "Discover the collection"
   }
-}
 }
