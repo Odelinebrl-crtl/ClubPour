@@ -614,6 +614,34 @@
   "eligible": {
     "title": "ACCESS RESERVED FOR ELIGIBLE MEMBERS.",
     "text": "Accumulate €100 in purchases at POUR to unlock the private editions of the Privileges Club."
+  },
+  "pour_about": {
+    "hero_eyebrow": "The story of POUR",
+    "hero_text": "WE COULDN'T FIND WHAT WE WERE LOOKING FOR, SO WE CREATED IT.",
+    "story_eyebrow": "Our story",
+    "story_title": "Creating what we wanted to see in the world.",
+    "story_text": "POUR was born from a simple idea: to create the clothes we wanted to wear but couldn't find. Fits that feel right. Pieces you can wear from day to night, without ever having to choose between style and comfort. Behind POUR are two people, a couple, and a project built with patience, passion and a great deal of hard work. For several months, we've been building every detail together: prototypes, conversations with workshops, trips, designs, photoshoots and website development. POUR wasn't born simply from the desire to create a brand. It came from the desire to create something that feels true to who we are.",
+    "inspiration_eyebrow": "POUR, you, us.",
+    "inspiration_title": "Without ever limiting ourselves.",
+    "inspiration_text": "What we love about POUR is precisely what it can mean to each person. For you. For us. For what you love. For what inspires you. The automotive world holds a special place in our story. It's part of our lives through cars, their history, their lines, their performance, their materials and all the details that make certain models timeless. This passion naturally finds its way into our first creations. But POUR is about more than cars. They're one of our sources of inspiration today, without ever defining the limits of what we can become.",
+    "vision_eyebrow": "Our vision",
+    "vision_title": "Pieces designed to last.",
+    "vision_1_title": "Timeless",
+    "vision_1_text": "We don't want to chase trends. We create pieces you'll want to keep and wear time and time again.",
+    "vision_2_title": "Thoughtful",
+    "vision_2_text": "Considered fits, attention to detail and high standards when it comes to the quality of our creations.",
+    "vision_3_title": "Considered production",
+    "vision_3_text": "We favour carefully managed production runs, far removed from the fast-fashion mindset and overproduction.",
+    "vision_4_title": "Responsible",
+    "vision_4_text": "We care about materials, manufacturing conditions and creating our pieces in a way that respects our values.",
+    "value_1": "100% COTTON",
+    "value_2": "VEGAN",
+    "value_3": "PRINTED IN FRANCE",
+    "value_4": "CONTROLLED PRODUCTION",
+    "future_eyebrow": "And this is only the beginning.",
+    "future_title": "Let's shape what's next.",
+    "future_text": "POUR will evolve over time. New clothing, accessories, new sources of inspiration, as well as experiences we want to share with those who become part of the journey. Because POUR is about more than buying a piece of clothing. It's about joining a story we're writing together.",
+    "final_link_label": "Discover the collection"
   }
 }
 }
