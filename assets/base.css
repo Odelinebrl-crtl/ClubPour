@@ -5095,7 +5095,7 @@ color: rgba(17,17,17,.42);
   text-transform: uppercase;
   text-decoration: none;
 
-  color: #000000;
+  color: #FFFFFF;
 
   opacity: .8;
 
@@ -5114,7 +5114,7 @@ color: rgba(17,17,17,.42);
 .clothing-hero__discover-arrow {
   display: block;
 
-  color: #000000;
+  color: #FFFFFF;
 
   font-size: 17px;
   line-height: 1;
