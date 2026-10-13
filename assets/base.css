@@ -5141,6 +5141,15 @@ color: rgba(17,17,17,.42);
   }
 
 
+/* Hero Vêtements : éléments blancs sur mobile uniquement */
+@media screen and (max-width: 749px) {
+  .clothing-hero__discover,
+  .clothing-hero__discover span,
+  .clothing-hero__pagination-item {
+    color: #FFFFFF !important;
+  }
+}
+
   .clothing-hero__content {
     top: auto;
 
