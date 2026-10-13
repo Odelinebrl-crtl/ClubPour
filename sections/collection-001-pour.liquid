@@ -1447,14 +1447,19 @@
 
 /* CONTENU QUICK VIEW */
 
+
+/* CONTENU QUICK VIEW */
+
+
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__inner {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, .9fr);
-  align-items: stretch;
+  align-items: center;
   min-height: 570px;
   padding: 0;
 }
+
 
 /* ZONE IMAGE */
 
@@ -1481,10 +1486,14 @@
 }
 
 
+
+
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__info {
-  padding-left: 50px;
+  padding: 0 50px;
+  align-self: center;
 }
+
 
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__title {
