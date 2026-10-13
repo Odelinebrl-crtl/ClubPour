@@ -3405,8 +3405,7 @@ font-weight: 200;
     visibility: visible !important;
   }
   
-
-@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+  @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
   .product-page-pour__gallery {
     width: calc(100% + 15px) !important;
     max-width: none !important;
@@ -3418,20 +3417,25 @@ font-weight: 200;
     max-width: none !important;
   }
 
-  .product-page-pour__mobile-slide {
-    width: 100% !important;
-    max-width: none !important;
-    flex: 0 0 100% !important;
-    aspect-ratio: 1 / 1 !important;
-    overflow: hidden !important;
-  }
+.product-page-pour__mobile-slide {
 
-  .product-page-pour__mobile-slide img {
-    width: 100% !important;
-    height: 100% !important;
-   object-fit: cover !important;
-    object-position: center !important;
-  }
+  width: 100% !important;
+
+  max-width: none !important;
+
+  flex: 0 0 100% !important;
+
+  aspect-ratio: 1 / 1 !important;
+
+  overflow: hidden !important;
+
+}
+
+.product-page-pour__mobile-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
 }
   /* FAQ pleine largeur sur tablette portrait */
 @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
