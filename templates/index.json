@@ -142,33 +142,11 @@
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
-        "look_4qifP7": {
-          "type": "look",
-          "settings": {
-            "product": "peperoncino",
-            "product_image": "shopify://shop_images/20.png",
-            "customer_image": "shopify://shop_images/IMG_0482.jpg",
-            "customer_name": "@_lisaalili_",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
-        "look_fCCCP9": {
-          "type": "look",
-          "settings": {
-            "product": "t-shirt-amarena",
-            "product_image": "shopify://shop_images/3_7ecea0f4-8f2a-4250-ba5e-d2735298ae89.png",
-            "customer_image": "shopify://shop_images/IMG_0470_2.jpg",
-            "customer_name": "@poweredbycbs",
-            "hotspot_x": 50,
-            "hotspot_y": 50
-          }
-        },
         "look_tCYkbV": {
           "type": "look",
           "settings": {
             "product": "t-shirt-cypres-italien",
-            "product_image": "shopify://shop_images/7.png",
+            "product_image": "shopify://shop_images/POUR_-_COLLECTION_001_-_14.png",
             "customer_image": "shopify://shop_images/IMG_0067_2.jpg",
             "customer_name": "@odelinebrl",
             "hotspot_x": 50,
@@ -179,7 +157,7 @@
           "type": "look",
           "settings": {
             "product": "t-shirt-riviera",
-            "product_image": "shopify://shop_images/14_d9a0ea8c-a90e-4a1c-9a6d-f83880445af5.png",
+            "product_image": "shopify://shop_images/POUR_-_COLLECTION_001_-_R.png",
             "customer_image": "shopify://shop_images/IMG_0129_2.jpg",
             "customer_name": "@droo.alejandro",
             "hotspot_x": 50,
@@ -188,8 +166,6 @@
         }
       },
       "block_order": [
-        "look_4qifP7",
-        "look_fCCCP9",
         "look_tCYkbV",
         "look_qeE8L8"
       ],
