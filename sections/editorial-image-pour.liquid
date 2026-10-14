@@ -557,115 +557,155 @@
 
 
 
+
+/* =========================================================
+   MOBILE — IMAGE PLEINE LARGEUR, CONTENU EN DESSOUS
+========================================================= */
+
 @media screen and (max-width: 768px) {
 
   #EditorialImagePour-{{ section.id }} {
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 40px 0 0;
-    overflow: hidden;
-    box-sizing: border-box;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 40px 0 0 !important;
+    overflow-x: clip !important;
+    box-sizing: border-box !important;
   }
 
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    width: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
   }
 
+  /* IMAGE EN PREMIER, BORD À BORD */
+
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__media {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 4 / 5;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    box-sizing: border-box;
+    order: 1 !important;
+    display: block !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
 
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__picture {
-    display: block;
-    width: 100%;
-    height: 100%;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
-    margin: 0;
-    padding: 0;
-    object-fit: cover;
-    object-position: center;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    object-fit: cover !important;
+    object-position: center !important;
   }
 
+  /* CONTENU SOUS L'IMAGE */
+
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    padding: 32px 20px 0;
-    box-sizing: border-box;
+    order: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 32px 20px 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box !important;
   }
 
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__eyebrow {
-    margin-bottom: 20px;
+    display: block !important;
+    width: 100% !important;
+    margin: 0 0 20px !important;
   }
-
 
   #EditorialImagePour-{{ section.id }} .editorial-image-pour__heading {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    margin: 0;
-    font-size: clamp(28px, 7.5vw, 38px);
-    line-height: 0.98;
-    letter-spacing: -0.045em;
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    box-sizing: border-box;
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    font-size: clamp(28px, 7.5vw, 38px) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.045em !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    box-sizing: border-box !important;
   }
 
-  #EditorialImagePour-{{ section.id }} .editorial-image-pour__button {
+  #EditorialImagePour-{{ section.id }} .editorial-image-pour__text {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 22px 0 0 !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    overflow-wrap: break-word !important;
+    box-sizing: border-box !important;
+  }
+
+  /* BOUTON SOUS LE TEXTE */
+
+  #EditorialImagePour-{{ section.id }} a.editorial-image-pour__button {
+    order: 4 !important;
     display: inline-flex !important;
-    align-items: center;
-    justify-content: center;
-    align-self: flex-start;
-    width: auto;
-    min-width: 0;
-    max-width: 100%;
-    height: auto;
-    min-height: 48px;
-    margin: 28px 0 32px;
-    padding: 14px 16px;
-    white-space: normal;
-    overflow-wrap: break-word;
-    box-sizing: border-box;
+    align-items: center !important;
+    justify-content: center !important;
+    align-self: flex-start !important;
+    position: relative !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 48px !important;
+    margin: 28px 0 32px !important;
+    padding: 14px 16px !important;
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: 1px solid #111111 !important;
+    white-space: normal !important;
     opacity: 1 !important;
     visibility: visible !important;
     transform: none !important;
+    box-sizing: border-box !important;
   }
 
-  #EditorialImagePour-{{ section.id }} .editorial-image-pour__button span {
-    min-width: 0;
-    max-width: 100%;
-    overflow-wrap: break-word;
-  }
+  #EditorialImagePour-{{ section.id }} a.editorial-image-pour__button span {
+    display: inline-block !important;
+    max-width: 100% !important;
+    color: inherit !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    overflow-wrap: break-word !important;
   }
 
+}
 
 
 
