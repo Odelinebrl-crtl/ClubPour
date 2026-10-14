@@ -405,22 +405,18 @@
 /* =========================================================
    LIENS INFOS
 ========================================================= */
-
-#PourProducts-{{ section.id }}
-.pour-product__info-link {
+#PourProducts-{{ section.id }} .pour-product__info-link {
   display: block;
-
   color: inherit;
   text-decoration: none;
 }
-
-
-/* CORRECTION — PASTILLES COULEUR COUPÉES */
+/* =========================================================
+   PASTILLES COULEUR — ESPACE ET CONTOURS
+========================================================= */
 #PourProducts-{{ section.id }} .pour-product__info {
   padding-bottom: 8px;
   overflow: visible;
 }
-
 #PourProducts-{{ section.id }} .pour-product__color-swatches {
   display: flex;
   align-items: center;
@@ -428,10 +424,16 @@
   padding-bottom: 4px;
   overflow: visible;
 }
-
 #PourProducts-{{ section.id }} .pour-product__color-swatch {
   flex-shrink: 0;
+  border: 1px solid #ffffff;
 }
+/* Pastille noire : contour noir */
+#PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000000"],
+#PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000"] {
+  border-color: #000000;
+}
+
 
 
 </style>
