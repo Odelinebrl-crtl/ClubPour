@@ -21,23 +21,30 @@
 
   <div class="club-hero__media">
 
-    {% if section.settings.image != blank %}
-
-      {{
-        section.settings.image
-        | image_url: width: 2800
-        | image_tag:
-          class: 'club-hero__image',
-          loading: 'eager'
-      }}
-
-    {% else %}
-
-      <div class="club-hero__placeholder">
-        {{ 'lifestyle-1' | placeholder_svg_tag }}
-      </div>
-
+    
+{% if section.settings.image != blank %}
+  <picture>
+    {% if section.settings.image_mobile != blank %}
+      <source
+        media="(max-width: 768px)"
+        srcset="{{ section.settings.image_mobile | image_url: width: 1600 }}"
+      >
     {% endif %}
+
+    {{
+      section.settings.image
+      | image_url: width: 2800
+      | image_tag:
+        class: 'club-hero__image',
+        loading: 'eager'
+    }}
+  </picture>
+{% else %}
+  <div class="club-hero__placeholder">
+    {{ 'lifestyle-1' | placeholder_svg_tag }}
+  </div>
+{% endif %}
+
 
   </div>
 
@@ -326,36 +333,42 @@
     data-reveal-delay="0"
   >
 
-    {% if section.settings.exclusive_video != blank %}
+    
+{% if section.settings.exclusive_video != blank %}
+  {{
+    section.settings.exclusive_video
+    | video_tag:
+      autoplay: true,
+      loop: true,
+      muted: true,
+      controls: false,
+      playsinline: true,
+      class: 'club-exclusive__video'
+  }}
+{% elsif section.settings.exclusive_image != blank %}
+  {{
+    section.settings.exclusive_image
+    | image_url: width: 1800
+    | image_tag:
+      class: 'club-exclusive__fallback',
+      loading: 'lazy'
+  }}
+{% else %}
+  <div class="club-exclusive__placeholder">
+    {{ 'lifestyle-2' | placeholder_svg_tag }}
+  </div>
+{% endif %}
 
-      {{
-        section.settings.exclusive_video
-        | video_tag:
-          autoplay: true,
-          loop: true,
-          muted: true,
-          controls: false,
-          playsinline: true,
-          class: 'club-exclusive__video'
-      }}
+{% if section.settings.exclusive_mobile_image != blank %}
+  {{
+    section.settings.exclusive_mobile_image
+    | image_url: width: 1600
+    | image_tag:
+      class: 'club-exclusive__mobile-image',
+      loading: 'lazy'
+  }}
+{% endif %}
 
-    {% elsif section.settings.exclusive_image != blank %}
-
-      {{
-        section.settings.exclusive_image
-        | image_url: width: 1800
-        | image_tag:
-          class: 'club-exclusive__fallback',
-          loading: 'lazy'
-      }}
-
-    {% else %}
-
-      <div class="club-exclusive__placeholder">
-        {{ 'lifestyle-2' | placeholder_svg_tag }}
-      </div>
-
-    {% endif %}
 
   </div>
 
@@ -505,23 +518,30 @@
 
   <div class="club-editorial__media">
 
-    {% if section.settings.editorial_image != blank %}
-
-      {{
-        section.settings.editorial_image
-        | image_url: width: 3000
-        | image_tag:
-          class: 'club-editorial__image',
-          loading: 'lazy'
-      }}
-
-    {% else %}
-
-      <div class="club-editorial__placeholder">
-        {{ 'lifestyle-1' | placeholder_svg_tag }}
-      </div>
-
+    
+{% if section.settings.editorial_image != blank %}
+  <picture>
+    {% if section.settings.editorial_image_mobile != blank %}
+      <source
+        media="(max-width: 768px)"
+        srcset="{{ section.settings.editorial_image_mobile | image_url: width: 1600 }}"
+      >
     {% endif %}
+
+    {{
+      section.settings.editorial_image
+      | image_url: width: 3000
+      | image_tag:
+        class: 'club-editorial__image',
+        loading: 'lazy'
+    }}
+  </picture>
+{% else %}
+  <div class="club-editorial__placeholder">
+    {{ 'lifestyle-1' | placeholder_svg_tag }}
+  </div>
+{% endif %}
+
 
   </div>
 
@@ -2178,6 +2198,50 @@ background: #FFFFFF;
 
 }
 
+/* =========================================================
+   CLUB PRIVILEGES — IMAGES MOBILE
+========================================================= */
+
+/* Les images intégrées aux picture conservent
+   leur positionnement et leur parallaxe existants. */
+#shopify-section-{{ section.id }} .club-hero__media picture,
+#shopify-section-{{ section.id }} .club-editorial__media picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Image mobile Club Exclusive */
+#shopify-section-{{ section.id }} .club-exclusive__mobile-image {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  #shopify-section-{{ section.id }} .club-exclusive__mobile-image {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center;
+    transform: none;
+  }
+
+  #shopify-section-{{ section.id }} .club-exclusive__media:has(
+    .club-exclusive__mobile-image
+  ) .club-exclusive__video,
+  #shopify-section-{{ section.id }} .club-exclusive__media:has(
+    .club-exclusive__mobile-image
+  ) .club-exclusive__fallback {
+    display: none;
+  }
+}
+
 </style>
 
 
@@ -2781,6 +2845,12 @@ sessionStorage.removeItem(formStateKey);
       "label": "Image du Hero"
     },
 
+{
+  "type": "image_picker",
+  "id": "image_mobile",
+  "label": "Image mobile — Hero"
+},
+
     {
       "type": "color",
       "id": "text_color",
@@ -2820,6 +2890,12 @@ sessionStorage.removeItem(formStateKey);
       "label": "Image de secours"
     },
 
+{
+  "type": "image_picker",
+  "id": "exclusive_mobile_image",
+  "label": "Image mobile — Club Exclusive"
+},
+
 
     {
       "type": "header",
@@ -2830,7 +2906,13 @@ sessionStorage.removeItem(formStateKey);
       "type": "image_picker",
       "id": "editorial_image",
       "label": "Image éditoriale"
-    }
+    },
+
+{
+  "type": "image_picker",
+  "id": "editorial_image_mobile",
+  "label": "Image mobile — Before Everyone Else"
+}
 
   ],
 
