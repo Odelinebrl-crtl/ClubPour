@@ -11,7 +11,7 @@
   "form": {
     "email_placeholder": "O TEU EMAIL",
     "email_label": "O teu email",
-    "join": "JUNTA-TE AO CLUBE",
+    "join": "JUNTA-TE AO CLUBE DE PRIVILÉGIOS",
     "already_registered": "JÁ ESTÁS REGISTADO",
     "already_registered_club": "JÁ ESTÁS REGISTADO NO CLUB POUR.",
     "confirmed_title": "INSCRIÇÃO CONFIRMADA",
@@ -155,11 +155,11 @@
   },
   "pour_footer": {
     "newsletter": {
-      "heading": "JUNTA-TE AO CLUBE",
+      "heading": "JUNTA-TE AO CLUBE DE PRIVILÉGIOS",
       "text": "Inscreve-te no Club POUR para receber as nossas próximas coleções e novidades POUR, além de um desconto de 10%.",
       "consent": "Aceito receber por e-mail as novidades, coleções e ofertas do Club POUR.",
       "email_placeholder": "E-mail",
-      "submit": "JUNTA-TE AO CLUBE",
+      "submit": "JUNTA-TE AO CLUBE DE PRIVILÉGIOS",
      "success_line_1": "A sua inscrição no Club POUR foi registada com sucesso.",
 "success_line_2_before_link": "O seu desconto de 10% já está disponível. Encontre o seu código na sua área ",
 "success_line_2_link": "Club Privilèges",
@@ -219,7 +219,7 @@
   "hero_heading": "CLUBE DE PRIVILÉGIOS",
   "hero_email_placeholder": "O SEU EMAIL",
 
-  "join": "JUNTE-SE AO CLUBE",
+  "join": "JUNTE-SE AO CLUBE DE PRIVILÉGIOS",
   "already_registered": "JÁ ESTÁ INSCRITO",
   "already_registered_error": "JÁ ESTÁ INSCRITO NO CLUB POUR.",
   "signup_confirmed": "INSCRIÇÃO CONFIRMADA",
