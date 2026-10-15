@@ -14,13 +14,10 @@
       "name": "Hero Club Privilèges",
       "settings": {
         "image": "shopify://shop_images/Design_sans_titre-13.png",
-        "eyebrow": "CLUB POUR",
-        "heading": "CLUB PRIVILÈGES",
-        "launch_text": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR",
         "text_color": "#ffffff",
         "overlay": 10,
         "exclusive_image": "shopify://shop_images/jahanzeb-ahsan-_4Rwhef-LB0-unsplash.jpg",
-        "editorial_image": "shopify://shop_images/abhinand-venugopal-5iwG_OI-Uxg-unsplash.jpg"
+        "editorial_image": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_123.jpg"
       }
     }
   },
