@@ -11,7 +11,7 @@
   "form": {
     "email_placeholder": "LA TUA EMAIL",
     "email_label": "La tua email",
-    "join": "UNISCITI AL CLUB",
+    "join": "UNISCITI AL CLUB PRIVILEGI",
     "already_registered": "SEI GIÀ REGISTRATO",
     "already_registered_club": "SEI GIÀ REGISTRATO AL CLUB POUR.",
     "confirmed_title": "ISCRIZIONE CONFERMATA",
@@ -155,11 +155,11 @@
   },
   "pour_footer": {
     "newsletter": {
-      "heading": "UNISCITI AL CLUB",
+      "heading": "UNISCITI AL CLUB PRIVILEGI",
       "text": "Iscriviti al Club POUR per ricevere le nostre prossime collezioni e le novità POUR, oltre a uno sconto del 10%.",
       "consent": "Accetto di ricevere via e-mail novità, collezioni e offerte del Club POUR.",
       "email_placeholder": "E-mail",
-      "submit": "UNISCITI AL CLUB",
+      "submit": "UNISCITI AL CLUB PRIVILEGI",
      "success_line_1": "La tua iscrizione al Club POUR è stata registrata correttamente.",
 "success_line_2_before_link": "Il tuo sconto del 10% è ora disponibile. Trova il tuo codice nella tua area ",
 "success_line_2_link": "Club Privilèges",
@@ -219,7 +219,7 @@
   "hero_heading": "CLUB PRIVILEGI",
   "hero_email_placeholder": "LA TUA EMAIL",
 
-  "join": "UNISCITI AL CLUB",
+  "join": "UNISCITI AL CLUB PRIVILEGI",
   "already_registered": "SEI GIÀ ISCRITTO",
   "already_registered_error": "SEI GIÀ ISCRITTO AL CLUB POUR.",
   "signup_confirmed": "ISCRIZIONE CONFERMATA",
