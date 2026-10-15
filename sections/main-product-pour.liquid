@@ -4164,8 +4164,50 @@ if (backInStockButton) {
   ===================================================== */
 
   
+  
   let scrollTimer = null;
   let isRepositioning = false;
+
+  // Attend que l'image de destination soit chargée et décodée
+  function waitForSlideImage(position) {
+    const slide = allSlides[position];
+    const img = slide && slide.querySelector('img');
+
+    if (!img) return Promise.resolve();
+
+    img.loading = 'eager';
+
+    function decodeImage() {
+      if (typeof img.decode === 'function') {
+        return img.decode().catch(function () {});
+      }
+      return Promise.resolve();
+    }
+
+    if (img.complete && img.naturalWidth > 0) {
+      return decodeImage();
+    }
+
+    return new Promise(function (resolve) {
+      let finished = false;
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+
+        img.removeEventListener('load', finish);
+        img.removeEventListener('error', finish);
+
+        decodeImage().then(resolve);
+      }
+
+      img.addEventListener('load', finish, { once: true });
+      img.addEventListener('error', finish, { once: true });
+
+      // Évite de manquer un chargement déjà terminé
+      if (img.complete) finish();
+    });
+  }
 
   gallery.addEventListener(
     'scroll',
@@ -4175,7 +4217,7 @@ if (backInStockButton) {
       updateCounter();
       clearTimeout(scrollTimer);
 
-      scrollTimer = setTimeout(function () {
+      scrollTimer = setTimeout(async function () {
         const width = gallery.clientWidth;
         if (!width) return;
 
@@ -4185,11 +4227,11 @@ if (backInStockButton) {
 
         let targetPosition = null;
 
-        // Clone de la première photo → vraie première photo
+        // Du clone de la première photo vers la vraie première
         if (position === allSlides.length - 1) {
           targetPosition = 1;
         }
-        // Clone de la dernière photo → vraie dernière photo
+        // Du clone de la dernière photo vers la vraie dernière
         else if (position === 0) {
           targetPosition = originalSlides.length;
         }
@@ -4198,14 +4240,15 @@ if (backInStockButton) {
 
         isRepositioning = true;
 
-        // Désactiver temporairement l'animation et le snap
+        // Attendre que l'image de destination soit prête
+        await waitForSlideImage(targetPosition);
+
+        // Repositionnement sans animation
         gallery.style.scrollSnapType = 'none';
         gallery.style.scrollBehavior = 'auto';
-
-        // Repositionnement immédiat
         gallery.scrollLeft = targetPosition * width;
 
-        // Forcer le navigateur à appliquer la nouvelle position
+        // Appliquer immédiatement la nouvelle position
         void gallery.offsetWidth;
 
         requestAnimationFrame(function () {
@@ -4220,7 +4263,6 @@ if (backInStockButton) {
     },
     { passive: true }
   );
-
 
 
   /* =====================================================
