@@ -11,7 +11,7 @@
   "form": {
     "email_placeholder": "YOUR EMAIL",
     "email_label": "Your email",
-    "join": "JOIN THE CLUB",
+    "join": "JOIN THE PRIVILEGES CLUB",
     "already_registered": "YOU ARE ALREADY REGISTERED",
     "already_registered_club": "YOU ARE ALREADY REGISTERED WITH CLUB POUR.",
     "confirmed_title": "REGISTRATION CONFIRMED",
@@ -148,11 +148,11 @@
   },
   "pour_footer": {
     "newsletter": {
-      "heading": "JOIN THE CLUB",
+      "heading": "JOIN THE PRIVILEGES CLUB",
       "text": "Sign up to Club POUR to receive our upcoming collections and POUR news, as well as a 10% discount.",
       "consent": "I agree to receive Club POUR news, collections and offers by email.",
       "email_placeholder": "Email",
-      "submit": "JOIN THE CLUB",
+      "submit": "JOIN THE PRIVILEGES CLUB",
       "success_line_1": "Your registration to Club POUR has been successfully confirmed.",
 "success_line_2_before_link": "Your 10% discount is now available. Find your code in your ",
 "success_line_2_link": "Club Privilèges",
@@ -210,10 +210,10 @@
 },
 "club_privileges": {
   "hero_eyebrow": "CLUB POUR",
-  "hero_heading": "PRIVILEGE CLUB",
+  "hero_heading": "PRIVILEGES CLUB",
   "hero_email_placeholder": "YOUR EMAIL",
 
-  "join": "JOIN THE CLUB",
+  "join": "JOIN THE PRIVILEGES CLUB",
   "already_registered": "YOU ARE ALREADY REGISTERED",
   "already_registered_error": "YOU ARE ALREADY REGISTERED WITH CLUB POUR.",
   "signup_confirmed": "REGISTRATION CONFIRMED",
