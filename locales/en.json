@@ -155,7 +155,7 @@
       "submit": "JOIN THE CLUB",
       "success_line_1": "Your registration to Club POUR has been successfully confirmed.",
 "success_line_2_before_link": "Your 10% discount is now available. Find your code in your ",
-"success_line_2_link": "Club Privilège",
+"success_line_2_link": "Club Privilèges",
 "success_line_2_after_link": " area or directly in the email we sent you.",
 "confirmed": "REGISTRATION CONFIRMED"
     },
@@ -219,7 +219,7 @@
   "signup_confirmed": "REGISTRATION CONFIRMED",
   "signup_success_line_1": "Your Club POUR registration has been confirmed.",
   "signup_success_line_2_before_link": "Your 10% discount is now available. Find your code in your ",
-"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_link": "Club Privilèges",
 "signup_success_line_2_after_link": " area or directly in the email we sent you.",
   "hero_launch": "PRIVILEGED ACCESS TO THE POUR UNIVERSE",
 
