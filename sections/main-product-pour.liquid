@@ -4024,50 +4024,66 @@ if (backInStockButton) {
   if (originalSlides.length < 2) return;
 
 
+  
   /* =====================================================
-     CLONES
+     CLONES + PRÉCHARGEMENT RÉEL DES IMAGES
   ===================================================== */
 
-  const firstClone =
-    originalSlides[0].cloneNode(true);
+  const firstClone = originalSlides[0].cloneNode(true);
 
-  const lastClone =
-    originalSlides[
-      originalSlides.length - 1
-    ].cloneNode(true);
-
+  const lastClone = originalSlides[
+    originalSlides.length - 1
+  ].cloneNode(true);
 
   firstClone.dataset.carouselClone = 'first';
   lastClone.dataset.carouselClone = 'last';
 
-// Précharger les images avant le premier bouclage
-[firstClone, lastClone].forEach(function (slide) {
-  const img = slide.querySelector('img');
+  function prepareCloneImage(slide) {
+    const img = slide.querySelector('img');
 
-  if (!img) return;
+    if (!img) return Promise.resolve();
 
-  img.loading = 'eager';
-  img.fetchPriority = 'high';
+    img.loading = 'eager';
+    img.removeAttribute('loading');
 
-  if (img.complete && img.naturalWidth > 0) return;
+    const src = img.currentSrc || img.src;
+    if (!src) return Promise.resolve();
 
-  const preload = new Image();
-  preload.src = img.currentSrc || img.src;
-});
-  gallery.insertBefore(
-    lastClone,
-    originalSlides[0]
-  );
+    const preload = new Image();
+    preload.src = src;
 
-  gallery.appendChild(
-    firstClone
-  );
+    return new Promise(resolve => {
+      const finish = async () => {
+        try {
+          if (preload.decode) {
+            await preload.decode();
+          }
+        } catch (error) {
+          // Ne pas bloquer le carrousel si le décodage échoue.
+        }
+        resolve();
+      };
 
+      if (preload.complete && preload.naturalWidth > 0) {
+        finish();
+      } else {
+        preload.onload = finish;
+        preload.onerror = resolve;
+      }
+    });
+  }
+
+  /* Préparer les images de début et de fin */
+  const cloneImagesReady = Promise.all([
+    prepareCloneImage(firstClone),
+    prepareCloneImage(lastClone)
+  ]);
+
+  gallery.insertBefore(lastClone, originalSlides[0]);
+  gallery.appendChild(firstClone);
 
   const allSlides = Array.from(
-    gallery.querySelectorAll(
-      '[data-mobile-product-slide]'
-    )
+    gallery.querySelectorAll('[data-mobile-product-slide]')
   );
 
 
