@@ -57,8 +57,8 @@
   },
   "pour_footer": {
     "newsletter": {
-      "heading": "WORD LID VAN DE CLUB",
-      "text": "Word lid van Club POUR om onze komende collecties en POUR-nieuws te ontvangen, plus 10% korting.",
+      "heading": "WORD LID VAN DE CLUB VOORDELEN",
+      "text": "Word lid van Club voordelen POUR om onze komende collecties en POUR-nieuws te ontvangen, plus 10% korting.",
       "consent": "Ik accepteer dat ik per e-mail nieuws, collecties en aanbiedingen van Club POUR ontvang.",
       "email_placeholder": "E-mail",
       "submit": "LID WORDEN VAN DE CLUB",
@@ -113,7 +113,7 @@
     "hero_eyebrow": "CLUB POUR",
     "hero_heading": "VOORDELENCLUB",
     "hero_email_placeholder": "JE E-MAIL",
-    "join": "WORD LID VAN DE CLUB",
+    "join": "WORD LID VAN DE CLUB VOORDELEN",
     "already_registered": "JE BENT AL INGESCHREVEN",
     "already_registered_error": "JE BENT AL INGESCHREVEN BIJ CLUB POUR.",
     "signup_confirmed": "INSCHRIJVING BEVESTIGD",
