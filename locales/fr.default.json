@@ -56,14 +56,14 @@
 },
   "pour_footer": {
     "newsletter": {
-      "heading": "REJOIGNEZ LE CLUB PRIVILÈGE",
-      "text": "Inscrivez-vous au Club Privilège POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.",
+      "heading": "REJOIGNEZ LE CLUB PRIVILÈGES",
+      "text": "Inscrivez-vous au Club Privilèges POUR pour recevoir nos prochaines collections et actualités POUR, ainsi qu'une réduction de 10 %.",
       "consent": "J'accepte de recevoir les actualités, collections et offres du Club POUR par e-mail.",
       "email_placeholder": "E-mail",
       "submit": "REJOINDRE LE CLUB",
       "success_line_1": "Votre inscription au Club POUR a bien été prise en compte.",
 "success_line_2_before_link": "Votre réduction de 10 % est désormais disponible. Retrouvez votre code dans votre espace ",
-"success_line_2_link": "Club Privilège",
+"success_line_2_link": "Club Privilèges",
 "success_line_2_after_link": " ou directement dans l’e-mail qui vous a été envoyé.",
 "confirmed": "INSCRIPTION CONFIRMÉE"
     },
