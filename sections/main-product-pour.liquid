@@ -4133,119 +4133,64 @@ if (backInStockButton) {
      CARROUSEL INFINI
   ===================================================== */
 
+  
   let scrollTimer = null;
-
+  let isRepositioning = false;
 
   gallery.addEventListener(
     'scroll',
     function () {
+      if (isRepositioning) return;
 
       updateCounter();
-
       clearTimeout(scrollTimer);
 
+      scrollTimer = setTimeout(function () {
+        const width = gallery.clientWidth;
+        if (!width) return;
 
-      scrollTimer = setTimeout(
-        function () {
+        const position = Math.round(
+          gallery.scrollLeft / width
+        );
 
-          const width =
-            gallery.clientWidth;
+        let targetPosition = null;
 
-          if (!width) return;
+        // Clone de la première photo → vraie première photo
+        if (position === allSlides.length - 1) {
+          targetPosition = 1;
+        }
+        // Clone de la dernière photo → vraie dernière photo
+        else if (position === 0) {
+          targetPosition = originalSlides.length;
+        }
 
+        if (targetPosition === null) return;
 
-          const position =
-            Math.round(
-              gallery.scrollLeft / width
-            );
+        isRepositioning = true;
 
+        // Désactiver temporairement l'animation et le snap
+        gallery.style.scrollSnapType = 'none';
+        gallery.style.scrollBehavior = 'auto';
 
-          /*
-           * 2 → 1
-           *
-           * On arrive sur le clone de 1.
-           * On attend simplement la fin du
-           * déplacement naturel avant de
-           * repositionner sur la vraie 1.
-           */
+        // Repositionnement immédiat
+        gallery.scrollLeft = targetPosition * width;
 
-          if (
-            position ===
-            allSlides.length - 1
-          ) {
+        // Forcer le navigateur à appliquer la nouvelle position
+        void gallery.offsetWidth;
 
-            gallery.style.scrollSnapType =
-              'none';
+        requestAnimationFrame(function () {
+          gallery.style.scrollSnapType = 'x mandatory';
 
-            gallery.style.scrollBehavior =
-              'auto';
-
-            gallery.scrollLeft =
-              width;
-
-            requestAnimationFrame(
-              function () {
-
-                gallery.style.scrollSnapType =
-                  'x mandatory';
-
-                gallery.style.scrollBehavior =
-                  '';
-
-              }
-            );
-
+          requestAnimationFrame(function () {
+            isRepositioning = false;
             updateCounter();
-
-            return;
-          }
-
-
-          /*
-           * 1 → dernière
-           */
-
-          if (position === 0) {
-
-            gallery.style.scrollSnapType =
-              'none';
-
-            gallery.style.scrollBehavior =
-              'auto';
-
-            gallery.scrollLeft =
-              width *
-              originalSlides.length;
-
-            requestAnimationFrame(
-              function () {
-
-                gallery.style.scrollSnapType =
-                  'x mandatory';
-
-                gallery.style.scrollBehavior =
-                  '';
-
-              }
-            );
-
-            updateCounter();
-
-            return;
-          }
-
-
-          updateCounter();
-
-        },
-        30
-      );
-
+          });
+        });
+      }, 80);
     },
-    {
-      passive: true
-    }
+    { passive: true }
   );
+
 
 
   /* =====================================================
