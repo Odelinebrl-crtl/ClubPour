@@ -20,21 +20,32 @@
 
   <section class="pour-about__hero">
 
-    <div class="pour-about__hero-media">
-      {% if section.settings.hero_image != blank %}
-        {{
-          section.settings.hero_image
-          | image_url: width: 3000
-          | image_tag:
-            class: 'pour-about__hero-image',
-            loading: 'eager'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-2' | placeholder_svg_tag }}
-        </div>
+    
+<div class="pour-about__hero-media">
+  {% if section.settings.hero_image != blank %}
+    <picture class="pour-about__picture">
+      {% if section.settings.hero_image_mobile != blank %}
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.hero_image_mobile | image_url: width: 1600 }}"
+        >
       {% endif %}
+
+      {{
+        section.settings.hero_image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'pour-about__hero-image',
+          loading: 'eager'
+      }}
+    </picture>
+  {% else %}
+    <div class="pour-about__placeholder">
+      {{ 'lifestyle-2' | placeholder_svg_tag }}
     </div>
+  {% endif %}
+</div>
+
 
     <div class="pour-about__hero-overlay"></div>
 
@@ -63,21 +74,32 @@
 
   <section class="pour-about__story">
 
-    <div class="pour-about__story-media reveal" data-delay="0">
-      {% if section.settings.story_image != blank %}
-        {{
-          section.settings.story_image
-          | image_url: width: 2400
-          | image_tag:
-            class: 'pour-about__image',
-            loading: 'lazy'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-1' | placeholder_svg_tag }}
-        </div>
+    
+<div class="pour-about__story-media reveal" data-delay="0">
+  {% if section.settings.story_image != blank %}
+    <picture class="pour-about__picture">
+      {% if section.settings.story_image_mobile != blank %}
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.story_image_mobile | image_url: width: 1600 }}"
+        >
       {% endif %}
+
+      {{
+        section.settings.story_image
+        | image_url: width: 2400
+        | image_tag:
+          class: 'pour-about__image',
+          loading: 'lazy'
+      }}
+    </picture>
+  {% else %}
+    <div class="pour-about__placeholder">
+      {{ 'lifestyle-1' | placeholder_svg_tag }}
     </div>
+  {% endif %}
+</div>
+
 
     <div class="pour-about__story-content">
 
@@ -104,23 +126,32 @@
 
   <section class="pour-about__inspiration">
 
-    <div class="pour-about__inspiration-media">
-
-      {% if section.settings.inspiration_image != blank %}
-        {{
-          section.settings.inspiration_image
-          | image_url: width: 3000
-          | image_tag:
-            class: 'pour-about__inspiration-image',
-            loading: 'lazy'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-2' | placeholder_svg_tag }}
-        </div>
+    
+<div class="pour-about__inspiration-media">
+  {% if section.settings.inspiration_image != blank %}
+    <picture class="pour-about__picture">
+      {% if section.settings.inspiration_image_mobile != blank %}
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.inspiration_image_mobile | image_url: width: 1600 }}"
+        >
       {% endif %}
 
+      {{
+        section.settings.inspiration_image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'pour-about__inspiration-image',
+          loading: 'lazy'
+      }}
+    </picture>
+  {% else %}
+    <div class="pour-about__placeholder">
+      {{ 'lifestyle-2' | placeholder_svg_tag }}
     </div>
+  {% endif %}
+</div>
+
 
     <div class="pour-about__inspiration-overlay"></div>
 
@@ -239,23 +270,32 @@
 
   <section class="pour-about__future">
 
-    <div class="pour-about__future-media">
-
-      {% if section.settings.future_image != blank %}
-        {{
-          section.settings.future_image
-          | image_url: width: 3000
-          | image_tag:
-            class: 'pour-about__future-image',
-            loading: 'lazy'
-        }}
-      {% else %}
-        <div class="pour-about__placeholder">
-          {{ 'lifestyle-2' | placeholder_svg_tag }}
-        </div>
+    
+<div class="pour-about__future-media">
+  {% if section.settings.future_image != blank %}
+    <picture class="pour-about__picture">
+      {% if section.settings.future_image_mobile != blank %}
+        <source
+          media="(max-width: 768px)"
+          srcset="{{ section.settings.future_image_mobile | image_url: width: 1600 }}"
+        >
       {% endif %}
 
+      {{
+        section.settings.future_image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'pour-about__future-image',
+          loading: 'lazy'
+      }}
+    </picture>
+  {% else %}
+    <div class="pour-about__placeholder">
+      {{ 'lifestyle-2' | placeholder_svg_tag }}
     </div>
+  {% endif %}
+</div>
+
 
     <div class="pour-about__future-overlay"></div>
 
@@ -1530,6 +1570,37 @@
 
 }
 
+/* =========================================================
+   IMAGES RESPONSIVE — DESKTOP / MOBILE
+========================================================= */
+
+#PourAbout-{{ section.id }} .pour-about__picture {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#PourAbout-{{ section.id }} .pour-about__picture img {
+  display: block;
+  max-width: none;
+}
+
+/* Notre histoire : conservation du débordement vertical */
+#PourAbout-{{ section.id }} .pour-about__story-media
+.pour-about__picture {
+  overflow: hidden;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  #PourAbout-{{ section.id }} .pour-about__story-media
+  .pour-about__picture {
+    inset: 0;
+  }
+}
+
 </style>
 
 
@@ -1799,7 +1870,11 @@
       "id": "hero_image",
       "label": "Image du hero"
     },
-
+{
+  "type": "image_picker",
+  "id": "hero_image_mobile",
+  "label": "Image mobile — Hero"
+},
     {
       "type": "text",
       "id": "hero_eyebrow",
@@ -1832,7 +1907,11 @@
       "id": "story_image",
       "label": "Image"
     },
-
+{
+  "type": "image_picker",
+  "id": "story_image_mobile",
+  "label": "Image mobile — Notre histoire"
+},
     {
       "type": "text",
       "id": "story_eyebrow",
@@ -1865,7 +1944,11 @@
       "id": "inspiration_image",
       "label": "Image"
     },
-
+{
+  "type": "image_picker",
+  "id": "inspiration_image_mobile",
+  "label": "Image mobile — Inspirations"
+},
     {
       "type": "text",
       "id": "inspiration_eyebrow",
@@ -1978,7 +2061,11 @@
       "id": "future_image",
       "label": "Image"
     },
-
+{
+  "type": "image_picker",
+  "id": "future_image_mobile",
+  "label": "Image mobile — La suite"
+},
     {
       "type": "text",
       "id": "future_eyebrow",
