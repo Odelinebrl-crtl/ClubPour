@@ -690,7 +690,7 @@
 
   <div class="product-page-pour__fullscreen-media">
     <img
-      src="{{ product.featured_image | image_url: width: 3000 }}"
+      src="{{ product.featured_image | image_url: width: 3840 }}"
       alt="{{ product.featured_image.alt | escape }}"
       data-fullscreen-image
     >
@@ -4310,7 +4310,7 @@ if (backInStockButton) {
   const images = [
     {% for image in product.images %}
       {
-        src: {{ image | image_url: width: 3000 | json }},
+        src: {{ image | image_url: width: 3840 | json }},
         alt: {{ image.alt | escape | json }}
       }{% unless forloop.last %},{% endunless %}
     {% endfor %}
