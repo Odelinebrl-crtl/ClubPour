@@ -1269,9 +1269,11 @@ overflow-y: hidden;
 scroll-snap-type: x mandatory;
 scroll-behavior: auto !important;
 background: #f5f5f3;
--webkit-overflow-scrolling: auto;
+-webkit-overflow-scrolling: touch;
 overscroll-behavior-x: none;
 scrollbar-width: none;
+transform: translateZ(0);
+backface-visibility: hidden;
   }
 
   .product-page-pour__mobile-gallery::-webkit-scrollbar {
