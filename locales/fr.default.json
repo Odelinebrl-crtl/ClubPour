@@ -120,7 +120,7 @@
   "signup_confirmed": "INSCRIPTION CONFIRMÉE",
   "signup_success_line_1": "Votre inscription au Club POUR a bien été prise en compte.",
   "signup_success_line_2_before_link": "Votre réduction de 10 % est désormais disponible. Retrouvez votre code dans votre espace ",
-"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_link": "Club Privilèges",
 "signup_success_line_2_after_link": " ou directement dans l’e-mail qui vous a été envoyé.",
   "hero_launch": "ACCÈS PRIVILÉGIÉ À L’UNIVERS POUR",
 
@@ -530,19 +530,19 @@
     "intro": "De nouvelles pièces arrivent bientôt. Le Club Privilèges s'enrichira prochainement de nouvelles pièces exclusives."
   },
   "login": {
-    "eyebrow": "CLUB PRIVILÈGE",
+    "eyebrow": "CLUB PRIVILÈGES",
     "title": "Connectez-vous à votre compte.",
-    "text": "Cette sélection est exclusivement réservée aux membres éligibles du Club Privilège.",
+    "text": "Cette sélection est exclusivement réservée aux membres éligibles du Club Privilèges.",
     "button": "SE CONNECTER"
   },
   "locked": {
-    "eyebrow": "CLUB PRIVILÈGE",
+    "eyebrow": "CLUB PRIVILÈGES",
     "title": "Accès réservé aux membres.",
-    "text": "Cette sélection est exclusivement réservée aux membres du Club Privilège."
+    "text": "Cette sélection est exclusivement réservée aux membres du Club Privilèges."
   },
   "eligible": {
     "title": "ACCÈS RÉSERVÉ AUX MEMBRES ÉLIGIBLES.",
-    "text": "Cumulez 100 € d’achats chez POUR pour débloquer les éditions privées du Club Privilège."
+    "text": "Cumulez 100 € d’achats chez POUR pour débloquer les éditions privées du Club Privilèges."
   }
 }
 }

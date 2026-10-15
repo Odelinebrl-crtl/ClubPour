@@ -162,7 +162,7 @@
       "submit": "UNISCITI AL CLUB",
      "success_line_1": "La tua iscrizione al Club POUR è stata registrata correttamente.",
 "success_line_2_before_link": "Il tuo sconto del 10% è ora disponibile. Trova il tuo codice nella tua area ",
-"success_line_2_link": "Club Privilège",
+"success_line_2_link": "Club Privilèges",
 "success_line_2_after_link": " o direttamente nell'e-mail che ti abbiamo inviato.",
 "confirmed": "ISCRIZIONE CONFERMATA"
     },
@@ -225,7 +225,7 @@
   "signup_confirmed": "ISCRIZIONE CONFERMATA",
   "signup_success_line_1": "La tua iscrizione al Club POUR è stata confermata.",
   "signup_success_line_2_before_link": "Il tuo sconto del 10% è ora disponibile. Trova il tuo codice nella tua area ",
-"signup_success_line_2_link": "Club Privilège",
+"signup_success_line_2_link": "Club Privilèges",
 "signup_success_line_2_after_link": " o direttamente nell'e-mail che ti abbiamo inviato.",
   "hero_launch": "ACCESSO PRIVILEGIATO AL MONDO POUR",
 
