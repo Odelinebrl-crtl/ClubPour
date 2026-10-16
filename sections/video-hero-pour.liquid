@@ -6,41 +6,18 @@
 >
   <div class="pour-video-hero__media">
 
-    {% if section.settings.video_mobile != blank %}
-      <div class="pour-video-hero__mobile">
-        ```liquid
-{{
-  section.settings.video_desktop
-  | video_tag:
-    autoplay: true,
-    loop: false,
-    muted: true,
-    controls: false,
-    playsinline: true,
-    preload: 'auto',
-    class: 'pour-video-hero__video'
-}}
-
-      </div>
-    {% endif %}
-
-    {% if section.settings.video_desktop != blank %}
-      <div class="pour-video-hero__desktop">
-       
-{{
-  section.settings.video_mobile
-  | video_tag:
-    autoplay: true,
-    loop: false,
-    muted: true,
-    controls: false,
-    playsinline: true,
-    preload: 'auto',
-    class: 'pour-video-hero__video'
-}}
-
-      </div>
-    {% elsif section.settings.video_mobile == blank %}
+    {% if section.settings.video != blank %}
+      {{
+        section.settings.video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          controls: false,
+          playsinline: true,
+          class: 'pour-video-hero__video'
+      }}
+    {% else %}
       <div class="pour-video-hero__placeholder">
         AJOUTEZ UNE VIDÉO
       </div>
@@ -49,51 +26,14 @@
   </div>
 </section>
 
-<style>
-  #VideoHero-{{ section.id }} .pour-video-hero__media {
-    width: 100%;
-    overflow: hidden;
-  }
-
-  #VideoHero-{{ section.id }} .pour-video-hero__video {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  #VideoHero-{{ section.id }} .pour-video-hero__mobile {
-    display: none;
-  }
-
-  #VideoHero-{{ section.id }} .pour-video-hero__desktop {
-    display: block;
-  }
-
-  @media screen and (max-width: 768px) {
-    #VideoHero-{{ section.id }} .pour-video-hero__desktop {
-      display: none;
-    }
-
-    #VideoHero-{{ section.id }} .pour-video-hero__mobile {
-      display: block;
-    }
-  }
-</style>
-
 {% schema %}
 {
   "name": "Vidéo plein écran POUR",
   "settings": [
     {
       "type": "video",
-      "id": "video_desktop",
-      "label": "Vidéo ordinateur"
-    },
-    {
-      "type": "video",
-      "id": "video_mobile",
-      "label": "Vidéo téléphone"
+      "id": "video",
+      "label": "Vidéo"
     }
   ],
   "presets": [
