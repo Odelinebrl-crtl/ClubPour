@@ -3176,23 +3176,7 @@ if (openButton) {
    CLIC DIRECT SUR PANIER
 ========================================================= */
 
-document
-  .querySelectorAll('[data-cart-drawer-open]')
-  .forEach((button) => {
 
-    button.addEventListener(
-      'click',
-      function (event) {
-
-        event.preventDefault();
-        event.stopPropagation();
-
-        openDrawer();
-
-      }
-    );
-
-  });
         closeDrawer();
 
         return;
