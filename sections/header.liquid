@@ -2461,14 +2461,7 @@ z-index: 99999;
   
 
 }
-  /* CORRECTION — ACCENT DU Ê DANS VÊTEMENTS */
-  @media screen and (max-width: 600px) {
-    .mobile-menu__submenu a:first-child {
-      line-height: 1.5 !important;
-      padding-top: 3px !important;
-      overflow: visible !important;
-    }
-  }
+
 </style>
 
 
@@ -3150,16 +3143,21 @@ function updateFreeShippingProgress(cart) {
           '[data-cart-drawer-open]'
         );
 
+if (openButton) {
+  event.preventDefault();
 
-      if (openButton) {
+  try {
+    await refreshDrawer();
+  } catch (error) {
+    console.error(
+      'Erreur lors de la synchronisation du panier :',
+      error
+    );
+  }
 
-        event.preventDefault();
-
-        openDrawer();
-
-        return;
-
-      }
+  openDrawer();
+  return;
+}
 
 
 
