@@ -2895,17 +2895,22 @@ drawer.querySelectorAll('[data-cart-item]').forEach((itemElement) => {
         .map(
           (item, index) => {
 
-            const imageHTML =
-              item.image
-                ? `
-                  <img
-                    src="${escapeHTML(item.image)}"
-                    class="cart-drawer__image"
-                    alt="${escapeHTML(item.product_title)}"
-                    loading="lazy"
-                  >
-                `
-                : '';
+            
+const existingImage = existingImages.get(item.key);
+
+const imageHTML = item.image
+  ? existingImage
+    ? existingImage.outerHTML
+    : `
+      <img
+        src="${escapeHTML(item.image)}"
+        class="cart-drawer__image"
+        alt="${escapeHTML(item.product_title)}"
+        loading="lazy"
+      >
+    `
+  : '';
+
 
 
             const variantHTML =
