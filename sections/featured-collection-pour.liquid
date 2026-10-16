@@ -121,8 +121,9 @@
 ========================================================= */
 
 
+
 /* =========================================================
-   DESKTOP — VISUEL BORD À BORD, TEXTE PRÉSERVÉ
+   DESKTOP — IMAGE LARGE À GAUCHE, TEXTE À DROITE
 ========================================================= */
 
 @media screen and (min-width: 901px) {
@@ -135,7 +136,7 @@
 
   #FeaturedPour-{{ section.id }} .featured-pour__inner {
     display: grid;
-    grid-template-columns: 35.2% minmax(0, 1fr);
+    grid-template-columns: 50% minmax(0, 1fr);
     align-items: stretch;
     gap: 0;
     width: 100%;
@@ -163,9 +164,9 @@
   #FeaturedPour-{{ section.id }} .featured-pour__content {
     box-sizing: border-box;
     width: 100%;
-    max-width: 600px;
+    max-width: 560px;
     justify-self: center;
-    padding: 60px clamp(32px, 5vw, 90px);
+    padding: 60px 40px;
   }
 }
 
