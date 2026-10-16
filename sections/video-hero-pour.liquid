@@ -23,6 +23,19 @@
       </div>
     {% endif %}
 
+    {% if section.settings.mobile_video != blank %}
+  {{
+    section.settings.mobile_video
+    | video_tag:
+      autoplay: true,
+      loop: true,
+      muted: true,
+      controls: false,
+      playsinline: true,
+      class: 'pour-video-hero__video pour-video-hero__video--mobile'
+  }}
+{% endif %}
+
   </div>
 </section>
 
