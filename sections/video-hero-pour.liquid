@@ -23,19 +23,24 @@
       </div>
     {% endif %}
 
-    {% if section.settings.mobile_video != blank %}
-  {{
-    section.settings.mobile_video
-    | video_tag:
-      autoplay: true,
-      loop: true,
-      muted: true,
-      controls: false,
-      playsinline: true,
-      preload: 'auto',
-      class: 'pour-video-hero__video pour-video-hero__video--mobile'
-  }}
+    
+{% if section.settings.mobile_video != blank %}
+  <video
+    class="pour-video-hero__video pour-video-hero__video--mobile"
+    autoplay
+    muted
+    loop
+    playsinline
+    webkit-playsinline
+    preload="auto"
+    disablepictureinpicture
+  >
+    {% for source in section.settings.mobile_video.sources %}
+      <source src="{{ source.url }}" type="{{ source.mime_type }}">
+    {% endfor %}
+  </video>
 {% endif %}
+
 
   </div>
 </section>
