@@ -82,11 +82,11 @@ function initPourQuoteReveal() {
         quote.classList.remove('is-hidden-up');
       }
 
-      /* REMONTÉE — DISPARITION PLUS TARDIVE */
+      /* REMONTÉE — DISPARITION PRESQUE EN BAS DE L'ÉCRAN */
 if (
   !scrollingDown &&
-  rect.top > viewportHeight * 0.60 &&
-  rect.top < viewportHeight * 0.90
+  rect.top > viewportHeight * 0.85 &&
+  rect.top < viewportHeight * 1.20
 ) {
   quote.classList.remove('is-visible');
   quote.classList.add('is-hidden-up');
