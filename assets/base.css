@@ -4659,6 +4659,11 @@ color: rgba(17,17,17,.42);
 
   will-change: transform;
 }
+/* TEST TEMPORAIRE — HAUTEUR VIDEO POUR */
+.pour-video-hero {
+  height: 100vh !important;
+  min-height: 100vh !important;
+}
 /* =========================================================
    HERO VÊTEMENTS
 ========================================================= */
