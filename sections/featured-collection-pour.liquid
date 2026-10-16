@@ -154,6 +154,22 @@
   object-position: left center;
 }
 
+/* CENTRAGE DU TEXTE SUR ORDINATEUR */
+
+#FeaturedPour-{{ section.id }} .featured-pour__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+  max-width: 520px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
 #FeaturedPour-{{ section.id }}
 .featured-pour__image--tablet {
   display: none;
