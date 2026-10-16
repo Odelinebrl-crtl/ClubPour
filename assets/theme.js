@@ -82,15 +82,15 @@ function initPourQuoteReveal() {
         quote.classList.remove('is-hidden-up');
       }
 
-      /* REMONTÉE */
-      if (
-        !scrollingDown &&
-        rect.top > viewportHeight * 0.28 &&
-        rect.top < viewportHeight * 0.65
-      ) {
-        quote.classList.remove('is-visible');
-        quote.classList.add('is-hidden-up');
-      }
+      /* REMONTÉE — DISPARITION PLUS TARDIVE */
+if (
+  !scrollingDown &&
+  rect.top > viewportHeight * 0.60 &&
+  rect.top < viewportHeight * 0.90
+) {
+  quote.classList.remove('is-visible');
+  quote.classList.add('is-hidden-up');
+}
     });
 
     lastScrollY = currentScrollY;
