@@ -115,49 +115,44 @@
    FEATURED COLLECTION — POUR
 ========================================================= */
 
+
+/* =========================================================
+   DESKTOP — IMAGE PLEINE HAUTEUR À GAUCHE
+========================================================= */
+
 #FeaturedPour-{{ section.id }} {
   width: 100%;
-  padding: 80px 3vw 90px;
+  padding: 0;
   background: #FAF9F6;
   color: #111111;
 }
 
-#FeaturedPour-{{ section.id }}
-.featured-pour__inner {
+#FeaturedPour-{{ section.id }} .featured-pour__inner {
   display: grid;
-
-  /* BEAUCOUP PLUS DE PLACE AU VISUEL */
-  grid-template-columns:
-    minmax(0, 1.75fr)
-    minmax(380px, 0.75fr);
-
-  align-items: center;
-
+  grid-template-columns: minmax(0, 1.75fr) minmax(380px, 0.75fr);
+  align-items: stretch;
   gap: clamp(40px, 4vw, 80px);
-
-  /* ON UTILISE PRESQUE TOUTE LA LARGEUR DE L'ÉCRAN */
-  width: 94vw;
-  max-width: 1800px;
-
-  margin: 0 auto;
+  width: 100%;
+  max-width: none;
+  margin: 0;
 }
 
-#FeaturedPour-{{ section.id }}
-.featured-pour__visual {
+#FeaturedPour-{{ section.id }} .featured-pour__visual {
   width: 100%;
-  aspect-ratio: 3 / 2;
+  height: 100%;
+  min-height: 600px;
+  aspect-ratio: auto;
   overflow: hidden;
 }
 
-#FeaturedPour-{{ section.id }}
-.featured-pour__image {
+#FeaturedPour-{{ section.id }} .featured-pour__image--desktop {
   display: block;
   width: 100%;
   height: 100%;
-
-  object-fit: contain;
-  object-position: center;
+  object-fit: cover;
+  object-position: left center;
 }
+
 #FeaturedPour-{{ section.id }}
 .featured-pour__image--tablet {
   display: none;
