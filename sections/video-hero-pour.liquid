@@ -24,6 +24,7 @@
     {% endif %}
 
     
+
 {% if section.settings.mobile_video != blank %}
   <video
     class="pour-video-hero__video pour-video-hero__video--mobile"
@@ -34,12 +35,14 @@
     webkit-playsinline
     preload="auto"
     disablepictureinpicture
+    controlslist="nodownload nofullscreen noremoteplayback"
   >
     {% for source in section.settings.mobile_video.sources %}
       <source src="{{ source.url }}" type="{{ source.mime_type }}">
     {% endfor %}
   </video>
 {% endif %}
+
 
 
   </div>
