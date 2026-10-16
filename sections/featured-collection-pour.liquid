@@ -120,37 +120,53 @@
    DESKTOP — IMAGE PLEINE HAUTEUR À GAUCHE
 ========================================================= */
 
-#FeaturedPour-{{ section.id }} {
-  width: 100%;
-  padding: 0;
-  background: #FAF9F6;
-  color: #111111;
-}
 
-#FeaturedPour-{{ section.id }} .featured-pour__inner {
-  display: grid;
-  grid-template-columns: minmax(0, 1.75fr) minmax(380px, 0.75fr);
-  align-items: stretch;
-  gap: clamp(40px, 4vw, 80px);
-  width: 100%;
-  max-width: none;
-  margin: 0;
-}
+/* =========================================================
+   DESKTOP — VISUEL BORD À BORD, TEXTE PRÉSERVÉ
+========================================================= */
 
-#FeaturedPour-{{ section.id }} .featured-pour__visual {
-  width: 100%;
-  height: 100%;
-  min-height: 600px;
-  aspect-ratio: auto;
-  overflow: hidden;
-}
+@media screen and (min-width: 901px) {
+  #FeaturedPour-{{ section.id }} {
+    width: 100%;
+    padding: 0;
+    background: #FAF9F6;
+    color: #111111;
+  }
 
-#FeaturedPour-{{ section.id }} .featured-pour__image--desktop {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left center;
+  #FeaturedPour-{{ section.id }} .featured-pour__inner {
+    display: grid;
+    grid-template-columns: 35.2% minmax(0, 1fr);
+    align-items: stretch;
+    gap: 0;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  #FeaturedPour-{{ section.id }} .featured-pour__visual {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    min-height: 650px;
+    aspect-ratio: auto;
+    overflow: hidden;
+  }
+
+  #FeaturedPour-{{ section.id }} .featured-pour__image--desktop {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  #FeaturedPour-{{ section.id }} .featured-pour__content {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 600px;
+    justify-self: center;
+    padding: 60px clamp(32px, 5vw, 90px);
+  }
 }
 
 #FeaturedPour-{{ section.id }}
