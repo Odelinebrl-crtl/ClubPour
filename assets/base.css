@@ -4662,6 +4662,20 @@ color: rgba(17,17,17,.42);
 
   will-change: transform;
 }
+
+.pour-video-hero__video--mobile {
+  display: none;
+}
+
+@media screen and (max-width: 749px) {
+  .pour-video-hero__video--mobile {
+    display: block;
+  }
+
+  .pour-video-hero__video--desktop {
+    display: none;
+  }
+}
 /* =========================================================
    HERO VÊTEMENTS
 ========================================================= */
