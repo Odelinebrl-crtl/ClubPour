@@ -3549,24 +3549,37 @@ color: #ffffff;
 
     padding: 16px 16px 60px;
   }
-.pour-quote__text {
-  font-size: 20px !important;
-  max-width: 100% !important;
-  width: 100% !important;
-  letter-spacing: -0.04em;
-}
-.pour-quote__inner {
-  width: 100% !important;
+
+/* =========================================================
+   MOBILE — CITATION
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .pour-quote {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 35px 25px 70px !important;
+  }
+
+  .pour-quote__inner {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .pour-quote__text {
+    width: 100%;
+    max-width: 100%;
+    font-size: 20px !important;
+    letter-spacing: -0.04em;
+  }
+
+  .pour-quote__signature {
+    margin-top: 24px;
+  }
+
 }
 
-.pour-quote {
-  padding-left: 25px !important;
-  padding-right: 25px !important;
-  padding: 35px 10px 70px !important;
-}
-  .product-page-pour__main-media {
-    max-width: none;
-  }
 
  .product-page-pour__thumbs {
   display: flex;
