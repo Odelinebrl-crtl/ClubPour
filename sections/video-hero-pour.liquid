@@ -20,13 +20,13 @@
     preload: 'auto',
     class: 'pour-video-hero__video'
 }}
-```
+
       </div>
     {% endif %}
 
     {% if section.settings.video_desktop != blank %}
       <div class="pour-video-hero__desktop">
-        ```liquid
+       
 {{
   section.settings.video_mobile
   | video_tag:
@@ -38,7 +38,7 @@
     preload: 'auto',
     class: 'pour-video-hero__video'
 }}
-```
+
       </div>
     {% elsif section.settings.video_mobile == blank %}
       <div class="pour-video-hero__placeholder">
