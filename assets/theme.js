@@ -72,15 +72,15 @@ function initPourQuoteReveal() {
       const rect = quote.getBoundingClientRect();
       const viewportHeight = window.innerHeight;
 
-      /* DESCENTE */
-      if (
-        scrollingDown &&
-        rect.top < viewportHeight * 0.82 &&
-        rect.bottom > viewportHeight * 0.07
-      ) {
-        quote.classList.add('is-visible');
-        quote.classList.remove('is-hidden-up');
-      }
+      /* DESCENTE — APPARITION UN PEU PLUS TÔT */
+if (
+  scrollingDown &&
+  rect.top < viewportHeight * 0.90 &&
+  rect.bottom > viewportHeight * 0.07
+) {
+  quote.classList.add('is-visible');
+  quote.classList.remove('is-hidden-up');
+}
 
       /* REMONTÉE — DISPARITION PRESQUE EN BAS DE L'ÉCRAN */
 if (
