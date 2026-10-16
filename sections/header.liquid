@@ -3217,285 +3217,141 @@ document
 
 
 
-      /* =====================================================
-   QUANTITÉ / SUPPRIMER — MISE À JOUR INSTANTANÉE
+      
+/* =====================================================
+   QUANTITÉ / SUPPRIMER — CLÉ SHOPIFY ACTUALISÉE
 ===================================================== */
 
-const changeButton =
-  event.target.closest(
-    '[data-cart-change]'
-  );
+const changeButton = event.target.closest('[data-cart-change]');
 
 if (changeButton) {
-
   event.preventDefault();
 
-  const key =
-    changeButton.dataset.key;
+  const originalKey = changeButton.dataset.key;
+  const newQuantity = Math.max(0, Number(changeButton.dataset.quantity));
 
-  const newQuantity =
-    Math.max(
-      0,
-      Number(changeButton.dataset.quantity)
-    );
+  if (!originalKey || !Number.isFinite(newQuantity)) return;
 
-  if (!key) {
-    return;
-  }
+  const itemElement = changeButton.closest('[data-cart-item]');
+  const quantityElement = itemElement
+    ? itemElement.querySelector('[data-cart-quantity]')
+    : null;
 
-
-  const itemElement =
-    changeButton.closest(
-      '[data-cart-item]'
-    );
-
-  const quantityElement =
-    itemElement
-      ? itemElement.querySelector(
-          '[data-cart-quantity]'
-        )
-      : null;
-
-
-  /*
-    Quantité actuellement affichée.
-    On la garde pour pouvoir revenir en arrière
-    si Shopify renvoie une erreur.
-  */
-
-  const previousQuantity =
-    quantityElement
-      ? Number(quantityElement.textContent.trim())
-      : 0;
-
-
-  /* =====================================================
-     MISE À JOUR VISUELLE IMMÉDIATE
-  ===================================================== */
-
-  if (
-    newQuantity > 0 &&
-    quantityElement
-  ) {
-
-    quantityElement.textContent =
-      newQuantity;
-
-
-    /*
-      Actualise immédiatement les nouvelles valeurs
-      des boutons + et −.
-    */
-
-    const buttons =
-      itemElement.querySelectorAll(
-        '[data-cart-change]'
-      );
-
-    buttons.forEach((button) => {
-
-      if (
-        button.classList.contains(
-          'cart-drawer__remove'
-        )
-      ) {
-
-        button.dataset.quantity = 0;
-
-        return;
-
-      }
-
-
-      const symbol =
-        button.textContent.trim();
-
-
-      if (symbol === '−') {
-
-        button.dataset.quantity =
-          Math.max(
-            0,
-            newQuantity - 1
-          );
-
-      }
-
-
-      if (symbol === '+') {
-
-        button.dataset.quantity =
-          newQuantity + 1;
-
-      }
-
-    });
-
-  }
-
-
-  /*
-    {{ 'pour_header.cart_drawer.remove' | t }} :
-    on ne détruit pas immédiatement le HTML,
-    mais on atténue légèrement le produit pendant
-    la requête pour garder quelque chose de fluide.
-  */
-
-  if (
-    newQuantity === 0 &&
-    itemElement
-  ) {
-
-    itemElement.classList.add(
-      'is-removing'
-    );
-
-  }
-
+  const previousQuantity = quantityElement
+    ? Number(quantityElement.textContent.trim())
+    : 0;
 
   try {
+    // Récupère l'état réel du panier avant toute modification.
+    const cartResponse = await fetch(getRoot() + 'cart.js', {
+      headers: { Accept: 'application/json' },
+      cache: 'no-store'
+    });
 
-    const response =
-      await fetch(
-        getRoot() + 'cart/change.js',
-        {
-          method: 'POST',
+    if (!cartResponse.ok) {
+      throw new Error('Impossible de récupérer le panier actuel.');
+    }
 
-          headers: {
-            'Content-Type':
-              'application/json',
+    const currentCart = await cartResponse.json();
 
-            Accept:
-              'application/json'
-          },
+    // Priorité à la clé d'origine, puis recherche par variante.
+    const variantId = itemElement?.dataset.variantId;
 
-          body:
-            JSON.stringify({
-              id: key,
-              quantity: newQuantity
-            })
-        }
+    let currentItem = currentCart.items.find(
+      item => item.key === originalKey
+    );
+
+    if (!currentItem && variantId) {
+      currentItem = currentCart.items.find(
+        item => String(item.variant_id) === String(variantId)
       );
+    }
 
+    if (!currentItem) {
+      throw new Error(
+        'Article introuvable dans le panier actuel. Actualisez le panier.'
+      );
+    }
+
+    // Mise à jour visuelle immédiate.
+    if (newQuantity > 0 && quantityElement) {
+      quantityElement.textContent = String(newQuantity);
+
+      itemElement.querySelectorAll('[data-cart-change]').forEach(button => {
+        if (button.classList.contains('cart-drawer__remove')) {
+          button.dataset.quantity = '0';
+          return;
+        }
+
+        const symbol = button.textContent.trim();
+
+        if (symbol === '−') {
+          button.dataset.quantity = String(Math.max(0, newQuantity - 1));
+        } else if (symbol === '+') {
+          button.dataset.quantity = String(newQuantity + 1);
+        }
+      });
+    }
+
+    if (newQuantity === 0 && itemElement) {
+      itemElement.classList.add('is-removing');
+    }
+
+    const response = await fetch(getRoot() + 'cart/change.js', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        id: currentItem.key,
+        quantity: newQuantity
+      })
+    });
+
+    const result = await response.json();
 
     if (!response.ok) {
-
       throw new Error(
+        result.description ||
+        result.message ||
         '{{ 'pour_header.errors.update_cart' | t }}'
       );
-
     }
 
+    updateHeaderCartCount(result);
+    updateFreeShippingProgress(result);
 
-    const cart =
-      await response.json();
+    // Recharge le contenu complet afin de synchroniser les clés
+    // et les quantités de tous les boutons.
+    await refreshDrawer();
 
-
-    /* =====================================================
-       COMPTEUR DU HEADER
-    ===================================================== */
-
-    updateHeaderCartCount(cart);
-updateFreeShippingProgress(cart);
-/* =====================================================
-   MISE À JOUR DU PRIX DU PRODUIT
-===================================================== */
-
-if (itemElement && newQuantity > 0) {
-  const updatedItem = cart.items.find(
-    (item) => item.key === key
-  );
-
- const linePriceElement =
-  itemElement.querySelector(
-    '.cart-drawer__item-price'
-  );
-
-  if (
-    updatedItem &&
-    linePriceElement
-  ) {
-    linePriceElement.textContent =
-      money(updatedItem.final_line_price);
-  }
-}
-    /* =====================================================
-       SUPPRESSION CONFIRMÉE
-    ===================================================== */
-
-    if (
-      newQuantity === 0 &&
-      itemElement
-    ) {
-
-      itemElement.remove();
-
-    }
-
-
-    /* =====================================================
-       TOTAL
-    ===================================================== */
-
- document
-  .querySelectorAll('[data-cart-total]')
-  .forEach((totalElement) => {
-    totalElement.textContent =
-      money(cart.total_price);
-  });
-
-
-    /* =====================================================
-       PANIER VIDE
-    ===================================================== */
-
-    if (cart.item_count === 0) {
-
-      await refreshDrawer();
-
+    if (result.item_count === 0) {
       openDrawer();
-
     }
-
 
   } catch (error) {
-
     console.error(
       '{{ 'pour_header.errors.cart_prefix' | t }}',
       error
     );
 
-
-    /*
-      Shopify a refusé :
-      on remet la quantité précédente.
-    */
-
-    if (
-      quantityElement &&
-      previousQuantity > 0
-    ) {
-
-      quantityElement.textContent =
-        previousQuantity;
-
+    // Restaure l'état affiché en cas d'échec.
+    if (quantityElement && previousQuantity > 0) {
+      quantityElement.textContent = String(previousQuantity);
     }
-
 
     if (itemElement) {
-
-      itemElement.classList.remove(
-        'is-removing'
-      );
-
+      itemElement.classList.remove('is-removing');
     }
 
+    // Réactualise le panier affiché depuis Shopify.
+    await refreshDrawer();
   }
 
-
   return;
-
 }
+
 
     }
   );
