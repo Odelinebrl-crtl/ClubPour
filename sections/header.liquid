@@ -2824,6 +2824,21 @@ function updateFreeShippingProgress(cart) {
     }
 
 
+/* =====================================================
+   CONSERVE LES IMAGES EXISTANTES POUR ÉVITER LE FLASH
+===================================================== */
+
+const existingImages = new Map();
+
+drawer.querySelectorAll('[data-cart-item]').forEach((itemElement) => {
+  const key = itemElement.dataset.key;
+  const image = itemElement.querySelector('.cart-drawer__image');
+
+  if (key && image) {
+    existingImages.set(key, image);
+  }
+});
+
 
     /* =====================================================
        PANIER VIDE
