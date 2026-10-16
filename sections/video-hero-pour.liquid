@@ -47,32 +47,7 @@
 
   </div>
 </section>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const videos = document.querySelectorAll('.pour-video-hero__video--mobile');
 
-  videos.forEach(function (video) {
-    video.muted = true;
-    video.defaultMuted = true;
-    video.loop = true;
-    video.controls = false;
-    video.setAttribute('muted', '');
-    video.setAttribute('playsinline', '');
-    video.setAttribute('autoplay', '');
-    video.removeAttribute('controls');
-
-    const playVideo = function () {
-      const promise = video.play();
-      if (promise && promise.catch) {
-        promise.catch(function () {});
-      }
-    };
-
-    playVideo();
-    video.addEventListener('canplay', playVideo);
-  });
-});
-</script>
 {% schema %}
 {
   "name": "Vidéo plein écran POUR",
