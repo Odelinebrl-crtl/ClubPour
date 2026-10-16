@@ -8,33 +8,37 @@
 
     {% if section.settings.video_mobile != blank %}
       <div class="pour-video-hero__mobile">
-        {{
-          section.settings.video_mobile
-          | video_tag:
-            autoplay: true,
-            loop: true,
-            muted: true,
-            controls: false,
-            playsinline: true,
-            preload: 'metadata',
-            class: 'pour-video-hero__video'
-        }}
+        ```liquid
+{{
+  section.settings.video_desktop
+  | video_tag:
+    autoplay: true,
+    loop: false,
+    muted: true,
+    controls: false,
+    playsinline: true,
+    preload: 'auto',
+    class: 'pour-video-hero__video'
+}}
+```
       </div>
     {% endif %}
 
     {% if section.settings.video_desktop != blank %}
       <div class="pour-video-hero__desktop">
-        {{
-          section.settings.video_desktop
-          | video_tag:
-            autoplay: true,
-            loop: true,
-            muted: true,
-            controls: false,
-            playsinline: true,
-            preload: 'metadata',
-            class: 'pour-video-hero__video'
-        }}
+        ```liquid
+{{
+  section.settings.video_mobile
+  | video_tag:
+    autoplay: true,
+    loop: false,
+    muted: true,
+    controls: false,
+    playsinline: true,
+    preload: 'auto',
+    class: 'pour-video-hero__video'
+}}
+```
       </div>
     {% elsif section.settings.video_mobile == blank %}
       <div class="pour-video-hero__placeholder">
