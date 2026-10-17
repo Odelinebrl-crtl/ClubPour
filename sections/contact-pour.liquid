@@ -1,988 +1,561 @@
+
 <section
   id="ContactPour-{{ section.id }}"
   class="contact-pour"
 >
-
-  <!-- =====================================================
-       INTRO
-  ====================================================== -->
-
   <div class="contact-pour__intro">
-
     <p class="contact-pour__eyebrow">
       {{ 'contact_pour.eyebrow' | t }}
     </p>
-
     <h1 class="contact-pour__title">
       {{ 'contact_pour.title' | t }}
     </h1>
-
     <p class="contact-pour__lead">
       {{ 'contact_pour.lead' | t }}
     </p>
-
   </div>
 
-
-  <!-- =====================================================
-       CONTENU PRINCIPAL
-  ====================================================== -->
-
   <div class="contact-pour__main">
-
-
-    <!-- ===================================================
-         INFOS
-    ==================================================== -->
-
     <div class="contact-pour__infos">
-
       <div class="contact-pour__info-block">
-
         <p class="contact-pour__label">
           {{ 'contact_pour.email_label' | t }}
         </p>
-
         <a
           href="mailto:{{ section.settings.email }}"
           class="contact-pour__info-link"
         >
           {{ section.settings.email }}
         </a>
-
       </div>
 
-
       {% if section.settings.phone != blank %}
-
         <div class="contact-pour__info-block">
-
           <p class="contact-pour__label">
             {{ 'contact_pour.phone_label' | t }}
           </p>
-
           <a
             href="tel:{{ section.settings.phone | replace: ' ', '' }}"
             class="contact-pour__info-link"
           >
             {{ section.settings.phone }}
           </a>
-
         </div>
-
       {% endif %}
 
-
       <div class="contact-pour__info-block">
-
         <p class="contact-pour__label">
           {{ 'contact_pour.hours_label' | t }}
         </p>
-
         <p class="contact-pour__info-text">
           {{ 'contact_pour.hours_value' | t }}
         </p>
-
       </div>
 
-
       <div class="contact-pour__info-block">
-
         <p class="contact-pour__label">
           {{ 'contact_pour.response_time_label' | t }}
         </p>
-
         <p class="contact-pour__info-text">
           {{ 'contact_pour.response_time_value' | t }}
         </p>
-
       </div>
 
-
       {% if section.settings.address != blank %}
-
         <div class="contact-pour__info-block">
-
           <p class="contact-pour__label">
             {{ 'contact_pour.address_label' | t }}
           </p>
-
           <p class="contact-pour__info-text">
             {{ section.settings.address }}
           </p>
-
         </div>
-
       {% endif %}
-
     </div>
 
-
-
-    <!-- ===================================================
-         FORMULAIRE
-    ==================================================== -->
-
     <div class="contact-pour__form-wrap">
-
-      {% form 'contact', id: 'ContactPourForm' %}
-
-
-
-        {{ form.errors | default_errors }}
-
-
-        <!-- NOM / PRÉNOM -->
-
+      <form
+        id="ContactPourForm-{{ section.id }}"
+        class="contact-pour__form"
+      >
         <div class="contact-pour__row">
-
           <div class="contact-pour__field">
-
             <label for="ContactFirstName-{{ section.id }}">
               {{ 'contact_pour.first_name' | t }}
             </label>
-
             <input
               id="ContactFirstName-{{ section.id }}"
               type="text"
-              name="contact[Prénom]"
+              name="first_name"
               autocomplete="given-name"
               required
             >
-
           </div>
 
-
           <div class="contact-pour__field">
-
             <label for="ContactLastName-{{ section.id }}">
               {{ 'contact_pour.last_name' | t }}
             </label>
-
             <input
               id="ContactLastName-{{ section.id }}"
               type="text"
-              name="contact[Nom]"
+              name="last_name"
               autocomplete="family-name"
               required
             >
-
           </div>
-
         </div>
 
-
-
-        <!-- EMAIL / TÉLÉPHONE -->
-
         <div class="contact-pour__row">
-
           <div class="contact-pour__field">
-
             <label for="ContactEmail-{{ section.id }}">
               {{ 'contact_pour.email_label' | t }}
             </label>
-
             <input
               id="ContactEmail-{{ section.id }}"
               type="email"
-              name="contact[email]"
+              name="email"
               autocomplete="email"
               required
             >
-
           </div>
 
-
           <div class="contact-pour__field">
-
             <label for="ContactPhone-{{ section.id }}">
               {{ 'contact_pour.phone_label' | t }}
             </label>
-
             <input
               id="ContactPhone-{{ section.id }}"
               type="tel"
-              name="contact[Téléphone]"
+              name="phone"
               autocomplete="tel"
             >
-
           </div>
-
         </div>
 
-
-
-        <!-- TYPE DE DEMANDE -->
-
         <div class="contact-pour__field">
-
           <label for="ContactReason-{{ section.id }}">
             {{ 'contact_pour.reason_label' | t }}
           </label>
-
           <select
             id="ContactReason-{{ section.id }}"
-            name="contact[Motif]"
+            name="reason"
             data-contact-reason
             required
           >
             <option value="">
               {{ 'contact_pour.reason_placeholder' | t }}
             </option>
-
             <option value="general">
               {{ 'contact_pour.reason_general' | t }}
             </option>
-
             <option value="product">
               {{ 'contact_pour.reason_product' | t }}
             </option>
-
             <option value="order_tracking">
               {{ 'contact_pour.reason_order_tracking' | t }}
             </option>
-
             <option value="return">
               {{ 'contact_pour.reason_return' | t }}
             </option>
-
             <option value="exchange">
               {{ 'contact_pour.reason_exchange' | t }}
             </option>
-
             <option value="delivery_issue">
               {{ 'contact_pour.reason_delivery_issue' | t }}
             </option>
-
             <option value="other">
               {{ 'contact_pour.reason_other' | t }}
             </option>
           </select>
-
         </div>
-
-
-
-        <!-- NUMÉRO DE COMMANDE -->
 
         <div
           class="contact-pour__field contact-pour__order-field"
           data-order-field
         >
-
           <label for="ContactOrder-{{ section.id }}">
             {{ 'contact_pour.order_number' | t }}
           </label>
-
           <input
             id="ContactOrder-{{ section.id }}"
             type="text"
-            name="contact[Numéro de commande]"
+            name="order_number"
             placeholder="#1001"
           >
-
         </div>
 
-
-
-        <!-- MESSAGE -->
-
         <div class="contact-pour__field">
-
           <label for="ContactMessage-{{ section.id }}">
             {{ 'contact_pour.message' | t }}
           </label>
-
           <textarea
             id="ContactMessage-{{ section.id }}"
-            name="contact[body]"
+            name="message"
             rows="7"
             required
           ></textarea>
-
         </div>
 
+        <button
+          type="submit"
+          class="contact-pour__submit"
+        >
+          <span>{{ 'contact_pour.submit' | t }}</span>
+          <span aria-hidden="true">→</span>
+        </button>
 
+        <div
+          class="contact-pour__success"
+          id="ContactPourSuccess-{{ section.id }}"
+          role="status"
+          aria-live="polite"
+          hidden
+        >
+          {{ 'contact_pour.success' | t }}
+        </div>
 
-        <!-- BOUTON -->
-
-       <button
-  type="submit"
-  class="contact-pour__submit"
->
-  <span>
-    {{ 'contact_pour.submit' | t }}
-  </span>
-
-  <span aria-hidden="true">
-    →
-  </span>
-</button>
-
-{% if form.posted_successfully? %}
-  <div class="contact-pour__success">
-    {{ 'contact_pour.success' | t }}
-  </div>
-{% endif %}
-
-{% endform %}
-
+        <div
+          class="contact-pour__error"
+          id="ContactPourError-{{ section.id }}"
+          role="alert"
+          aria-live="assertive"
+          hidden
+        >
+          Une erreur est survenue lors de l’envoi. Réessaie dans quelques instants.
+        </div>
+      </form>
     </div>
-
   </div>
-
-
-
-  <!-- =====================================================
-       AIDE RAPIDE
-  ====================================================== -->
 
   <div class="contact-pour__help">
-
     <div class="contact-pour__help-header">
-
       <p class="contact-pour__eyebrow">
         {{ 'contact_pour.help_kicker' | t }}
       </p>
-
       <h2 class="contact-pour__help-title">
         {{ 'contact_pour.help_title' | t }}
       </h2>
-
     </div>
-
 
     <div class="contact-pour__help-grid">
-
-
       <div class="contact-pour__help-card">
-
-        <span class="contact-pour__help-number">
-          01
-        </span>
-
-        <h3>
-          {{ 'contact_pour.help_order_title' | t }}
-        </h3>
-
-        <p>
-          {{ 'contact_pour.help_order_text' | t }}
-        </p>
-
+        <span class="contact-pour__help-number">01</span>
+        <h3>{{ 'contact_pour.help_order_title' | t }}</h3>
+        <p>{{ 'contact_pour.help_order_text' | t }}</p>
       </div>
 
-
       <div class="contact-pour__help-card">
-
-        <span class="contact-pour__help-number">
-          02
-        </span>
-
-        <h3>
-          {{ 'contact_pour.help_returns_title' | t }}
-        </h3>
-
-        <p>
-          {{ 'contact_pour.help_returns_text' | t }}
-        </p>
-
+        <span class="contact-pour__help-number">02</span>
+        <h3>{{ 'contact_pour.help_returns_title' | t }}</h3>
+        <p>{{ 'contact_pour.help_returns_text' | t }}</p>
       </div>
 
-
       <div class="contact-pour__help-card">
-
-        <span class="contact-pour__help-number">
-          03
-        </span>
-
-        <h3>
-          {{ 'contact_pour.help_products_title' | t }}
-        </h3>
-
-        <p>
-          {{ 'contact_pour.help_products_text' | t }}
-        </p>
-
+        <span class="contact-pour__help-number">03</span>
+        <h3>{{ 'contact_pour.help_products_title' | t }}</h3>
+        <p>{{ 'contact_pour.help_products_text' | t }}</p>
       </div>
 
-
       <div class="contact-pour__help-card">
-
-        <span class="contact-pour__help-number">
-          04
-        </span>
-
-        <h3>
-          {{ 'contact_pour.help_delivery_title' | t }}
-        </h3>
-
-        <p>
-          {{ 'contact_pour.help_delivery_text' | t }}
-        </p>
-
+        <span class="contact-pour__help-number">04</span>
+        <h3>{{ 'contact_pour.help_delivery_title' | t }}</h3>
+        <p>{{ 'contact_pour.help_delivery_text' | t }}</p>
       </div>
-
     </div>
-
   </div>
-
 </section>
 
-
 <style>
-/* =========================================================
-   CONTACT — HEADER BLANC AU TOP UNIQUEMENT
-========================================================= */
-
 body:has(#ContactPour-{{ section.id }}) .site-header {
   background: #ffffff !important;
-
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
-
-  transition:
-    background .35s ease,
-    backdrop-filter .35s ease;
+  transition: background .35s ease, backdrop-filter .35s ease;
 }
 
 body:has(#ContactPour-{{ section.id }}) .site-header.is-contact-scrolled {
   background: rgba(255, 255, 255, 0.82) !important;
-
   backdrop-filter: blur(5px) saturate(120%) !important;
   -webkit-backdrop-filter: blur(5px) saturate(120%) !important;
 }
-/* =========================================================
-   CONTACT POUR
-========================================================= */
 
 #ContactPour-{{ section.id }} {
   width: 100%;
-
   padding-top: 0;
-
   margin-top: 0;
-
   background: #FFFFFF;
-
   color: #111111;
-
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-
-/* =========================================================
-   INTRO
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__intro {
+#ContactPour-{{ section.id }} .contact-pour__intro {
   display: flex;
   flex-direction: column;
   align-items: center;
-
   width: 100%;
-
-  padding:
-    120px
-    54px
-    85px;
-
+  padding: 120px 54px 85px;
   text-align: center;
 }
 
-#ContactPour-{{ section.id }}
-.contact-pour__eyebrow {
+#ContactPour-{{ section.id }} .contact-pour__eyebrow {
   margin: 0 0 22px;
-
   font-size: 9px;
   font-weight: 400;
-
   letter-spacing: .20em;
-
   text-transform: uppercase;
-
   color: rgba(17,17,17,.55);
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__title {
+#ContactPour-{{ section.id }} .contact-pour__title {
   margin: 0;
-
-  font-size:
-    clamp(
-      72px,
-      10vw,
-      160px
-    );
-
+  font-size: clamp(72px, 10vw, 160px);
   font-weight: 400;
-
   line-height: .85;
-
   letter-spacing: -.065em;
-
   text-transform: uppercase;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__lead {
+#ContactPour-{{ section.id }} .contact-pour__lead {
   max-width: 570px;
-
   margin: 42px 0 0;
-
   font-size: 14px;
-
   line-height: 1.6;
-
   color: rgba(17,17,17,.68);
 }
 
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__main {
+#ContactPour-{{ section.id }} .contact-pour__main {
   display: grid;
-
-  grid-template-columns:
-    minmax(280px, .72fr)
-    minmax(0, 1.28fr);
-
+  grid-template-columns: minmax(280px, .72fr) minmax(0, 1.28fr);
   gap: clamp(70px, 8vw, 150px);
-
   width: 100%;
-
-  padding:
-    90px
-    54px
-    120px;
-
-  border-top:
-    1px solid
-    rgba(17,17,17,.12);
+  padding: 90px 54px 120px;
+  border-top: 1px solid rgba(17,17,17,.12);
 }
 
-
-/* =========================================================
-   INFOS
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__infos {
+#ContactPour-{{ section.id }} .contact-pour__infos {
   display: flex;
   flex-direction: column;
-
   gap: 42px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__info-block {
+#ContactPour-{{ section.id }} .contact-pour__info-block {
   display: flex;
   flex-direction: column;
-
   gap: 12px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__label {
+#ContactPour-{{ section.id }} .contact-pour__label {
   margin: 0;
-
   font-size: 9px;
-
   letter-spacing: .18em;
-
   color: rgba(17,17,17,.48);
-
   text-transform: uppercase;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__info-link,
-#ContactPour-{{ section.id }}
-.contact-pour__info-text {
+#ContactPour-{{ section.id }} .contact-pour__info-link,
+#ContactPour-{{ section.id }} .contact-pour__info-text {
   margin: 0;
-
   font-size: 15px;
-
   line-height: 1.45;
-
   color: #111111;
 }
 
-
-/* =========================================================
-   FORM
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__form-wrap {
+#ContactPour-{{ section.id }} .contact-pour__form-wrap {
   width: 100%;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__row {
+#ContactPour-{{ section.id }} .contact-pour__row {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0,1fr));
-
+  grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 18px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field {
+#ContactPour-{{ section.id }} .contact-pour__field {
   display: flex;
   flex-direction: column;
-
   gap: 10px;
-
   margin-bottom: 24px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field label {
+#ContactPour-{{ section.id }} .contact-pour__field label {
   font-size: 9px;
-
   letter-spacing: .15em;
-
   text-transform: uppercase;
-
   color: rgba(17,17,17,.58);
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field input,
-#ContactPour-{{ section.id }}
-.contact-pour__field select,
-#ContactPour-{{ section.id }}
-.contact-pour__field textarea {
+#ContactPour-{{ section.id }} .contact-pour__field input,
+#ContactPour-{{ section.id }} .contact-pour__field select,
+#ContactPour-{{ section.id }} .contact-pour__field textarea {
   width: 100%;
-
   border: 1px solid rgba(17,17,17,.18);
-
   border-radius: 0;
-
   background: transparent;
-
   color: #111111;
-
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-
   outline: none;
-
-  transition:
-    border-color .25s ease,
-    background .25s ease;
+  transition: border-color .25s ease, background .25s ease;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field input,
-#ContactPour-{{ section.id }}
-.contact-pour__field select {
+#ContactPour-{{ section.id }} .contact-pour__field input,
+#ContactPour-{{ section.id }} .contact-pour__field select {
   height: 52px;
-
   padding: 0 14px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field textarea {
+#ContactPour-{{ section.id }} .contact-pour__field textarea {
   min-height: 180px;
-
   padding: 15px;
-
   resize: vertical;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__field input:focus,
-#ContactPour-{{ section.id }}
-.contact-pour__field select:focus,
-#ContactPour-{{ section.id }}
-.contact-pour__field textarea:focus {
+#ContactPour-{{ section.id }} .contact-pour__field input:focus,
+#ContactPour-{{ section.id }} .contact-pour__field select:focus,
+#ContactPour-{{ section.id }} .contact-pour__field textarea:focus {
   border-color: #111111;
-
   background: rgba(255,255,255,.4);
 }
 
-
-/* NUMÉRO COMMANDE MASQUÉ PAR DÉFAUT */
-
-#ContactPour-{{ section.id }}
-.contact-pour__order-field {
+#ContactPour-{{ section.id }} .contact-pour__order-field {
   display: none;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__order-field.is-visible {
+#ContactPour-{{ section.id }} .contact-pour__order-field.is-visible {
   display: flex;
 }
 
-
-/* =========================================================
-   BOUTON
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__submit {
+#ContactPour-{{ section.id }} .contact-pour__submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   gap: 18px;
-
   min-width: 180px;
   height: 50px;
-
   padding: 0 22px;
-
   border: 1px solid #111111;
-
   background: #111111;
-
   color: #ffffff;
-
-  font-family:
-    "Helvetica Neue",
-    Helvetica,
-    Arial,
-    sans-serif;
-
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 11px;
-
   letter-spacing: .08em;
-
   text-transform: uppercase;
-
   cursor: pointer;
-
-  transition:
-    background-color .5s cubic-bezier(.22,1,.36,1),
-    color .4s cubic-bezier(.22,1,.36,1);
+  transition: background-color .5s cubic-bezier(.22,1,.36,1), color .4s cubic-bezier(.22,1,.36,1);
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__submit:hover {
+#ContactPour-{{ section.id }} .contact-pour__submit:hover {
   background: transparent;
-
   color: #111111;
 }
 
+#ContactPour-{{ section.id }} .contact-pour__submit:disabled {
+  opacity: .6;
+  cursor: wait;
+}
 
-/* =========================================================
-   SUCCESS
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__success {
-  margin-bottom: 28px;
+#ContactPour-{{ section.id }} .contact-pour__success,
+#ContactPour-{{ section.id }} .contact-pour__error {
   margin-top: 24px;
-
   padding: 16px 18px;
-
-  border:
-    1px solid
-    rgba(17,17,17,.18);
-
+  border: 1px solid rgba(17,17,17,.18);
   font-size: 13px;
 }
 
+#ContactPour-{{ section.id }} .contact-pour__success[hidden],
+#ContactPour-{{ section.id }} .contact-pour__error[hidden] {
+  display: none !important;
+}
 
-/* =========================================================
-   HELP
-========================================================= */
-
-#ContactPour-{{ section.id }}
-.contact-pour__help {
-  padding:
-    110px
-    54px
-    130px;
-
+#ContactPour-{{ section.id }} .contact-pour__help {
+  padding: 110px 54px 130px;
   background: #FAF9F6;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-header {
+#ContactPour-{{ section.id }} .contact-pour__help-header {
   max-width: 900px;
-
   margin-bottom: 70px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-title {
+#ContactPour-{{ section.id }} .contact-pour__help-title {
   max-width: 850px;
-
   margin: 0;
-
-  font-size:
-    clamp(
-      48px,
-      6vw,
-      95px
-    );
-
+  font-size: clamp(48px, 6vw, 95px);
   font-weight: 400;
-
   line-height: .92;
-
   letter-spacing: -.055em;
-
   text-transform: uppercase;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-grid {
+#ContactPour-{{ section.id }} .contact-pour__help-grid {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0,1fr));
-
+  grid-template-columns: repeat(2, minmax(0,1fr));
   gap: 16px;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-card {
+#ContactPour-{{ section.id }} .contact-pour__help-card {
   min-height: 280px;
-
   padding: 28px;
-
-  border:
-    1px solid
-    rgba(17,17,17,.12);
-
+  border: 1px solid rgba(17,17,17,.12);
   background: #ffffff;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-number {
+#ContactPour-{{ section.id }} .contact-pour__help-number {
   display: block;
-
   margin-bottom: 78px;
-
   font-size: 9px;
-
   color: rgba(17,17,17,.45);
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-card h3 {
+#ContactPour-{{ section.id }} .contact-pour__help-card h3 {
   margin: 0 0 18px;
-
   font-size: 18px;
   font-weight: 400;
-
   text-transform: uppercase;
 }
 
-
-#ContactPour-{{ section.id }}
-.contact-pour__help-card p {
+#ContactPour-{{ section.id }} .contact-pour__help-card p {
   max-width: 460px;
-
   margin: 0;
-
   font-size: 13px;
-
   line-height: 1.55;
-
   color: rgba(17,17,17,.62);
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
 @media screen and (max-width: 768px) {
-
   #ContactPour-{{ section.id }} {
-  padding-top: 0;
-}
-
-  #ContactPour-{{ section.id }}
-  .contact-pour__intro {
-    padding:
-      120px
-      15px
-      70px;
+    padding-top: 0;
   }
 
+  #ContactPour-{{ section.id }} .contact-pour__intro {
+    padding: 120px 15px 70px;
+  }
 
- #ContactPour-{{ section.id }}
-.contact-pour__title {
-  font-size: clamp(56px, 17vw, 88px);
-}
+  #ContactPour-{{ section.id }} .contact-pour__title {
+    font-size: clamp(56px, 17vw, 88px);
+  }
 
-
-  #ContactPour-{{ section.id }}
-  .contact-pour__main {
+  #ContactPour-{{ section.id }} .contact-pour__main {
     grid-template-columns: 1fr;
-
     gap: 65px;
-
-    padding:
-      70px
-      18px
-      85px;
+    padding: 70px 18px 85px;
   }
 
-
-  #ContactPour-{{ section.id }}
-  .contact-pour__row {
+  #ContactPour-{{ section.id }} .contact-pour__row {
     grid-template-columns: 1fr;
-
     gap: 0;
   }
 
-
-  #ContactPour-{{ section.id }}
-  .contact-pour__help {
-    padding:
-      80px
-      18px
-      90px;
+  #ContactPour-{{ section.id }} .contact-pour__help {
+    padding: 80px 18px 90px;
   }
 
-
-  #ContactPour-{{ section.id }}
-  .contact-pour__help-grid {
+  #ContactPour-{{ section.id }} .contact-pour__help-grid {
     grid-template-columns: 1fr;
   }
-
 }
+
 body:has(#ContactPour-{{ section.id }}) .main-page-title,
 body:has(#ContactPour-{{ section.id }}) .page-title,
 body:has(#ContactPour-{{ section.id }}) h1:not(.contact-pour__title) {
@@ -990,185 +563,152 @@ body:has(#ContactPour-{{ section.id }}) h1:not(.contact-pour__title) {
 }
 </style>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script>
-
 (function () {
+  const section = document.getElementById('ContactPour-{{ section.id }}');
+  if (!section || section.dataset.contactInitialized === 'true') return;
+  section.dataset.contactInitialized = 'true';
 
-  function initContactPour() {
+  const form = section.querySelector('.contact-pour__form');
+  if (!form) return;
 
-    const section =
-      document.getElementById(
-        'ContactPour-{{ section.id }}'
-      );
+  const success = section.querySelector('.contact-pour__success');
+  const error = section.querySelector('.contact-pour__error');
+  const button = form.querySelector('[type="submit"]');
+  const buttonText = button ? button.querySelector('span') : null;
 
-    if (!section) return;
+  // Remplace ces 3 valeurs par tes identifiants EmailJS
+  const SERVICE_ID = 'TON_SERVICE_ID';
+  const TEMPLATE_ID = 'TON_TEMPLATE_ID';
+  const PUBLIC_KEY = 'TA_PUBLIC_KEY';
 
+  const reason = form.querySelector('[data-contact-reason]');
+  const orderField = form.querySelector('[data-order-field]');
 
-    const reason =
-      section.querySelector(
-        '[data-contact-reason]'
-      );
+  function updateOrderField() {
+    if (!reason || !orderField) return;
 
+    const needsOrderNumber = [
+      'order_tracking',
+      'return',
+      'exchange',
+      'delivery_issue'
+    ].includes(reason.value);
 
-    const orderField =
-      section.querySelector(
-        '[data-order-field]'
-      );
+    orderField.classList.toggle('is-visible', needsOrderNumber);
+  }
 
-
-    if (
-      !reason ||
-      !orderField
-    ) {
-      return;
-    }
-
-
-    function updateOrderField() {
-
-      const value =
-        reason.value;
-
-
-      const needsOrderNumber =
-        [
-          'order_tracking',
-          'return',
-          'exchange',
-          'delivery_issue'
-        ].includes(value);
-
-
-      orderField.classList.toggle(
-        'is-visible',
-        needsOrderNumber
-      );
-
-    }
-
-
-    reason.addEventListener(
-      'change',
-      updateOrderField
-    );
-
-
+  if (reason) {
+    reason.addEventListener('change', updateOrderField);
     updateOrderField();
-
   }
-
-
-  if (document.readyState === 'loading') {
-
-  document.addEventListener(
-    'DOMContentLoaded',
-    () => {
-      initContactPour();
-      initContactHeaderScroll();
-    }
-  );
-
-} else {
-
-  initContactPour();
-  initContactHeaderScroll();
-
-}
-
-
-document.addEventListener(
-  'shopify:section:load',
-  () => {
-    initContactPour();
-    initContactHeaderScroll();
-  }
-);
-function initContactHeaderScroll() {
-
-  const section =
-    document.getElementById(
-      'ContactPour-{{ section.id }}'
-    );
-
-  if (!section) return;
-
-
-  const header =
-    document.querySelector('.site-header');
-
-  if (!header) return;
-
 
   function updateContactHeader() {
+    const header = document.querySelector('.site-header');
+    if (!header) return;
 
-    header.classList.toggle(
-      'is-contact-scrolled',
-      window.scrollY > 70
-    );
-
+    header.classList.toggle('is-contact-scrolled', window.scrollY > 70);
   }
 
-
-  window.addEventListener(
-    'scroll',
-    updateContactHeader,
-    {
-      passive: true
-    }
-  );
-
-
+  window.addEventListener('scroll', updateContactHeader, { passive: true });
   updateContactHeader();
 
-}
+  if (!window.emailjs) {
+    console.error('EmailJS n’a pas pu être chargé.');
+    return;
+  }
 
+  emailjs.init({ publicKey: PUBLIC_KEY });
+
+  form.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    if (!form.reportValidity()) return;
+
+    if (success) success.hidden = true;
+    if (error) error.hidden = true;
+
+    const originalText = buttonText ? buttonText.textContent : '';
+
+    if (button) button.disabled = true;
+    if (buttonText) buttonText.textContent = 'ENVOI EN COURS…';
+
+    const selectedReason = reason && reason.selectedIndex >= 0
+      ? reason.options[reason.selectedIndex].text.trim()
+      : '';
+
+    const orderInput = form.querySelector('[name="order_number"]');
+
+    const templateParams = {
+      first_name: form.querySelector('[name="first_name"]').value.trim(),
+      last_name: form.querySelector('[name="last_name"]').value.trim(),
+      email: form.querySelector('[name="email"]').value.trim(),
+      phone: form.querySelector('[name="phone"]').value.trim(),
+      reason: selectedReason,
+      order_number: orderInput ? orderInput.value.trim() : '',
+      message: form.querySelector('[name="message"]').value.trim()
+    };
+
+    try {
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
+
+      form.reset();
+      updateOrderField();
+
+      if (success) {
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } catch (err) {
+      console.error('Erreur EmailJS :', err);
+
+      if (error) {
+        error.hidden = false;
+        error.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    } finally {
+      if (button) button.disabled = false;
+      if (buttonText) buttonText.textContent = originalText;
+    }
+  });
 })();
-
 </script>
-
 
 {% schema %}
 {
   "name": "Contact POUR",
-
   "settings": [
-
     {
       "type": "text",
       "id": "email",
       "label": "Email",
       "default": "contact@pour-store.com"
     },
-
     {
       "type": "text",
       "id": "phone",
       "label": "Téléphone"
     },
-
     {
       "type": "text",
       "id": "hours",
       "label": "Horaires",
       "default": "Lundi — Vendredi · 9h — 18h"
     },
-
     {
       "type": "text",
       "id": "response_time",
       "label": "Délai de réponse",
       "default": "Sous 24 à 48 heures ouvrées"
     },
-
     {
       "type": "textarea",
       "id": "address",
       "label": "Adresse"
     }
-
   ],
-
   "presets": [
     {
       "name": "Contact POUR"
