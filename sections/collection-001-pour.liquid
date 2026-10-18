@@ -965,7 +965,7 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__focus-color-swatch.is-current {
-  border-color: #d5d5d5;
+  border-color: {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
 }
 @media screen and (min-width: 769px) {
 
@@ -1199,7 +1199,7 @@
 
 #Collection001Pour-{{ section.id }}
 .collection001-pour__mini-color-swatch.is-current {
-  border-color: #d5d5d5;
+  border-color: {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
 }
 
 /* =========================================================
