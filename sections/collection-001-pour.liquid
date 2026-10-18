@@ -954,7 +954,7 @@
 
   border-radius: 50%;
 
-  border: 1px solid #d5d5d5 !important;
+  border: 1px solid {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
 
   box-sizing: border-box;
 
@@ -1188,7 +1188,7 @@
 
   border-radius: 50%;
 
-  border: 1px solid #d5d5d5 !important;
+  border: 1px solid {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
 
   box-sizing: border-box;
 
@@ -1578,7 +1578,7 @@
 #Collection001Pour-{{ section.id }}
 .collection-mini-qv__variant
 input:checked + span {
-  border: 1px solid #d5d5d5 !important;
+  border: 1px solid {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
   box-shadow: none;
 }
 
@@ -1597,8 +1597,7 @@ input:checked + span {
 
   margin-top: 30px;
 
-  border: 1px solid #d5d5d5 !important;
-
+  border: 1px solid {% if current_color == '#000000' or current_color == '#000' %}#000000{% else %}#d5d5d5{% endif %} !important;
   background: #111111;
   color: #ffffff;
 
