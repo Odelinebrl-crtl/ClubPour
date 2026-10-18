@@ -122,7 +122,7 @@
   {% if current_color != blank %}
     <span
       class="collection001-pour__focus-color-swatch is-current"
-      style="background-color: {{ current_color }};"
+      style="background-color: {{ current_color }}; border: 1px solid {% assign swatch_color = current_color | downcase | strip %}{% if swatch_color == '#000000' or swatch_color == '#000' or swatch_color == 'black' %}#000000{% else %}#d5d5d5{% endif %} !important;"
       aria-label="{{ product_1.metafields.custom.color_name.value }}"
     ></span>
   {% endif %}
@@ -254,7 +254,7 @@
     {% if current_color != blank %}
       <span
         class="collection001-pour__mini-color-swatch is-current"
-        style="background-color: {{ current_color }};"
+        style="background-color: {{ current_color }}; border: 1px solid {% assign swatch_color = current_color | downcase | strip %}{% if swatch_color == '#000000' or swatch_color == '#000' or swatch_color == 'black' %}#000000{% else %}#d5d5d5{% endif %} !important;"
         aria-label="{{ mini_product.metafields.custom.color_name.value }}"
       ></span>
     {% endif %}
@@ -401,7 +401,7 @@
     {% if current_color != blank %}
       <span
         class="collection001-pour__mini-color-swatch is-current"
-        style="background-color: {{ current_color }};"
+        style="background-color: {{ current_color }}; border: 1px solid {% assign swatch_color = current_color | downcase | strip %}{% if swatch_color == '#000000' or swatch_color == '#000' or swatch_color == 'black' %}#000000{% else %}#d5d5d5{% endif %} !important;"
         aria-label="{{ mini_product.metafields.custom.color_name.value }}"
       ></span>
     {% endif %}
@@ -471,7 +471,7 @@
   {% if current_color != blank %}
     <span
       class="collection001-pour__focus-color-swatch is-current"
-      style="background-color: {{ current_color }};"
+      style="background-color: {{ current_color }}; border: 1px solid {% assign swatch_color = current_color | downcase | strip %}{% if swatch_color == '#000000' or swatch_color == '#000' or swatch_color == 'black' %}#000000{% else %}#d5d5d5{% endif %} !important;"
       aria-label="{{ product_2.metafields.custom.color_name.value }}"
     ></span>
   {% endif %}
