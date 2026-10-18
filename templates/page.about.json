@@ -12,7 +12,8 @@
     "main": {
       "type": "pour-about",
       "settings": {
-        "hero_image": "shopify://shop_images/IMG_0031.jpg",
+        "hero_image": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_124.jpg",
+        "hero_image_mobile": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_117.jpg",
         "hero_eyebrow": "L'histoire de POUR",
         "hero_title": "POUR",
         "hero_text": "Nous ne trouvions pas ce que nous cherchions, alors nous l'avons crée.",
