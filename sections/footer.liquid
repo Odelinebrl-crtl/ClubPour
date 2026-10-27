@@ -364,7 +364,14 @@
 </div>
 
   </div>
-
+  <!-- MOYENS DE PAIEMENT -->
+  <div class="footer-pour__payments" aria-label="Moyens de paiement acceptés">
+    {% for type in shop.enabled_payment_types %}
+      <span class="footer-pour__payment">
+        {{ type | payment_type_svg_tag }}
+      </span>
+    {% endfor %}
+  </div>
 </footer>
 
 
