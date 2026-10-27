@@ -1206,7 +1206,45 @@ padding:
   }
 
 }
+/* MOYENS DE PAIEMENT */
+#FooterPour-{{ section.id }} .footer-pour__payments {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  width: 100%;
+  padding: 18px 20px 24px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(17, 17, 17, 0.10);
+}
 
+#FooterPour-{{ section.id }} .footer-pour__payment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+#FooterPour-{{ section.id }} .footer-pour__payment svg {
+  display: block;
+  width: auto;
+  height: 24px;
+  max-width: 44px;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  #FooterPour-{{ section.id }} .footer-pour__payments {
+    gap: 10px 12px;
+    padding: 18px 16px 24px;
+  }
+
+  #FooterPour-{{ section.id }} .footer-pour__payment svg {
+    height: 22px;
+    max-width: 40px;
+  }
+}
 </style>
 <script>
 
