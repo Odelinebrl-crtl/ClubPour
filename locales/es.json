@@ -211,7 +211,7 @@
   "close": "Cerrar",
   "size": "Talla",
   "loading": "Cargando",
-  "preorder": "Precomprar",
+  "preorder": "Añadir a la cesta",
   "unavailable": "Producto no disponible"
 },
 "pour_recommendations": {
@@ -223,7 +223,7 @@
   "close": "Cerrar",
   "size": "Talla",
   "loading": "Cargando",
-  "preorder": "Precomprar",
+  "preorder": "Añadir a la cesta",
   "unavailable": "Producto no disponible"
 },
   "pour_common": {
@@ -336,10 +336,10 @@
     "gallery_enlarge": "Ampliar imágenes",
     "fit_title": "Talla y corte",
     "color": "Color",
-    "preorder": "PRECOMPRAR",
+    "preorder": "AÑADIR A LA CESTA",
     "sold_out": "AGOTADO",
     "notify_me": "AVÍSAME",
-    "preorder_note": "Preventa — envío a partir del 18 de noviembre.",
+    "preorder_note": "Envío a partir del 18 de noviembre.",
     "size_guide": "GUÍA DE TALLAS",
     "details_motto": "DISEÑADO PARA VESTIRSE, VOLVERSE A VESTIR Y VIVIRSE.",
     "details_title": "DETALLES DEL PRODUCTO",
@@ -370,7 +370,7 @@
     "model_size": "y lleva una talla %{size}.",
     "close_size_guide": "Cerrar guía de tallas",
     "size_sold_out": "TALLA AGOTADA",
-    "preorder_with_price": "RESERVAR — %{price}",
+    "preorder_with_price": "AÑADIR A LA CESTA — %{price}",
     "back_in_stock_size_selection": "SELECCIONA UNA TALLA — AVISO DE REPOSICIÓN",
     "select_size_error": "Selecciona una talla.",
     "email_required": "Introduce tu dirección de correo electrónico.",
