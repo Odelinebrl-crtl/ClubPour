@@ -4681,7 +4681,7 @@ if (backInStockButton) {
    if (type === 'shipping') {
 
   panelTitle.textContent =
-    {{ 'pour_product.shipping_returns' | t | json }};
+  {{ 'pour_product.shipping_returns' | t | replace: '&amp;', '&' | json }};
 
 }
 
