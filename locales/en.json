@@ -186,7 +186,7 @@
   "close": "Close",
   "size": "Size",
   "loading": "Loading",
-  "preorder": "Pre-order",
+  "preorder": "Add to Cart",
   "unavailable": "Product unavailable"
 },
 "pour_recommendations": {
@@ -198,7 +198,7 @@
   "close": "Close",
   "size": "Size",
   "loading": "Loading",
-  "preorder": "Pre-order",
+  "preorder": "Add to Cart",
   "unavailable": "Product unavailable"
 },
   "pour_common": {
@@ -315,7 +315,7 @@
     "preorder": "PRE-ORDER",
     "sold_out": "SOLD OUT",
     "notify_me": "NOTIFY ME",
-    "preorder_note": "Pre-order — ships starting November 18.",
+    "preorder_note": "Ships starting November 18.",
     "size_guide": "SIZE GUIDE",
     "details_motto": "DESIGNED TO BE WORN, REWORN, LIVED IN.",
     "details_title": "PRODUCT DETAILS",
@@ -346,7 +346,7 @@
     "model_size": "and wears size %{size}.",
     "close_size_guide": "Close size guide",
     "size_sold_out": "SIZE SOLD OUT",
-    "preorder_with_price": "PRE-ORDER — %{price}",
+    "preorder_with_price": "ADD TO CART — %{price}",
     "back_in_stock_size_selection": "SELECT A SIZE — BACK IN STOCK",
     "select_size_error": "Select a size.",
     "email_required": "Please enter your email address.",
