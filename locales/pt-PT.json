@@ -193,7 +193,7 @@
   "close": "Fechar",
   "size": "Tamanho",
   "loading": "A carregar",
-  "preorder": "Pré-encomendar",
+  "preorder": "Adicionar ao cesto",
   "unavailable": "Produto indisponível"
 },
 "pour_recommendations": {
@@ -205,7 +205,7 @@
   "close": "Fechar",
   "size": "Tamanho",
   "loading": "A carregar",
-  "preorder": "Pré-encomendar",
+  "preorder": "Adicionar ao cesto",
   "unavailable": "Produto indisponível"
 },
   "pour_common": {
@@ -318,10 +318,10 @@
     "gallery_enlarge": "Ampliar imagens",
     "fit_title": "Tamanho e corte",
     "color": "Cor",
-    "preorder": "PRÉ-ENCOMENDAR",
+    "preorder": "ADICIONAR AO CESTO",
     "sold_out": "ESGOTADO",
     "notify_me": "AVISA-ME",
-    "preorder_note": "Pré-encomenda — envio a partir de 18 de novembro.",
+    "preorder_note": "Envio a partir de 18 de novembro.",
     "size_guide": "GUIA DE TAMANHOS",
     "details_motto": "CONCEBIDO PARA SER USADO, REUSADO, VIVIDO.",
     "details_title": "DETALHES DO PRODUTO",
@@ -352,7 +352,7 @@
     "model_size": "e veste o tamanho %{size}.",
     "close_size_guide": "Fechar guia de tamanhos",
     "size_sold_out": "TAMANHO ESGOTADO",
-    "preorder_with_price": "PRÉ-ENCOMENDAR — %{price}",
+    "preorder_with_price": "ADICIONAR AO CESTO — %{price}",
     "back_in_stock_size_selection": "SELECIONA UM TAMANHO — AVISO DE REPOSIÇÃO",
     "select_size_error": "Seleciona um tamanho.",
     "email_required": "Introduz o teu endereço de e-mail.",
