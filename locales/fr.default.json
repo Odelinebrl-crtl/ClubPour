@@ -95,7 +95,7 @@
   "color": "Couleur",
   "size": "Taille",
   "loading": "Chargement",
-  "preorder": "Acheter",
+  "preorder": "Ajouter au panier",
   "unavailable": "Produit indisponible"
 },
 "pour_common": {
@@ -247,7 +247,7 @@
     "model_size": "et porte une taille %{size}.",
     "close_size_guide": "Fermer le guide des tailles",
     "size_sold_out": "TAILLE ÉPUISÉE",
-    "preorder_with_price": "PRÉCOMMANDEZ — %{price}",
+    "preorder_with_price": "AJOUTER AU PANIER — %{price}",
     "back_in_stock_size_selection": "SÉLECTION D'UNE TAILLE — RETOUR EN STOCK",
     "select_size_error": "Sélectionnez une taille.",
     "email_required": "Veuillez renseigner votre adresse e-mail.",
