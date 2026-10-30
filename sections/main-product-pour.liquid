@@ -4678,12 +4678,12 @@ if (backInStockButton) {
 
       }
 
-      if (type === 'shipping') {
+    if (type === 'shipping') {
 
-        panelTitle.textContent =
-          '{{ 'pour_product.shipping_returns' | t }}';
+  panelTitle.textContent =
+    {{ 'pour_product.shipping_returns' | t | json }};
 
-      }
+}
 
     }
 
