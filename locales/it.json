@@ -193,7 +193,7 @@
   "close": "Chiudi",
   "size": "Taglia",
   "loading": "Caricamento",
-  "preorder": "Preordina",
+  "preorder": "Aggiungi al carrello",
   "unavailable": "Prodotto non disponibile"
 },
 "pour_recommendations": {
@@ -205,7 +205,7 @@
   "close": "Chiudi",
   "size": "Taglia",
   "loading": "Caricamento",
-  "preorder": "Preordina",
+  "preorder": "Aggiungi al carrello",
   "unavailable": "Prodotto non disponibile"
 },
   "pour_common": {
@@ -318,10 +318,10 @@
     "gallery_enlarge": "Ingrandisci immagini",
     "fit_title": "Taglia e vestibilità",
     "color": "Colore",
-    "preorder": "PREORDINA",
+    "preorder": "AGGIUNGI AL CARRELLO",
     "sold_out": "ESAURITO",
     "notify_me": "AVVISAMI",
-    "preorder_note": "Preordine — spedizione a partire dal 18 novembre.",
+    "preorder_note": "Spedizione a partire dal 18 novembre.",
     "size_guide": "GUIDA ALLE TAGLIE",
     "details_motto": "PROGETTATO PER ESSERE INDOSSATO, REINDOSSATO, VISSUTO.",
     "details_title": "DETTAGLI DEL PRODOTTO",
@@ -352,7 +352,7 @@
     "model_size": "e indossa una taglia %{size}.",
     "close_size_guide": "Chiudi guida alle taglie",
     "size_sold_out": "TAGLIA ESAURITA",
-    "preorder_with_price": "PREORDINA — %{price}",
+    "preorder_with_price": "AGGIUNGI AL CARRELLO — %{price}",
     "back_in_stock_size_selection": "SELEZIONA UNA TAGLIA — TORNA DISPONIBILE",
     "select_size_error": "Seleziona una taglia.",
     "email_required": "Inserisci il tuo indirizzo e-mail.",
