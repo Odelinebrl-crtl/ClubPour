@@ -956,11 +956,16 @@ input:checked + span {
 
 }
 
+/* ESPACEMENT TITRES — MOBILE UNIQUEMENT */
+
 @media screen and (max-width: 750px) {
-  #VetementsGrid-{{ section.id }} .vetements-grid__header {
-    position: relative !important;
-    top: 25px !important;
+
+  #VetementsGrid-{{ section.id }} .vetements-grid__header,
+  #VetementsGrid-{{ section.id }} .vetements-grid__eyebrow,
+  #VetementsGrid-{{ section.id }} .vetements-grid__heading {
+    margin-top: 10px !important;
   }
+
 }
 
 </style>
