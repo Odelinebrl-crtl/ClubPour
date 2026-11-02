@@ -315,7 +315,7 @@
     "preorder": "PRE-ORDER",
     "sold_out": "SOLD OUT",
     "notify_me": "NOTIFY ME",
-    "preorder_note": "Ships starting November 18.",
+    "preorder_note": "Ships starting November 11.",
     "size_guide": "SIZE GUIDE",
     "details_motto": "DESIGNED TO BE WORN, REWORN, LIVED IN.",
     "details_title": "PRODUCT DETAILS",
@@ -397,7 +397,7 @@
     "response_time_value": "Within 24 to 48 business hours"
   },
   "hero": {
-  "prelaunch_banner": "SHIPMENTS WILL BEGIN ON NOVEMBER 18."
+  "prelaunch_banner": "SHIPMENTS WILL BEGIN ON NOVEMBER 11."
 },
   "faq_pour": {
     "eyebrow": "HELP & INFORMATION",
