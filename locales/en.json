@@ -133,7 +133,7 @@
       "discover_products": "DISCOVER OUR PRODUCTS",
       "free_shipping_remaining": "Only %{amount} left for free shipping, France only",
 "free_shipping_unlocked": "Free shipping unlocked",
-"free_shipping_progress": "Free shipping on orders over €150 in France"
+"free_shipping_progress": "Free shipping on orders over €100 in France"
     },
 
     "errors": {
@@ -439,7 +439,7 @@
     "delivery_4_question": "What are the delivery times?",
     "delivery_4_answer": "Delivery times vary by destination country and selected shipping service. The estimated delivery time is shown at checkout before you confirm your order.",
     "delivery_5_question": "Is shipping free?",
-    "delivery_5_answer": "In France, shipping is free for orders over €150 with standard Colissimo or pickup point delivery.",
+    "delivery_5_answer": "In France, shipping is free for orders over €100 with standard Colissimo or pickup point delivery.",
     "delivery_6_question": "How much does shipping cost?",
     "delivery_6_answer": "Shipping fees are calculated based on parcel weight, destination country and selected delivery method. The amount is shown at checkout.",
     "delivery_7_question": "How can I track my parcel?",
