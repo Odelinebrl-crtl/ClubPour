@@ -140,7 +140,7 @@
       "discover_products": "SCOPRI I NOSTRI PRODOTTI",
       "free_shipping_remaining": "Mancano solo %{amount} per la spedizione gratuita, solo in Francia",
 "free_shipping_unlocked": "Spedizione gratuita sbloccata",
-"free_shipping_progress": "Spedizione gratuita a partire da 150 € in Francia"
+"free_shipping_progress": "Spedizione gratuita a partire da 100 € in Francia"
     },
 
     "errors": {
@@ -403,7 +403,7 @@
     "response_time_value": "Entro 24-48 ore lavorative"
   },
   "hero": {
-  "prelaunch_banner": "LE SPEDIZIONI INIZIERANNO A PARTIRE DAL 18 NOVEMBRE."
+  "prelaunch_banner": "LE SPEDIZIONI INIZIERANNO A PARTIRE DAL 11 NOVEMBRE."
 },
   "faq_pour": {
     "eyebrow": "AIUTO & INFORMAZIONI",
@@ -445,7 +445,7 @@
     "delivery_4_question": "Quali sono i tempi di consegna?",
     "delivery_4_answer": "I tempi variano in base al paese di destinazione e al servizio scelto. Il tempo stimato viene indicato al pagamento, prima della conferma dell’ordine.",
     "delivery_5_question": "La spedizione è gratuita?",
-    "delivery_5_answer": "In Francia, la spedizione è gratuita a partire da 150 € con Colissimo standard o presso un punto di ritiro.",
+    "delivery_5_answer": "In Francia, la spedizione è gratuita a partire da 100 € con Colissimo standard o presso un punto di ritiro.",
     "delivery_6_question": "Quanto costa la spedizione?",
     "delivery_6_answer": "I costi di spedizione dipendono dal peso del pacco, dal paese di destinazione e dal metodo scelto. L’importo viene indicato al pagamento.",
     "delivery_7_question": "Come posso tracciare il mio pacco?",
