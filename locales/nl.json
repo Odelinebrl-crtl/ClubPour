@@ -42,7 +42,7 @@
       "discover_products": "ONZE PRODUCTEN ONTDEKKEN",
       "free_shipping_remaining": "Nog maar %{amount} tot gratis verzending, alleen in Frankrijk",
 "free_shipping_unlocked": "Gratis verzending ontgrendeld",
-"free_shipping_progress": "Gratis verzending vanaf € 150 in Frankrijk"
+"free_shipping_progress": "Gratis verzending vanaf € 100 in Frankrijk"
     },
 
     "errors": {
@@ -317,7 +317,7 @@
     "delivery_4_question": "Wat zijn de levertijden?",
     "delivery_4_answer": "De levertijd varieert per land van bestemming en gekozen bezorgservice. De geschatte levertijd wordt vóór bevestiging van je bestelling bij het afrekenen weergegeven.",
     "delivery_5_question": "Is levering gratis?",
-    "delivery_5_answer": "In Frankrijk is levering gratis vanaf €150 met standaard Colissimo of levering bij een afhaalpunt.",
+    "delivery_5_answer": "In Frankrijk is levering gratis vanaf €100 met standaard Colissimo of levering bij een afhaalpunt.",
     "delivery_6_question": "Hoeveel kost de levering?",
     "delivery_6_answer": "De verzendkosten worden berekend op basis van het pakketgewicht, het land van bestemming en de gekozen verzendmethode. Het bedrag wordt bij het afrekenen weergegeven.",
     "delivery_7_question": "Hoe kan ik mijn pakket volgen?",

@@ -140,7 +140,7 @@
       "discover_products": "DESCOBRIR OS NOSSOS PRODUTOS",
       "free_shipping_remaining": "Faltam apenas %{amount} para obter portes grátis, apenas em França",
 "free_shipping_unlocked": "Portes grátis desbloqueados",
-"free_shipping_progress": "Portes grátis a partir de 150 € em França"
+"free_shipping_progress": "Portes grátis a partir de 100 € em França"
     },
 
     "errors": {
