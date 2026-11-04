@@ -42,7 +42,7 @@
       "discover_products": "DÉCOUVRIR NOS PRODUITS",
 "free_shipping_remaining": "Plus que %{amount} pour la livraison offerte, en France uniquement",
 "free_shipping_unlocked": "Livraison offerte débloquée",
-"free_shipping_progress": "Livraison offerte dès 150 € en France"
+"free_shipping_progress": "Livraison offerte dès 100 € en France"
     },
     "errors": {
       "load_cart": "Impossible de charger le panier.",
@@ -336,7 +336,7 @@
     "delivery_4_question": "Quels sont les délais de livraison ?",
     "delivery_4_answer": "Les délais varient selon le pays de destination et le service de livraison sélectionné. Le délai estimé vous est indiqué au moment du paiement, avant la validation de la commande.",
     "delivery_5_question": "La livraison est-elle gratuite ?",
-    "delivery_5_answer": "En France, la livraison est offerte à partir de 150 € de commande avec Colissimo standard ou en point retrait.",
+    "delivery_5_answer": "En France, la livraison est offerte à partir de 100 € de commande avec Colissimo standard ou en point retrait.",
     "delivery_6_question": "Combien coûte la livraison ?",
     "delivery_6_answer": "Les frais de livraison sont calculés selon le poids du colis, le pays de destination et le mode de livraison choisi. Leur montant est affiché au moment du paiement.",
     "delivery_7_question": "Comment suivre mon colis ?",

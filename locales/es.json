@@ -133,7 +133,7 @@
       "discover_products": "DESCUBRIR NUESTROS PRODUCTOS",
       "free_shipping_remaining": "Solo faltan %{amount} para conseguir el envío gratuito, únicamente en Francia",
 "free_shipping_unlocked": "Envío gratuito desbloqueado",
-"free_shipping_progress": "Envío gratuito a partir de 150 € en Francia"
+"free_shipping_progress": "Envío gratuito a partir de 100 € en Francia"
     },
 
     "errors": {
@@ -477,7 +477,7 @@
     "delivery_4_question": "¿Cuáles son los plazos de entrega?",
     "delivery_4_answer": "Los plazos varían según el país de destino y el servicio de entrega seleccionado. El plazo estimado se indica al pagar, antes de confirmar el pedido.",
     "delivery_5_question": "¿El envío es gratuito?",
-    "delivery_5_answer": "En Francia, el envío es gratuito a partir de 150 € de pedido con Colissimo estándar o a un punto de recogida.",
+    "delivery_5_answer": "En Francia, el envío es gratuito a partir de 100 € de pedido con Colissimo estándar o a un punto de recogida.",
     "delivery_6_question": "¿Cuánto cuesta el envío?",
     "delivery_6_answer": "Los gastos de envío se calculan según el peso del paquete, el país de destino y el método elegido. El importe se muestra al pagar.",
     "delivery_7_question": "¿Cómo puedo seguir mi paquete?",
