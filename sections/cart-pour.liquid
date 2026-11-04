@@ -149,7 +149,7 @@
           </p>
 {% if localization.country.iso_code == 'FR' %}
 
-  {% assign free_shipping_threshold = 15000 %}
+  {% assign free_shipping_threshold = 10000 %}
   {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
   {% assign free_shipping_progress = cart.total_price | times: 100.0 | divided_by: free_shipping_threshold | at_most: 100 %}
 {% assign free_shipping_remaining_money = free_shipping_remaining | money_without_currency | append: ' €' %}
@@ -183,7 +183,7 @@
 
       <span>0 €</span>
 
-      <span>150 €</span>
+      <span>100 €</span>
 
     </div>
 
