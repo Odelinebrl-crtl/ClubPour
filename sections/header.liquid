@@ -680,7 +680,7 @@
 
     <div class="cart-drawer__footer">
 
-  {% assign free_shipping_threshold = 15000 %}
+  {% assign free_shipping_threshold = 10000 %}
 {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
 {% assign free_shipping_remaining_formatted = free_shipping_remaining | money_without_currency | append: ' €' %}
 {% assign free_shipping_percentage = cart.total_price
