@@ -146,7 +146,7 @@
       "discover_products": "UNSERE PRODUKTE ENTDECKEN",
       "free_shipping_remaining": "Nur noch %{amount} bis zum kostenlosen Versand, nur in Frankreich",
 "free_shipping_unlocked": "Kostenloser Versand freigeschaltet",
-"free_shipping_progress": "Kostenloser Versand ab 150 € in Frankreich"
+"free_shipping_progress": "Kostenloser Versand ab 100 € in Frankreich"
     },
     "errors": {
       "load_cart": "Der Warenkorb konnte nicht geladen werden.",
@@ -467,7 +467,7 @@
     "delivery_4_question": "Wie lange dauert die Lieferung?",
     "delivery_4_answer": "Die Lieferzeiten hängen vom Zielland und vom gewählten Versandservice ab. Die geschätzte Lieferzeit wird vor der Bestätigung der Bestellung beim Checkout angezeigt.",
     "delivery_5_question": "Ist der Versand kostenlos?",
-    "delivery_5_answer": "In Frankreich ist der Versand ab einem Bestellwert von 150 € mit Colissimo Standard oder an einen Abholpunkt kostenlos.",
+    "delivery_5_answer": "In Frankreich ist der Versand ab einem Bestellwert von 100 € mit Colissimo Standard oder an einen Abholpunkt kostenlos.",
     "delivery_6_question": "Wie viel kostet der Versand?",
     "delivery_6_answer": "Die Versandkosten werden nach Paketgewicht, Zielland und gewählter Versandart berechnet. Der Betrag wird beim Checkout angezeigt.",
     "delivery_7_question": "Wie kann ich mein Paket verfolgen?",
