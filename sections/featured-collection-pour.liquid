@@ -493,7 +493,27 @@
   transform: translateY(0);
 }
 
+/* =========================================================
+   DESKTOP — CORRECTION DÉBORDEMENT DU TITRE
+========================================================= */
 
+@media screen and (min-width: 901px) {
+
+  #FeaturedPour-{{ section.id }} .featured-pour__content {
+    min-width: 0;
+    max-width: 100%;
+    padding: 40px 30px;
+  }
+
+  #FeaturedPour-{{ section.id }} .featured-pour__heading {
+    max-width: 100%;
+    font-size: clamp(28px, 2.5vw, 40px);
+    letter-spacing: .07em;
+    line-height: 1.08;
+    overflow-wrap: break-word;
+  }
+
+}
 </style>
 
 
