@@ -212,7 +212,9 @@
   "size": "Talla",
   "loading": "Cargando",
   "preorder": "Añadir a la cesta",
-  "unavailable": "Producto no disponible"
+  "unavailable": "Producto no disponible",
+      "choose_size": "ELEGIR MI TALLA"
+
 },
 "pour_recommendations": {
   "heading": "TAMBIÉN TE PUEDE GUSTAR",
@@ -642,7 +644,4 @@
     "future_text": "POUR evolucionará con el tiempo. Nuevas prendas, accesorios, nuevas fuentes de inspiración y también experiencias que queremos compartir con quienes formen parte de esta aventura. Porque POUR no consiste solo en comprar una prenda. Se trata de formar parte de una historia que escribimos juntos.",
     "final_link_label": "Descubrir la colección"
   },
-  "pour_products": {
-    "choose_size": "ELEGIR MI TALLA"
   }
-}
