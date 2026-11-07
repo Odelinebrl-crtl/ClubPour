@@ -3,7 +3,10 @@
   class="vetements-grid"
 >
 {% if section.settings.anchor_id != blank %}
-  <span id="{{ section.settings.anchor_id }}"></span>
+  <span
+    id="{{ section.settings.anchor_id }}"
+    style="display: block; position: relative; top: -100px; visibility: hidden;"
+  ></span>
 {% endif %}
   <div class="vetements-grid__inner">
 
