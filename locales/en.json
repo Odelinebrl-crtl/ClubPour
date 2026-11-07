@@ -187,6 +187,7 @@
   "size": "Size",
   "loading": "Loading",
   "preorder": "Add to Cart",
+      "choose_size": "CHOOSE MY SIZE",
   "unavailable": "Product unavailable"
 },
 "pour_recommendations": {
@@ -643,8 +644,5 @@
     "future_title": "Let's shape what's next.",
     "future_text": "POUR will evolve over time. New clothing, accessories, new sources of inspiration, as well as experiences we want to share with those who become part of the journey. Because POUR is about more than buying a piece of clothing. It's about joining a story we're writing together.",
     "final_link_label": "Discover the collection"
- },
-  "pour_products": {
-    "choose_size": "CHOOSE MY SIZE"
+ }
   }
-}
