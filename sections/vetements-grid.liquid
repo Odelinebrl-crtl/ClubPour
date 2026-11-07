@@ -1057,96 +1057,82 @@ input:checked + span {
   }
 
 
-  function buildVariants(product) {
+  
+function buildVariants(product) {
 
-    const variants =
-      product.variants || [];
+  const variants = product.variants || [];
 
+  if (!variants.length) {
+    return '';
+  }
 
-    if (!variants.length) {
-      return '';
-    }
-
-
-    if (
-      variants.length === 1 &&
-      variants[0].title === 'Default Title'
-    ) {
-
-      return `
-        <input
-          type="hidden"
-          name="id"
-          value="${variants[0].id}"
-        >
-      `;
-
-    }
-
-
-    const firstAvailable =
-      variants.findIndex(
-        variant => variant.available
-      );
-
-
+  // Produit sans option de taille
+  if (
+    variants.length === 1 &&
+    variants[0].title === 'Default Title'
+  ) {
     return `
+      <input
+        type="hidden"
+        name="id"
+        value="${variants[0].id}"
+      >
+    `;
+  }
 
-      <div class="vetements-qv__options">
+  return `
 
-        <p class="vetements-qv__option-label">
-          {{ 'pour_products.size' | t }} :
-        </p>
+    <div class="vetements-qv__options">
 
-        <div class="vetements-qv__variants">
+      <p class="vetements-qv__option-label">
+        {{ 'pour_products.size' | t }} :
+      </p>
 
-          ${variants.map(
-            (variant, index) => {
+      <div class="vetements-qv__variants">
 
-              const checked =
-                index === firstAvailable
-                  ? 'checked'
-                  : '';
+        ${variants.map(
+          (variant) => {
 
-              const disabled =
-                variant.available
-                  ? ''
-                  : 'disabled';
+            const disabled = variant.available
+              ? ''
+              : 'disabled';
 
+            return `
 
-              return `
+              <label
+                class="
+                  vetements-qv__variant
+                  ${variant.available ? '' : 'is-disabled'}
+                "
+              >
 
-                <label
-                  class="
-                    vetements-qv__variant
-                    ${variant.available ? '' : 'is-disabled'}
-                  "
+                <input
+                  type="radio"
+                  name="id"
+                  value="${variant.id}"
+                  required
+                  ${disabled}
                 >
 
-                  <input
-                    type="radio"
-                    name="id"
-                    value="${variant.id}"
-                    ${checked}
-                    ${disabled}
-                  >
+                <span>
+                  ${escapeHTML(variant.title)}
+                </span>
 
-                  <span>
-                    ${escapeHTML(variant.title)}
-                  </span>
+              </label>
 
-                </label>
-              `;
+            `;
 
-            }
-          ).join('')}
-
-        </div>
+          }
+        ).join('')}
 
       </div>
-    `;
 
-  }
+    </div>
+
+  `;
+
+}
+
 
 
   async function loadProduct(handle) {
