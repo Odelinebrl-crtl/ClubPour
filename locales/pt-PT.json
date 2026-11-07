@@ -195,7 +195,6 @@
   "loading": "A carregar",
   "preorder": "Adicionar ao cesto",
   "unavailable": "Produto indisponível",
-      "choose_size": "ESCOLHER O MEU TAMANHO"
 },
 "pour_recommendations": {
   "heading": "TAMBÉM PODERÁS GOSTAR",
@@ -207,7 +206,8 @@
   "size": "Tamanho",
   "loading": "A carregar",
   "preorder": "Adicionar ao cesto",
-  "unavailable": "Produto indisponível"
+  "unavailable": "Produto indisponível",
+     "choose_size": "ESCOLHER O MEU TAMANHO"
 },
   "pour_common": {
   "view_product": "VER O PRODUTO"
