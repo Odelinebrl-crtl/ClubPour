@@ -212,8 +212,7 @@
   "size": "Talla",
   "loading": "Cargando",
   "preorder": "Añadir a la cesta",
-  "unavailable": "Producto no disponible",
-      "choose_size": "ELEGIR MI TALLA"
+  "unavailable": "Producto no disponible"
 
 },
 "pour_recommendations": {
@@ -226,7 +225,8 @@
   "size": "Talla",
   "loading": "Cargando",
   "preorder": "Añadir a la cesta",
-  "unavailable": "Producto no disponible"
+  "unavailable": "Producto no disponible",
+   "choose_size": "ELEGIR MI TALLA"
 },
   "pour_common": {
   "view_product": "VER EL PRODUCTO"
