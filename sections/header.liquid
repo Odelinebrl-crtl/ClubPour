@@ -205,44 +205,12 @@
 
   <!-- BOUTIQUE + SOUS-MENU -->
 
-  <div
-  class="mobile-menu__item mobile-menu__item--submenu"
-  data-mobile-submenu
+  <a
+  href="{{ pages['boutique'].url }}"
+  class="mobile-menu__main-link"
 >
-
-  <div class="mobile-menu__submenu-head">
-
-    <a
-      href="{{ pages['boutique'].url }}"
-      class="mobile-menu__main-link"
-      data-mobile-boutique-link
-    >
-      {{ 'pour_header.navigation.shop' | t }}
-    </a>
-
-    <button
-      type="button"
-      class="mobile-menu__plus"
-      data-mobile-submenu-button
-      aria-label="{{ 'pour_header.mobile.open_shop' | t }}"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-    </button>
-
-  </div>
-
-
-  <div
-    class="mobile-menu__submenu"
-    data-mobile-submenu-panel
-  >
-
-  </div>
-
-</div>
-
+  {{ 'pour_header.navigation.shop' | t }}
+</a>
 
   <!-- CLUB PRIVILÈGES -->
 
