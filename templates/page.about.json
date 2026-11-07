@@ -11,6 +11,74 @@
   "sections": {
     "main": {
       "type": "pour-about",
+      "blocks": {
+        "gallery_image_FrCKPt": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_081.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_W8PLnK": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_091.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_tGCaT6": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-22_Shooting_de_nuit_pour_-_004.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_LyhPtX": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_176_0373d037-3827-43ac-804c-42d1be0b4fb7.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_j4C7Lw": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_134.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_EibYAH": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_126.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_8LWnqn": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_078.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_bpRFw3": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_005.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        }
+      },
+      "block_order": [
+        "gallery_image_FrCKPt",
+        "gallery_image_W8PLnK",
+        "gallery_image_tGCaT6",
+        "gallery_image_LyhPtX",
+        "gallery_image_j4C7Lw",
+        "gallery_image_EibYAH",
+        "gallery_image_8LWnqn",
+        "gallery_image_bpRFw3"
+      ],
       "settings": {
         "hero_image": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_124.jpg",
         "hero_image_mobile": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_117.jpg",
