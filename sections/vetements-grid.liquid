@@ -131,9 +131,9 @@
   class="vetements-card__quick-add"
   data-vetements-quick-add
   data-product-handle="{{ featured_product.handle }}"
-  aria-label="Ajouter au panier - {{ featured_product.title }}"
+  aria-label="{{ 'pour_products.choose_size' | t }} - {{ featured_product.title }}"
 >
-  CHOISIR MA TAILLE
+  {{ 'pour_products.choose_size' | t }}
 </button>
 
             </div>
