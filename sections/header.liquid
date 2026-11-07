@@ -457,7 +457,7 @@
 {% if free_shipping_percentage > 100 %}
   {% assign free_shipping_percentage = 100 %}
 {% endif %}
-{% if localization.country.iso_code == 'FR' %}
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
 <div
   class="cart-drawer__free-shipping"
   data-free-shipping
@@ -2834,7 +2834,7 @@ const imageHTML = item.image
 
 
       <div class="cart-drawer__footer">
-{% if localization.country.iso_code == 'FR' %}
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
   <div
     class="cart-drawer__free-shipping"
     data-free-shipping
