@@ -209,7 +209,8 @@
   "view_product": "PRODUKT ANSEHEN"
   },
   "collection_001": {
-  "discover": "ENTDECKEN"
+  "discover": "ENTDECKEN",
+  "discover_collection": "Entdecken Sie die Kollektion"
 },
 
   "pour_recommendations": {
