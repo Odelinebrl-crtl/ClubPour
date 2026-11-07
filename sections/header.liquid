@@ -40,12 +40,7 @@
                 </p>
 
 
-                <a
-                  href="{{ pages['collection-001'].url }}"
-                  class="site-header__mega-collection site-header__mega-link"
-                >
-                  {{ 'pour_header.navigation.collection_001' | t }}
-                </a>
+               
 
 
                 <div class="site-header__mega-links">
@@ -57,18 +52,6 @@
                       class="site-header__mega-link"
                     >
                       {{ 'pour_header.navigation.all' | t }}
-                    </a>
-
-                  {% endif %}
-
-
-                  {% if section.settings.tshirts_link != blank %}
-
-                    <a
-                      href="{{ section.settings.tshirts_link }}"
-                      class="site-header__mega-link"
-                    >
-                      {{ 'pour_header.navigation.tshirts' | t }}
                     </a>
 
                   {% endif %}
@@ -433,13 +416,6 @@
     <span class="mobile-menu__subheading">
       {{ 'pour_header.navigation.clothing' | t }}
     </span>
-
-    <a
-      href="{{ pages['collection-001'].url }}"
-      class="mobile-menu__sublink"
-    >
-      {{ 'pour_header.navigation.collection_001' | t }}
-    </a>
 
   </div>
 
@@ -2990,7 +2966,7 @@ const imageHTML = item.image
             data-quantity="${item.quantity + 1}"
             aria-label="{{ 'pour_header.cart_drawer.increase_quantity' | t }}"
           >
-            ACHETER
+            +
           </button>
 
         </div>
