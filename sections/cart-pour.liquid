@@ -147,7 +147,7 @@
           <p class="cart-pour__summary-eyebrow">
             {{ 'cart_pour.summary' | t }}
           </p>
-{% if localization.country.iso_code == 'FR' %}
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
 
   {% assign free_shipping_threshold = 10000 %}
   {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
