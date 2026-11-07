@@ -194,8 +194,7 @@
   "size": "Taglia",
   "loading": "Caricamento",
   "preorder": "Aggiungi al carrello",
-  "unavailable": "Prodotto non disponibile",    
-  "choose_size": "SCEGLI LA MIA TAGLIA"
+  "unavailable": "Prodotto non disponibile"
 },
 "pour_recommendations": {
   "heading": "POTREBBE PIACERTI ANCHE",
@@ -207,7 +206,8 @@
   "size": "Taglia",
   "loading": "Caricamento",
   "preorder": "Aggiungi al carrello",
-  "unavailable": "Prodotto non disponibile"
+  "unavailable": "Prodotto non disponibile",
+  "choose_size": "SCEGLI LA MIA TAGLIA"
 },
   "pour_common": {
   "view_product": "VEDI IL PRODOTTO"
