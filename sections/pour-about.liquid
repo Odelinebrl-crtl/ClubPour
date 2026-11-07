@@ -1634,22 +1634,38 @@
     inset: 0;
   }
 }
+
 /* =========================================================
-   GALERIE PHOTOGRAPHIQUE — LA MARQUE
+   GALERIE PHOTOGRAPHIQUE — CLUB POUR
 ========================================================= */
 
 #PourAbout-{{ section.id }} .pour-about__gallery {
   width: 100%;
-  padding: 90px 4vw 110px;
+  padding: 65px 0 90px;
   background: #ffffff;
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 5vw;
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-auto-rows: minmax(150px, 18vw);
+  gap: 10px;
   width: 100%;
+}
+
+/* Les deux premières photos : grands portraits */
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Les photos suivantes : format plus compact */
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(n+3) {
+  grid-column: span 1;
+  grid-row: span 1;
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item {
@@ -1659,44 +1675,12 @@
   background: #f3f2ef;
 }
 
-/* Composition asymétrique */
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 1) {
-  grid-column: span 7;
-  grid-row: span 7;
-}
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 2) {
-  grid-column: span 5;
-  grid-row: span 5;
-}
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 3) {
-  grid-column: span 4;
-  grid-row: span 5;
-}
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 4) {
-  grid-column: span 5;
-  grid-row: span 7;
-}
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 5) {
-  grid-column: span 7;
-  grid-row: span 6;
-}
-
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n) {
-  grid-column: span 5;
-  grid-row: span 5;
-}
-
 #PourAbout-{{ section.id }} .pour-about__gallery-image {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+  transition: transform .7s ease;
 }
 
 @media (hover: hover) {
@@ -1706,50 +1690,32 @@
   }
 }
 
-/* Mobile */
+/* MOBILE */
 
 @media screen and (max-width: 768px) {
 
   #PourAbout-{{ section.id }} .pour-about__gallery {
-    padding: 45px 12px 65px;
+    padding: 35px 0 55px;
   }
 
   #PourAbout-{{ section.id }} .pour-about__gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 30vw;
-    gap: 8px;
+    grid-auto-rows: 28vw;
+    gap: 7px;
   }
 
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 1) {
-    grid-column: span 2;
-    grid-row: span 5;
-  }
-
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 2) {
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
     grid-column: span 1;
-    grid-row: span 4;
+    grid-row: span 2;
   }
 
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 3) {
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(n+3) {
     grid-column: span 1;
-    grid-row: span 4;
-  }
-
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 4) {
-    grid-column: span 2;
-    grid-row: span 5;
-  }
-
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 5) {
-    grid-column: span 1;
-    grid-row: span 4;
-  }
-
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n) {
-    grid-column: span 1;
-    grid-row: span 4;
+    grid-row: span 1;
   }
 }
+
 </style>
 
 
