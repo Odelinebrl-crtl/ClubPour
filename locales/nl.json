@@ -104,7 +104,8 @@
     "view_product": "PRODUCT BEKIJKEN"
     },
     "collection_001": {
-  "discover": "ONTDEKKEN"
+  "discover": "ONTDEKKEN",
+   "discover_collection": "Ontdek de collectie"
   },
   "pour_recommendations": {
     "heading": "DIT VIND JE MISSCHIEN OOK LEUK",
