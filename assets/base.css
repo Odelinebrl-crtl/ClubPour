@@ -4566,7 +4566,7 @@ color: rgba(17,17,17,.42);
 @media screen and (max-width: 768px) {
 
   .pour-community {
-    padding: 60px 16px 80px;
+       padding: 35px 16px 80px;
   }
 
   .pour-community__header {
