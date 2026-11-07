@@ -329,7 +329,41 @@
     </div>
 
   </section>
+  <!-- =========================================================
+       06 — GALERIE PHOTOGRAPHIQUE
+  ========================================================= -->
 
+  {% assign gallery_blocks = section.blocks | where: 'type', 'gallery_image' %}
+
+  {% if gallery_blocks.size > 0 %}
+    <section class="pour-about__gallery">
+
+      <div class="pour-about__gallery-grid">
+
+        {% for block in gallery_blocks %}
+          {% if block.settings.image != blank %}
+
+            <figure
+              class="pour-about__gallery-item"
+              {{ block.shopify_attributes }}
+            >
+              {{
+                block.settings.image
+                | image_url: width: 2000
+                | image_tag:
+                  class: 'pour-about__gallery-image',
+                  loading: 'lazy',
+                  alt: block.settings.alt
+              }}
+            </figure>
+
+          {% endif %}
+        {% endfor %}
+
+      </div>
+
+    </section>
+  {% endif %}
 </div>
 
 
@@ -1600,7 +1634,122 @@
     inset: 0;
   }
 }
+/* =========================================================
+   GALERIE PHOTOGRAPHIQUE — LA MARQUE
+========================================================= */
 
+#PourAbout-{{ section.id }} .pour-about__gallery {
+  width: 100%;
+  padding: 90px 4vw 110px;
+  background: #ffffff;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: 5vw;
+  gap: 12px;
+  width: 100%;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  background: #f3f2ef;
+}
+
+/* Composition asymétrique */
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 1) {
+  grid-column: span 7;
+  grid-row: span 7;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 2) {
+  grid-column: span 5;
+  grid-row: span 5;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 3) {
+  grid-column: span 4;
+  grid-row: span 5;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 4) {
+  grid-column: span 5;
+  grid-row: span 7;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 5) {
+  grid-column: span 7;
+  grid-row: span 6;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n) {
+  grid-column: span 5;
+  grid-row: span 5;
+}
+
+#PourAbout-{{ section.id }} .pour-about__gallery-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .8s cubic-bezier(.22, 1, .36, 1);
+}
+
+@media (hover: hover) {
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:hover
+  .pour-about__gallery-image {
+    transform: scale(1.025);
+  }
+}
+
+/* Mobile */
+
+@media screen and (max-width: 768px) {
+
+  #PourAbout-{{ section.id }} .pour-about__gallery {
+    padding: 45px 12px 65px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 30vw;
+    gap: 8px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 1) {
+    grid-column: span 2;
+    grid-row: span 5;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 2) {
+    grid-column: span 1;
+    grid-row: span 4;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 3) {
+    grid-column: span 1;
+    grid-row: span 4;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 4) {
+    grid-column: span 2;
+    grid-row: span 5;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n + 5) {
+    grid-column: span 1;
+    grid-row: span 4;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6n) {
+    grid-column: span 1;
+    grid-row: span 4;
+  }
+}
 </style>
 
 
@@ -2101,6 +2250,28 @@
     }
 
   ],
+
+  "blocks": [
+    {
+      "type": "gallery_image",
+      "name": "Photo galerie",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Choisir une photo"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Description de la photo (SEO)",
+          "default": "POUR — Galerie photographique"
+        }
+      ]
+    }
+  ],
+
+   "max_blocks": 30,
 
   "presets": [
     {
