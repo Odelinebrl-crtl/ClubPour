@@ -43,49 +43,13 @@
             "image_primary": "shopify://shop_images/31.png",
             "image_hover": "shopify://shop_images/32_f4e621f4-96c0-40de-93a1-efbfb95ee0e2.png"
           }
-        },
-        "product_CwqYrC": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-peperoncino",
-            "image_primary": "shopify://shop_images/35_fca6fd88-2b49-4821-8cf4-2b1876bf363c.png",
-            "image_hover": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_017_26314af9-1f76-4d02-a14e-23117f2ef277.jpg"
-          }
-        },
-        "product_mA93kj": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-club-pour",
-            "image_primary": "shopify://shop_images/19_175a80af-ee94-44ef-9fd0-bfce726cccb2.png",
-            "image_hover": "shopify://shop_images/20_9ec97dc5-2c92-469b-96d3-ec8445a485dd.png"
-          }
-        },
-        "product_NzcP69": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-pegasus",
-            "image_primary": "shopify://shop_images/15_eeae9a4a-ec15-48cb-b7ea-d3ca209c0d3e.png",
-            "image_hover": "shopify://shop_images/16_7a8973db-3b5e-4107-a410-1cc0373e8a93.png"
-          }
-        },
-        "product_bmzijL": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-monaco-94",
-            "image_primary": "shopify://shop_images/23_15fdf2a3-f313-457a-927a-47c71b72e9a1.png",
-            "image_hover": "shopify://shop_images/24_393e715b-8b4b-4c04-b076-acd5c1bdca0b.png"
-          }
         }
       },
       "block_order": [
         "product_zhD6np",
         "product_XRT6it",
         "product_ctQr3W",
-        "product_3pTwxb",
-        "product_CwqYrC",
-        "product_mA93kj",
-        "product_NzcP69",
-        "product_bmzijL"
+        "product_3pTwxb"
       ],
       "name": "Grille Vêtements",
       "settings": {
