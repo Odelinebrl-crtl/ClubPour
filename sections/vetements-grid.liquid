@@ -361,10 +361,8 @@
 }
 
 /* =========================================================
-   QUICK ADD +
+   QUICK ADD — AJOUTER AU PANIER
 ========================================================= */
-
-/* BOUTON AJOUTER AU PANIER */
 
 #VetementsGrid-{{ section.id }} .vetements-card__quick-add {
   position: absolute;
@@ -373,19 +371,19 @@
   z-index: 30;
 
   width: auto;
-  height: 32px;
-  padding: 0 13px;
+  height: 30px;
+  padding: 0 12px;
 
-  border: 1px solid #111111;
+  border: none;
   border-radius: 0;
 
   background: #ffffff;
   color: #111111;
 
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 9px;
+  font-size: 8px;
   font-weight: 400;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
 
   white-space: nowrap;
   cursor: pointer;
@@ -420,16 +418,6 @@
     transform: none;
   }
 }
-
-#VetementsGrid-{{ section.id }}
-.vetements-card__media:hover
-.vetements-card__quick-add {
-  opacity: 1;
-  visibility: visible;
-
-  transform: translateY(0);
-}
-
 
 /* =========================================================
    INFOS
