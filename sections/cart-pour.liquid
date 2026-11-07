@@ -205,7 +205,12 @@
   </span>
 </div>
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
-  <div class="cart-pour__summary-line cart-pour__delivery-from">
+  <div
+    class="cart-pour__summary-line cart-pour__delivery-from"
+    {% if cart.total_price >= free_shipping_threshold %}
+      hidden
+    {% endif %}
+  >
     <span>FRAIS DE LIVRAISON À PARTIR DE</span>
     <span>4,42 €</span>
   </div>
@@ -851,7 +856,10 @@
 .cart-pour__delivery-from {
   margin-top: 9px;
 }
-
+#CartPour-{{ section.id }}
+.cart-pour__delivery-from[hidden] {
+  display: none !important;
+}
 #CartPour-{{ section.id }}
 .cart-pour__shipping {
   margin:
