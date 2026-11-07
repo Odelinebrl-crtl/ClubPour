@@ -97,7 +97,8 @@
     "size": "Maat",
     "loading": "Laden",
     "preorder": "Aan winkelmandje toevoegen",
-    "unavailable": "Product niet beschikbaar"
+    "unavailable": "Product niet beschikbaar",
+ "choose_size": "MIJN MAAT KIEZEN"
   },
   "pour_common": {
     "view_product": "PRODUCT BEKIJKEN"
@@ -521,8 +522,5 @@
     "future_title": "Laten we samen bouwen aan wat volgt.",
     "future_text": "POUR zal zich in de loop van de tijd verder ontwikkelen. Nieuwe kledingstukken, accessoires, nieuwe inspiratiebronnen en ervaringen die we willen delen met iedereen die deel uitmaakt van dit avontuur. Want POUR draait om meer dan alleen het kopen van een kledingstuk. Het gaat erom deel uit te maken van een verhaal dat we samen schrijven.",
     "final_link_label": "Ontdek de collectie"
-},
-  "pour_products": {
-    "choose_size": "MIJN MAAT KIEZEN"
-  }
 }
+  }
