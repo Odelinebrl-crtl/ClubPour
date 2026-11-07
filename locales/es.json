@@ -641,5 +641,8 @@
     "future_title": "Construyamos lo que viene.",
     "future_text": "POUR evolucionará con el tiempo. Nuevas prendas, accesorios, nuevas fuentes de inspiración y también experiencias que queremos compartir con quienes formen parte de esta aventura. Porque POUR no consiste solo en comprar una prenda. Se trata de formar parte de una historia que escribimos juntos.",
     "final_link_label": "Descubrir la colección"
+  },
+  "pour_products": {
+    "choose_size": "ELEGIR MI TALLA"
   }
 }
