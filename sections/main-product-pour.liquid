@@ -324,7 +324,7 @@
 </button>
 
                     </div>
-
+{% assign offer_language = localization.language.iso_code | downcase | slice: 0, 2 %}
 <div
   class="product-page-pour__offer-countdown"
   data-offer-countdown
@@ -332,7 +332,7 @@
 >
 
   <p class="product-page-pour__offer-title">
-    {% case localization.language.iso_code %}
+   {% case offer_language %}
       {% when 'en' %}
         EXCLUSIVE OFFER · 15% OFF
       {% when 'it' %}
@@ -355,7 +355,7 @@
   </p>
 
   <p class="product-page-pour__offer-code">
-    {% case localization.language.iso_code %}
+    {% case offer_language %}
       {% when 'en' %}
         USE CODE POUR15 · ENDS SUNDAY AT 11:59 PM
       {% when 'it' %}
