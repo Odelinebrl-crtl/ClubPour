@@ -1223,10 +1223,6 @@ function closeModal() {
     `;
   }
 
-  const firstAvailable =
-    variants.find(
-      variant => variant.available
-    ) || variants[0];
 
   const sizes = [
     ...new Set(
@@ -1246,11 +1242,11 @@ function closeModal() {
   return `
 
     <input
-      type="hidden"
-      name="id"
-      value="${firstAvailable.id}"
-      data-quickview-variant-id
-    >
+  type="hidden"
+  name="id"
+  value=""
+  data-quickview-variant-id
+>
 
     <div class="pour-quickview__options">
 
@@ -1299,14 +1295,14 @@ function closeModal() {
             >
 
               <input
-                type="radio"
-                name="quickview-size"
-                value="${escapeHTML(size)}"
-                data-quickview-size
-                data-variant-id="${sizeVariant?.id || ''}"
-                ${sizeVariant?.id === firstAvailable.id ? 'checked' : ''}
-                ${sizeVariant?.available ? '' : 'disabled'}
-              >
+  type="radio"
+  name="quickview-size"
+  value="${escapeHTML(size)}"
+  data-quickview-size
+  data-variant-id="${sizeVariant?.id || ''}"
+  ${sizeVariant?.available ? '' : 'disabled'}
+  ${sizeVariant?.available ? 'required' : ''}
+>
 
               <span>
                 ${escapeHTML(size)}
@@ -1477,17 +1473,24 @@ if (quickViewForm) {
 
  function updateQuickViewVariant() {
 
+  // Aucun choix de taille pour ce produit :
+  // on conserve son fonctionnement actuel.
+  if (!quickViewForm.querySelector('[data-quickview-size]')) {
+    return;
+  }
+
   const sizeInput =
     quickViewForm.querySelector(
       '[data-quickview-size]:checked'
     );
 
   const selectedSize =
-    sizeInput
-      ? sizeInput.value
-      : null;
+    sizeInput ? sizeInput.value : null;
 
+  // Aucune taille sélectionnée.
   if (!selectedSize) {
+    variantInput.value = '';
+    submitButton.disabled = true;
     return;
   }
 
@@ -1501,23 +1504,21 @@ if (quickViewForm) {
     );
 
   if (!matchingVariant) {
+    variantInput.value = '';
     submitButton.disabled = true;
     submitButton.textContent =
-  window.PourTranslations?.unavailable || 'INDISPONIBLE';
+      window.PourTranslations?.unavailable || 'INDISPONIBLE';
     return;
   }
 
-  variantInput.value =
-    matchingVariant.id;
+  variantInput.value = matchingVariant.id;
 
-  submitButton.disabled =
-    !matchingVariant.available;
+  submitButton.disabled = !matchingVariant.available;
 
   submitButton.textContent =
-  matchingVariant.available
-    ? (window.PourTranslations?.preorder || 'PRÉCOMMANDEZ')
-    : (window.PourTranslations?.sold_out || 'ÉPUISÉ');
-
+    matchingVariant.available
+      ? (window.PourTranslations?.preorder || 'PRÉCOMMANDEZ')
+      : (window.PourTranslations?.sold_out || 'ÉPUISÉ');
 }
 
   quickViewForm.addEventListener(
