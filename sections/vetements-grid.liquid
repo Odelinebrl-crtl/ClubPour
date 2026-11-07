@@ -276,7 +276,6 @@
 
 </section>
 
-
 <style>
 
 /* =========================================================
@@ -976,9 +975,11 @@ input:checked + span {
   margin-top: 20px;
 }
 
-#VetementsGrid-{{ section.id }} {
-  margin-top: -30px !important;
-}
+{% if section.index > 2 %}
+  #VetementsGrid-{{ section.id }} {
+    margin-top: -40px !important;
+  }
+{% endif %}
 </style>
 
 
