@@ -3260,59 +3260,36 @@ font-weight: 200;
 
 .product-page-pour__style-with-quick-add {
   position: absolute;
-
   right: 14px;
   bottom: 14px;
-
   z-index: 5;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 28px;
-  height: 28px;
-
-  padding: 0;
+  width: auto;
+  height: auto;
+  padding: 11px 14px;
   margin: 0;
-
   border: 0;
   border-radius: 0;
-
   background: #ffffff;
-
+  color: #111111;
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
-
   opacity: 0;
   visibility: hidden;
-
-  transition:
-    opacity .2s ease,
-    visibility .2s ease;
+  transition: opacity .2s ease, visibility .2s ease;
 }
 
 .product-page-pour__style-with-quick-add::before,
 .product-page-pour__style-with-quick-add::after {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  background: #111111;
-
-  transform: translate(-50%, -50%);
-}
-
-.product-page-pour__style-with-quick-add::before {
-  width: 10px;
-  height: 1px;
-}
-
-.product-page-pour__style-with-quick-add::after {
-  width: 1px;
-  height: 10px;
+  display: none;
+  content: none;
 }
 
 .product-page-pour__style-with-media:hover
@@ -3410,17 +3387,16 @@ font-weight: 200;
      Sur mobile il n'y a pas de hover,
      donc le + reste visible.
   */
-
-  .product-page-pour__style-with-quick-add {
-    right: 8px;
-    bottom: 8px;
-
-    width: 26px;
-    height: 26px;
-
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
+.product-page-pour__style-with-quick-add {
+  right: 8px;
+  bottom: 8px;
+  width: auto;
+  height: auto;
+  padding: 10px 12px;
+  font-size: 8px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
   
   @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
   .product-page-pour__gallery {
