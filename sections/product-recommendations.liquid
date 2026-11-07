@@ -53,13 +53,17 @@
 
             <!-- QUICK ADD + -->
 
-            <button
-              type="button"
-              class="product-page-pour__style-with-quick-add"
-              data-quick-add
-              data-product-handle="{{ style_product.handle }}"
-              aria-label="{{ 'pour_recommendations.quick_add_aria' | t }} {{ style_product.title }}"
-            ></button>
+            <!-- QUICK ADD - CHOISIR MA TAILLE -->
+
+<button
+  type="button"
+  class="product-page-pour__style-with-quick-add"
+  data-quick-add
+  data-product-handle="{{ style_product.handle }}"
+  aria-label="Choisir une taille pour {{ style_product.title }}"
+>
+  CHOISIR MA TAILLE
+</button>
 
           </div>
 
