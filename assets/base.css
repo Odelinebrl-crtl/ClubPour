@@ -3682,7 +3682,7 @@ color: #ffffff;
     width: 132px;
   }
 
- .product-page-pour__add {
+.product-page-pour__add {
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
@@ -3690,28 +3690,29 @@ color: #ffffff;
   flex: none !important;
 
   width: 100% !important;
-  max-width: 355px !important;
+  max-width: 100% !important;
   min-width: 0 !important;
 
-  height: 56px !important;
-  min-height: 56px !important;
+  height: 48px !important;
+  min-height: 48px !important;
 
   margin: 0 !important;
-
-  padding: 0 24px !important;
+  padding: 0 20px !important;
 
   border: 1px solid #111111 !important;
 
   background: #111111 !important;
   color: #ffffff !important;
 
-  font-size: 10px !important;
-  font-weight: 400;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 400 !important;
 
   line-height: 1 !important;
-  letter-spacing: .14em;
+  letter-spacing: 0 !important;
 
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 
