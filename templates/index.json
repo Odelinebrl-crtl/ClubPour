@@ -109,37 +109,6 @@
         "heading": "COLLECTION 001"
       }
     },
-    "quote_pour_FCLgBx": {
-      "type": "quote-pour",
-      "name": "Citation POUR",
-      "settings": {
-        "eyebrow": "NOTRE PHILOSOPHIE",
-        "quote": "POUR CEUX QUI PRÉFÈRENT LES ROUTES QUI LONGENT LA MER\nÀ CELLES QUI FONT GAGNER DU TEMPS.",
-        "signature": "Club Pour"
-      }
-    },
-    "featured_collection_pour_EV7y3F": {
-      "type": "featured-collection-pour",
-      "name": "Collection mise en avant",
-      "settings": {
-        "image": "shopify://shop_images/Design_sans_titre-5_e379e23c-41be-424a-a73f-b97cf0131d6d.png",
-        "image_mobile": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
-        "image_tablet": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
-        "eyebrow": "COLLECTION 001",
-        "heading": "RACING AUTOMOBILE",
-        "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
-        "button_label": "ACHETEZ",
-        "button_link": "shopify://pages/collection-001"
-      }
-    },
-    "video_hero_pour_khqU9c": {
-      "type": "video-hero-pour",
-      "name": "Vidéo plein écran POUR",
-      "settings": {
-        "video": "shopify://files/videos/C8594_10921b94-b0c9-4e0f-94dd-1c3fe2c98c8b.mov",
-        "mobile_video": "shopify://files/videos/C8594_8e766147-86d5-4b0f-99e4-f6439f8903c2.mov"
-      }
-    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -176,6 +145,37 @@
         "heading": "PORTÉ PAR VOUS"
       }
     },
+    "featured_collection_pour_EV7y3F": {
+      "type": "featured-collection-pour",
+      "name": "Collection mise en avant",
+      "settings": {
+        "image": "shopify://shop_images/Design_sans_titre-5_e379e23c-41be-424a-a73f-b97cf0131d6d.png",
+        "image_mobile": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
+        "image_tablet": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
+        "eyebrow": "COLLECTION 001",
+        "heading": "RACING AUTOMOBILE",
+        "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
+        "button_label": "ACHETEZ",
+        "button_link": "shopify://pages/collection-001"
+      }
+    },
+    "quote_pour_FCLgBx": {
+      "type": "quote-pour",
+      "name": "Citation POUR",
+      "settings": {
+        "eyebrow": "NOTRE PHILOSOPHIE",
+        "quote": "POUR CEUX QUI PRÉFÈRENT LES ROUTES QUI LONGENT LA MER\nÀ CELLES QUI FONT GAGNER DU TEMPS.",
+        "signature": "Club Pour"
+      }
+    },
+    "video_hero_pour_khqU9c": {
+      "type": "video-hero-pour",
+      "name": "Vidéo plein écran POUR",
+      "settings": {
+        "video": "shopify://files/videos/C8594_10921b94-b0c9-4e0f-94dd-1c3fe2c98c8b.mov",
+        "mobile_video": "shopify://files/videos/C8594_8e766147-86d5-4b0f-99e4-f6439f8903c2.mov"
+      }
+    },
     "editorial_image_pour_FREXwq": {
       "type": "editorial-image-pour",
       "name": "Bloc image éditorial",
@@ -194,10 +194,10 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
-    "quote_pour_FCLgBx",
-    "featured_collection_pour_EV7y3F",
-    "video_hero_pour_khqU9c",
     "community_feed_pour_4VTp68",
+    "featured_collection_pour_EV7y3F",
+    "quote_pour_FCLgBx",
+    "video_hero_pour_khqU9c",
     "editorial_image_pour_FREXwq"
   ]
 }
