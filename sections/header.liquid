@@ -519,7 +519,12 @@
   </span>
 
 </div>
-
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+  <div class="cart-drawer__total cart-drawer__delivery-from">
+    <span>FRAIS DE LIVRAISON À PARTIR DE</span>
+    <span>4,42 €</span>
+  </div>
+{% endif %}
       <p class="cart-drawer__shipping">
         {{ 'pour_header.cart_drawer.shipping_taxes' | t }}
       </p>
@@ -1195,7 +1200,11 @@ transition:
   text-transform: uppercase;
 }
 
-
+.cart-drawer__delivery-from {
+  margin-top: 9px;
+  font-size: 9px;
+  letter-spacing: .05em;
+}
 .cart-drawer__shipping {
   margin:
     13px
@@ -2878,8 +2887,12 @@ const imageHTML = item.image
 </span>
 
   </div>
-
-
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+  <div class="cart-drawer__total cart-drawer__delivery-from">
+    <span>FRAIS DE LIVRAISON À PARTIR DE</span>
+    <span>4,42 €</span>
+  </div>
+{% endif %}
         <p class="cart-drawer__shipping">
           {{ 'pour_header.cart_drawer.shipping_taxes' | t }}
         </p>
