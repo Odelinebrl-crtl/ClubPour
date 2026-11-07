@@ -55,7 +55,8 @@
       "settings": {
         "eyebrow": "L’UNIVERS POUR",
         "heading": "COLLECTION MÉDITERANÉENNE",
-        "description": "Quatre t-shirts inspirés des routes du Sud"
+        "description": "Quatre t-shirts inspirés des routes du Sud",
+        "reduce_top_spacing": false
       }
     },
     "vetements_grid_fE3YqH": {
@@ -104,7 +105,8 @@
       "settings": {
         "eyebrow": "",
         "heading": "LES SIGNATURES POUR",
-        "description": "L’essence de CLUB POUR, à porter sur vous"
+        "description": "L’essence de CLUB POUR, à porter sur vous",
+        "reduce_top_spacing": true
       }
     },
     "vetements_grid_VWDWAQ": {
@@ -135,7 +137,8 @@
       "settings": {
         "eyebrow": "",
         "heading": "COLLECTION RACING AUTOMOBILE",
-        "description": "L’ADN du racing, à porter sur vous"
+        "description": "L’ADN du racing, à porter sur vous",
+        "reduce_top_spacing": true
       }
     }
   },
