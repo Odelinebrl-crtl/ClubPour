@@ -218,11 +218,11 @@
         {% form 'product', product, class: 'product-page-pour__form' %}
 
           <input
-            type="hidden"
-            name="id"
-            value="{{ product.selected_or_first_available_variant.id }}"
-            data-product-variant-id
-          >
+  type="hidden"
+  name="id"
+  value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
+  data-product-variant-id
+>
 
           {% unless product.has_only_default_variant %}
 
@@ -245,7 +245,6 @@
       type="radio"
       name="options[{{ option.name | escape }}]"
       value="{{ value | escape }}"
-      {% if option.selected_value == value %}checked{% endif %}
       {% assign value_available = false %}
       {% for variant in product.variants %}
         {% if variant.available and variant.options contains value %}
@@ -296,12 +295,16 @@
 
             </div>
 
-           <button
+          <button
   type="submit"
   class="product-page-pour__add"
-  {% unless product.selected_or_first_available_variant.available %}
+  {% if product.has_only_default_variant %}
+    {% unless product.selected_or_first_available_variant.available %}
+      disabled
+    {% endunless %}
+  {% else %}
     disabled
-  {% endunless %}
+  {% endif %}
 >
   {% if product.selected_or_first_available_variant.available %}
     {{ 'pour_product.preorder' | t }}
