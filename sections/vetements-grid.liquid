@@ -974,7 +974,12 @@ input:checked + span {
 #VetementsGrid-{{ section.id }} .vetements-grid__header .vetements-grid__eyebrow:last-child {
   margin-top: 20px;
 }
-
+{% if section.index > 2 %}
+  #shopify-section-{{ section.id }} {
+    margin-top: -50px !important;
+    padding-top: 0 !important;
+  }
+{% endif %}
 </style>
 
 
