@@ -96,6 +96,7 @@
   "size": "Taille",
   "loading": "Chargement",
   "preorder": "Ajouter au panier",
+  "choose_size": "CHOISIR MA TAILLE",
   "unavailable": "Produit indisponible"
 },
 "pour_common": {
@@ -543,9 +544,6 @@
               "eligible": {
         "title": "ACCÈS RÉSERVÉ AUX MEMBRES ÉLIGIBLES.",
         "text": "Cumulez 100 € d’achats chez POUR pour débloquer les éditions privées du Club Privilèges."
-      }
-    },
-  "pour_products": {
-    "choose_size": "CHOISIR MA TAILLE"
-  }
+        }
+}
 }
