@@ -727,8 +727,15 @@
 }
 
 #VetementsGrid-{{ section.id }}
-.vetements-qv__variant
-input:checked + span {
+.vetements-qv__variant span {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__variant input:checked + span {
   background-color: #111111 !important;
   color: #ffffff !important;
   border: 1px solid #111111 !important;
