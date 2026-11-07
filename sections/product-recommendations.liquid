@@ -60,9 +60,9 @@
   class="product-page-pour__style-with-quick-add"
   data-quick-add
   data-product-handle="{{ style_product.handle }}"
-  aria-label="Choisir une taille pour {{ style_product.title }}"
+  aria-label="{{ 'pour_products.choose_size' | t }} - {{ style_product.title }}"
 >
-  CHOISIR MA TAILLE
+  {{ 'pour_products.choose_size' | t }}
 </button>
 
           </div>
