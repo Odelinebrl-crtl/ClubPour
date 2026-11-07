@@ -3650,7 +3650,43 @@ const addButtonText =
 
 const variants =
   {{ product.variants | json }};
+const guideLanguage = {{ localization.language.iso_code | json }}
+  .toLowerCase()
+  .slice(0, 2);
 
+const guideTranslations = {
+  fr: {
+    add: 'AJOUTER AU PANIER — ',
+    soldOut: 'TAILLE ÉPUISÉE'
+  },
+  en: {
+    add: 'ADD TO CART — ',
+    soldOut: 'SIZE SOLD OUT'
+  },
+  it: {
+    add: 'AGGIUNGI AL CARRELLO — ',
+    soldOut: 'TAGLIA ESAURITA'
+  },
+  es: {
+    add: 'AÑADIR AL CARRITO — ',
+    soldOut: 'TALLA AGOTADA'
+  },
+  pt: {
+    add: 'ADICIONAR AO CARRINHO — ',
+    soldOut: 'TAMANHO ESGOTADO'
+  },
+  de: {
+    add: 'IN DEN WARENKORB — ',
+    soldOut: 'GRÖSSE AUSVERKAUFT'
+  },
+  nl: {
+    add: 'TOEVOEGEN AAN WINKELWAGEN — ',
+    soldOut: 'MAAT UITVERKOCHT'
+  }
+};
+
+const guideText =
+  guideTranslations[guideLanguage] || guideTranslations.fr;
   function openSizeGuide() {
 
     guide.classList.add(
@@ -3846,8 +3882,8 @@ guide.addEventListener(
 
           addButton.disabled = true;
 
-          addButtonText.textContent =
-            'TAILLE ÉPUISÉE';
+        addButtonText.textContent =
+  guideText.soldOut;
 
           return;
         }
@@ -3868,8 +3904,8 @@ guide.addEventListener(
           );
 
 
-        addButtonText.textContent =
-          'AJOUTER AU PANIER — ' + price;
+    addButtonText.textContent =
+  guideText.add + price;
 
       },
       0
