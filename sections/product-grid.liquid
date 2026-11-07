@@ -440,6 +440,55 @@
   border-color: #111111;
   box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
 }
+
+/* QUICK ADD — CHOISIR MA TAILLE */
+
+#PourProducts-{{ section.id }} .pour-product__quick-add {
+  position: absolute !important;
+  right: 8px !important;
+  bottom: 8px !important;
+  z-index: 30 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  min-width: 112px !important;
+  max-width: none !important;
+  height: 32px !important;
+  min-height: 32px !important;
+
+  padding: 0 10px !important;
+  margin: 0 !important;
+
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-align: center !important;
+
+  cursor: pointer;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Suppression définitive du + */
+
+#PourProducts-{{ section.id }} .pour-product__quick-add::before,
+#PourProducts-{{ section.id }} .pour-product__quick-add::after {
+  content: none !important;
+  display: none !important;
+}
 </style>
 
 
