@@ -281,6 +281,7 @@
   class="cart-drawer"
   data-cart-drawer
   aria-hidden="true"
+  style="visibility: hidden;"
 >
 
   <!-- HEADER -->
@@ -2394,6 +2395,7 @@ if (mobileMenuButton) {
 document.body.classList.remove(
   'mobile-menu-open'
 );
+drawer.style.visibility = 'visible';
     drawer.classList.add(
       'is-active'
     );
@@ -2439,7 +2441,11 @@ document.body.classList.remove(
       drawer.classList.remove(
         'is-active'
       );
-
+window.setTimeout(() => {
+  if (!drawer.classList.contains('is-active')) {
+    drawer.style.visibility = 'hidden';
+  }
+}, 600);
       drawer.setAttribute(
         'aria-hidden',
         'true'
