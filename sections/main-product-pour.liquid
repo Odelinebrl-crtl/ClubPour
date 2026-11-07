@@ -298,6 +298,8 @@
           <button
   type="submit"
   class="product-page-pour__add"
+  data-pour-back-in-stock-open
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
   {% if product.has_only_default_variant %}
     {% unless product.selected_or_first_available_variant.available %}
       disabled
@@ -309,18 +311,8 @@
   {% if product.selected_or_first_available_variant.available %}
     {{ 'pour_product.preorder' | t }}
   {% else %}
-    {{ 'pour_product.sold_out' | t }}
+    {{ 'pour_product.notify_me' | t }}
   {% endif %}
-</button>
-
-<button
-  type="button"
-  class="product-page-pour__back-in-stock"
-  data-pour-back-in-stock-open
-  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-  style="display: none;"
->
-  {{ 'pour_product.notify_me' | t }}
 </button>
 
           </div>
@@ -3948,42 +3940,23 @@ function updateSoldOutOptions() {
 
 
    const submitButton =
-  form.querySelector(
-    '.product-page-pour__add'
-  );
-
-const backInStockButton =
-  form.querySelector(
-    '[data-pour-back-in-stock-open]'
-  );
+  form.querySelector('.product-page-pour__add');
 
 if (submitButton) {
-  submitButton.disabled =
-    !matchingVariant.available;
+  submitButton.dataset.variantId = matchingVariant.id;
 
-  submitButton.textContent =
-    matchingVariant.available
-      ? '{{ 'pour_product.preorder' | t }}'
-      : 'ÉPUISÉ';
-
-submitButton.style.display =
-  matchingVariant.available
-    ? ''
-    : 'none';
-}
-
-if (backInStockButton) {
-  backInStockButton.dataset.variantId =
-    matchingVariant.id;
-
-  backInStockButton.style.display =
-    matchingVariant.available
-      ? 'none'
-      : 'flex';
-}
-
+  if (matchingVariant.available) {
+    submitButton.type = 'submit';
+    submitButton.disabled = false;
+    submitButton.textContent = '{{ 'pour_product.preorder' | t }}';
+    submitButton.dataset.notifyUnavailable = 'false';
+  } else {
+    submitButton.type = 'button';
+    submitButton.disabled = false;
+    submitButton.textContent = '{{ 'pour_product.notify_me' | t }}';
+    submitButton.dataset.notifyUnavailable = 'true';
   }
-
+}
 
   form.addEventListener(
     'change',
@@ -4843,7 +4816,9 @@ if (backInStockButton) {
           'click',
           function () {
 
-            openBackInStockPanel(trigger);
+            if (trigger.dataset.notifyUnavailable === 'true') {
+  openBackInStockPanel(trigger);
+}
 
           }
         );
