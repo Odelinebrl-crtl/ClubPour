@@ -232,7 +232,8 @@
   "view_product": "VER EL PRODUCTO"
   },
   "collection_001": {
-  "discover": "DESCUBRIR"
+  "discover": "DESCUBRIR",
+  "discover_collection": "Descubre la colección"
 },
 "club_privileges": {
   "hero_eyebrow": "CLUB POUR",
