@@ -974,10 +974,9 @@ input:checked + span {
 #VetementsGrid-{{ section.id }} .vetements-grid__header .vetements-grid__eyebrow:last-child {
   margin-top: 20px;
 }
-{% if section.index > 2 %}
+{% if section.settings.reduce_top_spacing %}
   #shopify-section-{{ section.id }} {
-    margin-top: -50px !important;
-    padding-top: 0 !important;
+    margin-top: -40px !important;
   }
 {% endif %}
 </style>
@@ -1411,6 +1410,12 @@ input:checked + span {
   "id": "description",
   "label": "Sous-titre secondaire",
   "default": "DÉCOUVREZ NOS MODÈLES"
+},
+{
+  "type": "checkbox",
+  "id": "reduce_top_spacing",
+  "label": "Réduire l'espace au-dessus",
+  "default": false
 }
   ],
 
