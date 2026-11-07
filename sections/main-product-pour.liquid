@@ -323,7 +323,58 @@
   {{ 'pour_product.notify_me' | t }}
 </button>
 
-          </div>
+                    </div>
+
+<div
+  class="product-page-pour__offer-countdown"
+  data-offer-countdown
+  data-deadline="2026-11-08T23:59:59+01:00"
+>
+
+  <p class="product-page-pour__offer-title">
+    {% case localization.language.iso_code %}
+      {% when 'en' %}
+        EXCLUSIVE OFFER · 15% OFF
+      {% when 'it' %}
+        OFFERTA ESCLUSIVA · -15%
+      {% when 'es' %}
+        OFERTA EXCLUSIVA · -15%
+      {% when 'pt' %}
+        OFERTA EXCLUSIVA · -15%
+      {% when 'de' %}
+        EXKLUSIVES ANGEBOT · -15%
+      {% when 'nl' %}
+        EXCLUSIEVE AANBIEDING · -15%
+      {% else %}
+        OFFRE EXCLUSIVE · -15 %
+    {% endcase %}
+  </p>
+
+  <p class="product-page-pour__offer-timer">
+    <span data-countdown-time>00:00:00</span>
+  </p>
+
+  <p class="product-page-pour__offer-code">
+    {% case localization.language.iso_code %}
+      {% when 'en' %}
+        USE CODE POUR15 · ENDS SUNDAY AT 11:59 PM
+      {% when 'it' %}
+        CODICE POUR15 · FINO A DOMENICA ALLE 23:59
+      {% when 'es' %}
+        CÓDIGO POUR15 · HASTA EL DOMINGO A LAS 23:59
+      {% when 'pt' %}
+        CÓDIGO POUR15 · ATÉ DOMINGO ÀS 23:59
+      {% when 'de' %}
+        CODE POUR15 · BIS SONNTAG UM 23:59 UHR
+      {% when 'nl' %}
+        CODE POUR15 · TOT ZONDAG 23:59 UUR
+      {% else %}
+        CODE POUR15 · JUSQU'À DIMANCHE 23H59
+    {% endcase %}
+  </p>
+
+</div>
+
 <p class="product-page-pour__preorder-note">
   {{ 'pour_product.preorder_note' | t }}
 </p>
@@ -3466,6 +3517,65 @@ font-weight: 200;
     backface-visibility: hidden;
   }
 }
+
+/* =========================================================
+   COMPTE À REBOURS — OFFRE POUR15
+========================================================= */
+
+.product-page-pour__offer-countdown {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  box-sizing: border-box;
+
+  margin: 12px 0 10px;
+  padding: 13px 10px;
+
+  background: #F3F0EA;
+  color: #111111;
+
+  text-align: center;
+  pointer-events: none;
+}
+
+.product-page-pour__offer-title {
+  margin: 0 0 7px;
+
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .10em;
+}
+
+.product-page-pour__offer-timer {
+  margin: 0 0 6px;
+
+  font-size: 23px;
+  font-weight: 500;
+  line-height: 1;
+
+  letter-spacing: .08em;
+  font-variant-numeric: tabular-nums;
+}
+
+.product-page-pour__offer-code {
+  margin: 0;
+
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: .06em;
+}
+
+@media screen and (max-width: 768px) {
+  .product-page-pour__offer-countdown {
+    width: 100%;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    padding: 15px 10px;
+  }
+}
 </style>
 
 <script>
@@ -5144,6 +5254,77 @@ if (
 
 })();
 
+</script>
+
+<script>
+(function () {
+
+  const countdowns = document.querySelectorAll(
+    '[data-offer-countdown]'
+  );
+
+  countdowns.forEach(function (countdown) {
+
+    const deadline = new Date(
+      countdown.dataset.deadline
+    ).getTime();
+
+    const timer = countdown.querySelector(
+      '[data-countdown-time]'
+    );
+
+    if (!timer || !Number.isFinite(deadline)) {
+      countdown.remove();
+      return;
+    }
+
+    function updateCountdown() {
+
+      const now = Date.now();
+      const remaining = deadline - now;
+
+      if (remaining <= 0) {
+        countdown.remove();
+        return false;
+      }
+
+      const totalSeconds = Math.floor(
+        remaining / 1000
+      );
+
+      const hours = Math.floor(
+        totalSeconds / 3600
+      );
+
+      const minutes = Math.floor(
+        (totalSeconds % 3600) / 60
+      );
+
+      const seconds = totalSeconds % 60;
+
+      timer.textContent =
+        String(hours).padStart(2, '0') + ':' +
+        String(minutes).padStart(2, '0') + ':' +
+        String(seconds).padStart(2, '0');
+
+      return true;
+    }
+
+    if (updateCountdown()) {
+
+      const interval = setInterval(function () {
+
+        if (!updateCountdown()) {
+          clearInterval(interval);
+        }
+
+      }, 1000);
+
+    }
+
+  });
+
+})();
 </script>
 
 {% schema %}
