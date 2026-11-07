@@ -1363,98 +1363,77 @@ input:checked + span {
   }
 
 
-  function buildVariants(product) {
+  
+function buildVariants(product) {
 
-    const variants =
-      product.variants || [];
+  const variants = product.variants || [];
 
+  if (!variants.length) {
+    return '';
+  }
 
-    if (!variants.length) {
-      return '';
-    }
-
-
-    if (
-      variants.length === 1 &&
-      variants[0].title === 'Default Title'
-    ) {
-
-      return `
-        <input
-          type="hidden"
-          name="id"
-          value="${variants[0].id}"
-        >
-      `;
-
-    }
-
-
-    const firstAvailable =
-      variants.findIndex(
-        variant => variant.available
-      );
-
-
+  if (
+    variants.length === 1 &&
+    variants[0].title === 'Default Title'
+  ) {
     return `
+      <input
+        type="hidden"
+        name="id"
+        value="${variants[0].id}"
+      >
+    `;
+  }
 
-      <div class="club-privilege-qv__options">
+  return `
 
-        <p class="club-privilege-qv__option-label">
-          {{ 'pour_products.size' | t }} :
-        </p>
+    <div class="club-privilege-qv__options">
 
-        <div class="club-privilege-qv__variants">
+      <p class="club-privilege-qv__option-label">
+        {{ 'pour_products.size' | t }} :
+      </p>
 
-          ${variants.map(
-            (variant, index) => {
+      <div class="club-privilege-qv__variants">
 
-              const checked =
-                index === firstAvailable
-                  ? 'checked'
-                  : '';
+        ${variants.map((variant) => {
 
-              const disabled =
-                variant.available
-                  ? ''
-                  : 'disabled';
+          const disabled = variant.available
+            ? ''
+            : 'disabled';
 
+          return `
+            <label
+              class="
+                club-privilege-qv__variant
+                ${variant.available ? '' : 'is-disabled'}
+              "
+            >
 
-              return `
+              <input
+                type="radio"
+                name="id"
+                value="${variant.id}"
+                required
+                ${disabled}
+              >
 
-                <label
-                  class="
-                    club-privilege-qv__variant
-                    ${variant.available ? '' : 'is-disabled'}
-                  "
-                >
+              <span>
+                ${escapeHTML(variant.title)}
+              </span>
 
-                  <input
-                    type="radio"
-                    name="id"
-                    value="${variant.id}"
-                    ${checked}
-                    ${disabled}
-                  >
+            </label>
+          `;
 
-                  <span>
-                    ${escapeHTML(variant.title)}
-                  </span>
-
-                </label>
-
-              `;
-
-            }
-          ).join('')}
-
-        </div>
+        }).join('')}
 
       </div>
 
-    `;
+    </div>
 
-  }
+  `;
+
+}
+
 
 
   async function loadProduct(handle) {
