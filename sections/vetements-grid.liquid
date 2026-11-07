@@ -127,12 +127,14 @@
               ========================== -->
 
               <button
-                type="button"
-                class="vetements-card__quick-add"
-                data-vetements-quick-add
-                data-product-handle="{{ featured_product.handle }}"
-                aria-label="{{ 'pour_products.quick_add_aria' | t }} {{ featured_product.title }}"
-              ></button>
+  type="button"
+  class="vetements-card__quick-add"
+  data-vetements-quick-add
+  data-product-handle="{{ featured_product.handle }}"
+  aria-label="Ajouter au panier - {{ featured_product.title }}"
+>
+  AJOUTER AU PANIER
+</button>
 
             </div>
 
@@ -362,79 +364,61 @@
    QUICK ADD +
 ========================================================= */
 
-#VetementsGrid-{{ section.id }}
-.vetements-card__quick-add {
-  position: absolute;
+/* BOUTON AJOUTER AU PANIER */
 
+#VetementsGrid-{{ section.id }} .vetements-card__quick-add {
+  position: absolute;
   right: 8px;
   bottom: 8px;
-
   z-index: 30;
 
-  width: 28px;
-  height: 28px;
+  width: auto;
+  height: 32px;
+  padding: 0 13px;
 
-  min-width: 28px;
-  min-height: 28px;
-
-  padding: 0;
-  margin: 0;
-
-  border: 0;
+  border: 1px solid #111111;
   border-radius: 0;
 
   background: #ffffff;
+  color: #111111;
 
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+
+  white-space: nowrap;
   cursor: pointer;
 
   opacity: 0;
   visibility: hidden;
-
   transform: translateY(3px);
 
   transition:
-    opacity .18s ease,
-    visibility .18s ease,
-    transform .25s cubic-bezier(.22,1,.36,1);
+    opacity 0.3s ease,
+    visibility 0.3s ease,
+    transform 0.3s ease;
 
   appearance: none;
   -webkit-appearance: none;
 }
 
-#VetementsGrid-{{ section.id }}
-.vetements-card__quick-add::before {
-  content: "";
+/* Apparition au survol */
 
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  width: 10px;
-  height: 1px;
-
-  background: #111111;
-
-  transform:
-    translate(-50%, -50%);
+#VetementsGrid-{{ section.id }} .vetements-card__media:hover .vetements-card__quick-add {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
 }
 
-#VetementsGrid-{{ section.id }}
-.vetements-card__quick-add::after {
-  content: "";
+/* Mobile et écrans tactiles */
 
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  width: 1px;
-  height: 10px;
-
-  background: #111111;
-
-  transform:
-    translate(-50%, -50%);
+@media (hover: none) {
+  #VetementsGrid-{{ section.id }} .vetements-card__quick-add {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
 }
 
 #VetementsGrid-{{ section.id }}
