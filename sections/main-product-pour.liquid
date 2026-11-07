@@ -3958,28 +3958,27 @@ const backInStockButton =
   );
 
 if (submitButton) {
-  submitButton.disabled =
-    !matchingVariant.available;
+  submitButton.disabled = !matchingVariant.available;
 
   submitButton.textContent =
-    matchingVariant.available
-      ? '{{ 'pour_product.preorder' | t }}'
-      : 'ÉPUISÉ';
+    '{{ 'pour_product.preorder' | t }}';
 
-submitButton.style.display =
-  matchingVariant.available
-    ? ''
-    : 'none';
+  if (matchingVariant.available) {
+    submitButton.style.removeProperty('display');
+    submitButton.style.removeProperty('display');
+  } else {
+    submitButton.style.setProperty('display', 'none', 'important');
+  }
 }
 
 if (backInStockButton) {
-  backInStockButton.dataset.variantId =
-    matchingVariant.id;
+  backInStockButton.dataset.variantId = matchingVariant.id;
 
-  backInStockButton.style.display =
-    matchingVariant.available
-      ? 'none'
-      : 'flex';
+  backInStockButton.style.setProperty(
+    'display',
+    matchingVariant.available ? 'none' : 'flex',
+    'important'
+  );
 }
 
   }
