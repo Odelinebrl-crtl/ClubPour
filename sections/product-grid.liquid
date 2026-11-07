@@ -237,11 +237,22 @@
         ›
       </button>
 
+       </div>
+
+    <!-- BOUTON ACHETER -->
+
+    <div class="pour-products__cta">
+      <a
+        href="{{ pages['collection-001'].url }}"
+        class="pour-hero__submit"
+      >
+        <span class="pour-hero__submit-text">
+          ACHETEZ NOS T-SHIRTS
+        </span>
+      </a>
     </div>
 
   </div>
-
-
 
 </section>
 
@@ -434,7 +445,17 @@
   border-color: #000000;
 }
 
+/* BOUTON ACHETER SOUS LES PRODUITS */
 
+#PourProducts-{{ section.id }} .pour-products__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 35px;
+}
 
 </style>
 
