@@ -145,6 +145,15 @@
         "heading": "PORTÉ PAR VOUS"
       }
     },
+    "quote_pour_FCLgBx": {
+      "type": "quote-pour",
+      "name": "Citation POUR",
+      "settings": {
+        "eyebrow": "NOTRE PHILOSOPHIE",
+        "quote": "POUR CEUX QUI PRÉFÈRENT LES ROUTES QUI LONGENT LA MER\nÀ CELLES QUI FONT GAGNER DU TEMPS.",
+        "signature": "Club Pour"
+      }
+    },
     "featured_collection_pour_EV7y3F": {
       "type": "featured-collection-pour",
       "name": "Collection mise en avant",
@@ -157,15 +166,6 @@
         "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
         "button_label": "ACHETEZ",
         "button_link": "shopify://pages/collection-001"
-      }
-    },
-    "quote_pour_FCLgBx": {
-      "type": "quote-pour",
-      "name": "Citation POUR",
-      "settings": {
-        "eyebrow": "NOTRE PHILOSOPHIE",
-        "quote": "POUR CEUX QUI PRÉFÈRENT LES ROUTES QUI LONGENT LA MER\nÀ CELLES QUI FONT GAGNER DU TEMPS.",
-        "signature": "Club Pour"
       }
     },
     "video_hero_pour_khqU9c": {
@@ -195,8 +195,8 @@
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
     "community_feed_pour_4VTp68",
-    "featured_collection_pour_EV7y3F",
     "quote_pour_FCLgBx",
+    "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
     "editorial_image_pour_FREXwq"
   ]
