@@ -93,9 +93,91 @@
         "heading": "COLLECTION MÉDITERANÉENNE",
         "description": "Quatre t-shirts inspirés des routes du Sud"
       }
+    },
+    "vetements_grid_fE3YqH": {
+      "type": "vetements-grid",
+      "blocks": {
+        "product_eLefDr": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-peperoncino",
+            "image_primary": "shopify://shop_images/35_fca6fd88-2b49-4821-8cf4-2b1876bf363c.png",
+            "image_hover": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_017_26314af9-1f76-4d02-a14e-23117f2ef277.jpg"
+          }
+        },
+        "product_dYXFHp": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-club-pour",
+            "image_primary": "shopify://shop_images/19_175a80af-ee94-44ef-9fd0-bfce726cccb2.png",
+            "image_hover": "shopify://shop_images/20_9ec97dc5-2c92-469b-96d3-ec8445a485dd.png"
+          }
+        },
+        "product_yf8che": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-pegasus",
+            "image_primary": "shopify://shop_images/15_eeae9a4a-ec15-48cb-b7ea-d3ca209c0d3e.png",
+            "image_hover": "shopify://shop_images/16_7a8973db-3b5e-4107-a410-1cc0373e8a93.png"
+          }
+        },
+        "product_tqcyGa": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-monaco-94",
+            "image_primary": "shopify://shop_images/23_15fdf2a3-f313-457a-927a-47c71b72e9a1.png",
+            "image_hover": "shopify://shop_images/24_393e715b-8b4b-4c04-b076-acd5c1bdca0b.png"
+          }
+        }
+      },
+      "block_order": [
+        "product_eLefDr",
+        "product_dYXFHp",
+        "product_yf8che",
+        "product_tqcyGa"
+      ],
+      "name": "Grille Vêtements",
+      "settings": {
+        "eyebrow": "",
+        "heading": "LES SIGNATURES POUR",
+        "description": "L’essence de CLUB POUR, à porter sur vous"
+      }
+    },
+    "vetements_grid_VWDWAQ": {
+      "type": "vetements-grid",
+      "blocks": {
+        "product_D6Am4A": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-club-pour",
+            "image_primary": "shopify://shop_images/19_175a80af-ee94-44ef-9fd0-bfce726cccb2.png",
+            "image_hover": "shopify://shop_images/20_9ec97dc5-2c92-469b-96d3-ec8445a485dd.png"
+          }
+        },
+        "product_HXA3j4": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-monaco-94",
+            "image_primary": "shopify://shop_images/23_15fdf2a3-f313-457a-927a-47c71b72e9a1.png",
+            "image_hover": "shopify://shop_images/24_393e715b-8b4b-4c04-b076-acd5c1bdca0b.png"
+          }
+        }
+      },
+      "block_order": [
+        "product_D6Am4A",
+        "product_HXA3j4"
+      ],
+      "name": "Grille Vêtements",
+      "settings": {
+        "eyebrow": "",
+        "heading": "COLLECTION RACING AUTOMOBILE",
+        "description": "L’ADN du racing, à porter sur vous"
+      }
     }
   },
   "order": [
-    "vetements_grid_Aa73e7"
+    "vetements_grid_Aa73e7",
+    "vetements_grid_fE3YqH",
+    "vetements_grid_VWDWAQ"
   ]
 }
