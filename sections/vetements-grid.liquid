@@ -2,7 +2,9 @@
   id="VetementsGrid-{{ section.id }}"
   class="vetements-grid"
 >
-
+{% if section.settings.anchor_id != blank %}
+  <span id="{{ section.settings.anchor_id }}"></span>
+{% endif %}
   <div class="vetements-grid__inner">
 
     <!-- =========================
@@ -1416,7 +1418,12 @@ input:checked + span {
   "id": "reduce_top_spacing",
   "label": "Réduire l'espace au-dessus",
   "default": false
-}
+},
+{
+  "type": "text",
+  "id": "anchor_id",
+  "label": "Identifiant d'ancrage"
+},
   ],
 
   "blocks": [
