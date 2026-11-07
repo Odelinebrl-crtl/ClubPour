@@ -202,6 +202,7 @@
   "size": "Größe",
   "loading": "Wird geladen",
   "preorder": "In den Warenkorb legen",
+      "choose_size": "MEINE GRÖSSE AUSWÄHLEN",
   "unavailable": "Produkt nicht verfügbar"
 },
 "pour_common": {
@@ -675,8 +676,5 @@
     "future_title": "Gestalten wir gemeinsam, was kommt.",
     "future_text": "POUR wird sich mit der Zeit weiterentwickeln. Neue Kleidungsstücke, Accessoires, neue Inspirationen und Erlebnisse, die wir mit all jenen teilen möchten, die Teil dieser Reise werden. Denn bei POUR geht es um mehr als den Kauf eines Kleidungsstücks. Es geht darum, Teil einer Geschichte zu werden, die wir gemeinsam schreiben.",
     "final_link_label": "Kollektion entdecken"
-    },
-  "pour_products": {
-    "choose_size": "MEINE GRÖSSE AUSWÄHLEN"
+    }
   }
-}
