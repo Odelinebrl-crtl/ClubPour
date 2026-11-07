@@ -187,7 +187,6 @@
   "size": "Size",
   "loading": "Loading",
   "preorder": "Add to Cart",
-      "choose_size": "CHOOSE MY SIZE",
   "unavailable": "Product unavailable"
 },
 "pour_recommendations": {
@@ -200,7 +199,8 @@
   "size": "Size",
   "loading": "Loading",
   "preorder": "Add to Cart",
-  "unavailable": "Product unavailable"
+  "unavailable": "Product unavailable",
+  "choose_size": "CHOOSE MY SIZE"
 },
   "pour_common": {
   "view_product": "VIEW PRODUCT"
