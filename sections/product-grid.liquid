@@ -141,12 +141,14 @@
                 ========================================== -->
 
                 <button
-                  type="button"
-                  class="pour-product__quick-add"
-                 data-quick-add
-                  data-product-handle="{{ featured_product.handle }}"
-                  aria-label="{{ 'pour_products.quick_add_aria' | t }} {{ featured_product.title }}"
-                ></button>
+  type="button"
+  class="pour-product__quick-add"
+  data-quick-add
+  data-product-handle="{{ featured_product.handle }}"
+  aria-label="Choisir ma taille - {{ featured_product.title }}"
+>
+  CHOISIR MA TAILLE
+</button>
 
               </div>
 
@@ -360,45 +362,6 @@
 
 
 /* trait horizontal */
-
-#PourProducts-{{ section.id }}
-.pour-product__quick-add::before {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  width: 10px;
-  height: 1px;
-
-  background: #111111;
-
-  transform:
-    translate(-50%, -50%);
-}
-
-
-/* trait vertical */
-
-#PourProducts-{{ section.id }}
-.pour-product__quick-add::after {
-  content: "";
-
-  position: absolute;
-
-  top: 50%;
-  left: 50%;
-
-  width: 1px;
-  height: 10px;
-
-  background: #111111;
-
-  transform:
-    translate(-50%, -50%);
-}
 
 
 /* apparition seulement au hover */
