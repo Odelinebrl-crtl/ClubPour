@@ -298,8 +298,6 @@
           <button
   type="submit"
   class="product-page-pour__add"
-  data-pour-back-in-stock-open
-  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
   {% if product.has_only_default_variant %}
     {% unless product.selected_or_first_available_variant.available %}
       disabled
@@ -311,8 +309,18 @@
   {% if product.selected_or_first_available_variant.available %}
     {{ 'pour_product.preorder' | t }}
   {% else %}
-    {{ 'pour_product.notify_me' | t }}
+    {{ 'pour_product.sold_out' | t }}
   {% endif %}
+</button>
+
+<button
+  type="button"
+  class="product-page-pour__back-in-stock"
+  data-pour-back-in-stock-open
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  style="display: none;"
+>
+  {{ 'pour_product.notify_me' | t }}
 </button>
 
           </div>
@@ -3791,125 +3799,210 @@ if (addButton && productForm) {
   );
 
 })();
+</script>
 </section>
 <script>
-
 (function () {
-  const productSection = document.querySelector(
-    '.product-page-pour[data-product-page]'
-  );
+
+  const productSection =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
 
   if (!productSection) return;
 
-  const form = productSection.querySelector(
-    '.product-page-pour__form'
-  );
+  const form =
+    productSection.querySelector(
+      '.product-page-pour__form'
+    );
 
   if (!form) return;
 
-  const variantInput = form.querySelector(
-    '[data-product-variant-id]'
-  );
-
-  const submitButton = form.querySelector(
-    '.product-page-pour__add'
-  );
-
-  const variants = {{ product.variants | json }};
-
-  if (!variantInput || !submitButton) return;
-
-  function updateSoldOutOptions() {
-    const optionGroups = Array.from(
-      form.querySelectorAll('.product-page-pour__option')
+  const variantInput =
+    form.querySelector(
+      '[data-product-variant-id]'
     );
 
-    const optionNames = optionGroups.map(group => {
-      const input = group.querySelector('input[name^="options["]');
-      return input ? input.name : null;
-    });
-
-    optionGroups.forEach((group, optionIndex) => {
-      const inputs = Array.from(
-        group.querySelectorAll('input[type="radio"]')
-      );
-
-      inputs.forEach(input => {
-        const candidateValues = optionNames.map((name, index) => {
-          if (index === optionIndex) return input.value;
-
-          const checked = form.querySelector(
-            `input[name="${CSS.escape(name)}"]:checked`
-          );
-
-          return checked ? checked.value : null;
-        });
-
-        const hasAvailableVariant = variants.some(variant => {
-          if (!variant.available) return false;
-
-          return variant.options.every((value, index) =>
-            candidateValues[index] == null ||
-            value === candidateValues[index]
-          );
-        });
-
-        const label = input.closest(
-          '.product-page-pour__option-value'
-        );
-
-        if (label) {
-          label.classList.toggle(
-            'is-sold-out',
-            !hasAvailableVariant
-          );
-        }
-      });
-    });
-  }
-
-  function updateVariant() {
-    updateSoldOutOptions();
-
-    const selectedOptions = Array.from(
-      form.querySelectorAll('input[name^="options["]:checked')
-    ).map(input => input.value);
-
-    const matchingVariant = variants.find(variant =>
-      variant.options.every((option, index) =>
-        option === selectedOptions[index]
+  const variants =
+    {{ product.variants | json }};
+function updateSoldOutOptions() {
+  const optionGroups =
+    Array.from(
+      form.querySelectorAll(
+        '.product-page-pour__option'
       )
     );
 
+  const optionNames =
+    optionGroups.map(
+      group => {
+        const input =
+          group.querySelector(
+            'input[name^="options["]'
+          );
+
+        return input
+          ? input.name
+          : null;
+      }
+    );
+
+  optionGroups.forEach(
+    (group, optionIndex) => {
+
+      const inputs =
+        Array.from(
+          group.querySelectorAll(
+            'input[type="radio"]'
+          )
+        );
+
+      inputs.forEach(
+        input => {
+
+          const candidateValues =
+            optionNames.map(
+              (name, index) => {
+
+                if (index === optionIndex) {
+                  return input.value;
+                }
+
+                const checked =
+                  form.querySelector(
+                    `input[name="${CSS.escape(name)}"]:checked`
+                  );
+
+                return checked
+                  ? checked.value
+                  : null;
+              }
+            );
+
+          const hasAvailableVariant =
+            variants.some(
+              variant => {
+
+                if (!variant.available) {
+                  return false;
+                }
+
+                return variant.options.every(
+                  (value, index) =>
+                    candidateValues[index] == null ||
+                    value === candidateValues[index]
+                );
+              }
+            );
+
+          const label =
+            input.closest(
+              '.product-page-pour__option-value'
+            );
+
+          if (label) {
+            label.classList.toggle(
+              'is-sold-out',
+              !hasAvailableVariant
+            );
+          }
+
+        }
+      );
+
+    }
+  );
+}
+
+  function updateVariant() {
+
+  updateSoldOutOptions();
+
+  const selectedOptions =
+    Array.from(
+      form.querySelectorAll(
+        'input[name^="options["]:checked'
+      )
+    ).map(
+      input => input.value
+    );
+
+
+    const matchingVariant =
+      variants.find(
+        variant =>
+          variant.options.every(
+            (option, index) =>
+              option === selectedOptions[index]
+          )
+      );
+
+
     if (!matchingVariant) {
-      variantInput.value = '';
-      submitButton.disabled = true;
       return;
     }
 
-    variantInput.value = matchingVariant.id;
-    submitButton.dataset.variantId = matchingVariant.id;
 
-    if (matchingVariant.available) {
-      submitButton.type = 'submit';
-      submitButton.disabled = false;
-      submitButton.textContent = {{ 'pour_product.preorder' | t | json }};
-      submitButton.dataset.notifyUnavailable = 'false';
-    } else {
-      submitButton.type = 'button';
-      submitButton.disabled = false;
-      submitButton.textContent = {{ 'pour_product.notify_me' | t | json }};
-      submitButton.dataset.notifyUnavailable = 'true';
-    }
+    variantInput.value =
+      matchingVariant.id;
+
+
+   const submitButton =
+  form.querySelector(
+    '.product-page-pour__add'
+  );
+
+const backInStockButton =
+  form.querySelector(
+    '[data-pour-back-in-stock-open]'
+  );
+
+if (submitButton) {
+  submitButton.disabled =
+    !matchingVariant.available;
+
+  submitButton.textContent =
+    matchingVariant.available
+      ? '{{ 'pour_product.preorder' | t }}'
+      : 'ÉPUISÉ';
+
+submitButton.style.display =
+  matchingVariant.available
+    ? ''
+    : 'none';
+}
+
+if (backInStockButton) {
+  backInStockButton.dataset.variantId =
+    matchingVariant.id;
+
+  backInStockButton.style.display =
+    matchingVariant.available
+      ? 'none'
+      : 'flex';
+}
+
   }
 
-  form.addEventListener('change', function (event) {
-    if (event.target.matches('input[name^="options["]')) {
-      updateVariant();
+
+  form.addEventListener(
+    'change',
+    function (event) {
+
+      if (
+        event.target.matches(
+          'input[name^="options["]'
+        )
+      ) {
+        updateVariant();
+      }
+
     }
-  });
+  );
+
 
   updateVariant();
+
 })();
 </script>
 
@@ -4750,9 +4843,7 @@ if (addButton && productForm) {
           'click',
           function () {
 
-            if (trigger.dataset.notifyUnavailable === 'true') {
-  openBackInStockPanel(trigger);
-}
+            openBackInStockPanel(trigger);
 
           }
         );
@@ -4789,10 +4880,9 @@ backInStockSizeButtons.forEach(
 
         backInStockPanel.dataset.selectedVariantId =
           sizeButton.dataset.notifyVariantId;
-          }
+
+      }
     );
-  }
-);
 /* =====================================================
    INSCRIPTION RETOUR EN STOCK — AMP
 ===================================================== */
