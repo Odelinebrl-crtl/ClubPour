@@ -1580,6 +1580,7 @@
   letter-spacing: .055em;
 
 }
+
 /* =========================================================
    REDUCED MOTION
 ========================================================= */
@@ -1636,8 +1637,9 @@
 }
 
 
+
 /* =========================================================
-   GALERIE CLUB POUR — FORMAT COMPACT
+   GALERIE CLUB POUR — GRILLE ÉDITORIALE
 ========================================================= */
 
 #PourAbout-{{ section.id }} .pour-about__gallery {
@@ -1647,30 +1649,40 @@
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-grid {
-  display: grid !important;
+  display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 100px;
+  grid-auto-rows: 180px;
   gap: 10px;
   width: 100%;
 }
 
-/* Deux grandes photos en portrait */
+/* Deux grands portraits */
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
   grid-column: span 2;
-  grid-row: span 3;
-  height: 100%;
-  min-height: 0;
+  grid-row: span 2;
+  height: 370px;
 }
 
-/* Petites photos en dessous */
+/* Quatre petites photos */
 
-#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(n+3) {
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(3),
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(4),
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(5),
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6) {
   grid-column: span 1;
-  grid-row: span 2;
-  height: 100%;
-  min-height: 0;
+  grid-row: span 1;
+  height: 180px;
+}
+
+/* Photos 7 et 8 : deux colonnes chacune */
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(7),
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(8) {
+  grid-column: span 2;
+  grid-row: span 1;
+  height: 180px;
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item {
@@ -1690,27 +1702,32 @@
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
+
   #PourAbout-{{ section.id }} .pour-about__gallery {
     padding: 25px 0 40px;
   }
 
   #PourAbout-{{ section.id }} .pour-about__gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 75px;
+    grid-auto-rows: 120px;
     gap: 7px;
   }
 
   #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
   #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
     grid-column: span 1;
-    grid-row: span 3;
+    grid-row: span 2;
+    height: 247px;
   }
 
   #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(n+3) {
     grid-column: span 1;
-    grid-row: span 2;
+    grid-row: span 1;
+    height: 120px;
   }
+
 }
+
 
 </style>
 
