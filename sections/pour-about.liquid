@@ -1638,92 +1638,107 @@
 
 
 
+
 /* =========================================================
-   GALERIE CLUB POUR — GRILLE ÉDITORIALE
+   GALERIE CLUB POUR — MOSAÏQUE FULL WIDTH
 ========================================================= */
 
 #PourAbout-{{ section.id }} .pour-about__gallery {
   width: 100%;
-  padding: 45px 0 65px;
+  padding: 0;
+  margin: 0;
   background: #fff;
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-rows: 180px;
-  gap: 10px;
+  gap: 0;
   width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-/* Deux grands portraits */
+/* 01 et 02 — PORTRAIT */
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
   grid-column: span 2;
-  grid-row: span 2;
-  height: 370px;
+  aspect-ratio: 4 / 5;
 }
 
-/* Quatre petites photos */
+/* 03 à 06 — CARRÉ */
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(3),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(4),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(5),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6) {
   grid-column: span 1;
-  grid-row: span 1;
-  height: 180px;
+  aspect-ratio: 1 / 1;
 }
 
-/* Photos 7 et 8 : deux colonnes chacune */
+/* 07 et 08 — PAYSAGE */
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(7),
 #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(8) {
   grid-column: span 2;
-  grid-row: span 1;
-  height: 180px;
+  aspect-ratio: 16 / 9;
 }
+
+/* IMAGE */
 
 #PourAbout-{{ section.id }} .pour-about__gallery-item {
   position: relative;
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: auto;
   overflow: hidden;
   margin: 0;
-  min-width: 0;
+  padding: 0;
 }
 
 #PourAbout-{{ section.id }} .pour-about__gallery-image {
+  position: absolute;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
+  max-width: none;
   object-fit: cover;
+}
+
+/* 7 PHOTOS : dernière photo sur toute la largeur */
+
+#PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(7):last-child {
+  grid-column: span 4;
+  aspect-ratio: 16 / 5;
 }
 
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
 
-  #PourAbout-{{ section.id }} .pour-about__gallery {
-    padding: 25px 0 40px;
-  }
-
   #PourAbout-{{ section.id }} .pour-about__gallery-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 120px;
-    gap: 7px;
   }
 
   #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(1),
   #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(2) {
     grid-column: span 1;
-    grid-row: span 2;
-    height: 247px;
   }
 
-  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(n+3) {
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(3),
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(4),
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(5),
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(6) {
     grid-column: span 1;
-    grid-row: span 1;
-    height: 120px;
+  }
+
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(7),
+  #PourAbout-{{ section.id }} .pour-about__gallery-item:nth-child(8) {
+    grid-column: span 2;
+    aspect-ratio: 16 / 9;
   }
 
 }
