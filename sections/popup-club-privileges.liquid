@@ -3,8 +3,8 @@
   Section autonome à ajouter au template JSON de la page d'accueil.
 {% endcomment %}
 
-{% if request.page_type == 'index' and section.settings.enabled %}
-  <div
+{% if request.page_type != 'cart' and section.settings.enabled %}
+    <div
     id="PourClubPopup-{{ section.id }}"
     class="pour-club-popup"
     data-pour-club-popup
