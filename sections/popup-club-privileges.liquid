@@ -25,7 +25,7 @@
       <button
         class="pour-club-popup__close"
         type="button"
-        aria-label="{{ section.settings.close_label | escape }}"
+        aria-label="{{ 'popup_club_privileges.close_label' | t | escape }}"
         data-popup-close
       >
         <span aria-hidden="true">×</span>
@@ -84,52 +84,56 @@
         {% form 'customer', id: popup_form_id, class: 'pour-club-popup__form' %}
         {% if form.posted_successfully? %}
           <div class="pour-club-popup__success" role="status" aria-live="polite">
-            {% if section.settings.success_eyebrow != blank %}
-              <p class="pour-club-popup__eyebrow">{{ section.settings.success_eyebrow | escape }}</p>
-            {% endif %}
+          {% assign popup_success_eyebrow = 'popup_club_privileges.success_eyebrow' | t %}
+{% if popup_success_eyebrow != blank %}
+  <p class="pour-club-popup__eyebrow">{{ popup_success_eyebrow | escape }}</p>
+{% endif %}
 
             <h2 id="PourClubPopupTitle-{{ section.id }}" class="pour-club-popup__title">
-              {{ section.settings.success_title | escape }}
+              {{ 'popup_club_privileges.success_title' | t | escape }}
             </h2>
 
             <p id="PourClubPopupDescription-{{ section.id }}" class="pour-club-popup__description">
-              {{ section.settings.success_text | escape }}
+              {{ 'popup_club_privileges.success_text' | t | escape }}
             </p>
 
             <div class="pour-club-popup__code-wrap">
-              <span class="pour-club-popup__code-label">{{ section.settings.code_label | escape }}</span>
+              <span class="pour-club-popup__code-label">{{ 'popup_club_privileges.code_label' | t | escape }}</span>
               <strong class="pour-club-popup__code" data-pour-discount-code>
                 {{ section.settings.discount_code | escape }}
               </strong>
             </div>
 
             <button class="pour-club-popup__submit pour-club-popup__copy" type="button" data-copy-code>
-  <span data-copy-label>{{ section.settings.copy_button_label | escape }}</span>
+  <span data-copy-label>{{ 'popup_club_privileges.copy_button_label' | t | escape }}</span>
 </button>
 
             <button class="pour-club-popup__continue" type="button" data-popup-close>
-              {{ section.settings.continue_label | escape }}
+             {{ 'popup_club_privileges.continue_label' | t | escape }}
             </button>
           </div>
         {% else %}
           <div class="pour-club-popup__form-state">
-            {% if section.settings.eyebrow != blank %}
-              <p class="pour-club-popup__eyebrow">{{ section.settings.eyebrow | escape }}</p>
-            {% endif %}
+           {% assign popup_eyebrow = 'popup_club_privileges.eyebrow' | t %}
+{% if popup_eyebrow != blank %}
+  <p class="pour-club-popup__eyebrow">
+    {{ popup_eyebrow | escape }}
+  </p>
+{% endif %}
 
             <h2 id="PourClubPopupTitle-{{ section.id }}" class="pour-club-popup__title">
-              {{ section.settings.heading | escape }}
+              {{ 'popup_club_privileges.heading' | t | escape }}
             </h2>
 
             <p id="PourClubPopupDescription-{{ section.id }}" class="pour-club-popup__description">
-              {{ section.settings.description | escape }}
+              {{ 'popup_club_privileges.description' | t | escape }}
             </p>
 
               <input type="hidden" name="contact[tags]" value="club-privileges">
 
               <div class="pour-club-popup__form-row">
                 <label class="visually-hidden" for="PourClubPopupEmail-{{ section.id }}">
-                  {{ section.settings.email_label | escape }}
+                  {{ 'popup_club_privileges.email_label' | t | escape }}
                 </label>
                 <input
                   id="PourClubPopupEmail-{{ section.id }}"
@@ -137,7 +141,7 @@
                   type="email"
                   name="contact[email]"
                   value="{{ form.email | escape }}"
-                  placeholder="{{ section.settings.email_placeholder | escape }}"
+                  placeholder="{{ 'popup_club_privileges.email_placeholder' | t | escape }}"
                   autocomplete="email"
                   autocapitalize="off"
                   spellcheck="false"
@@ -145,7 +149,7 @@
                 >
 
                 <button class="pour-club-popup__submit" type="submit">
-                  <span>{{ section.settings.button_label | escape }}</span>
+                  <span>{{ 'popup_club_privileges.button_label' | t | escape }}</span>
                   <span aria-hidden="true">→</span>
                 </button>
               </div>
@@ -157,7 +161,7 @@
                   value="true"
                   required
                 >
-                <span>{{ section.settings.consent_text | escape }}</span>
+               <span>{{ 'popup_club_privileges.consent_text' | t | escape }}</span>
               </label>
 
               {% if form.errors %}
@@ -571,14 +575,14 @@
 
           try {
             await navigator.clipboard.writeText(code.textContent.trim());
-            label.textContent = {{ section.settings.copied_button_label | json }};
+           label.textContent = {{ 'popup_club_privileges.copied_button_label' | t | json }};
           } catch (error) {
             const range = document.createRange();
             range.selectNodeContents(code);
             const selection = window.getSelection();
             selection.removeAllRanges();
             selection.addRange(range);
-            label.textContent = {{ section.settings.copy_fallback_label | json }};
+            label.textContent = {{ 'popup_club_privileges.copy_fallback_label' | t | json }};
           }
         });
       }
