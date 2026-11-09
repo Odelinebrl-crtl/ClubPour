@@ -1,0 +1,826 @@
+{% comment %}
+  CLUB POUR — Popup d'inscription aux Club Privilèges
+  Section autonome à ajouter au template JSON de la page d'accueil.
+{% endcomment %}
+
+{% if request.page_type == 'index' and section.settings.enabled %}
+  <div
+    id="PourClubPopup-{{ section.id }}"
+    class="pour-club-popup"
+    data-pour-club-popup
+    data-delay="{{ section.settings.delay_seconds | times: 1000 }}"
+    data-frequency="{{ section.settings.frequency }}"
+    aria-hidden="true"
+  >
+    <div class="pour-club-popup__backdrop" data-popup-close></div>
+
+    <section
+      class="pour-club-popup__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="PourClubPopupTitle-{{ section.id }}"
+      aria-describedby="PourClubPopupDescription-{{ section.id }}"
+      tabindex="-1"
+    >
+      <button
+        class="pour-club-popup__close"
+        type="button"
+        aria-label="{{ section.settings.close_label | escape }}"
+        data-popup-close
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+
+      <div class="pour-club-popup__image">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag:
+              loading: 'lazy',
+              widths: '480, 720, 960, 1200, 1400',
+              sizes: '(max-width: 749px) 100vw, 50vw',
+              alt: section.settings.image_alt
+          }}
+        {% else %}
+          <div class="pour-club-popup__image-placeholder">
+            {{ 'image' | placeholder_svg_tag }}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="pour-club-popup__content">
+        {% if section.settings.logo != blank %}
+          {{
+            section.settings.logo
+            | image_url: width: 500
+            | image_tag:
+              class: 'pour-club-popup__logo',
+              loading: 'lazy',
+              alt: section.settings.logo_alt
+          }}
+        {% else %}
+          <div class="pour-club-popup__wordmark" aria-label="Club POUR">P</div>
+          <p class="pour-club-popup__brand">CLUB POUR</p>
+        {% endif %}
+
+        {% assign popup_form_id = 'PourClubPopupForm-' | append: section.id %}
+        {% form 'customer', id: popup_form_id, class: 'pour-club-popup__form' %}
+        {% if form.posted_successfully? %}
+          <div class="pour-club-popup__success" role="status" aria-live="polite">
+            {% if section.settings.success_eyebrow != blank %}
+              <p class="pour-club-popup__eyebrow">{{ section.settings.success_eyebrow | escape }}</p>
+            {% endif %}
+
+            <h2 id="PourClubPopupTitle-{{ section.id }}" class="pour-club-popup__title">
+              {{ section.settings.success_title | escape }}
+            </h2>
+
+            <p id="PourClubPopupDescription-{{ section.id }}" class="pour-club-popup__description">
+              {{ section.settings.success_text | escape }}
+            </p>
+
+            <div class="pour-club-popup__code-wrap">
+              <span class="pour-club-popup__code-label">{{ section.settings.code_label | escape }}</span>
+              <strong class="pour-club-popup__code" data-pour-discount-code>
+                {{ section.settings.discount_code | escape }}
+              </strong>
+            </div>
+
+            <button class="pour-club-popup__submit pour-club-popup__copy" type="button" data-copy-code>
+              <span data-copy-label>{{ section.settings.copy_button_label | escape }}</span>
+              <span aria-hidden="true">↗</span>
+            </button>
+
+            <button class="pour-club-popup__continue" type="button" data-popup-close>
+              {{ section.settings.continue_label | escape }}
+            </button>
+          </div>
+        {% else %}
+          <div class="pour-club-popup__form-state">
+            {% if section.settings.eyebrow != blank %}
+              <p class="pour-club-popup__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+            {% endif %}
+
+            <h2 id="PourClubPopupTitle-{{ section.id }}" class="pour-club-popup__title">
+              {{ section.settings.heading | escape }}
+            </h2>
+
+            <p id="PourClubPopupDescription-{{ section.id }}" class="pour-club-popup__description">
+              {{ section.settings.description | escape }}
+            </p>
+
+              <input type="hidden" name="contact[tags]" value="club-privileges">
+
+              <div class="pour-club-popup__form-row">
+                <label class="visually-hidden" for="PourClubPopupEmail-{{ section.id }}">
+                  {{ section.settings.email_label | escape }}
+                </label>
+                <input
+                  id="PourClubPopupEmail-{{ section.id }}"
+                  class="pour-club-popup__email"
+                  type="email"
+                  name="contact[email]"
+                  value="{{ form.email | escape }}"
+                  placeholder="{{ section.settings.email_placeholder | escape }}"
+                  autocomplete="email"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  required
+                >
+
+                <button class="pour-club-popup__submit" type="submit">
+                  <span>{{ section.settings.button_label | escape }}</span>
+                  <span aria-hidden="true">→</span>
+                </button>
+              </div>
+
+              <label class="pour-club-popup__consent">
+                <input
+                  type="checkbox"
+                  name="contact[accepts_marketing]"
+                  value="true"
+                  required
+                >
+                <span>{{ section.settings.consent_text | escape }}</span>
+              </label>
+
+              {% if form.errors %}
+                <div class="pour-club-popup__error" role="alert">
+                  {{ form.errors | default_errors }}
+                </div>
+              {% endif %}
+          </div>
+        {% endif %}
+        {% endform %}
+      </div>
+    </section>
+  </div>
+
+  <style>
+    #PourClubPopup-{{ section.id }} {
+      --pcp-bg: {{ section.settings.background_color }};
+      --pcp-text: {{ section.settings.text_color }};
+      --pcp-muted: {{ section.settings.muted_color }};
+      --pcp-button-bg: {{ section.settings.button_background }};
+      --pcp-button-text: {{ section.settings.button_text_color }};
+      --pcp-overlay: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+      --pcp-radius: {{ section.settings.corner_radius }}px;
+      position: fixed;
+      inset: 0;
+      z-index: 99990;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: inherit;
+    }
+
+    #PourClubPopup-{{ section.id }}.is-open { display: flex; }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, var(--pcp-overlay));
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
+
+    #PourClubPopup-{{ section.id }}.is-open .pour-club-popup__backdrop { opacity: 1; }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__dialog {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      width: min(900px, 100%);
+      max-height: min(680px, calc(100vh - 48px));
+      overflow: auto;
+      border-radius: var(--pcp-radius);
+      background: var(--pcp-bg);
+      color: var(--pcp-text);
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .25s ease, transform .25s ease;
+      box-shadow: 0 18px 70px rgba(0,0,0,.22);
+    }
+
+    #PourClubPopup-{{ section.id }}.is-open .pour-club-popup__dialog {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__close {
+      position: absolute;
+      z-index: 3;
+      top: 12px;
+      right: 14px;
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(255,255,255,.88);
+      color: #111;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__image {
+      min-height: 480px;
+      overflow: hidden;
+      background: #e9e5df;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__image img,
+    #PourClubPopup-{{ section.id }} .pour-club-popup__image svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 480px;
+      object-fit: cover;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(30px, 5vw, 62px);
+      text-align: center;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__logo {
+      display: block;
+      width: min(150px, 55%);
+      max-height: 76px;
+      object-fit: contain;
+      margin: 0 auto 14px;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__wordmark {
+      font-family: Georgia, serif;
+      font-size: 54px;
+      font-style: italic;
+      line-height: .9;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__brand {
+      margin: 8px 0 30px;
+      color: var(--pcp-muted);
+      font-size: 9px;
+      letter-spacing: .2em;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__eyebrow {
+      margin: 0 0 13px;
+      color: var(--pcp-muted);
+      font-size: 10px;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__title {
+      margin: 0 0 15px;
+      color: var(--pcp-text);
+      font-size: clamp(25px, 3vw, 37px);
+      font-weight: 400;
+      line-height: 1.12;
+      letter-spacing: .015em;
+      text-transform: uppercase;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__description {
+      max-width: 360px;
+      margin: 0 auto 26px;
+      color: var(--pcp-muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__form { width: 100%; }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__form-row {
+      display: flex;
+      width: 100%;
+      gap: 8px;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__email {
+      min-width: 0;
+      flex: 1 1 auto;
+      height: 49px;
+      padding: 0 14px;
+      border: 1px solid {{ section.settings.input_border }};
+      border-radius: 0;
+      background: transparent;
+      color: var(--pcp-text);
+      font: inherit;
+      font-size: 11px;
+      letter-spacing: .06em;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__email::placeholder {
+      color: var(--pcp-muted);
+      opacity: 1;
+      text-transform: uppercase;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__submit {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      min-height: 49px;
+      padding: 0 17px;
+      border: 1px solid var(--pcp-button-bg);
+      border-radius: 0;
+      background: var(--pcp-button-bg);
+      color: var(--pcp-button-text);
+      font: inherit;
+      font-size: 10px;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__submit:hover { opacity: .82; }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin-top: 16px;
+      color: var(--pcp-muted);
+      text-align: left;
+      font-size: 10px;
+      line-height: 1.55;
+      cursor: pointer;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__consent input {
+      flex: 0 0 auto;
+      width: 13px;
+      height: 13px;
+      margin: 1px 0 0;
+      accent-color: var(--pcp-text);
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__error {
+      margin-top: 12px;
+      color: #a12626;
+      font-size: 12px;
+      text-align: left;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__code-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      width: 100%;
+      margin: 0 0 14px;
+      padding: 18px;
+      border: 1px solid {{ section.settings.input_border }};
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__code-label {
+      color: var(--pcp-muted);
+      font-size: 9px;
+      letter-spacing: .15em;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__code {
+      color: var(--pcp-text);
+      font-size: 23px;
+      font-weight: 500;
+      letter-spacing: .12em;
+    }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__copy { width: 100%; }
+
+    #PourClubPopup-{{ section.id }} .pour-club-popup__continue {
+      margin-top: 16px;
+      padding: 8px 0;
+      border: 0;
+      background: transparent;
+      color: var(--pcp-muted);
+      font: inherit;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+
+    #PourClubPopup-{{ section.id }} .visually-hidden {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    @media (max-width: 749px) {
+      #PourClubPopup-{{ section.id }} { padding: 14px; }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__dialog {
+        display: flex;
+        flex-direction: column;
+        width: min(440px, 100%);
+        max-height: calc(100vh - 28px);
+      }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__image {
+        min-height: 0;
+        height: {{ section.settings.mobile_image_height }}px;
+        flex: 0 0 auto;
+      }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__image img,
+      #PourClubPopup-{{ section.id }} .pour-club-popup__image svg {
+        min-height: 0;
+      }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__content {
+        padding: 25px 22px 28px;
+      }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__logo {
+        max-height: 54px;
+        margin-bottom: 10px;
+      }
+
+      #PourClubPopup-{{ section.id }} .pour-club-popup__wordmark { font-size: 40px; }
+      #PourClubPopup-{{ section.id }} .pour-club-popup__brand { margin-bottom: 18px; }
+      #PourClubPopup-{{ section.id }} .pour-club-popup__title { font-size: 25px; }
+      #PourClubPopup-{{ section.id }} .pour-club-popup__description { margin-bottom: 18px; font-size: 12px; }
+      #PourClubPopup-{{ section.id }} .pour-club-popup__form-row { flex-direction: column; }
+      #PourClubPopup-{{ section.id }} .pour-club-popup__submit { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #PourClubPopup-{{ section.id }},
+      #PourClubPopup-{{ section.id }} * {
+        transition: none !important;
+      }
+    }
+  </style>
+
+  <script>
+    (() => {
+      const root = document.getElementById('PourClubPopup-{{ section.id }}');
+      if (!root || root.dataset.initialized === 'true') return;
+      root.dataset.initialized = 'true';
+
+      const dialog = root.querySelector('.pour-club-popup__dialog');
+      const storageKey = 'pour-club-popup-{{ section.id }}-dismissed';
+      const frequency = root.dataset.frequency || 'session';
+      const delay = Number(root.dataset.delay || 2500);
+      const success = !!root.querySelector('.pour-club-popup__success');
+      let previousFocus = null;
+
+      const wasDismissed = () => {
+        try {
+          if (frequency === 'always') return false;
+          if (frequency === 'once') return localStorage.getItem(storageKey) === '1';
+          return sessionStorage.getItem(storageKey) === '1';
+        } catch (error) {
+          return false;
+        }
+      };
+
+      const rememberDismissal = () => {
+        try {
+          if (frequency === 'once') localStorage.setItem(storageKey, '1');
+          else if (frequency === 'session') sessionStorage.setItem(storageKey, '1');
+        } catch (error) {}
+      };
+
+      const openPopup = () => {
+        previousFocus = document.activeElement;
+        root.classList.add('is-open');
+        root.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('pour-club-popup-open');
+        const focusTarget = root.querySelector('input[type="email"], [data-popup-close]');
+        if (focusTarget) focusTarget.focus({ preventScroll: true });
+      };
+
+      const closePopup = () => {
+        root.classList.remove('is-open');
+        root.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('pour-club-popup-open');
+        rememberDismissal();
+        if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus({ preventScroll: true });
+      };
+
+      root.querySelectorAll('[data-popup-close]').forEach((button) => {
+        button.addEventListener('click', closePopup);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && root.classList.contains('is-open')) closePopup();
+      });
+
+      const copyButton = root.querySelector('[data-copy-code]');
+      if (copyButton) {
+        copyButton.addEventListener('click', async () => {
+          const code = root.querySelector('[data-pour-discount-code]');
+          const label = root.querySelector('[data-copy-label]');
+          if (!code || !label) return;
+
+          try {
+            await navigator.clipboard.writeText(code.textContent.trim());
+            label.textContent = {{ section.settings.copied_button_label | json }};
+          } catch (error) {
+            const range = document.createRange();
+            range.selectNodeContents(code);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            label.textContent = {{ section.settings.copy_fallback_label | json }};
+          }
+        });
+      }
+
+      if (success) {
+        openPopup();
+      } else if (!wasDismissed()) {
+        window.setTimeout(() => {
+          if (!wasDismissed()) openPopup();
+        }, delay);
+      }
+    })();
+  </script>
+
+  <style>
+    html.pour-club-popup-open { overflow: hidden; }
+  </style>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Popup Club Privilèges",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Activer le pop-up",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Images et identité"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image à gauche"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Description de l'image",
+      "default": "Univers automobile Club POUR"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo centré"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Description du logo",
+      "default": "Club POUR"
+    },
+    {
+      "type": "range",
+      "id": "mobile_image_height",
+      "label": "Hauteur de l'image sur mobile",
+      "min": 90,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "default": 140
+    },
+    {
+      "type": "header",
+      "content": "Textes du formulaire"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Petit texte au-dessus du titre",
+      "default": "CLUB POUR"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre",
+      "default": "REJOIGNEZ LE CLUB PRIVILÈGES"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Texte descriptif",
+      "default": "Inscrivez-vous et profitez de 10 % de réduction sur votre commande."
+    },
+    {
+      "type": "text",
+      "id": "email_label",
+      "label": "Libellé accessible du champ e-mail",
+      "default": "Votre adresse e-mail"
+    },
+    {
+      "type": "text",
+      "id": "email_placeholder",
+      "label": "Texte indicatif du champ e-mail",
+      "default": "VOTRE E-MAIL"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texte du bouton",
+      "default": "REJOINDRE LE CLUB"
+    },
+    {
+      "type": "textarea",
+      "id": "consent_text",
+      "label": "Mention de consentement",
+      "default": "En cochant cette case et en vous inscrivant, vous acceptez de recevoir les e-mails marketing de Club POUR. Vous pourrez vous désinscrire à tout moment."
+    },
+    {
+      "type": "header",
+      "content": "Confirmation et code promotionnel"
+    },
+    {
+      "type": "text",
+      "id": "success_eyebrow",
+      "label": "Petit texte de confirmation",
+      "default": "CLUB POUR"
+    },
+    {
+      "type": "text",
+      "id": "success_title",
+      "label": "Titre de confirmation",
+      "default": "BIENVENUE AU CLUB."
+    },
+    {
+      "type": "textarea",
+      "id": "success_text",
+      "label": "Texte de confirmation",
+      "default": "Votre inscription est confirmée. Profitez de 10 % de réduction sur votre commande."
+    },
+    {
+      "type": "text",
+      "id": "discount_code",
+      "label": "Code promotionnel à afficher",
+      "default": "CLUBPOUR10"
+    },
+    {
+      "type": "text",
+      "id": "code_label",
+      "label": "Libellé au-dessus du code",
+      "default": "VOTRE CODE DE BIENVENUE"
+    },
+    {
+      "type": "text",
+      "id": "copy_button_label",
+      "label": "Bouton pour copier le code",
+      "default": "COPIER LE CODE"
+    },
+    {
+      "type": "text",
+      "id": "copied_button_label",
+      "label": "Texte après copie",
+      "default": "CODE COPIÉ"
+    },
+    {
+      "type": "text",
+      "id": "copy_fallback_label",
+      "label": "Texte si la copie automatique échoue",
+      "default": "SÉLECTIONNEZ LE CODE"
+    },
+    {
+      "type": "text",
+      "id": "continue_label",
+      "label": "Bouton pour fermer la confirmation",
+      "default": "POURSUIVRE MA VISITE"
+    },
+    {
+      "type": "text",
+      "id": "close_label",
+      "label": "Libellé accessible du bouton fermer",
+      "default": "Fermer le pop-up"
+    },
+    {
+      "type": "header",
+      "content": "Apparence"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Fond du pop-up",
+      "default": "#FAF9F6"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Couleur du texte",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "muted_color",
+      "label": "Couleur du texte secondaire",
+      "default": "#777777"
+    },
+    {
+      "type": "color",
+      "id": "button_background",
+      "label": "Fond du bouton",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Texte du bouton",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "input_border",
+      "label": "Bordure du champ et du code",
+      "default": "#BDB8B0"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Opacité du fond derrière le pop-up",
+      "min": 20,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "corner_radius",
+      "label": "Arrondi des angles",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Déclenchement et fréquence"
+    },
+    {
+      "type": "range",
+      "id": "delay_seconds",
+      "label": "Délai avant affichage",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "s",
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "frequency",
+      "label": "Fréquence d'affichage après fermeture",
+      "options": [
+        {
+          "value": "session",
+          "label": "Une fois par session"
+        },
+        {
+          "value": "once",
+          "label": "Une seule fois par navigateur"
+        },
+        {
+          "value": "always",
+          "label": "À chaque visite"
+        }
+      ],
+      "default": "session"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Popup Club Privilèges"
+    }
+  ]
+}
+{% endschema %}
