@@ -225,7 +225,7 @@
         "input_border": "#bdb8b0",
         "overlay_opacity": 60,
         "corner_radius": 2,
-        "delay_seconds": 4,
+        "delay_seconds": 10,
         "frequency": "session"
       }
     }
