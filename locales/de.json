@@ -677,5 +677,23 @@
     "future_title": "Gestalten wir gemeinsam, was kommt.",
     "future_text": "POUR wird sich mit der Zeit weiterentwickeln. Neue Kleidungsstücke, Accessoires, neue Inspirationen und Erlebnisse, die wir mit all jenen teilen möchten, die Teil dieser Reise werden. Denn bei POUR geht es um mehr als den Kauf eines Kleidungsstücks. Es geht darum, Teil einer Geschichte zu werden, die wir gemeinsam schreiben.",
     "final_link_label": "Kollektion entdecken"
-    }
+    },
+    "popup_club_privileges": {
+    "eyebrow": "CLUB POUR",
+    "heading": "REJOIGNEZ LE CLUB PRIVILÈGES",
+    "description": "Inscrivez-vous et profitez de 10 % de réduction sur votre commande.",
+    "email_label": "Votre adresse e-mail",
+    "email_placeholder": "VOTRE E-MAIL",
+    "button_label": "REJOINDRE LE CLUB",
+    "consent_text": "En cochant cette case et en vous inscrivant, vous acceptez de recevoir les e-mails marketing de Club POUR. Vous pourrez vous désinscrire à tout moment.",
+    "success_eyebrow": "CLUB POUR",
+    "success_title": "BIENVENUE AU CLUB.",
+    "success_text": "Votre inscription est confirmée. Profitez de 10 % de réduction sur votre commande.",
+    "code_label": "VOTRE CODE DE BIENVENUE",
+    "copy_button_label": "COPIER LE CODE",
+    "copied_button_label": "CODE COPIÉ",
+    "copy_fallback_label": "SÉLECTIONNEZ LE CODE",
+    "continue_label": "POURSUIVRE MA VISITE",
+    "close_label": "Fermer le pop-up"
   }
+}
