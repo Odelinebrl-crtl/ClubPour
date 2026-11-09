@@ -644,5 +644,23 @@
     "future_title": "Let's shape what's next.",
     "future_text": "POUR will evolve over time. New clothing, accessories, new sources of inspiration, as well as experiences we want to share with those who become part of the journey. Because POUR is about more than buying a piece of clothing. It's about joining a story we're writing together.",
     "final_link_label": "Discover the collection"
- }
+ },
+"popup_club_privileges": {
+    "eyebrow": "CLUB FOR",
+    "heading": "JOIN THE PRIVILEGES CLUB",
+    "description": "Sign up and enjoy 10% off your order.",
+    "email_label": "Your email address",
+    "email_placeholder": "YOUR EMAIL",
+    "button_label": "JOIN THE CLUB",
+    "consent_text": "By checking this box and signing up, you agree to receive marketing emails from Club POUR. You can unsubscribe at any time.",
+    "success_eyebrow": "CLUB POUR",
+    "success_title": "WELCOME TO THE CLUB.",
+    "success_text": "Your registration is confirmed. Enjoy a 10% discount on your order.",
+    "code_label": "YOUR WELCOME CODE",
+    "copy_button_label": "COPY THE CODE",
+    "copied_button_label": "CODE COPIED",
+    "copy_fallback_label": "SELECT THE CODE",
+    "continue_label": "CONTINUE SHOPPING",
+    "close_label": "Close pop-up"
   }
+}
