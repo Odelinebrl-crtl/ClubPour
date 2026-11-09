@@ -523,5 +523,25 @@
     "future_title": "Laten we samen bouwen aan wat volgt.",
     "future_text": "POUR zal zich in de loop van de tijd verder ontwikkelen. Nieuwe kledingstukken, accessoires, nieuwe inspiratiebronnen en ervaringen die we willen delen met iedereen die deel uitmaakt van dit avontuur. Want POUR draait om meer dan alleen het kopen van een kledingstuk. Het gaat erom deel uit te maken van een verhaal dat we samen schrijven.",
     "final_link_label": "Ontdek de collectie"
+},
+"popup_club_privileges": {
+    "popup_club_privileges": {
+  "eyebrow": "CLUB VOOR",
+  "heading": "WORD LID VAN DE PRIVILEGES-CLUB",
+  "description": "Meld u aan en profiteer van 10 % korting op uw bestelling.",
+  "email_label": "Uw e-mailadres",
+  "email_placeholder": "UW E-MAIL",
+  "button_label": "WORD LID VAN DE CLUB",
+  "consent_text": "Door dit vakje aan te vinken en je aan te melden, ga je akkoord met het ontvangen van marketingmails van Club POUR. Je kunt je op elk moment uitschrijven.",
+  "success_eyebrow": "CLUB POUR",
+  "success_title": "WELKOM BIJ DE CLUB.",
+  "success_text": "Uw aanmelding is bevestigd. Profiteer van 10 % korting op uw bestelling.",
+  "code_label": "UW WELKOMSTCODE",
+  "copy_button_label": "CODE KOPIËREN",
+  "copied_button_label": "CODE GEKOPIEERD",
+  "copy_fallback_label": "SELECTEER DE CODE",
+  "continue_label": "MIJN BEZOEK VOORTZETTEN",
+  "close_label": "Pop-up sluiten"
+  }
 }
   }
