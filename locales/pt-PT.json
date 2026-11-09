@@ -651,5 +651,23 @@
     "future_title": "Vamos construir o que vem a seguir.",
     "future_text": "A POUR vai evoluir com o tempo. Novas peças de roupa, acessórios, novas fontes de inspiração e também experiências que queremos partilhar com quem fizer parte desta aventura. Porque a POUR não se resume a comprar uma peça de roupa. É fazer parte de uma história que estamos a escrever em conjunto.",
     "final_link_label": "Descobrir a coleção"
+  },
+  "popup_club_privileges": {
+  "eyebrow": "CLUBE PARA",
+  "heading": "JUNTE-SE AO CLUBE DE PRIVILÉGIOS",
+  "description": "Inscreva-se e desfrute de 10 % de desconto na sua encomenda.",
+  "email_label": "O seu endereço de e-mail",
+  "email_placeholder": "O SEU E-MAIL",
+  "button_label": "JUNTAR-SE AO CLUBE",
+  "consent_text": "Ao assinalar esta caixa e ao inscrever-se, concorda em receber e-mails de marketing do Club POUR. Pode cancelar a sua inscrição a qualquer momento.",
+  "success_eyebrow": "CLUB POUR",
+  "success_title": "BEM-VINDO AO CLUB.",
+  "success_text": "A sua inscrição está confirmada. Aproveite um desconto de 10 % na sua encomenda.",
+  "code_label": "O SEU CÓDIGO DE BOAS-VINDAS",
+  "copy_button_label": "COPIAR O CÓDIGO",
+  "copied_button_label": "CÓDIGO COPIADO",
+  "copy_fallback_label": "SELECIONE O CÓDIGO",
+  "continue_label": "CONTINUAR A MINHA VISITA",
+  "close_label": "Fechar a janela pop-up"
   }
 }
