@@ -63,7 +63,6 @@
 {% section 'footer' %}
 
 {% render 'pour-cookie-banner' %}
-{% section 'popup-club-privileges' %}
 
 {{ 'pour-cookie-banner.css' | asset_url | stylesheet_tag }}
 
@@ -99,6 +98,8 @@
   ></div>
 
 </div>
+
+{% section 'popup-club-privileges' %}
 <script>
   window.PourTranslations = {
     size: {{ 'pour_products.size' | t | json }},
