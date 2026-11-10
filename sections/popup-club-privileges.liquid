@@ -522,14 +522,25 @@
       const frequency = root.dataset.frequency || 'session';
       const delay = Number(root.dataset.delay || 2500);
       const success = !!root.querySelector('.pour-club-popup__success');
-      const quickView = document.querySelector('[data-pour-quickview]');
+      
 let popupWaitingForQuickView = false;
 let popupForceOpen = false;
+
+function isQuickViewOpen() {
+  const quickView = document.querySelector(
+    '[data-pour-quickview]'
+  );
+
+  return !!(
+    quickView &&
+    quickView.classList.contains('is-active')
+  );
+}
 
 function requestPopupOpen(force = false) {
   if (!force && wasDismissed()) return;
 
-  if (quickView && quickView.classList.contains('is-active')) {
+  if (isQuickViewOpen()) {
     popupWaitingForQuickView = true;
     popupForceOpen = popupForceOpen || force;
     return;
@@ -539,23 +550,25 @@ function requestPopupOpen(force = false) {
   openPopup();
 }
 
-if (quickView) {
-  const quickViewObserver = new MutationObserver(() => {
-    if (
-      popupWaitingForQuickView &&
-      !quickView.classList.contains('is-active')
-    ) {
-      const force = popupForceOpen;
-      popupForceOpen = false;
-      requestPopupOpen(force);
-    }
-  });
+const quickViewObserver = new MutationObserver(() => {
+  if (
+    popupWaitingForQuickView &&
+    !isQuickViewOpen()
+  ) {
+    const force = popupForceOpen;
 
-  quickViewObserver.observe(quickView, {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-}
+    popupForceOpen = false;
+
+    requestPopupOpen(force);
+  }
+});
+
+quickViewObserver.observe(document.body, {
+  attributes: true,
+  attributeFilter: ['class'],
+  subtree: true
+});
+
       let previousFocus = null;
 
       const wasDismissed = () => {
@@ -621,7 +634,7 @@ if (quickView) {
         });
       }
 
-      if (success) {
+  if (success) {
   requestPopupOpen(true);
 } else if (!wasDismissed()) {
   window.setTimeout(() => {
