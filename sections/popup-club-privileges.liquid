@@ -522,6 +522,40 @@
       const frequency = root.dataset.frequency || 'session';
       const delay = Number(root.dataset.delay || 2500);
       const success = !!root.querySelector('.pour-club-popup__success');
+      const quickView = document.querySelector('[data-pour-quickview]');
+let popupWaitingForQuickView = false;
+let popupForceOpen = false;
+
+function requestPopupOpen(force = false) {
+  if (!force && wasDismissed()) return;
+
+  if (quickView && quickView.classList.contains('is-active')) {
+    popupWaitingForQuickView = true;
+    popupForceOpen = popupForceOpen || force;
+    return;
+  }
+
+  popupWaitingForQuickView = false;
+  openPopup();
+}
+
+if (quickView) {
+  const quickViewObserver = new MutationObserver(() => {
+    if (
+      popupWaitingForQuickView &&
+      !quickView.classList.contains('is-active')
+    ) {
+      const force = popupForceOpen;
+      popupForceOpen = false;
+      requestPopupOpen(force);
+    }
+  });
+
+  quickViewObserver.observe(quickView, {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+}
       let previousFocus = null;
 
       const wasDismissed = () => {
@@ -588,12 +622,12 @@
       }
 
       if (success) {
-        openPopup();
-      } else if (!wasDismissed()) {
-        window.setTimeout(() => {
-          if (!wasDismissed()) openPopup();
-        }, delay);
-      }
+  requestPopupOpen(true);
+} else if (!wasDismissed()) {
+  window.setTimeout(() => {
+    requestPopupOpen();
+  }, delay);
+}
     })();
   </script>
 
