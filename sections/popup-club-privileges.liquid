@@ -523,16 +523,16 @@
       const delay = Number(root.dataset.delay || 2500);
       const success = !!root.querySelector('.pour-club-popup__success');
       
+
 let popupWaitingForQuickView = false;
 let popupForceOpen = false;
 
 function isQuickViewOpen() {
-  const quickView = document.querySelector(
-    '[data-pour-quickview]'
+  const quickViews = document.querySelectorAll(
+    '[data-pour-quickview], [data-vetements-qv]'
   );
 
-  return !!(
-    quickView &&
+  return Array.from(quickViews).some((quickView) =>
     quickView.classList.contains('is-active')
   );
 }
@@ -556,18 +556,18 @@ const quickViewObserver = new MutationObserver(() => {
     !isQuickViewOpen()
   ) {
     const force = popupForceOpen;
-
     popupForceOpen = false;
 
     requestPopupOpen(force);
   }
 });
 
-quickViewObserver.observe(document.body, {
+quickViewObserver.observe(document.documentElement, {
   attributes: true,
   attributeFilter: ['class'],
   subtree: true
 });
+
 
       let previousFocus = null;
 
