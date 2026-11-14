@@ -12,6 +12,48 @@
     "main": {
       "type": "pour-about",
       "blocks": {
+        "gallery_image_khYRHw": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-riviera-creme-lifestyle-bord-piscine-dos.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_7yxDGM": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-pegasus-blanc-lifestyle-bord-piscine-dos.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_wMQ84b": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-22_Shooting_de_nuit_pour_-_033.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_Ycdbpg": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_069.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_b8yHUX": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_007.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
+        "gallery_image_bbi9FB": {
+          "type": "gallery_image",
+          "settings": {
+            "image": "shopify://shop_images/t-shirt-peperoncino-noir-lifestyle-plage.jpg",
+            "alt": "POUR — Galerie photographique"
+          }
+        },
         "gallery_image_FrCKPt": {
           "type": "gallery_image",
           "settings": {
@@ -62,6 +104,12 @@
         }
       },
       "block_order": [
+        "gallery_image_khYRHw",
+        "gallery_image_7yxDGM",
+        "gallery_image_wMQ84b",
+        "gallery_image_Ycdbpg",
+        "gallery_image_b8yHUX",
+        "gallery_image_bbi9FB",
         "gallery_image_FrCKPt",
         "gallery_image_W8PLnK",
         "gallery_image_tGCaT6",
