@@ -1688,7 +1688,9 @@ a {
     object-position: center;
 
     transform: none;
-      will-change: auto;
+      height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   }
 
 
