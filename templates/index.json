@@ -13,8 +13,8 @@
       "type": "hero-pour",
       "name": "Hero POUR",
       "settings": {
-        "image_desktop": "shopify://shop_images/Design_sans_titre-4_f19e2ac9-9d98-482a-9aaf-73345915ffc4.png",
-        "image_mobile": "shopify://shop_images/2026-09-23_Shooting_journee_-_012.jpg",
+        "image_desktop": "shopify://shop_images/t-shirt-cypres-italien-creme-lifestyle-golf.png",
+        "image_mobile": "shopify://shop_images/t-shirt-cypres-italien-creme-lifestyle-golf3.jpg",
         "eyebrow": "COLLECTION 001",
         "hero_title": "T-SHIRT OVERSIZE AUTOMOBILE",
         "button_label": "ACHETEZ NOS T-SHIRTS",
@@ -31,9 +31,7 @@
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
-            "product": "t-shirt-peperoncino",
-            "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_018_f4785493-4e41-48a1-a080-2fe3f5b302e3.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_017_0fdacb60-1b87-490e-b3e1-1d1af97627ef.jpg"
+            "product": "t-shirt-peperoncino"
           }
         },
         "product_card_NHQ6tT": {
@@ -158,9 +156,6 @@
       "type": "featured-collection-pour",
       "name": "Collection mise en avant",
       "settings": {
-        "image": "shopify://shop_images/Design_sans_titre-5_e379e23c-41be-424a-a73f-b97cf0131d6d.png",
-        "image_mobile": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
-        "image_tablet": "shopify://shop_images/Sans_titre_2400_x_1600_px_1080_x_1350_px_fd30bc2c-0b43-49ce-b983-8356c0a0a522.png",
         "eyebrow": "COLLECTION 001",
         "heading": "RACING AUTOMOBILE",
         "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
