@@ -15,56 +15,48 @@
         "gallery_image_FrCKPt": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_081.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_W8PLnK": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_091.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_tGCaT6": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-22_Shooting_de_nuit_pour_-_004.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_LyhPtX": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_176_0373d037-3827-43ac-804c-42d1be0b4fb7.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_j4C7Lw": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_134.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_EibYAH": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-09-23_Shooting_journee_-_126.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_8LWnqn": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_078.jpg",
             "alt": "POUR — Galerie photographique"
           }
         },
         "gallery_image_bpRFw3": {
           "type": "gallery_image",
           "settings": {
-            "image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_005.jpg",
             "alt": "POUR — Galerie photographique"
           }
         }
@@ -91,7 +83,7 @@
         "story_title": "Créer ce que nous avions envie de voir exister.",
         "story_text": "<p>POUR est née d'une envie simple : créer les vêtements que nous avions envie de porter, mais que nous ne trouvions pas.</p><p>Des coupes dans lesquelles on se sent bien. Des pièces que l'on peut porter le jour comme le soir, sans jamais avoir à choisir entre style et confort.</p><p>Derrière POUR, il y a deux personnes, un couple, et un projet construit avec patience, passion et beaucoup de travail.</p><p>Depuis plusieurs mois, nous construisons chaque détail à deux : prototypes, échanges avec les ateliers, déplacements, créations, shootings et développement du site.</p><p>POUR n'est pas née de l'envie de simplement créer une marque. Elle est née de l'envie de créer quelque chose qui nous ressemble.</p>",
         "inspiration_image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_051.jpg",
-        "inspiration_image_mobile": "shopify://shop_images/Design_sans_titre-10.png",
+        "inspiration_image_mobile": "shopify://shop_images/porsche-911-blanche-detail-moteur-arriere.jpg",
         "inspiration_eyebrow": "POUR, vous, nous.",
         "inspiration_title": "Sans jamais nous limiter.",
         "inspiration_text": "<p>POUR nous plaît justement pour ce qu'il peut signifier pour chacun.</p><p>Pour vous. Pour nous. Pour ce que vous aimez. Pour ce qui vous inspire.</p><p>L'automobile occupe une place particulière dans notre histoire. Elle nous accompagne à travers les voitures, leur histoire, leurs lignes, leurs performances, leurs matériaux et tous ces détails qui rendent certains modèles intemporels.</p><p>Cette passion se retrouve naturellement dans nos premières créations. Mais POUR ne se résume pas à l'automobile. Nous nous en inspirons aujourd'hui, sans jamais nous y limiter.</p>",
@@ -105,8 +97,8 @@
         "vision_3_text": "Nous privilégions des productions en quantités maîtrisées, loin de la logique de la fast-fashion et de la surproduction.",
         "vision_4_title": "Responsable",
         "vision_4_text": "Nous accordons de l'importance aux matières, aux conditions de fabrication et à une conception respectueuse de nos valeurs.",
-        "future_image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_090.jpg",
-        "future_image_mobile": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_088.jpg",
+        "future_image": "shopify://shop_images/porsche-911-ancienne-blanche-vue-trois-quarts.jpg",
+        "future_image_mobile": "shopify://shop_images/porsche-ancienne-blanche-route-foret.jpg",
         "future_eyebrow": "Et ce n'est que le début.",
         "future_title": "Construisons la suite.",
         "future_text": "<p>POUR évoluera avec le temps. De nouveaux vêtements, des accessoires, de nouvelles inspirations, mais aussi des expériences que nous voulons partager avec celles et ceux qui feront partie de l'aventure.</p><p>Parce que POUR ne se résume pas à acheter un vêtement. C'est rejoindre une histoire que nous écrivons à plusieurs.</p>",
