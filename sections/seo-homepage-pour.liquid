@@ -53,6 +53,7 @@
 
 {% endif %}
 
+
 <style>
   .pour-home-seo {
     width: 100%;
@@ -68,9 +69,11 @@
     margin: 0 auto;
     text-align: center;
   }
-.pour-home-seo .vetements-grid__heading {
-  margin-bottom: 38px !important;
-}
+
+  .pour-home-seo .vetements-grid__heading {
+    margin-bottom: 38px !important;
+  }
+
   .pour-home-seo__eyebrow {
     margin: 0 0 24px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -81,21 +84,26 @@
     color: rgba(17,17,17,.48);
   }
 
-.pour-home-seo__content {
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: center;
-}
+  .pour-home-seo__content {
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+  }
 
-.pour-home-seo__content p {
-  margin: 0 0 18px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.9;
-  letter-spacing: .015em;
-  color: #666666;
-}
+  .pour-home-seo__content p {
+    margin: 0 0 18px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.9;
+    letter-spacing: .015em;
+    color: #666666;
+  }
+
+  .pour-home-seo__content strong {
+    color: #444444;
+    font-weight: 400;
+  }
 
   .pour-home-seo__signature {
     display: flex;
@@ -120,14 +128,14 @@
     color: #777777;
   }
 
-  .pour-home-seo__title {
-  margin-bottom: 38px !important;
-}
-
   @media screen and (max-width: 768px) {
 
     .pour-home-seo {
       padding: 54px 22px 60px;
+    }
+
+    .pour-home-seo .vetements-grid__heading {
+      margin-bottom: 28px !important;
     }
 
     .pour-home-seo__eyebrow {
@@ -135,15 +143,15 @@
       margin-bottom: 20px;
     }
 
-.pour-home-seo__content {
-  max-width: 100%;
-}
+    .pour-home-seo__content {
+      max-width: 100%;
+    }
 
-.pour-home-seo__content p {
-  font-size: 12px;
-  line-height: 1.8;
-  margin-bottom: 18px;
-}
+    .pour-home-seo__content p {
+      font-size: 12px;
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
 
     .pour-home-seo__signature {
       margin-top: 30px;
@@ -154,14 +162,9 @@
       font-size: 7px;
     }
 
-  .pour-home-seo__title {
-    margin-bottom: 28px !important;
-  }
-.pour-home-seo .vetements-grid__heading {
-  margin-bottom: 28px !important;
-}
   }
 </style>
+
 
 {% schema %}
 {
