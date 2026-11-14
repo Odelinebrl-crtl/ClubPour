@@ -189,6 +189,11 @@
         "button_label": "DÉCOUVRIR LA COLLECTION",
         "button_link": "shopify://pages/boutique"
       }
+    },
+    "seo_homepage_pour_hXidVt": {
+      "type": "seo-homepage-pour",
+      "name": "SEO — CLUB POUR",
+      "settings": {}
     }
   },
   "order": [
@@ -198,6 +203,7 @@
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
-    "editorial_image_pour_FREXwq"
+    "editorial_image_pour_FREXwq",
+    "seo_homepage_pour_hXidVt"
   ]
 }
