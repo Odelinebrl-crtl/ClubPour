@@ -1,4 +1,3 @@
-
 {% comment %}
   CLUB POUR — Collection éditoriale SEO
   Affichage automatique des produits de la collection Shopify.
@@ -6,14 +5,12 @@
 
 <section id="PourEditorial-{{ section.id }}" class="pour-editorial">
 
-
-
   <div class="pour-editorial__intro">
     {% if section.settings.eyebrow != blank %}
       <p class="pour-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>
     {% endif %}
 
-    <h1 class="pour-editorial__title">
+    <h1 id="pour-editorial-title-{{ section.id }}" class="vetements-grid__heading">
       {{ section.settings.heading | default: collection.title | escape }}
     </h1>
 
@@ -56,19 +53,13 @@
               }}
             {% endif %}
 
-            <span class="pour-editorial__quick">
-              VOIR LE MODÈLE
-            </span>
+            <span class="pour-editorial__quick">VOIR LE MODÈLE</span>
           </a>
 
           <a class="pour-editorial__info" href="{{ product.url }}">
             <div class="pour-editorial__info-row">
-              <h2 class="pour-editorial__product-title">
-                {{ product.title | escape }}
-              </h2>
-              <span class="pour-editorial__price">
-                {{ product.price | money }}
-              </span>
+              <h2 class="pour-editorial__product-title">{{ product.title | escape }}</h2>
+              <span class="pour-editorial__price">{{ product.price | money }}</span>
             </div>
 
             {% if product.metafields.custom.color_name.value != blank %}
@@ -126,13 +117,11 @@
   {% if section.settings.editorial_heading != blank or section.settings.editorial_text != blank %}
     <div class="pour-editorial__content">
       {% if section.settings.editorial_eyebrow != blank %}
-        <p class="pour-editorial__eyebrow">
-          {{ section.settings.editorial_eyebrow | escape }}
-        </p>
+        <p class="pour-editorial__eyebrow">{{ section.settings.editorial_eyebrow | escape }}</p>
       {% endif %}
 
       {% if section.settings.editorial_heading != blank %}
-        <h2>{{ section.settings.editorial_heading | escape }}</h2>
+        <h2 class="vetements-grid__heading">{{ section.settings.editorial_heading | escape }}</h2>
       {% endif %}
 
       {% if section.settings.editorial_text != blank %}
@@ -143,63 +132,86 @@
     </div>
   {% endif %}
 
+  <div class="pour-editorial__signature">
+    <span></span>
+    <p>DESIGN — CULTURE AUTOMOBILE — CLUB POUR</p>
+    <span></span>
+  </div>
+
 </section>
 
 <style>
- #PourEditorial-{{ section.id }} {
-  padding: 75px 50px 65px;
-  box-sizing: border-box;
-}
-#PourEditorial-{{ section.id }} .pour-editorial__intro {
-  width: 100%;
-  max-width: 100%;
-  margin: 0 auto 86px;
-  padding-top: 28px;
-  text-align: center;
-}
+  #PourEditorial-{{ section.id }} {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 85px 56px 90px;
+    background: #fff;
+  }
 
-#PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
-  margin: 0 0 10px;
-  color: #aaa;
-  font-size: 9px;
-  line-height: 1.5;
-  font-weight: 400;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-}
+  #PourEditorial-{{ section.id }} *,
+  #PourEditorial-{{ section.id }} *::before,
+  #PourEditorial-{{ section.id }} *::after {
+    box-sizing: border-box;
+  }
 
-#PourEditorial-{{ section.id }} .pour-editorial__title {
-  margin: 0 0 16px;
-  color: #111;
-  font-size: 27px;
-  line-height: 1.2;
-  font-weight: 400;
-  letter-spacing: -.025em;
-  text-transform: uppercase;
-}
+  /* INTRODUCTION — même traitement éditorial que le SEO de la page d'accueil */
+  #PourEditorial-{{ section.id }} .pour-editorial__intro {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 76px;
+    padding-top: 28px;
+    text-align: center;
+  }
 
-#PourEditorial-{{ section.id }} .pour-editorial__text {
-  max-width: 850px;
-  margin: 0 auto;
-  color: #888;
-  font-size: 10px;
-  line-height: 1.9;
-  font-weight: 400;
-  letter-spacing: .13em;
-  text-transform: uppercase;
-}
+  #PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
+    margin: 0 0 22px;
+    color: #999;
+    font-size: 10px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
-#PourEditorial-{{ section.id }} .pour-editorial__text p {
-  margin: 0 0 10px;
-}
+  #PourEditorial-{{ section.id }} .vetements-grid__heading {
+    margin: 0 0 38px !important;
+    color: #111;
+    text-align: center;
+  }
 
-#PourEditorial-{{ section.id }} .pour-editorial__text p:last-child {
-  margin-bottom: 0;
-}
+  #PourEditorial-{{ section.id }} .pour-editorial__text {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+    color: #666;
+    font-size: 14px;
+    line-height: 1.9;
+    font-weight: 400;
+    letter-spacing: normal;
+    text-align: center;
+    text-transform: none;
+  }
 
+  #PourEditorial-{{ section.id }} .pour-editorial__text p {
+    margin: 0 0 18px;
+  }
 
+  #PourEditorial-{{ section.id }} .pour-editorial__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__text strong {
+    color: #333;
+    font-weight: 500;
+  }
+
+  /* GRILLE PRODUITS */
   #PourEditorial-{{ section.id }} .pour-editorial__products {
     display: grid;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 18px;
     row-gap: 42px;
@@ -238,13 +250,11 @@
     transition: opacity .3s ease;
   }
 
-  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
-  .pour-editorial__image--primary {
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover .pour-editorial__image--primary {
     opacity: 0;
   }
 
-  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
-  .pour-editorial__image--hover {
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover .pour-editorial__image--hover {
     opacity: 1;
   }
 
@@ -262,8 +272,7 @@
     transition: opacity .25s ease, transform .25s ease;
   }
 
-  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
-  .pour-editorial__quick {
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover .pour-editorial__quick {
     opacity: 1;
     transform: translateY(0);
   }
@@ -282,22 +291,24 @@
     gap: 8px;
   }
 
-#PourEditorial-{{ section.id }} .pour-editorial__product-title {
-  margin: 0;
-  font-size: 12px;
-  line-height: 1.4;
-  font-weight: 400;
-  text-transform: uppercase;
-}
+  #PourEditorial-{{ section.id }} .pour-editorial__product-title {
+    margin: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.4;
+    font-weight: 400 !important;
+    text-transform: uppercase;
+  }
 
   #PourEditorial-{{ section.id }} .pour-editorial__price {
     flex-shrink: 0;
     font-size: 12px;
+    font-weight: 400;
   }
 
   #PourEditorial-{{ section.id }} .pour-editorial__color {
     margin: 7px 0 0;
     font-size: 10px;
+    font-weight: 400;
   }
 
   #PourEditorial-{{ section.id }} .pour-editorial__swatches {
@@ -315,18 +326,16 @@
     border-radius: 50%;
   }
 
+  /* TEXTE ÉDITORIAL SOUS LES PRODUITS */
   #PourEditorial-{{ section.id }} .pour-editorial__content {
-    max-width: 850px;
+    width: 100%;
+    max-width: 900px;
     margin: 110px auto 20px;
+    text-align: center;
   }
 
-  #PourEditorial-{{ section.id }} .pour-editorial__content h2 {
-    margin: 0 0 25px;
-    font-size: clamp(22px, 2.5vw, 30px);
-    line-height: 1.2;
-    font-weight: 500;
-    letter-spacing: -.025em;
-    text-transform: uppercase;
+  #PourEditorial-{{ section.id }} .pour-editorial__content .vetements-grid__heading {
+    margin-bottom: 38px !important;
   }
 
   #PourEditorial-{{ section.id }} .pour-editorial__pagination {
@@ -345,37 +354,70 @@
     text-decoration: none;
   }
 
+  #PourEditorial-{{ section.id }} .pour-editorial__signature {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 42px;
+    color: #999;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__signature span {
+    display: block;
+    width: 35px;
+    height: 1px;
+    background: #ddd;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__signature p {
+    margin: 0;
+    color: #999;
+    font-size: 9px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: 2px;
+  }
+
   @media (max-width: 749px) {
- #PourEditorial-{{ section.id }} {
-  padding: 55px 16px 65px;
-}
-   
-#PourEditorial-{{ section.id }} .pour-editorial__intro {
-  margin-bottom: 48px;
-  padding-top: 20px;
-}
+    #PourEditorial-{{ section.id }} {
+      padding: 60px 22px 65px;
+    }
 
-#PourEditorial-{{ section.id }} .pour-editorial__title {
-  font-size: 23px;
-}
+    #PourEditorial-{{ section.id }} .pour-editorial__intro {
+      margin-bottom: 48px;
+      padding-top: 20px;
+    }
 
-#PourEditorial-{{ section.id }} .pour-editorial__text {
-  font-size: 9px;
-  line-height: 1.8;
-  letter-spacing: .10em;
-}
+    #PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
+      margin-bottom: 18px;
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
 
+    #PourEditorial-{{ section.id }} .vetements-grid__heading {
+      margin-bottom: 28px !important;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__text {
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__text p {
+      margin-bottom: 15px;
+    }
 
     #PourEditorial-{{ section.id }} .pour-editorial__products {
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 28px 12px;
     }
 
-#PourEditorial-{{ section.id }} .pour-editorial__product-title,
-#PourEditorial-{{ section.id }} .pour-editorial__price {
-  font-size: 10px;
-  font-weight: 400;
-}
+    #PourEditorial-{{ section.id }} .pour-editorial__product-title,
+    #PourEditorial-{{ section.id }} .pour-editorial__price {
+      font-size: 10px !important;
+      font-weight: 400 !important;
+    }
 
     #PourEditorial-{{ section.id }} .pour-editorial__quick {
       opacity: 1;
@@ -386,6 +428,20 @@
 
     #PourEditorial-{{ section.id }} .pour-editorial__content {
       margin-top: 75px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__signature {
+      gap: 10px;
+      margin-top: 35px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__signature span {
+      width: 20px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__signature p {
+      font-size: 8px;
+      letter-spacing: 1.5px;
     }
   }
 </style>
