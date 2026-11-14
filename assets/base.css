@@ -1688,6 +1688,7 @@ a {
     object-position: center;
 
     transform: none;
+      will-change: auto;
   }
 
 
