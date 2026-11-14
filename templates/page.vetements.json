@@ -111,11 +111,17 @@
         "reduce_top_spacing": true,
         "anchor_id": "collection-tshirts"
       }
+    },
+    "seo_boutique_pour_nxFgCd": {
+      "type": "seo-boutique-pour",
+      "name": "SEO — Boutique POUR",
+      "settings": {}
     }
   },
   "order": [
     "vetements_grid_Aa73e7",
     "vetements_grid_fE3YqH",
-    "vetements_grid_VWDWAQ"
+    "vetements_grid_VWDWAQ",
+    "seo_boutique_pour_nxFgCd"
   ]
 }
