@@ -1688,9 +1688,6 @@ a {
     object-position: center;
 
     transform: none;
-      height: 100%;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
   }
 
 
