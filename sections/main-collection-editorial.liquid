@@ -128,24 +128,6 @@
     {% endpaginate %}
   </div>
 
-  {% if section.settings.editorial_heading != blank or section.settings.editorial_text != blank %}
-    <div class="pour-editorial__content">
-      {% if section.settings.editorial_eyebrow != blank %}
-        <p class="pour-editorial__eyebrow">{{ section.settings.editorial_eyebrow | escape }}</p>
-      {% endif %}
-
-      {% if section.settings.editorial_heading != blank %}
-        <h2 class="vetements-grid__heading">{{ section.settings.editorial_heading | escape }}</h2>
-      {% endif %}
-
-      {% if section.settings.editorial_text != blank %}
-        <div class="pour-editorial__text">
-          {{ section.settings.editorial_text }}
-        </div>
-      {% endif %}
-    </div>
-
-  {% endif %}
 
 {% if request.locale.iso_code == 'fr' %}
 
@@ -598,6 +580,168 @@
       letter-spacing: 1.5px;
     }
   }
+
+
+/* SEO ÉDITORIAL — COLLECTION T-SHIRTS VOITURE */
+
+.pour-collection-seo {
+  width: 100%;
+  padding: 100px 24px 110px;
+  background: #fff;
+}
+
+.pour-collection-seo__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pour-collection-seo__eyebrow {
+  margin: 0 0 22px;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #999;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.pour-collection-seo .vetements-grid__heading {
+  margin: 0 0 38px !important;
+}
+
+.pour-collection-seo__content {
+  max-width: 850px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pour-collection-seo__content p {
+  margin: 0 0 18px;
+  font-size: 14px;
+  line-height: 1.9;
+  color: #666;
+  font-weight: 400;
+}
+
+.pour-collection-seo__content strong {
+  color: #333;
+  font-weight: 500;
+}
+
+.pour-collection-seo__faq {
+  max-width: 760px;
+  margin: 65px auto 0;
+  text-align: left;
+}
+
+.pour-collection-seo__faq-item {
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.pour-collection-seo__faq-item:first-of-type {
+  border-top: 1px solid #e8e8e8;
+}
+
+.pour-collection-seo__faq-item summary {
+  position: relative;
+  padding: 20px 35px 20px 0;
+  cursor: pointer;
+  list-style: none;
+  font-size: 14px;
+  line-height: 1.9;
+  font-weight: 400;
+  color: #000;
+}
+
+.pour-collection-seo__faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.pour-collection-seo__faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 19px;
+  font-weight: 300;
+  color: #999;
+}
+
+.pour-collection-seo__faq-item[open] summary::after {
+  content: "−";
+}
+
+.pour-collection-seo__faq-answer {
+  padding: 0 25px 18px 0;
+}
+
+.pour-collection-seo__faq-answer p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #777;
+  font-weight: 400;
+}
+
+.pour-collection-seo__signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 42px;
+}
+
+.pour-collection-seo__signature span {
+  display: block;
+  width: 35px;
+  height: 1px;
+  background: #ddd;
+}
+
+.pour-collection-seo__signature p {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: #999;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .pour-collection-seo {
+    padding: 65px 22px 75px;
+  }
+
+  .pour-collection-seo__content p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .pour-collection-seo .vetements-grid__heading {
+    margin-bottom: 28px !important;
+  }
+
+  .pour-collection-seo__faq {
+    margin-top: 45px;
+  }
+
+  .pour-collection-seo__faq-item summary {
+    font-size: 12px;
+    line-height: 1.8;
+    padding: 17px 30px 17px 0;
+  }
+
+  .pour-collection-seo__faq-answer p {
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .pour-collection-seo__signature p {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+}
+
 </style>
 
 {% schema %}
