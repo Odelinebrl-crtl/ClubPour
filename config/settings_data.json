@@ -13,7 +13,7 @@
       "header": {
         "type": "header",
         "settings": {
-          "logo": "shopify://shop_images/CLUB-4.png",
+          "logo": "shopify://shop_images/logo-club-pour.png",
           "collection_001_link": "",
           "all_link": "",
           "tshirts_link": "",
@@ -87,7 +87,7 @@
           "copy_fallback_label": "SÉLECTIONNEZ LE CODE",
           "continue_label": "POURSUIVRE MA VISITE",
           "close_label": "Fermer le pop-up",
-          "background_color": "#FFFFFF",
+          "background_color": "#ffffff",
           "text_color": "#111111",
           "muted_color": "#777777",
           "button_background": "#111111",
@@ -100,13 +100,6 @@
         }
       }
     },
-    "content_for_index": [],
-    "blocks": {
-      "12526071353035850722": {
-        "type": "shopify://apps/amp-back-in-stock/blocks/app-embed/bfa6a8c4-24e2-411a-9396-e35031b33f34",
-        "disabled": false,
-        "settings": {}
-      }
-    }
+    "content_for_index": []
   }
 }
