@@ -1,0 +1,428 @@
+
+{% comment %}
+  CLUB POUR — Collection éditoriale SEO
+  Affichage automatique des produits de la collection Shopify.
+{% endcomment %}
+
+<section id="PourEditorial-{{ section.id }}" class="pour-editorial">
+
+  <div class="pour-editorial__intro">
+    {% if section.settings.eyebrow != blank %}
+      <p class="pour-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {% endif %}
+
+    <h1 class="pour-editorial__title">
+      {{ section.settings.heading | default: collection.title | escape }}
+    </h1>
+
+    {% if section.settings.intro != blank %}
+      <div class="pour-editorial__text">
+        {{ section.settings.intro }}
+      </div>
+    {% elsif collection.description != blank %}
+      <div class="pour-editorial__text">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="pour-editorial__products">
+    {% paginate collection.products by 24 %}
+      {% for product in collection.products %}
+        <article class="pour-editorial__card">
+
+          <a class="pour-editorial__media" href="{{ product.url }}">
+            {% if product.featured_image %}
+              {{
+                product.featured_image
+                | image_url: width: 1200
+                | image_tag:
+                  class: 'pour-editorial__image pour-editorial__image--primary',
+                  loading: 'lazy',
+                  alt: product.featured_image.alt | default: product.title
+              }}
+            {% endif %}
+
+            {% if product.images.size > 1 %}
+              {{
+                product.images[1]
+                | image_url: width: 1200
+                | image_tag:
+                  class: 'pour-editorial__image pour-editorial__image--hover',
+                  loading: 'lazy',
+                  alt: product.images[1].alt | default: product.title
+              }}
+            {% endif %}
+
+            <span class="pour-editorial__quick">
+              VOIR LE MODÈLE
+            </span>
+          </a>
+
+          <a class="pour-editorial__info" href="{{ product.url }}">
+            <div class="pour-editorial__info-row">
+              <h2 class="pour-editorial__product-title">
+                {{ product.title | escape }}
+              </h2>
+              <span class="pour-editorial__price">
+                {{ product.price | money }}
+              </span>
+            </div>
+
+            {% if product.metafields.custom.color_name.value != blank %}
+              <p class="pour-editorial__color">
+                {{ product.metafields.custom.color_name.value | escape }}
+              </p>
+            {% endif %}
+
+            {% assign current_color = product.metafields.custom.couleur.value %}
+            {% assign color_products = product.metafields.custom.couleurs.value %}
+
+            {% if current_color != blank or color_products != blank %}
+              <div class="pour-editorial__swatches">
+                {% if current_color != blank %}
+                  <span
+                    class="pour-editorial__swatch"
+                    style="background-color: {{ current_color }};"
+                    aria-label="{{ product.metafields.custom.color_name.value | escape }}"
+                  ></span>
+                {% endif %}
+
+                {% if color_products != blank %}
+                  {% for color_product in color_products %}
+                    {% assign color_value = color_product.metafields.custom.couleur.value %}
+                    {% if color_value != blank %}
+                      <span
+                        class="pour-editorial__swatch"
+                        style="background-color: {{ color_value }};"
+                        aria-label="{{ color_product.metafields.custom.color_name.value | escape }}"
+                      ></span>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              </div>
+            {% endif %}
+          </a>
+
+        </article>
+      {% endfor %}
+
+      {% if paginate.pages > 1 %}
+        <nav class="pour-editorial__pagination" aria-label="Pagination">
+          {% if paginate.previous %}
+            <a href="{{ paginate.previous.url }}">PRÉCÉDENT</a>
+          {% endif %}
+          <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+          {% if paginate.next %}
+            <a href="{{ paginate.next.url }}">SUIVANT</a>
+          {% endif %}
+        </nav>
+      {% endif %}
+    {% endpaginate %}
+  </div>
+
+  {% if section.settings.editorial_heading != blank or section.settings.editorial_text != blank %}
+    <div class="pour-editorial__content">
+      {% if section.settings.editorial_eyebrow != blank %}
+        <p class="pour-editorial__eyebrow">
+          {{ section.settings.editorial_eyebrow | escape }}
+        </p>
+      {% endif %}
+
+      {% if section.settings.editorial_heading != blank %}
+        <h2>{{ section.settings.editorial_heading | escape }}</h2>
+      {% endif %}
+
+      {% if section.settings.editorial_text != blank %}
+        <div class="pour-editorial__text">
+          {{ section.settings.editorial_text }}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+</section>
+
+<style>
+  #PourEditorial-{{ section.id }} {
+    width: 100%;
+    color: #111;
+    background: #fff;
+    padding: 55px 4.5% 90px;
+    box-sizing: border-box;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__intro {
+    max-width: 1050px;
+    margin: 0 auto 52px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
+    margin: 0 0 18px;
+    font-size: 9px;
+    line-height: 1.5;
+    font-weight: 400;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__title {
+    margin: 0 0 25px;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.08;
+    font-weight: 500;
+    letter-spacing: -.045em;
+    text-transform: uppercase;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__text {
+    max-width: 850px;
+    font-size: 14px;
+    line-height: 1.85;
+    font-weight: 400;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__text p {
+    margin: 0 0 16px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__text p:last-child {
+    margin-bottom: 0;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__products {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 18px;
+    row-gap: 42px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__card {
+    min-width: 0;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__media {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    color: inherit;
+    text-decoration: none;
+    background: #f5f5f5;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__image--hover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity .3s ease;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__image--primary {
+    transition: opacity .3s ease;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
+  .pour-editorial__image--primary {
+    opacity: 0;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
+  .pour-editorial__image--hover {
+    opacity: 1;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__quick {
+    position: absolute;
+    right: 8px;
+    bottom: 8px;
+    padding: 10px 13px;
+    background: #fff;
+    color: #111;
+    font-size: 8px;
+    letter-spacing: .08em;
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__media:hover
+  .pour-editorial__quick {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__info {
+    display: block;
+    margin-top: 12px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__info-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__product-title {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__price {
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__color {
+    margin: 7px 0 0;
+    font-size: 10px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__swatches {
+    display: flex;
+    gap: 5px;
+    margin-top: 8px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__swatch {
+    display: block;
+    width: 11px;
+    height: 11px;
+    flex: 0 0 11px;
+    border: 1px solid #d5d5d5;
+    border-radius: 50%;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__content {
+    max-width: 850px;
+    margin: 110px auto 20px;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__content h2 {
+    margin: 0 0 25px;
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -.025em;
+    text-transform: uppercase;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__pagination {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 22px;
+    margin-top: 30px;
+    font-size: 10px;
+    letter-spacing: .08em;
+  }
+
+  #PourEditorial-{{ section.id }} .pour-editorial__pagination a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (max-width: 749px) {
+    #PourEditorial-{{ section.id }} {
+      padding: 35px 16px 65px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__intro {
+      margin-bottom: 32px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__title {
+      font-size: 29px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__text {
+      font-size: 13px;
+      line-height: 1.75;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__products {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px 12px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__product-title,
+    #PourEditorial-{{ section.id }} .pour-editorial__price {
+      font-size: 10px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__quick {
+      opacity: 1;
+      transform: none;
+      font-size: 7px;
+      padding: 8px 9px;
+    }
+
+    #PourEditorial-{{ section.id }} .pour-editorial__content {
+      margin-top: 75px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Collection éditoriale SEO",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Surtitre",
+      "default": "CLUB POUR — CULTURE AUTOMOBILE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre H1",
+      "default": "T-SHIRTS VOITURE"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction SEO",
+      "default": "<p>Découvrez les T-shirts voiture CLUB POUR, une collection de vêtements inspirés de la culture automobile et de l'univers racing.</p><p>Des créations originales qui revisitent les codes automobiles à travers un regard graphique et contemporain.</p>"
+    },
+    {
+      "type": "text",
+      "id": "editorial_eyebrow",
+      "label": "Surtitre du texte éditorial",
+      "default": "L'UNIVERS CLUB POUR"
+    },
+    {
+      "type": "text",
+      "id": "editorial_heading",
+      "label": "Titre H2 du texte éditorial",
+      "default": "LE VÊTEMENT AUTOMOBILE SELON CLUB POUR"
+    },
+    {
+      "type": "richtext",
+      "id": "editorial_text",
+      "label": "Texte SEO complémentaire",
+      "default": "<p>La culture automobile ne se limite pas aux voitures. Elle s'exprime aussi à travers les images, les lignes, les détails et les références qui inspirent un véritable univers esthétique.</p><p>CLUB POUR imagine des T-shirts automobiles qui s'inscrivent dans cette culture, avec des créations graphiques pensées pour être portées au quotidien. Chaque modèle associe une inspiration automobile à une approche contemporaine du vêtement.</p><p>Nos T-shirts sont conçus en 100 % coton biologique de 200 GSM. Découvrez les différents modèles de la collection et trouvez le T-shirt voiture qui correspond à votre univers.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection éditoriale SEO"
+    }
+  ]
+}
+{% endschema %}
