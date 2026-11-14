@@ -144,51 +144,54 @@
 </section>
 
 <style>
-  #PourEditorial-{{ section.id }} {
-    width: 100%;
-    color: #111;
-    background: #fff;
-    padding: 55px 4.5% 90px;
-    box-sizing: border-box;
-  }
+ 
+#PourEditorial-{{ section.id }} .pour-editorial__intro {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto 86px;
+  padding-top: 28px;
+  text-align: center;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__intro {
-    max-width: 1050px;
-    margin: 0 auto 52px;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
+  margin: 0 0 10px;
+  color: #aaa;
+  font-size: 9px;
+  line-height: 1.5;
+  font-weight: 400;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__eyebrow {
-    margin: 0 0 18px;
-    font-size: 9px;
-    line-height: 1.5;
-    font-weight: 400;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__title {
+  margin: 0 0 16px;
+  color: #111;
+  font-size: 27px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  text-transform: uppercase;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__title {
-    margin: 0 0 25px;
-    font-size: clamp(30px, 4vw, 48px);
-    line-height: 1.08;
-    font-weight: 500;
-    letter-spacing: -.045em;
-    text-transform: uppercase;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__text {
+  max-width: 850px;
+  margin: 0 auto;
+  color: #888;
+  font-size: 10px;
+  line-height: 1.9;
+  font-weight: 400;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__text {
-    max-width: 850px;
-    font-size: 14px;
-    line-height: 1.85;
-    font-weight: 400;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__text p {
+  margin: 0 0 10px;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__text p {
-    margin: 0 0 16px;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__text p:last-child {
+  margin-bottom: 0;
+}
 
-  #PourEditorial-{{ section.id }} .pour-editorial__text p:last-child {
-    margin-bottom: 0;
-  }
 
   #PourEditorial-{{ section.id }} .pour-editorial__products {
     display: grid;
@@ -342,18 +345,22 @@
       padding: 35px 16px 65px;
     }
 
-    #PourEditorial-{{ section.id }} .pour-editorial__intro {
-      margin-bottom: 32px;
-    }
+   
+#PourEditorial-{{ section.id }} .pour-editorial__intro {
+  margin-bottom: 48px;
+  padding-top: 20px;
+}
 
-    #PourEditorial-{{ section.id }} .pour-editorial__title {
-      font-size: 29px;
-    }
+#PourEditorial-{{ section.id }} .pour-editorial__title {
+  font-size: 23px;
+}
 
-    #PourEditorial-{{ section.id }} .pour-editorial__text {
-      font-size: 13px;
-      line-height: 1.75;
-    }
+#PourEditorial-{{ section.id }} .pour-editorial__text {
+  font-size: 9px;
+  line-height: 1.8;
+  letter-spacing: .10em;
+}
+
 
     #PourEditorial-{{ section.id }} .pour-editorial__products {
       grid-template-columns: repeat(2, minmax(0, 1fr));
