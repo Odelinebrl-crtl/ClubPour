@@ -31,7 +31,9 @@
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
-            "product": "t-shirt-peperoncino"
+            "product": "t-shirt-peperoncino",
+            "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
+            "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg"
           }
         },
         "product_card_NHQ6tT": {
