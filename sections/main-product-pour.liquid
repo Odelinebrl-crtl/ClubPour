@@ -158,7 +158,19 @@
         <h1 class="product-page-pour__title">
           {{ product.title }}
         </h1>
-
+<a
+  class="pour-google-rating"
+  href="https://g.page/r/CZl6E9fySzqHEAE/review"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Voir les avis Google de CLUB POUR"
+>
+  <span class="pour-google-rating__stars" aria-hidden="true">★★★★★</span>
+  <span>{{ section.settings.google_rating }}/5</span>
+  <span class="pour-google-rating__count">
+    ({{ section.settings.google_review_count }} avis)
+  </span>
+</a>
         {% if product.metafields.custom.subtitle != blank %}
           <p class="product-page-pour__subtitle">
             {{ product.metafields.custom.subtitle }}
@@ -3613,7 +3625,31 @@ font-weight: 200;
   }
 
 }
+.pour-google-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -8px;
+  margin-bottom: 18px;
+  color: #111111;
+  font-size: 11px;
+  line-height: 1.4;
+  text-decoration: none;
+}
 
+.pour-google-rating__stars {
+  color: #111111;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.pour-google-rating__count {
+  color: #666666;
+}
+
+.pour-google-rating:hover {
+  opacity: .65;
+}
 </style>
 
 <script>
@@ -5419,8 +5455,19 @@ if (
       "id": "shipping",
       "label": "Expédition & retours",
       "default": "{{ 'pour_product.shipping_fallback' | t }}"
-    }
-
+    },
+{
+  "type": "text",
+  "id": "google_rating",
+  "label": "Note Google",
+  "default": "5"
+},
+{
+  "type": "text",
+  "id": "google_review_count",
+  "label": "Nombre d'avis Google",
+  "default": "12"
+}
   ]
 }
 {% endschema %}
