@@ -17,9 +17,10 @@
         "image_mobile": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_057.jpg",
         "text_color": "#ffffff",
         "overlay": 10,
-        "exclusive_image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_082.jpg",
-        "editorial_image": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_063.jpg",
-        "editorial_image_mobile": "shopify://shop_images/2026-10-12_Shooting_voiture_Pour_-_071_758bfcc7-2836-43d8-85d6-e0de5878e04f.jpg"
+        "exclusive_image": "shopify://shop_images/porsche-911-blanche-detail-moteur-arriere.jpg",
+        "exclusive_mobile_image": "shopify://shop_images/porsche-911-blanche-detail-moteur-arriere.jpg",
+        "editorial_image": "shopify://shop_images/porsche-911-ancienne-blanche-vue-trois-quarts.jpg",
+        "editorial_image_mobile": "shopify://shop_images/porsche-ancienne-blanche-route-foret.jpg"
       }
     }
   },
