@@ -44,110 +44,77 @@
 </section>
 
 <style>
-  .pour-home-seo {
+  .pour-seo {
     width: 100%;
-    padding: 76px 30px 82px;
-    background: #ffffff;
-    color: #111111;
-    box-sizing: border-box;
+    padding: 85px 24px 90px;
+    background: #fff;
   }
 
-  .pour-home-seo__inner {
-    width: 100%;
-    max-width: 900px;
+  .pour-seo__content {
+    max-width: 850px;
     margin: 0 auto;
     text-align: center;
   }
-.pour-home-seo .vetements-grid__heading {
-  margin-bottom: 38px !important;
-}
-  .pour-home-seo__eyebrow {
-    margin: 0 0 24px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  .pour-seo__eyebrow {
+    margin: 0 0 22px;
     font-size: 10px;
-    font-weight: 400;
-    letter-spacing: .22em;
+    letter-spacing: 3px;
+    color: #999;
     text-transform: uppercase;
-    color: rgba(17,17,17,.48);
   }
 
-.pour-home-seo__content {
-  max-width: 850px;
-  margin: 0 auto;
-  text-align: center;
-}
 
-.pour-home-seo__content p {
-  margin: 0 0 18px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.9;
-  letter-spacing: .015em;
-  color: #666666;
-}
+  .pour-seo p:not(.pour-seo__eyebrow) {
+    margin: 0 0 18px;
+    font-size: 14px;
+    line-height: 1.9;
+    color: #666;
+  }
 
-  .pour-home-seo__signature {
+  .pour-seo strong {
+    color: #333;
+    font-weight: 500;
+  }
+
+  .pour-seo__signature {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 18px;
-    margin-top: 38px;
+    margin-top: 42px;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #999;
   }
 
-  .pour-home-seo__signature span {
-    display: block;
+  .pour-seo__signature::before,
+  .pour-seo__signature::after {
+    content: "";
     width: 35px;
     height: 1px;
-    background: #dedede;
+    background: #ddd;
   }
 
-  .pour-home-seo__signature p {
-    margin: 0;
-    font-size: 8px;
-    letter-spacing: .17em;
-    font-weight: 400;
-    color: #777777;
-  }
-
-  .pour-home-seo__title {
-  margin-bottom: 38px !important;
+  .pour-seo .vetements-grid__heading {
+  margin: 0 0 38px !important;
 }
 
-  @media screen and (max-width: 768px) {
-
-    .pour-home-seo {
-      padding: 54px 22px 60px;
+  @media (max-width: 768px) {
+    .pour-seo {
+      padding: 60px 22px 65px;
     }
 
-    .pour-home-seo__eyebrow {
-      font-size: 9px;
-      margin-bottom: 20px;
+    .pour-seo p:not(.pour-seo__eyebrow) {
+      font-size: 12px;
+      line-height: 1.8;
     }
 
-.pour-home-seo__content {
-  max-width: 100%;
-}
-
-.pour-home-seo__content p {
-  font-size: 12px;
-  line-height: 1.8;
-  margin-bottom: 18px;
-}
-
-    .pour-home-seo__signature {
-      margin-top: 30px;
-      gap: 12px;
+    .pour-seo__signature {
+      font-size: 8px;
+      letter-spacing: 1.5px;
     }
-
-    .pour-home-seo__signature p {
-      font-size: 7px;
-    }
-
-  .pour-home-seo__title {
-    margin-bottom: 28px !important;
-  }
-.pour-home-seo .vetements-grid__heading {
+    .pour-seo .vetements-grid__heading {
   margin-bottom: 28px !important;
 }
   }
