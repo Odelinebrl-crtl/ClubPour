@@ -158,6 +158,9 @@
       "type": "featured-collection-pour",
       "name": "Collection mise en avant",
       "settings": {
+        "image": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture2.png",
+        "image_mobile": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
+        "image_tablet": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
         "eyebrow": "COLLECTION 001",
         "heading": "RACING AUTOMOBILE",
         "text": "<p>L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
