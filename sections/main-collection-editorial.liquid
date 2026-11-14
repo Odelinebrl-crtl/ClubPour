@@ -6,6 +6,8 @@
 
 <section id="PourEditorial-{{ section.id }}" class="pour-editorial">
 
+
+
   <div class="pour-editorial__intro">
     {% if section.settings.eyebrow != blank %}
       <p class="pour-editorial__eyebrow">{{ section.settings.eyebrow | escape }}</p>
@@ -144,7 +146,10 @@
 </section>
 
 <style>
- 
+ #PourEditorial-{{ section.id }} {
+  padding: 75px 50px 65px;
+  box-sizing: border-box;
+}
 #PourEditorial-{{ section.id }} .pour-editorial__intro {
   width: 100%;
   max-width: 100%;
@@ -277,13 +282,13 @@
     gap: 8px;
   }
 
-  #PourEditorial-{{ section.id }} .pour-editorial__product-title {
-    margin: 0;
-    font-size: 12px;
-    line-height: 1.4;
-    font-weight: 600;
-    text-transform: uppercase;
-  }
+#PourEditorial-{{ section.id }} .pour-editorial__product-title {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.4;
+  font-weight: 400;
+  text-transform: uppercase;
+}
 
   #PourEditorial-{{ section.id }} .pour-editorial__price {
     flex-shrink: 0;
@@ -341,10 +346,9 @@
   }
 
   @media (max-width: 749px) {
-    #PourEditorial-{{ section.id }} {
-      padding: 35px 16px 65px;
-    }
-
+ #PourEditorial-{{ section.id }} {
+  padding: 55px 16px 65px;
+}
    
 #PourEditorial-{{ section.id }} .pour-editorial__intro {
   margin-bottom: 48px;
@@ -367,10 +371,11 @@
       gap: 28px 12px;
     }
 
-    #PourEditorial-{{ section.id }} .pour-editorial__product-title,
-    #PourEditorial-{{ section.id }} .pour-editorial__price {
-      font-size: 10px;
-    }
+#PourEditorial-{{ section.id }} .pour-editorial__product-title,
+#PourEditorial-{{ section.id }} .pour-editorial__price {
+  font-size: 10px;
+  font-weight: 400;
+}
 
     #PourEditorial-{{ section.id }} .pour-editorial__quick {
       opacity: 1;
