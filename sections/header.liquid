@@ -630,6 +630,14 @@ href="{{ section.settings.cart_google_review_url | default: 'https://g.page/r/CZ
         {{ 'pour_header.cart_drawer.view_cart' | t }}
       </a>
 
+<div class="cart-drawer__payment-icons">
+  {% for type in shop.enabled_payment_types %}
+    <span class="cart-drawer__payment-icon">
+      {{ type | payment_type_svg_tag }}
+    </span>
+  {% endfor %}
+</div>
+
     </div>
 
 
@@ -1508,6 +1516,34 @@ transition:
 }
 
 
+
+/* =========================================================
+   MOYENS DE PAIEMENT — PANIER RAPIDE
+========================================================= */
+
+.cart-drawer__payment-icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 15px 20px;
+  box-sizing: border-box;
+}
+
+.cart-drawer__payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-drawer__payment-icon svg {
+  display: block;
+  width: auto;
+  height: 25px;
+  max-width: 42px;
+}
 
 /* =========================================================
    PANIER VIDE
@@ -3255,7 +3291,13 @@ const imageHTML = item.image
         >
           {{ 'pour_header.cart_drawer.view_cart' | t }}
         </a>
-
+<div class="cart-drawer__payment-icons">
+  {% for type in shop.enabled_payment_types %}
+    <span class="cart-drawer__payment-icon">
+      {{ type | payment_type_svg_tag }}
+    </span>
+  {% endfor %}
+</div>
       </div>
     `;
  updateDeliveryEstimate();
