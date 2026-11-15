@@ -506,6 +506,21 @@
   {% assign free_shipping_percentage = 100 %}
 {% endif %}
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+
+<a
+  class="cart-drawer__google-rating"
+href="{{ section.settings.cart_google_review_url | default: 'https://g.page/r/CZl6E9fySzqHEAE/review' }}"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Voir les avis Google de CLUB POUR"
+>
+  <span class="cart-drawer__google-stars" aria-hidden="true">★★★★★</span>
+  <span>{{ section.settings.cart_google_rating }}/5</span>
+  <span class="cart-drawer__google-count">
+    ({{ section.settings.cart_google_review_count }} avis)
+  </span>
+</a>
+
 <div
   class="cart-drawer__free-shipping"
   data-free-shipping
@@ -1246,6 +1261,38 @@ transition:
 
 .cart-drawer__remove:hover::after {
   transform: scaleX(.4);
+}
+
+/* =========================================================
+   AVIS GOOGLE — PANIER RAPIDE
+========================================================= */
+
+.cart-drawer__google-rating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  width: 100%;
+  margin: 0 0 14px;
+  color: #111111;
+  font-family: inherit;
+  font-size: 11px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.cart-drawer__google-stars {
+  color: #111111;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.cart-drawer__google-count {
+  color: #666666;
+}
+
+.cart-drawer__google-rating:hover {
+  opacity: .65;
 }
 
 /* =========================================================
@@ -3095,6 +3142,21 @@ const imageHTML = item.image
 
       <div class="cart-drawer__footer">
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+
+<a
+  class="cart-drawer__google-rating"
+  href="{{ section.settings.cart_google_review_url | default: 'https://g.page/r/CZl6E9fySzqHEAE/review' }}"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Voir les avis Google de CLUB POUR"
+>
+  <span class="cart-drawer__google-stars" aria-hidden="true">★★★★★</span>
+  <span>{{ section.settings.cart_google_rating }}/5</span>
+  <span class="cart-drawer__google-count">
+    ({{ section.settings.cart_google_review_count }} avis)
+  </span>
+</a>
+
   <div
     class="cart-drawer__free-shipping"
     data-free-shipping
@@ -4040,11 +4102,33 @@ document.addEventListener(
       "default": "BRAND COLLECTION"
     },
 
-    {
-      "type": "url",
-      "id": "menu_image_link_2",
-      "label": "Lien image 02"
-    }
+    
+{
+  "type": "url",
+  "id": "menu_image_link_2",
+  "label": "Lien image 02"
+},
+{
+  "type": "header",
+  "content": "Avis Google — Panier rapide"
+},
+{
+  "type": "text",
+  "id": "cart_google_rating",
+  "label": "Note Google",
+  "default": "5"
+},
+{
+  "type": "text",
+  "id": "cart_google_review_count",
+  "label": "Nombre d'avis Google",
+  "default": "12"
+},
+{
+  "type": "url",
+  "id": "cart_google_review_url",
+  "label": "Lien des avis Google"
+}
 
   ]
 }
