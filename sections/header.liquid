@@ -2309,22 +2309,24 @@ transition:
     width: 100%;
   }
 
-  .cart-drawer__header {
-    position: relative;
-    padding: 0 20px;
-    border-bottom: none !important;
-  }
+.cart-drawer__header {
+  display: flex;
 
-  /* Trait horizontal remonté */
-  .cart-drawer__header::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 30px;
-    height: 1px;
-    background: rgba(17,17,17,.10);
-  }
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 69px;
+
+  padding:
+    0
+    34px;
+
+  flex-shrink: 0;
+
+  border-bottom:
+    1px solid
+    rgba(17,17,17,.10);
+}
 
   .cart-drawer__items {
     padding: 20px;
