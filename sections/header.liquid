@@ -303,7 +303,33 @@
     </button>
 
   </div>
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+<div class="cart-drawer__delivery-timeline" data-delivery-timeline>
 
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">01</span>
+    <strong>COMMANDE</strong>
+    <span>Aujourd'hui</span>
+  </div>
+
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">02</span>
+    <strong>EXPÉDITION</strong>
+    <span data-delivery-dispatch>À partir du ...</span>
+  </div>
+
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">03</span>
+    <strong>LIVRAISON</strong>
+    <span data-delivery-arrival>...</span>
+  </div>
+
+</div>
+
+<p class="cart-drawer__delivery-note">
+  Délais estimatifs pour la France métropolitaine
+</p>
+{% endif %}
 
   {% if cart.item_count > 0 %}
 
@@ -830,7 +856,67 @@ transition:
   transform: rotate(90deg);
 }
 
+/* =========================================================
+   TIMELINE LIVRAISON CLUB POUR
+========================================================= */
 
+.cart-drawer__delivery-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 24px 25px 10px;
+  box-sizing: border-box;
+  background: #ffffff;
+  color: #111111;
+}
+
+.cart-drawer__delivery-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+.cart-drawer__delivery-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(17,17,17,.25);
+  border-radius: 50%;
+  font-size: 10px;
+  letter-spacing: .05em;
+}
+
+.cart-drawer__delivery-step strong {
+  font-family: inherit;
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .09em;
+}
+
+.cart-drawer__delivery-step > span:last-child {
+  font-family: inherit;
+  font-size: 9px;
+  line-height: 1.4;
+  color: rgba(17,17,17,.60);
+}
+
+.cart-drawer__delivery-note {
+  margin: 0;
+  padding: 0 20px 22px;
+  text-align: center;
+  font-size: 8px;
+  letter-spacing: .02em;
+  color: rgba(17,17,17,.45);
+}
+
+.cart-drawer__delivery-timeline + .cart-drawer__delivery-note {
+  display: block;
+}
 
 /* =========================================================
    ITEMS
@@ -2346,7 +2432,49 @@ function freeShippingMoney(cents) {
     maximumFractionDigits: 2
   }).format(cents / 100) + ' €';
 }
+/* =========================================================
+   ESTIMATION DES DÉLAIS DE LIVRAISON
+========================================================= */
 
+function updateDeliveryEstimate() {
+
+  const timeline = document.querySelector(
+    '[data-delivery-timeline]'
+  );
+
+  if (!timeline) return;
+
+  function getDate(offset) {
+
+    const date = new Date();
+
+    date.setHours(12, 0, 0, 0);
+    date.setDate(date.getDate() + offset);
+
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: '2-digit',
+      month: 'short'
+    }).format(date).replace('.', '').toUpperCase();
+
+  }
+
+  const dispatch = timeline.querySelector(
+    '[data-delivery-dispatch]'
+  );
+
+  const arrival = timeline.querySelector(
+    '[data-delivery-arrival]'
+  );
+
+  if (dispatch) {
+    dispatch.textContent = 'À partir du ' + getDate(4);
+  }
+
+  if (arrival) {
+    arrival.textContent = getDate(6) + ' – ' + getDate(9);
+  }
+
+}
   function escapeHTML(value) {
 
     const div =
@@ -2684,6 +2812,7 @@ drawer.querySelectorAll('[data-cart-item]').forEach((itemElement) => {
         </div>
       `;
 
+    updateDeliveryEstimate();
 
       return cart;
 
@@ -2843,7 +2972,33 @@ const imageHTML = item.image
         </button>
 
       </div>
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+      <div class="cart-drawer__delivery-timeline" data-delivery-timeline>
 
+        <div class="cart-drawer__delivery-step">
+          <span class="cart-drawer__delivery-icon">01</span>
+          <strong>COMMANDE</strong>
+          <span>Aujourd'hui</span>
+        </div>
+
+        <div class="cart-drawer__delivery-step">
+          <span class="cart-drawer__delivery-icon">02</span>
+          <strong>EXPÉDITION</strong>
+          <span data-delivery-dispatch></span>
+        </div>
+
+        <div class="cart-drawer__delivery-step">
+          <span class="cart-drawer__delivery-icon">03</span>
+          <strong>LIVRAISON</strong>
+          <span data-delivery-arrival></span>
+        </div>
+
+      </div>
+
+      <p class="cart-drawer__delivery-note">
+        Délais estimatifs pour la France métropolitaine
+      </p>
+{% endif %}
 
       <div class="cart-drawer__items">
         ${itemsHTML}
@@ -3438,7 +3593,7 @@ document.addEventListener(
 
     }
   );
-
+  updateDeliveryEstimate();
 })();
 </script>
 
