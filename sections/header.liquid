@@ -2300,7 +2300,7 @@ transition:
 
 }
 /* =========================================================
-   MOBILE
+   MOBILE — PANIER RAPIDE
 ========================================================= */
 
 @media screen and (max-width: 600px) {
@@ -2309,39 +2309,38 @@ transition:
     width: 100%;
   }
 
-
   .cart-drawer__header {
-    padding:
-      0
-      20px;
+    position: relative;
+    padding: 0 20px;
+    border-bottom: none !important;
   }
 
+  /* Trait horizontal remonté */
+  .cart-drawer__header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 14px;
+    height: 1px;
+    background: rgba(17,17,17,.10);
+  }
 
   .cart-drawer__items {
-    padding:
-      20px;
+    padding: 20px;
   }
-
 
   .cart-drawer__item {
-    grid-template-columns:
-      105px
-      minmax(0,1fr);
-
+    grid-template-columns: 105px minmax(0,1fr);
     gap: 16px;
   }
-
 
   .cart-drawer__media {
     width: 105px;
   }
 
-
   .cart-drawer__footer {
-    padding:
-      24px
-      20px
-      28px;
+    padding: 24px 20px 28px;
   }
 
 }
