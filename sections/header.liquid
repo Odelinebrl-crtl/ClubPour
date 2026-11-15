@@ -303,25 +303,46 @@
     </button>
 
   </div>
+
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
 <div class="cart-drawer__delivery-timeline" data-delivery-timeline>
 
   <div class="cart-drawer__delivery-step">
-    <span class="cart-drawer__delivery-icon">01</span>
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="20" r="1"/>
+        <circle cx="19" cy="20" r="1"/>
+        <path d="M2 3h2l2.5 12.5a2 2 0 0 0 2 1.5h10a2 2 0 0 0 2-1.5L22 8H5"/>
+      </svg>
+    </span>
     <strong>COMMANDE</strong>
-    <span>Aujourd'hui</span>
+    <span data-delivery-order></span>
   </div>
 
   <div class="cart-drawer__delivery-step">
-    <span class="cart-drawer__delivery-icon">02</span>
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h11v12H3z"/>
+        <path d="M14 10h4l3 3v5h-7z"/>
+        <circle cx="7.5" cy="18" r="2"/>
+        <circle cx="18" cy="18" r="2"/>
+      </svg>
+    </span>
     <strong>EXPÉDITION</strong>
-    <span data-delivery-dispatch>À partir du ...</span>
+    <span data-delivery-dispatch></span>
   </div>
 
   <div class="cart-drawer__delivery-step">
-    <span class="cart-drawer__delivery-icon">03</span>
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 8l-9-5-9 5v10l9 5 9-5V8z"/>
+        <path d="M3.3 8.2L12 13l8.7-4.8"/>
+        <path d="M12 23V13"/>
+        <path d="M7.5 5.5l9 5"/>
+      </svg>
+    </span>
     <strong>LIVRAISON</strong>
-    <span data-delivery-arrival>...</span>
+    <span data-delivery-arrival></span>
   </div>
 
 </div>
@@ -330,6 +351,7 @@
   Délais estimatifs pour la France métropolitaine
 </p>
 {% endif %}
+
 
   {% if cart.item_count > 0 %}
 
@@ -856,6 +878,7 @@ transition:
   transform: rotate(90deg);
 }
 
+
 /* =========================================================
    TIMELINE LIVRAISON CLUB POUR
 ========================================================= */
@@ -871,6 +894,7 @@ transition:
 }
 
 .cart-drawer__delivery-step {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -879,17 +903,50 @@ transition:
   min-width: 0;
 }
 
+/* TRAITS ENTRE LES ÉTAPES */
+
+.cart-drawer__delivery-step:nth-child(1)::after,
+.cart-drawer__delivery-step:nth-child(2)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: calc(50% + 18px);
+  width: calc(100% - 36px);
+  z-index: 0;
+}
+
+.cart-drawer__delivery-step:nth-child(1)::after {
+  border-top: 1px solid #111111;
+}
+
+.cart-drawer__delivery-step:nth-child(2)::after {
+  border-top: 1px dashed rgba(17,17,17,.40);
+}
+
+/* ICÔNES */
+
 .cart-drawer__delivery-icon {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 34px;
-  height: 34px;
+  width: 38px;
+  height: 38px;
+  box-sizing: border-box;
   border: 1px solid rgba(17,17,17,.25);
   border-radius: 50%;
-  font-size: 10px;
-  letter-spacing: .05em;
+  background: #ffffff;
+  color: #111111;
 }
+
+.cart-drawer__delivery-icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* TEXTES */
 
 .cart-drawer__delivery-step strong {
   font-family: inherit;
@@ -906,16 +963,13 @@ transition:
 }
 
 .cart-drawer__delivery-note {
+  display: block;
   margin: 0;
   padding: 0 20px 22px;
   text-align: center;
   font-size: 8px;
   letter-spacing: .02em;
   color: rgba(17,17,17,.45);
-}
-
-.cart-drawer__delivery-timeline + .cart-drawer__delivery-note {
-  display: block;
 }
 
 /* =========================================================
@@ -2436,6 +2490,7 @@ function freeShippingMoney(cents) {
    ESTIMATION DES DÉLAIS DE LIVRAISON
 ========================================================= */
 
+
 function updateDeliveryEstimate() {
 
   const timeline = document.querySelector(
@@ -2447,16 +2502,22 @@ function updateDeliveryEstimate() {
   function getDate(offset) {
 
     const date = new Date();
-
     date.setHours(12, 0, 0, 0);
     date.setDate(date.getDate() + offset);
 
     return new Intl.DateTimeFormat('fr-FR', {
       day: '2-digit',
       month: 'short'
-    }).format(date).replace('.', '').toUpperCase();
+    })
+    .format(date)
+    .replace('.', '')
+    .toUpperCase();
 
   }
+
+  const order = timeline.querySelector(
+    '[data-delivery-order]'
+  );
 
   const dispatch = timeline.querySelector(
     '[data-delivery-dispatch]'
@@ -2465,6 +2526,10 @@ function updateDeliveryEstimate() {
   const arrival = timeline.querySelector(
     '[data-delivery-arrival]'
   );
+
+  if (order) {
+    order.textContent = getDate(0);
+  }
 
   if (dispatch) {
     dispatch.textContent = 'À partir du ' + getDate(4);
@@ -2475,6 +2540,7 @@ function updateDeliveryEstimate() {
   }
 
 }
+
   function escapeHTML(value) {
 
     const div =
@@ -2972,33 +3038,55 @@ const imageHTML = item.image
         </button>
 
       </div>
+      
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
-      <div class="cart-drawer__delivery-timeline" data-delivery-timeline>
+<div class="cart-drawer__delivery-timeline" data-delivery-timeline>
 
-        <div class="cart-drawer__delivery-step">
-          <span class="cart-drawer__delivery-icon">01</span>
-          <strong>COMMANDE</strong>
-          <span>Aujourd'hui</span>
-        </div>
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="20" r="1"/>
+        <circle cx="19" cy="20" r="1"/>
+        <path d="M2 3h2l2.5 12.5a2 2 0 0 0 2 1.5h10a2 2 0 0 0 2-1.5L22 8H5"/>
+      </svg>
+    </span>
+    <strong>COMMANDE</strong>
+    <span data-delivery-order></span>
+  </div>
 
-        <div class="cart-drawer__delivery-step">
-          <span class="cart-drawer__delivery-icon">02</span>
-          <strong>EXPÉDITION</strong>
-          <span data-delivery-dispatch></span>
-        </div>
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h11v12H3z"/>
+        <path d="M14 10h4l3 3v5h-7z"/>
+        <circle cx="7.5" cy="18" r="2"/>
+        <circle cx="18" cy="18" r="2"/>
+      </svg>
+    </span>
+    <strong>EXPÉDITION</strong>
+    <span data-delivery-dispatch></span>
+  </div>
 
-        <div class="cart-drawer__delivery-step">
-          <span class="cart-drawer__delivery-icon">03</span>
-          <strong>LIVRAISON</strong>
-          <span data-delivery-arrival></span>
-        </div>
+  <div class="cart-drawer__delivery-step">
+    <span class="cart-drawer__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 8l-9-5-9 5v10l9 5 9-5V8z"/>
+        <path d="M3.3 8.2L12 13l8.7-4.8"/>
+        <path d="M12 23V13"/>
+        <path d="M7.5 5.5l9 5"/>
+      </svg>
+    </span>
+    <strong>LIVRAISON</strong>
+    <span data-delivery-arrival></span>
+  </div>
 
-      </div>
+</div>
 
-      <p class="cart-drawer__delivery-note">
-        Délais estimatifs pour la France métropolitaine
-      </p>
+<p class="cart-drawer__delivery-note">
+  Délais estimatifs pour la France métropolitaine
+</p>
 {% endif %}
+
 
       <div class="cart-drawer__items">
         ${itemsHTML}
@@ -3107,7 +3195,7 @@ const imageHTML = item.image
 
       </div>
     `;
-
+ updateDeliveryEstimate();
 
     return cart;
 
