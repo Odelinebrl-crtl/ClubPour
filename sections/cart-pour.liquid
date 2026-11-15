@@ -147,12 +147,75 @@
           <p class="cart-pour__summary-eyebrow">
             {{ 'cart_pour.summary' | t }}
           </p>
+
+
+{% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
+
+<div class="cart-pour__delivery-timeline" data-cart-pour-timeline>
+
+  <div class="cart-pour__delivery-step">
+    <span class="cart-pour__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h8.5a2 2 0 0 0 1.9-1.4L22 9H6"/>
+        <circle cx="10" cy="21" r="1"/>
+        <circle cx="18" cy="21" r="1"/>
+      </svg>
+    </span>
+    <strong>COMMANDE</strong>
+    <span data-cart-pour-order></span>
+  </div>
+
+  <div class="cart-pour__delivery-step">
+    <span class="cart-pour__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h11v12H3z"/>
+        <path d="M14 10h4l3 4v4h-7z"/>
+        <circle cx="7.5" cy="19" r="1.5"/>
+        <circle cx="17.5" cy="19" r="1.5"/>
+      </svg>
+    </span>
+    <strong>EXPÉDITION</strong>
+    <span data-cart-pour-dispatch></span>
+  </div>
+
+  <div class="cart-pour__delivery-step">
+    <span class="cart-pour__delivery-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m12 3 9 5v8l-9 5-9-5V8z"/>
+        <path d="m3 8 9 5 9-5M12 13v8M7.5 5.5l9 5"/>
+      </svg>
+    </span>
+    <strong>LIVRAISON</strong>
+    <span data-cart-pour-arrival></span>
+  </div>
+
+</div>
+
+<p class="cart-pour__delivery-note">
+  Délais estimatifs pour la France métropolitaine
+</p>
+
+{% endif %}
+
 {% if request.locale.iso_code == 'fr' and localization.country.iso_code == 'FR' and cart.currency.iso_code == 'EUR' %}
 
   {% assign free_shipping_threshold = 10000 %}
   {% assign free_shipping_remaining = free_shipping_threshold | minus: cart.total_price %}
   {% assign free_shipping_progress = cart.total_price | times: 100.0 | divided_by: free_shipping_threshold | at_most: 100 %}
 {% assign free_shipping_remaining_money = free_shipping_remaining | money_without_currency | append: ' €' %}
+
+<a
+  class="cart-pour__google-rating"
+  href="{{ section.settings.google_review_url }}"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <span class="cart-pour__google-stars">★★★★★</span>
+  <span>{{ section.settings.google_rating }}/5</span>
+  <span class="cart-pour__google-count">
+    ({{ section.settings.google_review_count }} avis)
+  </span>
+</a>
 
   <div class="cart-pour__free-shipping">
 
@@ -227,6 +290,14 @@
             <span>{{ 'cart_pour.checkout' | t }}</span>
             <span aria-hidden="true">→</span>
           </button>
+
+<div class="cart-pour__payment-icons">
+  {% for type in shop.enabled_payment_types %}
+    <span class="cart-pour__payment-icon">
+      {{ type | payment_type_svg_tag }}
+    </span>
+  {% endfor %}
+</div>
 
           <div class="cart-pour__reassurance">
             <div>
@@ -1145,12 +1216,264 @@
 
 }
 
+/* =========================================================
+   AVIS GOOGLE — PANIER OFFICIEL
+========================================================= */
+
+#CartPour-{{ section.id }} .cart-pour__google-rating {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  margin: 0 0 22px;
+  color: #111111;
+  font-family: inherit;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+#CartPour-{{ section.id }} .cart-pour__google-stars {
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+#CartPour-{{ section.id }} .cart-pour__google-count {
+  color: rgba(17,17,17,.55);
+}
+
+/* =========================================================
+   DÉLAIS DE LIVRAISON
+========================================================= */
+
+#CartPour-{{ section.id }} .cart-pour__delivery-timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  padding: 0 0 10px;
+  margin-bottom: 8px;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-timeline::before,
+#CartPour-{{ section.id }} .cart-pour__delivery-timeline::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  height: 1px;
+  width: 33.333%;
+  pointer-events: none;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-timeline::before {
+  left: 16.666%;
+  background: #111111;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-timeline::after {
+  left: 50%;
+  background-image: linear-gradient(
+    to right,
+    rgba(17,17,17,.25) 50%,
+    transparent 50%
+  );
+  background-size: 5px 1px;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 7px;
+  min-width: 0;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(17,17,17,.25);
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-step strong {
+  font-size: 8px;
+  font-weight: 500;
+  letter-spacing: .08em;
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-step > span:last-child {
+  font-size: 9px;
+  line-height: 1.4;
+  color: rgba(17,17,17,.60);
+}
+
+#CartPour-{{ section.id }} .cart-pour__delivery-note {
+  margin: 0 0 25px;
+  text-align: center;
+  font-size: 9px;
+  color: rgba(17,17,17,.45);
+}
+
+/* =========================================================
+   MOYENS DE PAIEMENT
+========================================================= */
+
+#CartPour-{{ section.id }} .cart-pour__payment-icons {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  margin-top: 15px;
+  padding: 0 0 8px;
+  overflow: hidden;
+}
+
+#CartPour-{{ section.id }} .cart-pour__payment-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+#CartPour-{{ section.id }} .cart-pour__payment-icon svg {
+  display: block;
+  width: auto;
+  height: 19px;
+  max-width: 34px;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 600px) {
+
+  #CartPour-{{ section.id }} .cart-pour__delivery-timeline {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  #CartPour-{{ section.id }} .cart-pour__delivery-step strong {
+    font-size: 7px;
+  }
+
+  #CartPour-{{ section.id }} .cart-pour__delivery-step > span:last-child {
+    font-size: 8px;
+  }
+
+  #CartPour-{{ section.id }} .cart-pour__payment-icons {
+    gap: 4px;
+  }
+
+  #CartPour-{{ section.id }} .cart-pour__payment-icon svg {
+    height: 16px;
+    max-width: 29px;
+  }
+
+}
+
 </style>
+
+<script>
+(function () {
+
+  const timeline = document.querySelector(
+    '#CartPour-{{ section.id }} [data-cart-pour-timeline]'
+  );
+
+  if (!timeline) return;
+
+  function addDays(date, days) {
+    const result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
+  }
+
+  function formatDate(date) {
+    return new Intl.DateTimeFormat('fr-FR', {
+      day: '2-digit',
+      month: 'short'
+    }).format(date).replace('.', '').toUpperCase();
+  }
+
+  const today = new Date();
+  today.setHours(12, 0, 0, 0);
+
+  const dispatch = addDays(today, 4);
+  const arrivalStart = addDays(dispatch, 2);
+  const arrivalEnd = addDays(dispatch, 5);
+
+  const orderElement = timeline.querySelector(
+    '[data-cart-pour-order]'
+  );
+
+  const dispatchElement = timeline.querySelector(
+    '[data-cart-pour-dispatch]'
+  );
+
+  const arrivalElement = timeline.querySelector(
+    '[data-cart-pour-arrival]'
+  );
+
+  if (orderElement) {
+    orderElement.textContent = "Aujourd'hui";
+  }
+
+  if (dispatchElement) {
+    dispatchElement.textContent =
+      'À partir du ' + formatDate(dispatch);
+  }
+
+  if (arrivalElement) {
+    arrivalElement.textContent =
+      formatDate(arrivalStart) + ' – ' + formatDate(arrivalEnd);
+  }
+
+})();
+</script>
+
 
 {% schema %}
 {
   "name": "Panier POUR",
-  "settings": []
+  "settings": [
+    {
+      "type": "header",
+      "content": "Avis Google"
+    },
+    {
+      "type": "text",
+      "id": "google_rating",
+      "label": "Note Google",
+      "default": "5"
+    },
+    {
+      "type": "text",
+      "id": "google_review_count",
+      "label": "Nombre d'avis Google",
+      "default": "12"
+    },
+    {
+      "type": "text",
+      "id": "google_review_url",
+      "label": "Lien des avis Google",
+      "default": "https://g.page/r/CZl6E9fySzqHEAE/review"
+    }
+  ]
 }
 {% endschema %}
+
 
