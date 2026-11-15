@@ -1517,33 +1517,52 @@ transition:
 
 
 
+
 /* =========================================================
    MOYENS DE PAIEMENT — PANIER RAPIDE
 ========================================================= */
 
 .cart-drawer__payment-icons {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
-  padding: 14px 15px 20px;
+  padding: 10px 12px 18px;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .cart-drawer__payment-icon {
   display: flex;
+  flex: 0 1 auto;
   align-items: center;
   justify-content: center;
+  min-width: 0;
 }
 
 .cart-drawer__payment-icon svg {
   display: block;
   width: auto;
-  height: 25px;
-  max-width: 42px;
+  height: 19px;
+  max-width: 34px;
+  flex-shrink: 1;
 }
+
+/* MOBILE */
+@media screen and (max-width: 749px) {
+  .cart-drawer__payment-icons {
+    gap: 4px;
+    padding: 8px 8px 16px;
+  }
+
+  .cart-drawer__payment-icon svg {
+    height: 16px;
+    max-width: 29px;
+  }
+}
+
 
 /* =========================================================
    PANIER VIDE
