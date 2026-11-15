@@ -2482,7 +2482,25 @@ transition:
   
 
 }
+/* MOBILE — REMONTER UNIQUEMENT LE TRAIT DU HEADER PANIER */
+@media screen and (max-width: 600px) {
 
+  .cart-drawer__header {
+    position: relative !important;
+    border-bottom: none !important;
+  }
+
+  .cart-drawer__header::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 4px;
+    height: 1px;
+    background: rgba(17,17,17,.10);
+  }
+
+}
 </style>
 
 
