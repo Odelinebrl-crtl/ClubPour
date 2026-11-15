@@ -11,7 +11,11 @@
   "sections": {
     "main": {
       "type": "cart-pour",
-      "settings": {}
+      "settings": {
+        "google_rating": "5",
+        "google_review_count": "3",
+        "google_review_url": "https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
+      }
     }
   },
   "order": [
