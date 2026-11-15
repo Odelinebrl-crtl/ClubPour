@@ -16,11 +16,11 @@
 
     <div class="vetements-grid__header">
 
-      {% if section.settings.eyebrow != blank %}
-        <p class="vetements-grid__eyebrow">
-          {{ section.settings.eyebrow }}
-        </p>
-      {% endif %}
+{% if section.settings.description != blank %}
+<h2 class="vetements-grid__eyebrow">
+  {{ section.settings.description }}
+</h2>
+{% endif %}
 
 {% if section.settings.heading != blank %}
   <h1 class="vetements-grid__heading">
