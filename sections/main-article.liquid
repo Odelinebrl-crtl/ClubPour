@@ -50,13 +50,34 @@
 </article>
 
 <style>
-  .pour-article {
-    background: #fff;
-    color: #171717;
-    padding: 48px 32px 100px;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  }
+ .pour-article {
+  background: #fff;
+  color: #171717;
+  padding: 48px 32px 100px;
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: 300;
+}
 
+.pour-article h1,
+.pour-article h2,
+.pour-article h3,
+.pour-article p,
+.pour-article a,
+.pour-article summary,
+.pour-article__meta {
+  font-family: var(--font-heading-family);
+  font-style: var(--font-heading-style);
+  font-weight: 300;
+}
+
+.pour-article__content h2 {
+  font-weight: 300;
+}
+
+.pour-article__content h3 {
+  font-weight: 300;
+}
   .pour-article * {
     box-sizing: border-box;
   }
