@@ -31,7 +31,7 @@
 
         {% paginate journal_blog.articles by section.settings.articles_per_page %}
           <div class="journal-pour__grid">
-            {% for article in blog.articles %}
+            {% for article in journal_blog.articles %}
               <article class="journal-pour__card">
                 <a class="journal-pour__image-link" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
                   {% if article.image != blank %}
