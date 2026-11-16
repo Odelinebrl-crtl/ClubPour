@@ -1,10 +1,11 @@
 {% comment %}
   CLUB POUR — LE JOURNAL POUR
   Fichier : sections/journal-pour.liquid
-  À ajouter au modèle de blog Shopify (blog.json).
+  À ajouter au modèle de page Journal (page.json) ou au modèle de blog.
 {% endcomment %}
 
 <section id="JournalPour-{{ section.id }}" class="journal-pour">
+  {% assign journal_blog = section.settings.blog %}
   <div class="journal-pour__wrap">
 
     <header class="journal-pour__header">
@@ -21,14 +22,14 @@
       {% endif %}
     </header>
 
-    {% if blog != blank and blog.articles_count > 0 %}
+    {% if journal_blog != blank and journal_blog.articles_count > 0 %}
       <div class="journal-pour__listing">
         <div class="journal-pour__listing-head">
           <h2>{{ section.settings.articles_heading | escape }}</h2>
-          <span>{{ blog.articles_count }} ARTICLE{% if blog.articles_count > 1 %}S{% endif %}</span>
+          <span>{{ journal_blog.articles_count }} ARTICLE{% if journal_blog.articles_count > 1 %}S{% endif %}</span>
         </div>
 
-        {% paginate blog.articles by section.settings.articles_per_page %}
+        {% paginate journal_blog.articles by section.settings.articles_per_page %}
           <div class="journal-pour__grid">
             {% for article in blog.articles %}
               <article class="journal-pour__card">
@@ -377,6 +378,11 @@
       "id": "intro",
       "label": "Introduction",
       "default": "<p>Le Journal POUR explore la culture automobile, le style automobile et les vêtements inspirés de l’univers des voitures. Retrouvez nos inspirations autour du t-shirt automobile, du t-shirt voiture, du racing et du lifestyle.</p>"
+    },
+    {
+      "type": "blog",
+      "id": "blog",
+      "label": "Blog Shopify à afficher"
     },
     {
       "type": "text",
