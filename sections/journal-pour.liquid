@@ -1,0 +1,439 @@
+{% comment %}
+  CLUB POUR — LE JOURNAL POUR
+  Fichier : sections/journal-pour.liquid
+  À ajouter au modèle de blog Shopify (blog.json).
+{% endcomment %}
+
+<section id="JournalPour-{{ section.id }}" class="journal-pour">
+  <div class="journal-pour__wrap">
+
+    <header class="journal-pour__header">
+      {% if section.settings.kicker != blank %}
+        <p class="journal-pour__kicker">{{ section.settings.kicker | escape }}</p>
+      {% endif %}
+
+      {% if section.settings.heading != blank %}
+        <h1 class="journal-pour__title">{{ section.settings.heading | escape }}</h1>
+      {% endif %}
+
+      {% if section.settings.intro != blank %}
+        <div class="journal-pour__intro rte">{{ section.settings.intro }}</div>
+      {% endif %}
+    </header>
+
+    {% if blog != blank and blog.articles_count > 0 %}
+      <div class="journal-pour__listing">
+        <div class="journal-pour__listing-head">
+          <h2>{{ section.settings.articles_heading | escape }}</h2>
+          <span>{{ blog.articles_count }} ARTICLE{% if blog.articles_count > 1 %}S{% endif %}</span>
+        </div>
+
+        {% paginate blog.articles by section.settings.articles_per_page %}
+          <div class="journal-pour__grid">
+            {% for article in blog.articles %}
+              <article class="journal-pour__card">
+                <a class="journal-pour__image-link" href="{{ article.url }}" aria-label="{{ article.title | escape }}">
+                  {% if article.image != blank %}
+                    {{
+                      article.image
+                      | image_url: width: 1200
+                      | image_tag:
+                        class: 'journal-pour__image',
+                        loading: 'lazy',
+                        widths: '360, 540, 720, 900, 1200',
+                        sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw',
+                        alt: article.image.alt | default: article.title
+                    }}
+                  {% else %}
+                    <div class="journal-pour__image-placeholder"><span>CLUB POUR</span></div>
+                  {% endif %}
+                </a>
+
+                <div class="journal-pour__card-meta">
+                  {% if article.tags.size > 0 %}
+                    <span>{{ article.tags.first | escape }}</span>
+                  {% else %}
+                    <span>LE JOURNAL POUR</span>
+                  {% endif %}
+                  <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: "%d.%m.%Y" }}</time>
+                </div>
+
+                <h3 class="journal-pour__card-title">
+                  <a href="{{ article.url }}">{{ article.title | escape }}</a>
+                </h3>
+
+                {% if article.excerpt != blank %}
+                  <div class="journal-pour__excerpt rte">{{ article.excerpt }}</div>
+                {% else %}
+                  <p class="journal-pour__excerpt">{{ article.content | strip_html | truncate: 145 }}</p>
+                {% endif %}
+
+                <a class="journal-pour__read" href="{{ article.url }}">LIRE L’ARTICLE <span aria-hidden="true">↗</span></a>
+              </article>
+            {% endfor %}
+          </div>
+
+          {% if paginate.pages > 1 %}
+            <nav class="journal-pour__pagination" role="navigation" aria-label="Pagination des articles">
+              {% if paginate.previous %}
+                <a href="{{ paginate.previous.url }}" aria-label="Page précédente">← PRÉCÉDENT</a>
+              {% endif %}
+              <span>{{ paginate.current_page }} / {{ paginate.pages }}</span>
+              {% if paginate.next %}
+                <a href="{{ paginate.next.url }}" aria-label="Page suivante">SUIVANT →</a>
+              {% endif %}
+            </nav>
+          {% endif %}
+        {% endpaginate %}
+      </div>
+    {% else %}
+      <div class="journal-pour__empty">
+        <p>LES PREMIERS ARTICLES ARRIVENT BIENTÔT.</p>
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_editorial %}
+      <div class="journal-pour__editorial">
+        <p class="journal-pour__kicker">{{ section.settings.editorial_kicker | escape }}</p>
+        <h2>{{ section.settings.editorial_heading }}</h2>
+        <div class="journal-pour__editorial-copy rte">
+          {{ section.settings.editorial_copy }}
+        </div>
+
+        <div class="journal-pour__topics">
+          <div>
+            <h3>LA CULTURE AUTOMOBILE</h3>
+            <p>Des voitures iconiques aux lignes intemporelles, nous explorons les modèles, les histoires et les détails qui nourrissent la passion automobile. Porsche, voitures de sport, univers racing et design automobile : autant de sources d’inspiration pour comprendre la place de l’automobile dans la culture contemporaine.</p>
+          </div>
+          <div>
+            <h3>LE STYLE AUTOMOBILE</h3>
+            <p>Le style automobile dépasse la route. Il inspire une mode auto singulière, des silhouettes décontractées et des pièces faciles à porter. Nous décryptons le vêtement automobile, le t-shirt voiture, le t-shirt racing et les influences vintage qui composent cet univers.</p>
+          </div>
+          <div>
+            <h3>LES VÊTEMENTS CLUB POUR</h3>
+            <p>Club POUR imagine des vêtements inspirés de la culture automobile. Nos collections mettent à l’honneur le t-shirt automobile, le t-shirt auto et le t-shirt voiture pour homme, avec une attention particulière portée au graphisme, à la coupe et aux matières. Nos modèles sont notamment conçus en coton biologique et dans une coupe pensée pour un porté confortable.</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_faq %}
+      <div class="journal-pour__faq">
+        <p class="journal-pour__kicker">QUESTIONS FRÉQUENTES</p>
+        <h2>TOUT SAVOIR SUR LE VÊTEMENT AUTOMOBILE</h2>
+
+        <details>
+          <summary>Comment choisir un t-shirt automobile ?</summary>
+          <p>Pour choisir un t-shirt automobile, regardez d’abord la coupe, la qualité du tissu, le confort et le graphisme. Un t-shirt voiture peut reprendre des codes du sport automobile, du design vintage ou de la culture des voitures de collection. Privilégiez une pièce facile à associer et adaptée à votre style.</p>
+        </details>
+
+        <details>
+          <summary>Quelle est la différence entre un t-shirt auto et un t-shirt racing ?</summary>
+          <p>Un t-shirt auto peut évoquer l’automobile au sens large : voitures de sport, modèles classiques, design ou passion mécanique. Un t-shirt racing s’inspire plus directement de la compétition, des circuits, des équipes et de l’esthétique du sport automobile.</p>
+        </details>
+
+        <details>
+          <summary>Existe-t-il des t-shirts voiture vintage ?</summary>
+          <p>Oui. Le t-shirt voiture vintage reprend souvent les codes graphiques des décennies passées : typographies rétro, illustrations de véhicules anciens, références aux circuits et palettes inspirées des archives automobiles. Ce style automobile associe nostalgie et mode contemporaine.</p>
+        </details>
+
+        <details>
+          <summary>Pourquoi choisir un t-shirt en coton biologique ?</summary>
+          <p>Un t-shirt coton bio est confectionné à partir de coton issu de l’agriculture biologique. Pour bien choisir, vérifiez aussi le grammage, la coupe, les finitions et les informations communiquées sur la fabrication du vêtement.</p>
+        </details>
+
+        <details>
+          <summary>Où trouver un t-shirt Porsche ou inspiré de l’univers des voitures sportives ?</summary>
+          <p>Les passionnés recherchent souvent un t-shirt Porsche, un t-shirt voiture ou des vêtements inspirés des voitures sportives. Club POUR propose un univers de vêtements indépendant inspiré de la culture automobile. Les marques et modèles automobiles cités appartiennent à leurs propriétaires respectifs ; Club POUR n’indique aucune affiliation ou licence lorsqu’elle n’est pas expressément mentionnée.</p>
+        </details>
+      </div>
+    {% endif %}
+
+    {% if section.settings.show_keyword_context %}
+      <div class="journal-pour__keyword-note">
+        <h2>UN UNIVERS AUTOMOBILE, PLUSIEURS INSPIRATIONS</h2>
+        <p>Les recherches internationales car tee shirts, car shirts et vehicle t shirts traduisent un intérêt pour les vêtements inspirés des voitures. Les expressions f1 tee, f1 tee shirts et formula one t shirt renvoient à l’esthétique de la compétition automobile. En français, les internautes recherchent notamment un t-shirt automobile ou t shirt automobile, un t-shirt auto ou t shirt auto, un t-shirt voiture ou t shirt voiture, ainsi qu’un t-shirt voiture homme, t shirt voiture homme et t-shirt homme voiture. Les recherches incluent aussi t-shirt Porsche et t shirt porsche, t-shirt racing et t shirt racing, t shirt auto vintage et t shirt voiture vintage. D’autres expressions comme style automobile, mode auto, mode automobile, vêtement voiture, vetement voiture, vêtement automobile et vetement automobile décrivent cet univers plus largement. Enfin, t shirt coton bio et t shirt oversize correspondent à des critères de matière et de coupe recherchés dans le choix d’un vêtement. Ces formulations couvrent les différentes façons de rechercher un vêtement automobile, sans se limiter à une seule esthétique.</p>
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  #JournalPour-{{ section.id }} {
+    --jp-ink: #111111;
+    --jp-muted: rgba(17,17,17,.56);
+    --jp-line: rgba(17,17,17,.15);
+    background: #ffffff;
+    color: var(--jp-ink);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+  #JournalPour-{{ section.id }} * { box-sizing: border-box; }
+  #JournalPour-{{ section.id }} .journal-pour__wrap {
+    width: min(100% - 80px, 1500px);
+    margin: 0 auto;
+    padding: 76px 0 110px;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__header {
+    max-width: 850px;
+    margin: 0 auto 76px;
+    text-align: center;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__kicker {
+    margin: 0 0 22px;
+    font-size: 9px;
+    line-height: 1.5;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--jp-muted);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__title {
+    margin: 0;
+    font-size: clamp(30px, 4.2vw, 58px);
+    line-height: 1.08;
+    font-weight: 400;
+    letter-spacing: .105em;
+    text-transform: uppercase;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__intro {
+    max-width: 690px;
+    margin: 25px auto 0;
+    font-size: 13px;
+    line-height: 1.9;
+    color: var(--jp-muted);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__intro p { margin: 0; }
+  #JournalPour-{{ section.id }} .journal-pour__listing-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 17px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--jp-line);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__listing-head h2 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .13em;
+    text-transform: uppercase;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__listing-head span {
+    color: var(--jp-muted);
+    font-size: 9px;
+    letter-spacing: .12em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: 22px;
+    row-gap: 54px;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__card { min-width: 0; }
+  #JournalPour-{{ section.id }} .journal-pour__image-link {
+    display: block;
+    overflow: hidden;
+    background: #f3f3f1;
+    aspect-ratio: 4 / 3;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .7s cubic-bezier(.22,1,.36,1);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__image-link:hover .journal-pour__image { transform: scale(1.035); }
+  #JournalPour-{{ section.id }} .journal-pour__image-placeholder {
+    width: 100%; height: 100%; display: grid; place-items: center;
+    color: #777; font-size: 10px; letter-spacing: .2em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__card-meta {
+    display: flex; justify-content: space-between; gap: 12px;
+    margin: 17px 0 12px; color: var(--jp-muted);
+    font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__card-title {
+    margin: 0; font-size: 15px; line-height: 1.5;
+    font-weight: 400; letter-spacing: .035em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__card-title a {
+    color: inherit; text-decoration: none;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__excerpt {
+    margin: 10px 0 0; color: var(--jp-muted);
+    font-size: 11px; line-height: 1.8;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__excerpt p { margin: 0; }
+  #JournalPour-{{ section.id }} .journal-pour__read {
+    display: inline-block; margin-top: 18px; padding-bottom: 5px;
+    border-bottom: 1px solid var(--jp-ink); color: var(--jp-ink);
+    font-size: 9px; letter-spacing: .14em; text-decoration: none;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__read span { margin-left: 8px; }
+  #JournalPour-{{ section.id }} .journal-pour__pagination {
+    display: flex; justify-content: center; align-items: center;
+    gap: 30px; margin-top: 65px; font-size: 9px; letter-spacing: .12em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__pagination a { color: inherit; text-decoration: none; }
+  #JournalPour-{{ section.id }} .journal-pour__pagination span { color: var(--jp-muted); }
+  #JournalPour-{{ section.id }} .journal-pour__empty {
+    padding: 60px 20px; text-align: center; border-top: 1px solid var(--jp-line);
+    border-bottom: 1px solid var(--jp-line); font-size: 10px; letter-spacing: .15em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__editorial {
+    max-width: 1050px; margin: 125px auto 0; padding-top: 65px;
+    border-top: 1px solid var(--jp-line);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__editorial h2,
+  #JournalPour-{{ section.id }} .journal-pour__faq h2,
+  #JournalPour-{{ section.id }} .journal-pour__keyword-note h2 {
+    margin: 0 0 25px; font-size: clamp(20px, 2.4vw, 30px);
+    line-height: 1.25; font-weight: 400; letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__editorial-copy {
+    max-width: 800px; color: var(--jp-muted); font-size: 12px; line-height: 1.95;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__editorial-copy p { margin: 0 0 14px; }
+  #JournalPour-{{ section.id }} .journal-pour__topics {
+    display: grid; grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 35px; margin-top: 55px;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__topics h3 {
+    margin: 0 0 15px; font-size: 10px; font-weight: 400;
+    letter-spacing: .15em; text-transform: uppercase;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__topics p {
+    margin: 0; color: var(--jp-muted); font-size: 11px; line-height: 1.9;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__faq {
+    max-width: 900px; margin: 110px auto 0; padding-top: 65px;
+    border-top: 1px solid var(--jp-line);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__faq details {
+    border-top: 1px solid var(--jp-line); padding: 20px 0;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__faq details:last-child { border-bottom: 1px solid var(--jp-line); }
+  #JournalPour-{{ section.id }} .journal-pour__faq summary {
+    cursor: pointer; list-style: none; padding-right: 25px;
+    position: relative; font-size: 12px; letter-spacing: .025em;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__faq summary::-webkit-details-marker { display: none; }
+  #JournalPour-{{ section.id }} .journal-pour__faq summary:after {
+    content: "+"; position: absolute; right: 0; top: -2px; font-size: 17px; font-weight: 300;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__faq details[open] summary:after { content: "−"; }
+  #JournalPour-{{ section.id }} .journal-pour__faq details p {
+    max-width: 760px; margin: 15px 0 0; color: var(--jp-muted);
+    font-size: 11px; line-height: 1.9;
+  }
+  #JournalPour-{{ section.id }} .journal-pour__keyword-note {
+    max-width: 900px; margin: 75px auto 0; padding-top: 35px;
+    border-top: 1px solid var(--jp-line);
+  }
+  #JournalPour-{{ section.id }} .journal-pour__keyword-note h2 { font-size: 17px; }
+  #JournalPour-{{ section.id }} .journal-pour__keyword-note p {
+    margin: 0; color: var(--jp-muted); font-size: 10px; line-height: 1.9;
+  }
+  @media screen and (max-width: 989px) {
+    #JournalPour-{{ section.id }} .journal-pour__wrap { width: min(100% - 48px, 760px); padding: 55px 0 80px; }
+    #JournalPour-{{ section.id }} .journal-pour__grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 42px 16px; }
+    #JournalPour-{{ section.id }} .journal-pour__topics { gap: 22px; }
+  }
+  @media screen and (max-width: 600px) {
+    #JournalPour-{{ section.id }} .journal-pour__wrap { width: calc(100% - 36px); padding: 38px 0 65px; }
+    #JournalPour-{{ section.id }} .journal-pour__header { margin-bottom: 48px; }
+    #JournalPour-{{ section.id }} .journal-pour__title { font-size: 29px; letter-spacing: .08em; }
+    #JournalPour-{{ section.id }} .journal-pour__intro { margin-top: 18px; font-size: 11px; }
+    #JournalPour-{{ section.id }} .journal-pour__grid { grid-template-columns: 1fr; row-gap: 38px; }
+    #JournalPour-{{ section.id }} .journal-pour__listing-head h2 { font-size: 11px; }
+    #JournalPour-{{ section.id }} .journal-pour__topics { grid-template-columns: 1fr; gap: 28px; margin-top: 38px; }
+    #JournalPour-{{ section.id }} .journal-pour__editorial { margin-top: 80px; padding-top: 45px; }
+    #JournalPour-{{ section.id }} .journal-pour__faq { margin-top: 75px; padding-top: 45px; }
+    #JournalPour-{{ section.id }} .journal-pour__keyword-note { margin-top: 55px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Journal POUR",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Sur-titre",
+      "default": "AUTOMOBILE · STYLE · CULTURE"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titre H1",
+      "default": "LE JOURNAL POUR"
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "<p>Le Journal POUR explore la culture automobile, le style automobile et les vêtements inspirés de l’univers des voitures. Retrouvez nos inspirations autour du t-shirt automobile, du t-shirt voiture, du racing et du lifestyle.</p>"
+    },
+    {
+      "type": "text",
+      "id": "articles_heading",
+      "label": "Titre de la liste d’articles",
+      "default": "DERNIÈRES PUBLICATIONS"
+    },
+    {
+      "type": "range",
+      "id": "articles_per_page",
+      "label": "Articles par page",
+      "min": 3,
+      "max": 12,
+      "step": 3,
+      "default": 9
+    },
+    {
+      "type": "checkbox",
+      "id": "show_editorial",
+      "label": "Afficher le contenu éditorial SEO",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "editorial_kicker",
+      "label": "Sur-titre éditorial",
+      "default": "L’ESPRIT CLUB POUR"
+    },
+    {
+      "type": "text",
+      "id": "editorial_heading",
+      "label": "Titre H2 éditorial",
+      "default": "LE VÊTEMENT AUTOMOBILE, ENTRE PASSION ET STYLE"
+    },
+    {
+      "type": "richtext",
+      "id": "editorial_copy",
+      "label": "Texte éditorial",
+      "default": "<p>La passion automobile ne se limite pas aux voitures. Elle se retrouve dans les lignes, les matières, les couleurs et les références qui inspirent un véritable art de vivre. Le Journal POUR met en lumière cette rencontre entre automobile, mode et culture.</p><p>À travers nos articles, découvrez l’histoire des voitures emblématiques, les codes du style racing, l’esthétique vintage et les tendances du vêtement automobile. Club POUR développe un vestiaire inspiré de cet univers, avec des t-shirts au design soigné, des coupes confortables et une attention portée aux matières.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_faq",
+      "label": "Afficher la FAQ SEO",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_keyword_context",
+      "label": "Afficher le paragraphe de recherches associées",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Journal POUR"
+    }
+  ]
+}
+{% endschema %}
