@@ -12,9 +12,27 @@
     "main": {
       "type": "main-page",
       "settings": {}
+    },
+    "journal_pour_nEQrGf": {
+      "type": "journal-pour",
+      "name": "Journal POUR",
+      "settings": {
+        "kicker": "AUTOMOBILE · STYLE · CULTURE",
+        "heading": "LE JOURNAL POUR",
+        "intro": "<p>Le Journal POUR explore la culture automobile, le style automobile et les vêtements inspirés de l’univers des voitures. Retrouvez nos inspirations autour du t-shirt automobile, du t-shirt voiture, du racing et du lifestyle.</p>",
+        "articles_heading": "DERNIÈRES PUBLICATIONS",
+        "articles_per_page": 9,
+        "show_editorial": true,
+        "editorial_kicker": "L’ESPRIT CLUB POUR",
+        "editorial_heading": "LE VÊTEMENT AUTOMOBILE, ENTRE PASSION ET STYLE",
+        "editorial_copy": "<p>La passion automobile ne se limite pas aux voitures. Elle se retrouve dans les lignes, les matières, les couleurs et les références qui inspirent un véritable art de vivre. Le Journal POUR met en lumière cette rencontre entre automobile, mode et culture.</p><p>À travers nos articles, découvrez l’histoire des voitures emblématiques, les codes du style racing, l’esthétique vintage et les tendances du vêtement automobile. Club POUR développe un vestiaire inspiré de cet univers, avec des t-shirts au design soigné, des coupes confortables et une attention portée aux matières.</p>",
+        "show_faq": true,
+        "show_keyword_context": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "journal_pour_nEQrGf"
   ]
 }
