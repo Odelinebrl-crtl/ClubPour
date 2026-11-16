@@ -1,0 +1,168 @@
+
+<article class="pour-article">
+  <div class="pour-article__container">
+
+    <a href="{{ article.blog.url }}" class="pour-article__back">
+      ← Retour au Journal POUR
+    </a>
+
+    <header class="pour-article__header">
+      <span class="pour-article__eyebrow">CLUB POUR · JOURNAL</span>
+
+      <h1>{{ article.title }}</h1>
+
+      <div class="pour-article__meta">
+        {% if article.published_at %}
+          {{ article.published_at | date: "%d.%m.%Y" }}
+        {% endif %}
+        {% if article.author != blank %}
+          · {{ article.author }}
+        {% endif %}
+      </div>
+    </header>
+
+    {% if article.image != blank %}
+      <div class="pour-article__image">
+        {{
+          article.image
+          | image_url: width: 1600
+          | image_tag: loading: 'eager', alt: article.title
+        }}
+      </div>
+    {% endif %}
+
+    <div class="pour-article__content rte">
+      {{ article.content }}
+    </div>
+
+    <div class="pour-article__footer">
+      <a href="{{ article.blog.url }}">
+        RETOUR AUX ARTICLES
+      </a>
+    </div>
+
+  </div>
+</article>
+
+<style>
+.pour-article {
+  background: #fff;
+  color: #171717;
+  padding: 70px 24px 100px;
+}
+
+.pour-article__container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pour-article__back {
+  display: inline-block;
+  margin-bottom: 55px;
+  color: #555;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.pour-article__header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.pour-article__eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-bottom: 22px;
+}
+
+.pour-article__header h1 {
+  font-size: clamp(30px, 5vw, 48px);
+  line-height: 1.15;
+  font-weight: 500;
+  margin: 0 0 20px;
+}
+
+.pour-article__meta {
+  font-size: 12px;
+  color: #777;
+}
+
+.pour-article__image {
+  margin-bottom: 50px;
+}
+
+.pour-article__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.pour-article__content {
+  font-size: 16px;
+  line-height: 1.85;
+}
+
+.pour-article__content h2 {
+  font-size: 25px;
+  margin-top: 45px;
+  line-height: 1.3;
+}
+
+.pour-article__content h3 {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+.pour-article__content p {
+  margin-bottom: 22px;
+}
+
+.pour-article__footer {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid #ddd;
+}
+
+.pour-article__footer a {
+  color: #171717;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 749px) {
+  .pour-article {
+    padding: 40px 20px 70px;
+  }
+
+  .pour-article__back {
+    margin-bottom: 35px;
+  }
+
+  .pour-article__header {
+    margin-bottom: 30px;
+  }
+
+  .pour-article__image {
+    margin-bottom: 30px;
+  }
+
+  .pour-article__content {
+    font-size: 15px;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Article POUR",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Article POUR"
+    }
+  ]
+}
+{% endschema %}
