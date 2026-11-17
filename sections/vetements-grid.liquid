@@ -982,6 +982,27 @@
   font-size: 11px;
   font-weight: 400;
 }
+#VetementsGrid-{{ section.id }} .vetements-qv__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 0;
+  font-size: 13px;
+}
+
+#VetementsGrid-{{ section.id }} .vetements-qv__price s {
+  color: #999;
+  font-size: 11px;
+  font-weight: 400;
+}
+
+#VetementsGrid-{{ section.id }} .vetements-qv__black-friday {
+  margin: 10px 0 2px;
+  color: #888;
+  font-size: 9px;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+}
 </style>
 
 
@@ -1229,9 +1250,18 @@ function buildVariants(product) {
           </h2>
 
 
-          <p class="vetements-qv__price">
-            ${formatMoney(product.price)}
-          </p>
+          <p class="vetements-qv__black-friday">
+  BLACK FRIDAY · -20%
+</p>
+
+<div class="vetements-qv__price">
+  <span>${formatMoney(product.price)}</span>
+  ${
+    product.compare_at_price > product.price
+      ? `<s>${formatMoney(product.compare_at_price)}</s>`
+      : ''
+  }
+</div>
 
 
           <form
