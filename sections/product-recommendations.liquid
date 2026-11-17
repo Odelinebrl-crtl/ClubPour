@@ -80,9 +80,14 @@
                   {{ style_product.title }}
                 </div>
 
-                <div class="product-page-pour__style-with-price">
-                  {{ style_product.price | money }}
-                </div>
+             <div class="product-page-pour__style-with-price">
+  {% if style_product.compare_at_price > style_product.price %}
+    <span>{{ style_product.price | money }}</span>
+    <s>{{ style_product.compare_at_price | money }}</s>
+  {% else %}
+    {{ style_product.price | money }}
+  {% endif %}
+</div>
 
               </div>
 
