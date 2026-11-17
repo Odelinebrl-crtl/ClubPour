@@ -170,9 +170,17 @@
         {{ featured_product.title }}
       </h3>
 
-      <div class="pour-product__price">
-        {{ featured_product.price | money }}
-      </div>
+    <div class="pour-product__price">
+  <span class="pour-product__price-current">
+    {{ featured_product.price | money }}
+  </span>
+
+  {% if featured_product.compare_at_price > featured_product.price %}
+    <span class="pour-product__price-compare">
+      {{ featured_product.compare_at_price | money }}
+    </span>
+  {% endif %}
+</div>
 
     </div>
 
@@ -488,6 +496,20 @@
 #PourProducts-{{ section.id }} .pour-product__quick-add::after {
   content: none !important;
   display: none !important;
+}
+/* PRIX BARRÉ */
+
+#PourProducts-{{ section.id }} .pour-product__price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+#PourProducts-{{ section.id }} .pour-product__price-compare {
+  font-size: 11px;
+  font-weight: 400;
+  color: #999999;
+  text-decoration: line-through;
 }
 </style>
 
