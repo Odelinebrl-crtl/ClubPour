@@ -5706,6 +5706,14 @@ html {
   font-weight: 400;
   text-decoration: line-through;
 }
+.pour-quickview__black-friday {
+  margin: 0 0 7px;
+  color: #888888;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
 /* =========================================================
    TAILLES
 ========================================================= */
