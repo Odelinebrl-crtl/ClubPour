@@ -2486,8 +2486,15 @@ transition:
 }
 
 /* BLACK FRIDAY — MASQUER LA JAUGE DE LIVRAISON OFFERTE */
-.cart-drawer .cart-drawer__free-shipping {
+html body .cart-drawer__free-shipping,
+html body [data-free-shipping] {
   display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
 </style>
