@@ -177,33 +177,9 @@
           </p>
         {% endif %}
 
-
-
-{% assign current_variant = product.selected_or_first_available_variant %}
-
-<div class="product-page-pour__price" data-product-price>
-
-  <span class="product-page-pour__price-promo">
-    BLACK FRIDAY · -20 %
-  </span>
-
-  <div class="product-page-pour__price-values">
-    <span class="product-page-pour__price-current" data-current-price>
-      {{ current_variant.price | money }}
-    </span>
-
-    {% if current_variant.compare_at_price > current_variant.price %}
-      <span class="product-page-pour__price-compare" data-compare-price>
-        {{ current_variant.compare_at_price | money }}
-      </span>
-    {% else %}
-      <span class="product-page-pour__price-compare" data-compare-price hidden></span>
-    {% endif %}
-  </div>
-
+      <div class="product-page-pour__price">
+  {{ product.selected_or_first_available_variant.price | money }}
 </div>
-
-
 
 <div class="product-page-pour__fit">
   <strong>{{ 'pour_product.fit_title' | t }}</strong>
@@ -256,9 +232,10 @@
           <input
   type="hidden"
   name="id"
-  value="{{ product.selected_or_first_available_variant.id }}"
+  value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
   data-product-variant-id
 >
+
           {% unless product.has_only_default_variant %}
 
             {% for option in product.options_with_values %}
@@ -269,20 +246,17 @@
                 </p>
 
                 <div class="product-page-pour__option-values">
-{% assign option_index = forloop.index0 %}
+
                {% for value in option.values %}
   <label
     class="product-page-pour__option-value"
     data-option-value="{{ value | escape }}"
   >
 
-<input
-  type="radio"
-  name="options[{{ option.name | escape }}]"
-  value="{{ value | escape }}"
-  {% if product.selected_or_first_available_variant.options[option_index] == value %}
-    checked
-  {% endif %}
+    <input
+      type="radio"
+      name="options[{{ option.name | escape }}]"
+      value="{{ value | escape }}"
       {% assign value_available = false %}
       {% for variant in product.variants %}
         {% if variant.available and variant.options contains value %}
@@ -3676,45 +3650,6 @@ font-weight: 200;
 .pour-google-rating:hover {
   opacity: .65;
 }
-
-
-
-.product-page-pour__price {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 5px;
-}
-
-.product-page-pour__price-promo {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  color: #777777;
-}
-
-.product-page-pour__price-values {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.product-page-pour__price-current {
-  font-size: inherit;
-}
-
-.product-page-pour__price-compare {
-  font-size: 0.75em;
-  color: #999999;
-  text-decoration: line-through;
-  font-weight: 300;
-}
-
-.product-page-pour__price-compare[hidden] {
-  display: none !important;
-}
-
 </style>
 
 <script>
@@ -4230,33 +4165,6 @@ function updateSoldOutOptions() {
 
     variantInput.value =
       matchingVariant.id;
-
-// Mise à jour du prix et du prix barré selon la variante
-const currentPriceElement = productSection.querySelector('[data-current-price]');
-const comparePriceElement = productSection.querySelector('[data-compare-price]');
-
-if (currentPriceElement) {
-  currentPriceElement.textContent = Shopify.formatMoney(
-    matchingVariant.price,
-    Shopify.money_format
-  );
-}
-
-if (comparePriceElement) {
-  if (
-    matchingVariant.compare_at_price &&
-    matchingVariant.compare_at_price > matchingVariant.price
-  ) {
-    comparePriceElement.textContent = Shopify.formatMoney(
-      matchingVariant.compare_at_price,
-      Shopify.money_format
-    );
-    comparePriceElement.hidden = false;
-  } else {
-    comparePriceElement.textContent = '';
-    comparePriceElement.hidden = true;
-  }
-}
 
 
    const submitButton =
