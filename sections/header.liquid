@@ -520,12 +520,13 @@ href="{{ section.settings.cart_google_review_url | default: 'https://g.page/r/CZ
     ({{ section.settings.cart_google_review_count }} avis)
   </span>
 </a>
-
+{% if false %}
 <div
   class="cart-drawer__free-shipping"
   data-free-shipping
   {% if cart.total_price <= 0 %}
     hidden
+  {% endif %}
   {% endif %}
 >
 
@@ -2485,18 +2486,6 @@ transition:
 
 }
 
-/* BLACK FRIDAY — MASQUER LA JAUGE DE LIVRAISON OFFERTE */
-html body .cart-drawer__free-shipping,
-html body [data-free-shipping] {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-}
-
 </style>
 
 
@@ -3212,7 +3201,7 @@ const imageHTML = item.image
     ({{ section.settings.cart_google_review_count }} avis)
   </span>
 </a>
-
+{% if false %}
   <div
     class="cart-drawer__free-shipping"
     data-free-shipping
@@ -3253,6 +3242,7 @@ const imageHTML = item.image
 </div>
 
   </div>
+{% endif %}
 {% endif %}
   <div class="cart-drawer__total">
 
