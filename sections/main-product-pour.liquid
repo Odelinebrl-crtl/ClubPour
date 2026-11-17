@@ -177,10 +177,25 @@
           </p>
         {% endif %}
 
-      <div class="product-page-pour__price">
-  {{ product.selected_or_first_available_variant.price | money }}
-</div>
+     <div class="product-page-pour__price-wrapper">
 
+  <div class="product-page-pour__black-friday">
+    BLACK FRIDAY · -20%
+  </div>
+
+  <div class="product-page-pour__price">
+    <span class="product-page-pour__price-current">
+      {{ product.selected_or_first_available_variant.price | money }}
+    </span>
+
+    {% if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price %}
+      <span class="product-page-pour__price-compare">
+        {{ product.selected_or_first_available_variant.compare_at_price | money }}
+      </span>
+    {% endif %}
+  </div>
+
+</div>
 <div class="product-page-pour__fit">
   <strong>{{ 'pour_product.fit_title' | t }}</strong>
   <span>— {{ product.metafields.custom.fit.value }}</span>
