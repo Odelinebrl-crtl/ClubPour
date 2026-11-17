@@ -5694,7 +5694,18 @@ html {
   color: rgba(17,17,17,.55);
 }
 
+.pour-quickview__price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
 
+.pour-quickview__price-compare {
+  color: #999999;
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
 /* =========================================================
    TAILLES
 ========================================================= */

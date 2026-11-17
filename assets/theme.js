@@ -1392,9 +1392,15 @@ function closeModal() {
           </h2>
 
 
-          <p class="pour-quickview__price">
-            ${money(product.price)}
-          </p>
+         <div class="pour-quickview__price" data-quickview-price>
+  <span class="pour-quickview__price-current">
+    ${money((product.variants.find(v => v.available) || product.variants[0]).price)}
+  </span>
+
+  ${(product.variants.find(v => v.available) || product.variants[0]).compare_at_price > (product.variants.find(v => v.available) || product.variants[0]).price
+    ? `<s class="pour-quickview__price-compare">${money((product.variants.find(v => v.available) || product.variants[0]).compare_at_price)}</s>`
+    : ''}
+</div>
 
 
           <form
@@ -1512,6 +1518,20 @@ if (quickViewForm) {
   }
 
   variantInput.value = matchingVariant.id;
+  const priceContainer = quickViewForm.closest('.pour-quickview__info')
+  .querySelector('[data-quickview-price]');
+
+if (priceContainer) {
+  priceContainer.innerHTML = `
+    <span class="pour-quickview__price-current">
+      ${money(matchingVariant.price)}
+    </span>
+
+    ${matchingVariant.compare_at_price > matchingVariant.price
+      ? `<s class="pour-quickview__price-compare">${money(matchingVariant.compare_at_price)}</s>`
+      : ''}
+  `;
+}
 
   submitButton.disabled = !matchingVariant.available;
 
