@@ -178,23 +178,31 @@
         {% endif %}
 
 
+
 {% assign current_variant = product.selected_or_first_available_variant %}
 
 <div class="product-page-pour__price" data-product-price>
 
-  <span class="product-page-pour__price-current" data-current-price>
-    {{ current_variant.price | money }}
+  <span class="product-page-pour__price-promo">
+    BLACK FRIDAY · -20 %
   </span>
 
-  {% if current_variant.compare_at_price > current_variant.price %}
-    <span class="product-page-pour__price-compare" data-compare-price>
-      {{ current_variant.compare_at_price | money }}
+  <div class="product-page-pour__price-values">
+    <span class="product-page-pour__price-current" data-current-price>
+      {{ current_variant.price | money }}
     </span>
-  {% else %}
-    <span class="product-page-pour__price-compare" data-compare-price hidden></span>
-  {% endif %}
+
+    {% if current_variant.compare_at_price > current_variant.price %}
+      <span class="product-page-pour__price-compare" data-compare-price>
+        {{ current_variant.compare_at_price | money }}
+      </span>
+    {% else %}
+      <span class="product-page-pour__price-compare" data-compare-price hidden></span>
+    {% endif %}
+  </div>
 
 </div>
+
 
 
 <div class="product-page-pour__fit">
@@ -3668,7 +3676,23 @@ font-weight: 200;
 }
 
 
+
 .product-page-pour__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.product-page-pour__price-promo {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #777777;
+}
+
+.product-page-pour__price-values {
   display: flex;
   align-items: baseline;
   gap: 12px;
@@ -3680,9 +3704,9 @@ font-weight: 200;
 
 .product-page-pour__price-compare {
   font-size: 0.75em;
-  color: #888888;
+  color: #999999;
   text-decoration: line-through;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .product-page-pour__price-compare[hidden] {
