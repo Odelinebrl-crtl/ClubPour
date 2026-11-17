@@ -3650,6 +3650,51 @@ font-weight: 200;
 .pour-google-rating:hover {
   opacity: .65;
 }
+
+/* BLACK FRIDAY — AFFICHAGE DU PRIX */
+
+.product-page-pour__price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  margin-bottom: 30px;
+}
+
+.product-page-pour__price-promo {
+  display: block;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  color: #777777;
+  text-transform: uppercase;
+}
+
+.product-page-pour__price-values {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.product-page-pour__price-current {
+  font-size: inherit;
+  font-weight: 400;
+  color: #111111;
+}
+
+.product-page-pour__price-compare {
+  font-size: 0.75em;
+  font-weight: 300 !important;
+  color: #999999;
+  text-decoration: line-through;
+  text-decoration-thickness: 1px;
+}
+
+.product-page-pour__price-compare[hidden] {
+  display: none !important;
+}
+
 </style>
 
 <script>
