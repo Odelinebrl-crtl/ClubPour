@@ -158,9 +158,12 @@
         {{ featured_product.title }}
       </h3>
 
-   <div class="vetements-card__price">
+  <div class="vetements-card__price">
   {% if featured_product.compare_at_price > featured_product.price %}
+    <span>{{ featured_product.price | money }}</span>
     <s>{{ featured_product.compare_at_price | money }}</s>
+  {% else %}
+    {{ featured_product.price | money }}
   {% endif %}
 </div>
 
@@ -967,6 +970,18 @@
     margin-top: -100px !important;
   }
 {% endif %}
+
+.vetements-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+}
+
+.vetements-card__price s {
+  color: #999;
+  font-size: 11px;
+  font-weight: 400;
+}
 </style>
 
 
