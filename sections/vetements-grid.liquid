@@ -158,9 +158,11 @@
         {{ featured_product.title }}
       </h3>
 
-      <div class="vetements-card__price">
-        {{ featured_product.price | money }}
-      </div>
+   <div class="vetements-card__price">
+  {% if featured_product.compare_at_price > featured_product.price %}
+    <s>{{ featured_product.compare_at_price | money }}</s>
+  {% endif %}
+</div>
 
     </div>
 
