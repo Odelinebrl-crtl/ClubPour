@@ -256,10 +256,9 @@
           <input
   type="hidden"
   name="id"
-  value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
+  value="{{ product.selected_or_first_available_variant.id }}"
   data-product-variant-id
 >
-
           {% unless product.has_only_default_variant %}
 
             {% for option in product.options_with_values %}
