@@ -276,10 +276,13 @@
     data-option-value="{{ value | escape }}"
   >
 
-    <input
-      type="radio"
-      name="options[{{ option.name | escape }}]"
-      value="{{ value | escape }}"
+<input
+  type="radio"
+  name="options[{{ option.name | escape }}]"
+  value="{{ value | escape }}"
+  {% if product.selected_or_first_available_variant.options[option_index] == value %}
+    checked
+  {% endif %}
       {% assign value_available = false %}
       {% for variant in product.variants %}
         {% if variant.available and variant.options contains value %}
