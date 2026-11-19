@@ -322,39 +322,35 @@
 
             </div>
 
-          <div class="product-page-pour__buy-actions">
-
-  <button
-    type="submit"
-    class="product-page-pour__add"
-    {% if product.has_only_default_variant %}
-      {% unless product.selected_or_first_available_variant.available %}
-        disabled
-      {% endunless %}
-    {% else %}
+          <button
+  type="submit"
+  class="product-page-pour__add"
+  {% if product.has_only_default_variant %}
+    {% unless product.selected_or_first_available_variant.available %}
       disabled
-    {% endif %}
-  >
-    {% if product.selected_or_first_available_variant.available %}
-      {{ 'pour_product.preorder' | t }}
-    {% else %}
-      {{ 'pour_product.sold_out' | t }}
-    {% endif %}
-  </button>
+    {% endunless %}
+  {% else %}
+    disabled
+  {% endif %}
+>
+  {% if product.selected_or_first_available_variant.available %}
+    {{ 'pour_product.preorder' | t }}
+  {% else %}
+    {{ 'pour_product.sold_out' | t }}
+  {% endif %}
+</button>
 
-  <button
-    type="button"
-    class="product-page-pour__back-in-stock"
-    data-pour-back-in-stock-open
-    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-    style="display: none;"
-  >
-    {{ 'pour_product.notify_me' | t }}
-  </button>
+<button
+  type="button"
+  class="product-page-pour__back-in-stock"
+  data-pour-back-in-stock-open
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  style="display: none;"
+>
+  {{ 'pour_product.notify_me' | t }}
+</button>
 
-  {{ form | payment_button }}
-
-</div>
+                    </div>
 {% assign offer_language = localization.language.iso_code | downcase | slice: 0, 2 %}
 <div
   class="product-page-pour__offer-countdown"
@@ -3668,59 +3664,6 @@ font-weight: 200;
 
 .pour-google-rating:hover {
   opacity: .65;
-}
-
-/* BLACK FRIDAY — PRIX PRODUIT */
-
-.product-page-pour__price-wrapper {
-  margin-bottom: 30px;
-}
-
-.product-page-pour__black-friday {
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: .08em;
-  color: #777777;
-  margin-bottom: 7px;
-}
-
-.product-page-pour__price {
-  display: flex;
-  align-items: baseline;
-  gap: 10px;
-  margin-bottom: 0;
-}
-
-.product-page-pour__price-current {
-  font-size: inherit;
-  color: #111111;
-}
-
-.product-page-pour__price-compare {
-  font-size: 13px;
-  font-weight: 400;
-  color: #999999;
-  text-decoration: line-through;
-}
-.product-page-pour__buy-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  width: 100%;
-  align-items: stretch;
-}
-
-.product-page-pour__buy-actions .product-page-pour__add,
-.product-page-pour__buy-actions .shopify-payment-button {
-  width: 100%;
-  min-width: 0;
-  margin: 0;
-}
-
-.product-page-pour__buy-actions .shopify-payment-button__button {
-  min-height: 48px !important;
-  height: 48px !important;
-  border-radius: 0 !important;
 }
 </style>
 
