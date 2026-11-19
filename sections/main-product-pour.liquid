@@ -302,67 +302,55 @@
 
           <div class="product-page-pour__buy-row">
 
-  <div class="product-page-pour__quantity">
+            <div class="product-page-pour__quantity">
 
-    <button type="button" data-qty-minus>
-      −
-    </button>
+              <button type="button" data-qty-minus>
+                −
+              </button>
 
-    <input
-      type="number"
-      name="quantity"
-      value="1"
-      min="1"
-      data-qty-input
-    >
+              <input
+                type="number"
+                name="quantity"
+                value="1"
+                min="1"
+                data-qty-input
+              >
 
-    <button type="button" data-qty-plus>
-      +
-    </button>
+              <button type="button" data-qty-plus>
+                +
+              </button>
 
-  </div>
+            </div>
 
-  <div class="product-page-pour__purchase-actions">
+          <button
+  type="submit"
+  class="product-page-pour__add"
+  {% if product.has_only_default_variant %}
+    {% unless product.selected_or_first_available_variant.available %}
+      disabled
+    {% endunless %}
+  {% else %}
+    disabled
+  {% endif %}
+>
+  {% if product.selected_or_first_available_variant.available %}
+    {{ 'pour_product.preorder' | t }}
+  {% else %}
+    {{ 'pour_product.sold_out' | t }}
+  {% endif %}
+</button>
 
-    <button
-      type="submit"
-      class="product-page-pour__add"
-      {% if product.has_only_default_variant %}
-        {% unless product.selected_or_first_available_variant.available %}
-          disabled
-        {% endunless %}
-      {% else %}
-        disabled
-      {% endif %}
-    >
-      {% if product.selected_or_first_available_variant.available %}
-        {{ 'pour_product.preorder' | t }}
-      {% else %}
-        {{ 'pour_product.sold_out' | t }}
-      {% endif %}
-    </button>
+<button
+  type="button"
+  class="product-page-pour__back-in-stock"
+  data-pour-back-in-stock-open
+  data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+  style="display: none;"
+>
+  {{ 'pour_product.notify_me' | t }}
+</button>
 
-    <div
-      class="product-page-pour__express-checkout"
-      data-express-checkout
-      hidden
-    >
-      {{ form | payment_button }}
-    </div>
-
-  </div>
-
-  <button
-    type="button"
-    class="product-page-pour__back-in-stock"
-    data-pour-back-in-stock-open
-    data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-    style="display: none;"
-  >
-    {{ 'pour_product.notify_me' | t }}
-  </button>
-
-</div>
+                    </div>
 {% assign offer_language = localization.language.iso_code | downcase | slice: 0, 2 %}
 <div
   class="product-page-pour__offer-countdown"
@@ -3677,65 +3665,6 @@ font-weight: 200;
 .pour-google-rating:hover {
   opacity: .65;
 }
-
-/* BOUTONS ACHAT ET APPLE PAY */
-
-.product-page-pour__buy-row {
-  display: flex;
-  align-items: stretch;
-  gap: 10px;
-  width: 100%;
-}
-
-.product-page-pour__quantity {
-  flex: 0 0 142px;
-  min-width: 0;
-}
-
-.product-page-pour__purchase-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-  flex: 1;
-  min-width: 0;
-  align-items: stretch;
-}
-
-.product-page-pour__purchase-actions .product-page-pour__add,
-.product-page-pour__express-checkout {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-  margin: 0;
-}
-
-.product-page-pour__purchase-actions .product-page-pour__add {
-  padding: 0 5px;
-  font-size: 10px;
-}
-
-.product-page-pour__express-checkout .shopify-payment-button,
-.product-page-pour__express-checkout .shopify-payment-button__button {
-  width: 100%;
-  min-width: 0;
-  height: 48px;
-  min-height: 48px;
-  margin: 0;
-}
-
-.product-page-pour__express-checkout .shopify-payment-button__more-options {
-  display: none !important;
-}
-
-.product-page-pour__express-checkout[hidden] {
-  display: none !important;
-}
-
-@media screen and (max-width: 900px) {
-  .product-page-pour__quantity {
-    flex-basis: 105px;
-  }
-}
 </style>
 
 <script>
@@ -4233,29 +4162,7 @@ function updateSoldOutOptions() {
       input => input.value
     );
 
-const optionGroups = form.querySelectorAll(
-  '.product-page-pour__option'
-);
 
-const submitButton = form.querySelector(
-  '.product-page-pour__add'
-);
-
-const expressCheckout = form.querySelector(
-  '[data-express-checkout]'
-);
-
-if (selectedOptions.length !== optionGroups.length) {
-  if (submitButton) {
-    submitButton.disabled = true;
-  }
-
-  if (expressCheckout) {
-    expressCheckout.hidden = true;
-  }
-
-  return;
-}
     const matchingVariant =
       variants.find(
         variant =>
@@ -4267,10 +4174,8 @@ if (selectedOptions.length !== optionGroups.length) {
 
 
     if (!matchingVariant) {
-  if (submitButton) submitButton.disabled = true;
-  if (expressCheckout) expressCheckout.hidden = true;
-  return;
-}
+      return;
+    }
 
 
     variantInput.value =
@@ -4289,9 +4194,7 @@ const backInStockButton =
 
 if (submitButton) {
   submitButton.disabled = !matchingVariant.available;
-  if (expressCheckout) {
-    expressCheckout.hidden = !matchingVariant.available;
-  }
+
   submitButton.textContent =
     '{{ 'pour_product.preorder' | t }}';
 
