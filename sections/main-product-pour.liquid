@@ -3762,6 +3762,27 @@ font-weight: 200;
 .product-page-pour__express-checkout .shopify-payment-button__more-options {
   display: none !important;
 }
+/* CORRECTION QUANTITÉ SUR MOBILE */
+
+@media screen and (max-width: 767px) {
+
+  .product-page-pour__quantity {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    align-self: flex-start !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-page-pour__quantity button,
+  .product-page-pour__quantity input {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    box-sizing: border-box !important;
+  }
+
+}
 </style>
 
 <script>
