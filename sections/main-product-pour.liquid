@@ -364,56 +364,7 @@
 </button>
 
                     </div>
-{% assign offer_language = localization.language.iso_code | downcase | slice: 0, 2 %}
-<div
-  class="product-page-pour__offer-countdown"
-  data-offer-countdown
-  data-deadline="2026-11-08T23:59:59+01:00"
->
 
-  <p class="product-page-pour__offer-title">
-   {% case offer_language %}
-      {% when 'en' %}
-        EXCLUSIVE OFFER · 15% OFF
-      {% when 'it' %}
-        OFFERTA ESCLUSIVA · -15%
-      {% when 'es' %}
-        OFERTA EXCLUSIVA · -15%
-      {% when 'pt' %}
-        OFERTA EXCLUSIVA · -15%
-      {% when 'de' %}
-        EXKLUSIVES ANGEBOT · -15%
-      {% when 'nl' %}
-        EXCLUSIEVE AANBIEDING · -15%
-      {% else %}
-        OFFRE EXCLUSIVE · -15 %
-    {% endcase %}
-  </p>
-
-  <p class="product-page-pour__offer-timer">
-    <span data-countdown-time>00:00:00</span>
-  </p>
-
-  <p class="product-page-pour__offer-code">
-    {% case offer_language %}
-      {% when 'en' %}
-        USE CODE POUR15 · ENDS SUNDAY AT 11:59 PM
-      {% when 'it' %}
-        CODICE POUR15 · FINO A DOMENICA ALLE 23:59
-      {% when 'es' %}
-        CÓDIGO POUR15 · HASTA EL DOMINGO A LAS 23:59
-      {% when 'pt' %}
-        CÓDIGO POUR15 · ATÉ DOMINGO ÀS 23:59
-      {% when 'de' %}
-        CODE POUR15 · BIS SONNTAG UM 23:59 UHR
-      {% when 'nl' %}
-        CODE POUR15 · TOT ZONDAG 23:59 UUR
-      {% else %}
-        CODE POUR15 · JUSQU'À DIMANCHE 23H59
-    {% endcase %}
-  </p>
-
-</div>
 
 <p class="product-page-pour__preorder-note">
   {{ 'pour_product.preorder_note' | t }}
