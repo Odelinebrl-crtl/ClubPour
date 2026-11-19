@@ -3745,19 +3745,20 @@ font-weight: 200;
   font-size: 10px;
 }
 
-/* PERSONNALISATION DU BOUTON APPLE PAY */
-
-.product-page-pour__express-checkout .shopify-payment-button,
-.product-page-pour__express-checkout .shopify-payment-button__button {
-  width: 100%;
-  height: 46px !important;
-  min-height: 46px !important;
-  margin: 0;
-  box-sizing: border-box;
-}
+/* APPLE PAY — TAILLE DU TEXTE SUR TOUS LES ÉCRANS */
 
 .product-page-pour__express-checkout .shopify-payment-button__button {
   font-size: 14px !important;
+}
+
+/* HAUTEUR UNIQUEMENT SUR MOBILE */
+
+@media screen and (max-width: 767px) {
+  .product-page-pour__express-checkout .shopify-payment-button,
+  .product-page-pour__express-checkout .shopify-payment-button__button {
+    height: 46px !important;
+    min-height: 46px !important;
+  }
 }
 
 .product-page-pour__express-checkout[inert] {
