@@ -117,7 +117,8 @@
           "settings": {
             "product": "t-shirt-fast-driving-yellow",
             "image_primary": "shopify://shop_images/7_79e36e6f-b638-4774-a88f-5f11b0c74684.png",
-            "image_secondary": "shopify://shop_images/8_927a524f-b130-4787-bca1-8733e1fc8236.png"
+            "image_secondary": "shopify://shop_images/8_927a524f-b130-4787-bca1-8733e1fc8236.png",
+            "availability_label": "PROCHAINEMENT DISPONIBLE"
           }
         },
         "product_card_c6kh69": {
@@ -125,7 +126,8 @@
           "settings": {
             "product": "t-shirt-fast-driving-red",
             "image_primary": "shopify://shop_images/6_58216d59-961a-4ccd-b511-424e9460d654.png",
-            "image_secondary": "shopify://shop_images/9_cf21fdfc-fcd9-4834-b289-02acf06978e9.png"
+            "image_secondary": "shopify://shop_images/9_cf21fdfc-fcd9-4834-b289-02acf06978e9.png",
+            "availability_label": "PROCHAINEMENT DISPONIBLE"
           }
         },
         "product_card_hrinV9": {
@@ -133,7 +135,8 @@
           "settings": {
             "product": "t-shirt-made-of-motion",
             "image_primary": "shopify://shop_images/4_f89858c2-d891-40c4-82f4-35278b88c7eb.png",
-            "image_secondary": "shopify://shop_images/5_084efb4a-4594-4182-b868-8c99d9a7537c.png"
+            "image_secondary": "shopify://shop_images/5_084efb4a-4594-4182-b868-8c99d9a7537c.png",
+            "availability_label": "PROCHAINEMENT DISPONIBLE"
           }
         },
         "product_card_JFdngd": {
@@ -141,7 +144,8 @@
           "settings": {
             "product": "t-shirt-racing-club",
             "image_primary": "shopify://shop_images/2_de83e3be-687c-47a9-9d33-24a928b1e5fa.png",
-            "image_secondary": "shopify://shop_images/3_a47ea13d-f212-45b7-947e-2d465404f6e4.png"
+            "image_secondary": "shopify://shop_images/3_a47ea13d-f212-45b7-947e-2d465404f6e4.png",
+            "availability_label": "PROCHAINEMENT DISPONIBLE"
           }
         }
       },
@@ -153,7 +157,7 @@
       ],
       "name": "Produits POUR",
       "settings": {
-        "subtitle": "001 — CHAPITRE 2 PROCHAINEMENT",
+        "subtitle": "001 — CHAPITRE 2",
         "heading": "LA SUITE DE LA COLLECTION 001"
       }
     },
