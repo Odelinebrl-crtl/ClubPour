@@ -581,6 +581,30 @@
   </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const panel = document.querySelector(
+    '[data-pour-back-in-stock-panel]'
+  );
+
+  if (!panel) return;
+
+  const successMessage = panel.querySelector(
+    '[data-coming-soon-success]'
+  );
+
+  if (!successMessage) return;
+
+  panel.classList.add('is-active');
+
+  panel.setAttribute('aria-hidden', 'false');
+
+  document.body.style.overflow = 'hidden';
+
+});
+</script>
+
 <!-- =====================================================
      GALERIE PLEIN ÉCRAN
 ===================================================== -->
