@@ -3583,26 +3583,33 @@ font-weight: 200;
   flex-direction: column !important;
   align-items: stretch !important;
   width: 100%;
+  gap: 0;
 }
 
 .product-page-pour__back-in-stock-form--coming-soon
 .product-page-pour__back-in-stock-input {
+  display: block;
   width: 100% !important;
   max-width: 100% !important;
-  margin-bottom: 14px;
+  height: 48px;
+  margin: 0 0 14px !important;
+  box-sizing: border-box;
 }
 
 .product-page-pour__back-in-stock-form--coming-soon
 .product-page-pour__coming-soon-consent {
   display: flex !important;
+  align-items: flex-start;
   width: 100%;
-  margin: 0 0 18px;
+  margin: 0 0 18px !important;
   order: 2;
 }
 
 .product-page-pour__back-in-stock-form--coming-soon
 .product-page-pour__back-in-stock-submit {
   order: 3;
+  width: 100%;
+  min-height: 48px;
 }
 </style>
 
