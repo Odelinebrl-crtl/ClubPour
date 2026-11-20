@@ -109,6 +109,36 @@
         "heading": "COLLECTION 001"
       }
     },
+    "product_grid_wYNiMW": {
+      "type": "product-grid",
+      "blocks": {
+        "product_card_9JPqYY": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-made-of-motion",
+            "image_primary": "shopify://shop_images/4_f89858c2-d891-40c4-82f4-35278b88c7eb.png",
+            "image_secondary": "shopify://shop_images/5_084efb4a-4594-4182-b868-8c99d9a7537c.png"
+          }
+        },
+        "product_card_4LU3XP": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-racing-club",
+            "image_primary": "shopify://shop_images/2_de83e3be-687c-47a9-9d33-24a928b1e5fa.png",
+            "image_secondary": "shopify://shop_images/3_a47ea13d-f212-45b7-947e-2d465404f6e4.png"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_9JPqYY",
+        "product_card_4LU3XP"
+      ],
+      "name": "Produits POUR",
+      "settings": {
+        "subtitle": "001 — CHAPITRE DEUX",
+        "heading": "LA SUITE DE LA COLLECTION 001"
+      }
+    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -199,6 +229,7 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
+    "product_grid_wYNiMW",
     "community_feed_pour_4VTp68",
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
