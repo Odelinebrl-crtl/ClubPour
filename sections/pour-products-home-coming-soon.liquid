@@ -74,7 +74,11 @@
 
               <div class="pour-product__media">
 
-
+{% if block.settings.availability_label != blank %}
+  <span class="pour-product__availability">
+    {{ block.settings.availability_label }}
+  </span>
+{% endif %}
                 <a
                   href="{{ featured_product.url }}"
                   class="pour-product__media-link"
@@ -353,7 +357,33 @@
   color: #999999;
   text-decoration: line-through;
 }
+/* =========================================================
+   BADGE DISPONIBILITÉ PRODUIT
+========================================================= */
 
+#PourProducts-{{ section.id }} .pour-product__media {
+  position: relative;
+  overflow: hidden;
+}
+
+#PourProducts-{{ section.id }} .pour-product__availability {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+
+  display: inline-block;
+  padding: 10px 14px;
+
+  background: #000000;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
 </style>
 
 
@@ -397,7 +427,13 @@
           "type": "image_picker",
           "id": "image_secondary",
           "label": "Image au survol personnalisée"
-        }
+        },
+        {
+  "type": "text",
+  "id": "availability_label",
+  "label": "Mention de disponibilité",
+  "default": "PROCHAINEMENT DISPONIBLE"
+}
       ]
     }
   ],
