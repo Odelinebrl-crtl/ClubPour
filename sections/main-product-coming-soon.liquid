@@ -503,12 +503,13 @@
 </div>
 
      
-{% form 'customer', class: 'product-page-pour__back-in-stock-form' %}
+
+{% form 'customer', class: 'product-page-pour__coming-soon-form' %}
 
   <input
     type="hidden"
     name="contact[tags]"
-    value="coming-soon, coming-soon-{{ product.handle }}"
+    value="coming-soon,coming-soon-{{ product.handle }}"
   >
 
   <input
@@ -517,6 +518,7 @@
     class="product-page-pour__back-in-stock-input"
     placeholder="{{ 'pour_product.email_placeholder' | t }}"
     autocomplete="email"
+    autocapitalize="off"
     required
   >
 
@@ -540,18 +542,19 @@
   </button>
 
   {% if form.posted_successfully? %}
-    <p class="product-page-pour__back-in-stock-message">
+    <p class="product-page-pour__back-in-stock-message" role="status">
       Merci ! Ton adresse e-mail a bien été enregistrée.
     </p>
   {% endif %}
 
   {% if form.errors %}
-    <div class="product-page-pour__back-in-stock-message">
+    <div class="product-page-pour__back-in-stock-message" role="alert">
       {{ form.errors | default_errors }}
     </div>
   {% endif %}
 
 {% endform %}
+
 
 
       <div
