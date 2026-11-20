@@ -232,8 +232,7 @@
 
   </div>
 {% endif %}
-        
-{% if template.suffix == 'coming-soon' %}
+        {% if template.suffix == 'coming-soon' %}
 
   <!-- BOUTON ME PRÉVENIR -->
   <button
@@ -432,131 +431,94 @@
     aria-label="{{ 'pour_product.product_information' | t }}"
   >
 
-    <!-- HEADER -->
-    <div class="product-page-pour__info-panel-header">
+    
+<!-- HEADER -->
+<div class="product-page-pour__info-panel-header">
 
-      <div
-        class="product-page-pour__info-panel-title"
-        data-product-panel-title
-      >
-        DÉTAILS DU PRODUIT
-      </div>
-
-      <button
-        type="button"
-        class="product-page-pour__info-panel-close"
-        data-product-panel-close
-        aria-label="{{ 'pour_product.close' | t }}"
-      ></button>
-
-    </div>
-
-
-    <!-- CONTENU DÉTAILS -->
-<div
-  class="product-page-pour__info-panel-content"
-  data-product-panel-content="details"
->
-  <div class="product-page-pour__info-panel-text">
-
-    {% if product.metafields.custom.product_details != blank %}
-      {{ product.metafields.custom.product_details | metafield_tag }}
-    {% else %}
-      {{ 'pour_product.details_fallback' | t }}
-    {% endif %}
-
+  <div class="product-page-pour__info-panel-title" data-product-panel-title>
+    BIENTÔT DISPONIBLE
   </div>
+
+  <button
+    type="button"
+    class="product-page-pour__info-panel-close"
+    data-pour-back-in-stock-close
+    aria-label="{{ 'pour_product.close' | t }}"
+  ></button>
+
 </div>
 
-
-<!-- CONTENU FAQ -->
+<!-- CONTENU -->
 <div
-  class="product-page-pour__info-panel-content"
-  data-product-panel-content="faq"
+  class="product-page-pour__info-panel-content is-active"
+  data-pour-back-in-stock-content
 >
 
-  {% if product.metafields.custom.product_faq.value != blank %}
+  <div class="product-page-pour__back-in-stock-intro">
+    <p>
+      Inscris ton adresse e-mail pour être informé(e) dès la sortie de ce modèle.
+    </p>
+  </div>
 
-    {% assign faq_text = product.metafields.custom.product_faq.value | newline_to_br %}
-    {% assign faq_lines = faq_text | split: '<br />' %}
-    {% assign faq_question = blank %}
-    {% assign faq_answer = blank %}
-    {% assign faq_step = 0 %}
+  {% form 'customer', class: 'product-page-pour__back-in-stock-form product-page-pour__back-in-stock-form--coming-soon' %}
 
-    {% for faq_line in faq_lines %}
-
-      {% assign faq_line_clean = faq_line | strip %}
-
-      {% if faq_line_clean != blank %}
-
-        {% assign faq_mod = faq_step | modulo: 2 %}
-
-        {% if faq_mod == 0 %}
-
-          {% assign faq_question = faq_line_clean %}
-
-        {% else %}
-
-          {% assign faq_answer = faq_line_clean %}
-
-          <details class="product-page-pour__faq-item">
-
-            <summary class="product-page-pour__faq-question">
-              <span>{{ faq_question }}</span>
-              <span class="product-page-pour__faq-icon"></span>
-            </summary>
-
-            <div class="product-page-pour__faq-answer">
-              {{ faq_answer }}
-            </div>
-
-          </details>
-
-          {% assign faq_question = blank %}
-          {% assign faq_answer = blank %}
-
-        {% endif %}
-
-        {% assign faq_step = faq_step | plus: 1 %}
-
-      {% endif %}
-
-    {% endfor %}
-
-  {% else %}
-
-    <p>{{ 'pour_product.faq_unavailable' | t }}</p>
-
-  {% endif %}
-
-</div>
-
-
-    <!-- CONTENU EXPÉDITION -->
-    <div
-      class="product-page-pour__info-panel-content"
-      data-product-panel-content="shipping"
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="coming-soon, coming-soon-{{ product.handle }}"
     >
 
-      <div class="product-page-pour__info-panel-text">
-        {% if section.settings.shipping != blank %}
-        {{ section.settings.shipping
-  | replace: 'EXPÉDITION', '<strong>EXPÉDITION</strong>'
-  | replace: 'INFORMATIONS DE LIVRAISON', '<strong>INFORMATIONS DE LIVRAISON</strong>'
-  | replace: 'COMMANDES COURANTES', '<strong>COMMANDES COURANTES</strong>'
-  | replace: 'RETOURS & ÉCHANGES', '<strong>RETOURS & ÉCHANGES</strong>'
-  | raw
-}}
-        {% else %}
-          {{ 'pour_product.shipping_fallback' | t }}
-        {% endif %}
+    <input
+      type="email"
+      name="contact[email]"
+      class="product-page-pour__back-in-stock-input"
+      placeholder="{{ 'pour_product.email_placeholder' | t }}"
+      autocomplete="email"
+      required
+    >
+
+    <label class="product-page-pour__coming-soon-consent">
+      <input
+        type="checkbox"
+        name="contact[accepts_marketing]"
+        value="true"
+        required
+      >
+      <span>
+        J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
+      </span>
+    </label>
+
+    <button
+      type="submit"
+      class="product-page-pour__back-in-stock-submit"
+    >
+      ME PRÉVENIR
+    </button>
+
+    {% if form.posted_successfully? %}
+      <div class="product-page-pour__back-in-stock-message">
+        Merci ! Tu seras prévenu(e) dès la sortie du produit.
       </div>
+    {% elsif form.errors %}
+      <div class="product-page-pour__back-in-stock-message">
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
 
-    </div>
+  {% endform %}
 
-  </aside>
+  <p class="product-page-pour__back-in-stock-privacy">
+    Ton adresse e-mail sera utilisée uniquement pour t'informer
+    de la disponibilité de ce modèle.
+    Pour plus d'informations, consulte notre
+    <a href="/policies/privacy-policy">
+      politique de confidentialité
+    </a>.
+  </p>
 
 </div>
+
 <!-- =====================================================
      PANNEAU LATÉRAL — RETOUR EN STOCK
 ===================================================== -->
@@ -617,68 +579,6 @@
 
       </div>
 
-
-      {% if template.suffix == 'coming-soon' %}
-
-  <!-- FORMULAIRE COMING SOON -->
-
-  <div class="product-page-pour__back-in-stock-intro">
-    <p>
-      Inscris ton adresse e-mail pour être informé(e)
-      dès la sortie de ce modèle.
-    </p>
-  </div>
-
-  {% form 'customer', class: 'product-page-pour__back-in-stock-form' %}
-
-    <input
-      type="hidden"
-      name="contact[tags]"
-      value="coming-soon, coming-soon-{{ product.handle }}"
-    >
-
-    <input
-      type="email"
-      name="contact[email]"
-      class="product-page-pour__back-in-stock-input"
-      placeholder="{{ 'pour_product.email_placeholder' | t }}"
-      autocomplete="email"
-      required
-    >
-
-    <label class="product-page-pour__coming-soon-consent">
-      <input
-        type="checkbox"
-        name="contact[accepts_marketing]"
-        value="true"
-        required
-      >
-      <span>
-        J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
-      </span>
-    </label>
-
-    <button
-      type="submit"
-      class="product-page-pour__back-in-stock-submit"
-    >
-      ME PRÉVENIR
-    </button>
-
-    {% if form.posted_successfully? %}
-      <div class="product-page-pour__back-in-stock-message">
-        Merci ! Tu seras prévenu(e) dès la sortie du produit.
-      </div>
-    {% elsif form.errors %}
-      <div class="product-page-pour__back-in-stock-message">
-        {{ form.errors | default_errors }}
-      </div>
-    {% endif %}
-
-  {% endform %}
-
-{% else %}
-
   <!-- CONSERVATION DU FORMULAIRE RETOUR EN STOCK EXISTANT -->
 
   <div class="product-page-pour__back-in-stock-sizes">
@@ -698,30 +598,6 @@
 
   </div>
 
-  <form
-    class="product-page-pour__back-in-stock-form"
-    data-pour-back-in-stock-form
-  >
-
-    <input
-      type="email"
-      name="email"
-      class="product-page-pour__back-in-stock-input"
-      placeholder="{{ 'pour_product.email_placeholder' | t }}"
-      autocomplete="email"
-      required
-    >
-
-    <button
-      type="submit"
-      class="product-page-pour__back-in-stock-submit"
-    >
-      {{ 'pour_product.submit' | t }}
-    </button>
-
-  </form>
-
-{% endif %}
 
 <div
   class="product-page-pour__back-in-stock-message"
@@ -730,9 +606,11 @@
 ></div>
 
 <p class="product-page-pour__back-in-stock-privacy">
-  {{ 'pour_product.privacy_text' | t }}
+  Ton adresse e-mail sera utilisée uniquement pour t'informer
+  de la disponibilité de ce modèle.
+  Pour plus d'informations, consulte notre
   <a href="/policies/privacy-policy">
-    {{ 'pour_product.privacy_link' | t }}
+    politique de confidentialité
   </a>.
 </p>
 
@@ -3740,6 +3618,60 @@ font-weight: 200;
 
 .product-page-pour__coming-soon-consent span {
   display: block;
+}
+/* COMING SOON — FORMULAIRE */
+
+.product-page-pour__back-in-stock-form--coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+
+.product-page-pour__back-in-stock-form--coming-soon
+.product-page-pour__back-in-stock-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  flex: none;
+  border-right: 1px solid #d5d5d5;
+  box-sizing: border-box;
+}
+
+.product-page-pour__coming-soon-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  margin: 16px 0 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #444444;
+}
+
+.product-page-pour__coming-soon-consent input {
+  flex: 0 0 13px;
+  width: 13px;
+  height: 13px;
+  margin: 1px 0 0;
+  accent-color: #111111;
+}
+
+.product-page-pour__back-in-stock-form--coming-soon
+.product-page-pour__back-in-stock-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex: none;
+  box-sizing: border-box;
+}
+
+.product-page-pour__back-in-stock-privacy {
+  margin-top: 20px;
+  line-height: 1.6;
 }
 </style>
 
