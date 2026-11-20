@@ -109,6 +109,25 @@
         "heading": "COLLECTION 001"
       }
     },
+    "product_grid_T7VqWK": {
+      "type": "product-grid",
+      "blocks": {
+        "product_card_3tEk9d": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-racing-club"
+          }
+        }
+      },
+      "block_order": [
+        "product_card_3tEk9d"
+      ],
+      "name": "Produits POUR",
+      "settings": {
+        "subtitle": "001 — CHAPITRE 2",
+        "heading": "LA SUITE DE LA COLLECTION 001"
+      }
+    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -199,6 +218,7 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
+    "product_grid_T7VqWK",
     "community_feed_pour_4VTp68",
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
