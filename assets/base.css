@@ -2012,13 +2012,21 @@ a {
   }
 
 }
-  .pour-products__arrow--prev {
-    left: -12px;
-  }
+ .pour-products__arrow--prev {
+  left: -12px !important;
+}
 
-  .pour-products__arrow--next {
-    right: -12px;
-  }
+.pour-products__arrow--next {
+  right: -12px !important;
+}
+.pour-products__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+  text-indent: 0;
+}
 /* ================================
    PRODUCT IMAGE — HOVER PROPRE
 ================================ */
