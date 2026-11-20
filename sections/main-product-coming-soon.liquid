@@ -541,11 +541,16 @@
     {{ 'pour_product.submit' | t }}
   </button>
 
-  {% if form.posted_successfully? %}
-    <p class="product-page-pour__back-in-stock-message" role="status">
-      Merci ! Ton adresse e-mail a bien été enregistrée.
-    </p>
-  {% endif %}
+{% if form.posted_successfully? %}
+  <p
+    class="product-page-pour__back-in-stock-message"
+    data-coming-soon-success
+    role="status"
+    aria-live="polite"
+  >
+    Merci ! Ton adresse e-mail a bien été enregistrée.
+  </p>
+{% endif %}
 
   {% if form.errors %}
     <div class="product-page-pour__back-in-stock-message" role="alert">
