@@ -585,9 +585,13 @@
     <!-- HEADER -->
     <div class="product-page-pour__info-panel-header">
 
-      <div class="product-page-pour__info-panel-title">
-        {{ 'pour_product.back_in_stock_title' | t }}
-      </div>
+     <div class="product-page-pour__info-panel-title">
+  {% if template.suffix == 'coming-soon' %}
+    BIENTÔT DISPONIBLE
+  {% else %}
+    {{ 'pour_product.back_in_stock_title' | t }}
+  {% endif %}
+</div>
 
       <button
         type="button"
