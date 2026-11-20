@@ -235,19 +235,6 @@
 
        </div>
 
-    <!-- BOUTON ACHETER -->
-
-    <div class="pour-products__cta">
-      <a
-        href="{{ pages['boutique'].url }}"
-        class="pour-hero__submit"
-      >
-       <span class="pour-hero__submit-text">
-  {{ 'collection_001.discover_collection' | t }}
-</span>
-      </a>
-    </div>
-
   </div>
 
 </section>
@@ -349,40 +336,6 @@
 #PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000000"],
 #PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000"] {
   border-color: #000000;
-}
-
-
-/* BOUTON ACHETER SOUS LES PRODUITS */
-
-#PourProducts-{{ section.id }} .pour-products__cta {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 100%;
-
-  margin-top: 35px;
-}
-
-
-/* BOUTON — TRANSITION DOUCE */
-
-#PourProducts-{{ section.id }} .pour-products__cta .pour-hero__submit {
-  background: #111111;
-  color: #ffffff;
-  border: 1px solid #111111;
-  transition:
-    background-color 0.45s ease,
-    color 0.45s ease,
-    border-color 0.45s ease,
-    box-shadow 0.45s ease;
-}
-
-#PourProducts-{{ section.id }} .pour-products__cta .pour-hero__submit:hover {
-  background: #ffffff;
-  color: #111111;
-  border-color: #111111;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
 }
 
 
