@@ -497,21 +497,10 @@
       data-pour-back-in-stock-content
     >
       <div class="product-page-pour__back-in-stock-intro">
-        <p>{{ 'pour_product.back_in_stock_intro' | t }}</p>
-      </div>
-
-      <div class="product-page-pour__back-in-stock-sizes">
-        {% for variant in product.variants %}
-          {% unless variant.available %}
-            <button
-              type="button"
-              class="product-page-pour__back-in-stock-size"
-              data-notify-variant-id="{{ variant.id }}"
-              data-notify-variant-available="false"
-            >{{ variant.title }}</button>
-          {% endunless %}
-        {% endfor %}
-      </div>
+  <p>
+    Entre ton adresse e-mail pour être averti(e) dès la sortie de ce modèle.
+  </p>
+</div>
 
       <form
         class="product-page-pour__back-in-stock-form"
