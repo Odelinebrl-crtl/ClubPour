@@ -514,6 +514,17 @@
           autocomplete="email"
           required
         >
+          <label class="product-page-pour__coming-soon-consent">
+  <input
+    type="checkbox"
+    name="contact[accepts_marketing]"
+    value="true"
+    required
+  >
+  <span>
+    J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
+  </span>
+</label>
         <button type="submit" class="product-page-pour__back-in-stock-submit">
           {{ 'pour_product.submit' | t }}
         </button>
@@ -3572,7 +3583,21 @@ font-weight: 200;
 .product-page-pour__sold-out-notice .product-page-pour__back-in-stock-message {
   margin-top: 14px;
 }
+.product-page-pour__coming-soon-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin: 14px 0 20px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #555;
+}
 
+.product-page-pour__coming-soon-consent input {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  accent-color: #111;
+}
 </style>
 
 <script>
