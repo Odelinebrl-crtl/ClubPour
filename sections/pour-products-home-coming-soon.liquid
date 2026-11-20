@@ -377,12 +377,16 @@
 }
 @media screen and (max-width: 749px) {
 
+  #PourProducts-{{ section.id }} .pour-products__carousel {
+    overflow: visible !important;
+  }
+
   #PourProducts-{{ section.id }} .pour-products__arrow--prev {
-    left: -10px;
+    left: -20px !important;
   }
 
   #PourProducts-{{ section.id }} .pour-products__arrow--next {
-    right: 0px;
+    right: -20px !important;
   }
 
 }
