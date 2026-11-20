@@ -109,6 +109,34 @@
         "heading": "COLLECTION 001"
       }
     },
+    "pour_products_home_coming_soon_PbgbRz": {
+      "type": "pour-products-home-coming-soon",
+      "blocks": {
+        "product_card_hrinV9": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-made-of-motion",
+            "image_primary": "shopify://shop_images/4_f89858c2-d891-40c4-82f4-35278b88c7eb.png",
+            "image_secondary": "shopify://shop_images/5_084efb4a-4594-4182-b868-8c99d9a7537c.png"
+          }
+        },
+        "product_card_JFdngd": {
+          "type": "product_card",
+          "settings": {
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "product_card_hrinV9",
+        "product_card_JFdngd"
+      ],
+      "name": "Produits POUR",
+      "settings": {
+        "subtitle": "PORSCHE AUTOMOBILE",
+        "heading": "COLLECTION 001"
+      }
+    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -199,6 +227,7 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
+    "pour_products_home_coming_soon_PbgbRz",
     "community_feed_pour_4VTp68",
     "quote_pour_FCLgBx",
     "featured_collection_pour_EV7y3F",
