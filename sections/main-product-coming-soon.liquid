@@ -232,112 +232,115 @@
 
   </div>
 {% endif %}
-  {% form 'product', product, class: 'product-page-pour__form' %}
+  {% if product.available %}
 
-    <input
-      type="hidden"
-      name="id"
-      value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
-      data-product-variant-id
-    >
+    {% form 'product', product, class: 'product-page-pour__form' %}
 
-    {% unless product.has_only_default_variant %}
+      <input
+        type="hidden"
+        name="id"
+        value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
+        data-product-variant-id
+      >
 
-      {% for option in product.options_with_values %}
-        <div class="product-page-pour__option">
-
-          <p class="product-page-pour__option-label">
-            {{ option.name }}
-          </p>
-
-          <div class="product-page-pour__option-values">
-
-            {% for value in option.values %}
-              <label
-                class="product-page-pour__option-value"
-                data-option-value="{{ value | escape }}"
-              >
-
-                <input
-                  type="radio"
-                  name="options[{{ option.name | escape }}]"
-                  value="{{ value | escape }}"
+      {% unless product.has_only_default_variant %}
+        {% for option in product.options_with_values %}
+          <div class="product-page-pour__option">
+            <p class="product-page-pour__option-label">{{ option.name }}</p>
+            <div class="product-page-pour__option-values">
+              {% for value in option.values %}
+                <label
+                  class="product-page-pour__option-value"
+                  data-option-value="{{ value | escape }}"
                 >
+                  <input
+                    type="radio"
+                    name="options[{{ option.name | escape }}]"
+                    value="{{ value | escape }}"
+                  >
+                  <span class="product-page-pour__option-text">{{ value }}</span>
+                  <span class="product-page-pour__option-notify" aria-hidden="true"></span>
+                </label>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      {% endunless %}
 
-                <span class="product-page-pour__option-text">
-                  {{ value }}
-                </span>
+      <div class="product-page-pour__buy-row">
+        <div class="product-page-pour__quantity">
+          <button type="button" data-qty-minus>−</button>
+          <input type="number" name="quantity" value="1" min="1" data-qty-input>
+          <button type="button" data-qty-plus>+</button>
+        </div>
 
-                <span
-                  class="product-page-pour__option-notify"
-                  aria-hidden="true"
-                ></span>
+        <div class="product-page-pour__purchase-actions">
+          <button
+            type="submit"
+            class="product-page-pour__add"
+            {% if product.has_only_default_variant %}
+              {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+            {% else %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.available %}
+              {{ 'pour_product.preorder' | t }}
+            {% else %}
+              {{ 'pour_product.sold_out' | t }}
+            {% endif %}
+          </button>
 
-              </label>
-            {% endfor %}
-
+          <div class="product-page-pour__express-checkout" data-express-checkout aria-disabled="true" inert>
+            {{ form | payment_button }}
           </div>
         </div>
-      {% endfor %}
+      </div>
 
-    {% endunless %}
+      <p class="product-page-pour__preorder-note">{{ 'pour_product.preorder_note' | t }}</p>
 
-    <div class="product-page-pour__buy-row">
+    {% endform %}
 
-      <div class="product-page-pour__quantity">
+  {% else %}
 
-        <button type="button" data-qty-minus>−</button>
+    <div class="product-page-pour__sold-out-notice">
+      <p class="product-page-pour__sold-out-intro">
+        Ce modèle est actuellement épuisé. Laisse-nous ton adresse e-mail pour être informé(e) dès son retour.
+      </p>
 
+      {% form 'customer', class: 'product-page-pour__sold-out-form' %}
+        <input type="hidden" name="contact[tags]" value="retour-en-stock, retour-en-stock-{{ product.handle }}">
+        <label class="visually-hidden" for="PourRestockEmail-{{ section.id }}">Adresse e-mail</label>
         <input
-          type="number"
-          name="quantity"
-          value="1"
-          min="1"
-          data-qty-input
+          id="PourRestockEmail-{{ section.id }}"
+          type="email"
+          name="contact[email]"
+          class="product-page-pour__back-in-stock-input"
+          placeholder="{{ 'pour_product.email_placeholder' | t }}"
+          autocomplete="email"
+          required
         >
-
-        <button type="button" data-qty-plus>+</button>
-
-      </div>
-
-      <div class="product-page-pour__purchase-actions">
-
-        <button
-          type="submit"
-          class="product-page-pour__add"
-          {% if product.has_only_default_variant %}
-            {% unless product.selected_or_first_available_variant.available %}
-              disabled
-            {% endunless %}
-          {% else %}
-            disabled
-          {% endif %}
-        >
-          {% if product.selected_or_first_available_variant.available %}
-            {{ 'pour_product.preorder' | t }}
-          {% else %}
-            {{ 'pour_product.sold_out' | t }}
-          {% endif %}
+        <label class="product-page-pour__coming-soon-consent">
+          <input type="checkbox" name="contact[accepts_marketing]" value="true" required>
+          <span>J'accepte de recevoir un e-mail lorsque ce produit sera de nouveau disponible.</span>
+        </label>
+        <button type="submit" class="product-page-pour__back-in-stock-submit">
+          ME PRÉVENIR DE LA SORTIE
         </button>
+        {% if form.posted_successfully? %}
+          <p class="product-page-pour__back-in-stock-message">Merci ! Tu seras informé(e) dès le retour de ce modèle.</p>
+        {% elsif form.errors %}
+          <div class="product-page-pour__back-in-stock-message">{{ form.errors | default_errors }}</div>
+        {% endif %}
+      {% endform %}
 
-        <div
-          class="product-page-pour__express-checkout"
-          data-express-checkout
-          aria-disabled="true"
-          inert
-        >
-          {{ form | payment_button }}
-        </div>
-
-      </div>
-
+      <p class="product-page-pour__back-in-stock-privacy">
+        Ton adresse e-mail sera utilisée pour t'informer du retour de ce modèle. Pour plus d'informations, consulte notre
+        <a href="/policies/privacy-policy">politique de confidentialité</a>.
+      </p>
     </div>
 
-    <p class="product-page-pour__preorder-note">
-      {{ 'pour_product.preorder_note' | t }}
-    </p>
-
-  {% endform %}
+  {% endif %}
 
 <div class="product-page-pour__size-guide-row">
   <button
@@ -2959,23 +2962,22 @@ font-weight: 200;
 ========================================================= */
 
 .product-page-pour__style-with {
-  width: 200% !important;
-  max-width: 200% !important;
-
-  margin: 0 !important;
-  padding: 100px 0 0 !important;
-
+  display: block;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 80px 0 0 !important;
   box-sizing: border-box !important;
-
   background: #ffffff;
+  overflow: hidden;
 }
 .product-page-pour__style-with-heading {
   width: 100%;
-  margin: 0 0 45px;
+  margin: 0 0 30px;
 
   text-align: center;
 
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 400;
   line-height: 1.05;
 
@@ -3545,6 +3547,70 @@ font-weight: 200;
 .product-page-pour__back-in-stock-privacy {
   margin-top: 20px;
   line-height: 1.6;
+}
+
+
+/* =========================================================
+   PRODUIT ÉPUISÉ — FORMULAIRE DIRECTEMENT SUR LA FICHE
+========================================================= */
+.product-page-pour__sold-out-notice {
+  width: 100%;
+  max-width: 520px;
+  margin: 24px 0 0;
+}
+.product-page-pour__sold-out-intro {
+  margin: 0 0 16px;
+  font-size: 11px;
+  line-height: 1.55;
+  color: #444;
+}
+.product-page-pour__sold-out-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+.product-page-pour__sold-out-form .product-page-pour__back-in-stock-input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 48px;
+  flex: none;
+  box-sizing: border-box;
+  border: 1px solid #d5d5d5;
+}
+.product-page-pour__sold-out-form .product-page-pour__back-in-stock-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  box-sizing: border-box;
+}
+.product-page-pour__sold-out-form .product-page-pour__coming-soon-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  width: 100%;
+  margin: 14px 0 18px;
+  font-size: 10px;
+  line-height: 1.5;
+  color: #555;
+}
+.product-page-pour__sold-out-form .product-page-pour__coming-soon-consent input {
+  flex: 0 0 13px;
+  width: 13px;
+  height: 13px;
+  margin: 1px 0 0;
+  accent-color: #111;
+}
+.product-page-pour__sold-out-notice .product-page-pour__back-in-stock-privacy {
+  margin-top: 16px;
+}
+.product-page-pour__sold-out-notice .product-page-pour__back-in-stock-message {
+  margin-top: 14px;
 }
 
 </style>
@@ -5012,6 +5078,9 @@ backInStockSizeButtons.forEach(
 
       }
     );
+  }
+);
+
 /* =====================================================
    INSCRIPTION RETOUR EN STOCK — AMP
 ===================================================== */
@@ -5167,8 +5236,6 @@ if (backInStockForm) {
   );
 
 }
-  }
-);
 
     backInStockCloseButtons.forEach(
       function (button) {
