@@ -5147,6 +5147,7 @@ const backInStockSubmit =
 const backInStockProductId =
   {{ product.id | json }};
 
+{% unless template.suffix == 'coming-soon' %}
 if (backInStockForm) {
 
   backInStockForm.addEventListener(
@@ -5278,7 +5279,7 @@ if (backInStockForm) {
   );
 
 }
-
+{% endunless %}
     backInStockCloseButtons.forEach(
       function (button) {
 
