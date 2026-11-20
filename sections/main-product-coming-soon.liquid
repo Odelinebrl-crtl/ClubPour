@@ -502,33 +502,55 @@
   </p>
 </div>
 
-      <form
-        class="product-page-pour__back-in-stock-form"
-        data-pour-back-in-stock-form
-      >
-        <input
-          type="email"
-          name="email"
-          class="product-page-pour__back-in-stock-input"
-          placeholder="{{ 'pour_product.email_placeholder' | t }}"
-          autocomplete="email"
-          required
-        >
-          <label class="product-page-pour__coming-soon-consent">
+      {% form 'customer', class: 'product-page-pour__back-in-stock-form' %}
+
   <input
-    type="checkbox"
-    name="contact[accepts_marketing]"
-    value="true"
+    type="hidden"
+    name="contact[tags]"
+    value="coming-soon, coming-soon-{{ product.handle }}"
+  >
+
+  <input
+    type="email"
+    name="contact[email]"
+    class="product-page-pour__back-in-stock-input"
+    placeholder="{{ 'pour_product.email_placeholder' | t }}"
+    autocomplete="email"
     required
   >
-  <span>
-    J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
-  </span>
-</label>
-        <button type="submit" class="product-page-pour__back-in-stock-submit">
-          {{ 'pour_product.submit' | t }}
-        </button>
-      </form>
+
+  <label class="product-page-pour__coming-soon-consent">
+    <input
+      type="checkbox"
+      name="contact[accepts_marketing]"
+      value="true"
+      required
+    >
+    <span>
+      J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
+    </span>
+  </label>
+
+  <button
+    type="submit"
+    class="product-page-pour__back-in-stock-submit"
+  >
+    {{ 'pour_product.submit' | t }}
+  </button>
+
+  {% if form.posted_successfully? %}
+    <p class="product-page-pour__back-in-stock-message">
+      Merci ! Ton adresse e-mail a bien été enregistrée.
+    </p>
+  {% endif %}
+
+  {% if form.errors %}
+    <div class="product-page-pour__back-in-stock-message">
+      {{ form.errors | default_errors }}
+    </div>
+  {% endif %}
+
+{% endform %}
 
       <div
         class="product-page-pour__back-in-stock-message"
