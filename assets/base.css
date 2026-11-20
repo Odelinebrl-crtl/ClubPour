@@ -2012,6 +2012,13 @@ a {
   }
 
 }
+  .pour-products__arrow--prev {
+    left: -12px;
+  }
+
+  .pour-products__arrow--next {
+    right: -12px;
+  }
 /* ================================
    PRODUCT IMAGE — HOVER PROPRE
 ================================ */
