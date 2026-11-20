@@ -112,6 +112,22 @@
     "pour_products_home_coming_soon_PbgbRz": {
       "type": "pour-products-home-coming-soon",
       "blocks": {
+        "product_card_YgDzfE": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-fast-driving-yellow",
+            "image_primary": "shopify://shop_images/7_79e36e6f-b638-4774-a88f-5f11b0c74684.png",
+            "image_secondary": "shopify://shop_images/8_927a524f-b130-4787-bca1-8733e1fc8236.png"
+          }
+        },
+        "product_card_c6kh69": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-fast-driving-red",
+            "image_primary": "shopify://shop_images/6_58216d59-961a-4ccd-b511-424e9460d654.png",
+            "image_secondary": "shopify://shop_images/9_cf21fdfc-fcd9-4834-b289-02acf06978e9.png"
+          }
+        },
         "product_card_hrinV9": {
           "type": "product_card",
           "settings": {
@@ -130,6 +146,8 @@
         }
       },
       "block_order": [
+        "product_card_YgDzfE",
+        "product_card_c6kh69",
         "product_card_hrinV9",
         "product_card_JFdngd"
       ],
