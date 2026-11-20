@@ -585,13 +585,13 @@
     <!-- HEADER -->
     <div class="product-page-pour__info-panel-header">
 
-     <div class="product-page-pour__info-panel-title">
+     <<p>
   {% if template.suffix == 'coming-soon' %}
-    BIENTÔT DISPONIBLE
+    Inscris ton adresse e-mail pour être informé(e) dès la sortie de ce modèle.
   {% else %}
-    {{ 'pour_product.back_in_stock_title' | t }}
+    {{ 'pour_product.back_in_stock_intro' | t }}
   {% endif %}
-</div>
+</p>
 
       <button
         type="button"
