@@ -1,0 +1,5504 @@
+<section class="product-page-pour" data-product-page>
+
+
+  <div class="product-page-pour__top">
+
+    <!-- GALERIE PRODUIT -->
+    <div class="product-page-pour__gallery">
+
+      {% if product.images.size > 0 %}
+
+        <!-- DESKTOP : GRANDE IMAGE + MINIATURES SUPERPOSÉES -->
+        <div class="product-page-pour__desktop-gallery">
+
+         <div class="product-page-pour__main-media">
+
+  <img
+    src="{{ product.featured_image | image_url: width: 2400 }}"
+    alt="{{ product.featured_image.alt | escape }}"
+    class="product-page-pour__main-image"
+    data-main-product-image
+    width="{{ product.featured_image.width }}"
+    height="{{ product.featured_image.height }}"
+  >
+
+  <!-- FLÈCHE GAUCHE -->
+  <button
+    type="button"
+    class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--prev"
+    data-desktop-gallery-prev
+    aria-label="{{ 'pour_product.gallery_previous' | t }}"
+  >
+    ‹
+  </button>
+
+  <!-- FLÈCHE DROITE -->
+  <button
+    type="button"
+    class="product-page-pour__gallery-arrow product-page-pour__gallery-arrow--next"
+    data-desktop-gallery-next
+    aria-label="{{ 'pour_product.gallery_next' | t }}"
+  >
+    ›
+  </button>
+
+  <!-- COMPTEUR + MANNEQUIN -->
+  {% if product.images.size > 1 %}
+    <div class="product-page-pour__media-caption">
+
+      <span class="product-page-pour__media-counter">
+        <span data-desktop-gallery-current>1</span>
+        <span>/</span>
+        <span>{{ product.images.size }}</span>
+      </span>
+
+      {% if product.metafields.custom.model_height != blank
+        or product.metafields.custom.model_weight != blank
+        or product.metafields.custom.model_size != blank
+      %}
+        <span class="product-page-pour__model-caption">
+
+          {% if product.metafields.custom.model_height != blank %}
+            {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_weight != blank %}
+            {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_size != blank %}
+            {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
+          {% endif %}
+
+        </span>
+      {% endif %}
+
+    </div>
+  {% endif %}
+
+  <!-- AGRANDISSEMENT -->
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-trigger"
+    data-product-fullscreen-open
+    aria-label="{{ 'pour_product.gallery_enlarge' | t }}"
+  >
+    ⛶
+  </button>
+
+</div>
+
+         
+
+        </div>
+
+        <!-- MOBILE : CARROUSEL PLEINE LARGEUR -->
+        <div class="product-page-pour__mobile-gallery" data-mobile-product-gallery>
+
+          {% for image in product.images %}
+            <div
+              class="product-page-pour__mobile-slide"
+              data-mobile-product-slide
+              data-image-index="{{ forloop.index0 }}"
+            >
+              <img
+                src="{{ image | image_url: width: 2560 }}"
+                alt="{{ image.alt | escape }}"
+                loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+                width="{{ image.width }}"
+                height="{{ image.height }}"
+              >
+            </div>
+          {% endfor %}
+
+        </div>
+
+       {% if product.images.size > 1 %}
+  <div class="product-page-pour__mobile-counter" aria-hidden="true">
+
+    <span class="product-page-pour__mobile-counter-number">
+      <span data-mobile-gallery-current>1</span>
+      <span>/</span>
+      <span>{{ product.images.size }}</span>
+    </span>
+
+    {% if product.metafields.custom.model_height != blank
+      or product.metafields.custom.model_weight != blank
+      or product.metafields.custom.model_size != blank
+    %}
+      <span class="product-page-pour__mobile-model">
+
+        {% if product.metafields.custom.model_height != blank %}
+          {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
+        {% endif %}
+
+        {% if product.metafields.custom.model_weight != blank %}
+          {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
+        {% endif %}
+
+        {% if product.metafields.custom.model_size != blank %}
+          {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
+        {% endif %}
+
+      </span>
+    {% endif %}
+
+  </div>
+{% endif %}
+
+      {% endif %}
+
+    </div>
+
+    <!-- INFOS PRODUIT -->
+    <div class="product-page-pour__info">
+
+      <div class="product-page-pour__info-inner">
+
+        <h1 class="product-page-pour__title">
+          {{ product.title }}
+        </h1>
+<a
+  class="pour-google-rating"
+  href="https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Voir les avis Google de CLUB POUR"
+>
+  <span class="pour-google-rating__stars" aria-hidden="true">★★★★★</span>
+  <span>{{ section.settings.google_rating }}/5</span>
+  <span class="pour-google-rating__count">
+    ({{ section.settings.google_review_count }} avis)
+  </span>
+</a>
+        {% if product.metafields.custom.subtitle != blank %}
+          <p class="product-page-pour__subtitle">
+            {{ product.metafields.custom.subtitle }}
+          </p>
+        {% endif %}
+
+ <div class="product-page-pour__price-wrapper">
+
+  <div class="product-page-pour__price">
+    <span class="product-page-pour__price-current">
+      {{ product.selected_or_first_available_variant.price | money }}
+    </span>
+  </div>
+
+</div>
+<div class="product-page-pour__fit">
+  <strong>{{ 'pour_product.fit_title' | t }}</strong>
+  <span>— {{ product.metafields.custom.fit.value }}</span>
+</div>
+{% assign color_products = product.metafields.custom.color_products.value %}
+
+{% if color_products != blank %}
+  <div class="product-page-pour__colors">
+
+    <div class="product-page-pour__colors-heading">
+      <strong>{{ 'pour_product.color' | t }}</strong>
+      <span>{{ color_products.size }}</span>
+    </div>
+
+    <div class="product-page-pour__colors-list">
+
+      {% for color_product in color_products %}
+
+        <a
+          href="{{ color_product.url }}"
+          class="product-page-pour__color"
+          aria-label="{{ color_product.metafields.custom.color_name.value }}"
+          {% if color_product.id == product.id %}
+            aria-current="page"
+          {% endif %}
+        >
+
+          {% if color_product.featured_image != blank %}
+            {{
+              color_product.featured_image
+              | image_url: width: 400
+              | image_tag:
+                loading: 'lazy',
+                class: 'product-page-pour__color-image',
+                alt: color_product.metafields.custom.color_name.value
+            }}
+          {% endif %}
+
+        </a>
+
+      {% endfor %}
+
+    </div>
+
+  </div>
+{% endif %}
+        
+{% if template.suffix == 'coming-soon' %}
+
+  <!-- BOUTON ME PRÉVENIR -->
+  <button
+    type="button"
+    class="product-page-pour__back-in-stock"
+    data-pour-back-in-stock-open
+  >
+    ME PRÉVENIR DE LA SORTIE
+  </button>
+
+{% else %}
+
+  {% form 'product', product, class: 'product-page-pour__form' %}
+
+    <input
+      type="hidden"
+      name="id"
+      value="{% if product.has_only_default_variant %}{{ product.selected_or_first_available_variant.id }}{% endif %}"
+      data-product-variant-id
+    >
+
+    {% unless product.has_only_default_variant %}
+
+      {% for option in product.options_with_values %}
+        <div class="product-page-pour__option">
+
+          <p class="product-page-pour__option-label">
+            {{ option.name }}
+          </p>
+
+          <div class="product-page-pour__option-values">
+
+            {% for value in option.values %}
+              <label
+                class="product-page-pour__option-value"
+                data-option-value="{{ value | escape }}"
+              >
+
+                <input
+                  type="radio"
+                  name="options[{{ option.name | escape }}]"
+                  value="{{ value | escape }}"
+                >
+
+                <span class="product-page-pour__option-text">
+                  {{ value }}
+                </span>
+
+                <span
+                  class="product-page-pour__option-notify"
+                  aria-hidden="true"
+                ></span>
+
+              </label>
+            {% endfor %}
+
+          </div>
+        </div>
+      {% endfor %}
+
+    {% endunless %}
+
+    <div class="product-page-pour__buy-row">
+
+      <div class="product-page-pour__quantity">
+
+        <button type="button" data-qty-minus>−</button>
+
+        <input
+          type="number"
+          name="quantity"
+          value="1"
+          min="1"
+          data-qty-input
+        >
+
+        <button type="button" data-qty-plus>+</button>
+
+      </div>
+
+      <div class="product-page-pour__purchase-actions">
+
+        <button
+          type="submit"
+          class="product-page-pour__add"
+          {% if product.has_only_default_variant %}
+            {% unless product.selected_or_first_available_variant.available %}
+              disabled
+            {% endunless %}
+          {% else %}
+            disabled
+          {% endif %}
+        >
+          {% if product.selected_or_first_available_variant.available %}
+            {{ 'pour_product.preorder' | t }}
+          {% else %}
+            {{ 'pour_product.sold_out' | t }}
+          {% endif %}
+        </button>
+
+        <div
+          class="product-page-pour__express-checkout"
+          data-express-checkout
+          aria-disabled="true"
+          inert
+        >
+          {{ form | payment_button }}
+        </div>
+
+      </div>
+
+    </div>
+
+    <p class="product-page-pour__preorder-note">
+      {{ 'pour_product.preorder_note' | t }}
+    </p>
+
+  {% endform %}
+
+{% endif %}
+{% unless template.suffix == 'coming-soon' %}
+<div class="product-page-pour__size-guide-row">
+  <button
+    type="button"
+    class="product-page-pour__size-guide-trigger"
+    data-pour-size-guide-open
+  >
+    {{ 'pour_product.size_guide' | t }}
+  </button>
+</div>
+        {% endunless %}
+  <!-- DETAILS -->
+  <div class="product-page-pour__details">
+
+    <div class="product-page-pour__details-title">
+      {{ 'pour_product.details_motto' | t }}
+    </div>
+
+  <div class="product-page-pour__accordions">
+
+  <!-- DÉTAILS DU PRODUIT -->
+  <button
+    type="button"
+    class="product-page-pour__accordion-trigger"
+    data-product-panel-open="details"
+  >
+    <span class="product-page-pour__accordion-icon">+</span>
+    <span>{{ 'pour_product.details_title' | t }}</span>
+  </button>
+<!-- FAQ -->
+<button
+  type="button"
+  class="product-page-pour__accordion-trigger"
+  data-product-panel-open="faq"
+>
+  <span class="product-page-pour__accordion-icon">+</span>
+  <span>{{ 'pour_product.faq_title' | t }}</span>
+</button>
+
+
+  <!-- EXPÉDITION & RETOURS -->
+  <button
+    type="button"
+    class="product-page-pour__accordion-trigger"
+    data-product-panel-open="shipping"
+  >
+    <span class="product-page-pour__accordion-icon">+</span>
+    <span>{{ 'pour_product.shipping_returns' | t }}</span>
+  </button>
+
+</div>
+
+
+<!-- =====================================================
+     PANNEAU LATÉRAL — INFORMATIONS PRODUIT
+===================================================== -->
+
+<div
+  class="product-page-pour__info-panel"
+  data-product-info-panel
+  aria-hidden="true"
+>
+
+  <!-- FOND CLIQUABLE -->
+  <button
+    type="button"
+    class="product-page-pour__info-panel-overlay"
+    data-product-panel-close
+    aria-label="{{ 'pour_product.close' | t }}"
+  ></button>
+
+
+  <!-- PANNEAU -->
+  <aside
+    class="product-page-pour__info-panel-inner"
+    aria-label="{{ 'pour_product.product_information' | t }}"
+  >
+
+    <!-- HEADER -->
+    <div class="product-page-pour__info-panel-header">
+
+      <div
+        class="product-page-pour__info-panel-title"
+        data-product-panel-title
+      >
+        DÉTAILS DU PRODUIT
+      </div>
+
+      <button
+        type="button"
+        class="product-page-pour__info-panel-close"
+        data-product-panel-close
+        aria-label="{{ 'pour_product.close' | t }}"
+      ></button>
+
+    </div>
+
+
+    <!-- CONTENU DÉTAILS -->
+<div
+  class="product-page-pour__info-panel-content"
+  data-product-panel-content="details"
+>
+  <div class="product-page-pour__info-panel-text">
+
+    {% if product.metafields.custom.product_details != blank %}
+      {{ product.metafields.custom.product_details | metafield_tag }}
+    {% else %}
+      {{ 'pour_product.details_fallback' | t }}
+    {% endif %}
+
+  </div>
+</div>
+
+
+<!-- CONTENU FAQ -->
+<div
+  class="product-page-pour__info-panel-content"
+  data-product-panel-content="faq"
+>
+
+  {% if product.metafields.custom.product_faq.value != blank %}
+
+    {% assign faq_text = product.metafields.custom.product_faq.value | newline_to_br %}
+    {% assign faq_lines = faq_text | split: '<br />' %}
+    {% assign faq_question = blank %}
+    {% assign faq_answer = blank %}
+    {% assign faq_step = 0 %}
+
+    {% for faq_line in faq_lines %}
+
+      {% assign faq_line_clean = faq_line | strip %}
+
+      {% if faq_line_clean != blank %}
+
+        {% assign faq_mod = faq_step | modulo: 2 %}
+
+        {% if faq_mod == 0 %}
+
+          {% assign faq_question = faq_line_clean %}
+
+        {% else %}
+
+          {% assign faq_answer = faq_line_clean %}
+
+          <details class="product-page-pour__faq-item">
+
+            <summary class="product-page-pour__faq-question">
+              <span>{{ faq_question }}</span>
+              <span class="product-page-pour__faq-icon"></span>
+            </summary>
+
+            <div class="product-page-pour__faq-answer">
+              {{ faq_answer }}
+            </div>
+
+          </details>
+
+          {% assign faq_question = blank %}
+          {% assign faq_answer = blank %}
+
+        {% endif %}
+
+        {% assign faq_step = faq_step | plus: 1 %}
+
+      {% endif %}
+
+    {% endfor %}
+
+  {% else %}
+
+    <p>{{ 'pour_product.faq_unavailable' | t }}</p>
+
+  {% endif %}
+
+</div>
+
+
+    <!-- CONTENU EXPÉDITION -->
+    <div
+      class="product-page-pour__info-panel-content"
+      data-product-panel-content="shipping"
+    >
+
+      <div class="product-page-pour__info-panel-text">
+        {% if section.settings.shipping != blank %}
+        {{ section.settings.shipping
+  | replace: 'EXPÉDITION', '<strong>EXPÉDITION</strong>'
+  | replace: 'INFORMATIONS DE LIVRAISON', '<strong>INFORMATIONS DE LIVRAISON</strong>'
+  | replace: 'COMMANDES COURANTES', '<strong>COMMANDES COURANTES</strong>'
+  | replace: 'RETOURS & ÉCHANGES', '<strong>RETOURS & ÉCHANGES</strong>'
+  | raw
+}}
+        {% else %}
+          {{ 'pour_product.shipping_fallback' | t }}
+        {% endif %}
+      </div>
+
+    </div>
+
+  </aside>
+
+</div>
+<!-- =====================================================
+     PANNEAU LATÉRAL — RETOUR EN STOCK
+===================================================== -->
+
+<div
+  class="product-page-pour__info-panel"
+  data-pour-back-in-stock-panel
+  aria-hidden="true"
+>
+
+  <!-- FOND CLIQUABLE -->
+  <button
+    type="button"
+    class="product-page-pour__info-panel-overlay"
+    data-pour-back-in-stock-close
+    aria-label="{{ 'pour_product.close' | t }}"
+  ></button>
+
+
+  <!-- PANNEAU -->
+  <aside
+    class="product-page-pour__info-panel-inner"
+    aria-label="{{ 'pour_product.back_in_stock' | t }}"
+  >
+
+    <!-- HEADER -->
+    <div class="product-page-pour__info-panel-header">
+
+      <div class="product-page-pour__info-panel-title">
+        {{ 'pour_product.back_in_stock_title' | t }}
+      </div>
+
+      <button
+        type="button"
+        class="product-page-pour__info-panel-close"
+        data-pour-back-in-stock-close
+        aria-label="{{ 'pour_product.close' | t }}"
+      ></button>
+
+    </div>
+
+
+    <!-- CONTENU -->
+    <div
+      class="product-page-pour__info-panel-content is-active"
+      data-pour-back-in-stock-content
+    >
+
+      <div class="product-page-pour__back-in-stock-intro">
+
+        <p>
+  {{ 'pour_product.back_in_stock_intro' | t }}
+</p>
+
+      </div>
+
+
+      {% if template.suffix == 'coming-soon' %}
+
+  <!-- FORMULAIRE COMING SOON -->
+
+  <div class="product-page-pour__back-in-stock-intro">
+    <p>
+      Inscris ton adresse e-mail pour être informé(e)
+      dès la sortie de ce modèle.
+    </p>
+  </div>
+
+  {% form 'customer', class: 'product-page-pour__back-in-stock-form' %}
+
+    <input
+      type="hidden"
+      name="contact[tags]"
+      value="coming-soon, coming-soon-{{ product.handle }}"
+    >
+
+    <input
+      type="email"
+      name="contact[email]"
+      class="product-page-pour__back-in-stock-input"
+      placeholder="{{ 'pour_product.email_placeholder' | t }}"
+      autocomplete="email"
+      required
+    >
+
+    <label class="product-page-pour__coming-soon-consent">
+      <input
+        type="checkbox"
+        name="contact[accepts_marketing]"
+        value="true"
+        required
+      >
+      <span>
+        J'accepte de recevoir un e-mail lorsque ce produit sera disponible.
+      </span>
+    </label>
+
+    <button
+      type="submit"
+      class="product-page-pour__back-in-stock-submit"
+    >
+      ME PRÉVENIR
+    </button>
+
+    {% if form.posted_successfully? %}
+      <div class="product-page-pour__back-in-stock-message">
+        Merci ! Tu seras prévenu(e) dès la sortie du produit.
+      </div>
+    {% elsif form.errors %}
+      <div class="product-page-pour__back-in-stock-message">
+        {{ form.errors | default_errors }}
+      </div>
+    {% endif %}
+
+  {% endform %}
+
+{% else %}
+
+  <!-- CONSERVATION DU FORMULAIRE RETOUR EN STOCK EXISTANT -->
+
+  <div class="product-page-pour__back-in-stock-sizes">
+
+    {% for variant in product.variants %}
+      {% unless variant.available %}
+        <button
+          type="button"
+          class="product-page-pour__back-in-stock-size"
+          data-notify-variant-id="{{ variant.id }}"
+          data-notify-variant-available="false"
+        >
+          {{ variant.title }}
+        </button>
+      {% endunless %}
+    {% endfor %}
+
+  </div>
+
+  <form
+    class="product-page-pour__back-in-stock-form"
+    data-pour-back-in-stock-form
+  >
+
+    <input
+      type="email"
+      name="email"
+      class="product-page-pour__back-in-stock-input"
+      placeholder="{{ 'pour_product.email_placeholder' | t }}"
+      autocomplete="email"
+      required
+    >
+
+    <button
+      type="submit"
+      class="product-page-pour__back-in-stock-submit"
+    >
+      {{ 'pour_product.submit' | t }}
+    </button>
+
+  </form>
+
+{% endif %}
+
+<div
+  class="product-page-pour__back-in-stock-message"
+  data-pour-back-in-stock-message
+  aria-live="polite"
+></div>
+
+<p class="product-page-pour__back-in-stock-privacy">
+  {{ 'pour_product.privacy_text' | t }}
+  <a href="/policies/privacy-policy">
+    {{ 'pour_product.privacy_link' | t }}
+  </a>.
+</p>
+
+    </div>
+
+  </aside>
+
+</div>
+      </div>
+
+    </div>
+
+  </div>
+<!-- =====================================================
+     GALERIE PLEIN ÉCRAN
+===================================================== -->
+
+<div
+  class="product-page-pour__fullscreen"
+  data-product-fullscreen
+  aria-hidden="true"
+>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-close"
+    data-product-fullscreen-close
+    aria-label="{{ 'pour_product.close' | t }}"
+  ></button>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--prev"
+    data-fullscreen-prev
+    aria-label="{{ 'pour_product.gallery_previous' | t }}"
+  >
+    ‹
+  </button>
+
+  <div class="product-page-pour__fullscreen-media">
+    <img
+      src="{{ product.featured_image | image_url: width: 3840 }}"
+      alt="{{ product.featured_image.alt | escape }}"
+      data-fullscreen-image
+    >
+  </div>
+
+  <button
+    type="button"
+    class="product-page-pour__fullscreen-arrow product-page-pour__fullscreen-arrow--next"
+    data-fullscreen-next
+    aria-label="{{ 'pour_product.gallery_next' | t }}"
+  >
+    ›
+  </button>
+
+  <div class="product-page-pour__fullscreen-counter">
+    <span data-fullscreen-current>1</span>
+    <span>/</span>
+    <span>{{ product.images.size }}</span>
+  </div>
+
+</div>
+<!-- =====================================================
+     GUIDE DES TAILLES — PAGE PRODUIT UNIQUEMENT
+===================================================== -->
+
+<div
+  class="pour-size-guide"
+  data-pour-size-guide
+  aria-hidden="true"
+>
+
+  <div class="pour-size-guide__header">
+
+    <h2 class="pour-size-guide__title">
+  {{ 'pour_product.size_guide' | t }}
+</h2>
+
+    <button
+      type="button"
+      class="pour-size-guide__close"
+      data-pour-size-guide-close
+      aria-label="{{ 'pour_product.close_size_guide' | t }}"
+    ></button>
+
+  </div>
+
+
+  <div class="pour-size-guide__body">
+
+    <p class="pour-size-guide__eyebrow">
+  {{ 'pour_product.measurements' | t }}
+</p>
+
+
+    {% if product.metafields.custom.size_labels != blank %}
+
+      {% assign pour_sizes = product.metafields.custom.size_labels.value | split: '|' %}
+      {% assign pour_chest = product.metafields.custom.size_chest.value | split: '|' %}
+      {% assign pour_length = product.metafields.custom.size_length.value | split: '|' %}
+      {% assign pour_sleeve = product.metafields.custom.size_sleeve.value | split: '|' %}
+
+      <div class="pour-size-guide__table-wrap">
+
+        <table class="pour-size-guide__table">
+
+          <thead>
+            <tr>
+
+              <th></th>
+
+             {% for size in pour_sizes %}
+  <th
+    class="pour-size-guide__size-column"
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    <button
+      type="button"
+      class="pour-size-guide__size-button"
+      data-size-guide-size
+      data-size="{{ size | strip | escape }}"
+      data-size-index="{{ forloop.index0 }}"
+    >
+      {{ size | strip }}
+    </button>
+  </th>
+{% endfor %}
+
+            </tr>
+          </thead>
+
+
+          <tbody>
+
+            {% if product.metafields.custom.size_chest != blank %}
+              <tr>
+                <th>{{ 'pour_product.chest' | t }}</th>
+
+              {% for value in pour_chest %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
+              </tr>
+            {% endif %}
+
+
+            {% if product.metafields.custom.size_length != blank %}
+              <tr>
+                <th>{{ 'pour_product.length' | t }}</th>
+
+                {% for value in pour_length %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
+              </tr>
+            {% endif %}
+
+
+            {% if product.metafields.custom.size_sleeve != blank %}
+              <tr>
+                <th>{{ 'pour_product.sleeve' | t }}</th>
+
+               {% for value in pour_sleeve %}
+  <td
+    data-size-guide-column="{{ forloop.index0 }}"
+  >
+    {{ value | strip }}
+  </td>
+{% endfor %}
+              </tr>
+            {% endif %}
+
+          </tbody>
+
+        </table>
+
+      </div>
+<button
+  type="button"
+  class="pour-size-guide__add"
+  data-size-guide-add
+  disabled
+>
+  <span data-size-guide-add-text>
+    {{ 'pour_product.select_size' | t }}
+  </span>
+</button>
+    {% else %}
+
+      <p class="pour-size-guide__empty">
+        {{ 'pour_product.size_guide_unavailable' | t }}
+      </p>
+
+    {% endif %}
+
+<div class="pour-size-guide__fit-advice">
+  <p>
+{{ 'pour_product.fit_advice' | t }}
+ </p>
+</div>
+    {% if product.metafields.custom.model_height != blank
+      or product.metafields.custom.model_weight != blank
+      or product.metafields.custom.model_size != blank
+    %}
+
+      <div class="pour-size-guide__model">
+
+       <p class="pour-size-guide__model-title">
+  {{ 'pour_product.model_title' | t }}
+</p>
+
+        <p class="pour-size-guide__model-text">
+
+          {% if product.metafields.custom.model_height != blank %}
+            {{ 'pour_product.model_height' | t: height: product.metafields.custom.model_height.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_weight != blank %}
+          {{ 'pour_product.model_weight' | t: weight: product.metafields.custom.model_weight.value }}
+          {% endif %}
+
+          {% if product.metafields.custom.model_size != blank %}
+            {{ 'pour_product.model_size' | t: size: product.metafields.custom.model_size.value }}
+          {% endif %}
+
+        </p>
+
+      </div>
+
+    {% endif %}
+
+  </div>
+
+</div>
+<!-- =====================================================
+     {{ 'pour_recommendations.heading' | t }} — RECOMMANDATIONS
+===================================================== -->
+
+<div
+  class="product-page-pour__style-with"
+  data-product-recommendations
+  data-url="{{ routes.product_recommendations_url }}?section_id=product-recommendations&product_id={{ product.id }}&limit=8&intent=related"
+>
+  <div class="product-page-pour__style-with-heading">
+    {{ 'pour_recommendations.heading' | t }}
+  </div>
+
+  <div class="product-page-pour__style-with-grid">
+  </div>
+</div>
+<style>
+
+
+/* =========================================================
+   POUR — FICHE PRODUIT / GALERIE
+   Inspiration : présentation REPRESENT
+========================================================= */
+
+.product-page-pour {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding-top: 84px;
+  color: #111111;
+  background: #ffffff;
+}
+
+.product-page-pour *,
+.product-page-pour *::before,
+.product-page-pour *::after {
+  box-sizing: border-box;
+}
+
+/* FIL D'ARIANE SUPPRIMÉ */
+.product-page-pour__breadcrumb {
+  display: none !important;
+}
+
+/* =========================================================
+   DESKTOP — GALERIE + INFOS
+========================================================= */
+
+.product-page-pour__top {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 0;
+  align-items: start;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.product-page-pour__gallery {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.product-page-pour__desktop-gallery {
+  position: relative;
+  width: 100%;
+}
+
+.product-page-pour__main-media {
+  position: relative;
+  width: 100% !important;
+ height: calc(100vh - 66px);
+  min-height: 0;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  overflow: hidden;
+  background: #f5f5f3;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-page-pour__main-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+/* =========================================================
+   MINIATURES DESKTOP — SUPERPOSÉES À GAUCHE
+========================================================= */
+
+.product-page-pour__thumbs {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  z-index: 5;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  gap: 8px;
+  width: 74px;
+  max-height: calc(100% - 44px);
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__thumb {
+  flex: 0 0 auto;
+
+  width: 62px;
+  height: 78px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  outline: 0;
+
+  background: rgba(255, 255, 255, .18);
+
+  opacity: .52;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  transition:
+    opacity .25s ease,
+    transform .25s ease,
+    background .25s ease;
+}
+
+.product-page-pour__thumb img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+}
+
+.product-page-pour__thumb:hover {
+  opacity: .9;
+  transform: translateX(2px);
+}
+
+.product-page-pour__thumb.is-active {
+  opacity: 1;
+  background: rgba(255, 255, 255, .92);
+}
+
+/* =========================================================
+   MOBILE — GALERIE PLEINE LARGEUR / SWIPE
+========================================================= */
+
+.product-page-pour__mobile-gallery {
+  display: none;
+}
+
+.product-page-pour__mobile-counter {
+  display: none;
+}
+
+/* =========================================================
+   INFOS PRODUIT — DESKTOP
+========================================================= */
+
+.product-page-pour__info {
+  width: 100%;
+  min-width: 0;
+}
+
+.product-page-pour__info-inner {
+  width: 100%;
+  max-width: 680px;
+
+  padding-top: 25px;
+  padding-left: clamp(36px, 5vw, 76px);
+  padding-right: clamp(24px, 4vw, 64px);
+}
+.product-page-pour__option-value {
+  position: relative;
+  cursor: pointer;
+}
+/* BOUTON RETOUR EN STOCK */
+
+.product-page-pour__back-in-stock {
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 48px;
+
+  padding: 0 20px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.product-page-pour__back-in-stock:hover {
+  background: #ffffff;
+  color: #111111;
+}
+/* TAILLE ÉPUISÉE */
+.product-page-pour__option-value.is-sold-out > .product-page-pour__option-text {
+  position: relative;
+  overflow: hidden;
+
+  color: #a8a8a8 !important;
+
+  background:
+    linear-gradient(
+      to bottom right,
+      transparent 49.2%,
+      #b5b5b5 49.2%,
+      #b5b5b5 50.8%,
+      transparent 50.8%
+    );
+}
+
+/* ON ANNULE LE STYLE DE TAILLE SUR L'ENVELOPPE */
+.product-page-pour__option-notify {
+ display: none;
+
+  position: absolute;
+
+  right: 5px;
+  bottom: 5px;
+
+  width: 10px !important;
+  height: 7px !important;
+  min-width: 10px !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  border: 1px solid #a8a8a8 !important;
+
+  background: #ffffff;
+
+  z-index: 5;
+
+  pointer-events: none;
+  box-sizing: border-box;
+}
+/* ENVELOPPE UNIQUEMENT SUR LES TAILLES ÉPUISÉES */
+.product-page-pour__option-value.is-sold-out
+.product-page-pour__option-notify {
+ display: block !important;
+
+  position: absolute;
+
+  right: 5px;
+  bottom: 5px;
+
+  width: 10px !important;
+  height: 7px !important;
+  min-width: 10px !important;
+
+  padding: 0 !important;
+
+  border: 1px solid #a8a8a8 !important;
+
+  background: #ffffff;
+
+  z-index: 5;
+
+  pointer-events: none;
+  box-sizing: border-box;
+}
+/* MASQUER TOTALEMENT L'ENVELOPPE SUR LES TAILLES DISPONIBLES */
+.product-page-pour__option-value:not(.is-sold-out)
+.product-page-pour__option-notify {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.product-page-pour__option-value:not(.is-sold-out)
+.product-page-pour__option-notify::before {
+  display: none !important;
+  content: none !important;
+}
+/* RABAT DE L'ENVELOPPE */
+.product-page-pour__option-value.is-sold-out
+.product-page-pour__option-notify::before {
+  content: "";
+
+  position: absolute;
+
+  top: -1px;
+  left: 1px;
+
+  width: 6px;
+  height: 6px;
+
+  border-left: 1px solid #a8a8a8;
+  border-bottom: 1px solid #a8a8a8;
+
+  background: #ffffff;
+
+  transform: rotate(-45deg);
+  transform-origin: center;
+
+  box-sizing: border-box;
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+  .product-page-pour {
+    padding-top: 72px;
+  }
+
+  .product-page-pour__top {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-page-pour__gallery {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  /* On supprime entièrement la galerie desktop sur mobile */
+  .product-page-pour__desktop-gallery {
+    display: none;
+  }
+
+  /* Carrousel horizontal plein écran */
+  .product-page-pour__mobile-gallery {
+    display: flex;
+
+    width: 100vw;
+
+overflow-x: auto;
+overflow-y: hidden;
+scroll-snap-type: x mandatory;
+scroll-behavior: auto !important;
+background: #f5f5f3;
+-webkit-overflow-scrolling: touch;
+overscroll-behavior-x: none;
+scrollbar-width: none;
+transform: translateZ(0);
+backface-visibility: hidden;
+  }
+
+  .product-page-pour__mobile-gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .product-page-pour__mobile-slide {
+    flex: 0 0 100vw;
+
+    width: 100vw;
+    aspect-ratio: 4 / 5;
+
+    scroll-snap-align: start;
+scroll-snap-stop: normal;
+
+    overflow: hidden;
+
+    background: #f5f5f3;
+  }
+
+  .product-page-pour__mobile-slide img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .product-page-pour__mobile-counter {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+
+  z-index: 10;
+
+  padding: 7px 10px;
+
+  background: rgba(255, 255, 255, .42);
+
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: .08em;
+
+  pointer-events: none;
+}
+
+.product-page-pour__mobile-counter-number {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.product-page-pour__mobile-model {
+  font-size: 9px;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+  /* Informations sous la galerie */
+  .product-page-pour__info {
+    width: 100%;
+  }
+
+  .product-page-pour__info-inner {
+    width: 100%;
+    max-width: none;
+
+    padding:
+      34px
+      16px
+      0;
+  }
+
+  /* =====================================================
+     TEXTES MOBILE — MODIFIÉS UNIQUEMENT ICI
+  ===================================================== */
+
+  .product-page-pour__title {
+    margin-bottom: 16px;
+
+    font-size: 23px !important;
+    line-height: 1.05;
+    letter-spacing: -.025em;
+  }
+
+  .product-page-pour__subtitle {
+    margin-bottom: 20px;
+
+    max-width: 100%;
+
+    font-size: 11px !important;
+    line-height: 1.35;
+  }
+
+  .product-page-pour__price {
+    margin-bottom: 30px;
+
+    font-size: 20px !important;
+    line-height: 1;
+  }
+
+  .product-page-pour__option {
+    margin-bottom: 26px;
+  }
+
+  .product-page-pour__option-label {
+    margin-bottom: 10px;
+
+    font-size: 10px !important;
+    letter-spacing: .08em;
+  }
+.product-page-pour__option-text {
+  min-width: 46px;
+  height: 38px;
+
+  padding: 0 13px;
+
+  font-size: 10px !important;
+}
+  .product-page-pour__description {
+    max-width: 100%;
+
+    margin-top: 42px;
+
+    font-size: 12px !important;
+    line-height: 1.45;
+  }
+
+  .product-page-pour__details {
+    width: 100%;
+    max-width: none;
+
+    margin-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .product-page-pour__details-title {
+    font-size: 26px !important;
+    line-height: 1.05;
+  }
+.product-page-pour__fit {
+  margin-top: 15px !important;
+}
+  .product-page-pour__tab {
+    font-size: 11px !important;
+  }
+
+  .product-page-pour__tab-content {
+    font-size: 12px !important;
+    line-height: 1.5;
+  }
+
+}
+
+/* Petits mobiles */
+@media screen and (max-width: 390px) {
+
+  .product-page-pour__info-inner {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .product-page-pour__title {
+    font-size: 22px !important;
+  }
+
+  .product-page-pour__price {
+    font-size: 19px !important;
+  }
+
+}
+/* =========================================================
+   TAILLE ET COUPE
+========================================================= */
+
+.product-page-pour__fit {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+
+  margin-top: -22px;
+  margin-bottom: 15px;
+
+  font-size: 11px;
+  line-height: 1.4;
+  color: #111111;
+}
+
+.product-page-pour__fit strong {
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.product-page-pour__fit {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.product-page-pour__fit span {
+  display: block;
+  flex: 1;
+  padding-left: 16px;
+  text-indent: -16px;
+  font-weight: 400;
+}
+.product-page-pour__fit span {
+  font-weight: 400;
+}
+/* =========================================================
+   COULEURS PRODUIT
+========================================================= */
+
+.product-page-pour__colors {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.product-page-pour__colors-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  margin-bottom: 14px;
+
+  font-size: 11px;
+  line-height: 1;
+}
+
+.product-page-pour__colors-heading strong {
+  font-weight: 600;
+}
+
+.product-page-pour__colors-heading span {
+  position: relative;
+  top: -4px;
+
+  font-size: 9px;
+  font-weight: 400;
+  text-transform: none;
+  color: #777777;
+}
+
+.product-page-pour__colors-list {
+  display: flex;
+  gap: 8px;
+
+  width: 100%;
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.product-page-pour__colors-list::-webkit-scrollbar {
+  display: none;
+}
+
+.product-page-pour__color {
+  position: relative;
+
+ flex: 0 0 65px;
+  width: 65px;
+  height: 65px;
+
+  display: block;
+
+  background: #f7f7f7;
+
+  border: 1px solid transparent;
+
+  overflow: hidden;
+
+  text-decoration: none;
+}
+
+.product-page-pour__color-image {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.3s ease;
+}
+
+.product-page-pour__color:hover
+.product-page-pour__color-image {
+  transform: scale(1.03);
+}
+
+.product-page-pour__color[aria-current="page"] {
+  border-color: #111111;
+}
+/* =========================================================
+   GUIDE DES TAILLES
+========================================================= */
+
+.pour-size-guide {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  z-index: 99990;
+
+width: min(680px, 100vw);
+  height: 100dvh;
+
+  background: #ffffff;
+  color: #111111;
+
+  overflow-y: auto;
+
+  transform: translateX(100%);
+  visibility: hidden;
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1),
+    visibility .45s;
+}
+
+.pour-size-guide.is-active {
+  transform: translateX(0);
+  visibility: visible;
+}
+
+
+/* LIEN SUR LA PAGE PRODUIT */
+
+.product-page-pour__size-guide-row {
+  margin-top: 18px;
+
+}
+.product-page-pour__preorder-note {
+  margin: 12px 0 0;
+
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.4;
+
+  color: #666666;
+
+  text-align: left;
+}
+.product-page-pour__size-guide-trigger {
+  padding: 0;
+
+  border: 0;
+  border-bottom: 1px solid #111111;
+
+  background: transparent;
+  color: #111111;
+
+  font: inherit;
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+
+/* HEADER */
+
+.pour-size-guide__header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 35px 40px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pour-size-guide__title {
+  margin: 0;
+
+  font-size: 13px;
+  font-weight: 400;
+
+  letter-spacing: .08em;
+}
+
+
+/* CROIX */
+
+.pour-size-guide__close {
+  position: relative;
+
+  width: 28px;
+  height: 28px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.pour-size-guide__close::before,
+.pour-size-guide__close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #111111;
+}
+
+.pour-size-guide__close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.pour-size-guide__close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* CONTENU */
+
+.pour-size-guide__body {
+  padding: 45px 40px 60px;
+}
+
+.pour-size-guide__eyebrow,
+.pour-size-guide__model-title {
+  margin: 0 0 25px;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .14em;
+
+  text-transform: uppercase;
+}
+
+
+/* TABLEAU */
+
+.pour-size-guide__table-wrap {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+.pour-size-guide__table {
+  width: 100%;
+
+  border-collapse: collapse;
+
+  font-size: 11px;
+}
+
+.pour-size-guide__table th,
+.pour-size-guide__table td {
+  padding: 17px 10px;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  text-align: center;
+
+  font-weight: 400;
+}
+
+.pour-size-guide__table tbody th {
+  padding-left: 0;
+
+  text-align: left;
+
+  font-size: 10px;
+
+  letter-spacing: .05em;
+}
+
+/* =========================================================
+   GUIDE DES TAILLES — SÉLECTION
+========================================================= */
+
+.pour-size-guide__size-column {
+  padding: 0 !important;
+}
+
+.pour-size-guide__size-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  min-width: 55px;
+  height: 52px;
+
+  padding: 0 10px;
+
+  border: 0;
+
+  background: transparent;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease;
+}
+
+.pour-size-guide__size-button:hover {
+  background: #f0f0f0;
+}
+
+.pour-size-guide__table
+[data-size-guide-column].is-selected {
+  background: #e5e3e3;
+}
+
+.pour-size-guide__size-button.is-selected {
+  background: #e5e3e3;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   BOUTON AJOUT PANIER DU GUIDE
+========================================================= */
+
+.pour-size-guide__add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 56px;
+
+  margin-top: 8px;
+  padding: 0 24px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.pour-size-guide__add:hover:not(:disabled) {
+  background: #ffffff;
+  color: #111111;
+}
+
+.pour-size-guide__add:disabled {
+  background: #f2f2f2;
+  color: #777777;
+
+  border-color: #f2f2f2;
+
+  cursor: default;
+}
+.pour-size-guide__fit-advice {
+  margin-top: 30px;
+}
+
+.pour-size-guide__fit-advice p {
+  margin: 0;
+
+  font-size: 11px;
+  line-height: 1.6;
+
+  color: #555555;
+}
+/* MANNEQUIN */
+
+.pour-size-guide__model {
+  margin-top: 50px;
+
+  padding-top: 30px;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+.pour-size-guide__model-title {
+  margin-bottom: 12px;
+}
+
+.pour-size-guide__model-text {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.7;
+
+  color: #555555;
+}
+
+
+/* VIDE */
+
+.pour-size-guide__empty {
+  margin: 0;
+
+  font-size: 12px;
+
+  color: #777777;
+}
+
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+
+  .pour-size-guide {
+    width: 100%;
+  }
+
+  .pour-size-guide__header {
+    padding: 25px 20px;
+  }
+
+  .pour-size-guide__body {
+    padding: 35px 20px 50px;
+  }
+
+  .pour-size-guide__table th,
+  .pour-size-guide__table td {
+    padding:
+      15px
+      8px;
+  }
+
+}
+
+@media screen and (min-width: 769px) {
+  .product-page-pour__gallery {
+    margin-top: -18px !important;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .product-page-pour__gallery {
+    margin-top: -12px !important;
+  }
+}
+
+/* =========================================================
+   CARROUSEL DESKTOP — FLÈCHES
+========================================================= */
+
+.product-page-pour__gallery-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 42px;
+  height: 42px;
+
+  padding: 0;
+
+  border: 0;
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 26px;
+font-weight: 200;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+
+  transition: opacity .2s ease;
+}
+
+.product-page-pour__gallery-arrow:hover {
+  opacity: .55;
+}
+
+.product-page-pour__gallery-arrow--prev {
+  left: 18px;
+}
+
+.product-page-pour__gallery-arrow--next {
+  right: 18px;
+}
+
+
+/* =========================================================
+   COMPTEUR + MANNEQUIN
+========================================================= */
+
+.product-page-pour__media-caption {
+  position: absolute;
+
+  left: 18px;
+  bottom: 18px;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  padding: 8px 10px;
+
+  background: rgba(255, 255, 255, .42);
+
+  color: #111111;
+
+  font-size: 11px;
+  line-height: 1.2;
+
+  pointer-events: none;
+}
+
+.product-page-pour__media-counter {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  white-space: nowrap;
+}
+
+.product-page-pour__model-caption {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   AGRANDISSEMENT
+========================================================= */
+
+.product-page-pour__fullscreen-trigger {
+  position: absolute;
+
+  right: 18px;
+  bottom: 18px;
+
+  z-index: 10;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1;
+
+  cursor: pointer;
+
+  opacity: .9;
+}
+
+
+/* =========================================================
+   GALERIE PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.product-page-pour__fullscreen.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-page-pour__fullscreen-media {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 80px;
+}
+
+.product-page-pour__fullscreen-media img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+
+/* =========================================================
+   FERMER
+========================================================= */
+
+.product-page-pour__fullscreen-close {
+  position: absolute;
+
+  top: 24px;
+  right: 28px;
+
+  z-index: 20;
+
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.product-page-pour__fullscreen-close::before,
+.product-page-pour__fullscreen-close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 24px;
+  height: 1px;
+
+  background: #111111;
+}
+
+.product-page-pour__fullscreen-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.product-page-pour__fullscreen-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+
+/* =========================================================
+   FLÈCHES PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen-arrow {
+  position: absolute;
+
+  top: 50%;
+  z-index: 20;
+
+  width: 45px;
+  height: 45px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #111111;
+
+  font-size: 34px;
+  font-weight: 300;
+
+  cursor: pointer;
+
+  transform: translateY(-50%);
+}
+
+.product-page-pour__fullscreen-arrow--prev {
+  left: 25px;
+}
+
+.product-page-pour__fullscreen-arrow--next {
+  right: 25px;
+}
+
+
+/* =========================================================
+   COMPTEUR PLEIN ÉCRAN
+========================================================= */
+
+.product-page-pour__fullscreen-counter {
+  position: absolute;
+
+  left: 28px;
+  bottom: 24px;
+
+  z-index: 20;
+
+  font-size: 11px;
+  letter-spacing: .05em;
+
+  color: #111111;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__gallery-arrow {
+    display: none;
+  }
+
+  .product-page-pour__fullscreen-trigger {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  .product-page-pour__media-caption {
+    left: 14px;
+    bottom: 14px;
+
+    gap: 8px;
+
+    padding: 7px 8px;
+
+    font-size: 9px;
+  }
+
+  .product-page-pour__model-caption {
+    white-space: normal;
+  }
+
+  .product-page-pour__fullscreen-media {
+    padding: 30px 20px;
+  }
+
+  .product-page-pour__fullscreen-arrow {
+    width: 36px;
+    height: 36px;
+
+    font-size: 28px;
+  }
+
+  .product-page-pour__fullscreen-arrow--prev {
+    left: 8px;
+  }
+
+  .product-page-pour__fullscreen-arrow--next {
+    right: 8px;
+  }
+
+  .product-page-pour__fullscreen-close {
+    top: 18px;
+    right: 18px;
+  }
+
+}
+
+/* =========================================================
+   INFOS PRODUIT — 3 LIENS SUR UNE SEULE LIGNE
+========================================================= */
+.product-page-pour__details {
+  margin-top: 35px;
+}
+.product-page-pour__accordions {
+  width: min(680px, 100%);
+  max-width: 680px;
+
+  margin-top: 25px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  border-top: 1px solid #111111;
+  border-bottom: 1px solid #111111;
+}
+
+
+.product-page-pour__accordion-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+
+  width: 100%;
+  min-width: 0;
+
+  padding: 17px 4px;
+
+  border: 0;
+  border-right: 1px solid #111111;
+
+  background: transparent;
+  color: #111111;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1.2;
+  text-align: center;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition: opacity .25s ease;
+}
+
+.product-page-pour__accordion-trigger span {
+  white-space: nowrap;
+}
+.product-page-pour__accordion-trigger:last-child {
+  border-right: 0;
+}
+
+
+.product-page-pour__accordion-trigger:hover {
+  opacity: .55;
+}
+
+
+.product-page-pour__accordion-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  width: 17px;
+  margin-right: 3px;
+
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+
+/* =========================================================
+   PANNEAU LATÉRAL
+========================================================= */
+
+.product-page-pour__info-panel {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 999998;
+
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    visibility .45s ease;
+}
+
+
+.product-page-pour__info-panel.is-active {
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* =========================================================
+   RETOUR EN STOCK — CONTENU
+========================================================= */
+
+.product-page-pour__back-in-stock-intro {
+  margin: 0 0 30px;
+}
+
+.product-page-pour__back-in-stock-intro p {
+  margin: 0;
+  max-width: 560px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.65;
+
+  color: #444444;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — TAILLES
+========================================================= */
+
+.product-page-pour__back-in-stock-sizes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+
+  margin: 0 0 24px;
+}
+
+.product-page-pour__back-in-stock-size {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 46px;
+  height: 38px;
+
+  padding: 0 13px;
+
+  border: 1px solid #d5d5d5;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  line-height: 1;
+  text-align: center;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+}
+
+.product-page-pour__back-in-stock-size:hover {
+  border-color: #111111;
+  background: #f7f7f7;
+}
+
+.product-page-pour__back-in-stock-size.is-selected {
+  border-color: #111111;
+  background: #111111;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — FORMULAIRE
+========================================================= */
+
+.product-page-pour__back-in-stock-form {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+
+  margin: 0;
+}
+
+.product-page-pour__back-in-stock-input {
+  flex: 1 1 auto;
+
+  min-width: 0;
+  height: 48px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d5d5d5;
+  border-right: 0;
+
+  background: #ffffff;
+  color: #111111;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  outline: none;
+}
+
+.product-page-pour__back-in-stock-input::placeholder {
+  color: #777777;
+}
+
+.product-page-pour__back-in-stock-input:focus {
+  border-color: #111111;
+}
+
+
+.product-page-pour__back-in-stock-submit {
+  flex: 0 0 auto;
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid #111111;
+
+  background: #111111;
+  color: #ffffff;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 10px;
+  font-weight: 400;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  transition:
+    background .25s ease,
+    color .25s ease;
+}
+
+.product-page-pour__back-in-stock-submit:hover {
+  background: #ffffff;
+  color: #111111;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — MESSAGE
+========================================================= */
+
+.product-page-pour__back-in-stock-message {
+  margin-top: 16px;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #444444;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — CONFIDENTIALITÉ
+========================================================= */
+
+.product-page-pour__back-in-stock-privacy {
+  margin: 24px 0 0;
+
+  font-family:
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1.5;
+
+  color: #777777;
+}
+
+.product-page-pour__back-in-stock-privacy a {
+  color: #444444;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+
+/* =========================================================
+   RETOUR EN STOCK — MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__back-in-stock-intro {
+    margin-bottom: 26px;
+  }
+
+  .product-page-pour__back-in-stock-intro p {
+    font-size: 10px !important;
+    line-height: 1.6;
+  }
+
+  .product-page-pour__back-in-stock-sizes {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .product-page-pour__back-in-stock-size {
+    min-width: 46px;
+    height: 38px;
+
+    padding: 0 13px;
+
+    font-size: 10px !important;
+  }
+
+  .product-page-pour__back-in-stock-form {
+    display: block;
+  }
+
+  .product-page-pour__back-in-stock-input {
+    width: 100%;
+    height: 46px;
+
+    border-right: 1px solid #d5d5d5;
+  }
+
+  .product-page-pour__back-in-stock-submit {
+    width: 100%;
+    height: 48px;
+
+    margin-top: 8px;
+  }
+
+  .product-page-pour__back-in-stock-privacy {
+    font-size: 9px;
+  }
+
+}
+/* =========================================================
+   FOND
+========================================================= */
+
+.product-page-pour__info-panel-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: rgba(0, 0, 0, .12);
+
+  opacity: 0;
+
+  cursor: default;
+
+  transition: opacity .45s ease;
+}
+
+
+.product-page-pour__info-panel.is-active
+.product-page-pour__info-panel-overlay {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PANNEAU BLANC À DROITE
+========================================================= */
+
+.product-page-pour__info-panel-inner {
+  position: absolute;
+
+  top: 0;
+  right: 0;
+
+  width: min(680px, 100vw);
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+
+  background: #ffffff;
+  color: #111111;
+
+  transform: translateX(100%);
+
+  transition:
+    transform .45s cubic-bezier(.22, 1, .36, 1);
+
+  overflow-y: auto;
+}
+
+
+.product-page-pour__info-panel.is-active
+.product-page-pour__info-panel-inner {
+  transform: translateX(0);
+}
+
+
+/* =========================================================
+   HEADER DU PANNEAU
+========================================================= */
+
+.product-page-pour__info-panel-header {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  flex: 0 0 auto;
+
+  padding: 35px 38px;
+
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+.product-page-pour__info-panel-title {
+  margin: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+
+  letter-spacing: .10em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CROIX
+========================================================= */
+
+.product-page-pour__info-panel-close {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 28px;
+  height: 28px;
+
+  margin-left: 20px;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.product-page-pour__info-panel-close::before,
+.product-page-pour__info-panel-close::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 20px;
+  height: 1px;
+
+  background: #111111;
+}
+
+
+.product-page-pour__info-panel-close::before {
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+}
+
+
+.product-page-pour__info-panel-close::after {
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+}
+
+
+/* =========================================================
+   CONTENU
+========================================================= */
+
+.product-page-pour__info-panel-content {
+  display: none;
+
+  padding: 40px 38px 70px;
+}
+
+
+.product-page-pour__info-panel-content.is-active {
+  display: block;
+}
+
+/* =========================================================
+   PETITS TEXTES
+========================================================= */
+
+.product-page-pour__info-panel-block {
+  margin-bottom: 32px;
+}
+
+
+.product-page-pour__info-panel-block:last-child {
+  margin-bottom: 0;
+}
+
+
+.product-page-pour__info-panel-label {
+  margin-bottom: 10px;
+
+  font-size: 9px;
+  font-weight: 400;
+
+  letter-spacing: .12em;
+
+  text-transform: uppercase;
+}
+
+
+.product-page-pour__info-panel-text {
+  max-width: none;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.65;
+
+  color: #444444;
+
+  white-space: pre-line;
+}
+.product-page-pour__info-panel-content {
+  padding: 10px 38px 70px;
+}
+
+.product-page-pour__info-panel-text > *:first-child {
+  margin-top: 0 !important;
+}
+/* =========================================================
+   FAQ — ACCORDÉON
+========================================================= */
+
+.product-page-pour__faq {
+  width: 100%;
+  max-width: none;
+}
+
+.product-page-pour__faq-item {
+  margin: 0;
+  padding: 0;
+
+  border-top: 1px solid #e5e5e5;
+}
+
+.product-page-pour__faq-item:last-child {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.product-page-pour__faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 20px 0;
+
+  list-style: none;
+
+  cursor: pointer;
+
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  color: #111111;
+}
+
+.product-page-pour__faq-question::-webkit-details-marker {
+  display: none;
+}
+
+.product-page-pour__faq-question::marker {
+  display: none;
+}
+
+.product-page-pour__faq-icon {
+  position: relative;
+
+  flex: 0 0 auto;
+
+  width: 14px;
+  height: 14px;
+
+  margin-left: 20px;
+}
+
+.product-page-pour__faq-icon::before,
+.product-page-pour__faq-icon::after {
+  content: "";
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  background: #111111;
+
+  transform: translate(-50%, -50%);
+}
+
+.product-page-pour__faq-icon::before {
+  width: 10px;
+  height: 1px;
+}
+
+.product-page-pour__faq-icon::after {
+  width: 1px;
+  height: 10px;
+}
+
+.product-page-pour__faq-item[open]
+.product-page-pour__faq-icon::after {
+  display: none;
+}
+
+.product-page-pour__faq-answer {
+  padding: 0 34px 22px 0;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.65;
+
+  color: #444444;
+}
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+  .product-page-pour__accordions {
+  grid-template-columns: 1fr;
+  margin-top: 55px;
+}
+
+
+ .product-page-pour__accordion-trigger {
+  justify-content: flex-start;
+  text-align: left;
+
+  width: 100%;
+  min-height: 48px;
+
+  padding: 15px 0;
+
+  border-right: 0;
+  border-bottom: 1px solid #111111;
+
+  font-size: 10px !important;
+
+  white-space: nowrap;
+}
+
+.product-page-pour__accordion-trigger span {
+  white-space: nowrap;
+}
+
+.product-page-pour__accordion-trigger:last-child {
+  border-bottom: 0;
+}
+
+  .product-page-pour__info-panel-inner {
+    width: 100%;
+  }
+
+
+  .product-page-pour__info-panel-header {
+    padding: 25px 20px;
+  }
+
+
+  .product-page-pour__info-panel-content {
+    padding:
+      32px
+      20px
+      50px;
+  }
+
+
+  .product-page-pour__info-panel-text {
+    max-width: none;
+
+    font-size: 10px !important;
+    line-height: 1.6;
+  }
+
+}
+/* =========================================================
+   STYLE AVEC — 4 PRODUITS
+========================================================= */
+
+.product-page-pour__style-with {
+  width: 200% !important;
+  max-width: 200% !important;
+
+  margin: 0 !important;
+  padding: 100px 0 0 !important;
+
+  box-sizing: border-box !important;
+
+  background: #ffffff;
+}
+.product-page-pour__style-with-heading {
+  width: 100%;
+  margin: 0 0 45px;
+
+  text-align: center;
+
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.05;
+
+  letter-spacing: 0;
+}
+
+.product-page-pour__style-with-grid {
+  display: grid !important;
+
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+
+  width: 100% !important;
+  max-width: none !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  gap: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+.product-page-pour__style-with-card {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  min-width: 0 !important;
+
+  margin: 0 !important;
+  padding: 0 !important;
+
+  box-sizing: border-box !important;
+}
+
+.product-page-pour__style-with-media {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  overflow: hidden;
+
+  background: #f7f7f7;
+}
+
+.product-page-pour__style-with-media-link {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.product-page-pour__style-with-image {
+  display: block;
+
+  width: 100% !important;
+  height: 100% !important;
+
+   object-fit: cover !important;
+  object-position: center !important;
+}
+.product-page-pour__style-with-image--primary {
+  position: relative;
+  z-index: 1;
+
+  transition: opacity .3s ease;
+}
+
+.product-page-pour__style-with-image--hover {
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  opacity: 0;
+
+  transition: opacity .3s ease;
+}
+
+.product-page-pour__style-with-media:hover
+.product-page-pour__style-with-image--primary {
+  opacity: 0;
+}
+
+.product-page-pour__style-with-media:hover
+.product-page-pour__style-with-image--hover {
+  opacity: 1;
+}
+.product-page-pour__style-with-info {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+
+  padding: 14px 16px 24px;
+
+  color: #111111;
+  text-decoration: none;
+}
+.product-page-pour__style-with-details {
+  width: 100%;
+}
+
+.product-page-pour__style-with-info-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.product-page-pour__style-with-title {
+  min-width: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.product-page-pour__style-with-price {
+  flex: 0 0 auto;
+
+  margin-left: 12px;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  white-space: nowrap;
+
+  color: rgba(17,17,17,.55);
+}
+
+.product-page-pour__style-with-color-name {
+  margin-top: 6px;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  color: rgba(17,17,17,.55);
+}
+
+.product-page-pour__style-with-swatches {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  margin-top: 8px;
+
+  width: 100%;
+  min-height: 11px;
+}
+
+.product-page-pour__style-with-swatch {
+  display: block;
+
+  width: 11px;
+  min-width: 11px;
+
+  height: 11px;
+  min-height: 11px;
+
+  flex: 0 0 11px;
+
+  border-radius: 50%;
+
+  border: 1px solid #d5d5d5;
+}
+.product-page-pour__style-with-title {
+  min-width: 0;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.product-page-pour__style-with-price {
+  flex: 0 0 auto;
+
+  margin-left: 12px;
+
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.25;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   QUICK ADD
+========================================================= */
+
+.product-page-pour__style-with-quick-add {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 11px 14px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: inherit;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.product-page-pour__style-with-quick-add::before,
+.product-page-pour__style-with-quick-add::after {
+  display: none;
+  content: none;
+}
+
+.product-page-pour__style-with-media:hover
+.product-page-pour__style-with-quick-add {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media screen and (max-width: 900px) {
+
+  .product-page-pour__style-with {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+
+    padding: 80px 0 0 !important;
+
+    box-sizing: border-box !important;
+  }
+
+  .product-page-pour__style-with-heading {
+    width: 100%;
+
+    margin: 0 0 35px !important;
+
+    text-align: center !important;
+
+    font-size: 22px !important;
+    font-weight: 400 !important;
+    line-height: 1.05 !important;
+
+    letter-spacing: 0 !important;
+  }
+
+  .product-page-pour__style-with-grid {
+    display: grid !important;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+
+    width: 100% !important;
+    max-width: none !important;
+
+    gap: 0 !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .product-page-pour__style-with-card {
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .product-page-pour__style-with-media {
+    width: 100% !important;
+
+    aspect-ratio: 1 / 1;
+
+    overflow: hidden;
+  }
+
+  .product-page-pour__style-with-image {
+    width: 100% !important;
+    height: 100% !important;
+
+     object-fit: cover !important;
+    object-position: center !important;
+  }
+
+  .product-page-pour__style-with-info {
+    display: flex !important;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    width: 100% !important;
+
+    padding: 10px 10px 20px !important;
+  }
+
+  .product-page-pour__style-with-title,
+  .product-page-pour__style-with-price {
+    font-size: 10px !important;
+    line-height: 1.25 !important;
+  }
+
+  /*
+     QUICK ADD — MOBILE
+     Sur mobile il n'y a pas de hover,
+     donc le + reste visible.
+  */
+.product-page-pour__style-with-quick-add {
+  right: 8px;
+  bottom: 8px;
+  width: auto;
+  height: auto;
+  padding: 10px 12px;
+  font-size: 8px;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+  }
+  @media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+  .product-page-pour__gallery {
+    width: calc(100% + 15px) !important;
+    max-width: none !important;
+    margin-right: -40px !important;
+  }
+
+  .product-page-pour__mobile-gallery {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+.product-page-pour__mobile-slide {
+
+  width: 100% !important;
+
+  max-width: none !important;
+
+  flex: 0 0 100% !important;
+
+  aspect-ratio: 1 / 1 !important;
+
+  overflow: hidden !important;
+
+}
+
+.product-page-pour__mobile-slide img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+}
+  /* FAQ pleine largeur sur tablette portrait */
+@media screen and (min-width: 769px) and (max-width: 900px) and (orientation: portrait) {
+
+  .product-page-pour__accordions {
+    width: 100% !important;
+    max-width: none !important;
+    grid-column: 1 / -1 !important;
+  }
+
+  .product-page-pour__faq {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .product-page-pour__faq-item,
+  .product-page-pour__faq-question {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+}
+@media screen and (max-width: 900px) {
+  .product-page-pour__mobile-gallery {
+    background: #f5f5f3 !important;
+    isolation: isolate;
+  }
+
+  .product-page-pour__mobile-slide {
+    background: #f5f5f3 !important;
+    backface-visibility: hidden;
+  }
+
+  .product-page-pour__mobile-slide img {
+    backface-visibility: hidden;
+  }
+}
+
+
+
+.pour-google-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: -8px;
+  margin-bottom: 18px;
+  color: #111111;
+  font-size: 11px;
+  line-height: 1.4;
+  text-decoration: none;
+}
+
+.pour-google-rating__stars {
+  color: #111111;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.pour-google-rating__count {
+  color: #666666;
+}
+
+.pour-google-rating:hover {
+  opacity: .65;
+}
+/* BLACK FRIDAY — CORRECTION AFFICHAGE DES PRIX */
+
+.product-page-pour__black-friday {
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.08em !important;
+  line-height: 1.3 !important;
+  color: #777777 !important;
+  margin-bottom: 7px !important;
+}
+
+.product-page-pour__price {
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 10px !important;
+}
+
+.product-page-pour__price-current {
+  font-size: 26px !important;
+  font-weight: 400 !important;
+  color: #111111 !important;
+}
+
+.product-page-pour__price-compare {
+  display: inline-block !important;
+  font-size: 13px !important;
+  font-weight: 400 !important;
+  color: #999999 !important;
+  text-decoration: line-through !important;
+  text-decoration-color: #999999 !important;
+}
+/* APPLE PAY - BOUTONS COTE A COTE */
+
+.product-page-pour__buy-row {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+}
+
+.product-page-pour__quantity {
+  flex: 0 0 142px;
+  min-width: 0;
+}
+
+.product-page-pour__purchase-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  align-items: stretch;
+}
+
+.product-page-pour__purchase-actions .product-page-pour__add,
+.product-page-pour__express-checkout {
+  width: 100%;
+  min-width: 0;
+  height: 50px;
+  margin: 0;
+}
+@media screen and (min-width: 768px) {
+  .product-page-pour__quantity {
+    height: 50px !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-page-pour__quantity button,
+  .product-page-pour__quantity input {
+    height: 50px !important;
+    min-height: 50px !important;
+    box-sizing: border-box !important;
+  }
+}
+.product-page-pour__purchase-actions .product-page-pour__add {
+  padding: 0 5px;
+  font-size: 10px;
+}
+
+.product-page-pour__express-checkout .shopify-payment-button,
+.product-page-pour__express-checkout .shopify-payment-button__button {
+  width: 100%;
+  height: 50px;
+  min-height: 50px;
+  margin: 0;
+}
+
+
+.product-page-pour__express-checkout[inert] {
+  opacity: 0.45;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.product-page-pour__express-checkout .shopify-payment-button__more-options {
+  display: none !important;
+}
+/* CORRECTION QUANTITÉ SUR MOBILE */
+
+@media screen and (max-width: 767px) {
+
+  .product-page-pour__quantity {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    align-self: flex-start !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-page-pour__quantity button,
+  .product-page-pour__quantity input {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    box-sizing: border-box !important;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .product-page-pour__purchase-actions .product-page-pour__add {
+    height: 50px !important;
+    min-height: 40px !important;
+    padding: 0 5px !important;
+    box-sizing: border-box !important;
+  }
+
+  .product-page-pour__express-checkout {
+    height: 40px !important;
+    min-height: 40px !important;
+  }
+}
+/* COMING SOON — INSCRIPTION */
+
+.product-page-pour__back-in-stock {
+  display: flex;
+}
+
+.product-page-pour__coming-soon-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+
+  margin-top: 14px;
+  margin-bottom: 16px;
+
+  font-size: 10px;
+  line-height: 1.5;
+  color: #555555;
+}
+
+.product-page-pour__coming-soon-consent input {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  accent-color: #111111;
+}
+
+.product-page-pour__coming-soon-consent span {
+  display: block;
+}
+</style>
+
+<script>
+(function () {
+
+  const guide =
+  document.querySelector(
+    '[data-pour-size-guide]'
+  );
+
+const openButton =
+  document.querySelector(
+    '[data-pour-size-guide-open]'
+  );
+
+if (!guide || !openButton) {
+  return;
+}
+
+const productForm =
+  document.querySelector(
+    '.product-page-pour__form'
+  );
+
+const addButton =
+  guide.querySelector(
+    '[data-size-guide-add]'
+  );
+
+const addButtonText =
+  guide.querySelector(
+    '[data-size-guide-add-text]'
+  );
+
+const variants =
+  {{ product.variants | json }};
+const guideLanguage = {{ localization.language.iso_code | json }}
+  .toLowerCase()
+  .slice(0, 2);
+
+const guideTranslations = {
+  fr: {
+    add: 'AJOUTER AU PANIER — ',
+    soldOut: 'TAILLE ÉPUISÉE'
+  },
+  en: {
+    add: 'ADD TO CART — ',
+    soldOut: 'SIZE SOLD OUT'
+  },
+  it: {
+    add: 'AGGIUNGI AL CARRELLO — ',
+    soldOut: 'TAGLIA ESAURITA'
+  },
+  es: {
+    add: 'AÑADIR AL CARRITO — ',
+    soldOut: 'TALLA AGOTADA'
+  },
+  pt: {
+    add: 'ADICIONAR AO CARRINHO — ',
+    soldOut: 'TAMANHO ESGOTADO'
+  },
+  de: {
+    add: 'IN DEN WARENKORB — ',
+    soldOut: 'GRÖSSE AUSVERKAUFT'
+  },
+  nl: {
+    add: 'TOEVOEGEN AAN WINKELWAGEN — ',
+    soldOut: 'MAAT UITVERKOCHT'
+  }
+};
+
+const guideText =
+  guideTranslations[guideLanguage] || guideTranslations.fr;
+  function openSizeGuide() {
+
+    guide.classList.add(
+      'is-active'
+    );
+
+    guide.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+  }
+
+
+  function closeSizeGuide() {
+
+    guide.classList.remove(
+      'is-active'
+    );
+
+    guide.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+  }
+
+/* =========================================================
+   SÉLECTION D'UNE TAILLE
+========================================================= */
+
+guide.addEventListener(
+  'click',
+  function (event) {
+
+    const sizeButton =
+      event.target.closest(
+        '[data-size-guide-size]'
+      );
+
+    if (!sizeButton) {
+      return;
+    }
+
+
+    const selectedSize =
+      sizeButton.dataset.size;
+
+    const selectedIndex =
+      sizeButton.dataset.sizeIndex;
+
+
+    /* =========================================
+       SURBRILLANCE DE LA COLONNE
+    ========================================= */
+
+    guide
+      .querySelectorAll(
+        '[data-size-guide-column]'
+      )
+      .forEach(
+        function (element) {
+
+          element.classList.toggle(
+            'is-selected',
+            element.dataset.sizeGuideColumn ===
+              selectedIndex
+          );
+
+        }
+      );
+
+
+    guide
+      .querySelectorAll(
+        '[data-size-guide-size]'
+      )
+      .forEach(
+        function (button) {
+
+          button.classList.toggle(
+            'is-selected',
+            button === sizeButton
+          );
+
+        }
+      );
+
+
+    /* =========================================
+       SYNCHRONISE AVEC LE VRAI FORMULAIRE
+    ========================================= */
+
+    if (!productForm) {
+      return;
+    }
+
+
+    const optionInputs =
+      Array.from(
+        productForm.querySelectorAll(
+          'input[name^="options["]'
+        )
+      );
+
+
+    let sizeInput =
+      optionInputs.find(
+        function (input) {
+
+          const name =
+            input.name.toLowerCase();
+
+          return (
+            input.value === selectedSize &&
+            (
+              name.includes('taille') ||
+              name.includes('size')
+            )
+          );
+
+        }
+      );
+
+
+    /*
+     * Sécurité si Shopify utilise
+     * un autre nom pour l'option.
+     */
+    if (!sizeInput) {
+
+      sizeInput =
+        optionInputs.find(
+          function (input) {
+            return input.value === selectedSize;
+          }
+        );
+
+    }
+
+
+    if (!sizeInput) {
+      return;
+    }
+
+
+    sizeInput.checked = true;
+
+
+    sizeInput.dispatchEvent(
+      new Event(
+        'change',
+        {
+          bubbles: true
+        }
+      )
+    );
+
+
+    /* =========================================
+       RÉCUPÈRE LA VARIANTE APRÈS SYNCHRONISATION
+    ========================================= */
+
+    window.setTimeout(
+      function () {
+
+        const variantIdInput =
+          productForm.querySelector(
+            '[data-product-variant-id]'
+          );
+
+
+        if (!variantIdInput) {
+          return;
+        }
+
+
+        const selectedVariant =
+          variants.find(
+            function (variant) {
+
+              return String(variant.id) ===
+                String(variantIdInput.value);
+
+            }
+          );
+
+
+        if (
+          !selectedVariant ||
+          !selectedVariant.available
+        ) {
+
+          addButton.disabled = true;
+
+        addButtonText.textContent =
+  guideText.soldOut;
+
+          return;
+        }
+
+
+        addButton.disabled = false;
+
+
+        const price =
+          new Intl.NumberFormat(
+            'fr-FR',
+            {
+              style: 'currency',
+              currency: 'EUR'
+            }
+          ).format(
+            selectedVariant.price / 100
+          );
+
+
+    addButtonText.textContent =
+  guideText.add + price;
+
+      },
+      0
+    );
+
+  }
+);
+/* =========================================================
+   AJOUT AU PANIER DEPUIS LE GUIDE
+========================================================= */
+
+if (addButton && productForm) {
+
+  addButton.addEventListener(
+    'click',
+    function () {
+
+      if (addButton.disabled) {
+        return;
+      }
+
+      const realSubmitButton =
+        productForm.querySelector(
+          '.product-page-pour__add'
+        );
+
+      if (!realSubmitButton) {
+        return;
+      }
+
+      closeSizeGuide();
+
+      productForm.requestSubmit(
+        realSubmitButton
+      );
+
+    }
+  );
+
+}
+  openButton.addEventListener(
+    'click',
+    openSizeGuide
+  );
+
+
+  guide.addEventListener(
+    'click',
+    function (event) {
+
+      if (
+        event.target.closest(
+          '[data-pour-size-guide-close]'
+        )
+      ) {
+        closeSizeGuide();
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        event.key === 'Escape' &&
+        guide.classList.contains('is-active')
+      ) {
+        closeSizeGuide();
+      }
+
+    }
+  );
+
+})();
+</script>
+</section>
+<script>
+(function () {
+
+  const productSection =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
+
+  if (!productSection) return;
+
+  const form =
+    productSection.querySelector(
+      '.product-page-pour__form'
+    );
+
+  if (!form) return;
+
+  const variantInput =
+    form.querySelector(
+      '[data-product-variant-id]'
+    );
+
+  const variants =
+    {{ product.variants | json }};
+    const expressCheckout =
+  form.querySelector('[data-express-checkout]');
+
+function setExpressCheckoutEnabled(enabled) {
+  if (!expressCheckout) return;
+
+  expressCheckout.toggleAttribute('inert', !enabled);
+
+  expressCheckout.setAttribute(
+    'aria-disabled',
+    enabled ? 'false' : 'true'
+  );
+}
+function updateSoldOutOptions() {
+  const optionGroups =
+    Array.from(
+      form.querySelectorAll(
+        '.product-page-pour__option'
+      )
+    );
+
+  const optionNames =
+    optionGroups.map(
+      group => {
+        const input =
+          group.querySelector(
+            'input[name^="options["]'
+          );
+
+        return input
+          ? input.name
+          : null;
+      }
+    );
+
+  optionGroups.forEach(
+    (group, optionIndex) => {
+
+      const inputs =
+        Array.from(
+          group.querySelectorAll(
+            'input[type="radio"]'
+          )
+        );
+
+      inputs.forEach(
+        input => {
+
+          const candidateValues =
+            optionNames.map(
+              (name, index) => {
+
+                if (index === optionIndex) {
+                  return input.value;
+                }
+
+                const checked =
+                  form.querySelector(
+                    `input[name="${CSS.escape(name)}"]:checked`
+                  );
+
+                return checked
+                  ? checked.value
+                  : null;
+              }
+            );
+
+          const hasAvailableVariant =
+            variants.some(
+              variant => {
+
+                if (!variant.available) {
+                  return false;
+                }
+
+                return variant.options.every(
+                  (value, index) =>
+                    candidateValues[index] == null ||
+                    value === candidateValues[index]
+                );
+              }
+            );
+
+          const label =
+            input.closest(
+              '.product-page-pour__option-value'
+            );
+
+          if (label) {
+            label.classList.toggle(
+              'is-sold-out',
+              !hasAvailableVariant
+            );
+          }
+
+        }
+      );
+
+    }
+  );
+}
+
+  function updateVariant() {
+
+  updateSoldOutOptions();
+
+  const selectedOptions =
+    Array.from(
+      form.querySelectorAll(
+        'input[name^="options["]:checked'
+      )
+    ).map(
+      input => input.value
+    );
+
+
+    const matchingVariant =
+      variants.find(
+        variant =>
+          variant.options.every(
+            (option, index) =>
+              option === selectedOptions[index]
+          )
+      );
+
+
+ if (!matchingVariant) {
+  setExpressCheckoutEnabled(false);
+  return;
+}
+
+    variantInput.value =
+      matchingVariant.id;
+
+
+   const submitButton =
+  form.querySelector(
+    '.product-page-pour__add'
+  );
+
+const backInStockButton =
+  form.querySelector(
+    '[data-pour-back-in-stock-open]'
+  );
+
+if (submitButton) {
+  submitButton.disabled = !matchingVariant.available;
+setExpressCheckoutEnabled(matchingVariant.available);
+  submitButton.textContent =
+    '{{ 'pour_product.preorder' | t }}';
+
+  if (matchingVariant.available) {
+    submitButton.style.removeProperty('display');
+    submitButton.style.removeProperty('display');
+  } else {
+    submitButton.style.setProperty('display', 'none', 'important');
+  }
+}
+
+if (backInStockButton) {
+  backInStockButton.dataset.variantId = matchingVariant.id;
+
+  backInStockButton.style.setProperty(
+    'display',
+    matchingVariant.available ? 'none' : 'flex',
+    'important'
+  );
+}
+
+  }
+
+
+  form.addEventListener(
+    'change',
+    function (event) {
+
+      if (
+        event.target.matches(
+          'input[name^="options["]'
+        )
+      ) {
+        updateVariant();
+      }
+
+    }
+  );
+
+
+  updateVariant();
+
+})();
+</script>
+
+
+<script>
+(function () {
+
+  const gallery = document.querySelector(
+    '[data-mobile-product-gallery]'
+  );
+
+  const counter = document.querySelector(
+    '[data-mobile-gallery-current]'
+  );
+
+  if (!gallery) return;
+
+  const originalSlides = Array.from(
+    gallery.querySelectorAll(
+      '[data-mobile-product-slide]'
+    )
+  );
+
+  if (originalSlides.length < 2) return;
+
+
+  
+  /* =====================================================
+     CLONES + PRÉCHARGEMENT RÉEL DES IMAGES
+  ===================================================== */
+
+  const firstClone = originalSlides[0].cloneNode(true);
+
+  const lastClone = originalSlides[
+    originalSlides.length - 1
+  ].cloneNode(true);
+
+  firstClone.dataset.carouselClone = 'first';
+  lastClone.dataset.carouselClone = 'last';
+
+  function prepareCloneImage(slide) {
+    const img = slide.querySelector('img');
+
+    if (!img) return Promise.resolve();
+
+    img.loading = 'eager';
+    img.removeAttribute('loading');
+
+    const src = img.currentSrc || img.src;
+    if (!src) return Promise.resolve();
+
+    const preload = new Image();
+    preload.src = src;
+
+    return new Promise(resolve => {
+      const finish = async () => {
+        try {
+          if (preload.decode) {
+            await preload.decode();
+          }
+        } catch (error) {
+          // Ne pas bloquer le carrousel si le décodage échoue.
+        }
+        resolve();
+      };
+
+      if (preload.complete && preload.naturalWidth > 0) {
+        finish();
+      } else {
+        preload.onload = finish;
+        preload.onerror = resolve;
+      }
+    });
+  }
+
+  /* Préparer les images de début et de fin */
+  const cloneImagesReady = Promise.all([
+    prepareCloneImage(firstClone),
+    prepareCloneImage(lastClone)
+  ]);
+
+  gallery.insertBefore(lastClone, originalSlides[0]);
+  gallery.appendChild(firstClone);
+
+  const allSlides = Array.from(
+    gallery.querySelectorAll('[data-mobile-product-slide]')
+  );
+
+
+  /* =====================================================
+     POSITION INITIALE
+  ===================================================== */
+
+  function setPosition(position) {
+
+    gallery.style.scrollSnapType = 'none';
+    gallery.style.scrollBehavior = 'auto';
+
+    gallery.scrollLeft =
+      position * gallery.clientWidth;
+
+    requestAnimationFrame(() => {
+
+      gallery.style.scrollSnapType =
+        'x mandatory';
+
+      gallery.style.scrollBehavior =
+        '';
+
+    });
+
+  }
+
+
+  requestAnimationFrame(() => {
+    setPosition(1);
+  });
+
+
+  /* =====================================================
+     COMPTEUR
+  ===================================================== */
+
+  function updateCounter() {
+
+    const width =
+      gallery.clientWidth;
+
+    if (!width) return;
+
+    const position =
+      Math.round(
+        gallery.scrollLeft / width
+      );
+
+    let realIndex =
+      position - 1;
+
+
+    if (realIndex < 0) {
+      realIndex =
+        originalSlides.length - 1;
+    }
+
+
+    if (
+      realIndex >=
+      originalSlides.length
+    ) {
+      realIndex = 0;
+    }
+
+
+    if (counter) {
+      counter.textContent =
+        String(realIndex + 1);
+    }
+
+  }
+
+
+  /* =====================================================
+     CARROUSEL INFINI
+  ===================================================== */
+
+  
+  
+  let scrollTimer = null;
+  let isRepositioning = false;
+
+  // Attend que l'image de destination soit chargée et décodée
+  function waitForSlideImage(position) {
+    const slide = allSlides[position];
+    const img = slide && slide.querySelector('img');
+
+    if (!img) return Promise.resolve();
+
+    img.loading = 'eager';
+
+    function decodeImage() {
+      if (typeof img.decode === 'function') {
+        return img.decode().catch(function () {});
+      }
+      return Promise.resolve();
+    }
+
+    if (img.complete && img.naturalWidth > 0) {
+      return decodeImage();
+    }
+
+    return new Promise(function (resolve) {
+      let finished = false;
+
+      function finish() {
+        if (finished) return;
+        finished = true;
+
+        img.removeEventListener('load', finish);
+        img.removeEventListener('error', finish);
+
+        decodeImage().then(resolve);
+      }
+
+      img.addEventListener('load', finish, { once: true });
+      img.addEventListener('error', finish, { once: true });
+
+      // Évite de manquer un chargement déjà terminé
+      if (img.complete) finish();
+    });
+  }
+
+  gallery.addEventListener(
+    'scroll',
+    function () {
+      if (isRepositioning) return;
+
+      updateCounter();
+      clearTimeout(scrollTimer);
+
+      scrollTimer = setTimeout(async function () {
+        const width = gallery.clientWidth;
+        if (!width) return;
+
+        const position = Math.round(
+          gallery.scrollLeft / width
+        );
+
+        let targetPosition = null;
+
+        // Du clone de la première photo vers la vraie première
+        if (position === allSlides.length - 1) {
+          targetPosition = 1;
+        }
+        // Du clone de la dernière photo vers la vraie dernière
+        else if (position === 0) {
+          targetPosition = originalSlides.length;
+        }
+
+        if (targetPosition === null) return;
+
+        isRepositioning = true;
+
+        // Attendre que l'image de destination soit prête
+        await waitForSlideImage(targetPosition);
+
+        // Repositionnement sans animation
+        gallery.style.scrollSnapType = 'none';
+        gallery.style.scrollBehavior = 'auto';
+        gallery.scrollLeft = targetPosition * width;
+
+        // Appliquer immédiatement la nouvelle position
+        void gallery.offsetWidth;
+
+        requestAnimationFrame(function () {
+          gallery.style.scrollSnapType = 'x mandatory';
+
+          requestAnimationFrame(function () {
+            isRepositioning = false;
+            updateCounter();
+          });
+        });
+      }, 80);
+    },
+    { passive: true }
+  );
+
+
+  /* =====================================================
+     INITIALISATION
+  ===================================================== */
+
+  updateCounter();
+
+
+  /* =====================================================
+     RESIZE
+  ===================================================== */
+
+  window.addEventListener(
+    'resize',
+    function () {
+
+      const width =
+        gallery.clientWidth;
+
+      if (!width) return;
+
+      const position =
+        Math.round(
+          gallery.scrollLeft / width
+        );
+
+      gallery.style.scrollSnapType =
+        'none';
+
+      gallery.scrollLeft =
+        position * width;
+
+      requestAnimationFrame(
+        function () {
+
+          gallery.style.scrollSnapType =
+            'x mandatory';
+
+        }
+      );
+
+    }
+  );
+
+
+})();
+</script>
+<script>
+(function () {
+
+  const section = document.querySelector(
+    '.product-page-pour[data-product-page]'
+  );
+
+  if (!section) return;
+
+
+  /* =====================================================
+     DONNÉES DES IMAGES
+  ===================================================== */
+
+  const images = [
+    {% for image in product.images %}
+      {
+        src: {{ image | image_url: width: 3840 | json }},
+        alt: {{ image.alt | escape | json }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  if (!images.length) return;
+
+
+  /* =====================================================
+     DESKTOP
+  ===================================================== */
+
+  const mainImage =
+    section.querySelector('[data-main-product-image]');
+
+  const desktopCurrent =
+    section.querySelector('[data-desktop-gallery-current]');
+
+  const desktopPrev =
+    section.querySelector('[data-desktop-gallery-prev]');
+
+  const desktopNext =
+    section.querySelector('[data-desktop-gallery-next]');
+
+
+  let currentIndex = 0;
+
+
+  function showDesktopImage(index) {
+
+    if (!images.length) return;
+
+    if (index < 0) {
+      index = images.length - 1;
+    }
+
+    if (index >= images.length) {
+      index = 0;
+    }
+
+    currentIndex = index;
+
+    if (mainImage) {
+      mainImage.src = images[currentIndex].src;
+      mainImage.alt = images[currentIndex].alt || '';
+    }
+
+    if (desktopCurrent) {
+      desktopCurrent.textContent =
+        String(currentIndex + 1);
+    }
+  }
+
+
+  if (desktopPrev) {
+    desktopPrev.addEventListener(
+      'click',
+      function () {
+        showDesktopImage(currentIndex - 1);
+      }
+    );
+  }
+
+
+  if (desktopNext) {
+    desktopNext.addEventListener(
+      'click',
+      function () {
+        showDesktopImage(currentIndex + 1);
+      }
+    );
+  }
+
+
+  /* =====================================================
+     PLEIN ÉCRAN
+  ===================================================== */
+
+  const fullscreen =
+    section.querySelector('[data-product-fullscreen]');
+
+  const fullscreenImage =
+    section.querySelector('[data-fullscreen-image]');
+
+  const fullscreenCurrent =
+    section.querySelector('[data-fullscreen-current]');
+
+  const fullscreenOpen =
+    section.querySelector('[data-product-fullscreen-open]');
+
+  const fullscreenClose =
+    section.querySelector('[data-product-fullscreen-close]');
+
+  const fullscreenPrev =
+    section.querySelector('[data-fullscreen-prev]');
+
+  const fullscreenNext =
+    section.querySelector('[data-fullscreen-next]');
+
+
+  function updateFullscreen() {
+
+    if (!fullscreenImage) return;
+
+    fullscreenImage.src =
+      images[currentIndex].src;
+
+    fullscreenImage.alt =
+      images[currentIndex].alt || '';
+
+    if (fullscreenCurrent) {
+      fullscreenCurrent.textContent =
+        String(currentIndex + 1);
+    }
+  }
+
+
+  function openFullscreen() {
+
+    if (!fullscreen) return;
+
+    updateFullscreen();
+
+    fullscreen.classList.add('is-active');
+
+    fullscreen.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+    document.body.style.overflow = 'hidden';
+  }
+
+
+  function closeFullscreen() {
+
+    if (!fullscreen) return;
+
+    fullscreen.classList.remove('is-active');
+
+    fullscreen.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+    document.body.style.overflow = '';
+  }
+
+
+  function changeFullscreenImage(direction) {
+
+    if (direction > 0) {
+      currentIndex++;
+
+      if (currentIndex >= images.length) {
+        currentIndex = 0;
+      }
+    } else {
+      currentIndex--;
+
+      if (currentIndex < 0) {
+        currentIndex = images.length - 1;
+      }
+    }
+
+    showDesktopImage(currentIndex);
+    updateFullscreen();
+  }
+
+
+  if (fullscreenOpen) {
+    fullscreenOpen.addEventListener(
+      'click',
+      openFullscreen
+    );
+  }
+
+
+  if (fullscreenClose) {
+    fullscreenClose.addEventListener(
+      'click',
+      closeFullscreen
+    );
+  }
+
+
+  if (fullscreenPrev) {
+    fullscreenPrev.addEventListener(
+      'click',
+      function () {
+        changeFullscreenImage(-1);
+      }
+    );
+  }
+
+
+  if (fullscreenNext) {
+    fullscreenNext.addEventListener(
+      'click',
+      function () {
+        changeFullscreenImage(1);
+      }
+    );
+  }
+
+
+  /* =====================================================
+     CLAVIER
+  ===================================================== */
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        !fullscreen ||
+        !fullscreen.classList.contains('is-active')
+      ) {
+        return;
+      }
+
+      if (event.key === 'Escape') {
+        closeFullscreen();
+      }
+
+      if (event.key === 'ArrowLeft') {
+        changeFullscreenImage(-1);
+      }
+
+      if (event.key === 'ArrowRight') {
+        changeFullscreenImage(1);
+      }
+
+    }
+  );
+
+
+})();
+</script>
+
+<script>
+(function () {
+
+  const section =
+    document.querySelector(
+      '.product-page-pour[data-product-page]'
+    );
+
+  if (!section) return;
+
+
+  const panel =
+    section.querySelector(
+      '[data-product-info-panel]'
+    );
+
+
+  const triggers =
+    section.querySelectorAll(
+      '[data-product-panel-open]'
+    );
+
+
+  const closeButtons =
+    section.querySelectorAll(
+      '[data-product-panel-close]'
+    );
+
+
+  const panelContents =
+    section.querySelectorAll(
+      '[data-product-panel-content]'
+    );
+
+
+  const panelTitle =
+    section.querySelector(
+      '[data-product-panel-title]'
+    );
+
+
+  if (!panel) return;
+
+
+  /* =====================================================
+     OUVRIR UN PANNEAU
+  ===================================================== */
+
+  function openPanel(type) {
+
+    /* Masque tous les contenus */
+    panelContents.forEach(function (content) {
+
+      content.classList.remove('is-active');
+
+    });
+
+
+    /* Affiche le bon contenu */
+    const activeContent =
+      section.querySelector(
+        '[data-product-panel-content="' +
+        type +
+        '"]'
+      );
+
+
+    if (activeContent) {
+
+      activeContent.classList.add(
+        'is-active'
+      );
+
+    }
+
+
+    /* Titre */
+    if (panelTitle) {
+
+      if (type === 'details') {
+
+        panelTitle.textContent =
+          '{{ 'pour_product.details_title' | t }}';
+
+      }
+
+      if (type === 'faq') {
+
+        panelTitle.textContent =
+          '{{ 'pour_product.faq_title' | t }}';
+
+      }
+
+   if (type === 'shipping') {
+
+  panelTitle.textContent =
+  {{ 'pour_product.shipping_returns' | t | replace: '&amp;', '&' | json }};
+
+}
+
+    }
+
+
+    /* Ouvre */
+    panel.classList.add('is-active');
+
+    panel.setAttribute(
+      'aria-hidden',
+      'false'
+    );
+
+
+    /* Bloque le scroll derrière */
+    document.body.style.overflow =
+      'hidden';
+
+  }
+
+
+  /* =====================================================
+     FERMER
+  ===================================================== */
+
+  function closePanel() {
+
+    panel.classList.remove(
+      'is-active'
+    );
+
+    panel.setAttribute(
+      'aria-hidden',
+      'true'
+    );
+
+
+    document.body.style.overflow =
+      '';
+
+  }
+
+
+  /* =====================================================
+     BOUTONS
+  ===================================================== */
+
+  triggers.forEach(function (trigger) {
+
+    trigger.addEventListener(
+      'click',
+      function () {
+
+        const type =
+          trigger.dataset.productPanelOpen;
+
+        if (!type) return;
+
+        openPanel(type);
+
+      }
+    );
+
+  });
+
+
+  /* =====================================================
+     FERMETURE
+  ===================================================== */
+
+  closeButtons.forEach(function (button) {
+
+    button.addEventListener(
+      'click',
+      closePanel
+    );
+
+  });
+
+
+  /* =====================================================
+     ÉCHAP
+  ===================================================== */
+
+  document.addEventListener(
+    'keydown',
+    function (event) {
+
+      if (
+        event.key === 'Escape' &&
+        panel.classList.contains('is-active')
+      ) {
+
+        closePanel();
+
+      }
+
+    }
+  );
+  /* =====================================================
+     RETOUR EN STOCK — PANNEAU POUR
+  ===================================================== */
+
+  const backInStockPanel =
+    section.querySelector(
+      '[data-pour-back-in-stock-panel]'
+    );
+
+  const backInStockTriggers =
+    section.querySelectorAll(
+      '[data-pour-back-in-stock-open]'
+    );
+
+  const backInStockCloseButtons =
+    section.querySelectorAll(
+      '[data-pour-back-in-stock-close]'
+    );
+
+
+  if (backInStockPanel) {
+
+  function openBackInStockPanel(trigger) {
+
+  if (trigger && trigger.dataset.variantId) {
+    backInStockPanel.dataset.selectedVariantId =
+      trigger.dataset.variantId;
+  }
+
+  backInStockPanel.classList.add(
+    'is-active'
+  );
+
+      backInStockPanel.classList.add(
+        'is-active'
+      );
+
+      backInStockPanel.setAttribute(
+        'aria-hidden',
+        'false'
+      );
+
+      document.body.style.overflow =
+        'hidden';
+
+    }
+
+
+    function closeBackInStockPanel() {
+
+      backInStockPanel.classList.remove(
+        'is-active'
+      );
+
+      backInStockPanel.setAttribute(
+        'aria-hidden',
+        'true'
+      );
+
+      document.body.style.overflow =
+        '';
+
+    }
+
+
+    backInStockTriggers.forEach(
+      function (trigger) {
+
+        trigger.addEventListener(
+          'click',
+          function () {
+
+            openBackInStockPanel(trigger);
+
+          }
+        );
+
+      }
+    );
+/* =====================================================
+   SÉLECTION DE LA TAILLE — RETOUR EN STOCK
+===================================================== */
+
+const backInStockSizeButtons =
+  backInStockPanel.querySelectorAll(
+    '[data-notify-variant-id]'
+  );
+
+backInStockSizeButtons.forEach(
+  function (sizeButton) {
+
+    sizeButton.addEventListener(
+      'click',
+      function () {
+
+        backInStockSizeButtons.forEach(
+          function (button) {
+            button.classList.remove(
+              'is-selected'
+            );
+          }
+        );
+
+        sizeButton.classList.add(
+          'is-selected'
+        );
+
+        backInStockPanel.dataset.selectedVariantId =
+          sizeButton.dataset.notifyVariantId;
+
+      }
+    );
+/* =====================================================
+   INSCRIPTION RETOUR EN STOCK — AMP
+===================================================== */
+
+const backInStockForm =
+  backInStockPanel.querySelector(
+    '[data-pour-back-in-stock-form]'
+  );
+
+const backInStockMessage =
+  backInStockPanel.querySelector(
+    '[data-pour-back-in-stock-message]'
+  );
+
+const backInStockSubmit =
+  backInStockForm
+    ? backInStockForm.querySelector(
+        '.product-page-pour__back-in-stock-submit'
+      )
+    : null;
+
+const backInStockProductId =
+  {{ product.id | json }};
+
+if (backInStockForm) {
+
+  backInStockForm.addEventListener(
+    'submit',
+    function (event) {
+
+      event.preventDefault();
+
+      const emailInput =
+        backInStockForm.querySelector(
+          'input[type="email"]'
+        );
+
+      const email =
+        emailInput
+          ? emailInput.value.trim()
+          : '';
+
+      const variantId =
+        backInStockPanel.dataset.selectedVariantId;
+
+      if (!variantId) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            '{{ 'pour_product.select_size_error' | t }}';
+        }
+
+        return;
+      }
+
+      if (!email) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            '{{ 'pour_product.email_required' | t }}';
+        }
+
+        return;
+      }
+
+      if (
+        !window.BIS ||
+        typeof window.BIS.create !== 'function'
+      ) {
+
+        if (backInStockMessage) {
+          backInStockMessage.textContent =
+            '{{ 'pour_product.notification_unavailable' | t }}';
+        }
+
+        return;
+      }
+
+      if (backInStockSubmit) {
+        backInStockSubmit.disabled = true;
+        backInStockSubmit.textContent =
+          '{{ 'pour_product.sending' | t }}';
+      }
+
+      if (backInStockMessage) {
+        backInStockMessage.textContent = '';
+      }
+
+      window.BIS.create(
+        email,
+        Number(variantId),
+        Number(backInStockProductId)
+      ).then(
+        function (data) {
+
+          if (data.status === 'OK') {
+
+            if (backInStockMessage) {
+              backInStockMessage.textContent =
+                '{{ 'pour_product.back_in_stock_success' | t }}';
+            }
+
+            backInStockForm.reset();
+
+          } else {
+
+            let errorMessage =
+              '{{ 'pour_product.generic_error' | t }}';
+
+            if (data.errors) {
+
+              const errors = [];
+
+              for (const key in data.errors) {
+
+                if (
+                  Array.isArray(
+                    data.errors[key]
+                  )
+                ) {
+
+                  errors.push(
+                    data.errors[key].join(' ')
+                  );
+
+                }
+
+              }
+
+              if (errors.length) {
+                errorMessage =
+                  errors.join(' ');
+              }
+            }
+
+            if (backInStockMessage) {
+              backInStockMessage.textContent =
+                errorMessage;
+            }
+
+          }
+
+          if (backInStockSubmit) {
+            backInStockSubmit.disabled = false;
+           backInStockSubmit.textContent =
+  '{{ 'pour_product.submit' | t }}';
+          }
+
+        }
+      );
+
+    }
+  );
+
+}
+  }
+);
+
+    backInStockCloseButtons.forEach(
+      function (button) {
+
+        button.addEventListener(
+          'click',
+          closeBackInStockPanel
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      'keydown',
+      function (event) {
+
+        if (
+          event.key === 'Escape' &&
+          backInStockPanel.classList.contains(
+            'is-active'
+          )
+        ) {
+
+          closeBackInStockPanel();
+
+        }
+
+      }
+    );
+
+  }
+
+})();
+/* =====================================================
+   RECOMMANDATIONS PRODUIT
+===================================================== */
+
+(function () {
+
+  const recommendationsSection =
+    document.querySelector(
+      '[data-product-recommendations]'
+    );
+
+  if (!recommendationsSection) return;
+
+  const url =
+    recommendationsSection.dataset.url;
+
+  if (!url) return;
+
+  fetch(url)
+    .then(response => response.text())
+    .then(text => {
+
+      const html =
+        document.createElement('div');
+
+      html.innerHTML = text;
+
+      const recommendations =
+        html.querySelector(
+          '[data-product-recommendations]'
+        );
+
+      if (!recommendations) return;
+
+      const currentGrid =
+        recommendationsSection.querySelector(
+          '.product-page-pour__style-with-grid'
+        );
+
+      const newGrid =
+  recommendations.querySelector(
+    '.product-page-pour__style-with-grid'
+  );
+
+if (
+  currentGrid &&
+  newGrid &&
+  newGrid.innerHTML.trim()
+) {
+  const products =
+    Array.from(
+      newGrid.children
+    ).slice(0, 4);
+
+  currentGrid.replaceChildren(
+    ...products
+  );
+}
+
+    })
+    .catch(error => {
+
+      console.error(
+        'Erreur lors du chargement des recommandations produit :',
+        error
+      );
+
+    });
+
+})();
+
+</script>
+
+
+
+{% schema %}
+{
+  "name": "Produit POUR",
+
+  "settings": [
+
+    {
+      "type": "textarea",
+      "id": "composition",
+      "label": "Texte composition",
+      "default": "100 % coton biologique. Coupe premium. Matière épaisse et confortable."
+    },
+
+    {
+      "type": "textarea",
+      "id": "shipping",
+      "label": "Expédition & retours",
+      "default": "{{ 'pour_product.shipping_fallback' | t }}"
+    },
+{
+  "type": "text",
+  "id": "google_rating",
+  "label": "Note Google",
+  "default": "5"
+},
+{
+  "type": "text",
+  "id": "google_review_count",
+  "label": "Nombre d'avis Google",
+  "default": "12"
+}
+  ]
+}
+{% endschema %}
