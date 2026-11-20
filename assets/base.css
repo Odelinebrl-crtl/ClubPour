@@ -2009,7 +2009,7 @@ a {
     width: 38px;
     height: 38px;
     font-size: 17px;
-    transform: translateY(calc(-50% - 10px));
+     padding-bottom: 4px;
   }
 
 }
