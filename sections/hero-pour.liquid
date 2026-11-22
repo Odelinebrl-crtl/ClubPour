@@ -74,9 +74,40 @@
 
 </div>
 </section>
+
 <div class="pour-hero-banner">
-  <span>{{ 'hero.prelaunch_banner' | t }}</span>
+  <div class="pour-hero-banner__inner">
+
+    <span class="pour-hero-banner__text">
+      {{ 'hero.prelaunch_banner' | t }}
+    </span>
+
+    <span class="pour-hero-banner__separator"></span>
+
+    <div class="pour-hero-banner__item">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M7 32 C10 13 22 5 34 5 C33 19 25 31 7 32Z"
+          fill="none" stroke="currentColor" stroke-width="1.2"/>
+        <path d="M7 32 C16 24 23 17 31 9"
+          fill="none" stroke="currentColor" stroke-width="1.2"/>
+      </svg>
+      <span>COTON BIOLOGIQUE 200 GSM</span>
+    </div>
+
+    <span class="pour-hero-banner__separator"></span>
+
+    <div class="pour-hero-banner__item">
+      <svg viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 3 L25 7 L31 8 L32 14 L36 19 L33 25 L34 31 L27 33 L22 37 L16 34 L10 35 L8 29 L4 24 L7 18 L6 12 L13 10 L16 5 Z"
+          fill="none" stroke="currentColor" stroke-width="1.2"
+          stroke-linejoin="round"/>
+      </svg>
+      <span>IMPRIMÉ EN FRANCE</span>
+    </div>
+
+  </div>
 </div>
+
 {% schema %}
 {
   "name": "Hero POUR",
