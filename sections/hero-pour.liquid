@@ -38,9 +38,38 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
 
   {% endif %}
 
+
 </div>
 
+{% if section.settings.image_desktop_1 != blank
+  and section.settings.image_desktop_2 != blank
+  and section.settings.image_desktop_3 != blank
+  and section.settings.image_desktop_4 != blank
+  and section.settings.image_desktop_5 != blank
+%}
+  <div class="pour-hero__desktop-gallery">
+
+    {% for i in (1..5) %}
+      {% assign image_key = 'image_desktop_' | append: i %}
+      {% assign hero_image = section.settings[image_key] %}
+
+      <div class="pour-hero__desktop-image">
+        {{
+          hero_image
+          | image_url: width: 1800
+          | image_tag:
+            widths: '600, 900, 1200, 1500, 1800',
+            sizes: '20vw',
+            loading: 'eager'
+        }}
+      </div>
+    {% endfor %}
+
+  </div>
+{% endif %}
+
 {% if section.settings.image_mobile_1 != blank and section.settings.image_mobile_2 != blank %}
+
   <div class="pour-hero__mobile-split">
 
     <div class="pour-hero__mobile-image pour-hero__mobile-image--first">
