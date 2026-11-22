@@ -893,74 +893,94 @@ a {
   text-align: center;
 }
 
-/* BANDEAU INFORMATIONS POUR */
+
+/* BANDEAU BLACK FRIDAY ET INFORMATIONS POUR */
 
 .pour-hero-banner {
   width: 100%;
-  min-height: 50px;
   background: #000000;
   color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 20px;
+  padding: 10px 20px;
   box-sizing: border-box;
 }
 
 .pour-hero-banner__inner {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 10px;
   width: 100%;
 }
 
-.pour-hero-banner__text,
-.pour-hero-banner__item {
+.pour-hero-banner__promo {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.18em;
+  text-align: center;
   text-transform: uppercase;
-  white-space: nowrap;
+}
+
+.pour-hero-banner__details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
 }
 
 .pour-hero-banner__item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  white-space: nowrap;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 .pour-hero-banner__item svg {
-  width: 27px;
-  height: 27px;
+  width: 25px;
+  height: 25px;
   flex-shrink: 0;
 }
 
 .pour-hero-banner__separator {
   width: 1px;
-  height: 25px;
+  height: 22px;
   background: rgba(255,255,255,0.55);
   flex-shrink: 0;
 }
 
+/* MOBILE */
+
 @media screen and (max-width: 768px) {
   .pour-hero-banner {
-    padding: 8px 6px;
+    padding: 9px 5px;
   }
 
   .pour-hero-banner__inner {
-    gap: 9px;
+    gap: 8px;
   }
 
-  .pour-hero-banner__text,
-  .pour-hero-banner__item {
-    font-size: 7px;
-    letter-spacing: 0.07em;
+  .pour-hero-banner__promo {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+
+  .pour-hero-banner__details {
+    gap: 10px;
   }
 
   .pour-hero-banner__item {
     gap: 5px;
+    font-size: 7px;
+    letter-spacing: 0.05em;
   }
 
   .pour-hero-banner__item svg {
@@ -969,7 +989,7 @@ a {
   }
 
   .pour-hero-banner__separator {
-    height: 20px;
+    height: 18px;
   }
 }
 
