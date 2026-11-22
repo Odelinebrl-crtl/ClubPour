@@ -32,6 +32,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-peperoncino",
+            "category": "signature",
             "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
             "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg"
           }
@@ -40,6 +41,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-cypres-italien",
+            "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
           }
@@ -48,6 +50,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-amarena",
+            "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_048.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg"
           }
@@ -56,6 +59,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-riviera",
+            "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_006.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
           }
@@ -64,6 +68,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-sorrento",
+            "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
           }
@@ -72,6 +77,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-pegasus",
+            "category": "signature",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_040.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_034.jpg"
           }
@@ -80,6 +86,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-club-pour",
+            "category": "racine",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_063.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg"
           }
@@ -88,6 +95,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-monaco-94",
+            "category": "racine",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_069.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
           }
