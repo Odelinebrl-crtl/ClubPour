@@ -72,18 +72,24 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
             loading: 'eager'
         }}
 
-        <style>
+
+<style>
   #Hero-{{ section.id }} .pour-hero__desktop-image:nth-child({{ i }}) img {
-    width: {{ zoom }}%;
-    height: {{ zoom }}%;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     max-width: none;
     object-fit: cover;
-    object-position: {{ pos_x }}% {{ pos_y }}%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
+    transform: translate(
+      {{ 50 | minus: pos_x }}%,
+      {{ 50 | minus: pos_y }}%
+    ) scale({{ zoom | divided_by: 100.0 }});
+
+    transform-origin: center center;
   }
 </style>
+
       </div>
     {% endif %}
   {% endfor %}
