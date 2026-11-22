@@ -1,80 +1,92 @@
 document.documentElement.classList.add('js');
 
 
+
 function initHeroParallax() {
-  const hero = document.querySelector('.pour-hero');
+  document.querySelectorAll('.pour-hero').forEach(hero => {
 
-  if (!hero) return;
+    if (hero.dataset.heroParallaxReady === 'true') return;
+    hero.dataset.heroParallaxReady = 'true';
 
-  const mobileQuery = window.matchMedia('(max-width: 768px)');
+    const mobileQuery = window.matchMedia('(max-width: 768px)');
+    let ticking = false;
 
-  let ticking = false;
+    function updateParallax() {
+      const scrollY = window.scrollY;
+      const heroTop = hero.getBoundingClientRect().top + scrollY;
+      const heroHeight = hero.offsetHeight;
 
-  function updateParallax() {
-    const scrollY = window.scrollY;
-    const heroHeight = hero.offsetHeight;
+      const localScroll = Math.max(
+        0,
+        Math.min(scrollY - heroTop, heroHeight)
+      );
 
-    if (scrollY <= heroHeight) {
-      const isMobile = mobileQuery.matches;
+      if (mobileQuery.matches) {
 
-      let images = [];
+        const first = hero.querySelector(
+          '.pour-hero__mobile-image--first img'
+        );
 
-      if (isMobile) {
-        images = [
-          {
-            element: hero.querySelector('.pour-hero__mobile-image--first img'),
-            speed: 0.12
-          },
-          {
-            element: hero.querySelector('.pour-hero__mobile-image--second img'),
-            speed: 0.22
-          }
-        ];
-      } else if (hero.classList.contains('pour-hero--five-desktop')) {
-        images = [
-          ...hero.querySelectorAll('.pour-hero__desktop-image-inner')
-        ].map(element => ({
-          element,
-          speed: 0.22
-        }));
+        const second = hero.querySelector(
+          '.pour-hero__mobile-image--second img'
+        );
+
+        if (first) {
+          first.style.transform =
+            `translate3d(0, ${localScroll * 0.12}px, 0)`;
+        }
+
+        if (second) {
+          second.style.transform =
+            `translate3d(0, ${localScroll * 0.22}px, 0)`;
+        }
+
       } else {
-        images = [
-          {
-            element: hero.querySelector('.pour-hero__image'),
-            speed: 0.22
+
+        const desktopImages = hero.querySelectorAll(
+          '.pour-hero__desktop-image-inner'
+        );
+
+        if (desktopImages.length) {
+          desktopImages.forEach(image => {
+            image.style.setProperty(
+              '--parallax-y',
+              `${localScroll * 0.22}px`
+            );
+          });
+        } else {
+          const originalImage = hero.querySelector(
+            '.pour-hero__image'
+          );
+
+          if (originalImage) {
+            originalImage.style.transform =
+              `translate3d(0, ${localScroll * 0.22}px, 0) scale(1.08)`;
           }
-        ];
+        }
       }
 
-      images.forEach(({ element, speed }) => {
-        if (!element) return;
-
-        const translateY = scrollY * speed;
-
-        element.style.transform =
-          `translate3d(0, ${translateY}px, 0)`;
-      });
+      ticking = false;
     }
 
-    ticking = false;
-  }
+    function requestUpdate() {
+      if (ticking) return;
 
-  function onScroll() {
-    if (!ticking) {
-      requestAnimationFrame(updateParallax);
       ticking = true;
+      requestAnimationFrame(updateParallax);
     }
-  }
 
-  updateParallax();
+    window.addEventListener('scroll', requestUpdate, {
+      passive: true
+    });
 
-  window.addEventListener('scroll', onScroll, {
-    passive: true
+    window.addEventListener('resize', requestUpdate);
+
+    mobileQuery.addEventListener('change', requestUpdate);
+
+    updateParallax();
+
   });
-
-  mobileQuery.addEventListener('change', updateParallax);
-
-  document.addEventListener('shopify:section:load', updateParallax);
 }
 
 if (document.readyState === 'loading') {
@@ -82,6 +94,17 @@ if (document.readyState === 'loading') {
 } else {
   initHeroParallax();
 }
+
+document.addEventListener('shopify:section:load', event => {
+  const hero = event.target.querySelector('.pour-hero');
+
+  if (hero) {
+    hero.dataset.heroParallaxReady = 'false';
+  }
+
+  initHeroParallax();
+});
+
 
 document.addEventListener('shopify:section:load', initHeroParallax);
 
