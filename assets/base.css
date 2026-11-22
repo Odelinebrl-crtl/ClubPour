@@ -1797,13 +1797,20 @@ a {
 }
 
 .pour-hero__mobile-image img {
+  position: absolute;
+  top: -10%;
+  left: 0;
+
   display: block;
   width: 100%;
-  height: 100%;
+  height: 120%;
+
   object-fit: cover;
   object-position: center;
-}
 
+  transform: translateY(0);
+  will-change: transform;
+}
 
   .pour-hero__content {
     width: 100%;
