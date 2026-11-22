@@ -6,11 +6,25 @@ function initHeroParallax() {
 
   if (!hero) return;
 
-  const heroImages = hero.querySelectorAll(
-    '.pour-hero__image, .pour-hero__mobile-image img'
+  // Photo principale desktop
+  const desktopImage = hero.querySelector('.pour-hero__image');
+
+  // Deuxième photo mobile uniquement
+  const mobileSecondImage = hero.querySelector(
+    '.pour-hero__mobile-image--second img'
   );
 
-  if (!heroImages.length) return;
+  const images = [];
+
+  if (desktopImage) {
+    images.push(desktopImage);
+  }
+
+  if (mobileSecondImage) {
+    images.push(mobileSecondImage);
+  }
+
+  if (!images.length) return;
 
   let ticking = false;
 
@@ -21,7 +35,7 @@ function initHeroParallax() {
     if (scrollY <= heroHeight) {
       const translateY = scrollY * 0.22;
 
-      heroImages.forEach((image) => {
+      images.forEach((image) => {
         image.style.transform =
           `translate3d(0, ${translateY}px, 0) scale(1.08)`;
       });
