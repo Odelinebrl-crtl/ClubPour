@@ -875,36 +875,21 @@ a {
 
   opacity: 0.85;
 }
-/* ========================================
-   BANDEAU PRÉ-LANCEMENT
-   ======================================== */
+
+/* BANDEAU BLACK FRIDAY + INFORMATIONS POUR */
 
 .pour-hero-banner {
-  width: 100%;
-  height: 24px;
-  min-height: 24px;
   display: flex;
+  width: 100%;
+  height: auto !important;
+  min-height: 68px !important;
+  padding: 10px 20px !important;
+  box-sizing: border-box;
   align-items: center;
   justify-content: center;
+  overflow: visible;
   background: #000000;
   color: #FFFFFF;
-  padding: 0 20px;
-  box-sizing: border-box;
-  text-align: center;
-}
-
-
-/* BANDEAU BLACK FRIDAY ET INFORMATIONS POUR */
-
-.pour-hero-banner {
-  width: 100%;
-  background: #000000;
-  color: #FFFFFF;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  box-sizing: border-box;
 }
 
 .pour-hero-banner__inner {
@@ -912,7 +897,7 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 9px;
   width: 100%;
 }
 
@@ -920,7 +905,8 @@ a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 300;
-  letter-spacing: 0.18em;
+  line-height: 1.4;
+  letter-spacing: 0.16em;
   text-align: center;
   text-transform: uppercase;
 }
@@ -929,7 +915,8 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 25px;
+  width: 100%;
 }
 
 .pour-hero-banner__item {
@@ -940,19 +927,22 @@ a {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 9px;
   font-weight: 300;
-  letter-spacing: 0.16em;
+  line-height: 1.3;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
 }
 
 .pour-hero-banner__item svg {
+  display: block;
   width: 25px;
   height: 25px;
-  flex-shrink: 0;
+  flex: 0 0 25px;
 }
 
 .pour-hero-banner__separator {
+  display: block;
   width: 1px;
-  height: 22px;
+  height: 23px;
   background: rgba(255,255,255,0.55);
   flex-shrink: 0;
 }
@@ -961,7 +951,8 @@ a {
 
 @media screen and (max-width: 768px) {
   .pour-hero-banner {
-    padding: 9px 5px;
+    min-height: 62px !important;
+    padding: 8px 5px !important;
   }
 
   .pour-hero-banner__inner {
@@ -970,39 +961,30 @@ a {
 
   .pour-hero-banner__promo {
     font-size: 9px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.10em;
   }
 
   .pour-hero-banner__details {
-    gap: 10px;
+    gap: 9px;
   }
 
   .pour-hero-banner__item {
     gap: 5px;
     font-size: 7px;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
 
   .pour-hero-banner__item svg {
     width: 19px;
     height: 19px;
+    flex-basis: 19px;
   }
 
   .pour-hero-banner__separator {
-    height: 18px;
+    height: 19px;
   }
 }
 
-.pour-hero-banner span {
-  display: block;
-  margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 9px;
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-}
 /* =========================================================
    HOME TEMPORAIRE
 ========================================================= */
