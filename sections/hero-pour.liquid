@@ -1,6 +1,6 @@
 <section
   id="Hero-{{ section.id }}"
-class="pour-hero{% if section.settings.image_mobile_1 != blank and section.settings.image_mobile_2 != blank %} pour-hero--split-mobile{% endif %}"
+class="pour-hero{% if section.settings.image_mobile_1 != blank and section.settings.image_mobile_2 != blank %} pour-hero--split-mobile{% endif %}{% if section.settings.image_desktop_1 != blank and section.settings.image_desktop_2 != blank and section.settings.image_desktop_3 != blank and section.settings.image_desktop_4 != blank and section.settings.image_desktop_5 != blank %} pour-hero--five-desktop{% endif %}"
   style="
     --hero-text-color: {{ section.settings.text_color }};
     --hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
@@ -156,6 +156,35 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
       "id": "image_desktop",
       "label": "Image desktop"
     },
+    {
+  "type": "header",
+  "content": "Photos ordinateur"
+},
+{
+  "type": "image_picker",
+  "id": "image_desktop_1",
+  "label": "Photo ordinateur 1"
+},
+{
+  "type": "image_picker",
+  "id": "image_desktop_2",
+  "label": "Photo ordinateur 2"
+},
+{
+  "type": "image_picker",
+  "id": "image_desktop_3",
+  "label": "Photo ordinateur 3"
+},
+{
+  "type": "image_picker",
+  "id": "image_desktop_4",
+  "label": "Photo ordinateur 4"
+},
+{
+  "type": "image_picker",
+  "id": "image_desktop_5",
+  "label": "Photo ordinateur 5"
+},
     {
       "type": "image_picker",
       "id": "image_mobile",
