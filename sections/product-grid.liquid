@@ -27,6 +27,50 @@
 
 
     <!-- =========================
+         FILTRES COLLECTION
+    ========================== -->
+
+    <div class="pour-products__filters" data-pour-products-filters>
+
+      <button
+        type="button"
+        class="pour-products__filter is-active"
+        data-filter="all"
+        aria-pressed="true"
+      >
+        TOUT
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="mediterraneen"
+        aria-pressed="false"
+      >
+        MÉDITERRANÉEN
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="signature"
+        aria-pressed="false"
+      >
+        SIGNATURE
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="racine"
+        aria-pressed="false"
+      >
+        RACINE
+      </button>
+
+    </div>
+
+    <!-- =========================
          CARROUSEL PRODUITS
     ========================== -->
 
@@ -62,10 +106,13 @@
 
           {% if featured_product != blank %}
 
-            <article
-              class="pour-product"
-              {{ block.shopify_attributes }}
-            >
+        
+<article
+  class="pour-product"
+  data-category="{{ block.settings.category | default: 'none' }}"
+  {{ block.shopify_attributes }}
+>
+
 
               <!-- =========================================
                    ZONE IMAGE
@@ -511,8 +558,123 @@
   color: #999999;
   text-decoration: line-through;
 }
+
+/* =========================================================
+   FILTRES COLLECTION 001
+========================================================= */
+
+#PourProducts-{{ section.id }} .pour-products__filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin: 25px 0 30px;
+}
+
+#PourProducts-{{ section.id }} .pour-products__filter {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #D9D9D9;
+  border-radius: 0;
+  background: #FFFFFF;
+  color: #111111;
+  padding: 10px 17px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#PourProducts-{{ section.id }} .pour-products__filter.is-active {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
+#PourProducts-{{ section.id }} .pour-product.is-filtered-out {
+  display: none !important;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  #PourProducts-{{ section.id }} .pour-products__filters {
+    gap: 6px;
+    margin: 20px 0 22px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  #PourProducts-{{ section.id }} .pour-products__filter {
+    padding: 9px 10px;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
+}
+
 </style>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector(
+    '#PourProducts-{{ section.id }}'
+  );
+
+  if (!section || section.dataset.filtersInitialized === 'true') return;
+
+  section.dataset.filtersInitialized = 'true';
+
+  const buttons = section.querySelectorAll(
+    '[data-pour-products-filters] [data-filter]'
+  );
+
+  const products = section.querySelectorAll(
+    '.pour-products__grid .pour-product'
+  );
+
+  const track = section.querySelector('[data-pour-products-track]');
+
+  buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const selectedCategory = button.dataset.filter;
+
+      buttons.forEach(function (item) {
+        const isActive = item === button;
+
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      products.forEach(function (product) {
+        const productCategory = product.dataset.category;
+
+        const shouldDisplay =
+          selectedCategory === 'all' ||
+          productCategory === selectedCategory;
+
+        product.classList.toggle(
+          'is-filtered-out',
+          !shouldDisplay
+        );
+      });
+
+      if (track) {
+        track.scrollLeft = 0;
+        track.dispatchEvent(new Event('scroll', { bubbles: true }));
+      }
+    });
+  });
+});
+</script>
 
 
 {% schema %}
@@ -545,6 +707,31 @@
           "id": "product",
           "label": "Produit Shopify"
         },
+
+{
+  "type": "select",
+  "id": "category",
+  "label": "Catégorie du produit",
+  "options": [
+    {
+      "value": "none",
+      "label": "Non classé"
+    },
+    {
+      "value": "mediterraneen",
+      "label": "Méditerranéen"
+    },
+    {
+      "value": "signature",
+      "label": "Signature"
+    },
+    {
+      "value": "racine",
+      "label": "Racine"
+    }
+  ],
+  "default": "none"
+},
         {
           "type": "image_picker",
           "id": "image_primary",
