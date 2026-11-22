@@ -1,6 +1,6 @@
 <section
   id="Hero-{{ section.id }}"
-  class="pour-hero"
+class="pour-hero{% if section.settings.image_mobile_1 != blank and section.settings.image_mobile_2 != blank %} pour-hero--split-mobile{% endif %}"
   style="
     --hero-text-color: {{ section.settings.text_color }};
     --hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }};
