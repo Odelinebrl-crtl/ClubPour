@@ -6,25 +6,29 @@ function initHeroParallax() {
 
   if (!hero) return;
 
-  // Photo principale desktop
-  const desktopImage = hero.querySelector('.pour-hero__image');
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
 
-  // Deuxième photo mobile uniquement
-  const mobileSecondImage = hero.querySelector(
-    '.pour-hero__mobile-image--second img'
-  );
+  const images = isMobile
+    ? [
+        {
+          element: hero.querySelector('.pour-hero__mobile-image--first img'),
+          speed: 0.12
+        },
+        {
+          element: hero.querySelector('.pour-hero__mobile-image--second img'),
+          speed: 0.22
+        }
+      ]
+    : [
+        {
+          element: hero.querySelector('.pour-hero__image'),
+          speed: 0.22
+        }
+      ];
 
-  const images = [];
+  const validImages = images.filter(item => item.element);
 
-  if (desktopImage) {
-    images.push(desktopImage);
-  }
-
-  if (mobileSecondImage) {
-    images.push(mobileSecondImage);
-  }
-
-  if (!images.length) return;
+  if (!validImages.length) return;
 
   let ticking = false;
 
@@ -33,11 +37,11 @@ function initHeroParallax() {
     const heroHeight = hero.offsetHeight;
 
     if (scrollY <= heroHeight) {
-      const translateY = scrollY * 0.22;
+      validImages.forEach(({ element, speed }) => {
+        const translateY = scrollY * speed;
 
-      images.forEach((image) => {
-        image.style.transform =
-          `translate3d(0, ${translateY}px, 0) scale(1.08)`;
+        element.style.transform =
+          `translate3d(0, ${translateY}px, 0)`;
       });
     }
 
@@ -58,6 +62,13 @@ function initHeroParallax() {
   });
 }
 
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initHeroParallax);
+} else {
+  initHeroParallax();
+}
+
+document.addEventListener('shopify:section:load', initHeroParallax);
 
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initHeroParallax);
