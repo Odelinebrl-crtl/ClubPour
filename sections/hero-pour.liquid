@@ -73,16 +73,17 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
         }}
 
         <style>
-          #Hero-{{ section.id }} .pour-hero__desktop-image:nth-child({{ i }}) img {
-            width: {{ zoom }}%;
-            height: {{ zoom }}%;
-            max-width: none;
-            object-fit: cover;
-            object-position: {{ pos_x }}% {{ pos_y }}%;
-            left: {{ 50 | minus: zoom | divided_by: 2 }}%;
-            top: {{ 50 | minus: zoom | divided_by: 2 }}%;
-          }
-        </style>
+  #Hero-{{ section.id }} .pour-hero__desktop-image:nth-child({{ i }}) img {
+    width: {{ zoom }}%;
+    height: {{ zoom }}%;
+    max-width: none;
+    object-fit: cover;
+    object-position: {{ pos_x }}% {{ pos_y }}%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
       </div>
     {% endif %}
   {% endfor %}
@@ -251,7 +252,7 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
 {
   "type": "range",
   "id": "desktop_x_1",
-  "label": "Position horizontale photo 1",
+  "label": "Position gauche / droite photo 1",
   "min": 0,
   "max": 100,
   "step": 5,
@@ -261,7 +262,7 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
 {
   "type": "range",
   "id": "desktop_y_1",
-  "label": "Position verticale photo 1",
+  "label": "Position haut / bas photo 1",
   "min": 0,
   "max": 100,
   "step": 5,
