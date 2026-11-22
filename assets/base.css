@@ -876,111 +876,102 @@ a {
   opacity: 0.85;
 }
 
-/* BANDEAU BLACK FRIDAY + INFORMATIONS POUR */
 
 .pour-hero-banner {
-  display: flex;
   width: 100%;
-  height: auto !important;
-  min-height: 68px !important;
-  padding: 10px 20px !important;
-  box-sizing: border-box;
+  height: 24px;
+  min-height: 24px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  overflow: visible;
   background: #000000;
   color: #FFFFFF;
+  padding: 0 20px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.pour-hero-banner__inner {
+.pour-hero-banner span {
+  display: block;
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* BANDEAU QUALITÉ */
+
+.pour-quality-banner {
+  width: 100%;
+  min-height: 54px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  background: #FFFFFF;
+  color: #111111;
+  padding: 8px 20px;
+  box-sizing: border-box;
+}
+
+.pour-quality-banner__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
   width: 100%;
 }
 
-.pour-hero-banner__promo {
+.pour-quality-banner__item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  white-space: nowrap;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10px;
   font-weight: 300;
-  line-height: 1.4;
   letter-spacing: 0.16em;
-  text-align: center;
-  text-transform: uppercase;
 }
 
-.pour-hero-banner__details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 25px;
-  width: 100%;
+.pour-quality-banner__item svg {
+  width: 27px;
+  height: 27px;
+  flex-shrink: 0;
 }
 
-.pour-hero-banner__item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  white-space: nowrap;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 9px;
-  font-weight: 300;
-  line-height: 1.3;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-.pour-hero-banner__item svg {
-  display: block;
-  width: 25px;
-  height: 25px;
-  flex: 0 0 25px;
-}
-
-.pour-hero-banner__separator {
-  display: block;
+.pour-quality-banner__separator {
   width: 1px;
-  height: 23px;
-  background: rgba(255,255,255,0.55);
+  height: 24px;
+  background: #BBBBBB;
   flex-shrink: 0;
 }
 
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
-  .pour-hero-banner {
-    min-height: 62px !important;
-    padding: 8px 5px !important;
+  .pour-quality-banner {
+    min-height: 46px;
+    padding: 7px 5px;
   }
 
-  .pour-hero-banner__inner {
-    gap: 8px;
+  .pour-quality-banner__inner {
+    gap: 10px;
   }
 
-  .pour-hero-banner__promo {
-    font-size: 9px;
-    letter-spacing: 0.10em;
-  }
-
-  .pour-hero-banner__details {
-    gap: 9px;
-  }
-
-  .pour-hero-banner__item {
+  .pour-quality-banner__item {
     gap: 5px;
     font-size: 7px;
     letter-spacing: 0.04em;
   }
 
-  .pour-hero-banner__item svg {
+  .pour-quality-banner__item svg {
     width: 19px;
     height: 19px;
-    flex-basis: 19px;
   }
 
-  .pour-hero-banner__separator {
+  .pour-quality-banner__separator {
     height: 19px;
   }
 }
