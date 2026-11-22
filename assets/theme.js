@@ -6,29 +6,7 @@ function initHeroParallax() {
 
   if (!hero) return;
 
-  const isMobile = window.matchMedia('(max-width: 768px)').matches;
-
-  const images = isMobile
-    ? [
-        {
-          element: hero.querySelector('.pour-hero__mobile-image--first img'),
-          speed: 0.12
-        },
-        {
-          element: hero.querySelector('.pour-hero__mobile-image--second img'),
-          speed: 0.22
-        }
-      ]
-    : [
-        {
-          element: hero.querySelector('.pour-hero__image'),
-          speed: 0.22
-        }
-      ];
-
-  const validImages = images.filter(item => item.element);
-
-  if (!validImages.length) return;
+  const mobileQuery = window.matchMedia('(max-width: 768px)');
 
   let ticking = false;
 
@@ -37,7 +15,40 @@ function initHeroParallax() {
     const heroHeight = hero.offsetHeight;
 
     if (scrollY <= heroHeight) {
-      validImages.forEach(({ element, speed }) => {
+      const isMobile = mobileQuery.matches;
+
+      let images = [];
+
+      if (isMobile) {
+        images = [
+          {
+            element: hero.querySelector('.pour-hero__mobile-image--first img'),
+            speed: 0.12
+          },
+          {
+            element: hero.querySelector('.pour-hero__mobile-image--second img'),
+            speed: 0.22
+          }
+        ];
+      } else if (hero.classList.contains('pour-hero--five-desktop')) {
+        images = [
+          ...hero.querySelectorAll('.pour-hero__desktop-image img')
+        ].map(element => ({
+          element,
+          speed: 0.22
+        }));
+      } else {
+        images = [
+          {
+            element: hero.querySelector('.pour-hero__image'),
+            speed: 0.22
+          }
+        ];
+      }
+
+      images.forEach(({ element, speed }) => {
+        if (!element) return;
+
         const translateY = scrollY * speed;
 
         element.style.transform =
@@ -60,6 +71,10 @@ function initHeroParallax() {
   window.addEventListener('scroll', onScroll, {
     passive: true
   });
+
+  mobileQuery.addEventListener('change', updateParallax);
+
+  document.addEventListener('shopify:section:load', updateParallax);
 }
 
 if (document.readyState === 'loading') {
