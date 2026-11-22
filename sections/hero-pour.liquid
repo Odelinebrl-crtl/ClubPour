@@ -62,7 +62,8 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
     {% assign pos_y = section.settings[y_key] | default: 50 %}
 
     {% if hero_image != blank %}
-      <div class="pour-hero__desktop-image">
+<div class="pour-hero__desktop-image">
+  <div class="pour-hero__desktop-image-inner">
         {{
           hero_image
           | image_url: width: 1800
@@ -71,7 +72,8 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
             sizes: '20vw',
             loading: 'eager'
         }}
-
+  </div>
+</div>
 
 <style>
   #Hero-{{ section.id }} .pour-hero__desktop-image:nth-child({{ i }}) img {
