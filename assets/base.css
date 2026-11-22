@@ -603,6 +603,11 @@ a {
    HERO DESKTOP — GALERIE 5 PHOTOS
 ========================================= */
 
+
+/* =========================================
+   HERO DESKTOP — 5 PHOTOS
+========================================= */
+
 .pour-hero__desktop-gallery {
   display: none;
 }
@@ -626,8 +631,6 @@ a {
     overflow: hidden;
   }
 
-  
-@media screen and (min-width: 769px) {
   .pour-hero__desktop-image {
     position: relative;
     width: 100%;
@@ -636,12 +639,40 @@ a {
     overflow: hidden;
   }
 
-  .pour-hero__desktop-image img {
+  .pour-hero__desktop-image-inner {
     position: absolute;
-    display: block;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform: translate3d(
+      0,
+      var(--parallax-y, 0px),
+      0
+    );
+
     will-change: transform;
   }
+
+  .pour-hero__desktop-image-inner img {
+    position: absolute;
+    inset: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    max-width: none;
+    object-fit: cover;
+
+    object-position: var(--hero-x, 50%) var(--hero-y, 50%);
+
+    transform: scale(var(--hero-zoom, 1));
+    transform-origin: var(--hero-x, 50%) var(--hero-y, 50%);
+  }
 }
+
 
 /* =========================================================
    HERO — CONTENU
