@@ -40,6 +40,34 @@
 
 </div>
 
+{% if section.settings.image_mobile_1 != blank and section.settings.image_mobile_2 != blank %}
+  <div class="pour-hero__mobile-split">
+
+    <div class="pour-hero__mobile-image pour-hero__mobile-image--first">
+      {{
+        section.settings.image_mobile_1
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          loading: 'eager'
+      }}
+    </div>
+
+    <div class="pour-hero__mobile-image pour-hero__mobile-image--second">
+      {{
+        section.settings.image_mobile_2
+        | image_url: width: 2400
+        | image_tag:
+          widths: '750, 1100, 1500, 2000, 2400',
+          sizes: '100vw',
+          loading: 'eager'
+      }}
+    </div>
+
+  </div>
+{% endif %}
+
   <div class="pour-hero__overlay"></div>
 
   <div class="pour-hero__content pour-hero__content--{{ section.settings.content_position }}">
@@ -133,6 +161,18 @@
       "id": "image_mobile",
       "label": "Image mobile"
     },
+
+{
+  "type": "image_picker",
+  "id": "image_mobile_1",
+  "label": "Photo mobile 1 (60 %)"
+},
+{
+  "type": "image_picker",
+  "id": "image_mobile_2",
+  "label": "Photo mobile 2 (40 %)"
+},
+
     {
   "type": "text",
   "id": "eyebrow",
