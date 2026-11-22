@@ -32,7 +32,7 @@ function initHeroParallax() {
         ];
       } else if (hero.classList.contains('pour-hero--five-desktop')) {
         images = [
-          ...hero.querySelectorAll('.pour-hero__desktop-image img')
+          ...hero.querySelectorAll('.pour-hero__desktop-image-inner')
         ].map(element => ({
           element,
           speed: 0.22
