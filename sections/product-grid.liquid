@@ -561,7 +561,19 @@
   color: #999999;
   text-decoration: line-through;
 }
+/* PRIX ACTUEL EN NOIR */
+#VetementsGrid-{{ section.id }} .vetements-card__price,
+#VetementsGrid-{{ section.id }} .vetements-card__price span,
+#VetementsGrid-{{ section.id }} .vetements-qv__price,
+#VetementsGrid-{{ section.id }} .vetements-qv__price span {
+  color: #111111 !important;
+}
 
+/* ANCIEN PRIX BARRÉ EN GRIS */
+#VetementsGrid-{{ section.id }} .vetements-card__price s,
+#VetementsGrid-{{ section.id }} .vetements-qv__price s {
+  color: #999999 !important;
+}
 /* =========================================================
    FILTRES COLLECTION 001
 ========================================================= */
@@ -622,19 +634,7 @@
     letter-spacing: 0.07em;
   }
 }
-/* PRIX ACTUEL EN NOIR */
-#VetementsGrid-{{ section.id }} .vetements-card__price,
-#VetementsGrid-{{ section.id }} .vetements-card__price span,
-#VetementsGrid-{{ section.id }} .vetements-qv__price,
-#VetementsGrid-{{ section.id }} .vetements-qv__price span {
-  color: #111111 !important;
-}
 
-/* ANCIEN PRIX BARRÉ EN GRIS */
-#VetementsGrid-{{ section.id }} .vetements-card__price s,
-#VetementsGrid-{{ section.id }} .vetements-qv__price s {
-  color: #999999 !important;
-}
 </style>
 
 
