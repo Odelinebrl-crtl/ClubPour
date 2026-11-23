@@ -1882,11 +1882,15 @@ transform: scale(var(--hero-zoom, 1));
   z-index: 2;
 }
 
-/* Deuxième photo : toute la hauteur en arrière-plan */
 .pour-hero__mobile-image--second {
   top: 0;
   height: 100%;
   z-index: 1;
+}
+
+.pour-hero__mobile-image--second img {
+  object-fit: contain;
+  background: transparent;
 }
 
 /* Réglages indépendants des deux photos */
