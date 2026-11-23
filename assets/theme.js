@@ -29,15 +29,19 @@ function initHeroParallax() {
           '.pour-hero__mobile-image--second img'
         );
 
-        if (first) {
-          first.style.transform =
-            `translate3d(0, ${localScroll * 0.06}px, 0)`;
-        }
+     if (first) {
+  first.style.setProperty(
+    '--mobile-parallax-y',
+    `${localScroll * 0.06}px`
+  );
+}
 
-        if (second) {
-          second.style.transform =
-            `translate3d(0, ${localScroll * 0.10}px, 0)`;
-        }
+if (second) {
+  second.style.setProperty(
+    '--mobile-parallax-y',
+    `${localScroll * 0.10}px`
+  );
+}
 
       } else {
 
