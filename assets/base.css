@@ -1037,7 +1037,7 @@ transform: scale(var(--hero-zoom, 1));
     justify-content: center;
     align-items: center;
     column-gap: 10px;
-    row-gap: 12px;
+    row-gap: 7px;
     width: 100%;
   }
 
