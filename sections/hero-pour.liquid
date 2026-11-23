@@ -97,29 +97,52 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
 
   <div class="pour-hero__mobile-split">
 
-    <div class="pour-hero__mobile-image pour-hero__mobile-image--first">
+    {% assign mobile_zoom_1 = section.settings.mobile_zoom_1 | default: 100 %}
+    {% assign mobile_x_1 = section.settings.mobile_x_1 | default: 50 %}
+    {% assign mobile_y_1 = section.settings.mobile_y_1 | default: 50 %}
+
+    <div
+      class="pour-hero__mobile-image pour-hero__mobile-image--first"
+      style="
+        --mobile-zoom: {{ mobile_zoom_1 | divided_by: 100.0 }};
+        --mobile-x: {{ mobile_x_1 }}%;
+        --mobile-y: {{ mobile_y_1 }}%;
+      "
+    >
       {{
         section.settings.image_mobile_1
         | image_url: width: 3000
         | image_tag:
           widths: '750, 1100, 1500, 2000, 2500, 3000',
-sizes: '100vw',
-loading: 'eager'
+          sizes: '100vw',
+          loading: 'eager'
       }}
     </div>
 
-    <div class="pour-hero__mobile-image pour-hero__mobile-image--second">
+    {% assign mobile_zoom_2 = section.settings.mobile_zoom_2 | default: 100 %}
+    {% assign mobile_x_2 = section.settings.mobile_x_2 | default: 50 %}
+    {% assign mobile_y_2 = section.settings.mobile_y_2 | default: 50 %}
+
+    <div
+      class="pour-hero__mobile-image pour-hero__mobile-image--second"
+      style="
+        --mobile-zoom: {{ mobile_zoom_2 | divided_by: 100.0 }};
+        --mobile-x: {{ mobile_x_2 }}%;
+        --mobile-y: {{ mobile_y_2 }}%;
+      "
+    >
       {{
         section.settings.image_mobile_2
         | image_url: width: 3000
         | image_tag:
-        widths: '750, 1100, 1500, 2000, 2500, 3000',
-sizes: '100vw',
-loading: 'eager'
+          widths: '750, 1100, 1500, 2000, 2500, 3000',
+          sizes: '100vw',
+          loading: 'eager'
       }}
     </div>
 
   </div>
+
 {% endif %}
 
   <div class="pour-hero__overlay"></div>
