@@ -976,6 +976,7 @@ transform: scale(var(--hero-zoom, 1));
 
 .pour-quality-banner {
   width: 100%;
+    padding-top: 15px;
   min-height: 54px;
   display: flex;
   align-items: center;
