@@ -6449,3 +6449,11 @@ html {
   }
 
 }
+/* QUICK VIEW — COULEUR DES PRIX */
+#VetementsGrid-{{ section.id }} .vetements-qv__price > span {
+  color: #111111 !important;
+}
+
+#VetementsGrid-{{ section.id }} .vetements-qv__price s {
+  color: #999999 !important;
+}
