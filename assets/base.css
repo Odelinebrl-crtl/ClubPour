@@ -1048,21 +1048,49 @@ transform: scale(var(--hero-zoom, 1));
 @media screen and (max-width: 768px) {
 
   .pour-hero__mobile-image {
+    position: absolute;
+    left: 0;
+    width: 100%;
     overflow: hidden;
   }
 
+  .pour-hero__mobile-image--first {
+    top: 0;
+    height: 60%;
+    z-index: 2;
+  }
+
+  .pour-hero__mobile-image--second {
+    top: 0;
+    height: 100%;
+    z-index: 1;
+  }
+
   .pour-hero__mobile-image img {
+    position: absolute;
+    inset: 0;
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
     object-position: var(--mobile-x, 50%) var(--mobile-y, 50%);
-    transform: translate3d(0, var(--mobile-parallax-y, 0px), 0)
-               scale(var(--mobile-zoom, 1));
+    transform:
+      translate3d(0, var(--parallax-y, 0px), 0)
+      scale(var(--mobile-zoom, 1));
     transform-origin: center center;
     will-change: transform;
   }
 
+  .pour-hero__mobile-image--first img {
+    object-fit: cover;
+  }
+
+  .pour-hero__mobile-image--second img {
+    object-fit: contain;
+  }
+
+  .pour-hero--split-mobile .pour-hero__media {
+    display: none;
+  }
 }
 /* =========================================================
    HOME TEMPORAIRE
