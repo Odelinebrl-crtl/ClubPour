@@ -1975,7 +1975,24 @@ object-position:
   transform-origin: center center;
   will-change: transform;
 }
+/* POSITION VERTICALE — PHOTO MOBILE 2 */
+@media screen and (max-width: 768px) {
 
+  .pour-hero--split-mobile .pour-hero__mobile-image--second img {
+    object-position: center !important;
+
+    transform:
+      translate3d(
+        0,
+        calc(var(--mobile-y-offset, 0px) + var(--parallax-y, 0px)),
+        0
+      )
+      scale(var(--mobile-zoom, 1)) !important;
+
+    transform-origin: center center !important;
+  }
+
+}
 /* Masquer l'ancien visuel mobile */
 .pour-hero--split-mobile .pour-hero__media {
   display: none;
