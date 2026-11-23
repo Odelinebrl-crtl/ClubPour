@@ -65,8 +65,8 @@
           "type": "product",
           "settings": {
             "product": "t-shirt-pegasus",
-            "image_primary": "shopify://shop_images/t-shirt-pegasus-blanc-dos-mannequin2.png",
-            "image_hover": "shopify://shop_images/t-shirt-pegasus-blanc-face-mannequin.png"
+            "image_primary": "shopify://shop_images/t-shirt-pegasus-blanc-detail-dos.png",
+            "image_hover": "shopify://shop_images/t-shirt-pegasus-blanc-detail-logo.png"
           }
         }
       },
