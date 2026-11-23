@@ -976,7 +976,6 @@ transform: scale(var(--hero-zoom, 1));
 
 .pour-quality-banner {
   width: 100%;
-    padding-top: 15px;
   min-height: 54px;
   display: flex;
   align-items: center;
@@ -1018,7 +1017,9 @@ transform: scale(var(--hero-zoom, 1));
   background: #BBBBBB;
   flex-shrink: 0;
 }
-
+.pour-quality-banner {
+  margin-top: 25px !important;
+}
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
