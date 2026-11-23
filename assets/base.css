@@ -1017,8 +1017,8 @@ transform: scale(var(--hero-zoom, 1));
   background: #BBBBBB;
   flex-shrink: 0;
 }
-.pour-quality-banner {
-  margin-top: 25px !important;
+.pour-hero-banner {
+  margin-bottom: 20px !important;
 }
 /* MOBILE */
 
