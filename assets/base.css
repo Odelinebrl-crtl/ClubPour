@@ -668,7 +668,7 @@ a {
 
     object-position: var(--hero-x, 50%) var(--hero-y, 50%);
 
-    transform: scale(var(--hero-zoom, 1));
+    transform: scale(calc(var(--hero-zoom, 1) * 0.97));
     transform-origin: var(--hero-x, 50%) var(--hero-y, 50%);
   }
 }
