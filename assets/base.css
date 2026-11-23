@@ -1851,7 +1851,7 @@ transform: scale(var(--hero-zoom, 1));
     transform: none;
   }
 
-//* HERO MOBILE — DEUX IMAGES 60 / 40 */
+/* HERO MOBILE — SUPERPOSITION DES DEUX PHOTOS */
 
 .pour-hero__mobile-split {
   display: none;
@@ -1861,26 +1861,38 @@ transform: scale(var(--hero-zoom, 1));
   position: absolute;
   inset: 0;
   z-index: 0;
-  display: grid;
-  grid-template-rows: 60% 40%;
+  display: block;
   width: 100%;
   height: 100%;
   overflow: hidden;
 }
 
+/* Conteneurs des images */
 .pour-hero__mobile-image {
-  position: relative;
+  position: absolute;
+  left: 0;
   width: 100%;
-  height: 100%;
-  min-height: 0;
   overflow: hidden;
 }
 
-/* Réglages communs aux deux photos */
+/* Première photo : 60 % en haut */
+.pour-hero__mobile-image--first {
+  top: 0;
+  height: 60%;
+  z-index: 2;
+}
+
+/* Deuxième photo : toute la hauteur en arrière-plan */
+.pour-hero__mobile-image--second {
+  top: 0;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Réglages indépendants des deux photos */
 .pour-hero__mobile-image img {
   position: absolute;
-  top: 0;
-  left: 0;
+  inset: 0;
   display: block;
   width: 100%;
   height: 100%;
