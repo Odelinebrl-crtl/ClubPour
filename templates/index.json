@@ -83,6 +83,15 @@
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
           }
         },
+        "product_card_BVhk8w": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-sorrento",
+            "category": "mediterraneen",
+            "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
+          }
+        },
         "product_card_NHQ6tT": {
           "type": "product_card",
           "settings": {
@@ -99,15 +108,6 @@
             "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_006.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
-          }
-        },
-        "product_card_BVhk8w": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-sorrento",
-            "category": "mediterraneen",
-            "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
           }
         },
         "product_card_Jt7Npe": {
@@ -133,9 +133,9 @@
         "product_card_97K8cp",
         "product_card_zJAett",
         "product_card_gAaqnd",
+        "product_card_BVhk8w",
         "product_card_NHQ6tT",
         "product_card_CgHeQ3",
-        "product_card_BVhk8w",
         "product_card_Jt7Npe",
         "product_card_kwbHz7"
       ],
