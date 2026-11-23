@@ -1964,9 +1964,9 @@ transform: scale(var(--hero-zoom, 1));
   height: 100%;
   object-fit: cover;
 
-  object-position:
-    var(--mobile-x, 50%)
-  var(--mobile-y, 50%) !important;
+object-position:
+  var(--mobile-x, 50%)
+  calc(var(--mobile-y, 50%) * 2 - 50%) !important;
 
   transform:
     translate3d(0, var(--parallax-y, 0px), 0)
