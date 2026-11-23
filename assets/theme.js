@@ -1,7 +1,5 @@
 document.documentElement.classList.add('js');
 
-
-
 function initHeroParallax() {
   document.querySelectorAll('.pour-hero').forEach(hero => {
 
@@ -33,12 +31,12 @@ function initHeroParallax() {
 
         if (first) {
           first.style.transform =
-            `translate3d(0, ${localScroll * 0.12}px, 0)`;
+            `translate3d(0, ${localScroll * 0.06}px, 0)`;
         }
 
         if (second) {
           second.style.transform =
-            `translate3d(0, ${localScroll * 0.22}px, 0)`;
+            `translate3d(0, ${localScroll * 0.10}px, 0)`;
         }
 
       } else {
@@ -51,7 +49,7 @@ function initHeroParallax() {
           desktopImages.forEach(image => {
             image.style.setProperty(
               '--parallax-y',
-              `${localScroll * 0.22}px`
+              `${localScroll * 0.10}px`
             );
           });
         } else {
@@ -61,7 +59,7 @@ function initHeroParallax() {
 
           if (originalImage) {
             originalImage.style.transform =
-              `translate3d(0, ${localScroll * 0.22}px, 0) scale(1.08)`;
+              `translate3d(0, ${localScroll * 0.10}px, 0) scale(1.03)`;
           }
         }
       }
@@ -85,7 +83,6 @@ function initHeroParallax() {
     mobileQuery.addEventListener('change', requestUpdate);
 
     updateParallax();
-
   });
 }
 
@@ -96,15 +93,15 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('shopify:section:load', event => {
-  const hero = event.target.querySelector('.pour-hero');
+  const hero = event.target.matches('.pour-hero')
+    ? event.target
+    : event.target.querySelector('.pour-hero');
 
   if (hero) {
     hero.dataset.heroParallaxReady = 'false';
+    initHeroParallax();
   }
-
-  initHeroParallax();
 });
-
 
 document.addEventListener('shopify:section:load', initHeroParallax);
 
