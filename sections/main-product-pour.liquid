@@ -200,6 +200,10 @@
   <strong>{{ 'pour_product.fit_title' | t }}</strong>
   <span>— {{ product.metafields.custom.fit.value }}</span>
 </div>
+<div class="product-page-pour__creation">
+  <strong>CRÉATION</strong>
+  <span>— Impression française, design réalisé en France</span>
+</div>
 {% assign color_products = product.metafields.custom.color_products.value %}
 
 {% if color_products != blank %}
@@ -3670,7 +3674,30 @@ font-weight: 200;
     min-height: 40px !important;
   }
 }
+.product-page-pour__creation {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: #111111;
+}
 
+.product-page-pour__creation strong {
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.product-page-pour__creation span {
+  display: block;
+  flex: 1;
+  padding-left: 16px;
+  text-indent: -16px;
+  font-weight: 400;
+}
 </style>
 
 <script>
