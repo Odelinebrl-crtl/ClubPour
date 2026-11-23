@@ -6103,21 +6103,16 @@ html {
 
 .pour-quickview__price {
   margin-top: 15px;
-
   font-size: 13px;
   font-weight: 400;
-
-  color: rgba(17,17,17,.55);
-}
-
-.pour-quickview__price {
+  color: #111111 !important;
   display: flex;
   align-items: baseline;
   gap: 8px;
 }
 
 .pour-quickview__price-compare {
-  color: #999999;
+  color: #999999 !important;
   font-size: 13px;
   font-weight: 400;
   text-decoration: line-through;
