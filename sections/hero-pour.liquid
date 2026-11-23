@@ -72,14 +72,16 @@ class="pour-hero{% if section.settings.image_mobile_1 != blank and section.setti
           "
         >
           
+
 {{
   hero_image
-  | image_url: width: 3000
+  | image_url: width: 4000
   | image_tag:
-    widths: '1000, 1500, 2000, 2500, 3000',
-    sizes: '40vw',
+    widths: '1500, 2000, 2500, 3000, 3500, 4000',
+    sizes: '20vw',
     loading: 'eager'
 }}
+
 
         </div>
       </div>
