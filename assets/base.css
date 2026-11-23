@@ -1080,13 +1080,40 @@ transform: scale(var(--hero-zoom, 1));
     will-change: transform;
   }
 
-  .pour-hero__mobile-image--first img {
-    object-fit: cover;
+ /* CORRECTION FINALE — PHOTO MOBILE 2 */
+@media screen and (max-width: 768px) {
+
+  .pour-hero--split-mobile .pour-hero__mobile-image--second {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    z-index: 1 !important;
   }
 
-  .pour-hero__mobile-image--second img {
-    object-fit: contain;
+  .pour-hero--split-mobile .pour-hero__mobile-image--second img {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: none !important;
+
+    object-fit: cover !important;
+    object-position:
+      var(--mobile-x, 50%)
+      var(--mobile-y, 50%) !important;
+
+    transform:
+      translate3d(0, var(--parallax-y, 0px), 0)
+      scale(var(--mobile-zoom, 1)) !important;
+
+    transform-origin: center center !important;
+    will-change: transform;
   }
+}
 
   .pour-hero--split-mobile .pour-hero__media {
     display: none;
