@@ -1021,6 +1021,7 @@ transform: scale(var(--hero-zoom, 1));
   margin-bottom: 20px !important;
 }
 
+
 /* MOBILE */
 
 @media screen and (max-width: 768px) {
@@ -1032,57 +1033,77 @@ transform: scale(var(--hero-zoom, 1));
 
   .pour-quality-banner__inner {
     display: grid;
-    grid-template-columns: auto 1px auto;
+    grid-template-columns: 1fr auto 1fr;
     grid-template-rows: auto auto;
     justify-content: center;
     align-items: center;
-    column-gap: 10px;
-    row-gap: 5px;
+    column-gap: 9px;
+    row-gap: 7px;
     width: 100%;
   }
 
-  /* COTON BIO */
+  /* PREMIÈRE LIGNE */
+
   .pour-quality-banner__item:nth-of-type(1) {
     grid-column: 1;
     grid-row: 1;
+    justify-self: end;
   }
 
-  /* SÉPARATEUR */
   .pour-quality-banner__separator:nth-of-type(1) {
+    display: block;
     grid-column: 2;
     grid-row: 1;
     height: 19px;
   }
 
-  /* IMPRIMÉ EN FRANCE */
   .pour-quality-banner__item:nth-of-type(2) {
     grid-column: 3;
     grid-row: 1;
+    justify-self: start;
   }
 
-  /* MASQUER LE DEUXIÈME SÉPARATEUR */
-  .pour-quality-banner__separator:nth-of-type(2) {
-    display: none;
-  }
+  /* DEUXIÈME LIGNE */
 
-  /* PAIEMENT SÉCURISÉ */
   .pour-quality-banner__item:nth-of-type(3) {
-    grid-column: 1 / -1;
+    grid-column: 1;
     grid-row: 2;
-    justify-self: center;
+    justify-self: end;
   }
+
+  .pour-quality-banner__separator:nth-of-type(3) {
+    display: block;
+    grid-column: 2;
+    grid-row: 2;
+    height: 19px;
+  }
+
+  .pour-quality-banner__item:nth-of-type(4) {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: start;
+  }
+
+  /* ÉLÉMENTS */
 
   .pour-quality-banner__item {
     gap: 5px;
     font-size: 9px;
     letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
   .pour-quality-banner__item svg {
     width: 19px;
     height: 19px;
   }
+
+  /* SÉPARATEUR ENTRE LES DEUX LIGNES */
+  .pour-quality-banner__separator:nth-of-type(2) {
+    display: none;
+  }
 }
+
 
 @media screen and (max-width: 768px) {
 
