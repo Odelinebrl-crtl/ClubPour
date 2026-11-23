@@ -1106,23 +1106,27 @@ transform: scale(var(--hero-zoom, 1));
 /* CENTRAGE INDÉPENDANT DES DEUX LIGNES */
 
 @media screen and (max-width: 768px) {
-
   .pour-quality-banner__inner {
-    grid-template-columns: 1fr auto 1fr;
-    justify-content: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    column-gap: 9px;
+    row-gap: 8px;
     width: 100%;
   }
 
-  .pour-quality-banner__item:nth-of-type(1),
-  .pour-quality-banner__item:nth-of-type(3) {
-    justify-self: end;
+  .pour-quality-banner__item {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    gap: 5px;
+    font-size: 9px;
   }
 
-  .pour-quality-banner__item:nth-of-type(2),
-  .pour-quality-banner__item:nth-of-type(4) {
-    justify-self: start;
+  .pour-quality-banner__separator {
+    flex: 0 0 1px;
+    height: 19px;
   }
-
 }
 
 @media screen and (max-width: 768px) {
