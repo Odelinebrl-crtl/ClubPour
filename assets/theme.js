@@ -29,16 +29,16 @@ function initHeroParallax() {
           '.pour-hero__mobile-image--second img'
         );
 
-     if (first) {
+if (first) {
   first.style.setProperty(
-    '--mobile-parallax-y',
+    '--parallax-y',
     `${localScroll * 0.06}px`
   );
 }
 
 if (second) {
   second.style.setProperty(
-    '--mobile-parallax-y',
+    '--parallax-y',
     `${localScroll * 0.10}px`
   );
 }
