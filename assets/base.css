@@ -1036,76 +1036,58 @@ transform: scale(var(--hero-zoom, 1));
 
 @media screen and (max-width: 768px) {
 
+/* MOBILE — BANDEAU QUALITÉ */
+
+@media screen and (max-width: 768px) {
+
   .pour-quality-banner {
     min-height: auto;
     padding: 12px 5px;
   }
 
   .pour-quality-banner__inner {
-    display: grid;
-    grid-template-columns: auto 1px auto;
-    grid-template-rows: auto auto;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    justify-items: center;
     align-items: center;
-    column-gap: 9px;
-    row-gap: 8px;
+    gap: 9px 0;
     width: 100%;
   }
 
-  /* PREMIÈRE LIGNE */
-
-  .pour-quality-banner__inner > .pour-quality-banner__item:nth-of-type(1) {
-    grid-column: 1;
-    grid-row: 1;
-    justify-self: end;
-  }
-
-  .pour-quality-banner__inner > .pour-quality-banner__separator:nth-of-type(1) {
-    display: block;
-    grid-column: 2;
-    grid-row: 1;
-    height: 19px;
-  }
-
-  .pour-quality-banner__inner > .pour-quality-banner__item:nth-of-type(2) {
-    grid-column: 3;
-    grid-row: 1;
-    justify-self: start;
-  }
-
-  /* MASQUER LE SÉPARATEUR INTERMÉDIAIRE */
-
-  .pour-quality-banner__inner > .pour-quality-banner__separator:nth-of-type(2) {
-    display: none !important;
-  }
-
-  /* DEUXIÈME LIGNE */
-
-  .pour-quality-banner__inner > .pour-quality-banner__item:nth-of-type(3) {
-    grid-column: 1;
-    grid-row: 2;
-    justify-self: end;
-  }
-
-  .pour-quality-banner__inner > .pour-quality-banner__separator:nth-of-type(3) {
-    display: block;
-    grid-column: 2;
-    grid-row: 2;
-    height: 19px;
-  }
-
-  .pour-quality-banner__inner > .pour-quality-banner__item:nth-of-type(4) {
-    grid-column: 3;
-    grid-row: 2;
-    justify-self: start;
-  }
-
   .pour-quality-banner__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 5px;
     font-size: 8px;
     letter-spacing: 0.04em;
     white-space: nowrap;
+  }
+
+  .pour-quality-banner__item:nth-of-type(1) {
+    margin-left: auto;
+  }
+
+  .pour-quality-banner__item:nth-of-type(2) {
+    margin-right: auto;
+  }
+
+  .pour-quality-banner__item:nth-of-type(3) {
+    margin-left: auto;
+  }
+
+  .pour-quality-banner__item:nth-of-type(4) {
+    margin-right: auto;
+  }
+
+  .pour-quality-banner__separator {
+    display: block !important;
+    height: 19px;
+    margin: 0 9px;
+  }
+
+  .pour-quality-banner__separator:nth-of-type(2) {
+    display: none !important;
   }
 
   .pour-quality-banner__item svg {
