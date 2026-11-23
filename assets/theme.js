@@ -49,7 +49,7 @@ function initHeroParallax() {
           desktopImages.forEach(image => {
             image.style.setProperty(
               '--parallax-y',
-              `${localScroll * 0.10}px`
+              `${localScroll * 0}px`
             );
           });
         } else {
