@@ -112,8 +112,8 @@
             "category_nouveaute": true,
             "image_primary": "shopify://shop_images/5_58a550a9-b3a2-4569-a6eb-52af419e74c3.png",
             "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png",
-            "show_second_color": false,
-            "second_color": "#fdbd00"
+            "show_second_color": true,
+            "second_color": "#FDBD00"
           }
         },
         "product_card_J4HN6t": {
