@@ -1459,10 +1459,6 @@ function closeModal() {
           <h2 class="pour-quickview__title">
             ${escapeHTML(product.title)}
           </h2>
-
-<p class="pour-quickview__black-friday">
-  BLACK FRIDAY · -20%
-</p>
          <div class="pour-quickview__price" data-quickview-price>
   <span class="pour-quickview__price-current">
     ${money((product.variants.find(v => v.available) || product.variants[0]).price)}
