@@ -62,7 +62,7 @@
             "product": "t-shirt-peperoncino",
             "show_new_badge": false,
             "category_mediterraneen": false,
-            "category_signature": false,
+            "category_signature": true,
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
@@ -74,7 +74,7 @@
           "settings": {
             "product": "t-shirt-amarena",
             "show_new_badge": false,
-            "category_mediterraneen": false,
+            "category_mediterraneen": true,
             "category_signature": false,
             "category_racing": false,
             "category_nouveaute": false,
@@ -89,7 +89,7 @@
             "show_new_badge": false,
             "category_mediterraneen": false,
             "category_signature": false,
-            "category_racing": false,
+            "category_racing": true,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_069.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
@@ -103,7 +103,7 @@
             "category_mediterraneen": false,
             "category_signature": false,
             "category_racing": true,
-            "category_nouveaute": false,
+            "category_nouveaute": true,
             "image_primary": "shopify://shop_images/5_58a550a9-b3a2-4569-a6eb-52af419e74c3.png",
             "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png"
           }
@@ -116,7 +116,7 @@
             "category_mediterraneen": false,
             "category_signature": false,
             "category_racing": true,
-            "category_nouveaute": false,
+            "category_nouveaute": true,
             "image_primary": "shopify://shop_images/3_c8ed5d12-99be-4223-85e4-bd9c75865410.png",
             "image_secondary": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png"
           }
@@ -126,7 +126,7 @@
           "settings": {
             "product": "t-shirt-sorrento",
             "show_new_badge": false,
-            "category_mediterraneen": false,
+            "category_mediterraneen": true,
             "category_signature": false,
             "category_racing": false,
             "category_nouveaute": false,
@@ -142,7 +142,7 @@
             "category_mediterraneen": false,
             "category_signature": false,
             "category_racing": true,
-            "category_nouveaute": false,
+            "category_nouveaute": true,
             "image_primary": "shopify://shop_images/6_6923fe1c-1762-4ab3-990b-4fae71147569.png",
             "image_secondary": "shopify://shop_images/7_4f18d97d-4cf5-4b99-b90a-21d458790d2b.png"
           }
@@ -165,7 +165,7 @@
           "settings": {
             "product": "t-shirt-cypres-italien",
             "show_new_badge": false,
-            "category_mediterraneen": false,
+            "category_mediterraneen": true,
             "category_signature": false,
             "category_racing": false,
             "category_nouveaute": false,
@@ -178,7 +178,7 @@
           "settings": {
             "product": "t-shirt-riviera",
             "show_new_badge": false,
-            "category_mediterraneen": false,
+            "category_mediterraneen": true,
             "category_signature": false,
             "category_racing": false,
             "category_nouveaute": false,
@@ -192,7 +192,7 @@
             "product": "t-shirt-pegasus",
             "show_new_badge": false,
             "category_mediterraneen": false,
-            "category_signature": false,
+            "category_signature": true,
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_040.jpg",
@@ -206,7 +206,7 @@
             "show_new_badge": false,
             "category_mediterraneen": false,
             "category_signature": false,
-            "category_racing": false,
+            "category_racing": true,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_063.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg"
