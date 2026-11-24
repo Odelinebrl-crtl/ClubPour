@@ -56,52 +56,15 @@
     "product_grid_RhwVm9": {
       "type": "product-grid",
       "blocks": {
-        "product_card_J4HN6t": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-made-of-motion",
-            "show_new_badge": true,
-            "category": "nouveaute",
-            "image_primary": "shopify://shop_images/3_c8ed5d12-99be-4223-85e4-bd9c75865410.png",
-            "image_secondary": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png"
-          }
-        },
-        "product_card_ED8e6h": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-fast-driving-red",
-            "show_new_badge": true,
-            "category": "nouveaute",
-            "image_primary": "shopify://shop_images/5_58a550a9-b3a2-4569-a6eb-52af419e74c3.png",
-            "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png"
-          }
-        },
-        "product_card_8WgDB7": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-fast-driving-yellow",
-            "show_new_badge": true,
-            "category": "nouveaute",
-            "image_primary": "shopify://shop_images/6_6923fe1c-1762-4ab3-990b-4fae71147569.png",
-            "image_secondary": "shopify://shop_images/7_4f18d97d-4cf5-4b99-b90a-21d458790d2b.png"
-          }
-        },
-        "product_card_Vjqnz3": {
-          "type": "product_card",
-          "settings": {
-            "product": "t-shirt-racing-club",
-            "show_new_badge": true,
-            "category": "nouveaute",
-            "image_primary": "shopify://shop_images/1_0b3c7b26-676d-409d-b1e9-67d031705400.png",
-            "image_secondary": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png"
-          }
-        },
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-peperoncino",
             "show_new_badge": false,
-            "category": "signature",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
             "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg"
           }
@@ -111,7 +74,10 @@
           "settings": {
             "product": "t-shirt-amarena",
             "show_new_badge": false,
-            "category": "mediterraneen",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_048.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg"
           }
@@ -121,9 +87,38 @@
           "settings": {
             "product": "t-shirt-monaco-94",
             "show_new_badge": false,
-            "category": "racine",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_069.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
+          }
+        },
+        "product_card_ED8e6h": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-fast-driving-red",
+            "show_new_badge": true,
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": true,
+            "category_nouveaute": false,
+            "image_primary": "shopify://shop_images/5_58a550a9-b3a2-4569-a6eb-52af419e74c3.png",
+            "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png"
+          }
+        },
+        "product_card_J4HN6t": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-made-of-motion",
+            "show_new_badge": true,
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": true,
+            "category_nouveaute": false,
+            "image_primary": "shopify://shop_images/3_c8ed5d12-99be-4223-85e4-bd9c75865410.png",
+            "image_secondary": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png"
           }
         },
         "product_card_BVhk8w": {
@@ -131,9 +126,38 @@
           "settings": {
             "product": "t-shirt-sorrento",
             "show_new_badge": false,
-            "category": "mediterraneen",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
+          }
+        },
+        "product_card_8WgDB7": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-fast-driving-yellow",
+            "show_new_badge": true,
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": true,
+            "category_nouveaute": false,
+            "image_primary": "shopify://shop_images/6_6923fe1c-1762-4ab3-990b-4fae71147569.png",
+            "image_secondary": "shopify://shop_images/7_4f18d97d-4cf5-4b99-b90a-21d458790d2b.png"
+          }
+        },
+        "product_card_Vjqnz3": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-racing-club",
+            "show_new_badge": true,
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": true,
+            "category_nouveaute": false,
+            "image_primary": "shopify://shop_images/1_0b3c7b26-676d-409d-b1e9-67d031705400.png",
+            "image_secondary": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png"
           }
         },
         "product_card_NHQ6tT": {
@@ -141,7 +165,10 @@
           "settings": {
             "product": "t-shirt-cypres-italien",
             "show_new_badge": false,
-            "category": "mediterraneen",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
           }
@@ -151,7 +178,10 @@
           "settings": {
             "product": "t-shirt-riviera",
             "show_new_badge": false,
-            "category": "mediterraneen",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_006.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
           }
@@ -161,7 +191,10 @@
           "settings": {
             "product": "t-shirt-pegasus",
             "show_new_badge": false,
-            "category": "signature",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_040.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_034.jpg"
           }
@@ -171,21 +204,24 @@
           "settings": {
             "product": "t-shirt-club-pour",
             "show_new_badge": false,
-            "category": "racine",
+            "category_mediterraneen": false,
+            "category_signature": false,
+            "category_racing": false,
+            "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_063.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg"
           }
         }
       },
       "block_order": [
-        "product_card_J4HN6t",
-        "product_card_ED8e6h",
-        "product_card_8WgDB7",
-        "product_card_Vjqnz3",
         "product_card_97K8cp",
         "product_card_zJAett",
         "product_card_gAaqnd",
+        "product_card_ED8e6h",
+        "product_card_J4HN6t",
         "product_card_BVhk8w",
+        "product_card_8WgDB7",
+        "product_card_Vjqnz3",
         "product_card_NHQ6tT",
         "product_card_CgHeQ3",
         "product_card_Jt7Npe",
