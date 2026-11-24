@@ -116,7 +116,7 @@
         
 <article
   class="pour-product"
-  data-category="{{ block.settings.category | default: 'none' }}"
+  data-categories="{% if block.settings.category_mediterraneen %}mediterraneen,{% endif %}{% if block.settings.category_signature %}signature,{% endif %}{% if block.settings.category_racing %}racine,{% endif %}{% if block.settings.category_nouveaute %}nouveaute,{% endif %}"
   {{ block.shopify_attributes }}
 >
 
@@ -688,12 +688,13 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
       products.forEach(function (product) {
-        const productCategory = product.dataset.category;
+const productCategories = product.dataset.categories
+  .split(',')
+  .filter(Boolean);
 
-        const shouldDisplay =
-          selectedCategory === 'all' ||
-          productCategory === selectedCategory;
-
+const shouldDisplay =
+  selectedCategory === 'all' ||
+  productCategories.includes(selectedCategory);
         product.classList.toggle(
           'is-filtered-out',
           !shouldDisplay
@@ -747,32 +748,28 @@ document.addEventListener('DOMContentLoaded', function () {
   "default": false
 },
 {
-  "type": "select",
-  "id": "category",
-  "label": "Catégorie du produit",
-  "options": [
-    {
-      "value": "none",
-      "label": "Non classé"
-    },
-    {
-      "value": "mediterraneen",
-      "label": "Méditerranéen"
-    },
-    {
-  "value": "nouveaute",
-  "label": "Nouveauté"
+  "type": "checkbox",
+  "id": "category_mediterraneen",
+  "label": "Catégorie : Méditerranéen",
+  "default": false
 },
-    {
-      "value": "signature",
-      "label": "Signature"
-    },
-    {
-      "value": "racine",
-      "label": "Racing"
-    }
-  ],
-  "default": "none"
+{
+  "type": "checkbox",
+  "id": "category_signature",
+  "label": "Catégorie : Signature",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "category_racing",
+  "label": "Catégorie : Racing",
+  "default": false
+},
+{
+  "type": "checkbox",
+  "id": "category_nouveaute",
+  "label": "Catégorie : Nouveauté",
+  "default": false
 },
         {
           "type": "image_picker",
