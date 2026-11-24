@@ -59,7 +59,11 @@
             ========================== -->
 
             <div class="vetements-card__media">
-
+{% if block.settings.show_new_badge %}
+  <span class="vetements-card__badge">
+    NOUVEAUTÉ
+  </span>
+{% endif %}
               <a
                 href="{{ featured_product.url }}"
                 class="vetements-card__media-link"
@@ -1050,6 +1054,27 @@ object-fit: contain;
   box-sizing: border-box !important;
   text-align: center !important;
 }
+/* BADGE NOUVEAUTÉ */
+#VetementsGrid-{{ section.id }} .vetements-card__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+  padding: 6px 8px;
+
+  background: #D9D9D9;
+  color: #FFFFFF;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  line-height: 1;
+
+  white-space: nowrap;
+  pointer-events: none;
+}
 </style>
 
 
@@ -1496,6 +1521,12 @@ function buildVariants(product) {
           "id": "product",
           "label": "Produit Shopify"
         },
+        {
+  "type": "checkbox",
+  "id": "show_new_badge",
+  "label": "Afficher le badge Nouveauté",
+  "default": false
+},
         {
           "type": "image_picker",
           "id": "image_primary",
