@@ -66,7 +66,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
-            "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg"
+            "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_zJAett": {
@@ -79,7 +81,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_048.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_gAaqnd": {
@@ -92,7 +96,9 @@
             "category_racing": true,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_069.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_ED8e6h": {
@@ -105,7 +111,9 @@
             "category_racing": true,
             "category_nouveaute": true,
             "image_primary": "shopify://shop_images/5_58a550a9-b3a2-4569-a6eb-52af419e74c3.png",
-            "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png"
+            "image_secondary": "shopify://shop_images/8_f3b3d34d-817a-455d-9926-324d77c34551.png",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_J4HN6t": {
@@ -118,7 +126,9 @@
             "category_racing": true,
             "category_nouveaute": true,
             "image_primary": "shopify://shop_images/3_c8ed5d12-99be-4223-85e4-bd9c75865410.png",
-            "image_secondary": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png"
+            "image_secondary": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_BVhk8w": {
@@ -131,7 +141,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_8WgDB7": {
@@ -144,7 +156,9 @@
             "category_racing": true,
             "category_nouveaute": true,
             "image_primary": "shopify://shop_images/6_6923fe1c-1762-4ab3-990b-4fae71147569.png",
-            "image_secondary": "shopify://shop_images/7_4f18d97d-4cf5-4b99-b90a-21d458790d2b.png"
+            "image_secondary": "shopify://shop_images/7_4f18d97d-4cf5-4b99-b90a-21d458790d2b.png",
+            "show_second_color": true,
+            "second_color": "#D32203"
           }
         },
         "product_card_Vjqnz3": {
@@ -157,7 +171,9 @@
             "category_racing": true,
             "category_nouveaute": true,
             "image_primary": "shopify://shop_images/1_0b3c7b26-676d-409d-b1e9-67d031705400.png",
-            "image_secondary": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png"
+            "image_secondary": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_NHQ6tT": {
@@ -170,7 +186,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_CgHeQ3": {
@@ -183,7 +201,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_006.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_Jt7Npe": {
@@ -196,7 +216,9 @@
             "category_racing": false,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_040.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_034.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_034.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         },
         "product_card_kwbHz7": {
@@ -209,7 +231,9 @@
             "category_racing": true,
             "category_nouveaute": false,
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_063.jpg",
-            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg"
+            "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
           }
         }
       },
