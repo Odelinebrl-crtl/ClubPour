@@ -155,7 +155,7 @@
             "category_mediterraneen": false,
             "category_signature": false,
             "category_racing": true,
-            "category_nouveaute": false,
+            "category_nouveaute": true,
             "image_primary": "shopify://shop_images/1_0b3c7b26-676d-409d-b1e9-67d031705400.png",
             "image_secondary": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png"
           }
