@@ -595,7 +595,17 @@
     letter-spacing: 0.07em;
   }
 }
-
+/* FILTRE RACINE — NOIR FIXE, SANS SURVOL */
+#PourProducts-{{ section.id }} .pour-products__filter[data-filter="racine"],
+#PourProducts-{{ section.id }} .pour-products__filter[data-filter="racine"]:hover,
+#PourProducts-{{ section.id }} .pour-products__filter[data-filter="racine"]:focus,
+#PourProducts-{{ section.id }} .pour-products__filter[data-filter="racine"]:active {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #000000 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
 </style>
 
 
