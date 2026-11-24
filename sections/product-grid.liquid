@@ -249,36 +249,25 @@
 
     <div class="pour-product__color-swatches">
 
-      {% assign current_color = featured_product.metafields.custom.couleur.value %}
+  {% assign current_color = featured_product.metafields.custom.couleur.value %}
 
-      {% if current_color != blank %}
-        <span
-          class="pour-product__color-swatch is-current"
-          style="background-color: {{ current_color }};"
-          aria-label="{{ featured_product.metafields.custom.color_name.value }}"
-        ></span>
-      {% endif %}
+  {% if current_color != blank %}
+    <span
+      class="pour-product__color-swatch is-current"
+      style="background-color: {{ current_color }};"
+      aria-label="{{ featured_product.metafields.custom.color_name.value }}"
+    ></span>
+  {% endif %}
 
- {% assign color_products = featured_product.metafields.custom.couleurs.value %}
+  {% if block.settings.show_second_color %}
+    <span
+      class="pour-product__color-swatch"
+      style="background-color: {{ block.settings.second_color }};"
+      aria-label="Deuxième coloris"
+    ></span>
+  {% endif %}
 
-      {% if color_products != blank %}
-        {% for color_product in color_products %}
-
-          {% assign color_value = color_product.metafields.custom.couleur.value %}
-
-          {% if color_value != blank %}
-            <a
-              href="{{ color_product.url }}"
-              class="pour-product__color-swatch"
-              style="background-color: {{ color_value }};"
-              aria-label="{{ color_product.metafields.custom.color_name.value }}"
-            ></a>
-          {% endif %}
-
-        {% endfor %}
-      {% endif %}
-
-    </div>
+</div>
 
   </div>
 
