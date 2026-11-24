@@ -93,7 +93,9 @@
 
               <div class="pour-product__media">
 
-
+<span class="pour-product__badge">
+  NOUVEAUTÉ
+</span>
                 <a
                   href="{{ featured_product.url }}"
                   class="pour-product__media-link"
@@ -605,6 +607,27 @@
   border-color: #000000 !important;
   box-shadow: none !important;
   transform: none !important;
+}
+/* BADGE NOUVEAUTÉ */
+#PourProducts-{{ section.id }} .pour-product__badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+
+  padding: 6px 8px;
+
+  background: #D9D9D9;
+  color: #FFFFFF;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 8px;
+  font-weight: 400;
+  letter-spacing: 0.10em;
+  line-height: 1;
+
+  white-space: nowrap;
+  pointer-events: none;
 }
 </style>
 
