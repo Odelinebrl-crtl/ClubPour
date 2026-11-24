@@ -56,10 +56,20 @@
     "product_grid_RhwVm9": {
       "type": "product-grid",
       "blocks": {
+        "product_card_Vjqnz3": {
+          "type": "product_card",
+          "settings": {
+            "product": "t-shirt-racing-club",
+            "show_new_badge": true,
+            "category": "none",
+            "image_primary": "shopify://shop_images/1_0b3c7b26-676d-409d-b1e9-67d031705400.png"
+          }
+        },
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
             "product": "t-shirt-peperoncino",
+            "show_new_badge": false,
             "category": "signature",
             "image_primary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-dos.jpg",
             "image_secondary": "shopify://shop_images/t-shirt-peperoncino-noir-detail-logo3.jpg"
@@ -69,6 +79,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-amarena",
+            "show_new_badge": false,
             "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_048.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_044.jpg"
@@ -78,6 +89,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-monaco-94",
+            "show_new_badge": false,
             "category": "racine",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_069.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_066.jpg"
@@ -87,6 +99,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-sorrento",
+            "show_new_badge": false,
             "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_031.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_032.jpg"
@@ -96,6 +109,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-cypres-italien",
+            "show_new_badge": false,
             "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_025.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_026.jpg"
@@ -105,6 +119,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-riviera",
+            "show_new_badge": false,
             "category": "mediterraneen",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_006.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_005.jpg"
@@ -114,6 +129,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-pegasus",
+            "show_new_badge": false,
             "category": "signature",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_040.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_034.jpg"
@@ -123,6 +139,7 @@
           "type": "product_card",
           "settings": {
             "product": "t-shirt-club-pour",
+            "show_new_badge": false,
             "category": "racine",
             "image_primary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_063.jpg",
             "image_secondary": "shopify://shop_images/2026-10-03_Shooting_produit_studio_-_064.jpg"
@@ -130,6 +147,7 @@
         }
       },
       "block_order": [
+        "product_card_Vjqnz3",
         "product_card_97K8cp",
         "product_card_zJAett",
         "product_card_gAaqnd",
