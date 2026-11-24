@@ -1,4 +1,3 @@
-
 <section
   id="PourProducts-{{ section.id }}"
   class="pour-products"
@@ -26,6 +25,50 @@
 
     </div>
 
+
+    <!-- =========================
+         FILTRES COLLECTION
+    ========================== -->
+
+    <div class="pour-products__filters" data-pour-products-filters>
+
+      <button
+        type="button"
+        class="pour-products__filter is-active"
+        data-filter="all"
+        aria-pressed="true"
+      >
+        TOUT
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="mediterraneen"
+        aria-pressed="false"
+      >
+        MÉDITERRANÉEN
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="signature"
+        aria-pressed="false"
+      >
+        SIGNATURE
+      </button>
+
+      <button
+        type="button"
+        class="pour-products__filter"
+        data-filter="racine"
+        aria-pressed="false"
+      >
+        RACING
+      </button>
+
+    </div>
 
     <!-- =========================
          CARROUSEL PRODUITS
@@ -63,10 +106,13 @@
 
           {% if featured_product != blank %}
 
-            <article
-              class="pour-product"
-              {{ block.shopify_attributes }}
-            >
+        
+<article
+  class="pour-product"
+  data-category="{{ block.settings.category | default: 'none' }}"
+  {{ block.shopify_attributes }}
+>
+
 
               <!-- =========================================
                    ZONE IMAGE
@@ -74,11 +120,7 @@
 
               <div class="pour-product__media">
 
-{% if block.settings.availability_label != blank %}
-  <span class="pour-product__availability">
-    {{ block.settings.availability_label }}
-  </span>
-{% endif %}
+
                 <a
                   href="{{ featured_product.url }}"
                   class="pour-product__media-link"
@@ -139,6 +181,21 @@
                   {% endif %}
 
                 </a>
+
+
+                <!-- =========================================
+                     QUICK ADD +
+                ========================================== -->
+
+                <button
+  type="button"
+  class="pour-product__quick-add"
+  data-quick-add
+  data-product-handle="{{ featured_product.handle }}"
+  aria-label="{{ 'pour_products.choose_size' | t }} - {{ featured_product.title }}"
+>
+  {{ 'pour_products.choose_size' | t }}
+</button>
 
               </div>
 
@@ -239,6 +296,19 @@
 
        </div>
 
+    <!-- BOUTON ACHETER -->
+
+    <div class="pour-products__cta">
+      <a
+        href="{{ pages['boutique'].url }}"
+        class="pour-hero__submit"
+      >
+       <span class="pour-hero__submit-text">
+  {{ 'collection_001.discover_collection' | t }}
+</span>
+      </a>
+    </div>
+
   </div>
 
 </section>
@@ -303,25 +373,79 @@
 
 
 /* =========================================================
-   LIENS INFOS
+   QUICK ADD +
 ========================================================= */
 
+#PourProducts-{{ section.id }}
+.pour-product__quick-add {
+  position: absolute;
+
+  right: 8px;
+  bottom: 8px;
+
+  z-index: 30;
+
+  width: 28px;
+  height: 28px;
+
+  min-width: 28px;
+  min-height: 28px;
+
+  padding: 0;
+  margin: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(3px);
+
+  transition:
+    opacity .18s ease,
+    visibility .18s ease,
+    transform .25s cubic-bezier(.22,1,.36,1);
+
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+
+/* trait horizontal */
+
+
+/* apparition seulement au hover */
+
+#PourProducts-{{ section.id }}
+.pour-product__media:hover
+.pour-product__quick-add {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   LIENS INFOS
+========================================================= */
 #PourProducts-{{ section.id }} .pour-product__info-link {
   display: block;
   color: inherit;
   text-decoration: none;
 }
-
-
 /* =========================================================
    PASTILLES COULEUR — ESPACE ET CONTOURS
 ========================================================= */
-
 #PourProducts-{{ section.id }} .pour-product__info {
   padding-bottom: 8px;
   overflow: visible;
 }
-
 #PourProducts-{{ section.id }} .pour-product__color-swatches {
   display: flex;
   align-items: center;
@@ -329,19 +453,97 @@
   padding-bottom: 4px;
   overflow: visible;
 }
-
 #PourProducts-{{ section.id }} .pour-product__color-swatch {
   flex-shrink: 0;
   border: 1px solid #D9D9D9;
 }
-
 /* Pastille noire : contour noir */
-
 #PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000000"],
 #PourProducts-{{ section.id }} .pour-product__color-swatch[style*="#000"] {
   border-color: #000000;
 }
 
+/* BOUTON ACHETER SOUS LES PRODUITS */
+
+#PourProducts-{{ section.id }} .pour-products__cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  margin-top: 35px;
+}
+/* BOUTON ACHETER — NOIR FIXE */
+
+/* BOUTON — TRANSITION DOUCE */
+
+#PourProducts-{{ section.id }} .pour-products__cta .pour-hero__submit {
+  background: #111111;
+  color: #ffffff;
+  border: 1px solid #111111;
+  transition:
+    background-color 0.45s ease,
+    color 0.45s ease,
+    border-color 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+#PourProducts-{{ section.id }} .pour-products__cta .pour-hero__submit:hover {
+  background: #ffffff;
+  color: #111111;
+  border-color: #111111;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+}
+
+/* QUICK ADD — CHOISIR MA TAILLE */
+
+#PourProducts-{{ section.id }} .pour-product__quick-add {
+  position: absolute !important;
+  right: 8px !important;
+  bottom: 8px !important;
+  z-index: 30 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  width: max-content !important;
+  min-width: 112px !important;
+  max-width: none !important;
+  height: 32px !important;
+  min-height: 32px !important;
+
+  padding: 0 10px !important;
+  margin: 0 !important;
+
+  background: #ffffff !important;
+  color: #111111 !important;
+  border: none !important;
+  border-radius: 0 !important;
+
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  font-size: 8px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+
+  white-space: nowrap !important;
+  overflow: visible !important;
+  text-align: center !important;
+
+  cursor: pointer;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+}
+
+/* Suppression définitive du + */
+
+#PourProducts-{{ section.id }} .pour-product__quick-add::before,
+#PourProducts-{{ section.id }} .pour-product__quick-add::after {
+  content: none !important;
+  display: none !important;
+}
 #PourProducts-{{ section.id }} .pour-product__price-current {
   color: #111111;
 }
@@ -359,27 +561,123 @@
   color: #999999;
   text-decoration: line-through;
 }
-#PourProducts-{{ section.id }} .pour-product__availability {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  z-index: 5;
 
-  display: inline-block;
-  padding: 7px 9px;
+/* =========================================================
+   FILTRES COLLECTION 001
+========================================================= */
 
-  background: rgba(105, 105, 105, 0.85);
-  color: #ffffff;
+#PourProducts-{{ section.id }} .pour-products__filters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  width: 100%;
+  margin: 25px 0 30px;
+}
 
-  font-size: 9px;
+#PourProducts-{{ section.id }} .pour-products__filter {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid #D9D9D9;
+  border-radius: 0;
+  background: #FFFFFF;
+  color: #111111;
+  padding: 10px 17px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 10px;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  line-height: 1.2;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+#PourProducts-{{ section.id }} .pour-products__filter.is-active {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
+#PourProducts-{{ section.id }} .pour-product.is-filtered-out {
+  display: none !important;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  #PourProducts-{{ section.id }} .pour-products__filters {
+    gap: 6px;
+    margin: 20px 0 22px;
+    padding: 0 8px;
+    box-sizing: border-box;
+  }
+
+  #PourProducts-{{ section.id }} .pour-products__filter {
+    padding: 9px 10px;
+    font-size: 8px;
+    letter-spacing: 0.07em;
+  }
 }
 
 </style>
 
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const section = document.querySelector(
+    '#PourProducts-{{ section.id }}'
+  );
+
+  if (!section || section.dataset.filtersInitialized === 'true') return;
+
+  section.dataset.filtersInitialized = 'true';
+
+  const buttons = section.querySelectorAll(
+    '[data-pour-products-filters] [data-filter]'
+  );
+
+  const products = section.querySelectorAll(
+    '.pour-products__grid .pour-product'
+  );
+
+  const track = section.querySelector('[data-pour-products-track]');
+
+  buttons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const selectedCategory = button.dataset.filter;
+
+      buttons.forEach(function (item) {
+        const isActive = item === button;
+
+        item.classList.toggle('is-active', isActive);
+        item.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+
+      products.forEach(function (product) {
+        const productCategory = product.dataset.category;
+
+        const shouldDisplay =
+          selectedCategory === 'all' ||
+          productCategory === selectedCategory;
+
+        product.classList.toggle(
+          'is-filtered-out',
+          !shouldDisplay
+        );
+      });
+
+      if (track) {
+        track.scrollLeft = 0;
+        track.dispatchEvent(new Event('scroll', { bubbles: true }));
+      }
+    });
+  });
+});
+</script>
 
 
 {% schema %}
@@ -412,6 +710,31 @@
           "id": "product",
           "label": "Produit Shopify"
         },
+
+{
+  "type": "select",
+  "id": "category",
+  "label": "Catégorie du produit",
+  "options": [
+    {
+      "value": "none",
+      "label": "Non classé"
+    },
+    {
+      "value": "mediterraneen",
+      "label": "Méditerranéen"
+    },
+    {
+      "value": "signature",
+      "label": "Signature"
+    },
+    {
+      "value": "racine",
+      "label": "Racing"
+    }
+  ],
+  "default": "none"
+},
         {
           "type": "image_picker",
           "id": "image_primary",
@@ -421,13 +744,7 @@
           "type": "image_picker",
           "id": "image_secondary",
           "label": "Image au survol personnalisée"
-        },
-        {
-  "type": "text",
-  "id": "availability_label",
-  "label": "Mention de disponibilité",
-  "default": "PROCHAINEMENT DISPONIBLE"
-}
+        }
       ]
     }
   ],
