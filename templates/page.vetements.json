@@ -55,14 +55,6 @@
     "vetements_grid_fE3YqH": {
       "type": "vetements-grid",
       "blocks": {
-        "product_dMDHNx": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-made-of-motion",
-            "image_primary": "shopify://shop_images/3_98f6b087-89ae-403c-99eb-4f543797b4b5.png",
-            "image_hover": "shopify://shop_images/4_7f2ab218-2653-43e1-a07b-2805ec019a9c.png"
-          }
-        },
         "product_eLefDr": {
           "type": "product",
           "settings": {
@@ -79,7 +71,6 @@
         }
       },
       "block_order": [
-        "product_dMDHNx",
         "product_eLefDr",
         "product_yf8che"
       ],
@@ -106,11 +97,47 @@
           "settings": {
             "product": "t-shirt-monaco-94"
           }
+        },
+        "product_LQfLHK": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-fast-driving-yellow",
+            "image_primary": "shopify://shop_images/6_d1ee757d-7a5e-47e7-8e4f-3dc5ca1a2df4.png",
+            "image_hover": "shopify://shop_images/7_29669cc6-31c8-434f-b3cb-07eeb16b0edc.png"
+          }
+        },
+        "product_PfxHzd": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-fast-driving-red",
+            "image_primary": "shopify://shop_images/5_fa65b20a-2bd6-4f17-ae78-e1e1d621dda1.png",
+            "image_hover": "shopify://shop_images/8_a3f8185d-0f6e-4462-b55d-137f008610fd.png"
+          }
+        },
+        "product_NYwUkQ": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-made-of-motion",
+            "image_primary": "shopify://shop_images/3_98f6b087-89ae-403c-99eb-4f543797b4b5.png",
+            "image_hover": "shopify://shop_images/4_7f2ab218-2653-43e1-a07b-2805ec019a9c.png"
+          }
+        },
+        "product_tcghcx": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-racing-club",
+            "image_primary": "shopify://shop_images/1_fd12a15e-83e7-4612-b980-e21879c59351.png",
+            "image_hover": "shopify://shop_images/2_0256f586-d983-4677-8ccb-5d2e97d70fba.png"
+          }
         }
       },
       "block_order": [
         "product_D6Am4A",
-        "product_HXA3j4"
+        "product_HXA3j4",
+        "product_LQfLHK",
+        "product_PfxHzd",
+        "product_NYwUkQ",
+        "product_tcghcx"
       ],
       "name": "Grille Vêtements",
       "settings": {
