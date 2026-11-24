@@ -55,6 +55,14 @@
     "vetements_grid_fE3YqH": {
       "type": "vetements-grid",
       "blocks": {
+        "product_dMDHNx": {
+          "type": "product",
+          "settings": {
+            "product": "t-shirt-made-of-motion",
+            "image_primary": "shopify://shop_images/3_98f6b087-89ae-403c-99eb-4f543797b4b5.png",
+            "image_hover": "shopify://shop_images/4_7f2ab218-2653-43e1-a07b-2805ec019a9c.png"
+          }
+        },
         "product_eLefDr": {
           "type": "product",
           "settings": {
@@ -71,6 +79,7 @@
         }
       },
       "block_order": [
+        "product_dMDHNx",
         "product_eLefDr",
         "product_yf8che"
       ],
