@@ -607,18 +607,27 @@
 
 /* MOBILE */
 
+/* MOBILE — FILTRES SUR UNE SEULE LIGNE */
+
 @media screen and (max-width: 768px) {
   #PourProducts-{{ section.id }} .pour-products__filters {
-    gap: 6px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
     margin: 20px 0 22px;
-    padding: 0 8px;
+    padding: 0 5px;
     box-sizing: border-box;
   }
 
   #PourProducts-{{ section.id }} .pour-products__filter {
-    padding: 9px 10px;
-    font-size: 8px;
-    letter-spacing: 0.07em;
+    flex: 0 0 auto;
+    padding: 8px 6px;
+    font-size: 7px;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
   }
 }
 /* BADGE NOUVEAUTÉ */
