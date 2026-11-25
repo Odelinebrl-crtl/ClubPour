@@ -577,6 +577,36 @@
 
   white-space: nowrap;
   pointer-events: none;
+}/* SUPPRESSION DES FLÈCHES ET CENTRAGE DU PRODUIT */
+
+#PourProducts-{{ section.id }} .pour-products__arrow {
+  display: none !important;
+}
+
+#PourProducts-{{ section.id }} .pour-products__carousel {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#PourProducts-{{ section.id }} .pour-products__grid {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#PourProducts-{{ section.id }} .pour-product {
+  margin-left: auto;
+  margin-right: auto;
+}
+/* RÉDUCTION DU SOUS-TITRE DE MARQUE */
+
+#PourProducts-{{ section.id }} .pour-products__eyebrow {
+  font-size: 9px !important;
+  letter-spacing: 0.12em;
+  line-height: 1.2;
+  margin-bottom: 0px;
 }
 </style>
 
