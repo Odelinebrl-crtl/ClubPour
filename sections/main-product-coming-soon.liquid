@@ -336,7 +336,7 @@
     {% endif %}
   >
     {% if product.selected_or_first_available_variant.available %}
-      {{ 'pour_product.preorder' | t }}
+     PRÉCOMMANDEZ
     {% else %}
       {{ 'pour_product.sold_out' | t }}
     {% endif %}
@@ -4358,8 +4358,7 @@ const backInStockButton =
 if (submitButton) {
   submitButton.disabled = !matchingVariant.available;
 setExpressCheckoutEnabled(matchingVariant.available);
-  submitButton.textContent =
-    '{{ 'pour_product.preorder' | t }}';
+submitButton.textContent = 'PRÉCOMMANDEZ';
 
   if (matchingVariant.available) {
     submitButton.style.removeProperty('display');
