@@ -609,24 +609,27 @@
 
 /* MOBILE — FILTRES SUR UNE SEULE LIGNE */
 
+/* MOBILE — FILTRES SUR UNE SEULE LIGNE */
+
 @media screen and (max-width: 768px) {
   #PourProducts-{{ section.id }} .pour-products__filters {
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     width: 100%;
     margin: 20px 0 22px;
-    padding: 0 5px;
+    padding: 0 6px;
     box-sizing: border-box;
   }
 
   #PourProducts-{{ section.id }} .pour-products__filter {
-    flex: 0 0 auto;
-    padding: 8px 6px;
-    font-size: 7px;
-    letter-spacing: 0.02em;
+    flex: 0 1 auto;
+    min-width: 0;
+    padding: 11px 7px;
+    font-size: 9px;
+    letter-spacing: 0.03em;
     white-space: nowrap;
   }
 }
