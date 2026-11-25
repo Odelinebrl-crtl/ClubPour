@@ -351,6 +351,20 @@
         "heading": "LA DERNIÈRE PIÈCE DE LA COLLECTION 001"
       }
     },
+    "featured_collection_pour_EV7y3F": {
+      "type": "featured-collection-pour",
+      "name": "Collection mise en avant",
+      "settings": {
+        "image": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture2.png",
+        "image_mobile": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
+        "image_tablet": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
+        "eyebrow": "COLLECTION 001",
+        "heading": "RACING AUTOMOBILE",
+        "text": "<p>Des t-shirts automobile inspirés de l’univers racing, de la culture automobile et de l’esthétique des sports mécaniques. CLUB POUR revisite ces références à travers des créations graphiques qui associent style automobile et expression personnelle. L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
+        "button_label": "ACHETEZ",
+        "button_link": "shopify://pages/t-shirts-voiture"
+      }
+    },
     "community_feed_pour_4VTp68": {
       "type": "community-feed-pour",
       "blocks": {
@@ -396,20 +410,6 @@
         "signature": "Club Pour"
       }
     },
-    "featured_collection_pour_EV7y3F": {
-      "type": "featured-collection-pour",
-      "name": "Collection mise en avant",
-      "settings": {
-        "image": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture2.png",
-        "image_mobile": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
-        "image_tablet": "shopify://shop_images/t-shirt-monaco-94-blanc-lifestyle-voiture.png",
-        "eyebrow": "COLLECTION 001",
-        "heading": "RACING AUTOMOBILE",
-        "text": "<p>Des t-shirts automobile inspirés de l’univers racing, de la culture automobile et de l’esthétique des sports mécaniques. CLUB POUR revisite ces références à travers des créations graphiques qui associent style automobile et expression personnelle. L’automobile comme inspiration. Le vêtement comme terrain d’expression.</p>",
-        "button_label": "ACHETEZ",
-        "button_link": "shopify://pages/t-shirts-voiture"
-      }
-    },
     "video_hero_pour_khqU9c": {
       "type": "video-hero-pour",
       "name": "Vidéo plein écran POUR",
@@ -442,9 +442,9 @@
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
     "pour_products_home_coming_soon_JAND4K",
+    "featured_collection_pour_EV7y3F",
     "community_feed_pour_4VTp68",
     "quote_pour_FCLgBx",
-    "featured_collection_pour_EV7y3F",
     "video_hero_pour_khqU9c",
     "editorial_image_pour_FREXwq",
     "seo_homepage_pour_hXidVt"
