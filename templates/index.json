@@ -56,6 +56,21 @@
     "product_grid_RhwVm9": {
       "type": "product-grid",
       "blocks": {
+        "product_card_PAK66H": {
+          "type": "product_card",
+          "settings": {
+            "product": "hoodie-no-mercy",
+            "show_new_badge": true,
+            "category_mediterraneen": false,
+            "category_signature": true,
+            "category_racing": false,
+            "category_nouveaute": true,
+            "image_primary": "shopify://shop_images/9_7f0b2076-a321-4630-9ccc-47d7fd236f7c.png",
+            "image_secondary": "shopify://shop_images/10_d39d4cfd-0c84-4a61-8a7a-adebf4220b6e.png",
+            "show_second_color": false,
+            "second_color": "#fdbd00"
+          }
+        },
         "product_card_97K8cp": {
           "type": "product_card",
           "settings": {
@@ -238,6 +253,7 @@
         }
       },
       "block_order": [
+        "product_card_PAK66H",
         "product_card_97K8cp",
         "product_card_zJAett",
         "product_card_gAaqnd",
