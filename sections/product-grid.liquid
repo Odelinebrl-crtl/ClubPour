@@ -654,21 +654,25 @@
   white-space: nowrap;
   pointer-events: none;
 }
-/* RÉDUCTION DE LA MARGE EN BAS DU BLOC */
-
-#PourProducts-{{ section.id }} .pour-products__inner {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
-}
-
-#PourProducts-{{ section.id }} .pour-products__cta {
-  margin-bottom: 0 !important;
-  margin-top: 30px;
-}
+/* AUGMENTATION DE LA MARGE EN BAS */
 
 #PourProducts-{{ section.id }} {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+  padding-bottom: 60px !important;
+}
+
+#PourProducts-{{ section.id }} .pour-products__inner {
+  padding-bottom: 60px !important;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  #PourProducts-{{ section.id }} {
+    padding-bottom: 40px !important;
+  }
+
+  #PourProducts-{{ section.id }} .pour-products__inner {
+    padding-bottom: 40px !important;
+  }
 }
 
 </style>
