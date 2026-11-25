@@ -12,83 +12,28 @@
     "vetements_grid_Aa73e7": {
       "type": "vetements-grid",
       "blocks": {
-        "product_Ff3BtK": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-racing-club",
-            "show_new_badge": true,
-            "image_primary": "shopify://shop_images/Un_design_qui_se_demarque._Des_creations_graphiques_originales._CLUB_POUR_COLLECTION_001.png",
-            "image_hover": "shopify://shop_images/2_6fd08792-65d4-48ac-88a6-bc21b8d1947a.png"
-          }
-        },
-        "product_wJyAcr": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-made-of-motion",
-            "show_new_badge": true,
-            "image_primary": "shopify://shop_images/3_c8ed5d12-99be-4223-85e4-bd9c75865410.png",
-            "image_hover": "shopify://shop_images/4_2e9cba95-c697-46e3-b327-435e66869d8b.png"
-          }
-        },
-        "product_dhf6zU": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-fast-driving-yellow",
-            "show_new_badge": true,
-            "image_primary": "shopify://shop_images/6_5b059961-eca3-4a54-8db2-3243c0203adf.png",
-            "image_hover": "shopify://shop_images/7_46de6dd5-9629-4ab9-8f7b-74bdeecd07da.png"
-          }
-        },
-        "product_U6fkJa": {
-          "type": "product",
-          "settings": {
-            "product": "t-shirt-fast-driving-red",
-            "show_new_badge": true,
-            "image_primary": "shopify://shop_images/5_e48b5937-99a4-4cc5-bc33-60e73f2465f8.png",
-            "image_hover": "shopify://shop_images/8_71f080b3-57ad-42ff-9fb2-e0cd6e44443a.png"
-          }
-        }
-      },
-      "block_order": [
-        "product_Ff3BtK",
-        "product_wJyAcr",
-        "product_dhf6zU",
-        "product_U6fkJa"
-      ],
-      "name": "Grille Vêtements",
-      "settings": {
-        "eyebrow": "L’UNIVERS POUR",
-        "heading": "NOUVEAUTÉS",
-        "description": "Nos dernières pièces",
-        "reduce_top_spacing": false,
-        "anchor_id": ""
-      }
-    },
-    "vetements_grid_crEQd9": {
-      "type": "vetements-grid",
-      "blocks": {
-        "product_hPgbVB": {
+        "product_zhD6np": {
           "type": "product",
           "settings": {
             "product": "t-shirt-amarena",
             "show_new_badge": false
           }
         },
-        "product_6HmfzX": {
+        "product_XRT6it": {
           "type": "product",
           "settings": {
             "product": "t-shirt-cypres-italien",
             "show_new_badge": false
           }
         },
-        "product_wjDKn3": {
+        "product_ctQr3W": {
           "type": "product",
           "settings": {
             "product": "t-shirt-sorrento",
             "show_new_badge": false
           }
         },
-        "product_tfHcG4": {
+        "product_3pTwxb": {
           "type": "product",
           "settings": {
             "product": "t-shirt-riviera",
@@ -97,14 +42,14 @@
         }
       },
       "block_order": [
-        "product_hPgbVB",
-        "product_6HmfzX",
-        "product_wjDKn3",
-        "product_tfHcG4"
+        "product_zhD6np",
+        "product_XRT6it",
+        "product_ctQr3W",
+        "product_3pTwxb"
       ],
       "name": "Grille Vêtements",
       "settings": {
-        "eyebrow": "",
+        "eyebrow": "L’UNIVERS POUR",
         "heading": "COLLECTION MÉDITERRANÉENNE",
         "description": "Quatre t-shirts inspirés des routes du Sud",
         "reduce_top_spacing": false,
@@ -218,7 +163,6 @@
   },
   "order": [
     "vetements_grid_Aa73e7",
-    "vetements_grid_crEQd9",
     "vetements_grid_fE3YqH",
     "vetements_grid_VWDWAQ"
   ]
