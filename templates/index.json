@@ -273,84 +273,6 @@
         "heading": "COLLECTION 001"
       }
     },
-    "pour_products_home_coming_soon_JAND4K": {
-      "type": "pour-products-home-coming-soon",
-      "blocks": {
-        "product_card_Hh46jY": {
-          "type": "product_card",
-          "settings": {
-            "product": "hoodie-no-mercy",
-            "category": "none",
-            "image_primary": "shopify://shop_images/9_7f0b2076-a321-4630-9ccc-47d7fd236f7c.png",
-            "image_secondary": "shopify://shop_images/10_d39d4cfd-0c84-4a61-8a7a-adebf4220b6e.png"
-          }
-        },
-        "product_card_ENpJrq": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_jjY7kR": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_ryNxeG": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_A3yGFA": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_wi6g7H": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_daLEYY": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        },
-        "product_card_cFbmJh": {
-          "type": "product_card",
-          "settings": {
-            "product": "",
-            "category": "none"
-          }
-        }
-      },
-      "block_order": [
-        "product_card_Hh46jY",
-        "product_card_ENpJrq",
-        "product_card_jjY7kR",
-        "product_card_ryNxeG",
-        "product_card_A3yGFA",
-        "product_card_wi6g7H",
-        "product_card_daLEYY",
-        "product_card_cFbmJh"
-      ],
-      "name": "Produits POUR",
-      "settings": {
-        "subtitle": "HOODIE SIGNATURE",
-        "heading": "LA DERNIÈRE PIÈCE DE LA COLLECTION 001"
-      }
-    },
     "featured_collection_pour_EV7y3F": {
       "type": "featured-collection-pour",
       "name": "Collection mise en avant",
@@ -441,7 +363,6 @@
   "order": [
     "hero_pour_8d7WER",
     "product_grid_RhwVm9",
-    "pour_products_home_coming_soon_JAND4K",
     "featured_collection_pour_EV7y3F",
     "community_feed_pour_4VTp68",
     "quote_pour_FCLgBx",
