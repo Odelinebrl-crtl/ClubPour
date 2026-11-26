@@ -155,9 +155,52 @@
 
       <div class="product-page-pour__info-inner">
 
-        <h1 class="product-page-pour__title">
-          {{ product.title }}
-        </h1>
+
+<h1 class="product-page-pour__title">
+  {{ product.title }}<span class="pour-gots" aria-label="Certification GOTS">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <path id="pour-gots-circle"
+          d="M 50,50 m -43,0
+          a 43,43 0 1,1 86,0
+          a 43,43 0 1,1 -86,0"/>
+      </defs>
+
+      <!-- Cercle vert -->
+      <circle cx="50" cy="50" r="35.5" fill="#20A638"/>
+
+      <!-- Symbole blanc -->
+      <path
+        d="M23 48 L40 31 L49 40 L49 70 L37 70 L37 49 L30 56 Z"
+        fill="#FFFFFF"/>
+
+      <path
+        d="M77 48 L60 31 L51 40 L51 70 L63 70 L63 49 L70 56 Z"
+        fill="#FFFFFF"/>
+
+      <!-- Texte circulaire -->
+      <text
+        fill="#000000"
+        font-size="8.1"
+        font-family="Arial, sans-serif"
+        font-weight="700"
+        letter-spacing="1.05">
+
+        <textPath href="#pour-gots-circle"
+          startOffset="50%"
+          text-anchor="middle">
+          ORGANIC TEXTILE STANDARD · GOTS · GLOBAL
+        </textPath>
+
+      </text>
+    </svg>
+  </span>
+</h1>
+
+<p class="pour-gots-description">
+  * Produit certifié GOTS — fibres biologiques et exigences environnementales et sociales contrôlées.
+</p>
+
 <a
   class="pour-google-rating"
   href="https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
@@ -3816,6 +3859,50 @@ aspect-ratio: 3 / 4 !important;
   height: 100%;
   text-align: center;
 }
+
+/* =====================================
+   POUR — CERTIFICATION GOTS
+===================================== */
+
+.product-page-pour__title .pour-gots {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  vertical-align: super;
+  line-height: 0;
+  flex: none;
+}
+
+.product-page-pour__title .pour-gots svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Description certification */
+
+.pour-gots-description {
+  margin: 3px 0 14px !important;
+  font-size: 9px !important;
+  line-height: 1.4 !important;
+  font-weight: 400 !important;
+  color: #777777 !important;
+}
+
+@media screen and (max-width: 900px) {
+  .product-page-pour__title .pour-gots {
+    width: 21px;
+    height: 21px;
+    margin-left: 4px;
+  }
+
+  .product-page-pour__title .pour-gots svg {
+    width: 21px;
+    height: 21px;
+  }
+}
+
 </style>
 
 <script>
