@@ -560,7 +560,9 @@
   "filter_racing": "RACING",
   "new_preorder_badge": "NIEUW — PRE-ORDER",
   "previous": "Vorige producten",
-  "choose_size": "KIES MIJN MAAT"
+  "choose_size": "KIES MIJN MAAT",
+  "size": "TAILLE",
+"add_to_cart": "AJOUTER AU PANIER"
 },
 "sections": {
   "hero_pour": {
