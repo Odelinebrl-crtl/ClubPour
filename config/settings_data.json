@@ -11,6 +11,7 @@
   "current": {
     "quickview_gots_logo": "shopify://shop_images/gots-logocmyk2018.webp",
     "quickview_gots_size": 30,
+    "quickview_gots_size_mobile": 25,
     "quickview_gots_alignment": "left",
     "quickview_gots_x": -11,
     "quickview_gots_y": -11,
