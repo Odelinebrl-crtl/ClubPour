@@ -3680,44 +3680,34 @@ color: #ffffff;
    QUICK VIEW — VOIR AUSSI
 ========================================================= */
 /* =========================================
-   POUR — QUICK VIEW : TITRE + LOGO GOTS
+   POUR — QUICK VIEW : TITRE + GOTS
 ========================================= */
 
 .pour-quickview__title-row {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
   width: 100%;
+  gap: 15px;
   margin-bottom: 12px;
 }
 
 .pour-quickview__title-row .pour-quickview__title {
-  margin: 0;
   flex: 1;
-}
-
-.pour-quickview__gots {
-  display: flex;
-  align-items: center;
-  justify-content: var(--gots-alignment, flex-start);
-  flex-shrink: 0;
+  min-width: 0;
+  margin: 0;
 }
 
 .pour-quickview__gots-logo {
   display: block;
+  flex-shrink: 0;
   width: var(--gots-size, 45px);
   height: auto;
   object-fit: contain;
 }
 
-/* MOBILE */
-
 @media screen and (max-width: 768px) {
-  .pour-quickview__title-row {
-    gap: 10px;
-  }
-
   .pour-quickview__gots-logo {
     width: var(--gots-size-mobile, 35px);
   }
