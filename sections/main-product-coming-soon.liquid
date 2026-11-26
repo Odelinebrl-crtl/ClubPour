@@ -787,6 +787,13 @@
      GUIDE DES TAILLES — PAGE PRODUIT UNIQUEMENT
 ===================================================== -->
 
+<button
+  type="button"
+  class="pour-size-guide__overlay"
+  data-pour-size-guide-overlay
+  aria-label="Fermer le guide des tailles"
+></button>
+
 <div
   class="pour-size-guide"
   data-pour-size-guide
@@ -1649,6 +1656,36 @@ scroll-snap-stop: normal;
 /* =========================================================
    GUIDE DES TAILLES
 ========================================================= */
+
+/* FOND GRIS DU GUIDE DES TAILLES */
+
+.pour-size-guide__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99989;
+
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+  border: 0;
+
+  background: rgba(0, 0, 0, .12);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition:
+    opacity .45s ease,
+    visibility .45s ease;
+}
+
+.pour-size-guide__overlay.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
 .pour-size-guide {
   position: fixed;
@@ -3897,7 +3934,10 @@ const openButton =
   document.querySelector(
     '[data-pour-size-guide-open]'
   );
-
+const overlay =
+  document.querySelector(
+    '[data-pour-size-guide-overlay]'
+  );
 if (!guide || !openButton) {
   return;
 }
@@ -3956,32 +3996,32 @@ const guideTranslations = {
 
 const guideText =
   guideTranslations[guideLanguage] || guideTranslations.fr;
-  function openSizeGuide() {
+  
+function openSizeGuide() {
 
-    guide.classList.add(
-      'is-active'
-    );
+  guide.classList.add('is-active');
 
-    guide.setAttribute(
-      'aria-hidden',
-      'false'
-    );
+  guide.setAttribute('aria-hidden', 'false');
 
-  }
+  overlay.classList.add('is-active');
+
+  document.body.style.overflow = 'hidden';
+
+}
 
 
-  function closeSizeGuide() {
+function closeSizeGuide() {
 
-    guide.classList.remove(
-      'is-active'
-    );
+  guide.classList.remove('is-active');
 
-    guide.setAttribute(
-      'aria-hidden',
-      'true'
-    );
+  guide.setAttribute('aria-hidden', 'true');
 
-  }
+  overlay.classList.remove('is-active');
+
+  document.body.style.overflow = '';
+
+}
+
 
 /* =========================================================
    SÉLECTION D'UNE TAILLE
@@ -4219,7 +4259,10 @@ if (addButton && productForm) {
     'click',
     openSizeGuide
   );
-
+overlay.addEventListener(
+  'click',
+  closeSizeGuide
+);
 
   guide.addEventListener(
     'click',
