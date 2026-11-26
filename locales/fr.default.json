@@ -589,5 +589,11 @@
     "copy_fallback_label": "SÉLECTIONNEZ LE CODE",
     "continue_label": "POURSUIVRE MA VISITE",
     "close_label": "Fermer le pop-up"
+  },
+  "sections": {
+  "hero_pour": {
+    "title_part_1": "L'AUTOMOBILE,",
+    "title_part_2": "AUTREMENT PORTÉE."
   }
+}
 }
