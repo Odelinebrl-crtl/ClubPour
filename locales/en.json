@@ -681,7 +681,8 @@
   "filter_signature": "SIGNATURE",
   "filter_racing": "RACING",
   "new_preorder_badge": "NEW — PRE-ORDER",
-  "previous": "Previous products"
+  "previous": "Previous products",
+  "choose_size": "CHOOSE MY SIZE"
 },
 "sections": {
   "hero_pour": {
