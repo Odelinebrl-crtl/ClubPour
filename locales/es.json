@@ -673,6 +673,15 @@
   "google_review_count": "({{ count }} opiniones)",
   "google_reviews_aria": "Ver las reseñas de Google de CLUB POUR"
 },
+"pour_products": {
+  "filter_all": "TODO",
+  "filter_new": "NOVEDAD",
+  "filter_mediterranean": "MEDITERRÁNEO",
+  "filter_signature": "SIGNATURE",
+  "filter_racing": "RACING",
+  "new_preorder_badge": "NOVEDAD — RESERVA",
+  "previous": "Productos anteriores"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "EL AUTOMÓVIL,",
