@@ -1078,6 +1078,12 @@ object-fit: cover !important;
   white-space: nowrap;
   pointer-events: none;
 }
+@media screen and (max-width: 750px) {
+  #VetementsGrid-{{ section.id }} .vetements-qv.is-no-mercy .vetements-qv__close::before,
+  #VetementsGrid-{{ section.id }} .vetements-qv.is-no-mercy .vetements-qv__close::after {
+    background: #FFFFFF !important;
+  }
+}
 </style>
 
 
@@ -1291,7 +1297,10 @@ function buildVariants(product) {
 
       const product =
         await response.json();
-
+modal.classList.toggle(
+  'is-no-mercy',
+  product.handle === 'hoodie-no-mercy'
+);
 
       const image =
         product.featured_image ||
