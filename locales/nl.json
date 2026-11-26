@@ -525,7 +525,6 @@
     "final_link_label": "Ontdek de collectie"
 },
 "popup_club_privileges": {
-    "popup_club_privileges": {
   "eyebrow": "CLUB VOOR",
   "heading": "WORD LID VAN DE PRIVILEGES-CLUB",
   "description": "Meld u aan en profiteer van 10 % korting op uw bestelling.",
@@ -542,6 +541,15 @@
   "copy_fallback_label": "SELECTEER DE CODE",
   "continue_label": "MIJN BEZOEK VOORTZETTEN",
   "close_label": "Pop-up sluiten"
-  }
+  },
+  "pour_productsoon": {
+  "preorder_button": "PRE-ORDEREN",
+  "creation_title": "Ontwerp",
+  "creation_description": "Bedrukt in Frankrijk, ontwerp gemaakt in Frankrijk",
+  "shipping_date": "VERZENDING VANAF 10 DECEMBER",
+  "sold_out": "UITVERKOCHT",
+  "google_rating": "{{ rating }} van de 5",
+  "google_review_count": "{{ count }} beoordelingen",
+  "google_reviews_aria": "Bekijk de Google-beoordelingen van CLUB POUR"
 }
-  }
+}
