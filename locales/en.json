@@ -673,5 +673,11 @@
   "google_rating": "{{ rating }}/5",
   "google_review_count": "({{ count }} reviews)",
   "google_reviews_aria": "View CLUB POUR Google reviews"
+},
+"sections": {
+  "hero_pour": {
+    "title_part_1": "AUTOMOTIVE STYLE,",
+    "title_part_2": "REDEFINED."
+  }
 }
 }
