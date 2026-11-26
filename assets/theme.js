@@ -1427,7 +1427,10 @@ function closeModal() {
 
       const product =
         await response.json();
-
+modal.classList.toggle(
+  'is-no-mercy',
+  product.handle === 'hoodie-no-mercy'
+);
 
       const image =
         product.featured_image ||
