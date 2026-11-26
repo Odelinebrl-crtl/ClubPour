@@ -568,7 +568,7 @@
   "creation_description": "Impression française, design réalisé en France",
   "shipping_date": "EXPÉDITION À PARTIR DU 10 DÉCEMBRE",
   "sold_out": "ÉPUISÉ",
-  "google_rating": "{{ rating }} sur 5",
+  "google_rating": "{{ rating }}/5",
   "google_review_count": "{{ count }} avis",
   "google_reviews_aria": "Voir les avis Google de CLUB POUR"
 },
