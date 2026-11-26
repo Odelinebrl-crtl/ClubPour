@@ -719,6 +719,10 @@
 "preorder": "IN DEN WARENKORB",
 "add_to_cart": "IN DEN WARENKORB"
 },
+"product_homme_coming_soon": {
+  "new_preorder_badge": "NEU — VORBESTELLUNG",
+  "preorder": "VORBESTELLEN"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "AUTOMOBILER STIL,",
