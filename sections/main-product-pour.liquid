@@ -172,7 +172,7 @@
   </span>
 
   <span class="pour-google-rating__count">
-    ({{ 'pour_productsoon.google_review_count' | t: count: section.settings.google_review_count }})
+    {{ 'pour_productsoon.google_review_count' | t: count: section.settings.google_review_count }}
   </span>
 </a>
         {% if product.metafields.custom.subtitle != blank %}
