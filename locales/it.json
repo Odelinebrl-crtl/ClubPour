@@ -180,7 +180,9 @@
       "terms_of_sale": "Condizioni Generali di Vendita",
       "privacy_policy": "Informativa sulla privacy",
       "refund_policy": "Politica di resi e rimborsi",
-      "shipping_policy": "Politica di spedizione"
+      "shipping_policy": "Politica di spedizione",
+                           "journal" : "Diario",
+      "tshirt_voiture" : "Magliette con motivi automobilistici"
     },
     "accessibility": {
       "home": "Torna alla home"
