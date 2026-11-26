@@ -155,33 +155,9 @@
 
       <div class="product-page-pour__info-inner">
 
-
-
-
-<h1 class="product__title">
-  {{ product.title | escape }}
-
-  {% if section.settings.gots_badge_image != blank %}
-    <img
-      src="{{ section.settings.gots_badge_image | image_url: width: 300 }}"
-      alt="Certification GOTS"
-      class="gots-product-badge"
-      width="{{ section.settings.gots_badge_width }}"
-      loading="eager"
-      style="
-        width: {{ section.settings.gots_badge_width }}px;
-        left: {{ section.settings.gots_badge_horizontal }}px;
-        top: {{ section.settings.gots_badge_vertical }}px;
-      "
-    >
-  {% endif %}
-</h1>
-
-
-<p class="pour-gots-description">
-  * Produit certifié GOTS — fibres biologiques et exigences environnementales et sociales contrôlées.
-</p>
-
+        <h1 class="product-page-pour__title">
+          {{ product.title }}
+        </h1>
 <a
   class="pour-google-rating"
   href="https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
@@ -223,6 +199,10 @@
 <div class="product-page-pour__fit">
   <strong>{{ 'pour_product.fit_title' | t }}</strong>
   <span>— {{ product.metafields.custom.fit.value }}</span>
+</div>
+<div class="product-page-pour__creation">
+  <strong>{{ 'pour_productsoon.creation_title' | t }}</strong>
+  <span>— {{ 'pour_productsoon.creation_description' | t }}</span>
 </div>
 {% assign color_products = product.metafields.custom.color_products.value %}
 
@@ -3836,49 +3816,6 @@ aspect-ratio: 3 / 4 !important;
   height: 100%;
   text-align: center;
 }
-
-/* CERTIFICATION GOTS — POUR */
-
-.product-page-pour__title .pour-gots {
-  display: inline-block;
-  width: 36px;
-  height: 36px;
-  margin-left: 5px;
-  vertical-align: super;
-  line-height: 0;
-  flex: none;
-}
-
-.product-page-pour__title .pour-gots svg {
-  display: block;
-  width: 36px;
-  height: 36px;
-}
-
-/* DESCRIPTION */
-
-.pour-gots-description {
-  margin: 3px 0 14px !important;
-  font-size: 10px !important;
-  line-height: 1.4 !important;
-  font-weight: 400 !important;
-  color: #777777 !important;
-}
-
-/* MOBILE */
-
-@media screen and (max-width: 900px) {
-  .product-page-pour__title .pour-gots {
-    width: 28px;
-    height: 28px;
-  }
-
-  .product-page-pour__title .pour-gots svg {
-    width: 28px;
-    height: 28px;
-  }
-}
-
 </style>
 
 <script>
