@@ -713,7 +713,8 @@
   "filter_signature": "SIGNATURE",
   "filter_racing": "RACING",
   "new_preorder_badge": "NEU — VORBESTELLUNG",
-  "previous": "Vorherige Produkte"
+  "previous": "Vorherige Produkte",
+  "choose_size": "GRÖSSE WÄHLEN"
 },
 "sections": {
   "hero_pour": {
