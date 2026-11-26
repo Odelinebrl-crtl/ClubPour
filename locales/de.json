@@ -186,7 +186,9 @@
       "terms_of_sale": "Allgemeine Verkaufsbedingungen",
       "privacy_policy": "Datenschutzerklärung",
       "refund_policy": "Rückgabe- und Erstattungsrichtlinie",
-      "shipping_policy": "Versandrichtlinie"
+      "shipping_policy": "Versandrichtlinie",
+               "journal" : "Tagebuch",
+      "tshirt_voiture" : "Auto-T-Shirts"
     },
     "accessibility": {
       "home": "Zur Startseite"
