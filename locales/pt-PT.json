@@ -180,7 +180,9 @@
       "terms_of_sale": "Condições Gerais de Venda",
       "privacy_policy": "Política de privacidade",
       "refund_policy": "Política de devoluções e reembolsos",
-      "shipping_policy": "Política de envio"
+      "shipping_policy": "Política de envio",
+                                       "journal" : "Diário",
+      "tshirt_voiture" : "T-shirts com motivos de carros"
     },
     "accessibility": {
       "home": "Voltar à página inicial"
