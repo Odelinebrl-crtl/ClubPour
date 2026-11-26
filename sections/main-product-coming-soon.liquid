@@ -157,57 +157,24 @@
 
 
 
-<h1 class="product-page-pour__title">
-  {{ product.title }}<span class="pour-gots" aria-label="Certification GOTS">
-    
 
+<h1 class="product__title">
+  {{ product.title | escape }}
 
-<svg viewBox="0 0 100 100"
-     xmlns="http://www.w3.org/2000/svg"
-     role="img"
-     aria-label="Global Organic Textile Standard GOTS">
-
-  <defs>
-    <path
-      id="gots-circle-{{ product.id }}"
-      d="M 20,80
-         A 42.5,42.5 0 1,1 80,80
-         A 42.5,42.5 0 1,1 20,80"/>
-  </defs>
-
-  <!-- Cercle vert -->
-  <circle cx="50" cy="50" r="30.3" fill="#20A638"/>
-
-  <!-- Symbole blanc -->
-  <path
-    d="M25 47.5 L42 30.5 L49.3 38
-       L49.3 70 L39 70 L39 48 L32 55 Z"
-    fill="#FFFFFF"/>
-
-  <path
-    d="M75 47.5 L58 30.5 L50.7 38
-       L50.7 70 L61 70 L61 48 L68 55 Z"
-    fill="#FFFFFF"/>
-
-  <!-- Texte circulaire -->
-  <text
-    fill="#000000"
-    font-family="Arial, Helvetica, sans-serif"
-    font-size="7.2"
-    font-weight="700"
-    letter-spacing="1.05">
-
-    <textPath
-      href="#gots-circle-{{ product.id }}"
-      startOffset="0%">
-      GLOBAL ORGANIC TEXTILE STANDARD · GOTS ·
-    </textPath>
-
-  </text>
-
-</svg>
-
-  </span>
+  {% if section.settings.gots_badge_image != blank %}
+    <img
+      src="{{ section.settings.gots_badge_image | image_url: width: 300 }}"
+      alt="Certification GOTS"
+      class="gots-product-badge"
+      width="{{ section.settings.gots_badge_width }}"
+      loading="eager"
+      style="
+        width: {{ section.settings.gots_badge_width }}px;
+        left: {{ section.settings.gots_badge_horizontal }}px;
+        top: {{ section.settings.gots_badge_vertical }}px;
+      "
+    >
+  {% endif %}
 </h1>
 
 
