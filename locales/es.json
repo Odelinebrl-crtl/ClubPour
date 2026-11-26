@@ -669,7 +669,7 @@
   "creation_description": "Impresión realizada en Francia, diseño creado en Francia",
   "shipping_date": "ENVÍOS A PARTIR DEL 10 DE DICIEMBRE",
   "sold_out": "AGOTADO",
-  "google_rating": "{{ rating }}/5",
+  "google_rating": "{{ rating }} de 5",
   "google_review_count": "{{ count }} opiniones",
   "google_reviews_aria": "Ver las reseñas de Google de CLUB POUR"
 }
