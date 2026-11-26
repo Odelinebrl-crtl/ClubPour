@@ -155,9 +155,37 @@
 
       <div class="product-page-pour__info-inner">
 
-      <h1 class="product-page-pour__title">
-          {{ product.title }}
-        </h1>
+<div class="product-page-pour__heading">
+
+  <h1 class="product-page-pour__title">
+    {{ product.title }}
+
+    {% if section.settings.gots_badge_image != blank %}
+      <img
+        class="product-page-pour__gots-image"
+        src="{{ section.settings.gots_badge_image | image_url: width: 300 }}"
+        alt="Certification GOTS"
+        width="{{ section.settings.gots_badge_size }}"
+        style="
+          width: {{ section.settings.gots_badge_size }}px;
+          transform: translate(
+            {{ section.settings.gots_badge_x }}px,
+            {{ section.settings.gots_badge_y }}px
+          );
+        "
+        loading="eager"
+      >
+    {% endif %}
+  </h1>
+
+  {% if section.settings.gots_description != blank %}
+    <p class="product-page-pour__gots-description">
+      {{ section.settings.gots_description }}
+    </p>
+  {% endif %}
+
+</div>
+
 <a
   class="pour-google-rating"
   href="https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
