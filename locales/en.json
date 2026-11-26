@@ -687,6 +687,10 @@
 "preorder": "ADD TO CART",
 "add_to_cart": "ADD TO CART"
 },
+"product_homme_coming_soon": {
+  "new_preorder_badge": "NEW — PRE-ORDER",
+  "preorder": "PRE-ORDER"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "AUTOMOTIVE STYLE,",
