@@ -3680,35 +3680,42 @@ color: #ffffff;
    QUICK VIEW — VOIR AUSSI
 ========================================================= */
 /* =========================================
-   POUR — QUICK VIEW : TITRE + GOTS
+   POUR — QUICK VIEW : TITRE + LOGO GOTS
 ========================================= */
 
 .pour-quickview__title-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 100%;
-  gap: 15px;
+  gap: 12px;
   margin-bottom: 12px;
 }
 
 .pour-quickview__title-row .pour-quickview__title {
-  flex: 1;
+  flex: 0 1 auto;
   min-width: 0;
   margin: 0;
 }
 
-.pour-quickview__gots-logo {
+.pour-quickview__title-row .pour-quickview__gots-logo {
   display: block;
   flex-shrink: 0;
   width: var(--gots-size, 45px);
   height: auto;
   object-fit: contain;
+  transform: translate(var(--gots-x, 0px), var(--gots-y, 0px));
 }
 
+/* MOBILE */
+
 @media screen and (max-width: 768px) {
-  .pour-quickview__gots-logo {
+  .pour-quickview__title-row {
+    gap: 8px;
+  }
+
+  .pour-quickview__title-row .pour-quickview__gots-logo {
     width: var(--gots-size-mobile, 35px);
   }
 }
