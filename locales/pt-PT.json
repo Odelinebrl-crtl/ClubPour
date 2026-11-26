@@ -693,6 +693,10 @@
 "preorder": "AGGIUNGI AL CARRELLO",
 "add_to_cart": "AGGIUNGI AL CARRELLO"
 },
+"product_homme_coming_soon": {
+  "new_preorder_badge": "NOVIDADE — PRÉ-ENCOMENDA",
+  "preorder": "PRÉ-ENCOMENDAR"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "O AUTOMÓVEL,",
