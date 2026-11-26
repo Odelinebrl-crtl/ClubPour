@@ -161,30 +161,21 @@
   {{ product.title }}<span class="pour-gots" aria-label="Certification GOTS">
     
 
+
 <svg viewBox="0 0 100 100"
      xmlns="http://www.w3.org/2000/svg"
      role="img"
      aria-label="Global Organic Textile Standard GOTS">
 
   <defs>
-    <!-- Haut : ORGANIC TEXTILE -->
-    <path id="gots-top-{{ product.id }}"
-      d="M 22.36,17.06 A 43,43 0 0,1 77.64,17.06"/>
-
-    <!-- Droite : STANDARD -->
-    <path id="gots-right-{{ product.id }}"
-      d="M 77.64,17.06 A 43,43 0 0,1 77.64,82.94"/>
-
-    <!-- Bas : GOTS -->
-    <path id="gots-bottom-{{ product.id }}"
-      d="M 22.36,82.94 A 43,43 0 0,0 77.64,82.94"/>
-
-    <!-- Gauche : GLOBAL -->
-    <path id="gots-left-{{ product.id }}"
-      d="M 22.36,82.94 A 43,43 0 0,1 22.36,17.06"/>
+    <path
+      id="gots-circle-{{ product.id }}"
+      d="M 20,80
+         A 42.5,42.5 0 1,1 80,80
+         A 42.5,42.5 0 1,1 20,80"/>
   </defs>
 
-  <!-- Cercle vert central -->
+  <!-- Cercle vert -->
   <circle cx="50" cy="50" r="30.3" fill="#20A638"/>
 
   <!-- Symbole blanc -->
@@ -198,56 +189,20 @@
        L50.7 70 L61 70 L61 48 L68 55 Z"
     fill="#FFFFFF"/>
 
-  <!-- Texte supérieur -->
-  <text fill="#000000"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="7.2"
-        font-weight="700"
-        letter-spacing="1.05">
-    <textPath href="#gots-top-{{ product.id }}"
-              startOffset="50%"
-              text-anchor="middle">
-      ORGANIC TEXTILE
-    </textPath>
-  </text>
+  <!-- Texte circulaire -->
+  <text
+    fill="#000000"
+    font-family="Arial, Helvetica, sans-serif"
+    font-size="7.2"
+    font-weight="700"
+    letter-spacing="1.05">
 
-  <!-- Texte à droite -->
-  <text fill="#000000"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="7.2"
-        font-weight="700"
-        letter-spacing="1.05">
-    <textPath href="#gots-right-{{ product.id }}"
-              startOffset="50%"
-              text-anchor="middle">
-      STANDARD
+    <textPath
+      href="#gots-circle-{{ product.id }}"
+      startOffset="0%">
+      GLOBAL ORGANIC TEXTILE STANDARD · GOTS ·
     </textPath>
-  </text>
 
-  <!-- Texte inférieur -->
-  <text fill="#000000"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="7.2"
-        font-weight="700"
-        letter-spacing="1.05">
-    <textPath href="#gots-bottom-{{ product.id }}"
-              startOffset="50%"
-              text-anchor="middle">
-      · GOTS ·
-    </textPath>
-  </text>
-
-  <!-- Texte à gauche -->
-  <text fill="#000000"
-        font-family="Arial, Helvetica, sans-serif"
-        font-size="7.2"
-        font-weight="700"
-        letter-spacing="1.05">
-    <textPath href="#gots-left-{{ product.id }}"
-              startOffset="50%"
-              text-anchor="middle">
-      GLOBAL
-    </textPath>
   </text>
 
 </svg>
