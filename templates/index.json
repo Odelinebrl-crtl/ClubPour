@@ -45,7 +45,7 @@
         "mobile_y_2": 25,
         "eyebrow": "",
         "hero_title": "L'AUTOMOBILE, AUTREMENT PORTÉE.",
-        "button_label": "DÉCOUVRIR LES T-SHIRTS",
+        "button_label": "DÉCOUVRIR NOS PIÈCES",
         "launch_text": "",
         "prelaunch_banner": "LES EXPÉDITIONS DÉBUTERONT À PARTIR DU 10 NOVEMBRE — LIVRAISON OFFERTE EN FRANCE DÈS 100€ D'ACHAT",
         "content_position": "bottom-center",
@@ -55,6 +55,7 @@
         "gots_text": "USINE CERTIFIÉE GOTS",
         "gots_logo_size": 40,
         "gots_logo_x": 2,
+        "gots_logo_size_mobile": 30,
         "gots_logo_y": 0
       }
     },
