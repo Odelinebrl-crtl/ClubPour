@@ -552,6 +552,15 @@
   "google_review_count": "({{ count }} beoordelingen)",
   "google_reviews_aria": "Bekijk de Google-beoordelingen van CLUB POUR"
 },
+"pour_products": {
+  "filter_all": "ALLES",
+  "filter_new": "NIEUW",
+  "filter_mediterranean": "MEDITERRAANS",
+  "filter_signature": "SIGNATURE",
+  "filter_racing": "RACING",
+  "new_preorder_badge": "NIEUW — PRE-ORDER",
+  "previous": "Vorige producten"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "AUTOMOBIEL,",
