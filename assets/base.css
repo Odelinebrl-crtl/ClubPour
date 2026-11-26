@@ -3708,8 +3708,6 @@ color: #ffffff;
   transform: translate(var(--gots-x, 0px), var(--gots-y, 0px));
 }
 
-/* MOBILE */
-
 @media screen and (max-width: 768px) {
   .pour-quickview__title-row {
     gap: 8px;
@@ -3717,6 +3715,10 @@ color: #ffffff;
 
   .pour-quickview__title-row .pour-quickview__gots-logo {
     width: var(--gots-size-mobile, 35px);
+    transform: translate(
+      var(--gots-x-mobile, 0px),
+      var(--gots-y-mobile, 0px)
+    );
   }
 }
 .product-related-qv__overlay {
