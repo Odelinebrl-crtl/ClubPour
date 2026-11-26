@@ -168,11 +168,11 @@
   <span class="pour-google-rating__stars" aria-hidden="true">★★★★★</span>
 
   <span>
-    {{ 'pour_product.google_rating' | t: rating: section.settings.google_rating }}
+{{ 'pour_productsoon.google_rating' | t: rating: section.settings.google_rating }}
   </span>
 
   <span class="pour-google-rating__count">
-    ({{ 'pour_product.google_review_count' | t: count: section.settings.google_review_count }})
+{{ 'pour_productsoon.google_review_count' | t: count: section.settings.google_review_count }}
   </span>
 </a>
         {% if product.metafields.custom.subtitle != blank %}
