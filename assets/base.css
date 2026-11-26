@@ -6382,7 +6382,14 @@ html {
     overflow-x: hidden;
     box-sizing: border-box;
   }
-
+/* CROIX BLANCHE — HOODIE NO MERCY UNIQUEMENT SUR MOBILE */
+@media screen and (max-width: 750px) {
+  [data-pour-quickview].is-no-mercy [data-pour-quickview-close]::before,
+  [data-pour-quickview].is-no-mercy [data-pour-quickview-close]::after {
+    background-color: #FFFFFF !important;
+    border-color: #FFFFFF !important;
+  }
+}
   /* CONTENU */
 
   .pour-quickview__content {
