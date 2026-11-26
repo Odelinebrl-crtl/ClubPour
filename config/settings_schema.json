@@ -102,6 +102,26 @@
   "step": 1,
   "unit": "px",
   "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_x_mobile",
+  "label": "Déplacement horizontal — mobile",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_y_mobile",
+  "label": "Déplacement vertical — mobile",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
 }
     ]
   }
