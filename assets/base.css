@@ -1047,7 +1047,11 @@ transform: scale(var(--hero-zoom, 1));
     row-gap: 7px;
     width: 100%;
   }
-
+@media screen and (max-width: 749px) {
+  .pour-quality-banner__item--gots .pour-quality-banner__gots-logo {
+    width: var(--gots-size-mobile);
+  }
+}
   /* PREMIÈRE LIGNE */
 
   .pour-quality-banner__item:nth-of-type(1) {
