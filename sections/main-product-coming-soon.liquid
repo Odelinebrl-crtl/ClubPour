@@ -3859,55 +3859,60 @@ aspect-ratio: 3 / 4 !important;
 }
 
 
-/* =========================================
-   GOTS — INTÉGRATION AU TITRE PRODUIT
-========================================= */
+
+/* GOTS — LOGO À CÔTÉ DU TITRE */
 
 .product-page-pour__title {
-  display: block;
-  margin-bottom: 5px !important;
+  display: block !important;
+  line-height: 1.15 !important;
 }
 
 .product-page-pour__title .pour-gots {
-  display: inline-block;
-  vertical-align: top;
-  width: 32px;
-  height: 32px;
-  margin-left: 5px;
-  position: relative;
-  top: -5px;
+  display: inline-block !important;
+  position: relative !important;
+  vertical-align: top !important;
+
+  width: 25px !important;
+  height: 25px !important;
+
+  margin-left: 5px !important;
+  top: -5px !important;
+
+  flex: none !important;
 }
 
 .product-page-pour__title .pour-gots svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+  display: block !important;
+  width: 25px !important;
+  height: 25px !important;
+  max-width: 25px !important;
 }
+
+/* MENTION CERTIFICATION */
 
 .pour-gots-description {
   margin: 0 0 15px !important;
   font-size: 9px !important;
-  line-height: 1.4;
-  font-weight: 400;
-  letter-spacing: 0;
-  color: #777777;
+  line-height: 1.4 !important;
+  color: #777777 !important;
+  font-weight: 400 !important;
 }
 
 @media screen and (max-width: 900px) {
-
   .product-page-pour__title .pour-gots {
-    width: 27px;
-    height: 27px;
-    margin-left: 4px;
-    top: -4px;
+    width: 21px !important;
+    height: 21px !important;
+    top: -4px !important;
+    margin-left: 4px !important;
   }
 
-  .pour-gots-description {
-    font-size: 9px !important;
-    margin-bottom: 12px !important;
+  .product-page-pour__title .pour-gots svg {
+    width: 21px !important;
+    height: 21px !important;
+    max-width: 21px !important;
   }
-
 }
+
 
 
 </style>
