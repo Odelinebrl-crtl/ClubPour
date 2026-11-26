@@ -3679,7 +3679,34 @@ color: #ffffff;
 /* =========================================================
    QUICK VIEW — VOIR AUSSI
 ========================================================= */
+/* =========================================
+   POUR — LOGO GOTS QUICK VIEW
+========================================= */
 
+.pour-quickview__gots {
+  display: flex;
+  justify-content: var(--gots-alignment, flex-start);
+  align-items: center;
+  width: 100%;
+  margin-top: var(--gots-spacing, 12px);
+  margin-bottom: 12px;
+}
+
+.pour-quickview__gots-logo {
+  display: block;
+  width: var(--gots-size, 45px);
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 768px) {
+  .pour-quickview__gots-logo {
+    width: var(--gots-size-mobile, 35px);
+  }
+}
 .product-related-qv__overlay {
   position: fixed;
   inset: 0;
