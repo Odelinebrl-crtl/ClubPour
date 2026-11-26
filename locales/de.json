@@ -715,7 +715,8 @@
   "new_preorder_badge": "NEU — VORBESTELLUNG",
   "previous": "Vorherige Produkte",
   "choose_size": "GRÖSSE WÄHLEN",
-  "size": "GRÖSSE",
+"size": "GRÖSSE",
+"preorder": "VORBESTELLEN",
 "add_to_cart": "IN DEN WARENKORB"
 },
 "sections": {
