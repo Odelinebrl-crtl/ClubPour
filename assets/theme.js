@@ -1460,9 +1460,19 @@ modal.classList.toggle(
         <div class="pour-quickview__info">
 
         <div class="pour-quickview__title-row">
+
   <h2 class="pour-quickview__title">
     ${escapeHTML(product.title)}
   </h2>
+
+  ${window.PourTranslations?.gotsLogo ? `
+    <img
+      src="${escapeHTML(window.PourTranslations.gotsLogo)}"
+      alt="Certification GOTS"
+      class="pour-quickview__gots-logo"
+    >
+  ` : ''}
+
 </div>
          <div class="pour-quickview__price" data-quickview-price>
   <span class="pour-quickview__price-current">
@@ -1473,15 +1483,7 @@ modal.classList.toggle(
     ? `<s class="pour-quickview__price-compare">${money((product.variants.find(v => v.available) || product.variants[0]).compare_at_price)}</s>`
     : ''}
 </div>
-${window.PourTranslations?.gotsLogo ? `
-  <div class="pour-quickview__gots">
-    <img
-      src="${escapeHTML(window.PourTranslations.gotsLogo)}"
-      alt="Certification GOTS"
-      class="pour-quickview__gots-logo"
-    >
-  </div>
-` : ''}
+
 
           <form
             action="/cart/add"
