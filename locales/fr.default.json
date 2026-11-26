@@ -562,7 +562,16 @@
         "text": "Cumulez 100 € d’achats chez POUR pour débloquer les éditions privées du Club Privilèges."
         }
 },
-
+"pour_productsoon": {
+  "preorder_button": "PRÉCOMMANDEZ",
+  "creation_title": "Création",
+  "creation_description": "Impression française, design réalisé en France",
+  "shipping_date": "EXPÉDITION À PARTIR DU 10 DÉCEMBRE",
+  "sold_out": "ÉPUISÉ",
+  "google_rating": "{{ rating }} sur 5",
+  "google_review_count": "{{ count }} avis",
+  "google_reviews_aria": "Voir les avis Google de CLUB POUR"
+},
   "popup_club_privileges": {
     "eyebrow": "CLUB POUR",
     "heading": "REJOIGNEZ LE CLUB PRIVILÈGES",
@@ -580,15 +589,5 @@
     "copy_fallback_label": "SÉLECTIONNEZ LE CODE",
     "continue_label": "POURSUIVRE MA VISITE",
     "close_label": "Fermer le pop-up"
-  },
-"pour_productsoon": {
-  "preorder_button": "PRÉCOMMANDEZ",
-  "creation_title": "Création",
-  "creation_description": "Impression française, design réalisé en France",
-  "shipping_date": "EXPÉDITION À PARTIR DU 10 DÉCEMBRE",
-  "sold_out": "ÉPUISÉ",
-  "google_rating": "{{ rating }} sur 5",
-  "google_review_count": "{{ count }} avis",
-  "google_reviews_aria": "Voir les avis Google de CLUB POUR"
-}
+  }
 }
