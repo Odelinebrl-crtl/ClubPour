@@ -670,7 +670,7 @@
   "creation_description": "Printed in France, design created in France",
   "shipping_date": "SHIPPING FROM DECEMBER 10",
   "sold_out": "SOLD OUT",
-  "google_rating": "{{ rating }} out of 5",
+  "google_rating": "{{ rating }}/5",
   "google_review_count": "{{ count }} reviews",
   "google_reviews_aria": "View CLUB POUR Google reviews"
 }
