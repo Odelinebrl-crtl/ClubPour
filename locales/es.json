@@ -680,7 +680,8 @@
   "filter_signature": "SIGNATURE",
   "filter_racing": "RACING",
   "new_preorder_badge": "NOVEDAD — RESERVA",
-  "previous": "Productos anteriores"
+  "previous": "Productos anteriores",
+  "choose_size": "ELEGIR MI TALLA"
 },
 "sections": {
   "hero_pour": {
