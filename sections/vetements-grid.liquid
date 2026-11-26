@@ -292,7 +292,16 @@
 </section>
 
 <style>
+#VetementsGrid-{{ section.id }} {
+  --vet-gots-size: {{ section.settings.quickview_gots_size | default: 40 }}px;
+  --vet-gots-size-mobile: {{ section.settings.quickview_gots_size_mobile | default: 30 }}px;
 
+  --vet-gots-x: {{ section.settings.quickview_gots_x | default: 0 }}px;
+  --vet-gots-y: {{ section.settings.quickview_gots_y | default: 0 }}px;
+
+  --vet-gots-x-mobile: {{ section.settings.quickview_gots_x_mobile | default: 0 }}px;
+  --vet-gots-y-mobile: {{ section.settings.quickview_gots_y_mobile | default: 0 }}px;
+}
 /* =========================================================
    MEDIA + HOVER
 ========================================================= */
@@ -1084,6 +1093,54 @@ object-fit: cover !important;
     background: #FFFFFF !important;
   }
 }
+/* =========================================
+   QUICK VIEW — LOGO GOTS
+========================================= */
+
+#VetementsGrid-{{ section.id }} .vetements-qv__title-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+}
+
+#VetementsGrid-{{ section.id }} .vetements-qv__title {
+  flex: 0 1 auto;
+  min-width: 0;
+  margin: 0;
+}
+
+#VetementsGrid-{{ section.id }} .vetements-qv__gots-logo {
+  display: block;
+  flex-shrink: 0;
+  width: var(--vet-gots-size, 40px);
+  height: auto;
+  object-fit: contain;
+  transform: translate(
+    var(--vet-gots-x, 0px),
+    var(--vet-gots-y, 0px)
+  );
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 750px) {
+
+  #VetementsGrid-{{ section.id }} .vetements-qv__title-row {
+    gap: 8px;
+  }
+
+  #VetementsGrid-{{ section.id }} .vetements-qv__gots-logo {
+    width: var(--vet-gots-size-mobile, 30px);
+    transform: translate(
+      var(--vet-gots-x-mobile, 0px),
+      var(--vet-gots-y-mobile, 0px)
+    );
+  }
+
+}
 </style>
 
 
@@ -1297,6 +1354,7 @@ function buildVariants(product) {
 
       const product =
         await response.json();
+        const gotsLogo = {{ section.settings.quickview_gots_logo | image_url: width: 300 | json }};
 modal.classList.toggle(
   'is-no-mercy',
   product.handle === 'hoodie-no-mercy'
@@ -1325,13 +1383,27 @@ class="vetements-qv__image"
           }
 
         </div>
+<div class="vetements-qv__info">
 
+  <div class="vetements-qv__title-row">
 
-        <div class="vetements-qv__info">
+    <h2 class="vetements-qv__title">
+      ${escapeHTML(product.title)}
+    </h2>
 
-          <h2 class="vetements-qv__title">
-            ${escapeHTML(product.title)}
-          </h2>
+    ${
+      gotsLogo
+        ? `
+          <img
+            src="${escapeHTML(gotsLogo)}"
+            alt="Certification GOTS"
+            class="vetements-qv__gots-logo"
+          >
+        `
+        : ''
+    }
+
+  </div>
 
 <div class="vetements-qv__price">
   <span>${formatMoney(product.price)}</span>
@@ -1520,6 +1592,75 @@ class="vetements-qv__image"
   "id": "anchor_id",
   "label": "Identifiant d'ancrage"
 },
+{
+  "type": "header",
+  "content": "QUICK VIEW — Certification GOTS"
+},
+{
+  "type": "image_picker",
+  "id": "quickview_gots_logo",
+  "label": "Importer le logo GOTS"
+},
+{
+  "type": "range",
+  "id": "quickview_gots_size",
+  "label": "Taille du logo — ordinateur",
+  "min": 15,
+  "max": 120,
+  "step": 5,
+  "unit": "px",
+  "default": 40
+},
+{
+  "type": "range",
+  "id": "quickview_gots_size_mobile",
+  "label": "Taille du logo — mobile",
+  "min": 15,
+  "max": 100,
+  "step": 5,
+  "unit": "px",
+  "default": 30
+},
+{
+  "type": "range",
+  "id": "quickview_gots_x",
+  "label": "Déplacement horizontal — ordinateur",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_y",
+  "label": "Déplacement vertical — ordinateur",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_x_mobile",
+  "label": "Déplacement horizontal — mobile",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_y_mobile",
+  "label": "Déplacement vertical — mobile",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+}
   ],
 
   "blocks": [
