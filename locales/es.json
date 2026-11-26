@@ -198,7 +198,9 @@
       "terms_of_sale": "Condiciones Generales de Venta",
       "privacy_policy": "Política de privacidad",
       "refund_policy": "Política de devoluciones y reembolsos",
-      "shipping_policy": "Política de envío"
+      "shipping_policy": "Política de envío",
+                     "journal" : "Diario",
+      "tshirt_voiture" : "Camisetas de coches"
     },
     "accessibility": {
       "home": "Volver al inicio"
