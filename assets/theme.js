@@ -1459,9 +1459,11 @@ modal.classList.toggle(
 
         <div class="pour-quickview__info">
 
-          <h2 class="pour-quickview__title">
-            ${escapeHTML(product.title)}
-          </h2>
+        <div class="pour-quickview__title-row">
+  <h2 class="pour-quickview__title">
+    ${escapeHTML(product.title)}
+  </h2>
+</div>
          <div class="pour-quickview__price" data-quickview-price>
   <span class="pour-quickview__price-current">
     ${money((product.variants.find(v => v.available) || product.variants[0]).price)}
