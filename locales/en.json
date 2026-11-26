@@ -674,6 +674,15 @@
   "google_review_count": "({{ count }} reviews)",
   "google_reviews_aria": "View CLUB POUR Google reviews"
 },
+"pour_products": {
+  "filter_all": "ALL",
+  "filter_new": "NEW",
+  "filter_mediterranean": "MEDITERRANEAN",
+  "filter_signature": "SIGNATURE",
+  "filter_racing": "RACING",
+  "new_preorder_badge": "NEW — PRE-ORDER",
+  "previous": "Previous products"
+},
 "sections": {
   "hero_pour": {
     "title_part_1": "AUTOMOTIVE STYLE,",
