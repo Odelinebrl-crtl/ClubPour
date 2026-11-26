@@ -672,5 +672,9 @@
   "google_rating": "{{ rating }}/5",
   "google_review_count": "({{ count }} opiniones)",
   "google_reviews_aria": "Ver las reseñas de Google de CLUB POUR"
-}
+},
+  "hero_pour": {
+    "title_part_1": "EL AUTOMÓVIL,",
+    "title_part_2": "DE OTRA MANERA."
+  }
 }
