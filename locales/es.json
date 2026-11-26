@@ -682,7 +682,8 @@
   "new_preorder_badge": "NOVEDAD — RESERVA",
   "previous": "Productos anteriores",
   "choose_size": "ELEGIR MI TALLA",
-  "size": "TALLA",
+"size": "TALLA",
+"preorder": "RESERVAR",
 "add_to_cart": "AÑADIR AL CARRITO"
 },
 "sections": {
