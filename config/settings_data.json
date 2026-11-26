@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "quickview_gots_logo": "shopify://shop_images/gots-logocmyk2018.webp",
+    "quickview_gots_alignment": "left",
     "sections": {
       "header": {
         "type": "header",
