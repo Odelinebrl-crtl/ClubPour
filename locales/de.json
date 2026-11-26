@@ -703,7 +703,7 @@
   "shipping_date": "VERSAND AB DEM 10. DEZEMBER",
   "sold_out": "AUSVERKAUFT",
   "google_rating": "{{ rating }}/5",
-  "google_review_count": "{{ count }} Bewertungen",
+  "google_review_count": "({{ count }} Bewertungen)",
   "google_reviews_aria": "Google-Bewertungen von CLUB POUR ansehen"
 }
 }
