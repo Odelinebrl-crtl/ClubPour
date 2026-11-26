@@ -82,7 +82,9 @@
       "terms_of_sale": "Algemene verkoopvoorwaarden",
       "privacy_policy": "Privacybeleid",
       "refund_policy": "Retour- en terugbetalingsbeleid",
-      "shipping_policy": "Verzendbeleid"
+      "shipping_policy": "Verzendbeleid",
+                                 "journal" : "Dagboek",
+      "tshirt_voiture" : "T-shirts met auto-motief"
     },
     "accessibility": {
       "home": "Terug naar home"
