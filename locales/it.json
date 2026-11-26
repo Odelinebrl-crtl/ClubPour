@@ -680,8 +680,10 @@
   "google_review_count": "({{ count }} recensioni)",
   "google_reviews_aria": "Visualizza le recensioni Google di CLUB POUR"
 },
+"sections": {
   "hero_pour": {
     "title_part_1": "L'AUTOMOBILE,",
     "title_part_2": "IN MODO DIVERSO."
   }
+}
 }
