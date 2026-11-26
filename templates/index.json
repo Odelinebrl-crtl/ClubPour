@@ -50,7 +50,12 @@
         "prelaunch_banner": "LES EXPÉDITIONS DÉBUTERONT À PARTIR DU 10 NOVEMBRE — LIVRAISON OFFERTE EN FRANCE DÈS 100€ D'ACHAT",
         "content_position": "bottom-center",
         "text_color": "#ffffff",
-        "overlay": 15
+        "overlay": 15,
+        "gots_logo": "shopify://shop_images/gots-logocmyk2018.webp",
+        "gots_text": "USINE CERTIFIÉE GOTS",
+        "gots_logo_size": 40,
+        "gots_logo_x": 6,
+        "gots_logo_y": 0
       }
     },
     "product_grid_RhwVm9": {
