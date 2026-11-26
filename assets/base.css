@@ -1059,7 +1059,7 @@ transform: scale(var(--hero-zoom, 1));
   .pour-quality-banner__item svg,
   .pour-quality-banner__gots-logo {
     position: relative;
-    left: 3px;
+    left: -5px;
     top: 0px;
   }
 
