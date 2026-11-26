@@ -683,7 +683,8 @@
   "new_preorder_badge": "NEW — PRE-ORDER",
   "previous": "Previous products",
   "choose_size": "CHOOSE MY SIZE",
-  "size": "SIZE",
+"size": "SIZE",
+"preorder": "PRE-ORDER",
 "add_to_cart": "ADD TO CART"
 },
 "sections": {
