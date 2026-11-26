@@ -173,7 +173,9 @@
       "terms_of_sale": "Terms and Conditions of Sale",
       "privacy_policy": "Privacy Policy",
       "refund_policy": "Return and Refund Policy",
-      "shipping_policy": "Shipping Policy"
+      "shipping_policy": "Shipping Policy",
+           "journal" : "Journal",
+      "tshirt_voiture" : "Car T-shirts"
     },
     "accessibility": {
       "home": "Back to home"
