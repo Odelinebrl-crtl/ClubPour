@@ -38,7 +38,7 @@
         data-filter="all"
         aria-pressed="true"
       >
-        TOUT
+         {{ 'pour_products.filter_all' | t }}
       </button>
 <button
   type="button"
@@ -46,7 +46,7 @@
   data-filter="nouveaute"
   aria-pressed="false"
 >
-  NOUVEAUTÉ
+  {{ 'pour_products.filter_new' | t }}
 </button>
       <button
         type="button"
@@ -54,7 +54,7 @@
         data-filter="mediterraneen"
         aria-pressed="false"
       >
-        MÉDITERRANÉEN
+   {{ 'pour_products.filter_mediterranean' | t }}
       </button>
 
       <button
@@ -63,7 +63,7 @@
         data-filter="signature"
         aria-pressed="false"
       >
-        SIGNATURE
+  {{ 'pour_products.filter_signature' | t }}
       </button>
 
       <button
@@ -72,7 +72,7 @@
         data-filter="racine"
         aria-pressed="false"
       >
-        RACING
+  {{ 'pour_products.filter_racing' | t }}
       </button>
 
     </div>
@@ -128,7 +128,7 @@
               <div class="pour-product__media">
 {% if block.settings.show_new_badge %}
   <span class="pour-product__badge">
-    NOUVEAUTÉ — PRÉCOMMANDE
+    {{ 'pour_products.new_preorder_badge' | t }}
   </span>
 {% endif %}
                 <a
