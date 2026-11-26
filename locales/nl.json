@@ -548,7 +548,7 @@
   "creation_description": "Bedrukt in Frankrijk, ontwerp gemaakt in Frankrijk",
   "shipping_date": "VERZENDING VANAF 10 DECEMBER",
   "sold_out": "UITVERKOCHT",
-  "google_rating": "{{ rating }} van de 5",
+  "google_rating": "{{ rating }}/5",
   "google_review_count": "{{ count }} beoordelingen",
   "google_reviews_aria": "Bekijk de Google-beoordelingen van CLUB POUR"
 }
