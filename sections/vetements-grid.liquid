@@ -865,12 +865,14 @@ object-fit: cover !important;
     padding: 0 0 24px;
   }
 
-  /* IMAGE PAYSAGE */
+ /* QUICK VIEW MOBILE — IMAGE PLEINE LARGEUR */
 
-  #VetementsGrid-{{ section.id }}
-  .vetements-qv__media {
+@media screen and (max-width: 768px) {
+
+  #VetementsGrid-{{ section.id }} .vetements-qv__media {
     display: block;
     width: 100%;
+    max-width: 100%;
     height: auto;
     min-height: 0;
     aspect-ratio: 4 / 3;
@@ -880,8 +882,7 @@ object-fit: cover !important;
     box-sizing: border-box;
   }
 
-  #VetementsGrid-{{ section.id }}
-  .vetements-qv__image {
+  #VetementsGrid-{{ section.id }} .vetements-qv__image {
     display: block;
     width: 100% !important;
     height: 100% !important;
@@ -889,8 +890,11 @@ object-fit: cover !important;
     max-height: none !important;
     margin: 0 !important;
     object-fit: cover !important;
-    object-position: center center !important;
+    object-position: left center !important;
+    transform: none !important;
   }
+
+}
 
   /* INFORMATIONS */
 
