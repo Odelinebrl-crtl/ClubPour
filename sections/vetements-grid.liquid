@@ -1073,6 +1073,14 @@ object-fit: contain;
   white-space: nowrap;
   pointer-events: none;
 }
+
+/* QUICK VIEW — ZOOM HOODIE NO MERCY UNIQUEMENT */
+
+#VetementsGrid-{{ section.id }}
+.vetements-qv__image--hoodie-no-mercy {
+  transform: scale(1.05);
+  transform-origin: center center;
+}
 </style>
 
 
@@ -1303,7 +1311,7 @@ function buildVariants(product) {
               ? `
                 <img
                   src="${escapeHTML(image)}"
-                  class="vetements-qv__image"
+                  class="vetements-qv__image ${product.handle === 'hoodie-no-mercy' ? 'vetements-qv__image--hoodie-no-mercy' : ''}"
                   alt="${escapeHTML(product.title)}"
                 >
               `
