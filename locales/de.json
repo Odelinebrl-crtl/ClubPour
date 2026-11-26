@@ -705,5 +705,9 @@
   "google_rating": "{{ rating }}/5",
   "google_review_count": "({{ count }} Bewertungen)",
   "google_reviews_aria": "Google-Bewertungen von CLUB POUR ansehen"
-}
+},
+  "hero_pour": {
+    "title_part_1": "AUTOMOBILER STIL,",
+    "title_part_2": "NEU INTERPRETIERT."
+  }
 }
