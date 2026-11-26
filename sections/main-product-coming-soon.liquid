@@ -5647,7 +5647,64 @@ if (
   "id": "google_review_count",
   "label": "Nombre d'avis Google",
   "default": "12"
+},
+
+{
+  "type": "header",
+  "content": "CERTIFICATION GOTS"
+},
+{
+  "type": "image_picker",
+  "id": "gots_badge_image",
+  "label": "Image du label GOTS"
+},
+{
+  "type": "range",
+  "id": "gots_badge_size",
+  "label": "Taille du label",
+  "min": 15,
+  "max": 100,
+  "step": 1,
+  "unit": "px",
+  "default": 35
+},
+{
+  "type": "range",
+  "id": "gots_badge_x",
+  "label": "Position horizontale",
+  "min": -40,
+  "max": 40,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "gots_badge_y",
+  "label": "Position verticale",
+  "min": -40,
+  "max": 40,
+  "step": 1,
+  "unit": "px",
+  "default": -5
+},
+{
+  "type": "textarea",
+  "id": "gots_description",
+  "label": "Texte explicatif GOTS",
+  "default": "* Produit certifié GOTS — fibres biologiques et exigences environnementales et sociales contrôlées."
+},
+{
+  "type": "range",
+  "id": "gots_description_size",
+  "label": "Taille du texte explicatif",
+  "min": 8,
+  "max": 18,
+  "step": 1,
+  "unit": "px",
+  "default": 11
 }
+
   ]
 }
 {% endschema %}
