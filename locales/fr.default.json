@@ -81,7 +81,9 @@
       "terms_of_sale": "Conditions générales de vente",
       "privacy_policy": "Politique de confidentialité",
       "refund_policy": "Politique de retour et de remboursement",
-      "shipping_policy": "Politique d'expédition"
+      "shipping_policy": "Politique d'expédition",
+      "journal" : "Journal",
+      "tshirt_voiture" : "T-shirts voiture"
     },
     "accessibility": {
       "home": "Retour à l'accueil"
