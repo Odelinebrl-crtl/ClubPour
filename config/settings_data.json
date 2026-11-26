@@ -14,6 +14,8 @@
     "quickview_gots_alignment": "left",
     "quickview_gots_x": -11,
     "quickview_gots_y": -11,
+    "quickview_gots_x_mobile": -6,
+    "quickview_gots_y_mobile": -8,
     "sections": {
       "header": {
         "type": "header",
