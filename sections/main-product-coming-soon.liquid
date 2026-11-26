@@ -163,12 +163,16 @@
   href="https://maps.app.goo.gl/jRyrijTAaX6ZPnvH8"
   target="_blank"
   rel="noopener noreferrer"
-  aria-label="Voir les avis Google de CLUB POUR"
+  aria-label="{{ 'pour_product.google_reviews_aria' | t }}"
 >
   <span class="pour-google-rating__stars" aria-hidden="true">★★★★★</span>
-  <span>{{ section.settings.google_rating }}/5</span>
+
+  <span>
+    {{ 'pour_product.google_rating' | t: rating: section.settings.google_rating }}
+  </span>
+
   <span class="pour-google-rating__count">
-    ({{ section.settings.google_review_count }} avis)
+    ({{ 'pour_product.google_review_count' | t: count: section.settings.google_review_count }})
   </span>
 </a>
         {% if product.metafields.custom.subtitle != blank %}
@@ -197,8 +201,8 @@
   <span>— {{ product.metafields.custom.fit.value }}</span>
 </div>
 <div class="product-page-pour__creation">
-  <strong>Création</strong>
-  <span>— Impression française, design réalisé en France</span>
+  <strong>{{ 'pour_product.creation_title' | t }}</strong>
+  <span>— {{ 'pour_product.creation_description' | t }}</span>
 </div>
 {% assign color_products = product.metafields.custom.color_products.value %}
 
@@ -336,7 +340,7 @@
     {% endif %}
   >
     {% if product.selected_or_first_available_variant.available %}
-     PRÉCOMMANDEZ
+    {{ 'pour_product.preorder_button' | t }}
     {% else %}
       {{ 'pour_product.sold_out' | t }}
     {% endif %}
@@ -381,7 +385,7 @@
 </div>
 
 <p class="product-page-pour__shipping-date">
-  EXPÉDITION À PARTIR DU 10 DÉCEMBRE
+  {{ 'pour_product.shipping_date' | t }}
 </p>
         
   <!-- DETAILS -->
