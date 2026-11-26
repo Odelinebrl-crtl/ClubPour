@@ -136,6 +136,14 @@
     gotsSpacing: {{ settings.quickview_gots_spacing | default: 12 | json }}
   };
 </script>
+<style>
+  .pour-quickview {
+    --gots-size: {{ settings.quickview_gots_size | default: 45 }}px;
+    --gots-size-mobile: {{ settings.quickview_gots_size_mobile | default: 35 }}px;
+    --gots-x: {{ settings.quickview_gots_x | default: 0 }}px;
+    --gots-y: {{ settings.quickview_gots_y | default: 0 }}px;
+  }
+</style>
     <script
       src="{{ 'theme.js' | asset_url }}"
       defer
