@@ -598,7 +598,9 @@
   "filter_racing": "RACING",
   "new_preorder_badge": "NOUVEAUTÉ — PRÉCOMMANDE",
   "previous": "Produits précédents",
-  "choose_size": "CHOISIR MA TAILLE"
+  "choose_size": "CHOISIR MA TAILLE",
+    "size": "TAILLE",
+"add_to_cart": "AJOUTER AU PANIER"
 },
   "sections": {
   "hero_pour": {
