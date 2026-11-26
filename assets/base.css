@@ -973,7 +973,13 @@ transform: scale(var(--hero-zoom, 1));
 }
 
 /* BANDEAU QUALITÉ */
-
+.pour-quality-banner__item--gots .pour-quality-banner__gots-logo {
+  width: var(--gots-size);
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  transform: translate(var(--gots-x), var(--gots-y));
+}
 .pour-quality-banner {
   width: 100%;
   min-height: 54px;
