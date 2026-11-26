@@ -714,7 +714,9 @@
   "filter_racing": "RACING",
   "new_preorder_badge": "NEU — VORBESTELLUNG",
   "previous": "Vorherige Produkte",
-  "choose_size": "GRÖSSE WÄHLEN"
+  "choose_size": "GRÖSSE WÄHLEN",
+  "size": "GRÖSSE",
+"add_to_cart": "IN DEN WARENKORB"
 },
 "sections": {
   "hero_pour": {
