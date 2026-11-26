@@ -196,18 +196,27 @@ style="
 
 <div class="pour-quality-banner__inner">
 
-  <!-- COTON BIOLOGIQUE -->
-  <div class="pour-quality-banner__item">
-    <svg viewBox="0 0 740 740" aria-hidden="true">
-      <path
-        d="M517 76 L514 77 L496 126 L480 156 L458 186 L431 214 L377 252 L335 272 L273 296 L234 316 L203 336 L164 371 L140 403 L120 443 L108 489 L106 529 L115 490 L133 447 L161 407 L185 384 L221 359 L262 339 L379 301 L425 279 L460 256 L485 235 L515 203 L535 176 L560 216 L576 261 L582 293 L583 345 L578 386 L570 419 L556 457 L532 500 L517 519 L492 542 L462 560 L419 576 L383 584 L325 590 L194 593 L220 565 L256 535 L379 454 L435 409 L466 375 L486 346 L503 310 L511 278 L498 307 L480 335 L431 384 L374 422 L235 496 L176 539 L134 584 L90 663 L176 653 L340 653 L388 649 L432 641 L479 626 L517 607 L547 585 L581 549 L615 492 L637 431 L649 362 L647 285 L630 219 L605 168 L575 128 L543 96 Z"
-        fill="currentColor"
-      />
-    </svg>
-<span>{{ 'sections.hero_pour.quality_cotton' | t }}</span>
-  </div>
+  <!-- CERTIFICATION GOTS -->
+<div
+  class="pour-quality-banner__item pour-quality-banner__item--gots"
+  style="
+    --gots-size: {{ section.settings.gots_logo_size }}px;
+    --gots-x: {{ section.settings.gots_logo_x }}px;
+    --gots-y: {{ section.settings.gots_logo_y }}px;
+  "
+>
+  {% if section.settings.gots_logo != blank %}
+    {{
+      section.settings.gots_logo
+      | image_url: width: 500
+      | image_tag:
+        class: 'pour-quality-banner__gots-logo',
+        loading: 'lazy'
+    }}
+  {% endif %}
 
-  <span class="pour-quality-banner__separator"></span>
+  <span>{{ section.settings.gots_text }}</span>
+</div>
 
   <!-- IMPRIMÉ EN FRANCE -->
   <div class="pour-quality-banner__item">
@@ -638,7 +647,52 @@ style="
       "unit": "%",
       "label": "Assombrissement de l'image",
       "default": 15
-    }
+    },
+    {
+  "type": "header",
+  "content": "Premier élément — Certification GOTS"
+},
+{
+  "type": "image_picker",
+  "id": "gots_logo",
+  "label": "Importer le logo GOTS"
+},
+{
+  "type": "text",
+  "id": "gots_text",
+  "label": "Texte affiché",
+  "default": "USINE CERTIFIÉE GOTS"
+},
+{
+  "type": "range",
+  "id": "gots_logo_size",
+  "label": "Taille du logo",
+  "min": 20,
+  "max": 150,
+  "step": 5,
+  "unit": "px",
+  "default": 40
+},
+{
+  "type": "range",
+  "id": "gots_logo_x",
+  "label": "Position horizontale",
+  "min": -100,
+  "max": 100,
+  "step": 2,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "gots_logo_y",
+  "label": "Position verticale",
+  "min": -100,
+  "max": 100,
+  "step": 2,
+  "unit": "px",
+  "default": 0
+}
   ],
   "presets": [
     {
