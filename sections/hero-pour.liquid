@@ -158,8 +158,12 @@ style="
 
 {% if section.settings.hero_title != blank %}
   <h1 class="pour-hero__heading">
-    <span class="pour-hero__heading-sub">L'AUTOMOBILE,</span>
-    <span class="pour-hero__heading-main">AUTREMENT PORTÉE.</span>
+    <span class="pour-hero__heading-sub">
+      {{ 'sections.hero_pour.title_part_1' | t }}
+    </span>
+    <span class="pour-hero__heading-main">
+      {{ 'sections.hero_pour.title_part_2' | t }}
+    </span>
   </h1>
 {% endif %}
 
