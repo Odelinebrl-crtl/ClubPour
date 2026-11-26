@@ -1471,7 +1471,15 @@ modal.classList.toggle(
     ? `<s class="pour-quickview__price-compare">${money((product.variants.find(v => v.available) || product.variants[0]).compare_at_price)}</s>`
     : ''}
 </div>
-
+${window.PourTranslations?.gotsLogo ? `
+  <div class="pour-quickview__gots">
+    <img
+      src="${escapeHTML(window.PourTranslations.gotsLogo)}"
+      alt="Certification GOTS"
+      class="pour-quickview__gots-logo"
+    >
+  </div>
+` : ''}
 
           <form
             action="/cart/add"
