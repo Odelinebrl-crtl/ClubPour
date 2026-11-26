@@ -82,7 +82,27 @@
         "step": 2,
         "unit": "px",
         "default": 12
-      }
+      },
+      {
+  "type": "range",
+  "id": "quickview_gots_x",
+  "label": "Déplacement horizontal du logo",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+},
+{
+  "type": "range",
+  "id": "quickview_gots_y",
+  "label": "Déplacement vertical du logo",
+  "min": -50,
+  "max": 50,
+  "step": 1,
+  "unit": "px",
+  "default": 0
+}
     ]
   }
 ]
