@@ -590,6 +590,15 @@
     "continue_label": "POURSUIVRE MA VISITE",
     "close_label": "Fermer le pop-up"
   },
+  "pour_products": {
+  "filter_all": "TOUT",
+  "filter_new": "NOUVEAUTÉ",
+  "filter_mediterranean": "MÉDITERRANÉEN",
+  "filter_signature": "SIGNATURE",
+  "filter_racing": "RACING",
+  "new_preorder_badge": "NOUVEAUTÉ — PRÉCOMMANDE",
+  "previous": "Produits précédents"
+},
   "sections": {
   "hero_pour": {
     "title_part_1": "L'AUTOMOBILE,",
