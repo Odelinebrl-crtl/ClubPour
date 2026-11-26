@@ -1052,6 +1052,25 @@ transform: scale(var(--hero-zoom, 1));
     width: var(--gots-size-mobile);
   }
 }
+/* DÉCALAGE DES ÉLÉMENTS DU BANDEAU SUR MOBILE UNIQUEMENT */
+@media screen and (max-width: 768px) {
+
+  /* Décaler les logos */
+  .pour-quality-banner__item svg,
+  .pour-quality-banner__gots-logo {
+    position: relative;
+    left: 3px;
+    top: 0px;
+  }
+
+  /* Décaler les textes */
+  .pour-quality-banner__item span {
+    position: relative;
+    left: 3px;
+    top: 0px;
+  }
+
+}
   /* PREMIÈRE LIGNE */
 
   .pour-quality-banner__item:nth-of-type(1) {
